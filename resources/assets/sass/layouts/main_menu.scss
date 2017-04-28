@@ -1,0 +1,5 @@
+$main-menu-button-color: lightskyblue;
+
+.main-menu .menu .active > a {
+    background-color: $main-menu-button-color;
+}

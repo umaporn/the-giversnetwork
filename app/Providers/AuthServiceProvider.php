@@ -1,19 +1,21 @@
 <?php
+/**
+ * Authentication Service Provider
+ */
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
+/**
+ * Class AuthServiceProvider
+ * @package App\Providers
+ */
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
+    /** @var array The policy mappings for the application. */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Http\Controllers\HomeController' => 'App\Policies\HomeControllerPolicy',
     ];
 
     /**
@@ -24,7 +26,5 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
-        //
     }
 }

@@ -1,9 +1,16 @@
+// Settings
+@import "settings/_foundation";
+@import "settings/_header";
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// External libraries
+@import "node_modules/foundation-sites/assets/foundation";
 
-// Variables
-@import "variables";
+// Layouts
+@import "layouts/header";
+@import "layouts/top_menu";
+@import "layouts/main_menu";
+@import "layouts/content";
 
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+// Components
+@import "components/alert";
+@import "components/popup";

@@ -1,9 +1,19 @@
 <?php
+/**
+ * Application Service Provider
+ */
 
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\View;
+use Validator;
+use App\Libraries\CustomRouteCollection;
 
+/**
+ * Class AppServiceProvider
+ * @package App\Providers
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer( 'layouts.app', 'App\ViewComposers\MenuComposer' );
+
+        Validator::extend( 'correct_password', 'App\Libraries\ValidationRules@validatePassword' );
+        Validator::extend( 'zero_or_exists', 'App\Libraries\ValidationRules@validateZeroOrExistsRule' );
+        Validator::extend( 'checkbox_in', 'App\Libraries\ValidationRules@validateCheckboxInRule' );
     }
 
     /**
@@ -23,6 +37,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app['router']->setRoutes( new CustomRouteCollection() );
     }
 }

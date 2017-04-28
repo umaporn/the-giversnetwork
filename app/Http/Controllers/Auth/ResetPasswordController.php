@@ -1,10 +1,17 @@
 <?php
+/**
+ * Reset the password.
+ */
 
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
+/**
+ * Class ResetPasswordController
+ * @package App\Http\Controllers\Auth
+ */
 class ResetPasswordController extends Controller
 {
     /*
@@ -20,20 +27,24 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    /** @var string Where to redirect users after reset their password */
+    protected $redirectTo;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Initialize ResetPasswordController class.
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->redirectTo = route( 'home.index' );
+    }
+
+    /**
+     * Get the password reset validation rules.
+     *
+     * @return array
+     */
+    protected function rules()
+    {
+        return config( 'validation.reset_password' );
     }
 }

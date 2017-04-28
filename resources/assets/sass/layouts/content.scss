@@ -1,0 +1,5 @@
+$required-background-color: $pale-yellow;
+
+input:required {
+    background-color: $required-background-color;
+}
