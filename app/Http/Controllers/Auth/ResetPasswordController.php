@@ -27,17 +27,6 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    /** @var string Where to redirect users after reset their password */
-    protected $redirectTo;
-
-    /**
-     * Initialize ResetPasswordController class.
-     */
-    public function __construct()
-    {
-        $this->redirectTo = route( 'home.index' );
-    }
-
     /**
      * Get the password reset validation rules.
      *
@@ -47,4 +36,17 @@ class ResetPasswordController extends Controller
     {
         return config( 'validation.reset_password' );
     }
+
+    /**
+     * Get the response for a successful password reset.
+     *
+     * @param  string $response Response message
+     *
+     * @return \Illuminate\Http\RedirectResponse HTTP redirect response
+     */
+    protected function sendResetResponse( $response )
+    {
+        return redirect()->route( 'home.index' )->with( 'status', __( $response ) );
+    }
+
 }

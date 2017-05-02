@@ -22,12 +22,12 @@ class LoginController extends Controller
     }
 
     /**
-     * The user has been authenticated.
+     * Redirect the user to another page after the user has been authenticated.
      *
      * @param  \Illuminate\Http\Request $request HTTP request object
      * @param  mixed                    $user    User
      *
-     * @return mixed
+     * @return \Illuminate\Http\RedirectResponse HTTP redirect response
      */
     protected function authenticated( Request $request, $user )
     {

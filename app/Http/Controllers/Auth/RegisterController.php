@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -29,9 +30,6 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /** @var string Where to redirect users after register */
-    protected $redirectTo;
-
     /** @var  User model instance */
     private $userModel;
 
@@ -40,8 +38,7 @@ class RegisterController extends Controller
      */
     public function __construct( User $user )
     {
-        $this->redirectTo = route( 'home.index' );
-        $this->userModel  = $user;
+        $this->userModel = $user;
     }
 
     /**
@@ -57,9 +54,22 @@ class RegisterController extends Controller
     }
 
     /**
+     * Redirect the user to another page after the user has been registered.
+     *
+     * @param  \Illuminate\Http\Request $request HTTP request object
+     * @param  mixed                    $user    User
+     *
+     * @return \Illuminate\Http\RedirectResponse HTTP redirect response
+     */
+    protected function registered( Request $request, $user )
+    {
+        return redirect()->route( 'home.index' );
+    }
+
+    /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array $data Data to create a mew user
+     * @param  array $data Data to create a new user
      *
      * @return User The new user
      */
