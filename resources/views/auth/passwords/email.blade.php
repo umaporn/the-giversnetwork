@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('page-title', trans('passwords.page_title.email'))
-@section('page-description', trans('passwords.page_description.email'))
+@section('page-title', __('passwords.page_title.email'))
+@section('page-description', __('passwords.page_description.email'))
 @section('view-id', 'PASSWORD-RESET-001')
 
 @section('content')
@@ -12,7 +12,7 @@
         {{ csrf_field() }}
         <div class="row">
             <div class="small-3 columns">
-                <label for="email" class="text-right middle">{{ trans('user.email') }}:</label>
+                <label for="email" class="text-right middle">@lang('user.email'):</label>
             </div>
             <div class="small-9 columns">
                 <input type="text" id="email" name="email" value="{{ old('email') }}" required autofocus
@@ -28,7 +28,7 @@
             <div class="small-3 columns">
             </div>
             <div class="small-9 columns">
-                <button type="submit" class="button">{{ trans('passwords.request_button') }}</button>
+                <button type="submit" class="button">@lang('passwords.request_button')</button>
             </div>
         </div>
     </form>

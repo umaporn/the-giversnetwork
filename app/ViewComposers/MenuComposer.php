@@ -91,7 +91,7 @@ class MenuComposer
             $menuItem['active'] = $this->getActiveStyle( $menuItem['url'] );
         }
 
-        $menuItem['menuText'] = trans( $menuChoice['menuText'] );
+        $menuItem['menuText'] = __( $menuChoice['menuText'] );
 
         if( isset( $menuChoice['childMenu'] ) ){
             foreach( $menuChoice['childMenu'] as $childMenuChoice ){

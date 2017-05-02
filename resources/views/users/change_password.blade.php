@@ -3,7 +3,7 @@
     {{ method_field('PUT') }}
     <div class="row">
         <div class="small-4 columns">
-            <label for="current-password" class="text-right middle">{{ trans('user.profile.current_password') }}:</label>
+            <label for="current-password" class="text-right middle">@lang('user.profile.current_password'):</label>
         </div>
         <div class="small-8 columns">
             <input type="password" id="current-password" name="current_password"
@@ -17,7 +17,7 @@
     </div>
     <div class="row">
         <div class="small-4 columns">
-            <label for="password" class="text-right middle">{{ trans('user.password') }}:</label>
+            <label for="password" class="text-right middle">@lang('user.password'):</label>
         </div>
         <div class="small-8 columns">
             <input type="password" id="password" name="password"
@@ -31,7 +31,7 @@
     </div>
     <div class="row">
         <div class="small-4 columns">
-            <label for="password-confirmation" class="text-right middle">{{ trans('user.password_confirmation') }}:</label>
+            <label for="password-confirmation" class="text-right middle">@lang('user.password_confirmation'):</label>
         </div>
         <div class="small-8 columns">
             <input type="password" id="password-confirmation" name="password_confirmation" value=""
@@ -47,7 +47,7 @@
         <div class="small-4 columns">
         </div>
         <div class="small-8 columns">
-            <button type="submit" class="button">{{ trans('user.profile.change_password') }}</button>
+            <button type="submit" class="button">@lang('user.profile.change_password')</button>
         </div>
     </div>
 </form>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('page-title', trans('passwords.page_title.reset'))
-@section('page-description', trans('passwords.page_description.reset'))
+@section('page-title', __('passwords.page_title.reset'))
+@section('page-description', __('passwords.page_description.reset'))
 @section('view-id', 'PASSWORD-RESET-002')
 
 @section('content')
@@ -10,7 +10,7 @@
         <input type="hidden" name="token" value="{{ $token }}">
         <div class="row">
             <div class="small-3 columns">
-                <label for="email" class="text-right middle">{{ trans('user.email') }}:</label>
+                <label for="email" class="text-right middle">@lang('user.email'):</label>
             </div>
             <div class="small-9 columns">
                 <input type="text" id="email" name="email" value="{{ old('email') }}" required autofocus
@@ -24,7 +24,7 @@
         </div>
         <div class="row">
             <div class="small-3 columns">
-                <label for="password" class="text-right middle">{{ trans('user.password') }}:</label>
+                <label for="password" class="text-right middle">@lang('user.password'):</label>
             </div>
             <div class="small-9 columns">
                 <input type="password" id="password" name="password" required
@@ -38,8 +38,7 @@
         </div>
         <div class="row">
             <div class="small-3 columns">
-                <label for="password-confirm" class="text-right middle">{{ trans('user.password_confirmation') }}
-                    :</label>
+                <label for="password-confirm" class="text-right middle">@lang('user.password_confirmation'):</label>
             </div>
             <div class="small-9 columns">
                 <input type="password" id="password-confirm" name="password_confirmation" required
@@ -52,7 +51,7 @@
             <div class="small-3 columns">
             </div>
             <div class="small-9 columns">
-                <button type="submit" class="button">{{ trans('passwords.reset_button') }}</button>
+                <button type="submit" class="button">@lang('passwords.reset_button')</button>
             </div>
         </div>
     </form>

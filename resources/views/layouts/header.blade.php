@@ -5,7 +5,7 @@
                 @include( 'layouts.top_menu' )
                 <div class="logo">
                     <a href="{{ route('home.index') }}">
-                        <img src="{{ asset( config( 'app.logo' ) ) }}" alt="{{ trans('header.images.logo') }}"/>
+                        <img src="{{ asset( config( 'app.logo' ) ) }}" alt="@lang('header.images.logo')"/>
                     </a>
                 </div>
             </section>

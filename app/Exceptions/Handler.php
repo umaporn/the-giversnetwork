@@ -52,7 +52,7 @@ class Handler extends ExceptionHandler
     public function render( $request, Exception $exception )
     {
         if( $exception instanceof \Illuminate\Database\QueryException ){
-            abort( 500, trans( 'exception.query' ) );
+            abort( 500, __( 'exception.query' ) );
         }
 
         return parent::render( $request, $exception );
