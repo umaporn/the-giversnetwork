@@ -6,4 +6,10 @@
 
 @section('content')
     <p class="alert">@lang('error.503.message')</p>
+    @if( $exception->getMessage() )
+        <p><strong>@lang('error.503.reason'):</strong> {{ $exception->getMessage() }}</p>
+    @endif
+    @if( $exception->willBeAvailableAt )
+        <p class="alert">@lang('error.503.retry_after', [ 'beginTime' => $exception->willBeAvailableAt ])</p>
+    @endif
 @endsection
