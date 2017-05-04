@@ -39,7 +39,9 @@ return [
         'page_title'       => 'Service Unavailable',
         'page_description' => 'Service Unavailable',
         'page_heading'     => 'Service Unavailable',
-        'message'          => 'Be right back',
+        'message'          => 'Be right back.',
+        'reason'           => 'Reason',
+        'retry_after'      => 'Please retry after :beginTime.',
     ],
 
 ];
