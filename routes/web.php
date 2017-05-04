@@ -37,6 +37,9 @@ function globalRoutes()
         Route::get( 'profile', 'UserController@profile' )->name( 'user.profile' );
         Route::put( 'change-password', 'UserController@changePassword' )->name( 'user.changePassword' );
         Route::get( '/', 'HomeController@index' )->name( 'home.index' );
+
+        Route::get( 'manage-menu-title/', 'MenuController@index' )->name( 'menu.index' );
+
     } );
 }
 
