@@ -12,7 +12,7 @@ use App\Libraries\Utility;
 use Illuminate\Support\Facades\App;
 
 /**
- * Class LoginController
+ * Login Controller
  * @package App\Http\Controllers\Auth
  */
 class LoginController extends Controller
@@ -37,9 +37,9 @@ class LoginController extends Controller
     /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request $request HTTP request object
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response HTTP response object
      */
     public function logout( Request $request )
     {

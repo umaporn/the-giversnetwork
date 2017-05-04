@@ -1,9 +1,16 @@
 <?php
+/**
+ * User request validation
+ */
 
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Validate user request object.
+ * @package App\Http\Requests
+ */
 class UserRequest extends FormRequest
 {
     /**

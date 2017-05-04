@@ -9,7 +9,7 @@ use App\Libraries\Utility;
 use Illuminate\Http\Request;
 
 /**
- * Class LanguageController
+ * Language Controller
  * @package App\Http\Controllers
  */
 class LanguageController extends Controller
@@ -17,9 +17,10 @@ class LanguageController extends Controller
     /**
      * Change system language.
      *
-     * @param string $languageCode Language code
+     * @param Request $request      HTTP request object
+     * @param string  $languageCode Language code
      *
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse Redirect response
      */
     public function changeLanguage( Request $request, string $languageCode )
     {

@@ -5,10 +5,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 /**
- * Class HomeController
+ * Home Page Controller
  * @package App\Http\Controllers
  */
 class HomeController extends Controller
@@ -16,7 +14,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Http\View Home page
+     * @return \Illuminate\View\View Home page
      */
     public function index()
     {

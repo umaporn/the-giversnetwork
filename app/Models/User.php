@@ -7,10 +7,10 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 /**
- * Class User
+ * User Model
  * @package App\Models
  */
 class User extends Authenticatable

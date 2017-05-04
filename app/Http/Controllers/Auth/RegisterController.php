@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 /**
- * Class RegisterController
+ * Register User Controller
  * @package App\Http\Controllers\Auth
  */
 class RegisterController extends Controller
@@ -35,6 +35,8 @@ class RegisterController extends Controller
 
     /**
      * Initialize RegisterController class.
+     *
+     * @param User $user User model instance
      */
     public function __construct( User $user )
     {
@@ -46,7 +48,7 @@ class RegisterController extends Controller
      *
      * @param  array $data Data to validate
      *
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Contracts\Validation\Validator Validator
      */
     protected function validator( array $data )
     {

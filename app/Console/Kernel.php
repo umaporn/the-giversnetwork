@@ -1,10 +1,16 @@
 <?php
-
+/**
+ * Console Kernel
+ */
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+/**
+ * Console Kernel
+ * @package App\Console
+ */
 class Kernel extends ConsoleKernel
 {
     /**
