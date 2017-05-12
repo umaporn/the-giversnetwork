@@ -4,13 +4,13 @@ It includes all useful features which are easy to customize and change some sett
 
 ## How to initialize this project
 1. First of all, you have to open the following **PHP extensions** below.
-    - php_fileinfo `-- For getting file information`
-    - php_mbstring `-- For non-ASCII encoding`
-    - php_openssl `-- For cryptography`
-    - php_pdo_mysql `-- For MySQL connection`
-    - php_gd2 `-- For image management`
-    - php_xsl `-- For generating PHP document`
-    - php_intl `-- For generating PHP document`
+    - php_fileinfo *-- For getting file information*
+    - php_mbstring *-- For non-ASCII encoding*
+    - php_openssl *-- For cryptography*
+    - php_pdo_mysql *-- For MySQL connection*
+    - php_gd2 *-- For image management*
+    - php_xsl *-- For generating PHP document*
+    - php_intl *-- For generating PHP document*
 2. **Prerequisite programs** are:
     - [Git](https://www.git-scm.com/download)
     - [Composer](https://getcomposer.org/download/)
@@ -26,8 +26,8 @@ It includes all useful features which are easy to customize and change some sett
 First of all, you must install phpDocumentor application outside this project because there are some dependency conflicts.
 ### How to install phpDocumentor
 1. Run **composer require "phpdocumentor/phpdocumentor:2.\*"** command under your chosen installation path.
-1. Add **.\vendor\bin** folder into your system environment variable `Path`.
-    1. For example, if you install phpDocumentor under E:\phpDocumentor then add E:\phpDocumentor\vendor\bin into your system environment variable Path.
+1. Add **.\vendor\bin** folder into your system environment variable *__Path__*.
+    For example, if you install phpDocumentor under E:\phpDocumentor then add E:\phpDocumentor\vendor\bin into your system environment variable Path.
 
 `Run the following command pattern below under this project folder.`
 > **phpdoc -d app -t** *your_destination_path*
