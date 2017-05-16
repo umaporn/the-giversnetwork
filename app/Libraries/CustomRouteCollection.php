@@ -9,7 +9,7 @@ use Illuminate\Routing\RouteCollection;
 use Illuminate\Support\Facades\App;
 
 /**
- * Class CustomRouteCollection
+ * This class is a customization of RouteCollection class which use for managing route collection.
  * @package App\Libraries
  */
 class CustomRouteCollection extends RouteCollection

@@ -8,25 +8,12 @@ namespace App\Libraries;
 use Validator;
 use Auth;
 use Hash;
-use Illuminate\Http\Request;
 
 /**
  * This class keeps all extended validation rules.
  */
 class ValidationRules
 {
-    /**
-     * Initialize class.
-     *
-     * @param Request $request Request object
-     *
-     * @return void
-     */
-    public function __construct( Request $request )
-    {
-        $this->request = $request;
-    }
-
     /**
      * Validate whether data is zero or exists in the database.
      *
@@ -68,7 +55,7 @@ class ValidationRules
      * Validate whether data from checkbox input is in the given list of rule's parameters.
      *
      * @param string $attribute  Input field name to validate
-     * @param string $value      Input's value
+     * @param array  $values     List of input's value
      * @param array  $parameters Rule's parameters
      *
      * @return boolean Validation result

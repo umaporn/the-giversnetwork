@@ -11,7 +11,7 @@ use Validator;
 use App\Libraries\CustomRouteCollection;
 
 /**
- * Class AppServiceProvider
+ * Application Service Provider
  * @package App\Providers
  */
 class AppServiceProvider extends ServiceProvider

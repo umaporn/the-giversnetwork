@@ -1,9 +1,16 @@
 <?php
+/**
+ * Verify CSRF token.
+ */
 
 namespace App\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
+/**
+ * Verify CSRF token.
+ * @package App\Http\Middleware
+ */
 class VerifyCsrfToken extends BaseVerifier
 {
     /**

@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 /**
- * Class ForgotPasswordController
+ * Forgot Password Controller
  * @package App\Http\Controllers\Auth
  */
 class ForgotPasswordController extends Controller

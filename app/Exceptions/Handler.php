@@ -12,7 +12,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\App;
 
 /**
- * Class Handler
+ * Application Handler
  * @package App\Exceptions
  */
 class Handler extends ExceptionHandler

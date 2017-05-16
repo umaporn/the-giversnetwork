@@ -7,14 +7,15 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\UserRequest;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 /**
- * This class is a user controller.
+ * User Controller
+ * @package App\Http\Controllers
  */
 class UserController extends Controller
 {
-    /** @var  User model instance */
+    /** @var User User model instance */
     private $userModel;
 
     /**

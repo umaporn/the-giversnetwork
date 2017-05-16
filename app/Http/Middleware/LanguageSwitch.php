@@ -1,6 +1,6 @@
 <?php
 /**
- * This is a middle ware class.
+ * Language switch middleware
  */
 
 namespace App\Http\Middleware;
@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\App;
 use App\Libraries\Utility;
 
 /**
- * A middle ware class for switching language.
+ * A middleware for switching system language
+ * @package App\Http\Middleware
  */
 class LanguageSwitch
 {

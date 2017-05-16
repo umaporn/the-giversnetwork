@@ -33,8 +33,8 @@
             <div class="small-3 columns">
             </div>
             <div class="small-9 columns">
-                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label>@lang('login.remember_me')</label>
+                <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label for="remember">@lang('login.remember_me')</label>
             </div>
         </div>
         <div class="row">

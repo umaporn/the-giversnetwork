@@ -9,7 +9,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Class HomeControllerPolicy
+ * Home Page Controller Policy
  * @package App\Policies
  */
 class HomeControllerPolicy
@@ -19,7 +19,7 @@ class HomeControllerPolicy
     /**
      * Determine whether the user can view the controller.
      *
-     * @return bool
+     * @return bool true = can view, false = cannot view
      */
     public function view()
     {

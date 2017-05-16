@@ -1,40 +1,43 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+# The Beginning Project
+This project is a standard project for every project. 
+It includes all useful features which are easy to customize and change some settings to support a new project.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## How to initialize this project
+1. First of all, you have to open the following **PHP extensions** below.
+    - php_fileinfo *-- For getting file information*
+    - php_mbstring *-- For non-ASCII encoding*
+    - php_openssl *-- For cryptography*
+    - php_pdo_mysql *-- For MySQL connection*
+    - php_gd2 *-- For image management*
+    - php_xsl *-- For generating PHP document*
+    - php_intl *-- For generating PHP document*
+2. **Prerequisite programs** are:
+    - [Git](https://www.git-scm.com/download)
+    - [Composer](https://getcomposer.org/download/)
+    - [NodeJS](https://nodejs.org/en/download/)
+3. After you finish to clone this project then create .env file from .env.example file and run the following commands below.
+    - composer install
+    - npm install *( For development machine only )*
+    - php artisan key:generate
+    - php artisan storage:link
+    - php artisan migrate *(__Reference:__ [Running Migrations](https://laravel.com/docs/5.4/migrations#running-migrations))*
 
-## About Laravel
+## How to generate PHP document by phpDocumentor
+First of all, you must install phpDocumentor application outside this project because there are some dependency conflicts.
+### How to install phpDocumentor
+1. Run **composer require "phpdocumentor/phpdocumentor:2.\*"** command under your chosen installation path.
+1. Add **.\vendor\bin** folder into your system environment variable *__Path__*.
+    For example, if you install phpDocumentor under E:\phpDocumentor then add E:\phpDocumentor\vendor\bin into your system environment variable Path.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as:
+`Run the following command pattern below under this project folder.`
+> **phpdoc -d app -t** *your_destination_path*
+#### Reference: [phpDocumentor](https://phpdoc.org/docs/latest/index.html)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## How to generate JavaScript document by JSDoc
+`Run the following command patterns below under this project folder.`
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb combination of simplicity, elegance, and innovation give you tools you need to build any application with which you are tasked.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough documentation and video tutorial library of any modern web application framework. The [Laravel documentation](https://laravel.com/docs) is thorough, complete, and makes it a breeze to get started learning the framework.
-
-If you're not in the mood to read, [Laracasts](https://laracasts.com) contains over 900 video tutorials on a range of topics including Laravel, modern PHP, unit testing, JavaScript, and more. Boost the skill level of yourself and your entire team by digging into our comprehensive video library.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+### For Windows
+> **node_modules\.bin\jsdoc -r resources\assets\js -t node_modules\ink-docstrap\template -c jsdoc.conf.json -d** *your_destination_path*
+### For Linux
+> **./node_modules/.bin/jsdoc -r resources/assets/js -t node_modules/ink-docstrap/template -c jsdoc.conf.json -d** *your_destination_path*
+#### Reference: [JSDoc](http://usejsdoc.org)

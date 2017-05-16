@@ -1,10 +1,17 @@
 <?php
+/**
+ * Manage redirected page after the user has been authenticated
+ */
 
 namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
+/**
+ * Redirect the user to another page if the user has been authenticated.
+ * @package App\Http\Middleware
+ */
 class RedirectIfAuthenticated
 {
     /**

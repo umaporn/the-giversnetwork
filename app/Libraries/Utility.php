@@ -31,7 +31,7 @@ class Utility
      */
     public static function getLanguageCode()
     {
-        preg_match( '@^/(\w+)@', request()->route()->getPrefix(), $match );
+        preg_match( '@^(\w+)-@', request()->route()->getName(), $match );
 
         $prefix   = count( $match ) ? $match[1] : '';
         $language = config( 'app.fallback_locale' );
