@@ -47,12 +47,27 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Http\Request $request   HTTP request object
      * @param  \Exception               $exception Exception
      *
-     * @return \Illuminate\Http\Response HTTP response
+     * @return \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\Response HTTP response
      */
     public function render( $request, Exception $exception )
     {
-        if( $exception instanceof \Illuminate\Database\QueryException ){
-            abort( 500, __( 'exception.query' ) );
+        if( $exception instanceof \Illuminate\Database\QueryException || $exception instanceof \Swift_TransportException ){
+
+            if( $exception instanceof \Illuminate\Database\QueryException ){
+                $errorMessage = $exception->getCode() === 1045 ? __( 'exception.database_connection' ) : __( 'exception.query' );
+            } else if( $exception instanceof \Swift_TransportException ) {
+                $errorMessage = __( 'exception.mail_server_connection' );
+            } else {
+                $errorMessage = $exception->getMessage();
+            }
+
+            if( $request->ajax() ){
+                return response()->json( [ 'success' => false, 'message' => $errorMessage ], 500 );
+            } else {
+                $exception = new Exception( $errorMessage, 500 );
+
+                return response()->view( 'errors.500', compact( 'exception' ), 500 );
+            }
         }
 
         return parent::render( $request, $exception );

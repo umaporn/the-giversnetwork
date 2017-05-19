@@ -1,0 +1,19 @@
+/**
+Icon font settings that support foundation icon fonts
+ */
+$icon-font-size: 12, 14, 16, 18, 21, 24, 32, 36, 48, 60, 72;
+$icon-font-color: $primary-color;
+
+/**
+Icon settings
+ */
+$default-icon-size: 32;
+$icon-size: 16, 24, 32;
+$icons: (
+    'i.add-icon': '/images/general_icons/add.png',
+    'i.search-icon': '/images/general_icons/search.png',
+    'i.user-management-icon': '/images/user_icons/user_management.png',
+    'i.search-user-icon': '/images/user_icons/search_user.png',
+    'i.add-user-icon': '/images/user_icons/add_user.png',
+    'i.edit-user-icon': '/images/user_icons/edit_user.png',
+);

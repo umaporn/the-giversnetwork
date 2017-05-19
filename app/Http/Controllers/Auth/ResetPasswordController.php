@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 /**
  * Reset Password Controller
@@ -16,7 +17,7 @@ class ResetPasswordController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Controller
+    | Reset Password Controller
     |--------------------------------------------------------------------------
     |
     | This controller is responsible for handling password reset requests
@@ -42,11 +43,36 @@ class ResetPasswordController extends Controller
      *
      * @param  string $response Response message
      *
-     * @return \Illuminate\Http\RedirectResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
      */
     protected function sendResetResponse( $response )
     {
-        return redirect()->route( 'home.index' )->with( 'status', __( $response ) );
+        $redirectedUrl  = route( 'home.index' );
+        $successMessage = __( $response );
+
+        if( request()->ajax() ){
+            return response()->json( [ 'success' => true, 'message' => $successMessage, 'redirectedUrl' => $redirectedUrl ], 302 );
+        }
+
+        return redirect( $redirectedUrl )->with( 'status', $successMessage );
     }
 
+    /**
+     * Get the response for a failed password reset.
+     *
+     * @param  \Illuminate\Http\Request $request  HTTP request object
+     * @param  string                   $response Response message
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     */
+    protected function sendResetFailedResponse( Request $request, $response )
+    {
+        $error = [ 'email' => __( $response ) ];
+
+        if( $request->ajax() ){
+            return response()->json( $error, 422 );
+        }
+
+        return redirect()->back()->withInput( $request->only( 'email' ) )->withErrors( $error );
+    }
 }

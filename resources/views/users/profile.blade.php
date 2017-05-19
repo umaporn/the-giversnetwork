@@ -3,10 +3,7 @@
 @section('page-title', __('user.page_title.profile'))
 @section('page-description', __('user.page_description.profile'))
 @section('view-id', 'USER-PROFILE-001')
-
-@section('page-icon')
-    <i class="edit-user-icon page-icon"></i>
-@endsection
+@section('page-icon', 'edit-user-icon')
 
 @section('content')
 

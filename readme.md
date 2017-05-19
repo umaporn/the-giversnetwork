@@ -16,11 +16,12 @@ It includes all useful features which are easy to customize and change some sett
     - [Composer](https://getcomposer.org/download/)
     - [NodeJS](https://nodejs.org/en/download/)
 3. After you finish to clone this project then create .env file from .env.example file and run the following commands below.
-    - composer install
-    - npm install *( For development machine only )*
-    - php artisan key:generate
-    - php artisan storage:link
-    - php artisan migrate *(__Reference:__ [Running Migrations](https://laravel.com/docs/5.4/migrations#running-migrations))*
+    - composer install *-- To install PHP components.*
+    - npm install *-- To install JavaScript components. ( No need for a production site. )*
+    - php artisan key:generate *-- To create an application key to support cryptography.*
+    - php artisan storage:link *-- To create a symbolic link from "public/storage" to "storage/app/public".*
+    - php artisan languages:link *-- To create a symbolic link from "public/languages" to "resources/lang".*
+    - php artisan migrate *-- To migrate the database. Reference: [Running Migrations](https://laravel.com/docs/5.4/migrations#running-migrations)*
 
 ## How to generate PHP document by phpDocumentor
 First of all, you must install phpDocumentor application outside this project because there are some dependency conflicts.
@@ -37,7 +38,10 @@ First of all, you must install phpDocumentor application outside this project be
 `Run the following command patterns below under this project folder.`
 
 ### For Windows
-> **node_modules\.bin\jsdoc -r resources\assets\js -t node_modules\ink-docstrap\template -c jsdoc.conf.json -d** *your_destination_path*
+> **node_modules\\.bin\\jsdoc -r resources\\assets\\js -t node_modules\\ink-docstrap\\template -c jsdoc.conf.json -d** *your_destination_path*
+
+You can append the above command with **-a all** to generate all access levels. The default access level is public.
+
 ### For Linux
 > **./node_modules/.bin/jsdoc -r resources/assets/js -t node_modules/ink-docstrap/template -c jsdoc.conf.json -d** *your_destination_path*
 #### Reference: [JSDoc](http://usejsdoc.org)

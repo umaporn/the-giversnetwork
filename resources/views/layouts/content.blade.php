@@ -2,7 +2,7 @@
     <div class="callout primary">
         <div class="page-title row columns">
             <span>
-                @yield('page-icon')
+                <i class="page-icon @yield('page-icon')"></i>
                 <strong>@yield('page-title')</strong>
             </span>
             <span class="label primary view-id">

@@ -14,7 +14,9 @@
     <script>
         window.Laravel = {!! json_encode([
             'csrfToken' => csrf_token(),
-            'language'  => session('language'),
+            'languageCodes'  => config('app.language_codes'),
+            'defaultLanguage' => config('app.fallback_locale'),
+            'currentLanguage' => App::getLocale(),
         ]) !!};
     </script>
 </head>
@@ -28,5 +30,7 @@
 @include('message_boxes.confirmation')
 
 <script src="{{ mix('/js/app.js') }}"></script>
+<script src="{{ mix('/js/all.js') }}"></script>
+
 </body>
 </html>

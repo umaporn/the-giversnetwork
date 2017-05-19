@@ -1,16 +1,20 @@
 // Settings
 @import "settings/_foundation";
-@import "settings/_header";
+@import "settings/_colors";
+@import "settings/_icons";
 
 // External libraries
 @import "node_modules/foundation-sites/assets/foundation";
+@import "node_modules/foundation-icon-fonts/_foundation-icons";
 
 // Layouts
 @import "layouts/header";
 @import "layouts/top_menu";
 @import "layouts/main_menu";
-@import "layouts/content";
 
 // Components
-@import "components/alert";
+@import "components/form";
+@import "components/icons";
 @import "components/popup";
+@import "components/spinner";
+@import "components/table";

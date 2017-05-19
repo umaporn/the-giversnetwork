@@ -5,7 +5,7 @@
 @section('view-id', 'PASSWORD-RESET-002')
 
 @section('content')
-    <form method="POST" action="{{ route( 'password.change' ) }}">
+    <form id="password-reset-form" method="POST" action="{{ route( 'password.change' ) }}">
         {{ csrf_field() }}
         <input type="hidden" name="token" value="{{ $token }}">
         <div class="row">
@@ -15,7 +15,6 @@
             <div class="small-9 columns">
                 <input type="text" id="email" name="email" value="{{ old('email') }}" required autofocus
                        class="{{ $errors->has('email') ? 'error' : '' }}"
-                       aria-describedly="email-help-text"
                 >
                 <p id="email-help-text" class="alert help-text {{ $errors->has('email') ? '' : 'hide' }}">
                     {{ $errors->has('email') ? $errors->first('email') : '' }}
@@ -29,7 +28,6 @@
             <div class="small-9 columns">
                 <input type="password" id="password" name="password" required
                        class="{{ $errors->has('password') ? 'error' : '' }}"
-                       aria-describedly="password-help-text"
                 >
                 <p id="password-help-text" class="alert help-text {{ $errors->has('password') ? '' : 'hide' }}">
                     {{ $errors->has('password') ? $errors->first('password') : '' }}
@@ -43,7 +41,6 @@
             <div class="small-9 columns">
                 <input type="password" id="password-confirm" name="password_confirmation" required
                        class="{{ $errors->has('password_confirmation') ? 'error' : '' }}"
-                       aria-describedly="password-confirm-help-text"
                 >
             </div>
         </div>

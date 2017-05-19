@@ -1,0 +1,5 @@
+@for $number from 1 through 100 {
+    th.width-#{$number} {
+        width: $number + unquote('%');
+    }
+}

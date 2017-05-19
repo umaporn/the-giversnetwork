@@ -5,7 +5,7 @@
 @section('view-id', 'LOGIN-001')
 
 @section('content')
-    <form method="POST" action="{{ route('submitLogin') }}">
+    <form id="login-form" method="POST" action="{{ route('submitLogin') }}">
         {{ csrf_field() }}
         <div class="row">
             <div class="small-3 columns">

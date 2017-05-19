@@ -50,9 +50,12 @@ class UserController extends Controller
         $success = $this->userModel->changePassword( $request->input( 'password' ) );
 
         if( $request->ajax() ){
-            return response()->json( [ 'success' => $success ] );
-        } else {
-            return redirect()->route( 'user.profile' );
+
+            $message = $success ? __( 'user.profile.successful_password_change' ) : __( 'user.profile.failed_password_change' );
+
+            return response()->json( [ 'success' => $success, 'message' => $message ] );
         }
+
+        return redirect()->route( 'user.profile' );
     }
 }
