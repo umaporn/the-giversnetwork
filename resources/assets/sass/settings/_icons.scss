@@ -1,12 +1,16 @@
-/**
-Icon font settings that support foundation icon fonts
- */
+/*
+|--------------------------------------------------------------------------
+| Icon Font Settings which support foundation icon fonts
+|--------------------------------------------------------------------------
+*/
 $icon-font-size: 12, 14, 16, 18, 21, 24, 32, 36, 48, 60, 72;
 $icon-font-color: $primary-color;
 
-/**
-Icon settings
- */
+/*
+|--------------------------------------------------------------------------
+| Image Icon Settings
+|--------------------------------------------------------------------------
+*/
 $default-icon-size: 32;
 $icon-size: 16, 24, 32;
 $icons: (

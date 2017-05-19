@@ -13,8 +13,8 @@
 
     <script>
         window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-            'languageCodes'  => config('app.language_codes'),
+            'csrfToken'       => csrf_token(),
+            'languageCodes'   => config('app.language_codes'),
             'defaultLanguage' => config('app.fallback_locale'),
             'currentLanguage' => App::getLocale(),
         ]) !!};
