@@ -51,16 +51,13 @@ class Handler extends ExceptionHandler
      */
     public function render( $request, Exception $exception )
     {
-        if( $exception instanceof \Illuminate\Database\QueryException || $exception instanceof \Swift_TransportException ){
+        if( $exception instanceof \Illuminate\Database\QueryException ){
+            $errorMessage = $exception->getCode() === 1045 ? __( 'exception.database_connection' ) : __( 'exception.query' );
+        } else if( $exception instanceof \Swift_TransportException ){
+            $errorMessage = __( 'exception.mail_server_connection' );
+        }
 
-            if( $exception instanceof \Illuminate\Database\QueryException ){
-                $errorMessage = $exception->getCode() === 1045 ? __( 'exception.database_connection' ) : __( 'exception.query' );
-            } else if( $exception instanceof \Swift_TransportException ) {
-                $errorMessage = __( 'exception.mail_server_connection' );
-            } else {
-                $errorMessage = $exception->getMessage();
-            }
-
+        if( isset( $errorMessage ) ){
             if( $request->ajax() ){
                 return response()->json( [ 'success' => false, 'message' => $errorMessage ], 500 );
             } else {
