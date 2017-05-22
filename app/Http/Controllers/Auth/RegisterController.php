@@ -61,11 +61,17 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request $request HTTP request object
      * @param  mixed                    $user    User
      *
-     * @return \Illuminate\Http\RedirectResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
      */
     protected function registered( Request $request, $user )
     {
-        return redirect()->route( 'home.index' );
+        $redirectedUrl = route( 'home.index' );
+
+        if( $request->ajax() ){
+            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 302 );
+        }
+
+        return redirect( $redirectedUrl );
     }
 
     /**

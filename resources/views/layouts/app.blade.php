@@ -13,8 +13,10 @@
 
     <script>
         window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-            'language'  => session('language'),
+            'csrfToken'       => csrf_token(),
+            'languageCodes'   => config('app.language_codes'),
+            'defaultLanguage' => config('app.fallback_locale'),
+            'currentLanguage' => App::getLocale(),
         ]) !!};
     </script>
 </head>
@@ -29,5 +31,6 @@
 
 <script src="{{ mix('/js/app.js') }}"></script>
 <script src="{{ mix('/js/all.js') }}"></script>
+
 </body>
 </html>

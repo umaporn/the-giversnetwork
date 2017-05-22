@@ -1,13 +1,8 @@
-$language-menu-color: deepskyblue;
-$top-menu-background-color: transparent;
-$language-pipe-color: lightblue;
-$primary-pipe-color: lightsteelblue;
-
 .top-menu {
     font-size: small;
     text-transform: uppercase;
     li + li {
-        border-left: 1px solid $primary-pipe-color;
+        border-left: 1px solid $top-menu-pipe-color;
     }
     .language li + li {
         border-color: $language-pipe-color;

@@ -1,4 +1,4 @@
-<form method="POST" action="{{ route('user.changePassword') }}">
+<form id="change-password-form" method="POST" action="{{ route('user.changePassword') }}">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <div class="row">
@@ -6,9 +6,8 @@
             <label for="current-password" class="text-right middle">@lang('user.profile.current_password'):</label>
         </div>
         <div class="small-8 columns">
-            <input type="password" id="current-password" name="current_password"
+            <input type="password" id="current-password" name="current_password" required
                    class="{{ $errors->has('current_password') ? 'error' : '' }}"
-                   aria-describedly="current_password-help-text"
             >
             <p id="current-password-help-text" class="alert help-text {{ $errors->has('current_password') ? '' : 'hide' }}">
                 {{ $errors->has('current_password') ? $errors->first('current_password') : '' }}
@@ -20,10 +19,7 @@
             <label for="password" class="text-right middle">@lang('user.password'):</label>
         </div>
         <div class="small-8 columns">
-            <input type="password" id="password" name="password"
-                   class="{{ $errors->has('password') ? 'error' : '' }}"
-                   aria-describedly="password-help-text"
-            >
+            <input type="password" id="password" name="password" class="{{ $errors->has('password') ? 'error' : '' }}" required>
             <p id="password-help-text" class="alert help-text {{ $errors->has('password') ? '' : 'hide' }}">
                 {{ $errors->has('password') ? $errors->first('password') : '' }}
             </p>
@@ -34,9 +30,8 @@
             <label for="password-confirmation" class="text-right middle">@lang('user.password_confirmation'):</label>
         </div>
         <div class="small-8 columns">
-            <input type="password" id="password-confirmation" name="password_confirmation" value=""
+            <input type="password" id="password-confirmation" name="password_confirmation" required
                    class="{{ $errors->has('password_confirmation') ? 'error' : '' }}"
-                   aria-describedly="password_confirmation-help-text"
             >
             <p id="password-confirmation-help-text" class="alert help-text {{ $errors->has('password_confirmation') ? '' : 'hide' }}">
                 {{ $errors->has('password_confirmation') ? $errors->first('password_confirmation') : '' }}

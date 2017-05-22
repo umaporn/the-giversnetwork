@@ -27,11 +27,17 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request $request HTTP request object
      * @param  mixed                    $user    User
      *
-     * @return \Illuminate\Http\RedirectResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
      */
     protected function authenticated( Request $request, $user )
     {
-        return redirect()->intended( Utility::getRedirectedUrl( $request, App::getLocale() ) );
+        $redirectedUrl = Utility::getRedirectedUrl( $request, App::getLocale() );
+
+        if( $request->ajax() ){
+            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 302 );
+        }
+
+        return redirect()->intended( $redirectedUrl );
     }
 
     /**

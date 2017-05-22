@@ -1,8 +1,8 @@
-<div id="confirmation" class="tiny reveal popup" data-reveal>
-    <p class="popup-title">@lang('message_boxes.confirmation')</p>
-    <p id="confirmation-text" class="popup-text"></p>
+<div id="confirmation" class="card tiny reveal" data-reveal data-close-on-click="false">
+    <div class="card-divider">@lang('message_boxes.confirmation')</div>
+    <div class="card-section" id="confirmation-text"></div>
     <div class="button-group">
-        <a id="yes-answer" class="btn primary">@lang('message_boxes.yes')</a>
-        <a id="no-answer" class="btn inverted">@lang('message_boxes.no')</a>
+        <button type="button" class="button">@lang('message_boxes.yes')</button>
+        <button class="button data-close">@lang('message_boxes.no')</button>
     </div>
 </div>

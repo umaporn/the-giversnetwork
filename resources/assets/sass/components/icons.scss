@@ -1,0 +1,38 @@
+$icon-selector: selector-append(map-keys($icons));
+
+#{$icon-selector} {
+    display: block;
+    width: rem-calc($default-icon-size);
+    height: rem-calc($default-icon-size);
+    background-repeat: no-repeat;
+}
+
+@each $name, $url in $icons {
+    #{$name} {
+        background-image: url($url);
+    }
+}
+
+@each $size in $icon-size {
+    $real-size: rem-calc($size);
+    i.icon-size-#{$size} {
+        background-size: $real-size $real-size;
+        width: $real-size;
+        height: $real-size;
+    }
+}
+
+@each $size in $icon-font-size {
+    i.size-#{$size} {
+        font-size: rem-calc($size);
+    }
+}
+
+i {
+    color: $icon-font-color;
+    &.page-icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 0.2rem;
+    }
+}

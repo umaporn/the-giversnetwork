@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User
+    | User Page Language Lines
     |--------------------------------------------------------------------------
     */
 
@@ -42,9 +42,11 @@ return [
     'password_confirmation' => 'Confirm Password',
 
     'profile' => [
-        'current_password'      => 'Current Password',
-        'change_password'       => 'Change',
-        'change_password_title' => 'Change your password',
-        'close_button'          => 'Close the pop up',
+        'current_password'           => 'Current Password',
+        'change_password'            => 'Change',
+        'change_password_title'      => 'Change your password',
+        'close_button'               => 'Close the pop up',
+        'successful_password_change' => 'Your password has been changed.',
+        'failed_password_change'     => 'Unsuccessfully change your password!',
     ],
 ];

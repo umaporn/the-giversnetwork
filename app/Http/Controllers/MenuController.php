@@ -46,6 +46,7 @@ class MenuController extends Controller
     {
         $this->disk             = $disk;
         $this->translations     = $this->getTranslationsFromJsonFile();
+        //dd($this->translations);
         $this->translation_list = $this->getTranslationKey( '', $this->translations[ App::getLocale() ] );;
     }
 

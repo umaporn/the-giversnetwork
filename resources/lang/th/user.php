@@ -42,9 +42,11 @@ return [
     'password_confirmation' => 'ยืนยันรหัสผ่าน',
 
     'profile' => [
-        'current_password'      => 'รหัสผ่านปัจจุบัน',
-        'change_password'       => 'เปลี่ยน',
-        'change_password_title' => 'เปลี่ยนรหัสผ่านของคุณ',
-        'close_button'          => 'ปิดหน้าต่าง',
+        'current_password'           => 'รหัสผ่านปัจจุบัน',
+        'change_password'            => 'เปลี่ยน',
+        'change_password_title'      => 'เปลี่ยนรหัสผ่านของคุณ',
+        'close_button'               => 'ปิดหน้าต่าง',
+        'successful_password_change' => 'รหัสผ่านของคุณถูกเปลี่ยนแปลงเรียบร้อยแล้วค่ะ',
+        'failed_password_change'     => 'เปลี่ยนรหัสผ่านไม่สำเร็จค่ะ',
     ],
 ];
