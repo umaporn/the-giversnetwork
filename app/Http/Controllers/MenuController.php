@@ -8,7 +8,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Filesystem\Filesystem;
 use App;
-use PhpParser\Node\Expr\Array_;
 
 /**
  * Class MenuController
@@ -31,51 +30,61 @@ class MenuController extends Controller
     private $translations_list = [];
 
     /**
-     * Path to the language files.
-     *
-     * @var string
-     */
-    private $languageFilesPath;
-
-    /**
      * Manager constructor.
      *
      * @param \Illuminate\Filesystem\Filesystem $disk
      */
     public function __construct( Filesystem $disk )
     {
-        $this->disk             = $disk;
-        $this->translations     = $this->getTranslationsFromJsonFile();
-        //dd($this->translations);
-        $this->translation_list = $this->getTranslationKey( '', $this->translations[ App::getLocale() ] );;
+        $this->disk         = $disk;
+        $this->translations = $this->getTranslationsFromJsonFile();
     }
 
     /**
-     * Show the application dashboard.
+     * Show menu management page.
      *
-     * @return \Illuminate\Http\View Menu page
+     * @param Request $request request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function index( Request $request )
     {
 
-        /*$translations = $this->getTranslationsFromJsonFile();
-
-        $translation_list = $translations[ App::getLocale() ];
-
-        $this->getTranslationKey( '', $translation_list );
-        $translation_key = $this->translations_list;*/
-        $translation_list = $this->translations[ App::getLocale() ];
-        $translation_key  = $this->translations_list;
+        $translation_list = $this->getTranslationsFromJsonFile();
+        $translation      = $translation_list[ App::getLocale() ];
 
         if( $request->ajax() ){
+
+            $translation_key         = $request->input( 'translation_key' );
+            $search                  = ( $request->input( 'search' ) ) ? $request->input( 'search' ) : ' ';
+            $translation_key_pattern = "/^" . $translation_key . "/";
+            $search_pattern          = "/^" . $search . "/";
+
+            $this->translations = [];
+            array_walk_recursive( $translation, function( $value, $key ) use ( $translation_key_pattern, $search_pattern, $translation ){
+                if( preg_match( $translation_key_pattern, $key ) || preg_match( $search_pattern, $value ) ){
+                    array_push( $this->translations, [ $key => $value ] );
+                }
+            } );
+
+            $translation = $this->translations;
+
             return response()->json( [
-                                         'data' => view( 'menu.datalist', compact( 'translation_list', 'translation_key' ) )->render(),
+                                         'data' => view( 'menu.datalist', compact( 'translation' ) )->render(),
                                      ] );
         } else {
-            return view( 'menu.index', compact( 'translation_list', 'translation_key' ) );
+            return view( 'menu.index', compact( 'translation' ) );
         }
     }
 
+    /**
+     * Get translation key.
+     *
+     * @param string $prefix       prefix string
+     * @param array  $translations array of translations
+     *
+     * @return array
+     */
     private function getTranslationKey( string $prefix = '', array $translations )
     {
         $keys = [];
@@ -91,8 +100,7 @@ class MenuController extends Controller
                 $keys = array_merge( $keys, $this->getTranslationKey( $newPrefix, $value ) );
             } else {
                 array_push( $this->translations_list, [
-                    'key'   => $prefix . '.' . $key,
-                    'value' => $value,
+                    $prefix . '.' . $key => $value,
                 ] );
             }
         }
@@ -100,10 +108,16 @@ class MenuController extends Controller
         return $keys;
     }
 
+    /**
+     * Get original translation string from php languages file.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getOriginalTranslationlist()
     {
-        $this->setTranslationsFromPHPToJsonFile( 'en' );
-        $this->setTranslationsFromPHPToJsonFile( 'th' );
+        $this->setTranslationsFromPHPToJsonFile( App::getLocale() );
+
+        return response()->json( [ 'success' => true, 'redirectedUrl' => route( 'menu.index' ) ], 302 );
     }
 
     /**
@@ -111,21 +125,29 @@ class MenuController extends Controller
      *
      * @param string $languages Language code
      *
-     * @return array
+     * @return array array of translations
      */
     private function getTranslationsFromPHPFile( string $languages )
     {
-        collect( $this->disk->allFiles( realpath( base_path( 'resources/lang/' . $languages ) ) ) )
+        collect( $this->disk->allFiles( realpath( base_path( 'resources/lang/' . $languages . '/' ) ) ) )
             ->filter( function( $file ){
                 return ( $this->disk->extension( $file ) === 'php' && $file->getFilename() !== 'validation.php' );
             } )
             ->each( function( $file ){
-                $this->translations[ str_replace( '.php', '', $file->getFilename() ) ] = include $file;
+                $this->translation[ str_replace( '.php', '', $file->getFilename() ) ] = include $file;
             } );
 
-        return $this->translations;
+        $this->getTranslationKey( '', $this->translation );
+        $translation_key = $this->translations_list;
+
+        return $translation_key;
     }
 
+    /**
+     * Get translation from JSON file.
+     *
+     * @return string translation JSON string
+     */
     private function getTranslationsFromJsonFile()
     {
 
@@ -140,6 +162,13 @@ class MenuController extends Controller
         return $this->translations;
     }
 
+    /**
+     * Set translation string from PHP file to JSON file.
+     *
+     * @param string $languages
+     *
+     * @return bool|int Result of setting translation string from PHP file to JSON file
+     */
     private function setTranslationsFromPHPToJsonFile( string $languages )
     {
         $save = file_put_contents( $this->getJsonFilename( $languages ), json_encode( $this->getTranslationsFromPHPFile( $languages ) ) );
@@ -147,36 +176,73 @@ class MenuController extends Controller
         return $save;
     }
 
+    /**
+     * Get JSON file name from resource directory.
+     *
+     * @param string $languages locale language string
+     *
+     * @return bool|string path of language file
+     */
     private function getJsonFilename( string $languages )
     {
         return realpath( base_path( 'resources/lang/' . $languages . '.json' ) );
     }
 
+    /**
+     * Show editable menu form.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function edit( Request $request )
     {
-        $key = $request->input( 'key' );
+        $keyInput = $request->input( 'key' );
 
-        return view( 'menu.edit', compact( 'key' ) );
+        $translation_list = $this->getTranslationsFromJsonFile();
+        $translation      = $translation_list[ App::getLocale() ];
+        array_walk_recursive( $translation, function( $value, $key ) use ( $keyInput ){
+            if( $keyInput === $key ){
+                $this->value = $value;
+            }
+        } );
+
+        $value = $this->value;
+
+        return view( 'menu.edit', compact( 'keyInput', 'value' ) );
+
     }
 
+    /**
+     * Update the translation string.
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update( Request $request )
     {
 
-        $translations = $this->getTranslationsFromJsonFile();
+        $translations     = $this->getTranslationsFromJsonFile();
+        $translation_list = $translations[ App::getLocale() ];
+        $keyInput         = $request->input( 'key' );
+        $newValue         = $request->input( 'value' );
 
-        $translation_list = json_encode( $translations[ App::getLocale() ] );
+        $index = 0;
+        foreach( $translation_list as $list ){
+            foreach( $list as $key => $value ){
 
-        $translation_key = $this->translations_list;
-        $newValue        = $request->input( 'value' );
-        $oldValue        = $request->input( 'oldValue' );
-        $translations    = str_replace( $oldValue, $newValue, $translation_list );
-        //echo $request->input( 'value' );
-        $test     = explode( ".", $request->input( 'key' ) );
+                if( $keyInput === $key ){
+                    $translation_list[ $index ][ $key ] = $newValue;
+                }
+                $index++;
+            }
+        }
+
         $filename = $this->getJsonFilename( App::getLocale() );
-        //echo $filename;
-        file_put_contents( $filename, $translations );
+        file_put_contents( $filename, json_encode( $translation_list ) );
 
-        //dd ( in_array( $request->input('key'), $translation_key ) );
+        return response()->json( [ 'success' => true, 'redirectedUrl' => route( 'menu.index' ) ], 302 );
 
     }
 

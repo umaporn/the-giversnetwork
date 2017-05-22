@@ -17,4 +17,5 @@ $( document )
     .ready( function(){
         /** Initialize all JavaScript modules. */
         Forms.init();
+        Search.init();
     } );

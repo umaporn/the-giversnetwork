@@ -16,6 +16,8 @@ var Forms = (function(){
         '#register-form',
         '#password-reset-request-form',
         '#password-reset-form',
+        '#update-form',
+        '#load-translation'
     ];
 
     /**

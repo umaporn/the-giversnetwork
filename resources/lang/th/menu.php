@@ -31,5 +31,5 @@ return [
     'language'    => 'Thai',
     'select_page' => 'Please select a key for edit translation',
     'key'         => 'Key',
-    'search_box'  => 'Search by key'
+    'search_box'  => 'Search by value',
 ];
