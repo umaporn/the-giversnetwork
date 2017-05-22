@@ -34,11 +34,15 @@ function globalRoutes()
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
+
         Route::get( 'profile', 'UserController@profile' )->name( 'user.profile' );
         Route::put( 'change-password', 'UserController@changePassword' )->name( 'user.changePassword' );
         Route::get( '/', 'HomeController@index' )->name( 'home.index' );
 
-        Route::get( 'manage-menu-title/', 'MenuController@index' )->name( 'menu.index' );
+        Route::get( 'manage-menu-title', 'MenuController@index' )->name( 'menu.index' );
+        Route::get( 'manage-menu-title/getlist', 'MenuController@getOriginalTranslationlist' )->name( 'menu.getlist' );
+        Route::get( 'manage-menu-title/edit', 'MenuController@edit' )->name( 'menu.edit' );
+        Route::post( 'manage-menu-title/edit', 'MenuController@update' )->name( 'menu.update' );
 
     } );
 }

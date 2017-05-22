@@ -26,16 +26,6 @@ return [
         [
             'routeName' => 'menu.index',
             'menuText'  => 'menu.page_link.index',
-            'childMenu' => [
-                [
-                    'routeName' => 'menu.index',
-                    'menuText'  => 'menu.page_link.index_en',
-                ],
-                [
-                    'routeName' => 'menu.index',
-                    'menuText'  => 'menu.page_link.index_th',
-                ],
-            ],
         ],
     ],
 ];

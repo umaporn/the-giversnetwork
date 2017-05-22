@@ -13,5 +13,6 @@ return [
     'update' => 'Update',
     'edit'   => 'Edit',
     'delete' => 'Delete',
+    'search' => 'Search',
 
 ];

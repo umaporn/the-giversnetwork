@@ -28,9 +28,8 @@ return [
 
     'menu'        => 'Menu',
     'page'        => 'Page',
-    'language'    => 'English',
+    'language'    => 'Thai',
     'select_page' => 'Please select a key for edit translation',
     'key'         => 'Key',
-    'value'       => 'Value',
-    'search_box'  => 'Search by key',
+    'search_box'  => 'Search by key'
 ];
