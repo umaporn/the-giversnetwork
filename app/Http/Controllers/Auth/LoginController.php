@@ -34,6 +34,9 @@ class LoginController extends Controller
         $redirectedUrl = Utility::getRedirectedUrl( $request, App::getLocale() );
 
         if( $request->ajax() ){
+
+            $redirectedUrl = session()->pull( 'url.intended', $redirectedUrl );
+
             return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 302 );
         }
 

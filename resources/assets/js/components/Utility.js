@@ -129,23 +129,6 @@ var Utility = (function(){
 
     /**
      * @memberOf Utility
-     * @desc Handle all error cases.
-     * @access public
-     * @param {Object} jqXHR - jQuery XML HTTP request
-     * @param {String} url - The URL that occurs the error
-     * @return {void}
-     */
-    var handleError = function( jqXHR, url ){
-
-        if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
-            displayInvalidInputs( jqXHR.responseJSON );
-        } else {
-            displayUnknownError( jqXHR, url );
-        }
-    };
-
-    /**
-     * @memberOf Utility
      * @desc Take a submitting action.
      * @access private
      * @param {Object} formElement - Form element ( Native JavaScript Object )
@@ -248,7 +231,6 @@ var Utility = (function(){
 
     return {
         submitForm:               submitForm,
-        handleError:              handleError,
         displaySuccessMessageBox: displaySuccessMessageBox,
     };
 
