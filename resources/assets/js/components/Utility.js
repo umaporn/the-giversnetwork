@@ -188,7 +188,7 @@ var Utility = (function(){
 
         if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
             if( typeof( callbackFunction ) === 'function' ){
-                callbackFunction.call( formElement, jqXHR );
+                callbackFunction.apply( this, [ formElement, jqXHR ] );
             } else {
                 takeSubmitAction( formElement, jqXHR );
             }
