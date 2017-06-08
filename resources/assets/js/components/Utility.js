@@ -188,7 +188,7 @@ var Utility = (function(){
 
         if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
             if( typeof( callbackFunction ) === 'function' ){
-                callbackFunction.apply( this, [ formElement, jqXHR ] );
+                callbackFunction.apply( this, [formElement, jqXHR] );
             } else {
                 takeSubmitAction( formElement, jqXHR );
             }
@@ -209,7 +209,7 @@ var Utility = (function(){
 
         var formElement = document.querySelector( formSelector ),
             method      = formElement.getAttribute( 'method' ),
-            formData    = new FormData( formElement );
+            formData    = ( method === 'GET' ) ? $( formSelector ).serialize() : new FormData( formElement );
 
         $.ajax( {
                     url:         formElement.getAttribute( 'action' ),
