@@ -68,7 +68,7 @@ var Utility = (function(){
     /**
      * @memberOf Utility
      * @desc Display an error message box.
-     * @access private
+     * @access public
      * @param {String} errorMessage - Error message
      * @return {void}
      */
@@ -147,37 +147,31 @@ var Utility = (function(){
      */
     var takeSubmitAction = function( formElement, jqXHR ){
 
-        if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
+        var result = jqXHR.responseJSON;
 
-            var result = jqXHR.responseJSON;
+        if( jqXHR.status === 422 ){
+            displayInvalidInputs( result );
+        } else if( result.success === true ){
 
-            if( jqXHR.status === 422 ){
-                displayInvalidInputs( result );
-            } else if( result.success === true ){
+            if( result.hasOwnProperty( 'message' ) ){
 
-                if( result.hasOwnProperty( 'message' ) ){
+                ResultBoxSelector.on( 'closed.zf.reveal', function(){
+                    if( jqXHR.status === 302 ){
+                        location.href = result.redirectedUrl;
+                    } else {
+                        formElement.reset();
+                        $( formElement ).find( 'select' ).change();
+                    }
+                } );
 
-                    ResultBoxSelector.on( 'closed.zf.reveal', function(){
-                        if( jqXHR.status === 302 ){
-                            location.href = result.redirectedUrl;
-                        } else {
-                            formElement.reset();
-                            $( formElement ).find( 'select' ).change();
-                        }
-                    } );
+                displaySuccessMessageBox( result.message );
 
-                    displaySuccessMessageBox( result.message );
-
-                } else if( jqXHR.status === 302 ){
-                    location.href = result.redirectedUrl;
-                }
-
-            } else {
-                displayErrorMessageBox( result.message );
+            } else if( jqXHR.status === 302 ){
+                location.href = result.redirectedUrl;
             }
 
         } else {
-            displayUnknownError( jqXHR, formElement.getAttribute( 'action' ) );
+            displayErrorMessageBox( result.message );
         }
     };
 
@@ -191,10 +185,15 @@ var Utility = (function(){
      * @return {void}
      */
     var runCallbackFunction = function( formElement, jqXHR, callbackFunction ){
-        if( typeof( callbackFunction ) === 'function' ){
-            callbackFunction.call( formElement, jqXHR );
+
+        if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
+            if( typeof( callbackFunction ) === 'function' ){
+                callbackFunction.call( formElement, jqXHR );
+            } else {
+                takeSubmitAction( formElement, jqXHR );
+            }
         } else {
-            takeSubmitAction( formElement, jqXHR );
+            displayUnknownError( jqXHR, formElement.getAttribute( 'action' ) );
         }
     };
 
@@ -232,6 +231,7 @@ var Utility = (function(){
     return {
         submitForm:               submitForm,
         displaySuccessMessageBox: displaySuccessMessageBox,
+        displayErrorMessageBox:   displayErrorMessageBox,
     };
 
 })( jQuery );
