@@ -14,7 +14,7 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\View\View Home page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Home page
      */
     public function index()
     {

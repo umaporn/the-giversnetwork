@@ -30,6 +30,8 @@ class UserController extends Controller
 
     /**
      * Load a profile page of logged in user.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
      */
     public function profile()
     {
