@@ -35,6 +35,8 @@ class UserController extends Controller
      */
     public function profile()
     {
+        $this->authorize( 'view', $this );
+
         $user = Auth::user();
 
         return view( 'users.profile', compact( 'user' ) );

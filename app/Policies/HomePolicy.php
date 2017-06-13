@@ -1,6 +1,6 @@
 <?php
 /**
- * Home Controller Policy
+ * Home Page Policy
  */
 
 namespace App\Policies;
@@ -9,15 +9,15 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * Home Page Controller Policy
+ * Home Page Policy
  * @package App\Policies
  */
-class HomeControllerPolicy
+class HomePolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view the controller.
+     * Determine whether the user can view home page.
      *
      * @return bool true = can view, false = cannot view
      */
