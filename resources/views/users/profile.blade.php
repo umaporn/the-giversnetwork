@@ -19,15 +19,15 @@
         <div class="small-3 columns">
             <p class="text-right">@lang('user.password'):</p>
         </div>
-        <div class="small-6 columns">
+        <div class="small-5 columns">
             <p>********</p>
         </div>
-        <div class="small-3 columns">
+        <div class="small-4 columns">
             <a class="medium button" data-open="change-password">@lang('user.profile.change_password')</a>
         </div>
     </div>
 
-    <div id="change-password" class="card tiny reveal" data-reveal data-close-on-click="false">
+    <div id="change-password" class="card reveal" data-reveal data-close-on-click="false">
         <div class="card-divider">
             @lang('user.profile.change_password_title')
         </div>
