@@ -6,9 +6,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Libraries\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Libraries\Utility;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -33,11 +33,11 @@ class LoginController extends Controller
     {
         $redirectedUrl = Utility::getRedirectedUrl( $request, App::getLocale() );
 
-        if( $request->ajax() ){
+        if( $request->expectsJson() ){
 
             $redirectedUrl = session()->pull( 'url.intended', $redirectedUrl );
 
-            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 302 );
+            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 308 );
         }
 
         return redirect()->intended( $redirectedUrl );

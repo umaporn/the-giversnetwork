@@ -39,7 +39,7 @@ class ForgotPasswordController extends Controller
     {
         $successMessage = __( $response );
 
-        if( request()->ajax() ){
+        if( request()->expectsJson() ){
             return response()->json( [ 'success' => true, 'message' => $successMessage ] );
         }
 
@@ -58,7 +58,7 @@ class ForgotPasswordController extends Controller
     {
         $error = [ 'email' => __( $response ) ];
 
-        if( $request->ajax() ){
+        if( $request->expectsJson() ){
             return response()->json( $error, 422 );
         }
 

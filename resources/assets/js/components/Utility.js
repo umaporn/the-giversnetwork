@@ -156,7 +156,7 @@ var Utility = (function(){
             if( result.hasOwnProperty( 'message' ) ){
 
                 ResultBoxSelector.on( 'closed.zf.reveal', function(){
-                    if( jqXHR.status === 302 ){
+                    if( jqXHR.status === 308 ){
                         location.href = result.redirectedUrl;
                     } else {
                         formElement.reset();
@@ -166,7 +166,7 @@ var Utility = (function(){
 
                 displaySuccessMessageBox( result.message );
 
-            } else if( jqXHR.status === 302 ){
+            } else if( jqXHR.status === 308 ){
                 location.href = result.redirectedUrl;
             }
 

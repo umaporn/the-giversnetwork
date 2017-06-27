@@ -5,8 +5,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -53,7 +53,7 @@ class UserController extends Controller
     {
         $success = $this->userModel->changePassword( $request->input( 'password' ) );
 
-        if( $request->ajax() ){
+        if( $request->expectsJson() ){
 
             $message = $success ? __( 'user.profile.successful_password_change' ) : __( 'user.profile.failed_password_change' );
 

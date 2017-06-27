@@ -50,8 +50,8 @@ class ResetPasswordController extends Controller
         $redirectedUrl  = route( 'home.index' );
         $successMessage = __( $response );
 
-        if( request()->ajax() ){
-            return response()->json( [ 'success' => true, 'message' => $successMessage, 'redirectedUrl' => $redirectedUrl ], 302 );
+        if( request()->expectsJson() ){
+            return response()->json( [ 'success' => true, 'message' => $successMessage, 'redirectedUrl' => $redirectedUrl ], 308 );
         }
 
         return redirect( $redirectedUrl )->with( 'status', $successMessage );
@@ -69,7 +69,7 @@ class ResetPasswordController extends Controller
     {
         $error = [ 'email' => __( $response ) ];
 
-        if( $request->ajax() ){
+        if( $request->expectsJson() ){
             return response()->json( $error, 422 );
         }
 
