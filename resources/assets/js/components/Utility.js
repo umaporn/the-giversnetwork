@@ -140,7 +140,7 @@ var Utility = (function(){
      * - | -
      * **success** {Boolean} | It is a success status which it can be true or false.
      * **message** {String} | It is a response message which it can be an error message or a success message. *This is an optional key for a success case.*
-     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to **if success status is true and jqXHR.status equals 302**.
+     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to **if success status is true and jqXHR.status equals 308**.
      *
      * **Note:** jqXHR.status is HTTP status code.
      * @return {void}
