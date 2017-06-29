@@ -5,7 +5,7 @@
         </a>
         @if( count( $menuItem['childMenu'] ) )
             <ul class="menu nested">
-                @each( 'layouts.main_menu', $menuItem['childMenu'], 'menu' )
+                @each( 'layouts.main_menu', $menuItem['childMenu'], 'menuItem' )
             </ul>
         @endif
     </li>

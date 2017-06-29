@@ -5,9 +5,9 @@
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Gate;
 use App\Libraries\Utility;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\View\View;
 
 /**
  * A class for generating all menus.
@@ -87,7 +87,8 @@ class MenuComposer
             $menuItem['url']    = '#';
             $menuItem['active'] = '';
         } else {
-            $menuItem['url']    = route( $menuChoice['routeName'] );
+            $parameters         = isset( $menuChoice['parameters'] ) ? $menuChoice['parameters'] : [];
+            $menuItem['url']    = route( $menuChoice['routeName'], $parameters );
             $menuItem['active'] = $this->getActiveStyle( $menuItem['url'] );
         }
 
