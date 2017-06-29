@@ -9,6 +9,7 @@
 | 'childMenu' => [
 |     [
 |         'routeName'  => '',
+|         'parameters' => [], (Route's parameters. This is optional.)
 |         'menuText'   => '', (Reference translation string)
 |         'class'      => '', (Use class attribute for authorization; if skip this attribute, it means that the menu always show this menu choice )
 |     ],

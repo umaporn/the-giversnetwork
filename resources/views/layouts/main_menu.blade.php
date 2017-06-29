@@ -4,7 +4,7 @@
             {{ $menuItem['menuText'] }}
         </a>
         @if( count( $menuItem['childMenu'] ) )
-            <ul class="menu nested">
+            <ul class="menu vertical nested">
                 @each( 'layouts.main_menu', $menuItem['childMenu'], 'menuItem' )
             </ul>
         @endif
