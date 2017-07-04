@@ -28,5 +28,10 @@ return [
             'menuText'  => 'content.page_link.list',
             'class'     => 'App\Http\Controllers\ContentController',
         ],
+        [
+            'routeName' => 'content.show',
+            'menuText'  => 'content.page_link.show',
+            'class'     => 'App\Http\Controllers\ContentController',
+        ],
     ],
 ];

@@ -10,14 +10,17 @@ return [
 
     'page_link' => [
         'list' => 'Content List',
+        'show' => 'Content Show',
     ],
 
     'page_title' => [
         'list' => 'Content List',
+        'show' => 'Content Show',
     ],
 
     'page_description' => [
         'list' => 'Content List',
+        'show' => 'Content Show',
     ],
 
 ];

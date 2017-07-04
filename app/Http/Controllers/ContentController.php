@@ -29,4 +29,11 @@ class ContentController extends Controller
 
         return view( 'content.list' );
     }
+
+    public function show()
+    {
+        $this->authorize( 'view', $this );
+
+        return view( 'content.show' );
+    }
 }
