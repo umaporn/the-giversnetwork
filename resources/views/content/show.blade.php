@@ -15,6 +15,8 @@
         </label>
     </div>
 
+    @include('layouts.breadcrumbs')
+
     <div class="row columns">
         show title
     </div>
