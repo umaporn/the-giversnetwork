@@ -23,5 +23,10 @@ return [
             'menuText'  => 'home.page_link.index',
             'class'     => 'App\Http\Controllers\HomeController',
         ],
+        [
+            'routeName' => 'content.list',
+            'menuText'  => 'content.page_link.list',
+            'class'     => 'App\Http\Controllers\ContentController',
+        ],
     ],
 ];
