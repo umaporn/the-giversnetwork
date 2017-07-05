@@ -7,13 +7,7 @@
 
 @section('content')
 
-    <div class="row columns">
-        <label>Choose category
-            <select>
-                <option value=""></option>
-            </select>
-        </label>
-    </div>
+    @include('content.filter')
 
     <div class="row">
         <div class="medium-9 columns">
