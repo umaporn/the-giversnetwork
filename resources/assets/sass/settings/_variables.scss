@@ -35,6 +35,15 @@ $card-title-font-size: rem-calc(24);
 $card-title-font-weight: bold;
 $card-title-line-height: 1.3;
 
+// Content
+$content-title-font-size: rem-calc(36);
+$content-title-font-weight: bold;
+$content-title-line-height: 1.3;
+$content-title-font-color: $header-color;
+
+$content-details-font-size: rem-calc(16);
+$content-details-font-color: $dark-gray;
+
 /*
 |--------------------------------------------------------------------------
 | Input Settings

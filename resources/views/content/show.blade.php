@@ -13,11 +13,13 @@
 
     <div class="row">
         <div class="medium-9 columns">
-            <div class="content-post">
-                <div class="content-date">5th July, 2017</div>
-                <h1 class="post-title">This is an example of a content title for a post</h1>
-                <img src="http://placehold.it/850x350/fcc066/fff">
+            <div class="single-content">
+                <div class="content-details">
+                    <div class="content-date">5th July, 2017</div>
+                </div>
+                <h1 class="content-title">This is an example of a content title for a post</h1>
                 <hr>
+                <img src="http://placehold.it/850x350/fcc066/fff"><hr>
                 <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim
                    congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci.
                    Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum.
@@ -38,7 +40,7 @@
                    Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum.
                    Nulla at nulla justo, eget luctus.
                 </p>
-                <div class="callout">
+                <div class="callout content-details">
                     <div class="content-author"><strong>Author:&nbsp;</strong>Author Name</div>
                     <div class="content-date"><strong>Date:&nbsp;</strong>5th July, 2017</div>
                 </div>

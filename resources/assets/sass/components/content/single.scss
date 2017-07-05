@@ -1,0 +1,15 @@
+.single-content {
+
+    .content-title {
+        font-size: $content-title-font-size;
+        font-weight: $content-title-font-weight;
+        line-height: $content-title-line-height;
+        color: $content-title-font-color;
+    }
+
+    .content-details {
+        font-size: $content-details-font-size;
+        color: $content-details-font-color;
+    }
+
+}
