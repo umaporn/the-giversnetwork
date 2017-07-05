@@ -20,6 +20,23 @@ $language-pipe-color: lightblue;
 
 /*
 |--------------------------------------------------------------------------
+| Content Settings
+|--------------------------------------------------------------------------
+*/
+// Cards
+$card-label-font-color: $white;
+$card-label-margin: 0 0 0.5rem;
+
+$card-font-color: $dark-gray;
+
+$card-date-font-size: rem-calc(14);
+
+$card-title-font-size: rem-calc(24);
+$card-title-font-weight: bold;
+$card-title-line-height: 1.3;
+
+/*
+|--------------------------------------------------------------------------
 | Input Settings
 |--------------------------------------------------------------------------
 */

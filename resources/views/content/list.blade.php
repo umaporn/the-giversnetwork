@@ -16,28 +16,33 @@
     </div>
 
     <div class="row">
-        <div class="small-9 columns">
+        <div class="medium-9 columns">
             <div class="content-list">
-                <div class="row small-up-1 medium-up-2 large-up-3">
+                <div class="row small-up-1 medium-up-2">
                     <div class="column">
+                        <div class="card-label">
+                            <span class="label"><a href="#">Corporate News</a></span>
+                        </div>
                         <div class="card">
-                            <div class="card-image">
+                            <a href="#">
                                 <img src="{{ asset('/images/list-item.png') }}" alt="">
-                            </div>
-                            <div class="card-divider">
-                                This is a title
-                            </div>
-                            <div class="card-section">
-                                <div>Jan, 19th 2017 - Category</div>
-                                <p><strong>This is a short description about the post.</strong></p>
-                                <a href="#">Read more</a>
-                            </div>
+                                <div class="card-section">
+                                    <div class="card-date">5th July</div>
+                                    <article class="card-article">
+                                        <h1 class="card-title">This is content title</h1>
+                                        <p class="card-description">Lorem ipsum dolor sit amet, consectetur
+                                                                    adipisicing elit. Recusandae facere, ipsam quae
+                                                                    sit, eaque perferendis commodi!...
+                                        </p>
+                                    </article>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="small-3 columns">
+        <div class="medium-3 columns">
             <div class="sidebar">
                 <div class="widget">
                     <a href="#">Archive</a>

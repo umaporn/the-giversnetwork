@@ -1,0 +1,36 @@
+.card-label {
+    margin: $card-label-margin;
+
+    .label {
+        color: $card-label-font-color;
+
+        a {
+            color: inherit;
+        }
+    }
+}
+
+.card {
+
+    .card-section {
+
+        .card-date {
+            font-size: $card-date-font-size;
+            color: $card-font-color;
+        }
+
+        .card-article {
+
+            .card-title {
+                font-size: $card-title-font-size;
+                font-weight: $card-title-font-weight;
+                line-height: $card-title-line-height;
+            }
+
+            .card-description {
+                color: $card-font-color;
+            }
+        }
+    }
+}
+
