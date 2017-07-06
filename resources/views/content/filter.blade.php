@@ -1,6 +1,6 @@
 <div class="row columns">
     <div class="filter">
-        <label>Choose category
+        <label>@lang('content.filter')
             <select>
                 <option value=""></option>
             </select>

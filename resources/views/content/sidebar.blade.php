@@ -1,5 +1,5 @@
 <section class="sidebar archive">
-    <h4><a href="#">Archive</a></h4>
+    <h4><a href="#">@lang('content.archive')</a></h4>
     <div class="card">
         <a href="#">
             <div class="card-section">

@@ -23,4 +23,9 @@ return [
         'show' => 'Content Show',
     ],
 
+    'archive' => 'Archive',
+    'author'  => 'Author',
+    'date'    => 'Date',
+    'filter'  => 'Choose Category',
+
 ];

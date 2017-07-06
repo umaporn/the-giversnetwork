@@ -19,7 +19,8 @@
                 </div>
                 <h1 class="content-title">This is an example of a content title for a post</h1>
                 <hr>
-                <img src="http://placehold.it/850x350/fcc066/fff"><hr>
+                <img src="http://placehold.it/850x350/fcc066/fff">
+                <hr>
                 <p>Praesent id metus massa, ut blandit odio. Proin quis tortor orci. Etiam at risus et justo dignissim
                    congue. Donec congue lacinia dui, a porttitor lectus condimentum laoreet. Nunc eu ullamcorper orci.
                    Quisque eget odio ac lectus vestibulum faucibus eget in metus. In pellentesque faucibus vestibulum.
@@ -41,8 +42,12 @@
                    Nulla at nulla justo, eget luctus.
                 </p>
                 <div class="callout content-details">
-                    <div class="content-author"><strong>Author:&nbsp;</strong>Author Name</div>
-                    <div class="content-date"><strong>Date:&nbsp;</strong>5th July, 2017</div>
+                    <div class="content-author">
+                        <strong>@lang('content.author')&#58;&nbsp;</strong>Author Name
+                    </div>
+                    <div class="content-date">
+                        <strong>@lang('content.date')&#58;&nbsp;</strong>5th July, 2017
+                    </div>
                 </div>
             </div>
         </div>
