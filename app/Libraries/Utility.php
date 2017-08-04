@@ -31,13 +31,17 @@ class Utility
      */
     public static function getLanguageCode()
     {
-        preg_match( '@^(\w+)-@', request()->route()->getName(), $match );
-
-        $prefix   = count( $match ) ? $match[1] : '';
         $language = config( 'app.fallback_locale' );
 
-        if( in_array( $prefix, config( 'app.language_codes' ), true ) ){
-            $language = $prefix;
+        if( !is_null( request()->route() ) ){
+
+            preg_match( '@^(\w+)-@', request()->route()->getName(), $match );
+
+            $prefix = count( $match ) ? $match[1] : '';
+
+            if( in_array( $prefix, config( 'app.language_codes' ), true ) ){
+                $language = $prefix;
+            }
         }
 
         return $language;
