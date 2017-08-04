@@ -40,7 +40,7 @@ class MenuComposer
 
         if( isset( $menuChoice['class'] ) ){
             $gate       = empty( $menuChoice['gate'] ) ? 'view' : $menuChoice['gate'];
-            $authorized = Gate::allows( $gate, $menuChoice['class'] );
+            $authorized = Gate::allows( $gate, new $menuChoice['class']() );
         }
 
         return $authorized;
