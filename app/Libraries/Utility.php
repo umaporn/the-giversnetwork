@@ -5,8 +5,6 @@
 
 namespace App\Libraries;
 
-use Illuminate\Http\Request;
-
 /**
  * This class keeps all utility functions for all classes.
  */
@@ -70,12 +68,11 @@ class Utility
     /**
      * Get redirected URL.
      *
-     * @param Request $request      HTTP request object
      * @param string  $languageCode Language code
      *
      * @return string Redirected URL
      */
-    public static function getRedirectedUrl( Request $request, string $languageCode )
+    public static function getRedirectedUrl( string $languageCode )
     {
         $redirectedUrl = url()->previous();
 

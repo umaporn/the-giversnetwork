@@ -24,7 +24,7 @@ class LanguageController extends Controller
      */
     public function changeLanguage( Request $request, string $languageCode )
     {
-        $redirectedUrl = Utility::getRedirectedUrl( $request, $languageCode );
+        $redirectedUrl = Utility::getRedirectedUrl( $languageCode );
 
         $request->session()->put( 'url.intended', $redirectedUrl );
 
