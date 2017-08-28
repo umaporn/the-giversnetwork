@@ -29,7 +29,7 @@ class Utility
      */
     public static function getLanguageCode()
     {
-        $language = config( 'app.fallback_locale' );
+        $language = Utility::getDefaultLanguageCode();
 
         if( !is_null( request()->route() ) ){
 
@@ -66,9 +66,19 @@ class Utility
     }
 
     /**
+     * Get the default language code.
+     *
+     * @return string Default language code
+     */
+    public static function getDefaultLanguageCode()
+    {
+        return config( 'app.fallback_locale' );
+    }
+
+    /**
      * Get redirected URL.
      *
-     * @param string  $languageCode Language code
+     * @param string $languageCode Language code
      *
      * @return string Redirected URL
      */
@@ -80,7 +90,7 @@ class Utility
 
             $baseUrl       = Utility::getBaseUrl();
             $oldCode       = Utility::getOldLanguageCode();
-            $newCode       = $languageCode !== config( 'app.fallback_locale' ) ? $languageCode : '';
+            $newCode       = $languageCode !== Utility::getDefaultLanguageCode() ? $languageCode : '';
             $regex         = '@^' . $baseUrl . ( $oldCode ? '(/' . $oldCode . '(/.+)|/' . $oldCode . '$)' : '(/.+)?' ) . '@';
             $replacement   = $baseUrl . ( $newCode ? '/' . $newCode : '' ) . ( $oldCode ? '${2}' : '${1}' );
             $redirectedUrl = preg_replace( $regex, $replacement, $redirectedUrl );

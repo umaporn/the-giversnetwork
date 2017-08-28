@@ -6,7 +6,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 /**
  * Validate user request object.
@@ -17,11 +16,11 @@ class UserRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool true = authorized, false = unauthorized
+     * @return bool
      */
     public function authorize()
     {
-        return Auth::check();
+        return true;
     }
 
     /**

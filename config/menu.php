@@ -23,7 +23,6 @@ return [
         [
             'routeName' => 'home.index',
             'menuText'  => 'home.page_link.index',
-            'class'     => App\Http\Controllers\HomeController::class,
         ],
     ],
 ];

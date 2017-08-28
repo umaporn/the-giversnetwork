@@ -18,8 +18,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $this->authorize( 'view', $this );
-
         return view( 'home' );
     }
 }

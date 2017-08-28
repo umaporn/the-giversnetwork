@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Auth;
  */
 class UserController extends Controller
 {
-    /** @var User User model instance */
+    /** @var User User model */
     private $userModel;
 
     /**
      * UserController constructor.
      *
-     * @param User $user User model instance
+     * @param User $user User model
      */
     public function __construct( User $user )
     {
@@ -29,14 +29,12 @@ class UserController extends Controller
     }
 
     /**
-     * Load a profile page of logged in user.
+     * Load a profile page of the authenticated user.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
      */
     public function profile()
     {
-        $this->authorize( 'view', $this );
-
         $user = Auth::user();
 
         return view( 'users.profile', compact( 'user' ) );
