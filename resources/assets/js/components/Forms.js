@@ -1,6 +1,6 @@
 /**
  * @namespace
- * @desc Handle form management
+ * @desc Handle form management.
  */
 var Forms = (function(){
 
