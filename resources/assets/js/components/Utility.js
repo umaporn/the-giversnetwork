@@ -1,25 +1,26 @@
 /**
  * @namespace
+ * @desc Handles all utility functions.
  */
 var Utility = (function(){
 
     /**
      * @memberOf Utility
-     * @desc Result box selector
+     * @desc Result box
      * @access private
      * @constant {Object}
      */
     const ResultBoxSelector   = $( '#result-box' ),
           /**
            * @memberOf Utility
-           * @desc Result title selector
+           * @desc Result title
            * @access private
            * @constant {Object}
            */
           ResultTitleSelector = $( '#result-title' ),
           /**
            * @memberOf Utility
-           * @desc Result text selector
+           * @desc Result text
            * @access private
            * @constant {Object}
            */
@@ -52,6 +53,7 @@ var Utility = (function(){
         }
 
         ResultBoxSelector.foundation( 'open' );
+
     };
 
     /**
@@ -79,18 +81,18 @@ var Utility = (function(){
     /**
      * @memberOf Utility
      * @desc Clear all errors.
-     * @access private
+     * @access public
      * @return {void}
      */
     var clearErrors = function(){
-        $( 'input' ).removeClass( 'error' );
+        $( 'form' ).children().removeClass( 'error' );
         $( '.help-text' ).addClass( 'hide' );
     };
 
     /**
      * @memberOf Utility
      * @desc Display invalid inputs.
-     * @access private
+     * @access public
      * @param {Object} error - Input error list
      * @return {void}
      */
@@ -100,12 +102,13 @@ var Utility = (function(){
 
         for( name in error ){
 
-            var id        = $( 'input[name=' + name + ']' ).attr( 'id' ),
+            var id        = $( '[name=' + name + ']' ).attr( 'id' ),
                 errorText = typeof( error[name] ) === 'object' ? error[name][0] : error[name];
 
             $( '#' + id ).addClass( 'error' );
             $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
         }
+
     };
 
     /**
@@ -125,6 +128,7 @@ var Utility = (function(){
         errorText += '<strong>' + Translator.translate( 'utility.error_status_text' ) + '</strong> ' + jqXHR.statusText + '<br>';
 
         displayErrorMessageBox( errorText );
+
     };
 
     /**
@@ -140,7 +144,7 @@ var Utility = (function(){
      * - | -
      * **success** {Boolean} | It is a success status which it can be true or false.
      * **message** {String} | It is a response message which it can be an error message or a success message. *This is an optional key for a success case.*
-     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to **if success status is true and jqXHR.status equals 308**.
+     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to if success status is true.
      *
      * **Note:** jqXHR.status is HTTP status code.
      * @return {void}
@@ -150,13 +154,15 @@ var Utility = (function(){
         var result = jqXHR.responseJSON;
 
         if( jqXHR.status === 422 ){
+
             displayInvalidInputs( result );
+
         } else if( result.success === true ){
 
             if( result.hasOwnProperty( 'message' ) ){
 
                 ResultBoxSelector.on( 'closed.zf.reveal', function(){
-                    if( jqXHR.status === 308 ){
+                    if( result.redirectedUrl ){
                         location.href = result.redirectedUrl;
                     } else {
                         formElement.reset();
@@ -166,13 +172,16 @@ var Utility = (function(){
 
                 displaySuccessMessageBox( result.message );
 
-            } else if( jqXHR.status === 308 ){
+            } else if( result.redirectedUrl ){
                 location.href = result.redirectedUrl;
             }
 
         } else {
+
             displayErrorMessageBox( result.message );
+
         }
+
     };
 
     /**
@@ -232,6 +241,8 @@ var Utility = (function(){
         submitForm:               submitForm,
         displaySuccessMessageBox: displaySuccessMessageBox,
         displayErrorMessageBox:   displayErrorMessageBox,
+        displayInvalidInputs:     displayInvalidInputs,
+        clearErrors:              clearErrors,
     };
 
 })( jQuery );
