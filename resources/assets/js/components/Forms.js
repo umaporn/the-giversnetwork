@@ -22,7 +22,6 @@ var Forms = (function(){
      * @memberOf Forms
      * @desc Initialize Forms module.
      * @access public
-     * @return {void}
      */
     var initialize = function(){
 

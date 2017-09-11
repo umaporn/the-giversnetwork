@@ -8,21 +8,21 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Result box
      * @access private
-     * @constant {Object}
+     * @constant {jQuery}
      */
     const ResultBoxSelector   = $( '#result-box' ),
           /**
            * @memberOf Utility
            * @desc Result title
            * @access private
-           * @constant {Object}
+           * @constant {jQuery}
            */
           ResultTitleSelector = $( '#result-title' ),
           /**
            * @memberOf Utility
            * @desc Result text
            * @access private
-           * @constant {Object}
+           * @constant {jQuery}
            */
           ResultTextSelector  = $( '#result-text' );
 
@@ -32,7 +32,6 @@ var Utility = (function(){
      * @access private
      * @param {String} message - Result message
      * @param {Boolean} isError - Error flag ( true = error, false = not error )
-     * @return {void}
      */
     var displayMessageBox = function( message, isError ){
 
@@ -61,7 +60,6 @@ var Utility = (function(){
      * @desc Display a success message box.
      * @access public
      * @param {String} successMessage - Success message
-     * @return {void}
      */
     var displaySuccessMessageBox = function( successMessage ){
         displayMessageBox( successMessage, false );
@@ -72,7 +70,6 @@ var Utility = (function(){
      * @desc Display an error message box.
      * @access public
      * @param {String} errorMessage - Error message
-     * @return {void}
      */
     var displayErrorMessageBox = function( errorMessage ){
         displayMessageBox( errorMessage, true );
@@ -82,7 +79,6 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Clear all errors.
      * @access public
-     * @return {void}
      */
     var clearErrors = function(){
         $( 'form' ).children().removeClass( 'error' );
@@ -93,8 +89,7 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Display invalid inputs.
      * @access public
-     * @param {Object} error - Input error list
-     * @return {void}
+     * @param {jQuery} error - Input error list
      */
     var displayInvalidInputs = function( error ){
 
@@ -115,7 +110,7 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Display an unknown error.
      * @access private
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @param {jQuery} jqXHR - jQuery XML HTTP request
      * @param {String} url - The URL that occurs the error
      */
     var displayUnknownError = function( jqXHR, url ){
@@ -135,8 +130,8 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Take a submitting action.
      * @access private
-     * @param {Object} formElement - Form element ( Native JavaScript Object )
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @param {jQuery} formElement - Form element ( Native JavaScript jQuery )
+     * @param {jQuery} jqXHR - jQuery XML HTTP request
      * > If jqXHR.status is not 422 and jqXHR.responseJSON is not empty
      * then the jqXHR.responseJSON format must have the following keys below.
      *
@@ -147,7 +142,6 @@ var Utility = (function(){
      * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to if success status is true.
      *
      * **Note:** jqXHR.status is HTTP status code.
-     * @return {void}
      */
     var takeSubmitAction = function( formElement, jqXHR ){
 
@@ -188,10 +182,9 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Run a callback function.
      * @access private
-     * @param {Object} formElement - Form element ( Native JavaScript Object )
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @param {jQuery} formElement - Form element ( Native JavaScript Object )
+     * @param {jQuery} jqXHR - jQuery XML HTTP request
      * @param {function} [callbackFunction] - Callback function
-     * @return {void}
      */
     var runCallbackFunction = function( formElement, jqXHR, callbackFunction ){
 
@@ -212,7 +205,6 @@ var Utility = (function(){
      * @access public
      * @param {String} formSelector - Form selector
      * @param {function} [callbackFunction] - Callback function
-     * @return {void}
      */
     var submitForm = function( formSelector, callbackFunction ){
 

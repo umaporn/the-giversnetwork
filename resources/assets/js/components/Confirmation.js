@@ -8,21 +8,21 @@ var Confirmation = (function(){
      * @memberOf Confirmation
      * @desc Confirmation box
      * @access private
-     * @constant {Object}
+     * @constant {jQuery}
      */
     const ConfirmationBox  = $( '#confirmation' ),
           /**
            * @memberOf Confirmation
            * @desc Confirmation text
            * @access private
-           * @constant {Object}
+           * @constant {jQuery}
            */
           ConfirmationText = $( '#confirmation-text' ),
           /**
            * @memberOf Confirmation
            * @desc Acceptance button
            * @access private
-           * @constant {Object}
+           * @constant {jQuery}
            */
           AcceptanceButton = $( '#yes-answer' );
 
@@ -30,7 +30,7 @@ var Confirmation = (function(){
      * @memberOf Confirmation
      * @desc Confirm to delete an object.
      * @access public
-     * @param {Object} deletionForm - Deletion form
+     * @param {jQuery} deletionForm - Deletion form
      * @param {String} confirmationKey - Translation key of a confirmation message
      * @param {function} [callbackFunction] - Callback function
      */

@@ -8,7 +8,6 @@ var Menu = (function(){
      * @memberOf Menu
      * @desc Initialize Menu module.
      * @access public
-     * @return {void}
      */
     var initialize = function(){
 
