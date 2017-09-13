@@ -110,7 +110,7 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Display an unknown error.
      * @access private
-     * @param {XMLHttpRequest} jqXHR - jQuery XML HTTP request
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * @param {String} url - The URL that occurs the error
      */
     var displayUnknownError = function( jqXHR, url ){
@@ -131,7 +131,7 @@ var Utility = (function(){
      * @desc Take a submitting action.
      * @access private
      * @param {jQuery} formElement - Form element ( Native JavaScript jQuery )
-     * @param {XMLHttpRequest} jqXHR - jQuery XML HTTP request
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * > If jqXHR.status is not 422 and jqXHR.responseJSON is not empty
      * then the jqXHR.responseJSON format must have the following keys below.
      *
