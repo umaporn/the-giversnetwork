@@ -89,7 +89,7 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Display invalid inputs.
      * @access public
-     * @param {jQuery} error - Input error list
+     * @param {JSON} error - Input error list
      */
     var displayInvalidInputs = function( error ){
 

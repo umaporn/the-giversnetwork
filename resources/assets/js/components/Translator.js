@@ -7,7 +7,7 @@ var Translator = (function(){
      * @memberOf Translator
      * @desc JavaScript Translator
      * @access private
-     * @constant {jQuery}
+     * @constant {Object}
      */
     const JSTranslator = JSTranslate.i18n( {
                                                language:        Laravel.languageCodes,
