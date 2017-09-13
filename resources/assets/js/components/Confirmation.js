@@ -45,6 +45,11 @@ var Confirmation = (function(){
 
     };
 
+    /**
+     * @memberOf Confirmation
+     * @desc Initialize Confirmation module.
+     * @access public
+     */
     var initialize = function(){
 
         AcceptanceButton.click( function( event ){
