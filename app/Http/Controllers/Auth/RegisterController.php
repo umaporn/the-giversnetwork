@@ -68,7 +68,7 @@ class RegisterController extends Controller
         $redirectedUrl = route( 'home.index' );
 
         if( $request->expectsJson() ){
-            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 308 );
+            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
         }
 
         return redirect( $redirectedUrl );

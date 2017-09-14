@@ -1,27 +1,28 @@
 /**
  * @namespace
+ * @desc Handles all utility functions.
  */
 var Utility = (function(){
 
     /**
      * @memberOf Utility
-     * @desc Result box selector
+     * @desc Result box
      * @access private
-     * @constant {Object}
+     * @constant {jQuery}
      */
     const ResultBoxSelector   = $( '#result-box' ),
           /**
            * @memberOf Utility
-           * @desc Result title selector
+           * @desc Result title
            * @access private
-           * @constant {Object}
+           * @constant {jQuery}
            */
           ResultTitleSelector = $( '#result-title' ),
           /**
            * @memberOf Utility
-           * @desc Result text selector
+           * @desc Result text
            * @access private
-           * @constant {Object}
+           * @constant {jQuery}
            */
           ResultTextSelector  = $( '#result-text' );
 
@@ -31,7 +32,6 @@ var Utility = (function(){
      * @access private
      * @param {String} message - Result message
      * @param {Boolean} isError - Error flag ( true = error, false = not error )
-     * @return {void}
      */
     var displayMessageBox = function( message, isError ){
 
@@ -52,6 +52,7 @@ var Utility = (function(){
         }
 
         ResultBoxSelector.foundation( 'open' );
+
     };
 
     /**
@@ -59,7 +60,6 @@ var Utility = (function(){
      * @desc Display a success message box.
      * @access public
      * @param {String} successMessage - Success message
-     * @return {void}
      */
     var displaySuccessMessageBox = function( successMessage ){
         displayMessageBox( successMessage, false );
@@ -70,7 +70,6 @@ var Utility = (function(){
      * @desc Display an error message box.
      * @access public
      * @param {String} errorMessage - Error message
-     * @return {void}
      */
     var displayErrorMessageBox = function( errorMessage ){
         displayMessageBox( errorMessage, true );
@@ -79,20 +78,18 @@ var Utility = (function(){
     /**
      * @memberOf Utility
      * @desc Clear all errors.
-     * @access private
-     * @return {void}
+     * @access public
      */
     var clearErrors = function(){
-        $( 'input' ).removeClass( 'error' );
+        $( 'form' ).children().removeClass( 'error' );
         $( '.help-text' ).addClass( 'hide' );
     };
 
     /**
      * @memberOf Utility
      * @desc Display invalid inputs.
-     * @access private
-     * @param {Object} error - Input error list
-     * @return {void}
+     * @access public
+     * @param {JSON} error - Input error list
      */
     var displayInvalidInputs = function( error ){
 
@@ -100,19 +97,20 @@ var Utility = (function(){
 
         for( name in error ){
 
-            var id        = $( 'input[name=' + name + ']' ).attr( 'id' ),
+            var id        = $( '[name=' + name + ']' ).attr( 'id' ),
                 errorText = typeof( error[name] ) === 'object' ? error[name][0] : error[name];
 
             $( '#' + id ).addClass( 'error' );
             $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
         }
+
     };
 
     /**
      * @memberOf Utility
      * @desc Display an unknown error.
      * @access private
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * @param {String} url - The URL that occurs the error
      */
     var displayUnknownError = function( jqXHR, url ){
@@ -125,14 +123,15 @@ var Utility = (function(){
         errorText += '<strong>' + Translator.translate( 'utility.error_status_text' ) + '</strong> ' + jqXHR.statusText + '<br>';
 
         displayErrorMessageBox( errorText );
+
     };
 
     /**
      * @memberOf Utility
      * @desc Take a submitting action.
      * @access private
-     * @param {Object} formElement - Form element ( Native JavaScript Object )
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @param {jQuery} formElement - Form element
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * > If jqXHR.status is not 422 and jqXHR.responseJSON is not empty
      * then the jqXHR.responseJSON format must have the following keys below.
      *
@@ -140,23 +139,24 @@ var Utility = (function(){
      * - | -
      * **success** {Boolean} | It is a success status which it can be true or false.
      * **message** {String} | It is a response message which it can be an error message or a success message. *This is an optional key for a success case.*
-     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to **if success status is true and jqXHR.status equals 308**.
+     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to if success status is true.
      *
      * **Note:** jqXHR.status is HTTP status code.
-     * @return {void}
      */
     var takeSubmitAction = function( formElement, jqXHR ){
 
         var result = jqXHR.responseJSON;
 
         if( jqXHR.status === 422 ){
+
             displayInvalidInputs( result );
+
         } else if( result.success === true ){
 
             if( result.hasOwnProperty( 'message' ) ){
 
                 ResultBoxSelector.on( 'closed.zf.reveal', function(){
-                    if( jqXHR.status === 308 ){
+                    if( result.redirectedUrl ){
                         location.href = result.redirectedUrl;
                     } else {
                         formElement.reset();
@@ -166,23 +166,25 @@ var Utility = (function(){
 
                 displaySuccessMessageBox( result.message );
 
-            } else if( jqXHR.status === 308 ){
+            } else if( result.redirectedUrl ){
                 location.href = result.redirectedUrl;
             }
 
         } else {
+
             displayErrorMessageBox( result.message );
+
         }
+
     };
 
     /**
      * @memberOf Utility
      * @desc Run a callback function.
      * @access private
-     * @param {Object} formElement - Form element ( Native JavaScript Object )
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @param {Object} formElement - Form element
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * @param {function} [callbackFunction] - Callback function
-     * @return {void}
      */
     var runCallbackFunction = function( formElement, jqXHR, callbackFunction ){
 
@@ -203,7 +205,6 @@ var Utility = (function(){
      * @access public
      * @param {String} formSelector - Form selector
      * @param {function} [callbackFunction] - Callback function
-     * @return {void}
      */
     var submitForm = function( formSelector, callbackFunction ){
 
@@ -232,6 +233,8 @@ var Utility = (function(){
         submitForm:               submitForm,
         displaySuccessMessageBox: displaySuccessMessageBox,
         displayErrorMessageBox:   displayErrorMessageBox,
+        displayInvalidInputs:     displayInvalidInputs,
+        clearErrors:              clearErrors,
     };
 
 })( jQuery );

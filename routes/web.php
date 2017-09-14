@@ -45,7 +45,7 @@ foreach( config( 'app.language_codes' ) as $languageCode ){
     $routePrefix = '';
     $urlPrefix   = '';
 
-    if( $languageCode !== config( 'app.fallback_locale' ) ){
+    if( $languageCode !== Utility::getDefaultLanguageCode() ){
         $urlPrefix   = $languageCode;
         $routePrefix = $languageCode . '-';
     }

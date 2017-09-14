@@ -51,7 +51,7 @@ class ResetPasswordController extends Controller
         $successMessage = __( $response );
 
         if( request()->expectsJson() ){
-            return response()->json( [ 'success' => true, 'message' => $successMessage, 'redirectedUrl' => $redirectedUrl ], 308 );
+            return response()->json( [ 'success' => true, 'message' => $successMessage, 'redirectedUrl' => $redirectedUrl ] );
         }
 
         return redirect( $redirectedUrl )->with( 'status', $successMessage );

@@ -1,6 +1,6 @@
 /**
  * @namespace
- * @desc Handle form management
+ * @desc Handles form management.
  */
 var Forms = (function(){
 
@@ -22,7 +22,6 @@ var Forms = (function(){
      * @memberOf Forms
      * @desc Initialize Forms module.
      * @access public
-     * @return {void}
      */
     var initialize = function(){
 

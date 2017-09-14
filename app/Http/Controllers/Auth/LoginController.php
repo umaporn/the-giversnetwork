@@ -37,7 +37,7 @@ class LoginController extends Controller
 
             $redirectedUrl = session()->pull( 'url.intended', $redirectedUrl );
 
-            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 308 );
+            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
         }
 
         return redirect()->intended( $redirectedUrl );

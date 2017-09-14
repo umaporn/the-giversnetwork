@@ -18,7 +18,6 @@ var Translator = (function(){
      * @memberOf Translator
      * @desc Initialize JavaScript translator.
      * @access public
-     * @return {void}
      */
     var initialize = function(){
 
