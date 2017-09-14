@@ -130,7 +130,7 @@ var Utility = (function(){
      * @memberOf Utility
      * @desc Take a submitting action.
      * @access private
-     * @param {jQuery} formElement - Form element ( Native JavaScript jQuery )
+     * @param {jQuery} formElement - Form element
      * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * > If jqXHR.status is not 422 and jqXHR.responseJSON is not empty
      * then the jqXHR.responseJSON format must have the following keys below.
