@@ -28,7 +28,7 @@
     </div>
 
     <div id="change-password" class="card reveal" data-reveal data-close-on-click="false">
-        <div class="card-divider">
+        <div class="card-divider title">
             @lang('user.profile.change_password_title')
         </div>
         <div class="card-section">
