@@ -38,7 +38,7 @@ return [
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => ':attributeต้องเป็นที่อยู่อีเมล์ที่เหมาะสม.',
+    'email'                => ':attributeต้องเป็นที่อยู่อีเมลที่เหมาะสม.',
     'exists'               => 'The selected :attribute is invalid.',
     'zero_or_exists'       => 'The selected :attribute is invalid.',
     'file'                 => 'The :attribute must be a file.',
@@ -118,7 +118,7 @@ return [
     */
 
     'attributes' => [
-        'email'            => 'ที่อยู่อีเมล์',
+        'email'            => 'ที่อยู่อีเมล',
         'password'         => 'รหัสผ่าน',
         'current_password' => 'รหัสผ่านปัจจุบัน',
     ],
