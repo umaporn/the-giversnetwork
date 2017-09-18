@@ -1,5 +1,5 @@
 <header>
-    <div class="row columns">
+    <div class="grid-container">
         <section class="hide-for-print">
             <section class="top-header">
                 @include( 'layouts.top_menu' )

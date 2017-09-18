@@ -7,22 +7,22 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="small-3 columns">
+    <div class="grid-x grid-padding-x">
+        <div class="small-3 cell">
             <p class="text-right">@lang('user.email'):</p>
         </div>
-        <div class="small-9 columns">
+        <div class="small-9 cell">
             <p>{{ $user->email }}</p>
         </div>
     </div>
-    <div class="row">
-        <div class="small-3 columns">
+    <div class="grid-x grid-padding-x">
+        <div class="small-3 cell">
             <p class="text-right">@lang('user.password'):</p>
         </div>
-        <div class="small-5 columns">
+        <div class="small-5 cell">
             <p>********</p>
         </div>
-        <div class="small-4 columns">
+        <div class="small-4 cell">
             <a class="medium button" data-open="change-password">@lang('user.profile.change_password')</a>
         </div>
     </div>

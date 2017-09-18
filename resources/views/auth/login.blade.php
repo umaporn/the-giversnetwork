@@ -7,40 +7,40 @@
 @section('content')
     <form id="login-form" method="POST" action="{{ route('submitLogin') }}">
         {{ csrf_field() }}
-        <div class="row">
-            <div class="small-3 columns">
+        <div class="grid-x grid-padding-x">
+            <div class="small-3 cell">
                 <label for="email" class="text-right middle">@lang('user.email'):</label>
             </div>
-            <div class="small-9 columns">
+            <div class="small-9 cell">
                 <input type="text" id="email" name="email" value="{{ old('email') }}" required autofocus>
                 <p id="email-help-text" class="alert help-text {{ $errors->has('email') ? '' : 'hide' }}">
                     {{ $errors->has('email') ? $errors->first('email') : '' }}
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="small-3 columns">
+        <div class="grid-x grid-padding-x">
+            <div class="small-3 cell">
                 <label for="password" class="text-right middle">@lang('user.password'):</label>
             </div>
-            <div class="small-9 columns">
+            <div class="small-9 cell">
                 <input type="password" id="password" name="password" required>
                 <p id="password-help-text" class="alert help-text {{ $errors->has('password') ? '' : 'hide' }}">
                     {{ $errors->has('password') ? $errors->first('password') : '' }}
                 </p>
             </div>
         </div>
-        <div class="row">
-            <div class="small-3 columns">
+        <div class="grid-x grid-padding-x">
+            <div class="small-3 cell">
             </div>
-            <div class="small-9 columns">
+            <div class="small-9 cell">
                 <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
                 <label for="remember">@lang('login.remember_me')</label>
             </div>
         </div>
-        <div class="row">
-            <div class="small-3 columns">
+        <div class="grid-x grid-padding-x">
+            <div class="small-3 cell">
             </div>
-            <div class="small-9 columns">
+            <div class="small-9 cell">
                 <div class="button-group">
                     <button type="submit" class="button">@lang('login.login_button')</button>
                     <a class="hollow button" href="{{ route('password.request') }}">@lang('login.forgot_password')</a>
