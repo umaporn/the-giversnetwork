@@ -2,10 +2,10 @@
 @import "settings/_foundation";
 @import "settings/_variables";
 @import "settings/_icons";
-
 // External libraries
 @import "node_modules/foundation-icon-fonts/_foundation-icons";
 @import "node_modules/foundation-sites/scss/foundation";
+
 @include foundation-everything(true);
 
 // Layouts

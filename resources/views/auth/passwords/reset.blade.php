@@ -45,9 +45,9 @@
             </div>
         </div>
         <div class="grid-x grid-padding-x">
-            <div class="small-3 columns">
+            <div class="small-3 cell">
             </div>
-            <div class="small-9 columns">
+            <div class="small-9 cell">
                 <button type="submit" class="button">@lang('passwords.reset_button')</button>
             </div>
         </div>
