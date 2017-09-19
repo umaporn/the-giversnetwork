@@ -22,10 +22,6 @@
 </head>
 <body>
 
-<span class="view-id">
-    @lang('app.view_id'): {{ kebab_case( config('app.name') ) }}-@yield('view-id')
-</span>
-
 @include('layouts.header')
 @include('layouts.content')
 @include('layouts.footer')
