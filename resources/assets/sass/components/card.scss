@@ -1,4 +1,6 @@
 .card-divider.title, .card-section.title {
+    background-color: $card-title-background;
+    color: $card-title-color;
     font-weight: bold;
 }
 
