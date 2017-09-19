@@ -11,7 +11,7 @@
             </section>
             <section class="main-menu">
                 <nav>
-                    <ul class="dropdown menu" data-dropdown-menu>
+                    <ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
                         @each( 'layouts.main_menu', $mainMenu, 'menuItem' )
                     </ul>
                 </nav>
