@@ -7,21 +7,12 @@
 
 @section('content')
 
-    <div class="grid-x grid-padding-x">
-        <div class="auto cell">
-            <p>@lang('user.email'):</p>
-            <p>{{ $user->email }}</p>
-        </div>
-    </div>
-    <div class="grid-x grid-padding-x">
-        <div class="auto cell">
-            <p>@lang('user.password'):</p>
-            <p>********</p>
-        </div>
-        <div class="medium-auto cell">
-            <a class="medium button" data-open="change-password">@lang('user.profile.change_password')</a>
-        </div>
-    </div>
+    <p>@lang('user.email'):</p>
+    <p>{{ $user->email }}</p>
+
+    <p>@lang('user.password'):</p>
+    <p>********</p>
+    <a class="medium button" data-open="change-password">@lang('user.profile.change_password')</a>
 
     <div id="change-password" class="card reveal" data-reveal data-close-on-click="false">
         <div class="card-divider title">
