@@ -147,7 +147,7 @@ var Utility = (function(){
 
         var result = jqXHR.responseJSON;
 
-        if( jqXHR.status === 422 ){
+        if( jqXHR.status === 422 || jqXHR.status === 423 ){
 
             displayInvalidInputs( result );
 
@@ -171,11 +171,8 @@ var Utility = (function(){
             }
 
         } else {
-
             displayErrorMessageBox( result.message );
-
         }
-
     };
 
     /**
