@@ -8,21 +8,17 @@
 @section('content')
 
     <div class="grid-x grid-padding-x">
-        <div class="small-3 cell">
-            <p class="text-right">@lang('user.email'):</p>
-        </div>
-        <div class="small-9 cell">
+        <div class="auto cell">
+            <p>@lang('user.email'):</p>
             <p>{{ $user->email }}</p>
         </div>
     </div>
     <div class="grid-x grid-padding-x">
-        <div class="small-3 cell">
-            <p class="text-right">@lang('user.password'):</p>
-        </div>
-        <div class="small-5 cell">
+        <div class="auto cell">
+            <p>@lang('user.password'):</p>
             <p>********</p>
         </div>
-        <div class="small-4 cell">
+        <div class="medium-auto cell">
             <a class="medium button" data-open="change-password">@lang('user.profile.change_password')</a>
         </div>
     </div>

@@ -2,10 +2,8 @@
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <div class="grid-x grid-padding-x">
-        <div class="small-4 cell">
-            <label for="current-password" class="text-right middle">@lang('user.profile.current_password'):</label>
-        </div>
-        <div class="small-8 cell">
+        <div class="auto cell">
+            <label for="current-password">@lang('user.profile.current_password'):</label>
             <input type="password" id="current-password" name="current_password" required
                    class="{{ $errors->has('current_password') ? 'error' : '' }}"
             >
@@ -15,10 +13,8 @@
         </div>
     </div>
     <div class="grid-x grid-padding-x">
-        <div class="small-4 cell">
-            <label for="password" class="text-right middle">@lang('user.password'):</label>
-        </div>
-        <div class="small-8 cell">
+        <div class="auto cell">
+            <label for="password">@lang('user.password'):</label>
             <input type="password" id="password" name="password" class="{{ $errors->has('password') ? 'error' : '' }}" required>
             <p id="password-help-text" class="alert help-text {{ $errors->has('password') ? '' : 'hide' }}">
                 {{ $errors->has('password') ? $errors->first('password') : '' }}
@@ -26,10 +22,8 @@
         </div>
     </div>
     <div class="grid-x grid-padding-x">
-        <div class="small-4 cell">
-            <label for="password-confirmation" class="text-right middle">@lang('user.password_confirmation'):</label>
-        </div>
-        <div class="small-8 cell">
+        <div class="auto cell">
+            <label for="password-confirmation">@lang('user.password_confirmation'):</label>
             <input type="password" id="password-confirmation" name="password_confirmation" required
                    class="{{ $errors->has('password_confirmation') ? 'error' : '' }}"
             >
@@ -39,9 +33,7 @@
         </div>
     </div>
     <div class="grid-x grid-padding-x">
-        <div class="small-4 cell">
-        </div>
-        <div class="small-8 cell">
+        <div class="auto cell">
             <button type="submit" class="button">@lang('user.profile.change_password')</button>
         </div>
     </div>
