@@ -43,7 +43,7 @@ return [
 
     'profile' => [
         'current_password'           => 'Current Password',
-        'change_password'            => 'Change',
+        'change_password'            => 'Change Password',
         'change_password_title'      => 'Change your password',
         'close_button'               => 'Close the pop up',
         'successful_password_change' => 'Your password has been changed.',

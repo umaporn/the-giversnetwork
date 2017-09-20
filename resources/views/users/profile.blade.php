@@ -7,12 +7,28 @@
 
 @section('content')
 
-    <p>@lang('user.email'):</p>
-    <p>{{ $user->email }}</p>
-
-    <p>@lang('user.password'):</p>
-    <p>********</p>
-    <a class="medium button" data-open="change-password">@lang('user.profile.change_password')</a>
+    <div class="grid-x">
+        <div class="medium-6 cell">
+            <table class="stack unstriped">
+                <tr>
+                    <td>
+                        <strong>@lang('user.email'):</strong>
+                    </td>
+                    <td>
+                        {{ $user->email }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@lang('user.password'):</strong>
+                    </td>
+                    <td>
+                        <a data-open="change-password">@lang('user.profile.change_password')</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
 
     <div id="change-password" class="card reveal" data-reveal data-close-on-click="false">
         <div class="card-divider title">
