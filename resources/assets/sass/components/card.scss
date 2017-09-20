@@ -1,16 +1,14 @@
 .card-divider.title, .card-section.title {
+    background-color: $card-title-background;
     color: $card-title-color;
     font-weight: bold;
 }
 
 .card-section.title {
-
-    background-color: $card-divider-background;
     padding-bottom: 0.5rem;
 
     i {
         background-color: $white;
         border-radius: $button-radius;
     }
-
 }
