@@ -8,7 +8,7 @@
 @section('content')
 
     <div class="grid-x">
-        <div class="medium-6 cell">
+        <div class="large-6 cell">
             <table class="stack unstriped">
                 <tr>
                     <td>
