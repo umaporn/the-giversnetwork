@@ -37,8 +37,8 @@
         <div class="card-section">
             @include('users.change_password')
         </div>
-        <button class="close-button" data-close aria-label="@lang('user.profile.close_button')" type="button">
-            <span aria-hidden="true" title="@lang('user.profile.close_button')">&times;</span>
+        <button class="close-button" data-close aria-label="@lang('button.close_popup')" type="button">
+            <span aria-hidden="true" title="@lang('button.close_popup')">&times;</span>
         </button>
     </div>
 @endsection

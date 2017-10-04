@@ -1,10 +1,11 @@
 <?php
+
 /**
- * Add prefix to resource's route name.
+ * Add a prefix to all resource route names.
  *
  * @param string $prefix Prefix
  */
-function addPrefixRouteName( $prefix )
+function addPrefixResourceRouteName( $prefix )
 {
     return [
         'index'   => $prefix . '.index',

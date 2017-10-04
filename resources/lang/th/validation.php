@@ -30,7 +30,7 @@ return [
         'array'   => 'The :attribute must have between :min and :max items.',
     ],
     'boolean'              => 'The :attribute field must be true or false.',
-    'confirmed'            => 'การยืนยัน :attribute ไม่ถูกต้อง.',
+    'confirmed'            => 'การยืนยัน :attribute ไม่ถูกต้อง',
     'date'                 => 'The :attribute is not a valid date.',
     'date_format'          => 'The :attribute does not match the format :format.',
     'different'            => 'The :attribute and :other must be different.',
@@ -38,7 +38,7 @@ return [
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
-    'email'                => ':attribute ต้องเป็นที่อยู่อีเมลที่เหมาะสม.',
+    'email'                => ':attribute ต้องเป็นที่อยู่อีเมลที่เหมาะสม',
     'exists'               => ':attribute ที่ระบุไม่ถูกต้อง',
     'zero_or_exists'       => 'The selected :attribute is invalid.',
     'file'                 => 'The :attribute must be a file.',
@@ -84,7 +84,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => ':attributeถูกใช้งานแล้ว',
+    'unique'               => ':attribute ถูกใช้งานแล้ว',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
     'correct_password'     => ':attribute ไม่ถูกต้อง',
@@ -118,9 +118,9 @@ return [
     */
 
     'attributes' => [
-        'email'            => 'ที่อยู่อีเมล',
-        'password'         => 'รหัสผ่าน',
-        'current_password' => 'รหัสผ่านปัจจุบัน',
+        'email'           => 'ที่อยู่อีเมล',
+        'password'        => 'รหัสผ่าน',
+        'currentPassword' => 'รหัสผ่านปัจจุบัน',
     ],
 
 ];

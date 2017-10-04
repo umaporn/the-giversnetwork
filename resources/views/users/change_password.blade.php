@@ -3,11 +3,11 @@
     {{ method_field('PUT') }}
 
     <label for="current-password">@lang('user.profile.current_password'):</label>
-    <input type="password" id="current-password" name="current_password" required
-           class="{{ $errors->has('current_password') ? 'error' : '' }}"
+    <input type="password" id="current-password" name="currentPassword" required
+           class="{{ $errors->has('currentPassword') ? 'error' : '' }}"
     >
-    <p id="current-password-help-text" class="alert help-text {{ $errors->has('current_password') ? '' : 'hide' }}">
-        {{ $errors->has('current_password') ? $errors->first('current_password') : '' }}
+    <p id="current-password-help-text" class="alert help-text {{ $errors->has('currentPassword') ? '' : 'hide' }}">
+        {{ $errors->has('currentPassword') ? $errors->first('currentPassword') : '' }}
     </p>
 
     <label for="password">@lang('user.password'):</label>
