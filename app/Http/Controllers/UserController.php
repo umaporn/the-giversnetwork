@@ -15,13 +15,13 @@ use Illuminate\Support\Facades\Auth;
  */
 class UserController extends Controller
 {
-    /** @var User User model */
+    /** @var User User model instance */
     private $userModel;
 
     /**
      * UserController constructor.
      *
-     * @param User $user User model
+     * @param User $user User model instance
      */
     public function __construct( User $user )
     {
@@ -45,7 +45,9 @@ class UserController extends Controller
      *
      * @param UserRequest $request User request object
      *
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP
+     *                                                                                                        response
+     *                                                                                                        object
      */
     public function changePassword( UserRequest $request )
     {

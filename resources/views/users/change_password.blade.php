@@ -26,3 +26,5 @@
 
     <button type="submit" class="button">@lang('user.profile.change_password')</button>
 </form>
+
+<div id="spinner-popup"></div>

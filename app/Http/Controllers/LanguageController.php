@@ -20,7 +20,7 @@ class LanguageController extends Controller
      * @param Request $request      HTTP request object
      * @param string  $languageCode Language code
      *
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse Redirect response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse HTTP redirect response
      */
     public function changeLanguage( Request $request, string $languageCode )
     {

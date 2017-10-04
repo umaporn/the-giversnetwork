@@ -31,7 +31,7 @@ class ResetPasswordController extends Controller
     /**
      * Get the password reset validation rules.
      *
-     * @return array
+     * @return array Password reset rule
      */
     protected function rules()
     {
@@ -43,7 +43,7 @@ class ResetPasswordController extends Controller
      *
      * @param  string $response Response message
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function sendResetResponse( $response )
     {
@@ -63,7 +63,7 @@ class ResetPasswordController extends Controller
      * @param  \Illuminate\Http\Request $request  HTTP request object
      * @param  string                   $response Response message
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function sendResetFailedResponse( Request $request, $response )
     {

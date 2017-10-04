@@ -136,7 +136,7 @@ class MenuComposer
     }
 
     /**
-     * Compose view with all menus.
+     * Compose a specific view with all menus.
      *
      * @param View $view Current view
      *

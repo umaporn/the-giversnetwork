@@ -3,7 +3,7 @@
  * @desc Spinner selector
  * @type {Object}
  */
-const SpinnerSelector = $( '#spinner' );
+const SpinnerSelector = $( '#spinner, #spinner-popup' );
 
 Translator.init();
 

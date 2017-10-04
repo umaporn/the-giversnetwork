@@ -100,8 +100,13 @@ var Utility = (function(){
             var id        = $( '[name=' + name + ']' ).attr( 'id' ),
                 errorText = typeof( error[name] ) === 'object' ? error[name][0] : error[name];
 
-            $( '#' + id ).addClass( 'error' );
-            $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
+            if( id ){
+                $( '#' + id ).addClass( 'error' );
+                $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
+            } else {
+                var fieldSetId = $( '[name="' + name + '[]"]' ).parent( 'fieldset' ).attr( 'id' );
+                $( '#' + fieldSetId + '-help-text' ).text( errorText ).removeClass( 'hide' );
+            }
         }
 
     };
@@ -109,7 +114,7 @@ var Utility = (function(){
     /**
      * @memberOf Utility
      * @desc Display an unknown error.
-     * @access private
+     * @access public
      * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * @param {String} url - The URL that occurs the error
      */
@@ -132,7 +137,7 @@ var Utility = (function(){
      * @access private
      * @param {jQuery} formElement - Form element
      * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
-     * > If jqXHR.status is not 422 and jqXHR.responseJSON is not empty
+     * > If jqXHR.status is not 422 or 423 and jqXHR.responseJSON is not empty
      * then the jqXHR.responseJSON format must have the following keys below.
      *
      * Key | Explanation
@@ -147,7 +152,7 @@ var Utility = (function(){
 
         var result = jqXHR.responseJSON;
 
-        if( jqXHR.status === 422 || jqXHR.status === 423 ){
+        if( $.inArray( jqXHR.status, [422, 423] ) !== -1 ){
 
             displayInvalidInputs( result );
 
@@ -160,7 +165,6 @@ var Utility = (function(){
                         location.href = result.redirectedUrl;
                     } else {
                         formElement.reset();
-                        $( formElement ).find( 'select' ).change();
                     }
                 } );
 
@@ -231,6 +235,7 @@ var Utility = (function(){
         displaySuccessMessageBox: displaySuccessMessageBox,
         displayErrorMessageBox:   displayErrorMessageBox,
         displayInvalidInputs:     displayInvalidInputs,
+        displayUnexpectedError:   displayUnknownError,
         clearErrors:              clearErrors,
     };
 

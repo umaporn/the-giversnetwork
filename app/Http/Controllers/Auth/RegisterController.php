@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /** @var  User model instance */
+    /** @var User User model instance */
     private $userModel;
 
     /**
@@ -61,7 +61,7 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request $request HTTP request object
      * @param  mixed                    $user    User
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function registered( Request $request, $user )
     {

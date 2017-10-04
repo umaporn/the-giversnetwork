@@ -1,4 +1,4 @@
-#spinner {
+#spinner, #spinner-popup {
     display: none;
     text-align: center;
 
@@ -16,6 +16,10 @@
         border-radius: 100%;
         animation: rotation .7s infinite linear;
     }
+}
+
+#spinner-popup:before {
+    top: 37%;
 }
 
 @keyframes rotation {
