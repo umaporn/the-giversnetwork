@@ -175,8 +175,11 @@ var Utility = (function(){
             }
 
         } else {
+
             displayErrorMessageBox( result.message );
+
         }
+
     };
 
     /**
