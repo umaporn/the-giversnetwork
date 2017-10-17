@@ -14,8 +14,9 @@ It includes all useful features which are easy to customize and change some sett
 2. **Prerequisite programs** are:
     - [Git](https://www.git-scm.com/download)
     - [Composer](https://getcomposer.org/download/)
-    - [NodeJS](https://nodejs.org/en/download/)
-3. After you finish to clone this project then create .env file from .env.example file and run the following commands below.
+    - [NodeJS](https://nodejs.org/en/download/) *-- No need for a production site.*
+3. After you finish cloning this project then you have to create .env file from .env-local.example or .env-production.example file 
+depending on your environment. After that run the following commands below.
     - composer install *-- To install PHP components.*
     - npm install *-- To install JavaScript components. ( No need for a production site. )*
     - php artisan key:generate *-- To create an application key to support cryptography.*
