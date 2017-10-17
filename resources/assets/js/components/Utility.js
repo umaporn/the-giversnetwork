@@ -95,18 +95,23 @@ var Utility = (function(){
 
         clearErrors();
 
-        for( name in error ){
+        if( error.hasOwnProperty( 'errors' ) ){
 
-            var id        = $( '[name=' + name + ']' ).attr( 'id' ),
-                errorText = typeof( error[name] ) === 'object' ? error[name][0] : error[name];
+            for( name in error['errors'] ){
 
-            if( id ){
-                $( '#' + id ).addClass( 'error' );
-                $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
-            } else {
-                var fieldSetId = $( '[name="' + name + '[]"]' ).parent( 'fieldset' ).attr( 'id' );
-                $( '#' + fieldSetId + '-help-text' ).text( errorText ).removeClass( 'hide' );
+                var errorMessage = error['errors'][name],
+                    id           = $( '[name=' + name + ']' ).attr( 'id' ),
+                    errorText    = typeof( errorMessage ) === 'object' ? errorMessage[0] : errorMessage;
+
+                if( id ){
+                    $( '#' + id ).addClass( 'error' );
+                    $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
+                } else {
+                    var fieldSetId = $( '[name="' + name + '[]"]' ).parent( 'fieldset' ).attr( 'id' );
+                    $( '#' + fieldSetId + '-help-text' ).text( errorText ).removeClass( 'hide' );
+                }
             }
+
         }
 
     };
