@@ -70,7 +70,7 @@ class ResetPasswordController extends Controller
         $error = [ 'email' => __( $response ) ];
 
         if( $request->expectsJson() ){
-            return response()->json( $error, 422 );
+            return response()->json( [ 'errors' => $error ], 422 );
         }
 
         return redirect()->back()->withInput( $request->only( 'email' ) )->withErrors( $error );
