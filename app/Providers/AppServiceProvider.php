@@ -6,9 +6,9 @@
 namespace App\Providers;
 
 use App\Libraries\CustomRouteCollection;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Validator;
 
 /**
  * Application Service Provider
