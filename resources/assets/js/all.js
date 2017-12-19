@@ -17,4 +17,6 @@ $( document )
     .ready( function(){
         /** Initialize all JavaScript modules. */
         Forms.init();
+        Menu.init();
+        Confirmation.init();
     } );
