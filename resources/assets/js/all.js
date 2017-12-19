@@ -18,4 +18,5 @@ $( document )
         /** Initialize all JavaScript modules. */
         Forms.init();
         Menu.init();
+        Confirmation.init();
     } );

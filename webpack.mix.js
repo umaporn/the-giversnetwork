@@ -18,6 +18,7 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
                  'resources/assets/js/components/Utility.js',
                  'resources/assets/js/components/Forms.js',
                  'resources/assets/js/components/Menu.js',
+                 'resources/assets/js/components/Confirmation.js',
                  'resources/assets/js/all.js'
              ], 'public/js/all.js' )
    .version();
