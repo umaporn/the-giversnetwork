@@ -20,7 +20,6 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
                'resources/assets/js/components/Search.js',
                'resources/assets/js/components/Translator.js',
                'resources/assets/js/components/Utility.js',
-               'resources/assets/js/components/BI/ReportMenu.js',
                'resources/assets/js/all.js',
            ], 'public/js/all.js' )
    .version();
