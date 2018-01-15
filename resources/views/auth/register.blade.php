@@ -5,7 +5,7 @@
 @section('view-id', 'REGISTER-001')
 
 @section('content')
-    <form id="register-form" method="POST" action="{{ route('submitRegister') }}">
+    <form class="submission-form" method="POST" action="{{ route('submitRegister') }}">
         {{ csrf_field() }}
 
         <label for="email">@lang('user.email'):</label>

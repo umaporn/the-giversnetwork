@@ -1,4 +1,4 @@
-<form id="change-password-form" method="POST" action="{{ route('user.changePassword') }}">
+<form class="submission-form" method="POST" action="{{ route('user.changePassword') }}">
     {{ csrf_field() }}
     {{ method_field('PUT') }}
 
