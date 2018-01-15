@@ -8,7 +8,7 @@
     <div class="success callout {{ session('status') ? '' : 'hide' }}">
         {{ session('status') ? session('status') : '' }}
     </div>
-    <form id="password-reset-request-form" method="POST" action="{{ route('password.email') }}">
+    <form class="submission-form" method="POST" action="{{ route('password.email') }}">
         {{ csrf_field() }}
 
         <label for="email">@lang('user.email'):</label>
