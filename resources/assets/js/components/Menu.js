@@ -2,14 +2,14 @@
  * @namespace
  * @desc Handles menu management.
  */
-var Menu = (function(){
+const Menu = (function(){
 
     /**
      * @memberOf Menu
-     * @desc Initialize Menu module.
      * @access public
+     * @desc Initialize Menu module.
      */
-    var initialize = function(){
+    function initialize(){
 
         $( '.menu li.active.is-submenu-item' ).parent().parents().each( function( index, element ){
             if( $( element ).is( 'li' ) ){
@@ -17,9 +17,10 @@ var Menu = (function(){
             }
         } );
 
-    };
+    }
 
     return {
-        init: initialize,
+        initialize: initialize,
     };
+
 })( jQuery );

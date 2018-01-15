@@ -5,7 +5,7 @@
 @section('view-id', 'PASSWORD-RESET-002')
 
 @section('content')
-    <form id="password-reset-form" method="POST" action="{{ route( 'password.change' ) }}">
+    <form class="submission-form" method="POST" action="{{ route( 'password.change' ) }}">
         {{ csrf_field() }}
         <input type="hidden" name="token" value="{{ $token }}">
 
