@@ -25,5 +25,4 @@ $( document )
         Search.initialize();
         Confirmation.initialize();
         Form.initialize();
-        ReportMenu.initialize();
     } );
