@@ -6,10 +6,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Libraries\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Libraries\Utility;
-use Illuminate\Support\Facades\App;
 
 /**
  * Login Controller
@@ -27,14 +26,17 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request $request HTTP request object
      * @param  mixed                    $user    User
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function authenticated( Request $request, $user )
     {
-        $redirectedUrl = Utility::getRedirectedUrl( $request, App::getLocale() );
+        $redirectedUrl = Utility::getRedirectedUrl( $request );
 
-        if( $request->ajax() ){
-            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 302 );
+        if( $request->expectsJson() ){
+
+            $redirectedUrl = session()->pull( 'url.intended', $redirectedUrl );
+
+            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
         }
 
         return redirect()->intended( $redirectedUrl );

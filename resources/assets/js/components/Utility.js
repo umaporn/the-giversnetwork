@@ -1,39 +1,40 @@
 /**
  * @namespace
+ * @desc Handles all utility functions.
  */
-var Utility = (function(){
+const Utility = (function(){
+
+    const
+        /**
+         * @memberOf Utility
+         * @access private
+         * @desc Result box
+         * @constant {jQuery}
+         */
+        ResultBoxSelector   = $( '#result-box' ),
+        /**
+         * @memberOf Utility
+         * @access private
+         * @desc Result title
+         * @constant {jQuery}
+         */
+        ResultTitleSelector = $( '#result-title' ),
+        /**
+         * @memberOf Utility
+         * @access private
+         * @desc Result text
+         * @constant {jQuery}
+         */
+        ResultTextSelector  = $( '#result-text' );
 
     /**
      * @memberOf Utility
-     * @desc Result box selector
      * @access private
-     * @constant {Object}
-     */
-    const ResultBoxSelector   = $( '#result-box' ),
-          /**
-           * @memberOf Utility
-           * @desc Result title selector
-           * @access private
-           * @constant {Object}
-           */
-          ResultTitleSelector = $( '#result-title' ),
-          /**
-           * @memberOf Utility
-           * @desc Result text selector
-           * @access private
-           * @constant {Object}
-           */
-          ResultTextSelector  = $( '#result-text' );
-
-    /**
-     * @memberOf Utility
      * @desc Display a result message box.
-     * @access private
      * @param {String} message - Result message
      * @param {Boolean} isError - Error flag ( true = error, false = not error )
-     * @return {void}
      */
-    var displayMessageBox = function( message, isError ){
+    function displayMessageBox( message, isError ){
 
         clearErrors();
 
@@ -52,204 +53,209 @@ var Utility = (function(){
         }
 
         ResultBoxSelector.foundation( 'open' );
-    };
+
+    }
 
     /**
      * @memberOf Utility
-     * @desc Display a success message box.
      * @access public
+     * @desc Display a success message box.
      * @param {String} successMessage - Success message
-     * @return {void}
      */
-    var displaySuccessMessageBox = function( successMessage ){
+    function displaySuccessMessageBox( successMessage ){
         displayMessageBox( successMessage, false );
-    };
+    }
 
     /**
      * @memberOf Utility
+     * @access public
      * @desc Display an error message box.
-     * @access private
      * @param {String} errorMessage - Error message
-     * @return {void}
      */
-    var displayErrorMessageBox = function( errorMessage ){
+    function displayErrorMessageBox( errorMessage ){
         displayMessageBox( errorMessage, true );
-    };
+    }
 
     /**
      * @memberOf Utility
+     * @access public
      * @desc Clear all errors.
-     * @access private
-     * @return {void}
      */
-    var clearErrors = function(){
-        $( 'input' ).removeClass( 'error' );
+    function clearErrors(){
+        $( 'form' ).children().removeClass( 'error' );
         $( '.help-text' ).addClass( 'hide' );
-    };
+    }
 
     /**
      * @memberOf Utility
+     * @access public
      * @desc Display invalid inputs.
-     * @access private
-     * @param {Object} error - Input error list
-     * @return {void}
+     * @param {JSON} error - Input error list
      */
-    var displayInvalidInputs = function( error ){
+    function displayInvalidInputs( error ){
 
         clearErrors();
 
-        for( name in error ){
+        if( error.hasOwnProperty( 'errors' ) ){
 
-            var id        = $( 'input[name=' + name + ']' ).attr( 'id' ),
-                errorText = typeof( error[name] ) === 'object' ? error[name][0] : error[name];
+            for( name in error['errors'] ){
 
-            $( '#' + id ).addClass( 'error' );
-            $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
+                let errorMessage = error['errors'][name],
+                    id           = $( '[name=' + name + ']' ).attr( 'id' ),
+                    errorText    = typeof(errorMessage) === 'object' ? errorMessage[0] : errorMessage;
+
+                if( id ){
+                    $( '#' + id ).addClass( 'error' );
+                    $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
+                } else {
+                    let fieldSetId = $( '[name="' + name + '[]"]' ).parent( 'fieldset' ).attr( 'id' );
+                    $( '#' + fieldSetId + '-help-text' ).text( errorText ).removeClass( 'hide' );
+                }
+            }
+
         }
-    };
+
+    }
 
     /**
      * @memberOf Utility
+     * @access public
      * @desc Display an unknown error.
-     * @access private
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * @param {String} url - The URL that occurs the error
      */
-    var displayUnknownError = function( jqXHR, url ){
+    function displayUnknownError( jqXHR, url ){
 
         clearErrors();
 
-        var errorText = '<h5>' + Translator.translate( 'utility.calling_system_administrator' ) + '</h5>';
+        let errorText = '<h5>' + Translator.translate( 'utility.calling_system_administrator' ) + '</h5>';
         errorText += '<strong>' + Translator.translate( 'utility.error_url' ) + '</strong> ' + url + '<br>';
         errorText += '<strong>' + Translator.translate( 'utility.error_status_code' ) + '</strong> ' + jqXHR.status + '<br>';
         errorText += '<strong>' + Translator.translate( 'utility.error_status_text' ) + '</strong> ' + jqXHR.statusText + '<br>';
 
         displayErrorMessageBox( errorText );
-    };
+
+    }
 
     /**
      * @memberOf Utility
-     * @desc Handle all error cases.
-     * @access public
-     * @param {Object} jqXHR - jQuery XML HTTP request
-     * @param {String} url - The URL that occurs the error
-     * @return {void}
-     */
-    var handleError = function( jqXHR, url ){
-
-        if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
-            displayInvalidInputs( jqXHR.responseJSON );
-        } else {
-            displayUnknownError( jqXHR, url );
-        }
-    };
-
-    /**
-     * @memberOf Utility
-     * @desc Take a submitting action.
      * @access private
-     * @param {Object} formElement - Form element ( Native JavaScript Object )
-     * @param {Object} jqXHR - jQuery XML HTTP request
-     * > If jqXHR.status is not 422 and jqXHR.responseJSON is not empty
+     * @desc Take a submitting action.
+     * @param {jQuery} form - Form
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
+     * > If jqXHR.status is not 422 or 423 and jqXHR.responseJSON is not empty
      * then the jqXHR.responseJSON format must have the following keys below.
      *
      * Key | Explanation
      * - | -
      * **success** {Boolean} | It is a success status which it can be true or false.
      * **message** {String} | It is a response message which it can be an error message or a success message. *This is an optional key for a success case.*
-     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to **if success status is true and jqXHR.status equals 302**.
+     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to if success status is true.
      *
      * **Note:** jqXHR.status is HTTP status code.
-     * @return {void}
      */
-    var takeSubmitAction = function( formElement, jqXHR ){
+    function takeSubmitAction( form, jqXHR ){
 
-        if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
+        let result = jqXHR.responseJSON;
 
-            var result = jqXHR.responseJSON;
+        if( $.inArray( jqXHR.status, [422, 423] ) !== -1 ){
 
-            if( jqXHR.status === 422 ){
-                displayInvalidInputs( result );
-            } else if( result.success === true ){
+            displayInvalidInputs( result );
 
-                if( result.hasOwnProperty( 'message' ) ){
+        } else if( result.success === true ){
+            if( result.hasOwnProperty( 'message' ) ){
 
-                    ResultBoxSelector.on( 'closed.zf.reveal', function(){
-                        if( jqXHR.status === 302 ){
-                            location.href = result.redirectedUrl;
-                        } else {
-                            formElement.reset();
-                            $( formElement ).find( 'select' ).change();
-                        }
-                    } );
+                ResultBoxSelector.on( 'closed.zf.reveal', function(){
 
-                    displaySuccessMessageBox( result.message );
+                    if( result.redirectedUrl ){
+                        location.href = result.redirectedUrl;
+                    } else {
+                        form.trigger( 'reset' );
+                    }
+                } );
 
-                } else if( jqXHR.status === 302 ){
-                    location.href = result.redirectedUrl;
-                }
+                displaySuccessMessageBox( result.message );
 
-            } else {
-                displayErrorMessageBox( result.message );
+            } else if( result.redirectedUrl ){
+                location.href = result.redirectedUrl;
             }
 
         } else {
-            displayUnknownError( jqXHR, formElement.getAttribute( 'action' ) );
+
+            displayErrorMessageBox( result.message );
+
         }
-    };
+
+    }
 
     /**
      * @memberOf Utility
-     * @desc Run a callback function.
      * @access private
-     * @param {Object} formElement - Form element ( Native JavaScript Object )
-     * @param {Object} jqXHR - jQuery XML HTTP request
+     * @desc Run a callback function.
+     * @param {jQuery} form - Form
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
      * @param {function} [callbackFunction] - Callback function
-     * @return {void}
      */
-    var runCallbackFunction = function( formElement, jqXHR, callbackFunction ){
-        if( typeof( callbackFunction ) === 'function' ){
-            callbackFunction.call( formElement, jqXHR );
+    function runCallbackFunction( form, jqXHR, callbackFunction ){
+
+        if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
+            if( typeof(callbackFunction) === 'function' ){
+                callbackFunction.apply( this, [form, jqXHR] );
+            } else {
+                takeSubmitAction( form, jqXHR );
+            }
         } else {
-            takeSubmitAction( formElement, jqXHR );
+            displayUnknownError( jqXHR, form.attr( 'action' ) );
         }
-    };
+    }
 
     /**
      * @memberOf Utility
-     * @desc Submit a form and take an action.
      * @access public
-     * @param {String} formSelector - Form selector
-     * @param {function} [callbackFunction] - Callback function
-     * @return {void}
+     * @desc Get form data.
+     * @param {jQuery} form - Form
+     * @return {Array|Object} Form data
      */
-    var submitForm = function( formSelector, callbackFunction ){
+    function getFormData( form ){
 
-        var formElement = document.querySelector( formSelector ),
-            method      = formElement.getAttribute( 'method' ),
-            formData    = new FormData( formElement );
+        return (form.attr( 'method' ) === 'GET') ? form.serialize() : new FormData( form[0] );
+
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Submit a form and take an action.
+     * @param {jQuery} form - Form
+     * @param {function} [callbackFunction] - Callback function
+     */
+    function submitForm( form, callbackFunction ){
 
         $.ajax( {
-                    url:         formElement.getAttribute( 'action' ),
-                    method:      method,
-                    data:        formData,
+                    url:         form.attr( 'action' ),
+                    method:      form.attr( 'method' ),
+                    data:        getFormData( form ),
                     cache:       false,
                     contentType: false,
                     processData: false,
                     dataType:    'json',
                     success:     function( result, statusText, jqXHR ){
-                        runCallbackFunction( formElement, jqXHR, callbackFunction );
+                        runCallbackFunction( form, jqXHR, callbackFunction );
                     },
                     error:       function( jqXHR ){
-                        runCallbackFunction( formElement, jqXHR, callbackFunction );
+                        runCallbackFunction( form, jqXHR, callbackFunction );
                     },
                 } );
-    };
+    }
 
     return {
         submitForm:               submitForm,
-        handleError:              handleError,
         displaySuccessMessageBox: displaySuccessMessageBox,
+        displayErrorMessageBox:   displayErrorMessageBox,
+        displayInvalidInputs:     displayInvalidInputs,
+        displayUnexpectedError:   displayUnknownError,
+        clearErrors:              clearErrors,
+        getFormData:              getFormData,
     };
 
 })( jQuery );

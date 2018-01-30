@@ -58,13 +58,14 @@ class Handler extends ExceptionHandler
         }
 
         if( isset( $errorMessage ) ){
-            if( $request->ajax() ){
-                return response()->json( [ 'success' => false, 'message' => $errorMessage ], 500 );
-            } else {
-                $exception = new Exception( $errorMessage, 500 );
 
-                return response()->view( 'errors.500', compact( 'exception' ), 500 );
+            if( $request->expectsJson() ){
+                return response()->json( [ 'success' => false, 'message' => $errorMessage ], 500 );
             }
+
+            $exception = new Exception( $errorMessage, 500 );
+
+            return response()->view( 'errors.500', compact( 'exception' ), 500 );
         }
 
         return parent::render( $request, $exception );

@@ -5,12 +5,12 @@
 
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 
 /**
- * User Model
+ * This class handles user information.
  * @package App\Models
  */
 class User extends Authenticatable
@@ -59,7 +59,7 @@ class User extends Authenticatable
      *
      * @param string $password
      *
-     * @return bool true = success, false = fail
+     * @return bool Success status ( true = success, false = fail )
      */
     public function changePassword( string $password )
     {

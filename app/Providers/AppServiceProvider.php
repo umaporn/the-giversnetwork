@@ -5,10 +5,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\View;
-use Validator;
 use App\Libraries\CustomRouteCollection;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\ServiceProvider;
 
 /**
  * Application Service Provider
@@ -25,9 +25,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer( 'layouts.app', 'App\ViewComposers\MenuComposer' );
 
-        Validator::extend( 'correct_password', 'App\Libraries\ValidationRules@validatePassword' );
-        Validator::extend( 'zero_or_exists', 'App\Libraries\ValidationRules@validateZeroOrExistsRule' );
-        Validator::extend( 'checkbox_in', 'App\Libraries\ValidationRules@validateCheckboxInRule' );
+        Validator::extend( 'correct_password', 'App\Libraries\ValidationRules\Common@validatePassword' );
+        Validator::extend( 'zero_or_exists', 'App\Libraries\ValidationRules\Common@validateZeroOrExistsRule' );
+        Validator::extend( 'checkbox_in', 'App\Libraries\ValidationRules\Common@validateCheckboxInRule' );
     }
 
     /**

@@ -7,35 +7,38 @@
 
 @section('content')
 
-    <div class="row">
-        <div class="small-3 columns">
-            <p class="text-right">@lang('user.email'):</p>
-        </div>
-        <div class="small-9 columns">
-            <p>{{ $user->email }}</p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-3 columns">
-            <p class="text-right">@lang('user.password'):</p>
-        </div>
-        <div class="small-6 columns">
-            <p>********</p>
-        </div>
-        <div class="small-3 columns">
-            <a class="medium button" data-open="change-password">@lang('user.profile.change_password')</a>
+    <div class="grid-x">
+        <div class="large-6 cell">
+            <table class="stack unstriped">
+                <tr>
+                    <td>
+                        <strong>@lang('user.email'):</strong>
+                    </td>
+                    <td>
+                        {{ $user->email }}
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <strong>@lang('user.password'):</strong>
+                    </td>
+                    <td>
+                        <a data-open="change-password">@lang('user.profile.change_password')</a>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 
-    <div id="change-password" class="card tiny reveal" data-reveal data-close-on-click="false">
-        <div class="card-divider">
+    <div id="change-password" class="card reveal" data-reveal data-close-on-click="false">
+        <div class="card-divider title">
             @lang('user.profile.change_password_title')
         </div>
         <div class="card-section">
             @include('users.change_password')
         </div>
-        <button class="close-button" data-close aria-label="@lang('user.profile.close_button')" type="button">
-            <span aria-hidden="true" title="@lang('user.profile.close_button')">&times;</span>
+        <button class="close-button" data-close aria-label="@lang('button.close_popup')" type="button">
+            <span aria-hidden="true" title="@lang('button.close_popup')">&times;</span>
         </button>
     </div>
 @endsection

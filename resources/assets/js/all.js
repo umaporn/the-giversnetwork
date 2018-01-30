@@ -1,11 +1,16 @@
 /**
- * @const
  * @desc Spinner selector
- * @type {Object}
+ * @const {jQuery}
  */
-const SpinnerSelector = $( '#spinner' );
+const SpinnerSelector = $( '#spinner, #spinner-popup' );
 
-Translator.init();
+Translator.initialize();
+
+$.ajaxSetup( {
+                 headers: {
+                     'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' ),
+                 },
+             } );
 
 $( document )
     .ajaxStart( function(){
@@ -16,6 +21,8 @@ $( document )
     } )
     .ready( function(){
         /** Initialize all JavaScript modules. */
-        Forms.init();
-        Search.init();
+        Menu.initialize();
+        Search.initialize();
+        Confirmation.initialize();
+        Form.initialize();
     } );

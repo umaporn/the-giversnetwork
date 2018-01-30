@@ -29,7 +29,7 @@ class CustomRouteCollection extends RouteCollection
 
             $language = App::getLocale();
 
-            if( $language !== config( 'app.fallback_locale' ) ){
+            if( $language !== Utility::getDefaultLanguageCode() ){
                 $prefix = $language . '-';
             }
         }

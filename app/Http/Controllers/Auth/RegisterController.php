@@ -5,11 +5,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 /**
  * Register User Controller
@@ -30,7 +30,7 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /** @var  User model instance */
+    /** @var User User model instance */
     private $userModel;
 
     /**
@@ -61,14 +61,14 @@ class RegisterController extends Controller
      * @param  \Illuminate\Http\Request $request HTTP request object
      * @param  mixed                    $user    User
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function registered( Request $request, $user )
     {
         $redirectedUrl = route( 'home.index' );
 
-        if( $request->ajax() ){
-            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ], 302 );
+        if( $request->expectsJson() ){
+            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
         }
 
         return redirect( $redirectedUrl );

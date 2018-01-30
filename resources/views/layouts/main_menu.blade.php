@@ -1,8 +1,10 @@
-@if( $menuItem['url'] != '#' || count( $menuItem['childMenu'] ) )
-    <li>
-        <a href="{{ $menuItem['url'] }}">{{ $menuItem['menuText'] }}</a>
+@if( $menuItem['url'] !== '#' || count( $menuItem['childMenu'] ) )
+    <li class="{{ $menuItem['active'] }}">
+        <a class="button" href="{{ $menuItem['url'] }}">
+            {{ $menuItem['menuText'] }}
+        </a>
         @if( count( $menuItem['childMenu'] ) )
-            <ul class="menu vertical">
+            <ul class="menu vertical nested">
                 @each( 'layouts.main_menu', $menuItem['childMenu'], 'menuItem' )
             </ul>
         @endif

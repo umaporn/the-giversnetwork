@@ -6,7 +6,7 @@
 window.$ = window.jQuery = require( 'jquery' );
 
 /** Load Foundation framework. */
-require( 'foundation-sites' );
+require( 'foundation-sites/dist/js/foundation.min' );
 
 /** Initialize Foundation framework. */
 $( document ).foundation();

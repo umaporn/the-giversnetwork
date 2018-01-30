@@ -34,4 +34,6 @@ return [
     'value'                => 'Value',
     'search_box'           => 'Search by value',
     'load_new_translation' => 'Load New Translation',
+    'editing_success'      => 'Successfully saved the report.',
+    'editing_fail'         => 'Failed to save the report.',
 ];

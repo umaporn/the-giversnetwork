@@ -33,13 +33,13 @@ class ForgotPasswordController extends Controller
      *
      * @param  string $response Response message
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function sendResetLinkResponse( $response )
     {
         $successMessage = __( $response );
 
-        if( request()->ajax() ){
+        if( request()->expectsJson() ){
             return response()->json( [ 'success' => true, 'message' => $successMessage ] );
         }
 
@@ -52,14 +52,14 @@ class ForgotPasswordController extends Controller
      * @param  \Illuminate\Http\Request $request  HTTP      request object
      * @param  string                   $response Response message
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function sendResetLinkFailedResponse( Request $request, $response )
     {
         $error = [ 'email' => __( $response ) ];
 
-        if( $request->ajax() ){
-            return response()->json( $error, 422 );
+        if( $request->expectsJson() ){
+            return response()->json( [ 'errors' => $error ], 422 );
         }
 
         return back()->withErrors( $error );

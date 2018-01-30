@@ -7,12 +7,15 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'create' => 'Create',
-    'back'   => 'Back',
-    'submit' => 'Submit',
-    'update' => 'Update',
-    'edit'   => 'Edit',
-    'delete' => 'Delete',
-    'search' => 'Search',
+    'yes'         => 'Yes',
+    'no'          => 'No',
+    'ok'          => 'OK',
+    'search'      => 'Search',
+    'close_popup' => 'Close the pop up',
+    'update'      => 'Update',
+    'add'         => 'Add',
+    'create'      => 'Create',
+    'edit'        => 'Edit',
+    'back'        => 'Back',
 
 ];

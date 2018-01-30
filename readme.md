@@ -1,9 +1,15 @@
 # The Beginning Project
 This project is a standard project for every project. 
-It includes all useful features which are easy to customize and change some settings to support a new project.
+It includes all useful features which are easy to customize and change some configurations to support a new project.
 
 ## How to initialize this project
-1. First of all, you have to open the following **PHP extensions** below.
+1. You have to install the following **prerequisite programs** below.
+    - [PHP version 7.1 above](http://php.net/downloads.php)
+    - [MariaDB](https://mariadb.org/download/) or MySQL version 5.7 above 
+    - [Git](https://www.git-scm.com/download)
+    - [Composer](https://getcomposer.org/download/)
+    - [NodeJS](https://nodejs.org/en/download/) *-- No need for a production site.*
+1. You have to open the following **PHP extensions** below.
     - php_fileinfo *-- For getting file information*
     - php_mbstring *-- For non-ASCII encoding*
     - php_openssl *-- For cryptography*
@@ -11,11 +17,8 @@ It includes all useful features which are easy to customize and change some sett
     - php_gd2 *-- For image management*
     - php_xsl *-- For generating PHP document*
     - php_intl *-- For generating PHP document*
-2. **Prerequisite programs** are:
-    - [Git](https://www.git-scm.com/download)
-    - [Composer](https://getcomposer.org/download/)
-    - [NodeJS](https://nodejs.org/en/download/)
-3. After you finish to clone this project then create .env file from .env.example file and run the following commands below.
+1. After you finish cloning this project then you have to **create .env file from .env-local.example or .env-production.example file 
+   depending on your environment**. After that run the following commands below.
     - composer install *-- To install PHP components.*
     - npm install *-- To install JavaScript components. ( No need for a production site. )*
     - php artisan key:generate *-- To create an application key to support cryptography.*

@@ -5,9 +5,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Filesystem\Filesystem;
 use App;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\Http\Request;
 
 /**
  * Class MenuController
@@ -59,21 +59,20 @@ class MenuController extends Controller
             $search                  = ( $request->input( 'search' ) ) ? $request->input( 'search' ) : ' ';
             $translation_key_pattern = "/^" . $translation_key . "/";
             $search_pattern          = "/^" . $search . "/";
+            $this->translations      = [];
 
-            $this->translations = [];
             array_walk_recursive( $translation, function( $value, $key ) use ( $translation_key_pattern, $search_pattern, $translation ){
                 if( preg_match( $translation_key_pattern, $key ) || preg_match( $search_pattern, $value ) ){
-                    array_push( $this->translations, [ $key => $value ] );
+                    $this->translations[ $key ] = $value;
                 }
             } );
 
             $translation = $this->translations;
 
-            return response()->json( [
-                                         'data' => view( 'menu.datalist', compact( 'translation' ) )->render(),
-                                     ] );
+            return view( 'menu.datalist', [ 'translation' => $translation ] );
+
         } else {
-            return view( 'menu.index', compact( 'translation' ) );
+            return view( 'menu.index', [ 'translation' => $translation ] );
         }
     }
 
@@ -88,6 +87,7 @@ class MenuController extends Controller
     private function getTranslationKey( string $prefix = '', array $translations )
     {
         $keys = [];
+
         foreach( $translations as $key => $value ){
             $keys[]    = $key;
             $newPrefix = $key;
@@ -99,9 +99,7 @@ class MenuController extends Controller
                 }
                 $keys = array_merge( $keys, $this->getTranslationKey( $newPrefix, $value ) );
             } else {
-                array_push( $this->translations_list, [
-                    $prefix . '.' . $key => $value,
-                ] );
+                $this->translations_list[ $prefix . '.' . $key ] = $value;
             }
         }
 
@@ -171,6 +169,7 @@ class MenuController extends Controller
      */
     private function setTranslationsFromPHPToJsonFile( string $languages )
     {
+
         $save = file_put_contents( $this->getJsonFilename( $languages ), json_encode( $this->getTranslationsFromPHPFile( $languages ) ) );
 
         return $save;
@@ -201,7 +200,9 @@ class MenuController extends Controller
 
         $translation_list = $this->getTranslationsFromJsonFile();
         $translation      = $translation_list[ App::getLocale() ];
+
         array_walk_recursive( $translation, function( $value, $key ) use ( $keyInput ){
+
             if( $keyInput === $key ){
                 $this->value = $value;
             }
@@ -228,21 +229,19 @@ class MenuController extends Controller
         $keyInput         = $request->input( 'key' );
         $newValue         = $request->input( 'value' );
 
-        $index = 0;
-        foreach( $translation_list as $list ){
-            foreach( $list as $key => $value ){
-
-                if( $keyInput === $key ){
-                    $translation_list[ $index ][ $key ] = $newValue;
-                }
-                $index++;
+        foreach( $translation_list as $key => $value ){
+            if( $keyInput === $key ){
+                $translation_list[ $key ] = $newValue;
             }
         }
 
         $filename = $this->getJsonFilename( App::getLocale() );
-        file_put_contents( $filename, json_encode( $translation_list ) );
+        $success  = ( file_put_contents( $filename, json_encode( $translation_list ) ) ) ? true : false;
 
-        return response()->json( [ 'success' => true, 'redirectedUrl' => route( 'menu.index' ) ], 302 );
+        $message = $success ? __( 'menu.editing_success' )
+            : __( 'menu.editing_fail' );
+
+        return response()->json( [ 'success' => $success, 'message' => $message, 'redirectedUrl' => route( 'menu.index' ) ] );
 
     }
 

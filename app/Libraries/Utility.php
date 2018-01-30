@@ -5,8 +5,6 @@
 
 namespace App\Libraries;
 
-use Illuminate\Http\Request;
-
 /**
  * This class keeps all utility functions for all classes.
  */
@@ -31,13 +29,17 @@ class Utility
      */
     public static function getLanguageCode()
     {
-        preg_match( '@^(\w+)-@', request()->route()->getName(), $match );
+        $language = Utility::getDefaultLanguageCode();
 
-        $prefix   = count( $match ) ? $match[1] : '';
-        $language = config( 'app.fallback_locale' );
+        if( !is_null( request()->route() ) ){
 
-        if( in_array( $prefix, config( 'app.language_codes' ), true ) ){
-            $language = $prefix;
+            preg_match( '@^(\w+)-@', request()->route()->getName(), $match );
+
+            $prefix = count( $match ) ? $match[1] : '';
+
+            if( in_array( $prefix, config( 'app.language_codes' ), true ) ){
+                $language = $prefix;
+            }
         }
 
         return $language;
@@ -64,14 +66,23 @@ class Utility
     }
 
     /**
+     * Get the default language code.
+     *
+     * @return string Default language code
+     */
+    public static function getDefaultLanguageCode()
+    {
+        return config( 'app.fallback_locale' );
+    }
+
+    /**
      * Get redirected URL.
      *
-     * @param Request $request      HTTP request object
-     * @param string  $languageCode Language code
+     * @param string $languageCode Language code
      *
      * @return string Redirected URL
      */
-    public static function getRedirectedUrl( Request $request, string $languageCode )
+    public static function getRedirectedUrl( string $languageCode )
     {
         $redirectedUrl = url()->previous();
 
@@ -79,7 +90,7 @@ class Utility
 
             $baseUrl       = Utility::getBaseUrl();
             $oldCode       = Utility::getOldLanguageCode();
-            $newCode       = $languageCode !== config( 'app.fallback_locale' ) ? $languageCode : '';
+            $newCode       = $languageCode !== Utility::getDefaultLanguageCode() ? $languageCode : '';
             $regex         = '@^' . $baseUrl . ( $oldCode ? '(/' . $oldCode . '(/.+)|/' . $oldCode . '$)' : '(/.+)?' ) . '@';
             $replacement   = $baseUrl . ( $newCode ? '/' . $newCode : '' ) . ( $oldCode ? '${2}' : '${1}' );
             $redirectedUrl = preg_replace( $regex, $replacement, $redirectedUrl );

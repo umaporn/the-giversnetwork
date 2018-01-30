@@ -31,7 +31,7 @@ class ResetPasswordController extends Controller
     /**
      * Get the password reset validation rules.
      *
-     * @return array
+     * @return array Password reset rule
      */
     protected function rules()
     {
@@ -43,15 +43,15 @@ class ResetPasswordController extends Controller
      *
      * @param  string $response Response message
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function sendResetResponse( $response )
     {
         $redirectedUrl  = route( 'home.index' );
         $successMessage = __( $response );
 
-        if( request()->ajax() ){
-            return response()->json( [ 'success' => true, 'message' => $successMessage, 'redirectedUrl' => $redirectedUrl ], 302 );
+        if( request()->expectsJson() ){
+            return response()->json( [ 'success' => true, 'message' => $successMessage, 'redirectedUrl' => $redirectedUrl ] );
         }
 
         return redirect( $redirectedUrl )->with( 'status', $successMessage );
@@ -63,14 +63,14 @@ class ResetPasswordController extends Controller
      * @param  \Illuminate\Http\Request $request  HTTP request object
      * @param  string                   $response Response message
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP redirect response
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function sendResetFailedResponse( Request $request, $response )
     {
         $error = [ 'email' => __( $response ) ];
 
-        if( $request->ajax() ){
-            return response()->json( $error, 422 );
+        if( $request->expectsJson() ){
+            return response()->json( [ 'errors' => $error ], 422 );
         }
 
         return redirect()->back()->withInput( $request->only( 'email' ) )->withErrors( $error );

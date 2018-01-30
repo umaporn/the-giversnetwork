@@ -1,66 +1,97 @@
-var Search = ( function(){
+/**
+ * @namespace
+ * @desc Handles search form management.
+ */
+const Search = (function(){
+
+    const
+        /**
+         * @memberOf Search
+         * @access public
+         * @desc div element to display a search result
+         * @constant {jQuery}
+         */
+        ResultDiv  = $( '#search-result' ),
+        /**
+         * @memberOf Search
+         * @access public
+         * @desc Search form
+         * @const {jQuery}
+         */
+        SearchForm = $( '#search-form' );
 
     /**
-     * Initialize Search module.
-     *
-     * @access    public
-     *
-     * @return    {void}
+     * @memberOf Search
+     * @access public
+     * @desc Submit a search form.
+     * @param {jQuery} form - Search form
      */
-    var initialize = function(){
+    function submitForm( form ){
 
-        $('#search-form').submit( function( event ){
+        ResultDiv.removeClass( 'alert' );
+
+        $.ajax( {
+                    url:         form.attr( 'action' ),
+                    method:      form.attr( 'method' ),
+                    data:        Utility.getFormData( form ),
+                    cache:       false,
+                    contentType: false,
+                    processData: false,
+                    dataType:    'html',
+                    success:     function( result ){
+                        Utility.clearErrors();
+                        ResultDiv.html( result );
+                    },
+                    error:       function( jqXHR, statusText, errorThrown ){
+
+                        if( jqXHR.status === 422 ){
+                            Utility.displayInvalidInputs( JSON.parse( jqXHR.responseText ) );
+                            ResultDiv.html( '' );
+                        } else {
+                            ResultDiv.html( Translator.translate( 'utility.result.error' ) + ' ' + errorThrown )
+                                     .addClass( 'alert' );
+                        }
+
+                    },
+                } );
+    }
+
+    /**
+     * @memberOf Search
+     * @access private
+     * @desc Bind pagination.
+     */
+    function bindPagination(){
+
+        ResultDiv.on( 'click', '.pagination a', function( event ){
+
             event.preventDefault();
 
-            if( $('p.relation') ){
-                $('p.relation').hide();
-            }
+            let form = document.createElement( 'form' );
+            form.setAttribute( 'method', 'GET' );
+            form.setAttribute( 'action', $( this ).attr( 'href' ) );
 
-            search( $(this).attr('action'), $(this).serialize() );
-        });
+            submitForm( $( form ) );
 
+        } );
 
-
-    };
+    }
 
     /**
-     * Search, sort, and make pagination for data.
-     *
-     * @access    public
-     *
-     * @param     {String}    url         URL
-     * @param     {String}    data        Serialized data
-     * @param     {Object}    scrollTo    Element to scroll to, offset amount and transition speed
-     * @return    {void}
+     * @memberOf Search
+     * @access public
+     * @desc Initialize search module.
      */
-    var search = function( url, data, scrollTo ){
-        
-        $.ajax({
-            url: url,
-            method: 'GET',
-            data: data,
-            dataType: 'JSON',
-            success: function( result ){
-                $('#data').html( result.data );
-                $('#data-footer').html( result.footer );
-            },
-            error: function( xhr, statusText ){
-                xhr.statusText = statusText;
-                //Utility.handleError( xhr, url );
-            },
-            complete: function(){
-                if( scrollTo ) {
-                    $( 'html, body' ).animate({
-                        scrollTop: scrollTo.element.offset().top - scrollTo.offset
-                    }, scrollTo.speed );
-                }
-            }
-        });
-    };
+    function initialize(){
+
+        bindPagination();
+
+    }
 
     return {
-        init: initialize,
-        search: search,
+        ResultDiv:  ResultDiv,
+        SearchForm: SearchForm,
+        initialize: initialize,
+        submitForm: submitForm,
     };
-
-})(jQuery);
+})( jQuery );

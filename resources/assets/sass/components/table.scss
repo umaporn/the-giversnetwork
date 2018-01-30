@@ -3,3 +3,9 @@
         width: $number + unquote('%');
     }
 }
+
+@include breakpoint(medium down) {
+    table.stack th {
+        width: 100%;
+    }
+}

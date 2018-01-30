@@ -1,18 +1,18 @@
 <?php
 /**
- * Manage menus of this application.
+ * Menu Composer
  */
 
 namespace App\ViewComposers;
 
-use Illuminate\View\View;
-use Illuminate\Support\Facades\Gate;
 use App\Libraries\Utility;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\View\View;
 
 /**
  * A class for generating all menus.
- *
- * Each menu choice input of this class is an array pair of rootName, menuText, class, and childMenu.
+ * Each menu choice input of this class is an array pair of rootName, menuText, class, gate, and childMenu.
+ * @package App\ViewComposers
  */
 class MenuComposer
 {
@@ -20,7 +20,7 @@ class MenuComposer
     private $mainMenu;
 
     /**
-     * Initialize MenuComposer class.
+     * MenuComposer constructor.
      */
     public function __construct()
     {
@@ -28,18 +28,30 @@ class MenuComposer
     }
 
     /**
+     * Get the gate of the specific menu choice.
+     *
+     * @param array $menuChoice Menu choice
+     *
+     * @return string Gate
+     */
+    private function getGate( array $menuChoice )
+    {
+        return empty( $menuChoice['gate'] ) ? 'view' : $menuChoice['gate'];
+    }
+
+    /**
      * Authorize a menu choice.
      *
      * @param array $menuChoice Menu choice
      *
-     * @return boolean true = authorized, false = unauthorized
+     * @return boolean Authorization status ( true = authorized, false = unauthorized )
      */
     private function authorize( array $menuChoice )
     {
         $authorized = true;
 
         if( isset( $menuChoice['class'] ) ){
-            $authorized = Gate::allows( 'view', $menuChoice['class'] );
+            $authorized = Gate::allows( $this->getGate( $menuChoice ), new $menuChoice['class']() );
         }
 
         return $authorized;
@@ -87,7 +99,8 @@ class MenuComposer
             $menuItem['url']    = '#';
             $menuItem['active'] = '';
         } else {
-            $menuItem['url']    = route( $menuChoice['routeName'] );
+            $parameters         = isset( $menuChoice['parameters'] ) ? $menuChoice['parameters'] : [];
+            $menuItem['url']    = route( $menuChoice['routeName'], $parameters );
             $menuItem['active'] = $this->getActiveStyle( $menuItem['url'] );
         }
 
@@ -123,7 +136,7 @@ class MenuComposer
     }
 
     /**
-     * Compose view with all menus.
+     * Compose a specific view with all menus.
      *
      * @param View $view Current view
      *

@@ -5,8 +5,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Http\Requests\UserRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -29,7 +29,9 @@ class UserController extends Controller
     }
 
     /**
-     * Load a profile page of logged in user.
+     * Load a profile page of the authenticated user.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
      */
     public function profile()
     {
@@ -43,13 +45,15 @@ class UserController extends Controller
      *
      * @param UserRequest $request User request object
      *
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP
+     *                                                                                                        response
+     *                                                                                                        object
      */
     public function changePassword( UserRequest $request )
     {
         $success = $this->userModel->changePassword( $request->input( 'password' ) );
 
-        if( $request->ajax() ){
+        if( $request->expectsJson() ){
 
             $message = $success ? __( 'user.profile.successful_password_change' ) : __( 'user.profile.failed_password_change' );
 

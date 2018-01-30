@@ -2,11 +2,12 @@
  * @namespace
  * @desc JavaScript translator
  */
-var Translator = (function(){
+const Translator = (function(){
+
     /**
      * @memberOf Translator
-     * @desc JavaScript Translator
      * @access private
+     * @desc JavaScript Translator
      * @constant {Object}
      */
     const JSTranslator = JSTranslate.i18n( {
@@ -16,15 +17,14 @@ var Translator = (function(){
 
     /**
      * @memberOf Translator
-     * @desc Initialize JavaScript translator.
      * @access public
-     * @return {void}
+     * @desc Initialize JavaScript translator.
      */
-    var initialize = function(){
+    function initialize(){
 
         $.holdReady( true );
 
-        var jsonFiles    = [],
+        let jsonFiles    = [],
             errorMessage = 'Error! Failed to load some translation files, please contact the system administrator.';
 
         Laravel.languageCodes.forEach( function( languageCode ){
@@ -35,7 +35,7 @@ var Translator = (function(){
          .then(
              function(){
 
-                 for( var index = 0; index < arguments.length; index++ ){
+                 for( let index = 0; index < arguments.length; index++ ){
                      JSTranslator.add( {
                                            language: Laravel.languageCodes[index],
                                            data:     arguments[index][0],
@@ -46,26 +46,26 @@ var Translator = (function(){
              },
              function(){
                  Utility.displayErrorMessageBox( errorMessage );
-             }
+             },
          ).always( function(){
             $.holdReady( false );
         } );
-    };
+    }
 
     /**
      * @memberOf Translator
-     * @desc Translate text with a specific key.
      * @access public
+     * @desc Translate text with a specific key.
      * @param {String} key - Translation key
      * @return {String} Translated text
      */
-    var translate = function( key ){
+    function translate( key ){
         return JSTranslator.translate( key );
-    };
+    }
 
     return {
-        init:      initialize,
-        translate: translate,
+        initialize: initialize,
+        translate:  translate,
     };
 
 })( jQuery );
