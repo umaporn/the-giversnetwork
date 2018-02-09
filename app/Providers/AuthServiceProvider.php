@@ -15,6 +15,7 @@ class AuthServiceProvider extends ServiceProvider
 {
     /** @var array The policy mappings for the application. */
     protected $policies = [
+        \App\Http\Controllers\HomeController::class => \App\Policies\HomePolicy::class,
     ];
 
     /**

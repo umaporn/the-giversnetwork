@@ -43,7 +43,7 @@ const Confirmation = (function(){
 
             if( jqXHR.status === 422 ){
 
-                Utility.displayErrorMessageBox( Object.values( result ).join( '<br>' ) );
+                Utility.displayErrorMessageBox( Object.values( result.errors ).join( '<br>' ) );
 
             } else if( result.success === true ){
 

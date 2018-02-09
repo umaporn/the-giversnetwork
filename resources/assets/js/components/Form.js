@@ -4,18 +4,26 @@
  */
 const Form = (function(){
 
-    /**
-     * @memberOf Form
-     * @access private
-     * @desc Submission form
-     * @const {jQuery}
-     */
-    const SubmissionForm = $( '.submission-form' );
+    const
+        /**
+         * @memberOf Form
+         * @access private
+         * @desc Submission form
+         * @const {jQuery}
+         */
+        SubmissionForm               = $( '.submission-form' ),
+        /**
+         * @memberOf Form
+         * @access private
+         * @desc Deletion confirmation selector
+         * @const {string}
+         */
+        DeletionConfirmationSelector = '.deletion';
 
     /**
      * @memberOf Form
      * @access public
-     * @desc Initialize forms module.
+     * @desc Initialize Form module.
      */
     function initialize(){
 
@@ -35,7 +43,7 @@ const Form = (function(){
 
         } );
 
-        Search.ResultDiv.on( 'submit', '.deletion', function( event ){
+        Search.ResultDiv.on( 'submit', DeletionConfirmationSelector, function( event ){
 
             event.preventDefault();
 
