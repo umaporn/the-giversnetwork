@@ -98,7 +98,7 @@ const Utility = (function(){
 
         if( error.hasOwnProperty( 'errors' ) ){
 
-            for( name in error['errors'] ){
+            for( let name in error['errors'] ){
 
                 let errorMessage = error['errors'][name],
                     id           = $( '[name=' + name + ']' ).attr( 'id' ),
@@ -253,7 +253,7 @@ const Utility = (function(){
         displaySuccessMessageBox: displaySuccessMessageBox,
         displayErrorMessageBox:   displayErrorMessageBox,
         displayInvalidInputs:     displayInvalidInputs,
-        displayUnexpectedError:   displayUnknownError,
+        displayUnknownError:      displayUnknownError,
         clearErrors:              clearErrors,
         getFormData:              getFormData,
     };
