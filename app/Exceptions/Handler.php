@@ -8,6 +8,8 @@ namespace App\Exceptions;
 use App\Libraries\Utility;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\App;
 
@@ -29,12 +31,11 @@ class Handler extends ExceptionHandler
 
     /**
      * Report or log an exception.
-     *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception $exception Exception
+     * @param Exception $exception Exception
      *
-     * @return void
+     * @throws Exception Exception
      */
     public function report( Exception $exception )
     {
@@ -51,13 +52,9 @@ class Handler extends ExceptionHandler
      */
     public function render( $request, Exception $exception )
     {
-        if( $exception instanceof \Illuminate\Database\QueryException ){
-            $errorMessage = $exception->getCode() === 1045 ? __( 'exception.database_connection' ) : __( 'exception.query' );
-        } else if( $exception instanceof \Swift_TransportException ){
-            $errorMessage = __( 'exception.mail_server_connection' );
-        }
+        $errorMessage = $this->getErrorMessage( $exception );
 
-        if( isset( $errorMessage ) ){
+        if( !empty( $errorMessage ) ){
 
             if( $request->expectsJson() ){
                 return response()->json( [ 'success' => false, 'message' => $errorMessage ], 500 );
@@ -69,6 +66,33 @@ class Handler extends ExceptionHandler
         }
 
         return parent::render( $request, $exception );
+    }
+
+    /**
+     * Get a new error message.
+     *
+     * @param Exception $exception Exception
+     *
+     * @return string Error message
+     */
+    private function getErrorMessage( Exception $exception )
+    {
+        switch( get_class( $exception ) ){
+            case QueryException::class:
+                $errorMessage = $exception->getCode() === 1045 ? __( 'exception.database_connection' ) : __( 'exception.query' );
+                break;
+            case \Swift_TransportException::class:
+                $errorMessage = __( 'exception.mail_server_connection' );
+                break;
+            case ModelNotFoundException::class:
+                $errorMessage = __( 'exception.model_not_found' );
+                break;
+            default:
+                $errorMessage = '';
+                break;
+        }
+
+        return $errorMessage;
     }
 
     /**
