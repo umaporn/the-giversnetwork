@@ -37,8 +37,8 @@ class PasswordGrantRequest extends BaseRequest
     {
         $this->requestAccessToken( [
                                        'grant_type'    => 'password',
-                                       'client_id'     => env( 'OAUTH_CLIENT_ID' ),
-                                       'client_secret' => env( 'OAUTH_CLIENT_SECRET' ),
+                                       'client_id'     => env( 'OAUTH_PASSWORD_GRANT_CLIENT_ID' ),
+                                       'client_secret' => env( 'OAUTH_PASSWORD_GRANT_CLIENT_SECRET' ),
                                        'username'      => session( 'username' ),
                                        'password'      => decrypt( session( 'password' ) ),
                                    ] );

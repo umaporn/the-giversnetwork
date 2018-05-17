@@ -53,8 +53,8 @@ class ClientCredentialsGrantRequest extends BaseRequest
     {
         $this->requestAccessToken( [
                                        'grant_type'    => 'client_credentials',
-                                       'client_id'     => env( 'OAUTH_CLIENT_ID' ),
-                                       'client_secret' => env( 'OAUTH_CLIENT_SECRET' ),
+                                       'client_id'     => env( 'OAUTH_CLIENT_CREDENTIALS_GRANT_CLIENT_ID' ),
+                                       'client_secret' => env( 'OAUTH_CLIENT_CREDENTIALS_GRANT_CLIENT_SECRET' ),
                                    ] );
     }
 

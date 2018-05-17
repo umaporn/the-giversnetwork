@@ -158,7 +158,7 @@ const Utility = (function(){
 
         let result = jqXHR.responseJSON;
 
-        if( $.inArray( jqXHR.status, [422, 423] ) !== -1 ){
+        if( $.inArray( jqXHR.status, [422, 429] ) !== -1 ){
 
             displayInvalidInputs( result );
 
