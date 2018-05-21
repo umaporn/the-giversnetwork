@@ -15,7 +15,7 @@
                         <strong>@lang('user.email'):</strong>
                     </td>
                     <td>
-                        {{ $user->email }}
+                        {{ $user->getAuthIdentifier() }}
                     </td>
                 </tr>
                 <tr>

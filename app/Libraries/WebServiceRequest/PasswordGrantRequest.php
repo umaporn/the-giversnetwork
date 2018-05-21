@@ -21,7 +21,7 @@ class PasswordGrantRequest extends BaseRequest
     public function attemptLogin( array $credentials )
     {
         session( [
-                     'username' => $credentials['email'],
+                     'email'    => $credentials['email'],
                      'password' => encrypt( $credentials['password'] ),
                  ] );
 
@@ -39,7 +39,7 @@ class PasswordGrantRequest extends BaseRequest
                                        'grant_type'    => 'password',
                                        'client_id'     => env( 'OAUTH_PASSWORD_GRANT_CLIENT_ID' ),
                                        'client_secret' => env( 'OAUTH_PASSWORD_GRANT_CLIENT_SECRET' ),
-                                       'username'      => session( 'username' ),
+                                       'username'      => session( 'email' ),
                                        'password'      => decrypt( session( 'password' ) ),
                                    ] );
     }

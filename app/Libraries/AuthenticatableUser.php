@@ -20,7 +20,7 @@ class AuthenticatableUser implements Authenticatable
      */
     public function getAuthIdentifierName()
     {
-        return 'username';
+        return 'email';
     }
 
     /**
