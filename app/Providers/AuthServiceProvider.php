@@ -5,7 +5,9 @@
 
 namespace App\Providers;
 
+use App\Libraries\AuthenticatableUser;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Authentication Service Provider
@@ -26,5 +28,9 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        Auth::provider( 'oauth', function(){
+            return new UserProvider( new AuthenticatableUser() );
+        } );
     }
 }
