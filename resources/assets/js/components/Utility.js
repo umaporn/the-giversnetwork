@@ -83,7 +83,7 @@ const Utility = (function(){
      */
     function clearErrors(){
         $( 'form' ).children().removeClass( 'error' );
-        $( '.help-text' ).addClass( 'hide' );
+        $( '.alert.help-text' ).addClass( 'hide' );
     }
 
     /**
