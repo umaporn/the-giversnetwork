@@ -20,9 +20,6 @@
             {{ $errors->has('password') ? $errors->first('password') : '' }}
         </p>
 
-        <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-        <label for="remember">@lang('login.remember_me')</label>
-
         <div class="button-group">
             <button type="submit" class="button">@lang('login.login_button')</button>
             <a class="hollow button" href="{{ route('password.request') }}">@lang('login.forgot_password')</a>
