@@ -98,9 +98,11 @@ abstract class BaseRequest
     abstract protected function refreshAccessToken();
 
     /**
-     * Refresh the access token.
+     * Request the access token.
      *
      * @param array $parameters Form parameters
+     *
+     * @return array requesting an access token response
      */
     protected function requestAccessToken( array $parameters )
     {
@@ -113,6 +115,8 @@ abstract class BaseRequest
         }
 
         $this->saveAccessTokenProperties( $response );
+
+        return $response;
     }
 
     /**

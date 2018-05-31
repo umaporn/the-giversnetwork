@@ -20,14 +20,23 @@ class PasswordGrantRequest extends BaseRequest
      */
     public function attemptLogin( array $credentials )
     {
-        session( [
-                     'email'    => $credentials['email'],
-                     'password' => encrypt( $credentials['password'] ),
-                 ] );
+        $response = $this->requestAccessToken( [
+                                                   'grant_type'    => 'password',
+                                                   'client_id'     => env( 'OAUTH_PASSWORD_GRANT_CLIENT_ID' ),
+                                                   'client_secret' => env( 'OAUTH_PASSWORD_GRANT_CLIENT_SECRET' ),
+                                                   'username'      => $credentials['email'],
+                                                   'password'      => $credentials['password'],
+                                               ] );
+        $success  = isset( $response['error'] ) ? false : true;
 
-        $this->refreshAccessToken();
+        if( $success ){
+            session( [
+                         'email'    => $credentials['email'],
+                         'password' => encrypt( $credentials['password'] ),
+                     ] );
+        }
 
-        return empty( $this->getAccessToken() ) ? false : true;
+        return $success;
     }
 
     /**
@@ -36,12 +45,21 @@ class PasswordGrantRequest extends BaseRequest
     protected function refreshAccessToken()
     {
         $this->requestAccessToken( [
-                                       'grant_type'    => 'password',
+                                       'grant_type'    => 'refresh_token',
                                        'client_id'     => env( 'OAUTH_PASSWORD_GRANT_CLIENT_ID' ),
                                        'client_secret' => env( 'OAUTH_PASSWORD_GRANT_CLIENT_SECRET' ),
-                                       'username'      => session( 'email' ),
-                                       'password'      => decrypt( session( 'password' ) ),
+                                       'refresh_token' => $this->getRefreshToken(),
                                    ] );
+    }
+
+    /**
+     * Get an access token.
+     *
+     * @return string Token type
+     */
+    private function getRefreshToken()
+    {
+        return session( 'accessTokenProperties' )['refresh_token'] ?? '';
     }
 
     /**
@@ -51,8 +69,7 @@ class PasswordGrantRequest extends BaseRequest
      */
     protected function getAccessToken()
     {
-        return isset( session( 'accessTokenProperties' )['access_token'] )
-            ? session( 'accessTokenProperties' )['access_token'] : '';
+        return session( 'accessTokenProperties' )['access_token'] ?? '';
     }
 
     /**
@@ -72,7 +89,6 @@ class PasswordGrantRequest extends BaseRequest
      */
     protected function getTokenType()
     {
-        return isset( session( 'accessTokenProperties' )['token_type'] )
-            ? session( 'accessTokenProperties' )['token_type'] : '';
+        return session( 'accessTokenProperties' )['token_type'] ?? '';
     }
 }

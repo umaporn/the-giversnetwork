@@ -5,31 +5,39 @@
 @section('view-id', 'REGISTER-001')
 
 @section('content')
+    <div class="success callout {{ session('status') ? '' : 'hide' }}">
+        {{ session('status') ? session('status') : '' }}
+    </div>
     <form class="submission-form" method="POST" action="{{ route('submitRegister') }}">
+
         {{ csrf_field() }}
 
-        <label for="email">@lang('user.email'):</label>
-        <input type="text" id="email" name="email" value="{{ old('email') }}" required autofocus
-               class="{{ $errors->has('email') ? 'error' : '' }}"
-        >
+        <label>@lang('user.email'):
+            <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus
+                   class="{{ $errors->has('email') ? 'error' : '' }}"
+            >
+        </label>
         <p id="email-help-text" class="alert help-text {{ $errors->has('email') ? '' : 'hide' }}">
             {{ $errors->has('email') ? $errors->first('email') : '' }}
         </p>
 
-        <label for="password">@lang('user.password'):</label>
-        <input type="password" id="password" name="password" required
-               class="{{ $errors->has('password') ? 'error' : '' }}"
-        >
+        <label>@lang('user.password'):
+            <input type="password" id="password" name="password" required
+                   class="{{ $errors->has('password') ? 'error' : '' }}"
+            >
+        </label>
         <p id="password-help-text" class="alert help-text {{ $errors->has('password') ? '' : 'hide' }}">
             {{ $errors->has('password') ? $errors->first('password') : '' }}
         </p>
 
-        <label for="password-confirm">
+        <label>
             @lang('user.password_confirmation'):
+            <input type="password" name="password_confirmation" required
+                   class="{{ $errors->has('password_confirmation') ? 'error' : '' }}"
+            >
         </label>
-        <input type="password" id="password-confirm" name="password_confirmation" required
-               class="{{ $errors->has('password_confirmation') ? 'error' : '' }}"
-        >
+
         <button type="submit" class="button">@lang('register.register_button')</button>
+
     </form>
 @endsection
