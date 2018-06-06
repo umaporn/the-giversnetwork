@@ -2,43 +2,64 @@
 
 @section('page-title', __('user.page_title.profile'))
 @section('page-description', __('user.page_description.profile'))
-@section('view-id', 'USER-PROFILE-001')
 @section('page-icon', 'edit-user-icon')
 
 @section('content')
 
-    <div class="grid-x">
-        <div class="large-6 cell">
-            <table class="stack unstriped">
-                <tr>
-                    <td>
-                        <strong>@lang('user.email'):</strong>
-                    </td>
-                    <td>
-                        {{ $user->getAuthIdentifier() }}
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong>@lang('user.password'):</strong>
-                    </td>
-                    <td>
-                        <a data-open="change-password">@lang('user.profile.change_password')</a>
-                    </td>
-                </tr>
-            </table>
+    @if( $user['isLocalUser'] )
+        <div class="grid-x align-right">
+            <form class="submission-form" method="GET" action="{{ route('user.resetPassword') }}">
+                <button class="button" type="submit">@lang('passwords.request_button')</button>
+            </form>
         </div>
-    </div>
+    @endif
 
-    <div id="change-password" class="card reveal" data-reveal data-close-on-click="false">
-        <div class="card-divider title">
-            @lang('user.profile.change_password_title')
-        </div>
-        <div class="card-section">
-            @include('users.change_password')
-        </div>
-        <button class="close-button" data-close aria-label="@lang('button.close_popup')" type="button">
-            <span aria-hidden="true" title="@lang('button.close_popup')">&times;</span>
-        </button>
-    </div>
+    <form class="submission-form" method="POST" action="{{ route('user.updateProfile') }}">
+
+        <label>
+            @lang('user.avatar'):
+            <img src="{{ $user['avatar'] }}">
+            <input type="file" name="avatar" id="avatar">
+        </label>
+        <p id="avatar-help-text" class="alert help-text {{ $errors->has('avatar') ? '' : 'hide' }}">
+            {{ $errors->has('avatar') ? $errors->first('avatar') : '' }}
+        </p>
+
+        <label>
+            @lang('user.firstName'):
+            <input type="text" name="firstName" id="firstName" value="{{ $user['firstName'] }}">
+        </label>
+        <p id="firstName-help-text" class="alert help-text {{ $errors->has('firstName') ? '' : 'hide' }}">
+            {{ $errors->has('firstName') ? $errors->first('firstName') : '' }}
+        </p>
+
+        <label>
+            @lang('user.lastName'):
+            <input type="text" name="lastName" id="lastName" value="{{ $user['lastName'] }}">
+        </label>
+        <p id="lastName-help-text" class="alert help-text {{ $errors->has('lastName') ? '' : 'hide' }}">
+            {{ $errors->has('lastName') ? $errors->first('lastName') : '' }}
+        </p>
+
+        <label>
+            @lang('user.middleName'):
+            <input type="text" name="middleName" id="middleName" value="{{ $user['middleName'] }}">
+        </label>
+        <p id="middleName-help-text" class="alert help-text {{ $errors->has('middleName') ? '' : 'hide' }}">
+            {{ $errors->has('middleName') ? $errors->first('middleName') : '' }}
+        </p>
+
+        <label>
+            @lang('user.mobile'):
+            <input type="text" name="mobile" id="mobile" value="{{ $user['mobile'] }}">
+        </label>
+        <p id="mobile-help-text" class="alert help-text {{ $errors->has('mobile') ? '' : 'hide' }}">
+            {{ $errors->has('mobile') ? $errors->first('mobile') : '' }}
+        </p>
+
+        <button type="submit" class="button">@lang('button.update')</button>
+        <button type="reset" class="button">@lang('button.reset')</button>
+
+    </form>
+
 @endsection

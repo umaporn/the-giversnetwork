@@ -6,7 +6,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Libraries\WebServiceRequest\ClientCredentialsGrantRequest;
+use App\Support\Facades\ClientGrant;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -39,8 +39,7 @@ class RegisterController extends Controller
      */
     public function register( Request $request )
     {
-        $oauth    = new ClientCredentialsGrantRequest();
-        $response = $oauth->call(
+        $response = ClientGrant::call(
             'POST',
             '/api/beginning/register/' . App::getLocale(),
             [ 'form_params' => $request->all() ]

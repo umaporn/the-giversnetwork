@@ -20,8 +20,7 @@ return [
         'index' => 'Home page',
     ],
 
-    'return' => 'Return to Home?',
-
-    'welcome' => 'Welcome to the beginning project :D.',
+    'return'  => 'Return to Home?',
+    'welcome' => 'Welcome',
 
 ];

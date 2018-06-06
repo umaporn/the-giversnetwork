@@ -6,11 +6,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Libraries\Utility;
-use App\Libraries\WebServiceRequest\PasswordGrantRequest;
+use App\Support\Facades\PasswordGrant;
+use App\Support\Facades\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 /**
  * Login Controller
@@ -83,6 +84,12 @@ class LoginController extends Controller
      */
     public function logout( Request $request )
     {
+        $response = PasswordGrant::call( 'GET', '/api/logout' );
+
+        if( !$response['success'] ){
+            Log::error( 'Failed to revoke an access token, ' . PasswordGrant::getAccessToken() . '.' );
+        }
+
         $this->traitLogout( $request );
 
         return redirect()->route( 'home.index' );
@@ -97,8 +104,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin( Request $request )
     {
-        $oauth   = new PasswordGrantRequest();
-        $success = $oauth->attemptLogin( $this->credentials( $request ) );
+        $success = PasswordGrant::attemptLogin( $this->credentials( $request ) );
 
         if( $success ){
             $this->guard()->login( Auth::getProvider()->retrieveByCredentials( $this->credentials( $request ) ) );

@@ -67,7 +67,7 @@ class PasswordGrantRequest extends BaseRequest
      *
      * @return string Token type
      */
-    protected function getAccessToken()
+    public function getAccessToken()
     {
         return session( 'accessTokenProperties' )['access_token'] ?? '';
     }

@@ -208,7 +208,11 @@ const Utility = (function(){
                 }
                 break;
             default:
-                displayUnknownError( jqXHR, form.attr( 'action' ) );
+                if( jqXHR.hasOwnProperty( 'responseJSON' ) && jqXHR.responseJSON.hasOwnProperty( 'message' ) ){
+                    displayErrorMessageBox( jqXHR.responseJSON.message );
+                } else {
+                    displayUnknownError( jqXHR, form.attr( 'action' ) );
+                }
                 break;
         }
 

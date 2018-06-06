@@ -1,9 +1,11 @@
 <?php
 /**
- * Home page controller
+ * Home Page Controller
  */
 
 namespace App\Http\Controllers;
+
+use App\Support\Facades\PasswordGrant;
 
 /**
  * Home Page Controller
@@ -15,12 +17,11 @@ class HomeController extends Controller
      * Display home page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Home page
-     * @throws \Illuminate\Auth\Access\AuthorizationException Authorization exception
      */
     public function index()
     {
-        $this->authorize( 'view', $this );
+        $response = PasswordGrant::call( 'GET', '/api/profile' );
 
-        return view( 'home' );
+        return view( 'home', [ 'user' => $response['data'] ] );
     }
 }

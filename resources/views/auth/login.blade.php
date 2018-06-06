@@ -2,7 +2,6 @@
 
 @section('page-title', __('login.page_title.index'))
 @section('page-description', __('login.page_description.index'))
-@section('view-id', 'LOGIN-001')
 
 @section('content')
     <form class="submission-form" method="POST" action="{{ route('submitLogin') }}">

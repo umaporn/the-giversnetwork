@@ -5,7 +5,7 @@
 
 namespace App\Exceptions;
 
-use App\Libraries\Utility;
+use App\Support\Facades\Utility;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -21,10 +21,10 @@ class Handler extends ExceptionHandler
 {
     /** @var array A list of the exception types that should not be reported. */
     protected $dontReport = [
-        \Illuminate\Auth\AuthenticationException::class,
+        AuthenticationException::class,
         \Illuminate\Auth\Access\AuthorizationException::class,
         \Symfony\Component\HttpKernel\Exception\HttpException::class,
-        \Illuminate\Database\Eloquent\ModelNotFoundException::class,
+        ModelNotFoundException::class,
         \Illuminate\Session\TokenMismatchException::class,
         \Illuminate\Validation\ValidationException::class,
     ];
@@ -77,6 +77,8 @@ class Handler extends ExceptionHandler
      */
     private function getErrorMessage( Exception $exception )
     {
+        $errorMessage = '';
+
         switch( get_class( $exception ) ){
             case QueryException::class:
                 $errorMessage = $exception->getCode() === 1045 ? __( 'exception.database_connection' ) : __( 'exception.query' );
@@ -86,9 +88,6 @@ class Handler extends ExceptionHandler
                 break;
             case ModelNotFoundException::class:
                 $errorMessage = __( 'exception.model_not_found' );
-                break;
-            default:
-                $errorMessage = '';
                 break;
         }
 

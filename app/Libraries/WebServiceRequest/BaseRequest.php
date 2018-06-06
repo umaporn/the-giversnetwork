@@ -28,7 +28,9 @@ abstract class BaseRequest
         $parameters['headers'] = $this->getRequestHeader();
         $response              = $this->sendRequest( $method, $suffixUri, $parameters );
 
-        if( isset( $response['error'] ) && $response['error'] === 'Unauthenticated.' ){
+        if( is_null( $response ) ){
+            abort( 500, __( 'exception.not_found_web_service_server' ) );
+        } else if( isset( $response['error'] ) && $response['error'] === 'Unauthenticated.' ){
             $this->refreshAccessToken();
             $parameters['headers'] = $this->getRequestHeader();
             $response              = $this->sendRequest( $method, $suffixUri, $parameters );

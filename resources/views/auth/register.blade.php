@@ -2,7 +2,6 @@
 
 @section('page-title', __('register.page_title.index'))
 @section('page-description', __('register.page_description.index'))
-@section('view-id', 'REGISTER-001')
 
 @section('content')
     <div class="success callout {{ session('status') ? '' : 'hide' }}">

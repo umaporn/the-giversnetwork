@@ -5,7 +5,7 @@
 
 namespace App\ViewComposers;
 
-use App\Libraries\Utility;
+use App\Support\Facades\Utility;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\View\View;
 
@@ -60,13 +60,13 @@ class MenuComposer
     /**
      * Get active style of a menu choice.
      *
-     * @param string $menuChoice
+     * @param string $url URL
      *
      * @return string Active style
      */
-    private function getActiveStyle( string $menuChoice )
+    public static function getActiveStyle( string $url )
     {
-        $pattern = '@^' . preg_quote( $menuChoice ) . '(/(create|\d+/edit))?$@i';
+        $pattern = '@^' . preg_quote( $url ) . '(/(create|\d+/edit))?$@i';
         $active  = false;
 
         if( preg_match( $pattern, url()->current() ) ){
@@ -75,7 +75,7 @@ class MenuComposer
 
             $newUrl = Utility::getBaseUrl() . '/' . $matches[1];
 
-            if( $newUrl === $menuChoice ){
+            if( $newUrl === $url ){
                 $active = true;
             }
 
@@ -99,7 +99,7 @@ class MenuComposer
             $menuItem['url']    = '#';
             $menuItem['active'] = '';
         } else {
-            $parameters         = isset( $menuChoice['parameters'] ) ? $menuChoice['parameters'] : [];
+            $parameters         = $menuChoice['parameters'] ?? [];
             $menuItem['url']    = route( $menuChoice['routeName'], $parameters );
             $menuItem['active'] = $this->getActiveStyle( $menuItem['url'] );
         }

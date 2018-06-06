@@ -5,6 +5,7 @@
 
 namespace App\Libraries;
 
+use App\Support\Facades\Utility;
 use Illuminate\Routing\RouteCollection;
 use Illuminate\Support\Facades\App;
 

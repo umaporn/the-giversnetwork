@@ -5,10 +5,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Support\Facades\Utility;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
-use App\Libraries\Utility;
 
 /**
  * A middleware for switching system language
