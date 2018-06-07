@@ -17,5 +17,6 @@ return [
     'add'         => 'Add',
     'create'      => 'Create',
     'back'        => 'Back',
+    'reset'       => 'Reset',
 
 ];

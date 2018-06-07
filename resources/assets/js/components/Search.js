@@ -30,30 +30,26 @@ const Search = (function(){
 
         ResultDiv.removeClass( 'alert' );
 
-        $.ajax( {
-                    url:         form.attr( 'action' ),
-                    method:      form.attr( 'method' ),
-                    data:        Utility.getFormData( form ),
-                    cache:       false,
-                    contentType: false,
-                    processData: false,
-                    dataType:    'html',
-                    success:     function( result ){
-                        Utility.clearErrors();
-                        ResultDiv.html( result );
-                    },
-                    error:       function( jqXHR, statusText, errorThrown ){
+        Utility.submitForm( form, function( form, jqXHR ){
 
-                        if( jqXHR.status === 422 ){
-                            Utility.displayInvalidInputs( JSON.parse( jqXHR.responseText ) );
-                            ResultDiv.html( '' );
-                        } else {
-                            ResultDiv.html( Translator.translate( 'utility.result.error' ) + ' ' + errorThrown )
-                                     .addClass( 'alert' );
-                        }
+            Utility.clearErrors();
 
-                    },
-                } );
+            switch( jqXHR.status ){
+                case 422:
+                    Utility.displayInvalidInputs( jqXHR.responseJSON );
+                    ResultDiv.html( '' );
+                    break;
+                case 200:
+                    ResultDiv.html( jqXHR.responseText );
+                    break;
+                default:
+                    ResultDiv.html( Translator.translate( 'utility.result.error' ) + ' ' + jqXHR.statusText )
+                             .addClass( 'alert' );
+                    break;
+            }
+
+        } );
+
     }
 
     /**

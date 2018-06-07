@@ -39,23 +39,36 @@ const Confirmation = (function(){
         AcceptanceButton.data( 'form-id', '#' + deletionForm.attr( 'id' ) );
         AcceptanceButton.data( 'callback-function', function( form, jqXHR ){
 
-            let result = jqXHR.responseJSON;
+            switch( jqXHR.status ){
+                case 422:
+                    Utility.displayErrorMessageBox( Object.values( jqXHR.responseJSON.errors ).join( '<br>' ) );
+                    break;
+                case 200:
+                    if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
 
-            if( jqXHR.status === 422 ){
+                        let result = jqXHR.responseJSON;
 
-                Utility.displayErrorMessageBox( Object.values( result.errors ).join( '<br>' ) );
+                        if( result.success === true ){
 
-            } else if( result.success === true ){
+                            Utility.displaySuccessMessageBox( result.message );
 
-                Utility.displaySuccessMessageBox( result.message );
+                            searchForm.submit();
 
-                searchForm.submit();
+                        } else {
 
-            } else {
+                            Utility.displayErrorMessageBox( result.message );
 
-                Utility.displayErrorMessageBox( result.message );
+                        }
 
+                    } else {
+                        Utility.displayJsonResponseError( jqXHR, form.attr( 'action' ) );
+                    }
+                    break;
+                default:
+                    Utility.displayUnknownError( jqXHR, form.attr( 'action' ) );
+                    break;
             }
+
         } );
 
         ConfirmationText.html( deletionForm.data( 'deletion-confirmation-message' ) + deletionForm.data( 'info' ) + '?' );

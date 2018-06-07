@@ -40,12 +40,9 @@ return [
     'email'                 => 'E-Mail Address',
     'password'              => 'Password',
     'password_confirmation' => 'Confirm Password',
-
-    'profile' => [
-        'current_password'           => 'Current Password',
-        'change_password'            => 'Change Password',
-        'change_password_title'      => 'Change your password',
-        'successful_password_change' => 'Your password has been changed.',
-        'failed_password_change'     => 'Unsuccessfully change your password!',
-    ],
+    'firstName'             => 'First Name',
+    'lastName'              => 'Last Name',
+    'middleName'            => 'Middle Name',
+    'mobile'                => 'Mobile Number',
+    'avatar'                => 'Avatar',
 ];

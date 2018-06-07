@@ -6,8 +6,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Support\Facades\ClientGrant;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 /**
  * Forgot Password Controller
@@ -29,39 +31,38 @@ class ForgotPasswordController extends Controller
     use SendsPasswordResetEmails;
 
     /**
-     * Get the response for a successful password reset link.
+     * Send a reset link by email.
      *
-     * @param  string $response Response message
+     * @param Request $request HTTP request object
      *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Sending a reset link response
      */
-    protected function sendResetLinkResponse( $response )
+    public function sendResetLinkEmail( Request $request )
     {
-        $successMessage = __( $response );
+        $response = ClientGrant::call(
+            'POST',
+            '/api/beginning/password/email/' . App::getLocale(),
+            [ 'form_params' => $request->all() ]
+        );
 
-        if( request()->expectsJson() ){
-            return response()->json( [ 'success' => true, 'message' => $successMessage ] );
+        if( isset( $response['errors'] ) ){
+
+            if( $request->expectsJson() ){
+                return response()->json( $response, 422 );
+            }
+
+            return redirect()->back()->withErrors( $response['errors'] );
         }
-
-        return back()->with( 'status', $successMessage );
-    }
-
-    /**
-     * Get the response for a failed password reset link.
-     *
-     * @param  \Illuminate\Http\Request $request  HTTP      request object
-     * @param  string                   $response Response message
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
-     */
-    protected function sendResetLinkFailedResponse( Request $request, $response )
-    {
-        $error = [ 'email' => __( $response ) ];
 
         if( $request->expectsJson() ){
-            return response()->json( [ 'errors' => $error ], 422 );
+            return response()->json( [
+                                         'success'       => $response['success'],
+                                         'message'       => $response['message'],
+                                         'redirectedUrl' => route( 'login' ),
+                                     ] );
         }
 
-        return back()->withErrors( $error );
+        return redirect()->back()->with( [ 'status' => $response['message'] ] );
     }
+
 }

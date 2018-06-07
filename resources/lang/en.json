@@ -5,5 +5,6 @@
   "utility.error_status_code": "Error status code:",
   "utility.error_status_text": "Error status text:",
   "utility.result.success": "Result",
-  "utility.result.error": "Error!"
+  "utility.result.error": "Error!",
+  "utility.json_response_error": "The data type is not JSON."
 }

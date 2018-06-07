@@ -19,7 +19,8 @@ function globalRoutes()
 
     Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
 
-    Route::group( [ 'middleware' => 'guest' ], function(){
+    Route::middleware( 'guest' )->group( function(){
+
         // Authentication
         Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
         Route::post( 'login', 'Auth\LoginController@login' )->name( 'submitLogin' );
@@ -31,13 +32,13 @@ function globalRoutes()
         // Password Reset
         Route::get( 'password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm' )->name( 'password.request' );
         Route::post( 'password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail' )->name( 'password.email' );
-        Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@showResetForm' )->name( 'password.reset' );
-        Route::post( 'password/reset', 'Auth\ResetPasswordController@reset' )->name( 'password.change' );
+
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
-        Route::get( 'profile', 'UserController@profile' )->name( 'user.profile' );
-        Route::put( 'change-password', 'UserController@changePassword' )->name( 'user.changePassword' );
+        Route::get( 'profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
+        Route::post( 'profile', 'ProfileController@updateProfile' )->name( 'user.updateProfile' );
+        Route::get( 'reset-password', 'ProfileController@resetPassword' )->name( 'user.resetPassword' );
         Route::get( '/', 'HomeController@index' )->name( 'home.index' );
     } );
 }
