@@ -7,7 +7,7 @@ const Utility = (function(){
     const
         /**
          * @memberOf Utility
-         * @access private
+         * @access public
          * @desc Result box
          * @constant {jQuery}
          */
@@ -82,8 +82,8 @@ const Utility = (function(){
      * @desc Clear all errors.
      */
     function clearErrors(){
-        $( 'form' ).children().removeClass( 'error' );
-        $( '.help-text' ).addClass( 'hide' );
+        $( ':input' ).removeClass( 'error' );
+        $( '.alert.help-text' ).addClass( 'hide' );
     }
 
     /**
@@ -101,16 +101,17 @@ const Utility = (function(){
             for( let name in error['errors'] ){
 
                 let errorMessage = error['errors'][name],
-                    id           = $( '[name=' + name + ']' ).attr( 'id' ),
+                    id           = /^[^.]+\.\d+$/.test( name ) ? name.replace( '.', '' ) : $( '[name="' + name + '"]' ).attr( 'id' ),
                     errorText    = typeof(errorMessage) === 'object' ? errorMessage[0] : errorMessage;
 
                 if( id ){
                     $( '#' + id ).addClass( 'error' );
                     $( '#' + id + '-help-text' ).text( errorText ).removeClass( 'hide' );
                 } else {
-                    let fieldSetId = $( '[name="' + name + '[]"]' ).parent( 'fieldset' ).attr( 'id' );
-                    $( '#' + fieldSetId + '-help-text' ).text( errorText ).removeClass( 'hide' );
+                    let parentId = $( '[name="' + name + '[]"]' ).parents( '.checkbox-group' ).attr( 'id' );
+                    $( '#' + parentId + '-help-text' ).text( errorText ).removeClass( 'hide' );
                 }
+
             }
 
         }
@@ -139,51 +140,80 @@ const Utility = (function(){
 
     /**
      * @memberOf Utility
-     * @access private
-     * @desc Take a submitting action.
+     * @access public
+     * @desc Display an error message box when the data type is not JSON.
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
+     * @param {String} url - The URL that occurs the error
+     */
+    function displayJsonResponseError( jqXHR, url ){
+
+        jqXHR.statusText = Translator.translate( 'utility.json_response_error' );
+
+        displayUnknownError( jqXHR, url );
+
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Take a submitting action which only accepts json data type.
      * @param {jQuery} form - Form
      * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
-     * > If jqXHR.status is not 422 or 423 and jqXHR.responseJSON is not empty
-     * then the jqXHR.responseJSON format must have the following keys below.
+     * > If jqXHR.status is not 422 or 429 then the jqXHR.responseJSON format must have the following keys below.
      *
      * Key | Explanation
      * - | -
      * **success** {Boolean} | It is a success status which it can be true or false.
      * **message** {String} | It is a response message which it can be an error message or a success message. *This is an optional key for a success case.*
-     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to if success status is true.
+     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to if success status is true. *This is an optional key.*
      *
      * **Note:** jqXHR.status is HTTP status code.
      */
     function takeSubmitAction( form, jqXHR ){
 
-        let result = jqXHR.responseJSON;
+        switch( jqXHR.status ){
+            case 422:
+            case 429:
+                displayInvalidInputs( jqXHR.responseJSON );
+                break;
+            case 200:
+                if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
 
-        if( $.inArray( jqXHR.status, [422, 423] ) !== -1 ){
+                    let result = jqXHR.responseJSON;
 
-            displayInvalidInputs( result );
+                    if( result.success === true ){
 
-        } else if( result.success === true ){
+                        if( result.hasOwnProperty( 'message' ) ){
 
-            if( result.hasOwnProperty( 'message' ) ){
+                            ResultBoxSelector.on( 'closed.zf.reveal', function(){
+                                if( result.redirectedUrl ){
+                                    location.href = result.redirectedUrl;
+                                } else {
+                                    form.trigger( 'reset' );
+                                }
+                            } );
 
-                ResultBoxSelector.on( 'closed.zf.reveal', function(){
-                    if( result.redirectedUrl ){
-                        location.href = result.redirectedUrl;
+                            displaySuccessMessageBox( result.message );
+
+                        } else if( result.redirectedUrl ){
+                            location.href = result.redirectedUrl;
+                        }
+
                     } else {
-                        form.trigger( 'reset' );
+                        displayErrorMessageBox( result.message );
                     }
-                } );
 
-                displaySuccessMessageBox( result.message );
-
-            } else if( result.redirectedUrl ){
-                location.href = result.redirectedUrl;
-            }
-
-        } else {
-
-            displayErrorMessageBox( result.message );
-
+                } else {
+                    displayJsonResponseError( jqXHR, form.attr( 'action' ) );
+                }
+                break;
+            default:
+                if( jqXHR.hasOwnProperty( 'responseJSON' ) && jqXHR.responseJSON.hasOwnProperty( 'message' ) ){
+                    displayErrorMessageBox( jqXHR.responseJSON.message );
+                } else {
+                    displayUnknownError( jqXHR, form.attr( 'action' ) );
+                }
+                break;
         }
 
     }
@@ -198,27 +228,24 @@ const Utility = (function(){
      */
     function runCallbackFunction( form, jqXHR, callbackFunction ){
 
-        if( jqXHR.hasOwnProperty( 'responseJSON' ) ){
-            if( typeof(callbackFunction) === 'function' ){
-                callbackFunction.apply( this, [form, jqXHR] );
-            } else {
-                takeSubmitAction( form, jqXHR );
-            }
+        if( typeof(callbackFunction) === 'function' ){
+            callbackFunction.apply( this, [form, jqXHR] );
         } else {
-            displayUnknownError( jqXHR, form.attr( 'action' ) );
+            takeSubmitAction( form, jqXHR );
         }
+
     }
 
     /**
      * @memberOf Utility
-     * @access public
+     * @access private
      * @desc Get form data.
      * @param {jQuery} form - Form
      * @return {Array|Object} Form data
      */
     function getFormData( form ){
 
-        return (form.attr( 'method' ) === 'GET') ? form.serialize() : new FormData( form[0] );
+        return (form.attr( 'method' ) === 'GET') ? form.serialize() : new FormData( form.get( 0 ) );
 
     }
 
@@ -238,7 +265,6 @@ const Utility = (function(){
                     cache:       false,
                     contentType: false,
                     processData: false,
-                    dataType:    'json',
                     success:     function( result, statusText, jqXHR ){
                         runCallbackFunction( form, jqXHR, callbackFunction );
                     },
@@ -254,8 +280,10 @@ const Utility = (function(){
         displayErrorMessageBox:   displayErrorMessageBox,
         displayInvalidInputs:     displayInvalidInputs,
         displayUnknownError:      displayUnknownError,
+        displayJsonResponseError: displayJsonResponseError,
         clearErrors:              clearErrors,
-        getFormData:              getFormData,
+        ResultBoxSelector:        ResultBoxSelector,
+        takeSubmitAction:         takeSubmitAction,
     };
 
 })( jQuery );

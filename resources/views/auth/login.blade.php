@@ -2,7 +2,6 @@
 
 @section('page-title', __('login.page_title.index'))
 @section('page-description', __('login.page_description.index'))
-@section('view-id', 'LOGIN-001')
 
 @section('content')
     <form class="submission-form" method="POST" action="{{ route('submitLogin') }}">
@@ -19,9 +18,6 @@
         <p id="password-help-text" class="alert help-text {{ $errors->has('password') ? '' : 'hide' }}">
             {{ $errors->has('password') ? $errors->first('password') : '' }}
         </p>
-
-        <input id="remember" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}>
-        <label for="remember">@lang('login.remember_me')</label>
 
         <div class="button-group">
             <button type="submit" class="button">@lang('login.login_button')</button>

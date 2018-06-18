@@ -6,10 +6,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Support\Facades\ClientGrant;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\App;
 
 /**
  * Register User Controller
@@ -30,59 +30,34 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /** @var User User model instance */
-    private $userModel;
-
     /**
-     * Initialize RegisterController class.
+     * Register a new user.
      *
-     * @param User $user User model instance
+     * @param Request $request HTTP request object
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Registration response
      */
-    public function __construct( User $user )
+    public function register( Request $request )
     {
-        $this->userModel = $user;
-    }
+        $response = ClientGrant::call(
+            'POST',
+            '/api/beginning/register/' . App::getLocale(),
+            [ 'form_params' => $request->all() ]
+        );
 
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array $data Data to validate
-     *
-     * @return \Illuminate\Contracts\Validation\Validator Validator
-     */
-    protected function validator( array $data )
-    {
-        return Validator::make( $data, config( 'validation.authentication' ) );
-    }
+        if( isset( $response['errors'] ) ){
 
-    /**
-     * Redirect the user to another page after the user has been registered.
-     *
-     * @param  \Illuminate\Http\Request $request HTTP request object
-     * @param  mixed                    $user    User
-     *
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
-     */
-    protected function registered( Request $request, $user )
-    {
-        $redirectedUrl = route( 'home.index' );
+            if( $request->expectsJson() ){
+                return response()->json( $response, 422 );
+            }
 
-        if( $request->expectsJson() ){
-            return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
+            return redirect()->back()->withErrors( $response['errors'] );
         }
 
-        return redirect( $redirectedUrl );
-    }
+        if( $request->expectsJson() ){
+            return response()->json( [ 'success' => $response['success'], 'message' => $response['message'] ] );
+        }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array $data Data to create a new user
-     *
-     * @return User The new user
-     */
-    protected function create( array $data )
-    {
-        return $this->userModel->createNewUser( $data );
+        return redirect()->back()->with( [ 'status' => $response['message'] ] );
     }
 }

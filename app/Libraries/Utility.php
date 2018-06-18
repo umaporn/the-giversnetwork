@@ -7,6 +7,7 @@ namespace App\Libraries;
 
 /**
  * This class keeps all utility functions for all classes.
+ * @package App\Libraries
  */
 class Utility
 {
@@ -15,7 +16,7 @@ class Utility
      *
      * @return string String Base URL
      */
-    public static function getBaseUrl()
+    public function getBaseUrl()
     {
         $protocol = ( isset( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] === 'on' ) ? 'https' : 'http';
 
@@ -27,9 +28,9 @@ class Utility
      *
      * @return string Language code
      */
-    public static function getLanguageCode()
+    public function getLanguageCode()
     {
-        $language = Utility::getDefaultLanguageCode();
+        $language = $this->getDefaultLanguageCode();
 
         if( !is_null( request()->route() ) ){
 
@@ -50,9 +51,9 @@ class Utility
      *
      * @return string Old language code
      */
-    private static function getOldLanguageCode()
+    private function getOldLanguageCode()
     {
-        $oldCodeRegex = '@^' . Utility::getBaseUrl() . '/(\w+)@';
+        $oldCodeRegex = '@^' . $this->getBaseUrl() . '/(\w+)@';
 
         preg_match( $oldCodeRegex, url()->previous(), $match );
 
@@ -70,7 +71,7 @@ class Utility
      *
      * @return string Default language code
      */
-    public static function getDefaultLanguageCode()
+    public function getDefaultLanguageCode()
     {
         return config( 'app.fallback_locale' );
     }
@@ -82,15 +83,15 @@ class Utility
      *
      * @return string Redirected URL
      */
-    public static function getRedirectedUrl( string $languageCode )
+    public function getRedirectedUrl( string $languageCode )
     {
         $redirectedUrl = url()->previous();
 
         if( in_array( $languageCode, config( 'app.language_codes' ) ) ){
 
-            $baseUrl       = Utility::getBaseUrl();
-            $oldCode       = Utility::getOldLanguageCode();
-            $newCode       = $languageCode !== Utility::getDefaultLanguageCode() ? $languageCode : '';
+            $baseUrl       = $this->getBaseUrl();
+            $oldCode       = $this->getOldLanguageCode();
+            $newCode       = $languageCode !== $this->getDefaultLanguageCode() ? $languageCode : '';
             $regex         = '@^' . $baseUrl . ( $oldCode ? '(/' . $oldCode . '(/.+)|/' . $oldCode . '$)' : '(/.+)?' ) . '@';
             $replacement   = $baseUrl . ( $newCode ? '/' . $newCode : '' ) . ( $oldCode ? '${2}' : '${1}' );
             $redirectedUrl = preg_replace( $regex, $replacement, $redirectedUrl );

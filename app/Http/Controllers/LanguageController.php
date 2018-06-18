@@ -5,7 +5,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Libraries\Utility;
+use App\Support\Facades\Utility;
 use Illuminate\Http\Request;
 
 /**

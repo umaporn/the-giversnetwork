@@ -40,12 +40,9 @@ return [
     'email'                 => 'ที่อยู่อีเมล',
     'password'              => 'รหัสผ่าน',
     'password_confirmation' => 'ยืนยันรหัสผ่าน',
-
-    'profile' => [
-        'current_password'           => 'รหัสผ่านปัจจุบัน',
-        'change_password'            => 'เปลี่ยนรหัสผ่าน',
-        'change_password_title'      => 'เปลี่ยนรหัสผ่านของคุณ',
-        'successful_password_change' => 'รหัสผ่านของคุณถูกเปลี่ยนแปลงเรียบร้อยแล้วค่ะ',
-        'failed_password_change'     => 'เปลี่ยนรหัสผ่านไม่สำเร็จค่ะ',
-    ],
+    'firstName'             => 'ชื่อ',
+    'lastName'              => 'นามสกุล',
+    'middleName'            => 'ชื่อกลาง',
+    'mobile'                => 'หมายเลขโทรศัพท์',
+    'avatar'                => 'รูป',
 ];

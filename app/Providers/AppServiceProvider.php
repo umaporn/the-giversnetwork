@@ -6,6 +6,9 @@
 namespace App\Providers;
 
 use App\Libraries\CustomRouteCollection;
+use App\Libraries\Utility;
+use App\Libraries\WebServiceRequest\ClientCredentialsGrantRequest;
+use App\Libraries\WebServiceRequest\PasswordGrantRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -38,5 +41,17 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app['router']->setRoutes( new CustomRouteCollection() );
+
+        $this->app->singleton( 'passwordGrant', function(){
+            return new PasswordGrantRequest();
+        } );
+
+        $this->app->singleton( 'clientGrant', function(){
+            return new ClientCredentialsGrantRequest();
+        } );
+
+        $this->app->singleton( 'utility', function(){
+            return new Utility();
+        } );
     }
 }

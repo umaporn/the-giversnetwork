@@ -20,7 +20,9 @@
                     <li><a href="{{ route('register') }}">@lang('register.page_link.index')</a></li>
                 @else
                     <li>
-                        <a href="{{ route('user.profile') }}" title="@lang('user.links.profile')">{{ Auth::user()->email }}</a>
+                        <a href="{{ route('user.getProfile') }}" title="@lang('user.links.profile')">
+                            {{ Auth::user()->getAuthIdentifier() }}
+                        </a>
                     </li>
                     <li>
                         <form action="{{ route('logout') }}" method="POST">
