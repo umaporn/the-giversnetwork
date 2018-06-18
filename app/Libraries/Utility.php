@@ -7,6 +7,7 @@ namespace App\Libraries;
 
 /**
  * This class keeps all utility functions for all classes.
+ * @package App\Libraries
  */
 class Utility
 {
