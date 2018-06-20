@@ -29,11 +29,18 @@ abstract class BaseRequest
         $response              = $this->sendRequest( $method, $suffixUri, $parameters );
 
         if( is_null( $response ) ){
+
             abort( 500, __( 'exception.not_found_web_service_server' ) );
+
         } else if( isset( $response['error'] ) && $response['error'] === 'Unauthenticated.' ){
-            $this->refreshAccessToken();
-            $parameters['headers'] = $this->getRequestHeader();
-            $response              = $this->sendRequest( $method, $suffixUri, $parameters );
+
+            $response = $this->refreshAccessToken();
+
+            if( !isset( $response['error'] ) ){
+                $parameters['headers'] = $this->getRequestHeader();
+                $response              = $this->sendRequest( $method, $suffixUri, $parameters );
+            }
+
         }
 
         if( isset( $response['error'] ) ){
@@ -81,16 +88,17 @@ abstract class BaseRequest
      */
     protected function sendRequest( string $method, string $suffixUri, array $parameters )
     {
-        $client = new Client( [ 'base_uri' => env( 'OAUTH_BASE_URI' ) ] );
+        $isFile   = array_pull( $parameters, 'isFile', false );
+        $tempFile = storage_path( 'temp' );
+
+        if( $isFile ){
+            $client             = new Client();
+            $parameters['sink'] = $tempFile;
+        } else {
+            $client = new Client( [ 'base_uri' => env( 'OAUTH_BASE_URI' ) ] );
+        }
 
         try{
-
-            $isFile = array_pull( $parameters, 'isFile', false );
-
-            if( $isFile ){
-                $tempFile           = storage_path( 'temp' );
-                $parameters['sink'] = $tempFile;
-            }
 
             $result = $client->request( $method, $suffixUri, $parameters );
 
@@ -133,9 +141,9 @@ abstract class BaseRequest
 
         if( isset( $response['error'] ) ){
             Log::error( __( 'exception.access_token_error' ), $response );
+        } else {
+            $this->saveAccessTokenProperties( $response );
         }
-
-        $this->saveAccessTokenProperties( $response );
 
         return $response;
     }

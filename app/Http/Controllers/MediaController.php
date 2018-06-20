@@ -17,13 +17,13 @@ class MediaController extends Controller
     /**
      * Get a file from a web service request.
      *
-     * @param string $api Encrypted API
+     * @param string $url Encrypted URL
      *
      * @return BinaryFileResponse File
      */
-    public function getFile( string $api )
+    public function getFile( string $url )
     {
-        $response = ClientGrant::call( 'GET', decrypt( $api ), [ 'isFile' => true ] );
+        $response = ClientGrant::call( 'GET', decrypt( $url ), [ 'isFile' => true ] );
 
         return response()->file( $response['file'], $response['header'] );
     }

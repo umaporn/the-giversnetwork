@@ -41,15 +41,17 @@ class PasswordGrantRequest extends BaseRequest
 
     /**
      * Refresh an access token.
+     *
+     * @return array Refreshing an access token response
      */
     protected function refreshAccessToken()
     {
-        $this->requestAccessToken( [
-                                       'grant_type'    => 'refresh_token',
-                                       'client_id'     => env( 'OAUTH_PASSWORD_GRANT_CLIENT_ID' ),
-                                       'client_secret' => env( 'OAUTH_PASSWORD_GRANT_CLIENT_SECRET' ),
-                                       'refresh_token' => $this->getRefreshToken(),
-                                   ] );
+        return $this->requestAccessToken( [
+                                              'grant_type'    => 'refresh_token',
+                                              'client_id'     => env( 'OAUTH_PASSWORD_GRANT_CLIENT_ID' ),
+                                              'client_secret' => env( 'OAUTH_PASSWORD_GRANT_CLIENT_SECRET' ),
+                                              'refresh_token' => $this->getRefreshToken(),
+                                          ] );
     }
 
     /**

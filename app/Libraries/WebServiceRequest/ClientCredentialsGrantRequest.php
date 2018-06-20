@@ -39,8 +39,13 @@ class ClientCredentialsGrantRequest extends BaseRequest
         try{
             $properties = json_decode( decrypt( Storage::get( self::AccessTokenPropertiesFile ) ), true );
         } catch( FileNotFoundException $exception ) {
-            $this->refreshAccessToken();
-            $properties = json_decode( decrypt( Storage::get( self::AccessTokenPropertiesFile ) ), true );
+
+            $response = $this->refreshAccessToken();
+
+            if( !isset( $response['error'] ) ){
+                $properties = json_decode( decrypt( Storage::get( self::AccessTokenPropertiesFile ) ), true );
+            }
+
         }
 
         return isset( $properties[ $key ] ) ? $properties[ $key ] : '';
@@ -48,14 +53,16 @@ class ClientCredentialsGrantRequest extends BaseRequest
 
     /**
      * Refresh an access token.
+     *
+     * @return array Refreshing an access token response
      */
     protected function refreshAccessToken()
     {
-        $this->requestAccessToken( [
-                                       'grant_type'    => 'client_credentials',
-                                       'client_id'     => env( 'OAUTH_CLIENT_CREDENTIALS_GRANT_CLIENT_ID' ),
-                                       'client_secret' => env( 'OAUTH_CLIENT_CREDENTIALS_GRANT_CLIENT_SECRET' ),
-                                   ] );
+        return $this->requestAccessToken( [
+                                              'grant_type'    => 'client_credentials',
+                                              'client_id'     => env( 'OAUTH_CLIENT_CREDENTIALS_GRANT_CLIENT_ID' ),
+                                              'client_secret' => env( 'OAUTH_CLIENT_CREDENTIALS_GRANT_CLIENT_SECRET' ),
+                                          ] );
     }
 
     /**
