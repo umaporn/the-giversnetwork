@@ -84,7 +84,26 @@ abstract class BaseRequest
         $client = new Client( [ 'base_uri' => env( 'OAUTH_BASE_URI' ) ] );
 
         try{
-            $response = $client->request( $method, $suffixUri, $parameters )->getBody()->getContents();
+
+            $isFile = array_pull( $parameters, 'isFile', false );
+
+            if( $isFile ){
+                $tempFile           = storage_path( 'temp' );
+                $parameters['sink'] = $tempFile;
+            }
+
+            $result = $client->request( $method, $suffixUri, $parameters );
+
+            if( $isFile ){
+                return [
+                    'success' => true,
+                    'file'    => $tempFile,
+                    'header'  => [ 'Content-Type: ' . $result->getHeader( 'Content-Type' )[0] ],
+                ];
+            }
+
+            $response = $result->getBody()->getContents();
+
         } catch( ClientException $clientException ) {
             $response = $clientException->getResponse()->getBody()->getContents();
         } catch( GuzzleException $guzzleException ) {
