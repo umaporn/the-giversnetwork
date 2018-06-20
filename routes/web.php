@@ -19,6 +19,8 @@ function globalRoutes()
 
     Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
 
+    Route::get( 'file/{url}', 'MediaController@getFile' )->name( 'getFile' );
+
     Route::middleware( 'guest' )->group( function(){
 
         // Authentication
