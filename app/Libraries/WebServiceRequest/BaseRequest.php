@@ -114,8 +114,10 @@ abstract class BaseRequest
 
         } catch( ClientException $clientException ) {
             $response = $clientException->getResponse()->getBody()->getContents();
+            Log::error( $response );
         } catch( GuzzleException $guzzleException ) {
             $response = $guzzleException->getMessage();
+            Log::error( $response );
         }
 
         return json_decode( $response, true );
@@ -139,7 +141,9 @@ abstract class BaseRequest
             'form_params' => $parameters,
         ] );
 
-        if( isset( $response['error'] ) ){
+        if( is_null( $response ) ){
+            abort( 500, __( 'exception.not_found_web_service_server' ) );
+        } else if( isset( $response['error'] ) ){
             Log::error( __( 'exception.access_token_error' ), $response );
         } else {
             $this->saveAccessTokenProperties( $response );
