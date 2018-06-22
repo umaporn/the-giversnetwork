@@ -5,6 +5,7 @@
 
 namespace App\Policies;
 
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Support\Facades\Auth;
 
 /**
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Auth;
  */
 class HomePolicy
 {
+    use HandlesAuthorization;
+
     /**
      * Check whether the current user is authenticated.
      *
