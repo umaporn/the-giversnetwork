@@ -4,20 +4,18 @@
 @section('page-description', __('login.page_description.index'))
 
 @section('content')
-    <form class="submission-form" method="POST" action="{{ route('submitLogin') }}">
+    <form class="recaptcha-form" method="POST" action="{{ route('submitLogin') }}">
         {{ csrf_field() }}
 
         <label for="email">@lang('user.email'):</label>
-        <input type="text" id="email" name="email" value="{{ old('email') }}" required autofocus>
-        <p id="email-help-text" class="alert help-text {{ $errors->has('email') ? '' : 'hide' }}">
-            {{ $errors->has('email') ? $errors->first('email') : '' }}
-        </p>
+        <input type="text" id="email" name="email" required autofocus>
+        <p id="email-help-text" class="alert help-text hide"></p>
 
         <label for="password">@lang('user.password'):</label>
         <input type="password" id="password" name="password" required>
-        <p id="password-help-text" class="alert help-text {{ $errors->has('password') ? '' : 'hide' }}">
-            {{ $errors->has('password') ? $errors->first('password') : '' }}
-        </p>
+        <p id="password-help-text" class="alert help-text hide"></p>
+
+        @captcha('{{ App::getLocale() }}')
 
         <div class="button-group">
             <button type="submit" class="button">@lang('login.login_button')</button>

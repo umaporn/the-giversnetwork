@@ -15,6 +15,13 @@ const Form = (function(){
         /**
          * @memberOf Form
          * @access private
+         * @desc reCAPTCHA form
+         * @const {jQuery}
+         */
+        RecaptchaForm                = $( '.recaptcha-form' ),
+        /**
+         * @memberOf Form
+         * @access private
          * @desc Deletion confirmation selector
          * @const {string}
          */
@@ -32,6 +39,18 @@ const Form = (function(){
             event.preventDefault();
 
             Utility.submitForm( $( this ) );
+
+        } );
+
+        RecaptchaForm.submit( function( event ){
+
+            event.preventDefault();
+
+            _submitEvent = () =>{
+
+                Utility.submitForm( $( this ) );
+
+            };
 
         } );
 
