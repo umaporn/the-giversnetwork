@@ -7,8 +7,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Support\Facades\ClientGrant;
+use App\Http\Requests\RecaptchaRequest;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 
 /**
@@ -33,11 +33,11 @@ class RegisterController extends Controller
     /**
      * Register a new user.
      *
-     * @param Request $request HTTP request object
+     * @param RecaptchaRequest $request Recaptcha request object
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Registration response
      */
-    public function register( Request $request )
+    public function register( RecaptchaRequest $request )
     {
         $response = ClientGrant::call(
             'POST',
