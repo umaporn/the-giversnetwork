@@ -43,12 +43,6 @@ abstract class BaseRequest
 
         }
 
-        if( isset( $response['error'] ) ){
-            abort( 500, __( 'exception.web_service_error' ) . $response['error'] );
-        } else if( isset( $response['exception'] ) ){
-            abort( 500, __( 'exception.web_service_error' ) . $response['message'] );
-        }
-
         return $response;
     }
 
@@ -116,7 +110,11 @@ abstract class BaseRequest
 
         } catch( ClientException $clientException ) {
             $response = $clientException->getResponse()->getBody()->getContents();
+            $error    = json_decode( $response, true );
             Log::error( $response );
+            if( !is_null( $error ) && in_array( $clientException->getCode(), [ 429, 500 ] ) ){
+                abort( 500, __( 'exception.web_service_error' ) . $error['message'] );
+            }
         } catch( GuzzleException $guzzleException ) {
             $response = $guzzleException->getMessage();
             Log::error( $response );
