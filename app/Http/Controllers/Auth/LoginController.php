@@ -10,6 +10,7 @@ use App\Support\Facades\PasswordGrant;
 use App\Support\Facades\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use App\Http\Requests\RecaptchaRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -26,13 +27,13 @@ class LoginController extends Controller
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request $request HTTP request object
+     * @param RecaptchaRequest $request Recaptcha request object
      *
      * @return \Illuminate\Http\Response Login response
      *
      * @throws \Illuminate\Validation\ValidationException Validation exception
      */
-    public function login( Request $request )
+    public function login( RecaptchaRequest $request )
     {
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and

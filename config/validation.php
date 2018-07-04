@@ -11,4 +11,7 @@ return [
         'password' => 'required|min:8|confirmed',
         'token'    => 'required',
     ],
+    'recaptcha'      => [
+        'g-recaptcha-response' => 'required|captcha',
+    ],
 ];
