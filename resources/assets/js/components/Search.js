@@ -43,7 +43,13 @@ const Search = (function(){
                     ResultDiv.html( jqXHR.responseText );
                     break;
                 default:
-                    ResultDiv.html( Translator.translate( 'utility.result.error' ) + ' ' + jqXHR.statusText )
+                    let message = jqXHR.statusText;
+
+                    if( jqXHR.hasOwnProperty( 'responseJSON' ) && jqXHR.responseJSON.hasOwnProperty( 'message' ) ){
+                        message = jqXHR.responseJSON.message;
+                    }
+
+                    ResultDiv.html( Translator.translate( 'utility.result.error' ) + ' ' + message )
                              .addClass( 'alert' );
                     break;
             }

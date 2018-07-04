@@ -45,6 +45,8 @@ abstract class BaseRequest
 
         if( isset( $response['error'] ) ){
             abort( 500, __( 'exception.web_service_error' ) . $response['error'] );
+        } else if( isset( $response['exception'] ) ){
+            abort( 500, __( 'exception.web_service_error' ) . $response['message'] );
         }
 
         return $response;
