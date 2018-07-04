@@ -12,6 +12,6 @@ return [
         'token'    => 'required',
     ],
     'recaptcha'      => [
-        'g-recaptcha-response' => 'required',
+        'g-recaptcha-response' => 'required|captcha',
     ],
 ];
