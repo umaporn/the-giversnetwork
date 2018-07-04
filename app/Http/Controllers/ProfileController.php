@@ -33,7 +33,7 @@ class ProfileController extends Controller
      *
      * @param Request $request HTTP request object
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Update response
+     * @return \Illuminate\Http\JsonResponse Update response
      */
     public function updateProfile( Request $request )
     {
@@ -54,19 +54,14 @@ class ProfileController extends Controller
         $response = PasswordGrant::call( 'POST', '/api/profile', [ 'multipart' => $parameters ] );
 
         if( isset( $response['errors'] ) ){
-
-            if( $request->expectsJson() ){
-                return response()->json( $response, 422 );
-            }
-
-            return redirect()->back()->withErrors( $response['errors'] );
+            return response()->json( $response, 422 );
         }
 
-        if( $request->expectsJson() ){
-            return response()->json( [ 'success' => $response['success'], 'message' => $response['message'], 'redirectedUrl' => url()->previous() ] );
-        }
-
-        return redirect()->back();
+        return response()->json( [
+                                     'success'       => $response['success'],
+                                     'message'       => $response['message'],
+                                     'redirectedUrl' => url()->previous(),
+                                 ] );
     }
 
     /**
