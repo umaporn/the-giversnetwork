@@ -6,8 +6,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Support\Facades\ClientGrant;
 use App\Http\Requests\RecaptchaRequest;
+use App\Support\Facades\ClientGrant;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\App;
 
@@ -35,7 +35,7 @@ class RegisterController extends Controller
      *
      * @param RecaptchaRequest $request Recaptcha request object
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Registration response
+     * @return \Illuminate\Http\JsonResponse Registration response
      */
     public function register( RecaptchaRequest $request )
     {
@@ -46,18 +46,9 @@ class RegisterController extends Controller
         );
 
         if( isset( $response['errors'] ) ){
-
-            if( $request->expectsJson() ){
-                return response()->json( $response, 422 );
-            }
-
-            return redirect()->back()->withErrors( $response['errors'] );
+            return response()->json( $response, 422 );
         }
 
-        if( $request->expectsJson() ){
-            return response()->json( [ 'success' => $response['success'], 'message' => $response['message'] ] );
-        }
-
-        return redirect()->back()->with( [ 'status' => $response['message'] ] );
+        return response()->json( [ 'success' => $response['success'], 'message' => $response['message'] ] );
     }
 }
