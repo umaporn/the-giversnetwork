@@ -6,10 +6,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RecaptchaRequest;
 use App\Support\Facades\ClientGrant;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Support\Facades\App;
-use App\Http\Requests\RecaptchaRequest;
+
 /**
  * Forgot Password Controller
  * @package App\Http\Controllers\Auth
@@ -34,7 +35,7 @@ class ForgotPasswordController extends Controller
      *
      * @param RecaptchaRequest $request HTTP RecaptchaRequest request object
      *
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Sending a reset link response
+     * @return \Illuminate\Http\JsonResponse Sending a reset link response
      */
     public function sendResetLinkEmail( RecaptchaRequest $request )
     {
@@ -45,23 +46,14 @@ class ForgotPasswordController extends Controller
         );
 
         if( isset( $response['errors'] ) ){
-
-            if( $request->expectsJson() ){
-                return response()->json( $response, 422 );
-            }
-
-            return redirect()->back()->withErrors( $response['errors'] );
+            return response()->json( $response, 422 );
         }
 
-        if( $request->expectsJson() ){
-            return response()->json( [
-                                         'success'       => $response['success'],
-                                         'message'       => $response['message'],
-                                         'redirectedUrl' => route( 'login' ),
-                                     ] );
-        }
-
-        return redirect()->back()->with( [ 'status' => $response['message'] ] );
+        return response()->json( [
+                                     'success'       => $response['success'],
+                                     'message'       => $response['message'],
+                                     'redirectedUrl' => route( 'login' ),
+                                 ] );
     }
 
 }
