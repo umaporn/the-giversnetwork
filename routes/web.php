@@ -17,8 +17,6 @@ function globalRoutes()
 {
     Route::get( 'language/{languageCode}', 'LanguageController@changeLanguage' )->name( 'language.change' );
 
-    Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
-
     Route::get( 'file/{url}', 'MediaController@getFile' )->name( 'getFile' );
 
     Route::middleware( 'guest' )->group( function(){
@@ -38,6 +36,7 @@ function globalRoutes()
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
+        Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
         Route::get( 'profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
         Route::post( 'profile', 'ProfileController@updateProfile' )->name( 'user.updateProfile' );
         Route::get( 'reset-password', 'ProfileController@resetPassword' )->name( 'user.resetPassword' );
