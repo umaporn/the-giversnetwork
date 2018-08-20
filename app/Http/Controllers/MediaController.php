@@ -25,6 +25,6 @@ class MediaController extends Controller
     {
         $response = ClientGrant::call( 'GET', decrypt( $url ), [ 'isFile' => true ] );
 
-        return response()->file( $response['file'], $response['header'] );
+        return response( $response['content'] )->header( 'Content-Type', $response['contentType'] );
     }
 }
