@@ -29,6 +29,12 @@ return [
         'message'          => 'You are accessing to an unknown page.',
     ],
 
+    '429' => [
+        'page_title'       => 'Too Many Requests',
+        'page_description' => 'Too Many Requests',
+        'page_heading'     => 'Too Many Requests',
+    ],
+
     '500' => [
         'page_title'       => 'Internal Server Error',
         'page_description' => 'Internal Server Error',

@@ -29,22 +29,7 @@ abstract class BaseRequest
         $response              = $this->sendRequest( $method, $suffixUri, $parameters );
 
         if( is_null( $response ) ){
-
             abort( 500, __( 'exception.not_found_web_service_server' ) );
-
-        } else if( isset( $response['error'] ) && $response['error'] === 'Unauthenticated.' ){
-
-            $response = $this->refreshAccessToken();
-
-            if( !isset( $response['error'] ) ){
-                $parameters['headers'] = $this->getRequestHeader();
-                $response              = $this->sendRequest( $method, $suffixUri, $parameters );
-            }
-
-        }
-
-        if( isset( $response['error'] ) ){
-            abort( 500, __( 'exception.web_service_error' ) . $response['message'] );
         }
 
         return $response;
@@ -113,12 +98,30 @@ abstract class BaseRequest
             $response = $result->getBody()->getContents();
 
         } catch( ClientException $clientException ) {
+
             $response = $clientException->getResponse()->getBody()->getContents();
             $error    = json_decode( $response, true );
+
             Log::error( $response );
-            if( !is_null( $error ) && in_array( $clientException->getCode(), [ 429, 500 ] ) ){
-                abort( 500, __( 'exception.web_service_error' ) . $error['message'] );
+
+            switch( $clientException->getCode() ){
+                case 401:
+                    if( $suffixUri !== '/oauth/token' ){
+                        $this->refreshAccessToken();
+                        $parameters['headers'] = $this->getRequestHeader();
+
+                        return $this->sendRequest( $method, $suffixUri, $parameters );
+                    } else {
+                        abort( $clientException->getCode(), __( 'exception.web_service_error' ) . $error['message'] );
+                    }
+                    break;
+                case 422:
+                    break;
+                default:
+                    abort( $clientException->getCode(), __( 'exception.web_service_error' ) . $error['message'] );
+                    break;
             }
+
         } catch( GuzzleException $guzzleException ) {
             $response = $guzzleException->getMessage();
             Log::error( $response );
@@ -147,8 +150,6 @@ abstract class BaseRequest
 
         if( is_null( $response ) ){
             abort( 500, __( 'exception.not_found_web_service_server' ) );
-        } else if( isset( $response['error'] ) ){
-            Log::error( __( 'exception.access_token_error' ), $response );
         } else {
             $this->saveAccessTokenProperties( $response );
         }

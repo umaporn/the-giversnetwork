@@ -5,13 +5,11 @@
 
 namespace App\Exceptions;
 
-use App\Support\Facades\Utility;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Support\Facades\App;
 
 /**
  * Application Handler
@@ -92,24 +90,5 @@ class Handler extends ExceptionHandler
         }
 
         return $errorMessage;
-    }
-
-    /**
-     * Convert an authentication exception into an unauthenticated response.
-     *
-     * @param  \Illuminate\Http\Request                 $request   HTTP request object
-     * @param  \Illuminate\Auth\AuthenticationException $exception Authentication Exception
-     *
-     * @return \Illuminate\Http\RedirectResponse HTTP redirect response
-     */
-    protected function unauthenticated( $request, AuthenticationException $exception )
-    {
-        if( $request->expectsJson() ){
-            return response()->json( [ 'error' => 'Unauthenticated.' ], 401 );
-        }
-
-        App::setLocale( Utility::getLanguageCode() );
-
-        return redirect()->guest( route( 'login' ) );
     }
 }
