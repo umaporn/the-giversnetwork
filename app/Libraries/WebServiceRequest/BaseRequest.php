@@ -104,13 +104,15 @@ abstract class BaseRequest
 
             switch( $clientException->getCode() ){
                 case 401:
-                    if( $suffixUri !== '/oauth/token' ){
+                    if( $suffixUri === '/oauth/token' ){
+                        if( $error['error'] !== 'invalid_credentials' ){
+                            abort( $clientException->getCode(), __( 'exception.web_service_error' ) . $error['message'] ?? $error['error'] );
+                        }
+                    } else {
                         $this->refreshAccessToken();
                         $parameters['headers'] = $this->getRequestHeader();
 
                         return $this->sendRequest( $method, $suffixUri, $parameters );
-                    } else {
-                        abort( $clientException->getCode(), __( 'exception.web_service_error' ) . $error['message'] ?? $error['error'] );
                     }
                     break;
                 case 422:
