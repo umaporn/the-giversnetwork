@@ -25,7 +25,11 @@
     ],
     "psr-4": {
       "App\\": "app/"
-    }
+    },
+    "files":[
+      "routes/webs/functions.php",
+      "routes/webs/global.php"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
