@@ -9,7 +9,7 @@
     <p>@lang('home.welcome') {{ $user['firstName'] }} {{ $user['middleName'] }} {{ $user['lastName'] }}.</p>
 
     @if( $user['avatar'] )
-        <div><img src="{{ $user['avatar'] }}"></div>
+        <div><img src="{{ $user['avatar'] }}" width="200" alt="@lang('avatar')"></div>
     @endif
 
 @endsection
