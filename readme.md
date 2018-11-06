@@ -42,7 +42,7 @@ It includes all useful features which are easy to customize and change some conf
     1. `git fetch origin`
     1. `git checkout <release_branch_name_from_your_remote_origin>` for your stage site
         or `git pull origin master` for your production site.
-    1. `composer install`
+    1. `composer install --no-dev`
     1. `php artisan up` To bring your site up after everything works fine.
 
 1. If you have some problems after run `composer install`, please try to remove **bootstrap/cache/packages.php**
