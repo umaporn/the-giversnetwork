@@ -18,7 +18,7 @@
 
         <label>
             @lang('user.avatar'):
-            <img src="{{ $user['avatar'] }}">
+            <img src="{{ $user['avatar'] }}" width="200" alt="@lang('avatar')">
             <input type="file" name="avatar" id="avatar">
         </label>
         <p id="avatar-help-text" class="alert help-text hide"></p>
