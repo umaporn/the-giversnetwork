@@ -1,4 +1,4 @@
-$icon-selector: selector-append(map-keys($icons));
+$icon-selector: map-keys($icons);
 
 #{$icon-selector} {
     display: block;
