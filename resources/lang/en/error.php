@@ -8,6 +8,16 @@ return [
     |--------------------------------------------------------------------------
     */
 
+    '400' => [
+        'page_title'       => 'Server Error',
+        'page_description' => 'Server Error',
+    ],
+
+    '401' => [
+        'page_title'       => 'Server Error',
+        'page_description' => 'Server Error',
+    ],
+
     '403' => [
         'page_title'       => 'Unauthorized Access',
         'page_description' => 'Unauthorized Access',
