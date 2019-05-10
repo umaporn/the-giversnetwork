@@ -4,12 +4,9 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-/**
- * Create/drop a user table.
- */
-class CreateUsersTable extends Migration
+class CreateShareLikeTable extends Migration
 {
-    const Table = 'users';
+    const Table = 'share_like';
 
     /**
      * Run the migrations.
@@ -20,10 +17,13 @@ class CreateUsersTable extends Migration
     {
         Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
-            $table->string( 'email', 254 )->unique();
-            $table->string( 'password', 255 );
-            $table->rememberToken();
-            $table->timestamps();
+            $table->unsignedInteger( 'fk_user_id' );
+            $table->foreign( 'fk_user_id' )->references( 'id' )->on( 'users' );
+            $table->unsignedInteger( 'fk_share_id' );
+            $table->foreign( 'fk_share_id' )->references( 'id' )->on( 'share' );
+            $table->integer( 'count' );
+            $table->timestamp( 'updated_at' );
+            $table->timestamp( 'created_at' )->useCurrent();
         } );
     }
 
