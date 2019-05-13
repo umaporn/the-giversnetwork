@@ -5,6 +5,9 @@
 
 namespace App\Libraries;
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
+
 /**
  * This class keeps all utility functions for all classes.
  * @package App\Libraries
@@ -98,5 +101,23 @@ class Utility
         }
 
         return $redirectedUrl;
+    }
+
+    /**
+     * Get data with language field.
+     *
+     * @param string $field Field name
+     * @param Model  $model Model
+     *
+     * @return string $data Field value
+     */
+    public static function getLanguageFields( string $field, Model $model )
+    {
+        $languageFields = [ 'en' => $field . '_english', 'th' => $field . '_thai', 'ch' => $field . '_chinese' ];
+        $defaultField   = $languageFields['en'];
+        $chosenField    = $languageFields[ App::getLocale() ];
+        $data           = ( trim( $model->$chosenField ) ) ? $model->$chosenField : $model->$defaultField;
+
+        return $data;
     }
 }

@@ -23,6 +23,8 @@ function globalRoutes()
         Route::get( 'password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm' )->name( 'password.request' );
         Route::post( 'password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail' )->name( 'password.email' );
 
+        Route::get( '/', 'HomeController@index' )->name( 'home.index' );
+
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
@@ -30,6 +32,5 @@ function globalRoutes()
         Route::get( 'profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
         Route::post( 'profile', 'ProfileController@updateProfile' )->name( 'user.updateProfile' );
         Route::get( 'reset-password', 'ProfileController@resetPassword' )->name( 'user.resetPassword' );
-        Route::get( '/', 'HomeController@index' )->name( 'home.index' );
     } );
 }

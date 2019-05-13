@@ -103,7 +103,7 @@ class LoginController extends Controller
      *
      * @return bool Success status
      */
-    protected function attemptLogin( Request $request )
+    /*protected function attemptLogin( Request $request )
     {
         $success = PasswordGrant::attemptLogin( $this->credentials( $request ) );
 
@@ -112,6 +112,6 @@ class LoginController extends Controller
         }
 
         return $success;
-    }
+    }*/
 
 }

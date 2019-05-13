@@ -17,8 +17,7 @@ class CreatePermissionTable extends Migration
     {
         Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
-            $table->string( 'description_thai', 255 );
-            $table->string( 'description_english', 255 );
+            $table->string( 'scope', 255 );
             $table->timestamp( 'updated_at' );
             $table->timestamp( 'created_at' )->useCurrent();
         } );

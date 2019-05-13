@@ -25,4 +25,9 @@ return [
     ],
 
     'register_button' => 'Register',
+
+    'form_submitted' => [
+        'success_message' => 'Thank you for getting in touch!',
+        'failed_message'  => 'Sorry! Failed to send the message.',
+    ],
 ];

@@ -45,4 +45,12 @@ return [
     'middleName'            => 'Middle Name',
     'mobile'                => 'Mobile Number',
     'avatar'                => 'Avatar',
+    'interest_in'           => 'Interest In',
+    'username'              => 'Username',
+    'image_path'            => 'Image_path',
+    'firstname'             => 'Firstname',
+    'lastname'              => 'Lastname',
+    'phone_number'          => 'Phone Number',
+    'address'               => 'Address',
+    'organization'          => 'Organization',
 ];
