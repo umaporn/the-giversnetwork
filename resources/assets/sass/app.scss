@@ -1,22 +1,23 @@
 // Settings
-@import "settings/_foundation";
-@import "settings/_variables";
-@import "settings/_icons";
+@import "settings/foundation";
+@import "settings/variables";
+@import "settings/icons";
+@import "settings/fonts";
+
 // External libraries
 @import "~foundation-icon-fonts/_foundation-icons";
 @import "~foundation-sites/scss/foundation";
 
 @include foundation-everything($flex: true, $prototype: true);
 
+// Components
+@import "components/base";
+@import "components/form";
+@import "components/icons";
+@import "components/spinner";
+
+
 // Layouts
 @import "layouts/header";
 @import "layouts/top_menu";
-@import "layouts/main_menu";
-
-// Components
-@import "components/form";
-@import "components/icons";
-@import "components/popup";
-@import "components/spinner";
-@import "components/table";
-@import "components/card";
+@import "layouts/footer";

@@ -1,0 +1,7 @@
+.padding-content {
+    padding: $space-box*2;
+    @include breakpoint(large) {
+        padding: $space-box*4;
+    }
+   
+}
