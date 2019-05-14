@@ -1,8 +1,5 @@
 // Settings
 @import "settings/foundation";
-@import "settings/variables";
-@import "settings/icons";
-@import "settings/fonts";
 
 // External libraries
 @import "~foundation-icon-fonts/_foundation-icons";
@@ -10,7 +7,19 @@
 
 @include foundation-everything($flex: true, $prototype: true);
 
+// Settings
+@import "settings/variables";
+@import "settings/icons";
+@import "settings/fonts";
+
+//icons
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
 // Components
+@import "components/animation";
 @import "components/base";
 @import "components/form";
 @import "components/icons";

@@ -1,0 +1,65 @@
+.join-us{
+    background-color: $color-blue;
+    color: $white;
+    font-size: rem-calc(26);
+    font-family: $text-bold;
+    h2{
+        display: inline-block;
+    }
+}
+.bottom-menu{
+    color: $color-blue;
+    h2{
+        display: inline-block;
+        padding-right: rem-calc(10);
+        color: $color-blue;
+    }
+    & > .cell{
+        padding-right: $space-box*6;
+        @include breakpoint(small only) {
+            padding-right: 0;
+        }
+    }
+    & > .cell:last-child{
+        padding-right: 0;
+    }
+    .social{
+        label{
+            margin-right: $space-box/2; 
+            display: inline-block;
+            line-height: rem-calc(36);
+        }
+        ul{
+            li{ 
+                display: inline-block;
+                margin-right: $space-box/2;
+                &:last-child{
+                    margin-right: 0;
+                }
+                a{
+                    color: $color-blue;
+                    &:hover{
+                        color: lighten($color-blue, 5%);
+                    }
+                }
+            }
+        }
+    }
+}
+.copyright{
+    background-color: $color-dark-gray;
+    color: $white;
+    &.padding-content{
+        padding-top: $space-box;
+        padding-bottom: $space-box;
+    }
+    @include breakpoint(medium down) {
+        .text-left{
+            text-align: center;
+        }
+        .text-right{
+            text-align: center;
+        }
+    }
+    
+}
