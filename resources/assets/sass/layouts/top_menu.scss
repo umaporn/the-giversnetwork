@@ -1,3 +1,30 @@
+body {
+    &:lang(th) {
+        .language {
+            li.th {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+        }
+    }
+
+    &:lang(en) {
+        .language {
+            li.en {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+
+        }
+    }
+}
+
 .sticky {
     transition: all .2s ease-in-out;
 
@@ -34,6 +61,12 @@
             padding-top: 0;
             padding-bottom: 0;
         }
+        @include breakpoint(rem-calc(1480) down) {
+            padding: 0 $space-box/4;
+        }
+        @include breakpoint(small only) {
+            padding: $space-box;
+        }
     }
 
 
@@ -64,6 +97,11 @@
         border: rem-calc(1) solid $color-blue;
         border-radius: rem-calc(10);
 
+        
+        @include breakpoint(rem-calc(876) down) {
+            margin-left: 0;
+        }
+
         @include breakpoint(small only) {
             float: none;
             margin-top: $space-box;
@@ -86,6 +124,9 @@
                 height: 100%;
                 font-size: rem-calc(20);
                 padding: 0 $space-box;
+                @include breakpoint(rem-calc(876) down) {
+                    padding: 0 $space-box/2;
+                }
             }
         }
     }
@@ -181,7 +222,7 @@
                 }
 
                 @include breakpoint(rem-calc(876) down) {
-                    padding: $space-box $space-box/3;
+                    padding: $space-box $space-box/4;
                 }
 
                 @include breakpoint(small only) {
@@ -283,30 +324,3 @@
 }
 
 
-
-body {
-    &:lang(th) {
-        .language {
-            li.th {
-                a {
-                    color: $white;
-                    background-color: $color-blue;
-                    border-radius: rem-calc(50);
-                }
-            }
-        }
-    }
-
-    &:lang(en) {
-        .language {
-            li.en {
-                a {
-                    color: $white;
-                    background-color: $color-blue;
-                    border-radius: rem-calc(50);
-                }
-            }
-
-        }
-    }
-}

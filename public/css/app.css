@@ -10460,6 +10460,18 @@ ol.list-upper-roman {
   text-align: center;
 }
 
+body:lang(th) .language li.th a {
+  color: #FEFEFE;
+  background-color: #154064;
+  border-radius: 3.125rem;
+}
+
+body:lang(en) .language li.en a {
+  color: #FEFEFE;
+  background-color: #154064;
+  border-radius: 3.125rem;
+}
+
 .sticky {
   -webkit-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
@@ -10493,6 +10505,18 @@ ol.list-upper-roman {
   }
 }
 
+@media screen and (max-width: 92.5em) {
+  .topbar-responsive.padding-content {
+    padding: 0 0.3125rem;
+  }
+}
+
+@media screen and (max-width: 39.99875em) {
+  .topbar-responsive.padding-content {
+    padding: 1.25rem;
+  }
+}
+
 .topbar-responsive-logo {
   vertical-align: middle;
 }
@@ -10516,6 +10540,12 @@ ol.list-upper-roman {
   margin-left: 2.5rem;
   border: 0.0625rem solid #154064;
   border-radius: 0.625rem;
+}
+
+@media screen and (max-width: 54.75em) {
+  .topbar-responsive .user-profile {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: 39.99875em) {
@@ -10543,6 +10573,12 @@ ol.list-upper-roman {
   height: 100%;
   font-size: 1.25rem;
   padding: 0 1.25rem;
+}
+
+@media screen and (max-width: 54.75em) {
+  .topbar-responsive .user-profile li a {
+    padding: 0 0.625rem;
+  }
 }
 
 .topbar-responsive .language {
@@ -10653,7 +10689,7 @@ ol.list-upper-roman {
 
 @media screen and (max-width: 54.75em) {
   .topbar-responsive .menu li a {
-    padding: 1.25rem 0.41666667rem;
+    padding: 1.25rem 0.3125rem;
   }
 }
 
@@ -10749,17 +10785,5 @@ ol.list-upper-roman {
     -webkit-animation: fadeIn 1s ease-in;
             animation: fadeIn 1s ease-in;
   }
-}
-
-body:lang(th) .language li.th a {
-  color: #FEFEFE;
-  background-color: #154064;
-  border-radius: 3.125rem;
-}
-
-body:lang(en) .language li.en a {
-  color: #FEFEFE;
-  background-color: #154064;
-  border-radius: 3.125rem;
 }
 
