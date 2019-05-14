@@ -21,7 +21,7 @@
                 @else
                     <li>
                         <a href="{{ route('user.getProfile') }}" title="@lang('user.links.profile')">
-                            {{ Auth::user()->getAuthIdentifier() }}
+                            {{ Auth::user()->username }}
                         </a>
                     </li>
                     <li>
