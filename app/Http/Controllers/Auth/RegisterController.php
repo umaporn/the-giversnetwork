@@ -151,25 +151,4 @@ class RegisterController extends Controller
         return view( 'auth.register', compact( 'interestList', 'organizationCategoryList' ) );
     }
 
-    /**
-     * Register a new user.
-     *
-     * @param RecaptchaRequest $request Recaptcha request object
-     *
-     * @return \Illuminate\Http\JsonResponse Registration response
-     */
-    /*public function register( RecaptchaRequest $request )
-    {
-        $response = ClientGrant::call(
-            'POST',
-            '/api/beginning/register/' . App::getLocale(),
-            [ 'form_params' => $request->all() ]
-        );
-
-        if( isset( $response['errors'] ) ){
-            return response()->json( $response, 422 );
-        }
-
-        return response()->json( [ 'success' => $response['success'], 'message' => $response['message'] ] );
-    }*/
 }

@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use App\Http\Requests\BannerRequest;
 use App\Libraries\Image;
 use App\Mail\RegisterMailer;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Mail;
 
-class Users extends Model
+class Users extends Authenticatable
 {
 
     use Notifiable;
@@ -36,16 +36,21 @@ class Users extends Model
      */
     public function createUser( Request $request )
     {
+        $image_path       = '';
         $imageInformation = $this->saveImage( $request );
 
-        $newUser         = [
+        if( isset( $imageInformation['imageInformation']['original'] ) ){
+            $image_path = $imageInformation['imageInformation']['original'];
+        }
+
+        $newUser = [
             'email'                       => $request->input( 'email' ),
             'password'                    => bcrypt( $request->input( 'password' ) ),
             'fk_permission_id'            => $request->input( 'fk_permission_id' ),
             'fk_interest_in_id'           => $request->input( 'fk_interest_in_id' ),
             'fk_organization_category_id' => $request->input( 'fk_organization_category_id' ),
             'username'                    => $request->input( 'username' ),
-            'image_path'                  => $imageInformation['imageInformation']['original'],
+            'image_path'                  => $image_path,
             'firstname'                   => $request->input( 'firstname' ),
             'lastname'                    => $request->input( 'lastname' ),
             'organization_name'           => $request->input( 'organization_name' ),
@@ -66,7 +71,7 @@ class Users extends Model
      */
     private function saveImage( Request $request )
     {
-        $imageInformation = [ 'image_path' => '', ];
+        $imageInformation = [];
         $file             = $request->file( 'image_path' );
         $success          = true;
 
@@ -79,9 +84,6 @@ class Users extends Model
                 $this->deleteImage();
             }
 
-        } else if( $this->id ){
-            $attributes                     = $this->getAttributes();
-            $imageInformation['image_path'] = $attributes['image_path'];
         }
 
         return [ 'success' => $success, 'imageInformation' => $imageInformation ];

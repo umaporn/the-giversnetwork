@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+
 return [
 
     /*
@@ -14,7 +16,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard'     => 'web',
         'passwords' => 'users',
     ],
 
@@ -37,12 +39,12 @@ return [
 
     'guards' => [
         'web' => [
-            'driver' => 'session',
+            'driver'   => 'session',
             'provider' => 'users',
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver'   => 'token',
             'provider' => 'users',
         ],
     ],
@@ -66,8 +68,12 @@ return [
 
     'providers' => [
         'users' => [
-            'driver' => 'oauth',
+            'driver' => 'eloquent',
+            'model'  => App\Models\Users::class,
         ],
+        /*'users' => [
+            'driver' => 'oauth',
+        ],*/
     ],
 
 ];

@@ -6,11 +6,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Support\Facades\PasswordGrant;
 use App\Support\Facades\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Http\Requests\RecaptchaRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -20,20 +18,28 @@ use Illuminate\Support\Facades\Log;
  */
 class LoginController extends Controller
 {
+
     use AuthenticatesUsers {
         logout as traitLogout;
     }
 
     /**
+     * Initialize LoginController class.
+     */
+    public function __construct()
+    {
+        $this->redirectTo = route('home.index');
+    }
+    /**
      * Handle a login request to the application.
      *
-     * @param RecaptchaRequest $request Recaptcha request object
+     * @param Request $request Recaptcha request object
      *
      * @return \Illuminate\Http\Response Login response
      *
      * @throws \Illuminate\Validation\ValidationException Validation exception
      */
-    public function login( RecaptchaRequest $request )
+    public function login( Request $request )
     {
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -57,8 +63,8 @@ class LoginController extends Controller
     /**
      * Redirect the user to another page after the user has been authenticated.
      *
-     * @param  \Illuminate\Http\Request $request HTTP request object
-     * @param  mixed                    $user    User
+     * @param \Illuminate\Http\Request $request HTTP request object
+     * @param mixed                    $user    User
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
@@ -72,46 +78,23 @@ class LoginController extends Controller
 
             return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
         }
-
+dd( redirect()->intended( $redirectedUrl ));
         return redirect()->intended( $redirectedUrl );
     }
 
     /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request $request HTTP request object
+     * @param \Illuminate\Http\Request $request HTTP request object
      *
      * @return \Illuminate\Http\Response HTTP response object
      */
     public function logout( Request $request )
     {
-        $response = PasswordGrant::call( 'GET', '/api/logout' );
+        $this->guard()->logout();
 
-        if( !$response['success'] ){
-            Log::error( 'Failed to revoke an access token, ' . PasswordGrant::getAccessToken() . '.' );
-        }
-
-        $this->traitLogout( $request );
-
-        return redirect()->route( 'home.index' );
+        $request->session()->invalidate();
+        return $this->loggedOut($request) ?: redirect('/');
     }
-
-    /**
-     * Attempt to log the user into the application.
-     *
-     * @param Request $request HTTP request object
-     *
-     * @return bool Success status
-     */
-    /*protected function attemptLogin( Request $request )
-    {
-        $success = PasswordGrant::attemptLogin( $this->credentials( $request ) );
-
-        if( $success ){
-            $this->guard()->login( Auth::getProvider()->retrieveByCredentials( $this->credentials( $request ) ) );
-        }
-
-        return $success;
-    }*/
 
 }
