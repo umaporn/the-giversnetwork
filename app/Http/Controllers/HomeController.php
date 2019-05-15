@@ -20,8 +20,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $response = PasswordGrant::call( 'GET', '/api/profile' );
-
-        return view( 'home', [ 'user' => $response['data'] ] );
+        return view( 'home' );
     }
 }

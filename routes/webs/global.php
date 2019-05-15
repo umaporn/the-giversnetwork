@@ -9,6 +9,9 @@ function globalRoutes()
 
     Route::get( 'file/{url}', 'MediaController@getFile' )->name( 'getFile' );
 
+    Route::get( '/', 'HomeController@index' )->name( 'home.index' );
+    
+/*
     Route::middleware( 'guest' )->group( function(){
 
         // Authentication
@@ -22,7 +25,7 @@ function globalRoutes()
         // Password Reset
         Route::get( 'password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm' )->name( 'password.request' );
         Route::post( 'password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail' )->name( 'password.email' );
-
+        
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
@@ -32,4 +35,5 @@ function globalRoutes()
         Route::get( 'reset-password', 'ProfileController@resetPassword' )->name( 'user.resetPassword' );
         Route::get( '/', 'HomeController@index' )->name( 'home.index' );
     } );
+    */
 }
