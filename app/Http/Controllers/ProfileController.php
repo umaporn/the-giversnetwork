@@ -46,9 +46,11 @@ class ProfileController extends Controller
      */
     public function getProfile( Request $request )
     {
-        $user = $this->usersModel->getUserProfile();
+        $user                     = $this->usersModel->getUserProfile();
+        $interestList             = $this->interestInModel->getInterestInList();
+        $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
 
-        return view( 'users.profile', [ 'user' => $user ] );
+        return view( 'users.profile', compact('user', 'interestList', 'organizationCategoryList') );
     }
 
     /**
@@ -60,23 +62,9 @@ class ProfileController extends Controller
      */
     public function updateProfile( Request $request )
     {
-        $parameters = [];
+        $response = $this->usersModel->updateUser( $request );
 
-        foreach( $request->except( 'avatar' ) as $key => $value ){
-            array_push( $parameters, [ 'name' => $key, 'contents' => $value ] );
-        }
-
-        if( $request->hasFile( 'avatar' ) ){
-            array_push( $parameters, [
-                'name'     => 'avatar',
-                'contents' => file_get_contents( $request->file( 'avatar' )->path() ),
-                'filename' => $request->file( 'avatar' )->getClientOriginalName(),
-            ] );
-        }
-
-        $response = PasswordGrant::call( 'POST', '/api/profile', [ 'multipart' => $parameters ] );
-
-        if( isset( $response['errors'] ) ){
+        if( !$response['success'] ){
             return response()->json( $response, 422 );
         }
 

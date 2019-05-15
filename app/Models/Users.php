@@ -3,14 +3,10 @@
 namespace App\Models;
 
 use App\Libraries\Image;
-use App\Libraries\Search;
-use App\Mail\RegisterMailer;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 class Users extends Authenticatable
 {
@@ -140,5 +136,27 @@ class Users extends Authenticatable
                        ->get();
 
         return $result->isEmpty();
+    }
+
+    /**
+     * Update a user.
+     *
+     * @param Request $request User request object
+     *
+     * @return    array
+     */
+    public function updateUser( Request $request )
+    {
+
+        $result = $this->where( 'id', Auth::user()->id )->update( $request->all() );
+
+        if( $result ){
+            $response = [ 'success' => true, 'message' => __( 'user.saved_user_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'user.saved_user_error' ), ];
+        }
+
+        return $response;
+
     }
 }

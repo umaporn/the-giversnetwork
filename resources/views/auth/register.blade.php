@@ -67,7 +67,7 @@
             </select>
             <input type="text" name="organization_name" id="organization_name" value="xxx">
         </label>
-        <p id="phone_number-help-text" class="alert help-text hide"></p>
+        <p id="organization_name-help-text" class="alert help-text hide"></p>
 
         <label>
             @lang('user.address'):

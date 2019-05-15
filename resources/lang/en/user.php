@@ -53,4 +53,8 @@ return [
     'phone_number'          => 'Phone Number',
     'address'               => 'Address',
     'organization'          => 'Organization',
+
+    'saved_user_success' => 'User saved successfully.',
+    'saved_user_error'   => 'User was not saved successfully.',
+
 ];
