@@ -1,17 +1,19 @@
 .padding-content {
     padding: $space-box*2;
+
     @include breakpoint(large) {
         padding: $space-box*2 $space-box*4;
     }
 }
 
-.line{ 
+.line {
     border-bottom: solid $color-green rem-calc(1);
     height: rem-calc(1);
 
-    
+
 }
-.outline-dot{
+
+.outline-dot {
     position: relative;
     height: rem-calc(12);
     width: rem-calc(12);
@@ -20,17 +22,42 @@
     border-radius: 50%;
     display: inline-block;
 }
-.dot{
+
+.dot {
     position: absolute;
     height: rem-calc(4);
     width: rem-calc(4);
     background-color: $color-blue;
-    border-radius: 50%; 
+    border-radius: 50%;
     top: rem-calc(3);
     left: rem-calc(3);
 }
-.view-all{
-    span{
+
+.view-all {
+    span {
         margin-right: rem-calc(5);
+    }
+}
+
+.topic {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border: rem-calc(10) solid transparent;
+        border-bottom: 0;
+        margin-left: rem-calc(-10);
+        margin-bottom: rem-calc(-10);
+    }
+
+    .view-all {
+        a {
+            color: $white;
+        }
     }
 }

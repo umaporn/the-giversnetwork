@@ -10383,7 +10383,9 @@ h1,
 h2,
 .h2,
 h3,
-.h3 {
+.h3,
+h4,
+.h4 {
   font-weight: bold;
   font-family: "db_airystd_bd", sans-serif;
 }
@@ -10407,6 +10409,11 @@ h2.topic-light,
 h3,
 .h3 {
   font-size: 1.25rem;
+}
+
+h4,
+.h4 {
+  font-size: 1rem;
 }
 
 a {
@@ -16286,6 +16293,27 @@ readers do not read off random characters that represent icons */
   margin-right: 0.3125rem;
 }
 
+.topic {
+  position: relative;
+}
+
+.topic:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border: 0.625rem solid transparent;
+  border-bottom: 0;
+  margin-left: -0.625rem;
+  margin-bottom: -0.625rem;
+}
+
+.topic .view-all a {
+  color: #FEFEFE;
+}
+
 .btn-join-us {
   padding: 0.83333333rem 4.375rem;
   margin: 0 1.25rem;
@@ -17275,7 +17303,7 @@ body:lang(en) .language li.en a {
   }
 }
 
-/*----------------- News ------------------*/
+/*----------------- Home - News ------------------*/
 
 .news .view-all {
   color: #154064;
@@ -17301,5 +17329,131 @@ body:lang(en) .language li.en a {
 
 .news article time i {
   margin-right: 0.3125rem;
+}
+
+/*----------------- Home - Share ------------------*/
+
+.share .view-all {
+  color: #FEFEFE;
+}
+
+.share .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.share .topic:after {
+  border-top-color: #154064;
+}
+
+.share .topic h2 {
+  display: inline-block;
+}
+
+.share .topic i {
+  font-size: 1.125rem;
+  margin-right: 0.3125rem;
+}
+
+.share .content {
+  background-color: #FEFEFE;
+  border-bottom: solid #154064 0.3125rem;
+}
+
+.share .content h4 {
+  color: #154064;
+}
+
+.share .tabs,
+.share .tabs-content {
+  border: 0;
+}
+
+.share .tabs {
+  border-bottom: 0.0625rem solid #154064;
+}
+
+.share .tabs-title > a:focus,
+.share .tabs-title > a[aria-selected='true'] {
+  background-color: #FEFEFE;
+  outline: none;
+}
+
+.share .tabs-title > a {
+  font-size: 1.25rem;
+  color: #154064;
+  font-family: "db_airystd_bd";
+  padding: 1.25rem 1.875rem;
+  position: relative;
+}
+
+.share .tabs-title > a::after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 0.3125rem;
+  left: 50%;
+  position: absolute;
+  background: #154064;
+  -webkit-transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+
+.share .tabs-title > a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.share .tabs-panel {
+  padding: 1.25rem 0;
+}
+
+.share .recent-share .profile {
+  color: #154064;
+  display: inline-block;
+}
+
+.share .recent-share .profile .display-profile {
+  display: inline-block;
+}
+
+.share .recent-share .profile .display-profile img {
+  display: inline-block;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.share .recent-share .like,
+.share .recent-share .comment {
+  color: #154064;
+}
+
+.share .recent-share .like i,
+.share .recent-share .comment i {
+  margin-right: 0.3125rem;
+}
+
+.share .recent-share .like span,
+.share .recent-share .comment span {
+  margin-right: 0.625rem;
+}
+
+.share .recent-share article {
+  margin-bottom: 1.25rem;
+}
+
+.share .recent-share article > .cell:nth-child(odd) {
+  padding-right: 1.25rem;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .share .recent-share article > .cell:nth-child(odd) {
+    margin-bottom: 0.625rem;
+  }
 }
 
