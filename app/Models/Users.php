@@ -148,7 +148,19 @@ class Users extends Authenticatable
     public function updateUser( Request $request )
     {
 
-        $result = $this->where( 'id', Auth::user()->id )->update( $request->all() );
+        $data = $request->all();
+
+        if( $request->file( 'image_path' ) ){
+            $imageInformation = $this->saveImage( $request );
+
+            if( isset( $imageInformation['imageInformation']['original'] ) ){
+                $image_file = $imageInformation['imageInformation']['original'];
+
+                $data['image_path'] = $image_file;
+            }
+        }
+
+        $result = $this->where( 'id', Auth::user()->id )->update( $data );
 
         if( $result ){
             $response = [ 'success' => true, 'message' => __( 'user.saved_user_success' ), ];

@@ -17,11 +17,11 @@
         <label>
             @lang('user.avatar'):
             @if($user[0]->image_path)
-                <img src="{{ $user[0]->image_path }}" width="200" alt="@lang('avatar')">
+                <img src="{{ Storage::url($user[0]->image_path) }}" width="200" alt="@lang('avatar')">
             @endif
-            <input type="file" name="avatar" id="avatar">
+            <input type="file" name="image_path" id="image_path">
         </label>
-        <p id="avatar-help-text" class="alert help-text hide"></p>
+        <p id="image_path-help-text" class="alert help-text hide"></p>
 
         <label>
             @lang('user.firstName'):
