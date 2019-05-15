@@ -81,7 +81,7 @@
         </label>
         <p id="image_path-help-text" class="alert help-text hide"></p>
 
-        <input type="hidden" name="fk_permission_id" value="{{ config('user.permission_id.admin') }}">
+        <input type="hidden" name="fk_permission_id" value="{{ config('user.permission_id.member') }}">
 
         {{--@captcha('{{ App::getLocale() }}')--}}
 

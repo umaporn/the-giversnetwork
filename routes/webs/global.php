@@ -27,7 +27,6 @@ function globalRoutes()
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
-
         Route::get( '/', 'HomeController@index' )->name( 'home.index' );
         Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
         Route::get( 'profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
