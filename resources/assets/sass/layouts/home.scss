@@ -1,4 +1,4 @@
-/* Hero Banner */
+/*----------------- Hero Banner ------------------*/
 .swiper-container {
     width: 100%;
     height: 100%;
@@ -54,5 +54,27 @@
     right: $space-box*2;
     @include breakpoint(large) {
         right: $space-box*4;
+    }
+}
+/*----------------- News ------------------*/
+.news{
+    .view-all{
+        color: $color-blue;
+    }
+    article{
+            margin-bottom: $space-box/2;
+        figure, h3{
+            margin-bottom: $space-box/2;
+        }
+        h3{
+            color: $color-blue;
+        }
+        time{
+            color: $color-dark-gray;
+            vertical-align: middle;
+            i{
+                margin-right: rem-calc(5);
+            }
+        }
     }
 }

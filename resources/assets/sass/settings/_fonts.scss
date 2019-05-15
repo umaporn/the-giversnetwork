@@ -40,8 +40,31 @@ h3, .h3{
 
 h2, .h2{
     font-size: rem-calc(26);
+    text-transform: uppercase;
+    &.topic{
+        &-dark{
+            color: $color-blue;
+        }
+        &-light{
+            color: $white;
+        }
+    }
+}
+h3, .h3{
+    font-size: rem-calc(20);
 }
 
 a{
     font-family: $text-normal, sans-serif;
+    color: $color-blue;
+}
+
+time{
+    font-size: rem-calc(16);
+    font-family: $text-normal, sans-serif;
+}
+
+.view-all{
+    font-size: rem-calc(16);
+    line-height:  rem-calc(16);
 }
