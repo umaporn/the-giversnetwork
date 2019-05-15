@@ -5,10 +5,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Support\Facades\ClientGrant;
-use App\Support\Facades\PasswordGrant;
+use App\Models\InterestIn;
+use App\Models\OrganizationCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Models\Users;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * Profile Controller
@@ -16,16 +18,37 @@ use Illuminate\Support\Facades\App;
  */
 class ProfileController extends Controller
 {
+    /** @var Users User model */
+    protected $usersModel;
+
+    /** @var InterestIn InterestIn model */
+    protected $interestInModel;
+
+    /** @var OrganizationCategory OrganizationCategory model */
+    protected $organizationCategoryModel;
+
+    /**
+     * Initialize RegisterController class.
+     *
+     * @param Users $users Users model
+     */
+    public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory )
+    {
+        $this->usersModel                = $users;
+        $this->interestInModel           = $interestIn;
+        $this->organizationCategoryModel = $organizationCategory;
+    }
+
     /**
      * Load a profile page of the authenticated user.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
      */
-    public function getProfile()
+    public function getProfile( Request $request )
     {
-        $response = PasswordGrant::call( 'GET', '/api/profile' );
+        $user = $this->usersModel->getUserProfile();
 
-        return view( 'users.profile', [ 'user' => $response['data'] ] );
+        return view( 'users.profile', [ 'user' => $user ] );
     }
 
     /**

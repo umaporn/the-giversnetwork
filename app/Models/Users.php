@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use App\Libraries\Image;
+use App\Libraries\Search;
 use App\Mail\RegisterMailer;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class Users extends Authenticatable
@@ -26,6 +28,16 @@ class Users extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Get Permission model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Permission model relationship
+     */
+    public function permission()
+    {
+        return $this->belongsTo( 'App\Models\Permission', 'fk_permission_id' );
+    }
 
     /**
      * Create a new user.
@@ -103,5 +115,30 @@ class Users extends Authenticatable
 
         Image::deleteImage( [ $this->getAttributes() ], $imagesFields );
 
+    }
+
+    /**
+     * Get users profile information.
+     *
+     * @return Users[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getUserProfile()
+    {
+        return $this->with( 'permission' )->where( [ 'id' => Auth::user()->id ] )->get();
+    }
+
+    /**
+     * Check user status.
+     *
+     * @param array $userCredentials
+     *
+     * @return bool
+     */
+    public function checkUserStatus( array $userCredentials )
+    {
+        $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public' ] )
+                       ->get();
+
+        return $result->isEmpty();
     }
 }

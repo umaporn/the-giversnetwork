@@ -5,5 +5,5 @@
 @section('page-icon', 'fi-home')
 
 @section('content')
-    <p>@lang('home.welcome')</p>
+    <p>@lang('home.welcome'): {{ $user->username }}</p>
 @endsection

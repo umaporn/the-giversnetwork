@@ -6,6 +6,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Users;
 use App\Support\Facades\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Log;
  */
 class LoginController extends Controller
 {
+    /** @var Users User model */
+    protected $usersModel;
 
     use AuthenticatesUsers {
         logout as traitLogout;
@@ -26,10 +29,12 @@ class LoginController extends Controller
     /**
      * Initialize LoginController class.
      */
-    public function __construct()
+    public function __construct( Users $users )
     {
-        $this->redirectTo = route('home.index');
+        $this->redirectTo = route( 'home.index' );
+        $this->usersModel = $users;
     }
+
     /**
      * Handle a login request to the application.
      *
@@ -78,8 +83,24 @@ class LoginController extends Controller
 
             return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
         }
-dd( redirect()->intended( $redirectedUrl ));
+
         return redirect()->intended( $redirectedUrl );
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return bool
+     */
+    protected function attemptLogin( Request $request )
+    {
+        if( !$this->usersModel->checkUserStatus( $this->credentials( $request ) ) ){
+            return $this->guard()->attempt(
+                $this->credentials( $request ), $request->filled( 'remember' )
+            );
+        }
     }
 
     /**
@@ -94,7 +115,8 @@ dd( redirect()->intended( $redirectedUrl ));
         $this->guard()->logout();
 
         $request->session()->invalidate();
-        return $this->loggedOut($request) ?: redirect('/');
+
+        return $this->loggedOut( $request ) ?: redirect( '/' );
     }
 
 }

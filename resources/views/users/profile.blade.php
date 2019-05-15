@@ -6,44 +6,32 @@
 
 @section('content')
 
-    @if( $user['isLocalUser'] )
-        <div class="grid-x align-right">
-            <form class="submission-form" method="GET" action="{{ route('user.resetPassword') }}">
-                <button class="button" type="submit">@lang('passwords.request_button')</button>
-            </form>
-        </div>
-    @endif
-
     <form class="submission-form" method="POST" action="{{ route('user.updateProfile') }}">
 
         <label>
             @lang('user.avatar'):
-            <img src="{{ $user['avatar'] }}" width="200" alt="@lang('avatar')">
+            @if($user[0]->image_path)
+                <img src="{{ $user[0]->image_path }}" width="200" alt="@lang('avatar')">
+            @endif
             <input type="file" name="avatar" id="avatar">
         </label>
         <p id="avatar-help-text" class="alert help-text hide"></p>
 
         <label>
             @lang('user.firstName'):
-            <input type="text" name="firstName" id="firstName" value="{{ $user['firstName'] }}">
+            <input type="text" name="firstName" id="firstName" value="{{ $user[0]->firstname }}">
         </label>
         <p id="firstName-help-text" class="alert help-text hide"></p>
 
         <label>
             @lang('user.lastName'):
-            <input type="text" name="lastName" id="lastName" value="{{ $user['lastName'] }}">
+            <input type="text" name="lastName" id="lastName" value="{{ $user[0]->lastname }}">
         </label>
         <p id="lastName-help-text" class="alert help-text hide"></p>
 
         <label>
-            @lang('user.middleName'):
-            <input type="text" name="middleName" id="middleName" value="{{ $user['middleName'] }}">
-        </label>
-        <p id="middleName-help-text" class="alert help-text hide"></p>
-
-        <label>
             @lang('user.mobile'):
-            <input type="text" name="mobile" id="mobile" value="{{ $user['mobile'] }}">
+            <input type="text" name="mobile" id="mobile" value="{{ $user[0]->phone_number }}">
         </label>
         <p id="mobile-help-text" class="alert help-text hide"></p>
 
