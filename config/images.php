@@ -29,6 +29,11 @@ return [
             'user_profile'             => 'images/home/user-profile.jpg',
             
         ],
+        'learn' => [
+            'home_learn_01'             => 'images/home/learn-1.png',
+            'home_learn_02'             => 'images/home/learn-2.png',
+            'home_learn_03'             => 'images/home/learn-3.png',
+        ],
     ],
     
 

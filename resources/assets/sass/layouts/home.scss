@@ -184,3 +184,46 @@
         }
     }
 }
+/*----------------- Home - Learn ------------------*/
+.learn{
+    .view-all{
+        color: $white;
+    }
+    .topic{
+        background-color: $color-dark-gray;
+        color: $white;
+        &:after{
+            border-top-color: $color-dark-gray;
+        }
+        h2{
+            display: inline-block;
+        }
+        i{
+            font-size: rem-calc(18);
+            margin-right: rem-calc(5);
+        }
+    }
+    .content{
+        background-color: $white;
+        h4{
+            color: $color-blue;
+        }
+    }
+    article{
+        margin-bottom: $space-box/2;
+    figure, h3{
+        margin-bottom: $space-box/2;
+    }
+    h3{
+        color: $color-blue;
+    }
+    .category{
+        color: $color-dark-gray;
+        vertical-align: middle;
+        i{
+            margin-right: rem-calc(5);
+        }
+    }
+}
+}
+

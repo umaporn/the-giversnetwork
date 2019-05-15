@@ -17457,3 +17457,57 @@ body:lang(en) .language li.en a {
   }
 }
 
+/*----------------- Home - Learn ------------------*/
+
+.learn .view-all {
+  color: #FEFEFE;
+}
+
+.learn .topic {
+  background-color: #7F8685;
+  color: #FEFEFE;
+}
+
+.learn .topic:after {
+  border-top-color: #7F8685;
+}
+
+.learn .topic h2 {
+  display: inline-block;
+}
+
+.learn .topic i {
+  font-size: 1.125rem;
+  margin-right: 0.3125rem;
+}
+
+.learn .content {
+  background-color: #FEFEFE;
+}
+
+.learn .content h4 {
+  color: #154064;
+}
+
+.learn article {
+  margin-bottom: 0.625rem;
+}
+
+.learn article figure,
+.learn article h3 {
+  margin-bottom: 0.625rem;
+}
+
+.learn article h3 {
+  color: #154064;
+}
+
+.learn article .category {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.learn article .category i {
+  margin-right: 0.3125rem;
+}
+

@@ -55,6 +55,7 @@
                 </article>
         </div>
    </section>
+
    <section class="share">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
@@ -206,6 +207,44 @@
                     </div>
                 </div>
             </div>
+        </div>
+   </section>
+
+   <section class="learn">
+       <div class="grid-x align-middle topic padding-content">
+            <div class="cell auto">
+                <i class="fas fa-book"></i> <h2 class="topic-light">Learn</h2> 
+                <span>- Short description to explain share section : Definition</span>
+            </div>
+            <div class="cell shrink view-all">
+                <a href="#">
+                    <span>View All</span>
+                    <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x content padding-content">
+                <article class="cell small-12 medium-4">
+                    <figure>
+                        <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="gallery_img">
+                    </figure>
+                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <span class="category">Category Name</span>
+                </article>
+                <article class="cell small-12 medium-4">
+                    <figure>
+                        <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}" class="gallery_img">
+                    </figure>
+                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <span class="category">Category Name</span>
+                </article>
+                <article class="cell small-12 medium-4">
+                    <figure>
+                        <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}" class="gallery_img">
+                    </figure>
+                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <span class="category">Category Name</span>
+                </article>
         </div>
    </section>
 @endsection
