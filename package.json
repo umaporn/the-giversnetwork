@@ -21,6 +21,7 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",
     "cross-env": "^5.2.0",
-    "npm": "^6.4.1"
+    "npm": "^6.4.1",
+    "swiper": "^4.5.0"
   }
 }

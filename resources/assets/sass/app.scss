@@ -25,8 +25,13 @@
 @import "components/icons";
 @import "components/spinner";
 
+//Hero Banner
+@import "~swiper/src/swiper";
+@import "~swiper/src/components/pagination/pagination";
+@import "~swiper/src/components/navigation/navigation";
 
 // Layouts
 @import "layouts/header";
 @import "layouts/top_menu";
 @import "layouts/footer";
+@import "layouts/home";

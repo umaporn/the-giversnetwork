@@ -16,3 +16,4 @@ $( document ).foundation();
  * @type {Object}
  */
 window.JSTranslate = require( 'js-translate' );
+window.Swiper = require( 'swiper/dist/js/swiper' );
