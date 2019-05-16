@@ -251,6 +251,40 @@
         }
     }
 }
+/*----------------- Home - Give ------------------*/
+.give {
+    .view-all {
+        color: $white;
+
+        a {
+            color: $white;
+        }
+    }
+
+    .topic {
+        background-color: $color-green;
+        color: $white;
+
+        &:after {
+            border-top-color: $color-green;
+        }
+
+        h2 {
+            display: inline-block;
+        }
+    }
+
+    .content {
+        background-color: $white;
+        border-bottom: solid $color-green rem-calc(5);
+
+        h4 {
+            color: $color-green;
+        }
+    }
+   
+
+}
 
 /*----------------- Home - Learn ------------------*/
 .learn {

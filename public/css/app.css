@@ -17496,6 +17496,38 @@ body:lang(en) .language li.en a {
   margin-right: 0.3125rem;
 }
 
+/*----------------- Home - Give ------------------*/
+
+.give .view-all {
+  color: #FEFEFE;
+}
+
+.give .view-all a {
+  color: #FEFEFE;
+}
+
+.give .topic {
+  background-color: #009057;
+  color: #FEFEFE;
+}
+
+.give .topic:after {
+  border-top-color: #009057;
+}
+
+.give .topic h2 {
+  display: inline-block;
+}
+
+.give .content {
+  background-color: #FEFEFE;
+  border-bottom: solid #009057 0.3125rem;
+}
+
+.give .content h4 {
+  color: #009057;
+}
+
 /*----------------- Home - Learn ------------------*/
 
 .learn .view-all {
