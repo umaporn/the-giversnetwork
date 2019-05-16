@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
             $table->string( 'organization_name', 255 )->nullable();
             $table->string( 'phone_number', 15 )->nullable();
             $table->text( 'address' )->nullable();
-            $table->enum( 'status', [ 'public', 'draft' ] );
+            $table->enum( 'status', [ 'public', 'draft', 'delete' ] );
             $table->rememberToken();
             $table->timestamp( 'updated_at' );
             $table->timestamp( 'created_at' )->useCurrent();

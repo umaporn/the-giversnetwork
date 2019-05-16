@@ -4,6 +4,7 @@
             <section class="top-header">
                 @include( 'admin.layouts.top_menu' )
             </section>
+            @if( Auth::user() )
             <section class="main-menu">
                 <nav>
                     <ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
@@ -11,6 +12,7 @@
                     </ul>
                 </nav>
             </section>
+            @endif
         </section>
     </div>
 </header>
