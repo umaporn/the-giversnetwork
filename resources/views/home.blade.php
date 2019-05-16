@@ -250,21 +250,21 @@
                     <figure>
                         <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}">
                     </figure>
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
                     <span class="category">Category Name</span>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
                         <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
                     </figure>
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
                     <span class="category">Category Name</span>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
                         <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
                     </figure>
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
                     <span class="category">Category Name</span>
                 </article>
         </div>
