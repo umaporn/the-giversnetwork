@@ -270,6 +270,60 @@
         </div>
    </section>
 
+
+   <section class="events padding-content">
+        <div class="grid-x align-middle">
+            <h2 class="cell auto topic-dark">Events</h2>
+            <div class="cell shrink view-all">
+                <a href="#">
+                    <span>View All</span>
+                    <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="grid-x grid-margin-x ">
+                <article class="cell small-12 medium-4">
+                    <figure class="cover">
+                        <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
+                        <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
+                    </figure>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
+                    <div class="profile">
+                        <figure class="display-profile">
+                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                        </figure>
+                        <span>By Host name or speaker name</span>
+                    </div>
+                </article>
+                <article class="cell small-12 medium-4">
+                    <figure class="cover">
+                        <img src="{{ asset(config('images.home.events.home_events_02' )) }}">
+                        <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
+                    </figure>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
+                    <div class="profile">
+                        <figure class="display-profile">
+                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                        </figure>
+                        <span>By Host name or speaker name</span>
+                    </div>
+                </article>
+                <article class="cell small-12 medium-4">
+                    <figure class="cover">
+                        <img src="{{ asset(config('images.home.events.home_events_03' )) }}">
+                        <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
+                    </figure>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
+                    <div class="profile">
+                        <figure class="display-profile">
+                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                        </figure>
+                        <span>By Host name or speaker name</span>
+                    </div>
+                </article>
+        </div>
+   </section>
+
    <section class="about padding-content">
        <div class="grid-x align-center">
            <div class="cell small-5 medium-3 large-2">

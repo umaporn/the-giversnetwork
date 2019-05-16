@@ -301,6 +301,64 @@
         }
     }
 }
+/*----------------- Home - Events ------------------*/
+
+.events {
+    background-color: $color-light-gray;
+    .view-all {
+        color: $color-blue;
+
+        a {
+            color: $color-blue;
+        }
+    }
+
+    article {
+        margin-bottom: $space-box/2;
+
+        .cover,
+        h3 {
+            margin-bottom: $space-box/2;
+        }
+
+        h3 {
+            color: $color-blue;
+        }
+
+        .cover{
+            position: relative;
+            overflow: auto;
+            figcaption{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(112,112,112,0.5);
+                color: $white; 
+                padding: rem-calc(5) rem-calc(10);
+            }
+            
+        }
+        .profile {
+            color: $color-dark-gray;
+            display: inline-block;
+
+            .display-profile {
+                display: inline-block;
+
+                img {
+                    display: inline-block;
+                    width: rem-calc(30);
+                    height: rem-calc(30);
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+        }
+
+    }
+}
+
 
 /*----------------- Home - About ------------------*/
 .about {

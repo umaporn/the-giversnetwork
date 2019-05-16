@@ -17545,6 +17545,66 @@ body:lang(en) .language li.en a {
   margin-right: 0.3125rem;
 }
 
+/*----------------- Home - Events ------------------*/
+
+.events {
+  background-color: #F8F8F8;
+}
+
+.events .view-all {
+  color: #154064;
+}
+
+.events .view-all a {
+  color: #154064;
+}
+
+.events article {
+  margin-bottom: 0.625rem;
+}
+
+.events article .cover,
+.events article h3 {
+  margin-bottom: 0.625rem;
+}
+
+.events article h3 {
+  color: #154064;
+}
+
+.events article .cover {
+  position: relative;
+  overflow: auto;
+}
+
+.events article .cover figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(112, 112, 112, 0.5);
+  color: #FEFEFE;
+  padding: 0.3125rem 0.625rem;
+}
+
+.events article .profile {
+  color: #7F8685;
+  display: inline-block;
+}
+
+.events article .profile .display-profile {
+  display: inline-block;
+}
+
+.events article .profile .display-profile img {
+  display: inline-block;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 /*----------------- Home - About ------------------*/
 
 .about .view-all {
