@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Libraries\Image;
+use App\Libraries\Search;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
@@ -185,5 +186,12 @@ class Users extends Authenticatable
                        ->get();
 
         return $result->isEmpty();
+    }
+
+    public function getUserList(Request $request)
+    {
+        $builder = $this->with( 'permission' );
+
+        return Search::search( $builder, 'users', $request );
     }
 }

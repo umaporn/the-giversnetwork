@@ -7,7 +7,7 @@
             <section class="main-menu">
                 <nav>
                     <ul class="vertical medium-horizontal menu" data-responsive-menu="accordion medium-dropdown">
-                        @each( 'admin.layouts.main_menu', $mainMenu, 'menuItem' )
+                        @each( 'admin.layouts.main_menu', $mainMenuAdmin, 'menuItem' )
                     </ul>
                 </nav>
             </section>

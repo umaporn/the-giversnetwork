@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('page-title', __('home.page_title.index'))
 @section('page-description', __('home.page_description.index'))

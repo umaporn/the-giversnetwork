@@ -26,4 +26,15 @@ return [
             'class'     => \App\Http\Controllers\HomeController::class,
         ],
     ],
+
+    'mainMenuAdmin' => [
+        [
+            'routeName' => 'admin.home.index',
+            'menuText'  => 'home.page_link.index',
+        ],
+        [
+            'routeName' => 'admin.user.index',
+            'menuText'  => 'user.page_link.index',
+        ],
+    ],
 ];
