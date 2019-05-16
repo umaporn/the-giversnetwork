@@ -36,21 +36,21 @@
                     <figure>
                         <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
                     </figure>
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
                     <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
                         <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
                     </figure>
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
                     <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
                         <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
                     </figure>
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                    <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
                     <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
                 </article>
         </div>
