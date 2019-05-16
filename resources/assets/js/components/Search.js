@@ -49,7 +49,7 @@ const Search = (function(){
                         message = jqXHR.responseJSON.message;
                     }
 
-                    ResultDiv.html( Translator.translate( 'utility.result.error' ) + ' ' + message )
+                    ResultDiv.html( Translator.translate( 'error' ) + ' ' + message )
                              .addClass( 'alert' );
                     break;
             }

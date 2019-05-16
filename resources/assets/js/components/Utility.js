@@ -47,7 +47,7 @@ const Utility = (function(){
             }
         } else {
             if( isError ){
-                ResultTitleSelector.html( Translator.translate( 'utility.result.error' ) );
+                ResultTitleSelector.html( Translator.translate( 'error' ) );
                 ResultTextSelector.addClass( 'alert' );
             }
         }

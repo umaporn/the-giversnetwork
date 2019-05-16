@@ -8,7 +8,7 @@
         {{ csrf_field() }}
 
         <label for="email">@lang('user.email'):</label>
-        <input type="text" id="email" name="email" required autofocus value="umaporn.don@gmail.com">
+        <input type="text" id="email" name="email" required autofocus value="member@gmail.com">
         <p id="email-help-text" class="alert help-text hide"></p>
 
         <label for="password">@lang('user.password'):</label>

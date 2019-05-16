@@ -82,6 +82,6 @@ class AuthenticateAdmin
      */
     protected function redirectTo()
     {
-        return route( 'admin.home.index' );
+        return route( 'admin.login' );
     }
 }

@@ -34,11 +34,18 @@ function globalRoutes()
     } );
 
     Route::group( [ 'prefix' => 'admin' ], function(){
-        Route::get( '', 'Admin\HomeController@index' )->name( 'admin.home.index' );
-    });
-   /* Route::group( [ 'middleware' => 'auth.admin' ], function(){
-        Route::group( [ 'prefix' => 'admin' ], function(){
+
+        Route::middleware( 'guest' )->group( function(){
+            // Authentication
+            Route::get( 'login', 'Admin\Auth\LoginController@showAdminLoginForm' )->name( 'admin.login' );
+            Route::post( 'login', 'Admin\Auth\LoginController@login' )->name( 'admin.submitLogin' );
+        } );
+
+        Route::group( [ 'middleware' => 'auth.admin' ], function(){
+
             Route::get( '/', 'Admin\HomeController@index' )->name( 'admin.home.index' );
-        });
-    } );*/
+
+        } );
+    } );
+
 }

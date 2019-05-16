@@ -132,7 +132,7 @@ class Users extends Authenticatable
      */
     public function checkUserStatus( array $userCredentials )
     {
-        $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public' ] )
+        $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public', 'fk_permission_id' => '2' ] )
                        ->get();
 
         return $result->isEmpty();
@@ -170,5 +170,20 @@ class Users extends Authenticatable
 
         return $response;
 
+    }
+
+    /**
+     * Check user status.
+     *
+     * @param array $userCredentials
+     *
+     * @return bool
+     */
+    public function checkAdminStatus( array $userCredentials )
+    {
+        $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public', 'fk_permission_id' => '1' ] )
+                       ->get();
+
+        return $result->isEmpty();
     }
 }
