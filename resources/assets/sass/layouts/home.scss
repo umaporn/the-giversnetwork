@@ -13,11 +13,12 @@
 
 .swiper-pagination-fraction,
 .swiper-pagination-custom,
-.swiper-container-horizontal > .swiper-pagination-bullets {
+.swiper-container-horizontal>.swiper-pagination-bullets {
     bottom: 5%;
     left: auto;
     width: auto;
     right: $space-box*2;
+
     @include breakpoint(large) {
         right: $space-box*4;
     }
@@ -36,87 +37,115 @@
         background: $color-blue;
     }
 }
-.swiper-button-prev, .swiper-button-next{
+
+.swiper-button-prev,
+.swiper-button-next {
     opacity: 0.8;
     background-image: none;
-    i{
+
+    i {
         color: $white;
         opacity: 0.8;
     }
 }
-.swiper-button-prev{
+
+.swiper-button-prev {
     left: $space-box*2;
+
     @include breakpoint(large) {
         left: $space-box*4;
     }
 }
-.swiper-button-next{
+
+.swiper-button-next {
     right: $space-box*2;
+
     @include breakpoint(large) {
         right: $space-box*4;
     }
 }
+
 /*----------------- Home - News ------------------*/
-.news{
-    .view-all{
+.news {
+    .view-all {
         color: $color-blue;
-        a{
+
+        a {
             color: $color-blue;
-        } 
+        }
     }
-    article{
-            margin-bottom: $space-box/2;
-        figure, h3{
+
+    article {
+        margin-bottom: $space-box/2;
+
+        figure,
+        h3 {
             margin-bottom: $space-box/2;
         }
-        h3{
+
+        h3 {
             color: $color-blue;
         }
-        time{
+
+        time {
             color: $color-dark-gray;
             vertical-align: middle;
-            i{
+
+            i {
                 margin-right: rem-calc(5);
             }
         }
     }
 }
+
 /*----------------- Home - Share ------------------*/
-.share{
-    .view-all{
+.share {
+    .view-all {
         color: $white;
-         a{
+
+        a {
             color: $white;
-        } 
+        }
     }
-    .topic{
+
+    .topic {
         background-color: $color-blue;
         color: $white;
-        &:after{
+
+        &:after {
             border-top-color: $color-blue;
         }
-        h2{
+
+        h2 {
             display: inline-block;
         }
     }
-    .content{
+
+    .content {
         background-color: $white;
         border-bottom: solid $color-blue rem-calc(5);
-        h4{
+
+        h4 {
             color: $color-blue;
         }
     }
-    .tabs, .tabs-content{
+
+    .tabs,
+    .tabs-content {
         border: 0;
     }
-    .tabs{
+
+    .tabs {
         border-bottom: rem-calc(1) solid $color-blue;
-        &-title > a:focus, &-title > a[aria-selected='true']{
+
+        &-title>a:focus,
+        &-title>a[aria-selected='true'] {
             background-color: $white;
             outline: none;
         }
-        &-title{
-            & > a{
+
+        &-title {
+            &>a {
                 font-size: rem-calc(20);
                 color: $color-blue;
                 font-family: $text-bold;
@@ -141,23 +170,26 @@
                     left: 0;
                 }
             }
-            &.is-active{
-                & > a{
-                }
+
+            &.is-active {
+                &>a {}
             }
         }
-        &-panel{
+
+        &-panel {
             padding: $space-box 0;
         }
     }
 
-    .recent-share{
-        .profile{
+    .recent-share {
+        .profile {
             color: $color-blue;
             display: inline-block;
-            .display-profile{
+
+            .display-profile {
                 display: inline-block;
-                img{
+
+                img {
                     display: inline-block;
                     width: rem-calc(30);
                     height: rem-calc(30);
@@ -166,83 +198,129 @@
                 }
             }
         }
-        .like, .comment{
+
+        .like,
+        .comment {
             color: $color-blue;
-            i{
+
+            i {
                 margin-right: rem-calc(5);
             }
-            span{
+
+            span {
                 margin-right: rem-calc(10);
             }
         }
-        article{
+
+        article {
             margin-bottom: $space-box;
-            & > .cell:nth-child(odd){
+
+            &>.cell:nth-child(odd) {
                 padding-right: $space-box;
+
                 @include breakpoint(small only) {
                     margin-bottom: $space-box/2;
                 }
             }
         }
     }
-}
-/*----------------- Home - Learn ------------------*/
-.learn{
-    .view-all{
-        color: $white;
-        a{
-            color: $white;
-        }   
+
+    .challenge {
+        background-color: $white;
+
+        article {
+            margin-bottom: $space-box/2;
+
+            figure,
+            h3 {
+                margin-bottom: $space-box/2;
+            }
+
+            h3 {
+                color: $color-blue;
+            }
+
+            .category {
+                color: $color-dark-gray;
+                vertical-align: middle;
+
+                i {
+                    margin-right: rem-calc(5);
+                }
+            }
+        }
     }
-    .topic{
+}
+
+/*----------------- Home - Learn ------------------*/
+.learn {
+    .view-all {
+        color: $white;
+
+        a {
+            color: $white;
+        }
+    }
+
+    .topic {
         background-color: $color-dark-gray;
         color: $white;
-        &:after{
+
+        &:after {
             border-top-color: $color-dark-gray;
         }
-        h2{
+
+        h2 {
             display: inline-block;
         }
     }
-    .content{
+
+    .content {
         background-color: $white;
-        h4{
-            color: $color-blue;
-        }
-    }
-    article{
-        margin-bottom: $space-box/2;
-    figure, h3{
-        margin-bottom: $space-box/2;
-    }
-    h3{
-        color: $color-blue;
-    }
-    .category{
-        color: $color-dark-gray;
-        vertical-align: middle;
-        i{
-            margin-right: rem-calc(5);
+
+        article {
+            margin-bottom: $space-box/2;
+
+            figure,
+            h3 {
+                margin-bottom: $space-box/2;
+            }
+
+            h3 {
+                color: $color-blue;
+            }
+
+            .category {
+                color: $color-dark-gray;
+                vertical-align: middle;
+
+                i {
+                    margin-right: rem-calc(5);
+                }
+            }
         }
     }
 }
-}
+
 /*----------------- Home - About ------------------*/
-.about{
-    .view-all{
+.about {
+    .view-all {
         color: $color-blue;
         padding-left: rem-calc(5);
-        a{
+
+        a {
             color: $color-blue;
         }
-        
+
     }
-    article{
+
+    article {
         margin-bottom: $space-box*2;
         margin-top: $space-box*2;
-        p{
+
+        p {
             color: $color-blue;
         }
     }
-    
+
 }

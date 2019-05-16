@@ -17470,6 +17470,32 @@ body:lang(en) .language li.en a {
   }
 }
 
+.share .challenge {
+  background-color: #FEFEFE;
+}
+
+.share .challenge article {
+  margin-bottom: 0.625rem;
+}
+
+.share .challenge article figure,
+.share .challenge article h3 {
+  margin-bottom: 0.625rem;
+}
+
+.share .challenge article h3 {
+  color: #154064;
+}
+
+.share .challenge article .category {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.share .challenge article .category i {
+  margin-right: 0.3125rem;
+}
+
 /*----------------- Home - Learn ------------------*/
 
 .learn .view-all {
@@ -17497,29 +17523,25 @@ body:lang(en) .language li.en a {
   background-color: #FEFEFE;
 }
 
-.learn .content h4 {
-  color: #154064;
-}
-
-.learn article {
+.learn .content article {
   margin-bottom: 0.625rem;
 }
 
-.learn article figure,
-.learn article h3 {
+.learn .content article figure,
+.learn .content article h3 {
   margin-bottom: 0.625rem;
 }
 
-.learn article h3 {
+.learn .content article h3 {
   color: #154064;
 }
 
-.learn article .category {
+.learn .content article .category {
   color: #7F8685;
   vertical-align: middle;
 }
 
-.learn article .category i {
+.learn .content article .category i {
   margin-right: 0.3125rem;
 }
 

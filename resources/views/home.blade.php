@@ -87,7 +87,7 @@
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">
-                                    <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4>
+                                    <a href="#"><h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4></a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
                                             <figure class="display-profile">
@@ -107,7 +107,7 @@
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">
-                                    <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4>
+                                    <a href="#"><h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4></a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
                                             <figure class="display-profile">
@@ -127,7 +127,7 @@
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">
-                                    <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4>
+                                    <a href="#"><h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4></a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
                                             <figure class="display-profile">
@@ -147,7 +147,7 @@
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">
-                                    <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4>
+                                    <a href="#"><h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4></a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
                                             <figure class="display-profile">
@@ -167,7 +167,7 @@
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">
-                                    <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4>
+                                    <a href="#"><h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4></a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
                                             <figure class="display-profile">
@@ -187,7 +187,7 @@
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">
-                                    <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4>
+                                    <a href="#"><h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu.</h4></a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
                                             <figure class="display-profile">
@@ -203,7 +203,29 @@
                         </div>
                     </div>
                     <div class="tabs-panel" id="panel2c">
-                        ดด
+                            <div class="grid-x grid-margin-x challenge">
+                                    <article class="cell small-12 medium-4">
+                                        <figure>
+                                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}">
+                                        </figure>
+                                        <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
+                                        <span class="category">Category Name</span>
+                                    </article>
+                                    <article class="cell small-12 medium-4">
+                                        <figure>
+                                            <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
+                                        </figure>
+                                        <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
+                                        <span class="category">Category Name</span>
+                                    </article>
+                                    <article class="cell small-12 medium-4">
+                                        <figure>
+                                            <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
+                                        </figure>
+                                        <a href="#"><h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3></a>
+                                        <span class="category">Category Name</span>
+                                    </article>
+                            </div>
                     </div>
                 </div>
             </div>
