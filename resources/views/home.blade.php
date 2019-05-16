@@ -34,21 +34,21 @@
         <div class="grid-x grid-margin-x ">
                 <article class="cell small-12 medium-4">
                     <figure>
-                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}" class="gallery_img">
+                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
                     </figure>
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                     <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
-                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}" class="gallery_img">
+                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
                     </figure>
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                     <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
-                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}" class="gallery_img">
+                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
                     </figure>
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                     <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
@@ -226,25 +226,60 @@
         <div class="grid-x grid-margin-x content padding-content">
                 <article class="cell small-12 medium-4">
                     <figure>
-                        <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="gallery_img">
+                        <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}">
                     </figure>
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                     <span class="category">Category Name</span>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
-                        <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}" class="gallery_img">
+                        <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
                     </figure>
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                     <span class="category">Category Name</span>
                 </article>
                 <article class="cell small-12 medium-4">
                     <figure>
-                        <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}" class="gallery_img">
+                        <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
                     </figure>
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                     <span class="category">Category Name</span>
                 </article>
+        </div>
+   </section>
+
+   <section class="about padding-content">
+       <div class="grid-x align-center">
+           <div class="cell small-5 medium-3 large-2">
+                <a href="{{ route('home.index') }}">
+                    <img src="{{ asset( config( 'images.logo' ) ) }}" alt="@lang('header.images.logo')"/>
+                </a>
+           </div>
+        </div>
+        <article class="grid-x grid-margin-x">
+                <div class="cell small-12 medium-7 large-6">
+                    <h2 class="topic-dark">about us</h2>
+                    <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu. Morbi sollicitudin turpis id nisi fermentum mollis. Praesent elementum vulputate nibh ac hendrerit. Integer a metus vitae mauris semper finibus ac vel tortor. Ut id odio lobortis, lacinia purus pharetra, cursus metus. Fusce ultricies fringilla mauris, sed condimentum massa feugiat non. Fusce faucibus, magna at auctor cursus, ipsum velit sollicitudin magna, a vulputate mauris lorem vitae nunc. Sed efficitur ultricies leo, sit amet venenatis orci ultrices non. Nam viverra neque nec risus dignissim consequat. Nunc placerat odio dui.
+                    </p>
+                </div>
+                <div class="cell small-12 medium-5 large-6">
+                    <figure>
+                        <img src="{{ asset(config('images.home.about.home_about_01' )) }}">
+                    </figure>
+                </div>
+        </article>
+        <div class="grid-x align-middle">
+            <div class="cell auto grid-x align-middle">
+                <div class="cell line auto"></div>
+                <div class="cell shrink"><span class="outline-dot float-right"><span class="dot"></span></span></div>
+            </div>
+            <div class="cell shrink view-all">
+                <a href="#">
+                    <span>See more</span>
+                    <i class="fas fa-caret-right"></i>
+                </a>
+            </div>
         </div>
    </section>
 @endsection
