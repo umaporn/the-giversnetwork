@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Users Model
+ */
 namespace App\Models;
 
 use App\Libraries\Image;

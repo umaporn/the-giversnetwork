@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Organization Model
+ */
 namespace App\Models;
 
 use App\Libraries\Utility;

@@ -22,6 +22,7 @@ class CreateBannerTable extends Migration
             $table->string( 'image_path_thai', 255 );
             $table->string( 'image_path_english', 255 );
             $table->integer( 'order' );
+            $table->string( 'link' );
             $table->date( 'start_date' );
             $table->date( 'end_date' );
             $table->enum( 'status', [ 'public', 'draft' ] );

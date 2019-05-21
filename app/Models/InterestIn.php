@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Interest In Model
+ */
 namespace App\Models;
 
 use App\Libraries\Utility;

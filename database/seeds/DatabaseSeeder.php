@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
                          PermissionSeeder::class,
                          InterestInSeeder::class,
                          OrganizationCategorySeeder::class,
-                         UserSeeder::class
+                         UserSeeder::class,
+                         BannerSeeder::class
                      ] );
     }
 }
