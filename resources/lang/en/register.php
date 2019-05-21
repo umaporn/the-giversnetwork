@@ -9,19 +9,19 @@ return [
     */
 
     'page_link' => [
-        'index' => 'Register',
+        'index' => 'Sign up',
     ],
 
     'page_title' => [
-        'index' => 'Register',
+        'index' => 'Sign up',
     ],
 
     'page_description' => [
-        'index' => 'Register page',
+        'index' => 'Sign up page',
     ],
 
     'page_heading' => [
-        'index' => 'Register',
+        'index' => 'Sign up',
     ],
 
     'register_button' => 'Register',

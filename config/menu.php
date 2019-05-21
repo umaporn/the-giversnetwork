@@ -23,7 +23,30 @@ return [
         [
             'routeName' => 'home.index',
             'menuText'  => 'home.page_link.index',
-            'class'     => \App\Http\Controllers\HomeController::class,
+        ],
+        [
+            'routeName' => 'learn.index',
+            'menuText'  => 'learn.page_link.index',
+        ],
+        [
+            'routeName' => 'share.index',
+            'menuText'  => 'share.page_link.index',
+        ],
+        [
+            'routeName' => 'give.index',
+            'menuText'  => 'give.page_link.index',
+        ],
+        [
+            'routeName' => 'events.index',
+            'menuText'  => 'events.page_link.index',
+        ],
+        [
+            'routeName' => 'news.index',
+            'menuText'  => 'news.page_link.index',
+        ],
+        [
+            'routeName' => 'organization.index',
+            'menuText'  => 'organization.page_link.index',
         ],
     ],
 

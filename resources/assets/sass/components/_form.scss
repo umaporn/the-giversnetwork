@@ -1,0 +1,12 @@
+.btn{
+    &-join-us{
+        padding: $space-box/1.5 $space-box*3.5;
+        margin: 0 $space-box;
+        color: $white;
+        display: inline-block;
+        @include breakpoint(small only) {
+            margin: $space-box;
+        }
+        
+    }
+}

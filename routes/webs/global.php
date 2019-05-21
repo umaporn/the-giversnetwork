@@ -11,6 +11,14 @@ function globalRoutes()
 
     Route::middleware( 'guest' )->group( function(){
 
+        Route::get( '/', 'HomeController@index' )->name( 'home.index' );
+        Route::get( 'learn', 'LearnController@index' )->name( 'learn.index' );
+        Route::get( 'share', 'ShareController@index' )->name( 'share.index' );
+        Route::get( 'give', 'HomeController@index' )->name( 'give.index' );
+        Route::get( 'events', 'EventsController@index' )->name( 'events.index' );
+        Route::get( 'news', 'NewsController@index' )->name( 'news.index' );
+        Route::get( 'organization', 'OrganizationController@index' )->name( 'organization.index' );
+
         // Authentication
         Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
         Route::post( 'login', 'Auth\LoginController@login' )->name( 'submitLogin' );
@@ -26,7 +34,6 @@ function globalRoutes()
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
-        Route::get( '/', 'HomeController@index' )->name( 'home.index' );
         Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
         Route::get( 'profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
         Route::post( 'profile', 'ProfileController@updateProfile' )->name( 'user.updateProfile' );
@@ -48,7 +55,7 @@ function globalRoutes()
             Route::resource( 'user', 'Admin\UserController', [
                 'except' => [ 'show', 'update' ],
                 'names'  => addPrefixResourceRouteName( 'admin.user' ),
-            ]);
+            ] );
         } );
     } );
 
