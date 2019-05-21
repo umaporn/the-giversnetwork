@@ -14,6 +14,7 @@ const mix = require( 'laravel-mix' );
 mix.js( 'resources/assets/js/app.js', 'public/js' )
    .sass( 'resources/assets/sass/app.scss', 'public/css' )
    .babel( [
+               'resources/assets/js/components/HeroBanner.js',
                'resources/assets/js/components/Confirmation.js',
                'resources/assets/js/components/Form.js',
                'resources/assets/js/components/Menu.js',

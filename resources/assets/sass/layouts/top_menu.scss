@@ -1,41 +1,326 @@
-.top-menu {
-    font-size: small;
-    text-transform: uppercase;
-    li + li {
-        border-left: 1px solid $top-menu-pipe-color;
+body {
+    &:lang(th) {
+        .language {
+            li.th {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+        }
     }
-    .language li + li {
-        border-color: $language-pipe-color;
-    }
-    .menu > li > a, .menu > li > form > button {
-        line-height: 0.1rem;
-        padding: 0.7rem 1rem;
-        cursor: pointer;
-        color: $primary-color;
-    }
-    .language.menu > li > a, .language.menu > li > form > button {
-        color: $language-menu-color;
+
+    &:lang(en) {
+        .language {
+            li.en {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+
+        }
     }
 }
 
-.top-menu.top-bar, .top-menu.top-bar ul {
-    background-color: $top-menu-background-color;
+.sticky {
+    transition: all .2s ease-in-out;
+
+    &-container {
+        z-index: 99;
+    }
+
+    &.is-stuck {
+        .topbar-responsive {
+            &-logo {
+                img {
+                    transition: all .2s ease-in-out;
+                    height: rem-calc(40);
+                }
+            }
+
+            .top-bar-title {
+                padding-top: $space-box/2;
+                padding-bottom: $space-box/2;
+
+            }
+
+        }
+    }
 }
 
-.top-menu.top-bar ul {
-    margin-bottom: $top-header-padding-bottom;
-}
 
-.no-js {
+.topbar-responsive {
+    background: $topbar-responsive-bg;
+    box-shadow: 8px 9px 10px -13px rgba(0, 0, 0, 0.75);
+
+    &.padding-content {
+        @include breakpoint(large) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        @include breakpoint(rem-calc(1480) down) {
+            padding: 0 $space-box/4;
+        }
+        @include breakpoint(small only) {
+            padding: $space-box;
+        }
+    }
+
+
+
+    &-logo {
+        vertical-align: middle;
+
+        img {
+            @include breakpoint(small only) {}
+        }
+    }
+
+    .top-bar-title {
+        margin: 0;
+        padding-top: $space-box/1.5;
+        padding-bottom: $space-box/1.5;
+
+        @include breakpoint(small only) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    .user-profile {
+        background: none;
+        margin-bottom: 0;
+        margin-left: $space-box*2;
+        border: rem-calc(1) solid $color-blue;
+        border-radius: rem-calc(10);
+
+        
+        @include breakpoint(rem-calc(876) down) {
+            margin-left: 0;
+        }
+
+        @include breakpoint(small only) {
+            float: none;
+            margin-top: $space-box;
+        }
+
+        li {
+            display: inline-block;
+
+            &::after {
+                content: '|';
+            }
+
+            &:last-child::after {
+                content: '';
+            }
+
+            a {
+                color: $color-blue;
+                background-color: none;
+                height: 100%;
+                font-size: rem-calc(20);
+                padding: 0 $space-box;
+                @include breakpoint(rem-calc(876) down) {
+                    padding: 0 $space-box/2;
+                }
+            }
+        }
+    }
+
+    .language {
+        background: none;
+        margin-bottom: 0;
+        margin-left: $space-box;
+
+        @include breakpoint(small only) {
+            float: none;
+            margin-top: $space-box;
+        }
+
+        li {
+            display: inline-block;
+
+            &::after {
+                content: '|';
+                padding-left: $space-box/3;
+            }
+
+            &:last-child::after {
+                content: '';
+                padding-left: 0;
+            }
+
+            a {
+                color: $color-blue;
+                background-color: none;
+                height: 100%;
+                font-size: rem-calc(20);
+                padding: $space-box/2;
+            }
+
+            &:hover {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+        }
+    }
+
+    .menu {
+        background: $topbar-responsive-bg;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
+
+        @include breakpoint(small only) {
+            &.float-right {
+                float: none !important;
+            }
+        }
+
+        li {
+            align-self: stretch;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+
+            a {
+                color: $color-blue;
+                transition: color 0.15s ease-in;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-left: $space-box*3/2;
+                padding-right: $space-box*3/2;
+                font-size: rem-calc(20);
+                position: relative;
+
+                &::after {
+                    background: none repeat scroll 0 0 transparent;
+                    bottom: 0;
+                    content: "";
+                    display: block;
+                    height: rem-calc(2);
+                    left: 50%;
+                    position: absolute;
+                    background: $color-blue;
+                    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                    width: 0;
+                }
+
+                &:hover::after {
+                    width: 100%;
+                    left: 0;
+                }
+
+                @include breakpoint(rem-calc(876) down) {
+                    padding: $space-box $space-box/4;
+                }
+
+                @include breakpoint(small only) {
+                    padding: $space-box 0;
+                }
+            }
+        }
+
+        &-icon {
+            &::after {
+                background-color: $color-blue;
+                box-shadow: 0 rem-calc(7) 0 $color-blue, 0 rem-calc(14) 0 $color-blue;
+            }
+
+            &:hover {
+                transition: all 0.15s ease-in, border-color 0.15s ease-in;
+                background-color: $color-blue;
+
+                &::after {
+                    transition: all 0.15s ease-in, border-color 0.15s ease-in;
+                    background-color: $white;
+                    box-shadow: 0 rem-calc(7) 0 $white, 0 rem-calc(14) 0 $white;
+                }
+            }
+        }
+
+        &-button {
+            color: $color-blue;
+            border-color: $color-blue;
+            border-radius: 5000px;
+            transition: color 0.15s ease-in, border-color 0.15s ease-in;
+
+            &:hover {
+                color: lighten($topbar-responsive-bg, 60%);
+                border-color: lighten($topbar-responsive-bg, 60%);
+            }
+
+            @include breakpoint(small only) {
+                width: 100%;
+                margin: 0.875rem 0;
+            }
+        }
+    }
+
     @include breakpoint(small only) {
-        .top-bar {
-            display: none;
-        }
-    }
+        padding: 0.75rem;
 
-    @include breakpoint(medium) {
-        .title-bar {
-            display: none;
+        .top-bar-title {
+            position: relative;
+            width: 100%;
+
+            span {
+                position: absolute;
+                right: 0;
+                border: rem-calc(2) solid $color-blue;
+                border-radius: rem-calc(5);
+                padding: 0.25rem 0.45rem;
+                top: 50%;
+                transform: translateY(-50%);
+
+                &:hover {
+                    border: rem-calc(2) solid $white;
+                    background-color: $color-blue;
+                }
+
+                .menu-icon {
+                    margin-bottom: 4px;
+                    cursor: pointer;
+
+                    &:focus {
+                        outline: none;
+                    }
+                }
+
+            }
         }
     }
 }
+
+
+@include breakpoint(small only) {
+    .topbar-responsive-links {
+        animation-fill-mode: both;
+        animation-duration: 0.5s;
+        width: 100%;
+
+        @if $topbar-responsive-animation-type==slide-down {
+            animation: slideDown 1s ease-in;
+        }
+
+        @else if $topbar-responsive-animation-type==fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        @else {
+            animation: none;
+        }
+    }
+}
+
+

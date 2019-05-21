@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'db_airystd_bd';
+    src: url('#{$font-path}/db_airy_std_bd_v3.2-webfont.eot');
+    src: url('#{$font-path}/db_airy_std_bd_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/db_airy_std_bd_v3.2-webfont.woff2') format('woff2'),
+         url('#{$font-path}/db_airy_std_bd_v3.2-webfont.woff') format('woff'),
+         url('#{$font-path}/db_airy_std_bd_v3.2-webfont.ttf') format('truetype'),
+         url('#{$font-path}/db_airy_std_bd_v3.2-webfont.svg#db_airystd_bd') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'db_airystd_med';
+    src: url('#{$font-path}/db_airy_std_med_v3.2-webfont.eot');
+    src: url('#{$font-path}/db_airy_std_med_v3.2-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$font-path}/db_airy_std_med_v3.2-webfont.woff2') format('woff2'),
+         url('#{$font-path}/db_airy_std_med_v3.2-webfont.woff') format('woff'),
+         url('#{$font-path}/db_airy_std_med_v3.2-webfont.ttf') format('truetype'),
+         url('#{$font-path}/db_airy_std_med_v3.2-webfont.svg#db_airystd_med') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body { 
+    font-size: rem-calc(16);
+    line-height: rem-calc(26);
+    color: $color-text-normal;
+    font-family: $text-normal, sans-serif;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4{
+    font-weight: bold;
+    font-family: $text-bold, sans-serif;
+}
+
+h2, .h2{
+    font-size: rem-calc(26);
+    text-transform: uppercase;
+    &.topic{
+        &-dark{
+            color: $color-blue;
+        }
+        &-light{
+            color: $white;
+        }
+    }
+}
+h3, .h3{
+    font-size: rem-calc(20);
+}
+h4, .h4{
+    font-size: rem-calc(16);
+}
+
+a{
+    font-family: $text-normal, sans-serif;
+    color: $color-blue;
+}
+
+time{
+    font-size: rem-calc(16);
+    font-family: $text-normal, sans-serif;
+}
+
+.view-all{
+    font-size: rem-calc(16);
+    line-height:  rem-calc(16);
+}
+
+p{
+    font-family: $text-normal, sans-serif;
+    color: $color-text-normal;
+}

@@ -25,4 +25,5 @@ $( document )
         Search.initialize();
         Confirmation.initialize();
         Form.initialize();
+        HeroBanner.initialize();
     } );
