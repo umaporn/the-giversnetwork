@@ -1,0 +1,58 @@
+%button {
+  display: inline-block;
+  padding: $space-box/2 $space-box;
+  border-radius: $space-box/4;
+  cursor: pointer;
+  line-height: 1;
+  i {
+    font-size: rem-calc(12);
+  }
+}
+
+.btn {
+  &-join-us {
+    padding: $space-box/1.5 $space-box * 3.5;
+    margin: 0 $space-box;
+    color: $white;
+    display: inline-block;
+    @include breakpoint(small only) {
+      margin: $space-box;
+    }
+  }
+
+  &-blue {
+    @extend %button;
+    background-color: $color-blue;
+    color: $white;
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus {
+      color: $white;
+    }
+  }
+
+  &-upload {
+    display: inline-block;
+  }
+
+  &-green {
+    @extend %button;
+    background-color: $color-green;
+    color: $white;
+
+    &:hover {
+      color: $white;
+    }
+
+    &:focus {
+      color: $white;
+    }
+  }
+
+  &-long {
+    padding: $space-box/2 $space-box * 2;
+  }
+}
