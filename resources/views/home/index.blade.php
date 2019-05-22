@@ -7,8 +7,7 @@
 @section('content')
 
     @include('home.banner')
-
-
+    @include('home.news')
 
     <section class="share">
         <div class="grid-x align-middle topic padding-content">

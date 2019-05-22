@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
                          InterestInSeeder::class,
                          OrganizationCategorySeeder::class,
                          UserSeeder::class,
-                         BannerSeeder::class
+                         BannerSeeder::class,
+                         NewsSeeder::class,
                      ] );
     }
 }

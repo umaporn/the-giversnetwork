@@ -26,9 +26,9 @@ return [
     'default' => [
         'limit'          => 10,
         'limits'         => [ 10, 25, 50, 100 ],
-        'sortby'         => 'description',
+        'sortby'         => 'id',
         'direction'      => 'asc',
-        'searchFields'   => [ 'description' ],
+        'searchFields'   => [ 'titles' ],
         'fulltextSearch' => true,
     ],
     'users' => [

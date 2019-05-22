@@ -18,5 +18,5 @@ return [
     'create'      => 'Create',
     'back'        => 'Back',
     'reset'       => 'Reset',
-
+    'view_all'    => 'View All',
 ];

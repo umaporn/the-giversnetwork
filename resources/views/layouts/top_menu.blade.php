@@ -69,10 +69,8 @@
             </div>
             <div class="cell medium-shrink align-self-middle">
                 <ul class="user-profile float-left no-bullet">
-                {{--    <li><a href="">@lang('menu.profile_menu.sign_up')</a></li>
-                    <li><a href="">@lang('menu.profile_menu.log_in')</a></li>--}}
                     <li><a href="{{ route('login') }}">@lang('login.page_link.index')</a></li>
-                    <li><a href="{{ route('admin.login') }}">@lang('login_admin.page_link.index')</a></li>
+                    {{--<li><a href="{{ route('admin.login') }}">@lang('login_admin.page_link.index')</a></li>--}}
                     <li><a href="{{ route('register') }}">@lang('register.page_link.index')</a></li>
                 </ul>
                 <ul class="language float-right no-bullet">

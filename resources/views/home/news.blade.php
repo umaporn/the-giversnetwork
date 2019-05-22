@@ -1,9 +1,9 @@
 <section class="news padding-content">
     <div class="grid-x align-middle">
-        <h2 class="cell auto topic-dark">News</h2>
+        <h2 class="cell auto topic-dark">@lang('news.page_link.index')</h2>
         <div class="cell shrink view-all">
             <a href="#">
-                <span>View All</span>
+                <span>@lang('button.view_all')</span>
                 <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
             </a>
         </div>

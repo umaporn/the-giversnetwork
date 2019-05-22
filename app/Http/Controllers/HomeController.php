@@ -5,8 +5,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Banner;
+use App\Models\News;
 
 /**
  * Home Page Controller
@@ -14,17 +16,22 @@ use App\Models\Banner;
  */
 class HomeController extends Controller
 {
-    /** @var Banner Home banner model instance */
+    /** @var Banner banner model instance */
     private $bannerModel;
+
+    /** @var News news model instance */
+    private $newsModel;
 
     /**
      * Initialize HomeController class.
      *
      * @param Banner $banner Banner model
+     * @param News   $news   News model
      */
-    public function __construct( Banner $banner )
+    public function __construct( Banner $banner, News $news )
     {
         $this->bannerModel = $banner;
+        $this->newsModel   = $news;
     }
 
     /**
@@ -32,11 +39,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Home page
      */
-    public function index()
+    public function index(Request $request)
     {
         $user   = Auth::user();
         $banner = $this->bannerModel->getHomeBannerList();
+        $news   = $this->newsModel->getHomeNewsList();
 
-        return view( 'home.index', compact( 'user', 'banner' ) );
+        return view( 'home.index', compact( 'user', 'banner', 'news' ) );
     }
 }
