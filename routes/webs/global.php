@@ -17,6 +17,7 @@ function globalRoutes()
         Route::get( 'give', 'HomeController@index' )->name( 'give.index' );
         Route::get( 'events', 'EventsController@index' )->name( 'events.index' );
         Route::get( 'news', 'NewsController@index' )->name( 'news.index' );
+        Route::get( 'news/{id}', 'NewsController@detail' )->name( 'news.detail' );
         Route::get( 'organization', 'OrganizationController@index' )->name( 'organization.index' );
 
         // Authentication

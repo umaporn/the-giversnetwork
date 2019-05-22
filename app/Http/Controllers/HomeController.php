@@ -39,7 +39,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Home page
      */
-    public function index(Request $request)
+    public function index()
     {
         $user   = Auth::user();
         $banner = $this->bannerModel->getHomeBannerList();

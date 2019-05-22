@@ -45,7 +45,7 @@ class News extends Model
     {
         $query = $this->with( [ 'newsImage' ] )
                       ->orderBy( 'public_date', 'desc' )
-                      ->where( 'status', 'public' )->limit(5)->get();
+                      ->where( 'status', 'public' )->limit(3)->get();
 
         $data = $this->transformHomeNewsContent( $query );
 
@@ -65,10 +65,28 @@ class News extends Model
         foreach( $homeNewsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'images', $this->getImages( $list ) );
+            $this->setPublicDateForFrontEnd( $list );
         }
 
         return $homeNewsList;
     }
+
+    /**
+     * Set public date attribute.
+     *
+     * @param News $news News model
+     *
+     * @return void
+     */
+    private function setPublicDateForFrontEnd( News $news )
+    {
+        $news->setAttribute( 'public_date',
+                             date( 'd', strtotime( $news->public_date ) ) . ' ' .
+                             date( 'F', strtotime( $news->public_date ) ) . ' ' .
+                             date( 'Y', strtotime( $news->public_date ) )
+        );
+    }
+
 
     /**
      * Get a new image list into an image store.
