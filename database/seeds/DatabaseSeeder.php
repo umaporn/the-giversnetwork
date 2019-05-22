@@ -18,6 +18,11 @@ class DatabaseSeeder extends Seeder
                          UserSeeder::class,
                          BannerSeeder::class,
                          NewsSeeder::class,
+                         ShareCategorySeeder::class,
+                         /*ShareSeeder::class,
+                         ShareCommentSeeder::class,
+                         ShareImageSeeder::class,
+                         ShareLikeSeeder::class,*/
                      ] );
     }
 }

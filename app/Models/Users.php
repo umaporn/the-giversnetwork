@@ -39,6 +39,16 @@ class Users extends Authenticatable
     }
 
     /**
+     * Get share model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Share model relationship
+     */
+    public function share()
+    {
+        return $this->belongsTo( 'App\Models\Share', 'fk_user_id' );
+    }
+
+    /**
      * Create a new user.
      *
      * @param Request $request Data for creating a new user
