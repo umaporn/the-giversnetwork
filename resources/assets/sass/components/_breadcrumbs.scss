@@ -1,0 +1,26 @@
+.padding {
+  &-breadcrumbs {
+    padding:$space-box/2 $space-box * 2;
+
+    @include breakpoint(large) {
+      padding: $space-box/2 $space-box * 4;
+    }
+  }
+}
+
+.breadcrumbs{
+    margin-bottom: 0;
+    
+    li{
+        font-size: rem-calc(16);
+        color: $color-blue;
+
+        &:not(:last-child)::after{
+            content: ">";
+        }
+    }
+
+    a{
+        color: $color-dark-gray;
+    }
+}

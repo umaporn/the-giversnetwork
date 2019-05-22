@@ -10,6 +10,10 @@ function globalRoutes()
     Route::get( 'file/{url}', 'MediaController@getFile' )->name( 'getFile' );
 
     Route::get( '/', 'HomeController@index' )->name( 'home.index' );
+
+    Route::group( [ 'prefix' => 'admin' ], function(){
+        Route::get( '', 'AdminController@index' )->name( 'admin.index' );
+    } );
     
 /*
     Route::middleware( 'guest' )->group( function(){

@@ -2,78 +2,71 @@
  * @namespace
  * @desc Handles form management.
  */
-const Form = (function(){
-
-    const
-        /**
-         * @memberOf Form
-         * @access private
-         * @desc Submission form
-         * @const {jQuery}
-         */
-        SubmissionForm               = $( '.submission-form' ),
-        /**
-         * @memberOf Form
-         * @access private
-         * @desc reCAPTCHA form
-         * @const {jQuery}
-         */
-        RecaptchaForm                = $( '.recaptcha-form' ),
-        /**
-         * @memberOf Form
-         * @access private
-         * @desc Deletion confirmation selector
-         * @const {string}
-         */
-        DeletionConfirmationSelector = '.deletion';
-
+const Form = (function() {
+  const /**
+     * @memberOf Form
+     * @access private
+     * @desc Submission form
+     * @const {jQuery}
+     */
+    SubmissionForm = $(".submission-form"),
     /**
      * @memberOf Form
-     * @access public
-     * @desc Initialize Form module.
+     * @access private
+     * @desc reCAPTCHA form
+     * @const {jQuery}
      */
-    function initialize(){
+    RecaptchaForm = $(".recaptcha-form"),
+    /**
+     * @memberOf Form
+     * @access private
+     * @desc Deletion confirmation selector
+     * @const {string}
+     */
+    DeletionConfirmationSelector = ".deletion";
 
-        SubmissionForm.submit( function( event ){
+  /**
+   * @memberOf Form
+   * @access public
+   * @desc Initialize Form module.
+   */
+  function initialize() {
+    SubmissionForm.submit(function(event) {
+      event.preventDefault();
 
-            event.preventDefault();
+      Utility.submitForm($(this));
+    });
 
-            Utility.submitForm( $( this ) );
+    RecaptchaForm.submit(function(event) {
+      event.preventDefault();
 
-        } );
+      _submitEvent = () => {
+        Utility.submitForm($(this));
+      };
+    });
 
-        RecaptchaForm.submit( function( event ){
+    Search.SearchForm.submit(function(event) {
+      event.preventDefault();
 
-            event.preventDefault();
+      Search.submitForm($(this));
+    });
 
-            _submitEvent = () =>{
+    Search.ResultDiv.on("submit", DeletionConfirmationSelector, function(
+      event
+    ) {
+      event.preventDefault();
 
-                Utility.submitForm( $( this ) );
+      Confirmation.confirmToDelete($(this), Search.SearchForm);
+    });
 
-            };
+    $("input:checkbox").click(function() {
+      $(this)
+        .parent()
+        .toggleClass("form-checkbox-ed");
+    });
+  }
 
-        } );
-
-        Search.SearchForm.submit( function( event ){
-
-            event.preventDefault();
-
-            Search.submitForm( $( this ) );
-
-        } );
-
-        Search.ResultDiv.on( 'submit', DeletionConfirmationSelector, function( event ){
-
-            event.preventDefault();
-
-            Confirmation.confirmToDelete( $( this ), Search.SearchForm );
-
-        } );
-
-    }
-
-    return {
-        initialize: initialize,
-    };
-
-})( jQuery );
+  return {
+    initialize: initialize
+  };
+})(jQuery);
