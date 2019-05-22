@@ -5,10 +5,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ShareLike;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Banner;
 use App\Models\News;
+use App\Models\Share;
 
 /**
  * Home Page Controller
@@ -22,16 +24,21 @@ class HomeController extends Controller
     /** @var News news model instance */
     private $newsModel;
 
+    /** @var Share share model instance */
+    private $shareModel;
+
     /**
      * Initialize HomeController class.
      *
      * @param Banner $banner Banner model
      * @param News   $news   News model
+     * @param Share  $share  Share model
      */
-    public function __construct( Banner $banner, News $news )
+    public function __construct( Banner $banner, News $news, Share $share )
     {
         $this->bannerModel = $banner;
         $this->newsModel   = $news;
+        $this->shareModel  = $share;
     }
 
     /**
@@ -44,6 +51,7 @@ class HomeController extends Controller
         $user   = Auth::user();
         $banner = $this->bannerModel->getHomeBannerList();
         $news   = $this->newsModel->getHomeNewsList();
+        $share  = $this->shareModel->getHomeShareList();
 
         return view( 'home.index', compact( 'user', 'banner', 'news' ) );
     }
