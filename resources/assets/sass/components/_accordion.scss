@@ -28,16 +28,21 @@
   }
 
   &-content {
-    background-color: $color-blue;
+    background-color: $color-light-gray;
     border-color: transparent;
-    color: $white;
+    color: $color-blue;
     padding: 0;
-
+    
     a {
-      color: $white;
+      color: $color-blue;
       display: block;
       padding: $space-box/4 * 3;
       padding-left: $space-box/2 * 3;
+
+      &.is-active{
+        color: $white;
+        background-color: $color-blue;
+      }
     }
 
     i {

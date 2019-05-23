@@ -22,4 +22,14 @@ class AdminController extends Controller
         return view( 'admin.index' );
     }
 
+    /**
+     * Show learn-all page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View learn-all page
+     */
+    public function learnAll()
+    {
+        return view( 'admin.learnAll' );
+    }
+
 }

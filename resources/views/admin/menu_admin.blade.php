@@ -1,14 +1,14 @@
 <ul class="accordion" data-accordion>
-    <li class="accordion-item is-active" data-accordion-item>
+    <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">My Profile</a>
         <div class="accordion-content" data-tab-content>
             <a href="#"><i class="fas fa-caret-right"></i> Edit Profile</a>
         </div>
     </li>
-    <li class="accordion-item" data-accordion-item>
+    <li class="accordion-item is-active" data-accordion-item>
         <a href="#" class="accordion-title">Learn</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All Learn</a>
+            <a href="#" class="is-active"><i class="fas fa-caret-right"></i> All Learn</a>
             <a href="#"><i class="fas fa-caret-right"></i> Add Learn</a>
         </div>
     </li>

@@ -13,6 +13,7 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( '', 'AdminController@index' )->name( 'admin.index' );
+        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
     } );
     
 /*
