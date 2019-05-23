@@ -20,4 +20,7 @@ return [
         'index' => 'Share page',
     ],
 
+    'recent_share' => 'Recent Share',
+    'challenge'    => 'Challenge',
+
 ];

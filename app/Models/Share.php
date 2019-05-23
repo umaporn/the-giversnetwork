@@ -9,6 +9,7 @@ use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class Share extends Model
 {
@@ -71,8 +72,8 @@ class Share extends Model
         $query = $this->with( [ 'shareImage' ] )
                       ->with( [ 'shareComment' ] )
                       ->with( [ 'shareLike' ] )
-                      ->with( [ 'users' ] )->limit( 6 )->get();
-        dd($query);
+                      ->with( [ 'users' ] )->limit( 6 )->where('status','public')->get();
+
         $data = $this->transformHomeShareContent( $query );
 
         return $data;
@@ -89,10 +90,52 @@ class Share extends Model
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
-            $list->setAttribute( 'images', $this->getImages( $list ) );
+            $list->setAttribute( 'images_path', $this->getImages( $list ) );
             $this->setPublicDateForFrontEnd( $list );
         }
 
         return $homeShareList;
+    }
+
+    /**
+     * Set public date attribute.
+     *
+     * @param Share $share Share model
+     *
+     * @return void
+     */
+    private function setPublicDateForFrontEnd( Share $share )
+    {
+        $share->setAttribute( 'public_date',
+                              date( 'd', strtotime( $share->public_date ) ) . ' ' .
+                              date( 'F', strtotime( $share->public_date ) ) . ' ' .
+                              date( 'Y', strtotime( $share->public_date ) )
+        );
+    }
+
+    /**
+     * Get a new image list into an image store.
+     *
+     * @param Share  $share     Share model
+     * @param string $imageSize Image size
+     *
+     * @return array Image store
+     */
+    public function getImages( Share $share, string $imageSize = 'original' )
+    {
+        $imageStore = [];
+
+        foreach( $share->shareImage as $image ){
+
+            $attributes = $image->getAttributes();
+            if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes[ $imageSize ] ) ){
+                $imageStore = $attributes[ $imageSize ];
+            } else {
+                $imageStore = Storage::url( $attributes[ $imageSize ] );
+            }
+
+        }
+
+        return $imageStore;
     }
 }

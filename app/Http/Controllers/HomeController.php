@@ -53,6 +53,6 @@ class HomeController extends Controller
         $news   = $this->newsModel->getHomeNewsList();
         $share  = $this->shareModel->getHomeShareList();
 
-        return view( 'home.index', compact( 'user', 'banner', 'news' ) );
+        return view( 'home.index', compact( 'user', 'banner', 'news', 'share' ) );
     }
 }
