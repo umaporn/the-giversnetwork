@@ -251,13 +251,41 @@
         }
     }
 }
+
 /*----------------- Home - Give ------------------*/
 .give {
     .view-all {
-        color: $white;
-
         a {
-            color: $white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: rem-calc(130);
+            height: rem-calc(130);
+            border: rem-calc(1) dashed $color-green;
+            border-radius: rem-calc(10);
+            margin: 0 auto;
+            margin-bottom: $space-box/2;
+
+            @include breakpoint(medium only) {
+                width: rem-calc(100);
+                height: rem-calc(100);
+            }
+
+            @include breakpoint(small only) {
+                width: rem-calc(80);
+                height: rem-calc(80);
+            }
+
+
+            i {
+                color: $color-green;
+                font-size: rem-calc(40);
+            }
+
+        }
+
+        span {
+            margin-right: 0;
         }
     }
 
@@ -281,8 +309,120 @@
         h4 {
             color: $color-green;
         }
+
+        &>.cell:nth-child(1) {
+            background-color: $color-gray;
+        }
+
+        &>.cell:nth-child(2) {
+            background-color: $color-light-gray;
+        }
+
     }
-   
+
+    .tabs {
+        border: 0;
+        background-color: $color-gray;
+
+        li {
+            &:focus {
+                outline: none;
+            }
+
+            &:first-child {
+                padding: $space-box/2 $space-box;
+                color: $color-text-bold;
+                font-size: rem-calc(20);
+                font-family: $text-bold;
+            }
+        }
+
+        &-title {
+            &:focus {
+                outline: none;
+            }
+
+            &:hover,
+            &.is-active {
+                a {
+                    color: $white;
+                    background-color: $color-green;
+                    position: relative;
+                    &:after {
+                        content: '';
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        width: 0;
+                        height: 0;
+                        border: rem-calc(6) solid transparent;
+                        border-left-color: $color-green;
+                        border-right: 0;
+                        margin-top: rem-calc(-6);
+                        margin-right: rem-calc(-6);
+                    }
+                }
+            }
+
+            a {
+                padding: $space-box/2 $space-box;
+                font-size: rem-calc(16);
+                color: $color-text-bold;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+
+        &-content {
+            border: 0;
+            background-color: $color-light-gray;
+
+            article {
+                margin-bottom: $space-box;
+
+                figure {
+                    margin-bottom: $space-box/2;
+
+                    img {
+                        &.img-cover {
+                            width: rem-calc(130);
+                            height: rem-calc(130);
+                            border-radius: 50%;
+                            object-fit: cover;
+                            object-position: center center;
+
+                            @include breakpoint(medium only) {
+                                width: rem-calc(100);
+                                height: rem-calc(100);
+                            }
+
+                            @include breakpoint(small only) {
+                                width: rem-calc(80);
+                                height: rem-calc(80);
+                            }
+                        }
+                    }
+                }
+
+                a {
+                    color: $color-text-bold;
+                }
+
+                h3 {
+                    margin-bottom: 0;
+                }
+
+                .sub-title {}
+            }
+
+
+        }
+    }
+
+
+
 
 }
 
@@ -335,10 +475,12 @@
         }
     }
 }
+
 /*----------------- Home - Events ------------------*/
 
 .events {
     background-color: $color-light-gray;
+
     .view-all {
         color: $color-blue;
 
@@ -359,20 +501,22 @@
             color: $color-blue;
         }
 
-        .cover{
+        .cover {
             position: relative;
             overflow: auto;
-            figcaption{
+
+            figcaption {
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 right: 0;
-                background: rgba(112,112,112,0.5);
-                color: $white; 
+                background: rgba(112, 112, 112, 0.5);
+                color: $white;
                 padding: rem-calc(5) rem-calc(10);
             }
-            
+
         }
+
         .profile {
             color: $color-dark-gray;
             display: inline-block;

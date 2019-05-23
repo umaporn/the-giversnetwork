@@ -59,7 +59,7 @@
    <section class="share">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <i class="fas fa-shapes"></i> <h2 class="topic-light">share</h2> 
+                <i class="fas fa-shapes"></i> <h2 class="topic-light">share</h2>
                 <span>- Short description to explain share section : Definition</span>
             </div>
             <div class="cell shrink view-all">
@@ -235,25 +235,175 @@
    <section class="give">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <i class="fas fa-gift"></i> <h2 class="topic-light">give</h2> 
+                <i class="fas fa-gift"></i> <h2 class="topic-light">give</h2>
                 <span>- Short description to explain share section : Definition</span>
-            </div>
-            <div class="cell shrink view-all">
-                <a href="#">
-                    <span>View All</span>
-                    <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
-                </a>
             </div>
         </div>
         <div class="grid-x content padding-content">
-            None
+            <div class="cell medium-3 align-self-stretch">
+            <ul class="vertical tabs" data-tabs id="cate-tabs">
+                <li class="">Categories</li>
+                <li class="tabs-title is-active"><a href="#panel1v" aria-selected="true">Food non-perishable</a></li>
+                <li class="tabs-title"><a href="#panel2v">Food perishable</a></li>
+                <li class="tabs-title"><a href="#panel3v">School supply</a></li>
+                <li class="tabs-title"><a href="#panel4v">Housing</a></li>
+                <li class="tabs-title"><a href="#panel5v">Medical supplies</a></li>
+                <li class="tabs-title"><a href="#panel6v">Consulting</a></li>
+                <li class="tabs-title"><a href="#panel7v">Transportation</a></li>
+                <li class="tabs-title"><a href="#panel8v">Service</a></li>
+                <li class="tabs-title"><a href="#panel9v">Volunteer</a></li>
+                <li class="tabs-title"><a href="#panel10v">Other</a></li>
+            </ul>
+            </div>
+            <div class="cell medium-9 align-self-stretch">
+            <div class="tabs-content" data-tabs-content="cate-tabs">
+                <div class="tabs-panel is-active" id="panel1v">
+
+                <div class="grid-x large-up-5 align-center-middle text-center">
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 ">
+                        <article>
+                            <figure>
+                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
+                            </figure>
+                            <a href="#"><h3>Ramen Noodles</h3></a>
+                            <span class="sub-title">100 items</span>
+                        </article>
+                    </div>
+                    <div class="cell small-6 medium-4 view-all align-self-top text-center">
+                        <a href="#">
+                            <i class="fas fa-plus"></i>
+                        </a>
+                        <span class="sub-title">MORE</span>
+                    </div>
+                </div>
+
+                </div>
+                <div class="tabs-panel" id="panel2v">
+                
+                2
+
+                </div>
+                <div class="tabs-panel" id="panel3v">
+
+                3
+
+                </div>
+                <div class="tabs-panel" id="panel4v">
+                
+                4
+
+                </div>
+                <div class="tabs-panel" id="panel5v">
+                
+                5
+
+                </div>
+                <div class="tabs-panel" id="panel6v">
+                
+                6
+
+                </div>
+                <div class="tabs-panel" id="panel7v">
+                
+                7
+
+                </div>
+                <div class="tabs-panel" id="panel8v">
+                
+                8
+
+                </div>
+                <div class="tabs-panel" id="panel9v">
+                
+                9
+
+                </div>
+                <div class="tabs-panel" id="panel10v">
+                
+                10
+
+                </div>
+            </div>
+            </div>
         </div>
    </section>
 
    <section class="learn">
        <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <i class="fas fa-book"></i> <h2 class="topic-light">Learn</h2> 
+                <i class="fas fa-book"></i> <h2 class="topic-light">Learn</h2>
                 <span>- Short description to explain share section : Definition</span>
             </div>
             <div class="cell shrink view-all">
