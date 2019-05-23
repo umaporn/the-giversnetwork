@@ -20,10 +20,12 @@ class LearnCategory extends Model
     /**
      * Get learn model relationship.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Learn model relationship
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany Learn model relationship
      */
-    public function share()
+    public function learn()
     {
-        return $this->belongsTo( 'App\Models\Learn', 'fk_category_id' );
+        return $this->hasMany( 'App\Models\Learn', 'fk_category_id' );
     }
+
+
 }

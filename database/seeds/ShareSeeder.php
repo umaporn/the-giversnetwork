@@ -44,10 +44,7 @@ class ShareSeeder extends Seeder
         ];
 
         foreach( $share as $item ){
-            DB::table( 'share' )->insert( $item )
-                ->each( function( $share ){
-                    $share->shareImage()->save( factory( ShareImage::class )->make() );
-                } );;
+            DB::table( 'share' )->insert( $item );
         }
     }
 }

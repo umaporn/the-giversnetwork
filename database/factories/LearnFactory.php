@@ -9,8 +9,8 @@ use Faker\Generator as Faker;
 $factory->define( \App\Models\Learn::class, function( Faker $faker ){
     return [
         'fk_category_id'   => $faker->numberBetween( 1, 10 ),
-        'title_thai'       => $faker->text( 10 ),
-        'title_english'    => $faker->text( 10 ),
+        'title_thai'       => $faker->text( 100 ),
+        'title_english'    => $faker->text( 100 ),
         'content_thai'     => $faker->text( 255 ),
         'content_english'  => $faker->text( 255 ),
         'file_path'        => $faker->imageUrl( 350, 200 ),

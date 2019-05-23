@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
                          ShareCommentSeeder::class,
                          ShareImageSeeder::class,
                          ShareLikeSeeder::class,
-                         EventSeeder::class,
+                         EventsSeeder::class,
                          LearnCategorySeeder::class,
                          LearnSeeder::class,
                      ] );

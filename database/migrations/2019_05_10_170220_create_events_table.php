@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateEventTable extends Migration
 {
-    const Table = 'event';
+    const Table = 'events';
 
     /**
      * Run the migrations.
@@ -28,6 +28,7 @@ class CreateEventTable extends Migration
             $table->string( 'link', 255 );
             $table->date( 'start_date' );
             $table->date( 'end_date' );
+            $table->string( 'event_date', 255 );
             $table->string( 'image_path' );
             $table->integer( 'view' );
             $table->enum( 'status', [ 'public', 'draft' ] );
