@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
                          EventsSeeder::class,
                          LearnCategorySeeder::class,
                          LearnSeeder::class,
+                         EventsSeeder::class,
                      ] );
     }
 }

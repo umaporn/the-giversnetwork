@@ -18,33 +18,6 @@ class ShareSeeder extends Seeder
      */
     public function run()
     {
-        $share = [
-            [
-                'fk_user_id'          => '1',
-                'fk_category_id'      => '2',
-                'title_thai'          => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'title_english'       => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'description_thai'    => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'description_english' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'file_path'           => 'https://upload.wikimedia.org/wikipedia/commons/0/02/Fire_breathing_2_Luc_Viatour.jpg',
-                'view'                => '20',
-                'status'              => 'public',
-            ],
-            [
-                'fk_user_id'          => '1',
-                'fk_category_id'      => '3',
-                'title_thai'          => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'title_english'       => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'description_thai'    => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'description_english' => 'Lorem Ipsum is simply dummy text of the printing and typesetting industry.',
-                'file_path'           => 'https://upload.wikimedia.org/wikipedia/commons/0/02/Fire_breathing_2_Luc_Viatour.jpg',
-                'view'                => '40',
-                'status'              => 'public',
-            ],
-        ];
-
-        foreach( $share as $item ){
-            DB::table( 'share' )->insert( $item );
-        }
+        factory( \App\Models\Share::class )->times( 30 )->create();
     }
 }

@@ -15,6 +15,14 @@ class ShareCategorySeeder extends Seeder
      */
     public function run()
     {
+        $category = [
+            [
+                'title_thai'    => 'Challenge',
+                'title_english' => 'Challenge',
+            ],
+        ];
+        DB::table( 'share_category' )->insert( $category );
+
         factory( \App\Models\ShareCategory::class )->times( 10 )->create();
     }
 }
