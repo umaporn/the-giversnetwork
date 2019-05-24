@@ -19351,6 +19351,23 @@ readers do not read off random characters that represent icons */
   margin-left: -0.0625rem;
 }
 
+.input-search .form-fill {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 0.3125rem;
+  border-bottom-left-radius: 0.3125rem;
+  margin-left: 0;
+}
+
+.input-search .btn-blue {
+  border-top-right-radius: 0.3125rem !important;
+  border-bottom-right-radius: 0.3125rem !important;
+}
+
+.input-search .btn-blue:hover {
+  background-color: #11334f;
+}
+
 #spinner,
 #spinner-popup {
   display: none;
@@ -19450,7 +19467,7 @@ readers do not read off random characters that represent icons */
   border-color: transparent;
   background-color: #F8F8F8;
   color: #154064;
-  font-family: 'db_airystd_bd';
+  font-family: "db_airystd_bd";
 }
 
 .accordion-title::before {
@@ -19587,6 +19604,89 @@ readers do not read off random characters that represent icons */
 .modal-form {
   padding-bottom: 1.25rem;
   text-align: center;
+}
+
+.table-admin {
+  text-align: center;
+}
+
+.table-admin thead {
+  border-color: transparent;
+  color: #FEFEFE;
+  background-color: #154064;
+  overflow: hidden;
+}
+
+.table-admin thead th {
+  text-align: center;
+}
+
+.table-admin thead th:first-child {
+  border-top-left-radius: 0.625rem;
+  border-bottom-left-radius: 0.625rem;
+}
+
+.table-admin thead th:last-child {
+  border-top-right-radius: 0.625rem;
+  border-bottom-right-radius: 0.625rem;
+}
+
+.table-admin thead th:nth-child(2) {
+  text-align: left;
+}
+
+.table-admin thead tr {
+  overflow: hidden;
+}
+
+.table-admin tbody {
+  border-color: transparent;
+}
+
+.table-admin tbody td:nth-child(2) {
+  text-align: left;
+  max-width: 9.375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media print, screen and (min-width: 40em) {
+  .table-admin tbody td:nth-child(2) {
+    max-width: 18.75rem;
+  }
+}
+
+@media screen and (min-width: 90em) {
+  .table-admin tbody td:nth-child(2) {
+    max-width: 34.375rem;
+  }
+}
+
+.table-admin tbody tr:nth-child(even) {
+  background-color: transparent;
+}
+
+.pagination .current {
+  background-color: transparent;
+  color: #154064;
+}
+
+.pagination a {
+  color: #7F8685;
+}
+
+.pagination a:hover {
+  color: #154064;
+  background-color: transparent;
+}
+
+.pagination-next a {
+  color: #154064;
+}
+
+.pagination-previous a {
+  color: #154064;
 }
 
 .swiper-container {
@@ -20895,6 +20995,24 @@ body:lang(en) .language li.en a {
 @media print, screen and (min-width: 64em) {
   .admin-form-space {
     margin-bottom: 1.25rem;
+  }
+}
+
+.admin-search {
+  margin-bottom: 1.25rem;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .admin-search {
+    position: relative;
+    margin-bottom: 3.75rem;
+  }
+
+  .admin-search .input-search {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 2.75rem;
   }
 }
 

@@ -18,7 +18,7 @@
     border-color: transparent;
     background-color: $color-light-gray;
     color: $color-blue;
-    font-family: 'db_airystd_bd';
+    font-family: "db_airystd_bd";
 
     &::before {
       font-family: "Font Awesome 5 Free";
@@ -32,14 +32,14 @@
     border-color: transparent;
     color: $color-blue;
     padding: 0;
-    
+
     a {
       color: $color-blue;
       display: block;
       padding: $space-box/4 * 3;
       padding-left: $space-box/2 * 3;
 
-      &.is-active{
+      &.is-active {
         color: $white;
         background-color: $color-blue;
       }
