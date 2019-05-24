@@ -5,8 +5,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ShareLike;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Banner;
 use App\Models\News;

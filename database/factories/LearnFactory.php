@@ -13,7 +13,7 @@ $factory->define( \App\Models\Learn::class, function( Faker $faker ){
         'title_english'    => $faker->text( 100 ),
         'content_thai'     => $faker->text( 255 ),
         'content_english'  => $faker->text( 255 ),
-        'file_path'        => $faker->imageUrl( 350, 200 ),
+        'file_path'        => $faker->imageUrl( 700, 400 ),
         'view'             => $faker->numberBetween( 1, 40 ),
         'status'           => $faker->randomElement( [ 'public', 'draft' ] ),
         'highlight_status' => $faker->randomElement( [ 'pined', 'unpined' ] ),

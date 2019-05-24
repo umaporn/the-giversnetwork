@@ -16,7 +16,7 @@ $factory->define( \App\Models\Events::class, function( Faker $faker ){
         'location_english'    => $faker->text( 255 ),
         'host_thai'           => $faker->text( 255 ),
         'host_english'        => $faker->text( 255 ),
-        'image_path'          => $faker->imageUrl( 350, 200 ),
+        'image_path'          => $faker->imageUrl( 700, 400 ),
         'link'                => $faker->url,
         'view'                => $faker->numberBetween( 1, 40 ),
         'event_date'          => $faker->date( 'd F Y H:i - H:i' ),
