@@ -21098,57 +21098,57 @@ body:lang(en) .language li.en a {
   color: #154064;
 }
 
-.admin .topic {
+.user .topic {
   background-color: #154064;
   color: #FEFEFE;
 }
 
-.admin .topic h2 {
+.user .topic h2 {
   display: inline-block;
 }
 
 @media print, screen and (min-width: 64em) {
-  .admin-content {
+  .user-content {
     padding-left: 2.5rem;
   }
 }
 
-.admin-head {
+.user-head {
   color: #154064;
   margin-right: 0.3125rem;
 }
 
 @media print, screen and (min-width: 64em) {
-  .admin-head {
+  .user-head {
     margin-right: 0.625rem;
   }
 }
 
-.admin-form {
+.user-form {
   margin-bottom: 2.5rem;
 }
 
-.admin-form-space {
+.user-form-space {
   margin-bottom: 0;
 }
 
 @media print, screen and (min-width: 64em) {
-  .admin-form-space {
+  .user-form-space {
     margin-bottom: 1.25rem;
   }
 }
 
-.admin-search {
+.user-search {
   margin-bottom: 1.25rem;
 }
 
 @media screen and (max-width: 39.99875em) {
-  .admin-search {
+  .user-search {
     position: relative;
     margin-bottom: 3.75rem;
   }
 
-  .admin-search .input-search {
+  .user-search .input-search {
     position: absolute;
     width: 100%;
     left: 0;
@@ -21172,5 +21172,14 @@ body:lang(en) .language li.en a {
   color: #FEFEFE;
   border-radius: 0.3125rem;
   cursor: not-allowed;
+}
+
+.admin .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.admin .topic h2 {
+  display: inline-block;
 }
 

@@ -15,6 +15,12 @@ function globalRoutes()
         Route::get( '', 'AdminController@index' )->name( 'admin.index' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
     } );
+
+    Route::get( 'signup', 'UsersController@signup' )->name( 'users.signup' );
+
+    Route::group( [ 'prefix' => 'user' ], function(){
+        Route::get( 'editprofile', 'UsersController@editProfile' )->name( 'users.editProfile' );
+    } );
     
 /*
     Route::middleware( 'guest' )->group( function(){
