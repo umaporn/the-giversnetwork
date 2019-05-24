@@ -136,8 +136,7 @@
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
-                    <div class="cell small-12 large-2"></div>
-                    <div class="cell small-12 large-9">
+                    <div class="cell small-12 large-offset-2 large-9">
                         <button class="btn-green btn-long">Save</button>
                     </div>
                 </div>
@@ -148,31 +147,31 @@
                     <ul class="modal-content">
                         <li>
                             <div class="form-checkbox">
-                                <input id="checkbox1" type="checkbox">
+                                <input id="checkbox1" type="checkbox" class="checkbox-inter">
                                 <label for="checkbox1">Children</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-checkbox">
-                                <input id="checkbox2" type="checkbox">
+                                <input id="checkbox2" type="checkbox" class="checkbox-inter">
                                 <label for="checkbox2">Interested</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-checkbox">
-                                <input id="checkbox3" type="checkbox">
+                                <input id="checkbox3" type="checkbox" class="checkbox-inter">
                                 <label for="checkbox3">Foods</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-checkbox">
-                                <input id="checkbox4" type="checkbox">
+                                <input id="checkbox4" type="checkbox" class="checkbox-inter">
                                 <label for="checkbox4">Interested 1</label>
                             </div>
                         </li>
                         <li>
                             <div class="form-checkbox">
-                                <input id="checkbox5" type="checkbox">
+                                <input id="checkbox5" type="checkbox" class="checkbox-inter">
                                 <label for="checkbox5">Interested 2</label>
                             </div>
                         </li>

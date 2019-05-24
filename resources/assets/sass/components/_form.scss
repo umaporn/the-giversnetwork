@@ -1,4 +1,17 @@
 .form {
+  &-onerow {
+    @include breakpoint(medium down) {
+      margin-left: -$space-box/2;
+    }
+
+    @include breakpoint(large) {
+      margin-top: $space-box;
+    }
+
+    @include breakpoint(xxlarge) {
+      width: 70%;
+    }
+  }
   &-label {
     font-family: "db_airystd_bd";
     color: $color-blue;
@@ -31,6 +44,74 @@
       margin-right: $space-box;
       border-radius: 50%;
       overflow: hidden;
+    }
+  }
+
+  &-file {
+    position: relative;
+    display: block;
+    cursor: pointer;
+
+    @include breakpoint(small only){
+      margin-bottom: $space-box*2;
+    }
+
+    &upload {
+      visibility: hidden;
+    }
+
+    &-style {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      @include breakpoint(small only) {
+        flex-wrap: wrap;
+      }
+
+      .form {
+        &-flex {
+          @include breakpoint(small only) {
+            flex: 1;
+            min-width: 50%;
+          }
+        }
+
+        &-fill {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          margin-bottom: 0;
+        }
+      }
+
+      .btn-blue {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        height: rem-calc(39);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .show {
+        &-text {
+          margin-bottom: 0;
+          min-width: 200px;
+          margin-left: $space-box/2;
+          line-height: 1;
+
+          @include breakpoint(small only) {
+            display: block;
+            margin: $space-box/2 0;
+          }
+        }
+      }
     }
   }
 
@@ -86,7 +167,10 @@
 }
 
 .input-group {
-  margin-bottom: 0;
+
+  @include breakpoint(medium){
+    margin-bottom: 0;
+  }
 
   .form {
     &-select {
@@ -113,12 +197,12 @@
     }
   }
 
-  .btn{
-    &-blue{
-      border-top-right-radius: $space-box/4!important;
-      border-bottom-right-radius: $space-box/4!important;
+  .btn {
+    &-blue {
+      border-top-right-radius: $space-box/4 !important;
+      border-bottom-right-radius: $space-box/4 !important;
 
-      &:hover{
+      &:hover {
         background-color: darken($color-blue, 5%);
       }
     }

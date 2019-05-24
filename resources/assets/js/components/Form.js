@@ -59,10 +59,14 @@ const Form = (function() {
       Confirmation.confirmToDelete($(this), Search.SearchForm);
     });
 
-    $("input:checkbox").click(function() {
+    $(".checkbox-inter").click(function() {
       $(this)
         .parent()
         .toggleClass("form-checkbox-ed");
+    });
+
+    $('#file').change(function(){
+      $('#filename').val($(this).val());
     });
   }
 
