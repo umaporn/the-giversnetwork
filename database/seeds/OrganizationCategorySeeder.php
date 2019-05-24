@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * Organization Category Seeder
+ */
 use Illuminate\Database\Seeder;
 
+/**
+ * This class is a seeder for organization category model.
+ */
 class OrganizationCategorySeeder extends Seeder
 {
     /**

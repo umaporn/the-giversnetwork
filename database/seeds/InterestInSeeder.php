@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * Interest in Seeder
+ */
 use Illuminate\Database\Seeder;
 
+/**
+ * This class is a seeder for interest in model.
+ */
 class InterestInSeeder extends Seeder
 {
     /**

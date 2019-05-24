@@ -3,13 +3,10 @@
  * Share Seeder
  */
 
-use App\Models\ShareImage;
-use App\Models\ShareComment;
-use App\Models\ShareLike;
 use Illuminate\Database\Seeder;
 
 /**
- * This class is a seeder for News model.
+ * This class is a seeder for share model.
  */
 class ShareSeeder extends Seeder
 {

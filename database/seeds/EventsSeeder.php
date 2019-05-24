@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * Events Seeder
+ */
 use Illuminate\Database\Seeder;
 
+/**
+ * This class is a seeder for events model.
+ */
 class EventsSeeder extends Seeder
 {
     /**

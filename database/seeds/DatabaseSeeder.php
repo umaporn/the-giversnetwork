@@ -26,7 +26,14 @@ class DatabaseSeeder extends Seeder
                          EventsSeeder::class,
                          LearnCategorySeeder::class,
                          LearnSeeder::class,
-                         EventsSeeder::class,
+                         ChallengeCategorySeeder::class,
+                         ChallengeSeeder::class,
+                         ChallengeCommentSeeder::class,
+                         ChallengeImageSeeder::class,
+                         ChallengeLikeSeeder::class,
+                         GiveCategorySeeder::class,
+                         GiveSeeder::class,
+                         GiveImageSeeder::class,
                      ] );
     }
 }

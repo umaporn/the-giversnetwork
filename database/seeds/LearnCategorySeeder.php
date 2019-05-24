@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * Learn Category Seeder
+ */
 use Illuminate\Database\Seeder;
 
+/**
+ * This class is a seeder for learn category model.
+ */
 class LearnCategorySeeder extends Seeder
 {
     /**

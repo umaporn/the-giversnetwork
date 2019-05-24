@@ -24,6 +24,12 @@
 @import "components/form";
 @import "components/icons";
 @import "components/spinner";
+@import "components/breadcrumbs";
+@import "components/accordion";
+@import "components/button";
+@import "components/modal";
+@import "components/table";
+@import "components/pagination";
 
 //Hero Banner
 @import "~swiper/src/swiper";
@@ -35,3 +41,4 @@
 @import "layouts/top_menu";
 @import "layouts/footer";
 @import "layouts/home";
+@import "layouts/admin";

@@ -9,12 +9,20 @@ function globalRoutes()
 
     Route::get( 'file/{url}', 'MediaController@getFile' )->name( 'getFile' );
 
+    Route::get( '/', 'HomeController@index' )->name( 'home.index' );
+
+    Route::group( [ 'prefix' => 'admin' ], function(){
+        Route::get( '', 'AdminController@index' )->name( 'admin.index' );
+        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
+    } );
+
     Route::middleware( 'guest' )->group( function(){
 
         Route::get( '/', 'HomeController@index' )->name( 'home.index' );
         Route::get( 'learn', 'LearnController@index' )->name( 'learn.index' );
         Route::get( 'share', 'ShareController@index' )->name( 'share.index' );
         Route::get( 'give', 'HomeController@index' )->name( 'give.index' );
+        Route::get( 'give-by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
         Route::get( 'events', 'EventsController@index' )->name( 'events.index' );
         Route::get( 'news', 'NewsController@index' )->name( 'news.index' );
         Route::get( 'news/{id}', 'NewsController@detail' )->name( 'news.detail' );

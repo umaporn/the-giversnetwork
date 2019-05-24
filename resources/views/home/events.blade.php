@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="grid-x grid-margin-x">
-        @foreach( $events as $events_item )
+        @foreach( $data['events'] as $events_item )
             <article class="cell small-12 medium-4">
                 <figure class="cover">
                     <img src="{{ $events_item['image_path'] }}" alt="{{ $events_item['title'] }}">

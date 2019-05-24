@@ -9,6 +9,7 @@ use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class Share extends Model
@@ -19,6 +20,16 @@ class Share extends Model
 
     /** @var string Table name */
     protected $table = 'share';
+
+    /**
+     * Get share category model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Share category model relationship
+     */
+    public function shareCategory()
+    {
+        return $this->belongsTo( 'App\Models\ShareCategory', 'fk_category_id' );
+    }
 
     /**
      * Get share image model relationship.
@@ -72,7 +83,7 @@ class Share extends Model
         $query = $this->with( [ 'shareImage' ] )
                       ->with( [ 'shareComment' ] )
                       ->with( [ 'shareLike' ] )
-                      ->with( [ 'users' ] )->limit( 6 )->where('status','public')->get();
+                      ->with( [ 'users' ] )->limit( 6 )->where( 'status', 'public' )->get();
 
         $data = $this->transformHomeShareContent( $query );
 
@@ -91,6 +102,7 @@ class Share extends Model
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'images_path', $this->getImages( $list ) );
+            $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->shareCategory ) );
             $this->setPublicDateForFrontEnd( $list );
         }
 

@@ -27,7 +27,7 @@ class Banner extends Model
         $bannerList = $this->where( [ 'status' => 'public' ] )->orderBy( 'order', 'asc' )->get();
         $data       = $this->transformHomeBannerContent( $bannerList );
 
-        return [ 'data' => $data ];
+        return $data;
     }
 
     /**

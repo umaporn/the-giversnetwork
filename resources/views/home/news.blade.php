@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="grid-x grid-margin-x">
-        @foreach( $news as $news_item )
+        @foreach( $data['news'] as $news_item )
             <article class="cell small-12 medium-4">
                 <a href="{{ route('news.detail', ['id' => $news_item['id']]) }}">
                     <figure>

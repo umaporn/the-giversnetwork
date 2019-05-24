@@ -1,0 +1,27 @@
+.pagination {
+  .current{
+    background-color: transparent;
+    color: $color-blue;
+  }
+
+  a{
+    color: $color-dark-gray;
+
+    &:hover{
+      color: $color-blue;
+      background-color: transparent;
+    }
+  }
+
+  &-next{
+    a{
+      color: $color-blue
+    }
+  }
+
+  &-previous{
+    a{
+      color: $color-blue;
+    }
+  }
+}

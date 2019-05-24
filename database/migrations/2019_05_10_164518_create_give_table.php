@@ -21,7 +21,7 @@ class CreateGiveTable extends Migration
             $table->foreign( 'fk_user_id' )->references( 'id' )->on( 'users' );
             $table->unsignedInteger( 'fk_category_id' );
             $table->foreign( 'fk_category_id' )->references( 'id' )->on( 'give_category' );
-            $table->enum( 'type', [ 'public', 'draft' ] );
+            $table->enum( 'type', [ 'give', 'receive' ] );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );
             $table->string( 'description_thai', 255 );
@@ -30,6 +30,7 @@ class CreateGiveTable extends Migration
             $table->text( 'address' );
             $table->integer( 'view' );
             $table->date( 'expired_date' );
+            $table->enum( 'status', [ 'public', 'draft' ] );
             $table->timestamp( 'updated_at' );
             $table->timestamp( 'created_at' )->useCurrent();
         });

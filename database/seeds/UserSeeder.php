@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * User Seeder
+ */
 use Illuminate\Database\Seeder;
 
+/**
+ * This class is a seeder for user model.
+ */
 class UserSeeder extends Seeder
 {
     /**

@@ -6,7 +6,7 @@
 use Illuminate\Database\Seeder;
 
 /**
- * This class is a seeder for share model.
+ * This class is a seeder for share like model.
  */
 class ShareLikeSeeder extends Seeder
 {

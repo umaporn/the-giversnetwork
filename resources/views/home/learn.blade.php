@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="grid-x grid-margin-x content padding-content">
-        @foreach( $learn as $learn_item )
+        @foreach( $data['learn'] as $learn_item )
             <article class="cell small-12 medium-4">
                 <figure>
                     <img src="{{ $learn_item['file_path'] }}" alt="{{ $learn_item['title'] }}">

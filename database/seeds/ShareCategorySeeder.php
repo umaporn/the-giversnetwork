@@ -6,7 +6,7 @@
 use Illuminate\Database\Seeder;
 
 /**
- * This class is a seeder for share model.
+ * This class is a seeder for share category model.
  */
 class ShareCategorySeeder extends Seeder
 {
@@ -15,14 +15,6 @@ class ShareCategorySeeder extends Seeder
      */
     public function run()
     {
-        $category = [
-            [
-                'title_thai'    => 'Challenge',
-                'title_english' => 'Challenge',
-            ],
-        ];
-        DB::table( 'share_category' )->insert( $category );
-
         factory( \App\Models\ShareCategory::class )->times( 10 )->create();
     }
 }

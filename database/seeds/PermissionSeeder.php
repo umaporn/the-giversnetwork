@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * Permission Seeder
+ */
 use Illuminate\Database\Seeder;
 
+/**
+ * This class is a seeder for permission model.
+ */
 class PermissionSeeder extends Seeder
 {
     /**

@@ -73,7 +73,8 @@ time{
     line-height:  rem-calc(16);
 }
 
-p{
+p, ul{
     font-family: $text-normal, sans-serif;
     color: $color-text-normal;
+    font-size: rem-calc(16);
 }

@@ -1,7 +1,12 @@
 <?php
-
+/**
+ * Banner Seeder
+ */
 use Illuminate\Database\Seeder;
 
+/**
+ * This class is a seeder for banner model.
+ */
 class BannerSeeder extends Seeder
 {
     /**
