@@ -21324,6 +21324,40 @@ body:lang(en) .language li.en a {
   padding: 0.3125rem;
 }
 
+.learn.detail.padding-content {
+  padding-top: 0;
+}
+
+.learn.detail .article.padding-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.learn.detail article {
+  margin-bottom: 0.625rem;
+}
+
+.learn.detail article figure {
+  margin-bottom: 0.625rem;
+}
+
+.learn.detail article p {
+  color: #154064;
+}
+
+.learn.detail article h2 {
+  color: #154064;
+}
+
+.learn.detail article time {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.learn.detail article time i {
+  margin-right: 0.3125rem;
+}
+
 .admin .topic {
   background-color: #154064;
   color: #FEFEFE;

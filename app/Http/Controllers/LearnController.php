@@ -22,4 +22,13 @@ class LearnController extends Controller
     {
         return view( 'learn.index' );
     }
+     /**
+     * Display article page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
+     */
+    public function article()
+    {
+        return view( 'learn.article' );
+    }
 }
