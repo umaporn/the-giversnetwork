@@ -20585,7 +20585,7 @@ body:lang(en) .language li.en a {
 }
 
 .bottom-menu > .cell {
-  padding-right: 7.5rem;
+  padding-right: 1.25rem;
 }
 
 @media screen and (max-width: 39.99875em) {
@@ -20602,6 +20602,7 @@ body:lang(en) .language li.en a {
   margin-right: 0.625rem;
   display: inline-block;
   line-height: 2.25rem;
+  color: #154064;
 }
 
 .bottom-menu .social ul li {
