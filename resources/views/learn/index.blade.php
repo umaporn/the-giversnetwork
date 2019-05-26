@@ -26,7 +26,7 @@
         </div>
     </section>
     <section class="most-popular padding-content">
-        <div class="grid-x grid-margin-x">
+        <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell small-12">
                 <h2 class="cell auto topic-dark">Most popular</h2>
             </div>
@@ -59,7 +59,7 @@
             </article>
 
         </div>
-        <div class="grid-x align-middle">
+        <div class="grid-x align-middle grid-margin-y">
             <div class="cell auto grid-x align-middle">
                 <div class="cell line auto"></div>
                 <div class="cell shrink"><span class="outline-dot float-right"><span class="dot"></span></span></div>
@@ -73,7 +73,7 @@
                 <div class="grid-x align-middle">
                     <h2 class="cell auto topic-dark">Articles</h2>
                 </div>
-                <article class="grid-x grid-margin-x">
+                <article class="grid-x grid-margin-x grid-margin-y ">
                     <div class="cell small-12 medium-6">
                         <figure>
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
@@ -88,7 +88,7 @@
                             arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
                     </div>
                 </article>
-                <article class="grid-x grid-margin-x">
+                <article class="grid-x grid-margin-x grid-margin-y ">
                     <div class="cell small-12 medium-6">
                         <figure>
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
@@ -103,7 +103,7 @@
                             arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
                     </div>
                 </article>
-                <article class="grid-x grid-margin-x">
+                <article class="grid-x grid-margin-x grid-margin-y ">
                     <div class="cell small-12 medium-6">
                         <figure>
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
@@ -118,7 +118,7 @@
                             arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
                     </div>
                 </article>
-                <article class="grid-x grid-margin-x">
+                <article class="grid-x grid-margin-x grid-margin-y ">
                     <div class="cell small-12 medium-6">
                         <figure>
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
@@ -133,7 +133,7 @@
                             arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
                     </div>
                 </article>
-                <article class="grid-x grid-margin-x">
+                <article class="grid-x grid-margin-x grid-margin-y ">
                     <div class="cell small-12 medium-6">
                         <figure>
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
@@ -208,7 +208,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="grid-x grid-margin-x">
+                <div class="grid-x grid-margin-x grid-margin-y ">
 
                     <article class="cell">
                         <div class="grid-x grid-margin-x large-margin-collapse">
