@@ -72,6 +72,13 @@
                             congue est, eget pulvinar metus lobortis eu.
                         </p>
                     </div>
+                    <div class="social cell small-12 text-right">
+                            <label>Share To</label>
+                            <ul class="no-bullet float-right">
+                                <li><a href="#"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter-square fa-2x"></i></a></li>
+                            </ul>
+                        </div>
                 </div>
             </article>
         </div>
