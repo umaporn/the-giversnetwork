@@ -1,0 +1,65 @@
+/*----------------- Home - Learn ------------------*/
+.learn {
+    &.all {
+        .topic {
+            &:after {
+                border: none;
+            }
+        }
+
+        article {
+            margin-bottom: $space-box/2;
+
+            figure,
+            h3 {
+                margin-bottom: $space-box/2;
+            }
+
+            h3,
+            p {
+                color: $color-blue;
+            }
+
+            .category {
+                color: $color-dark-gray;
+                vertical-align: middle;
+
+                i {
+                    margin-right: rem-calc(5);
+                }
+            }
+        }
+
+        .most-popular {
+            &.padding-content {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+/*----------------- Home - Articles ------------------*/
+.articles{
+    @include breakpoint(medium down) {
+        margin-bottom: $space-box*2;
+    } 
+}
+        /*----------------- Home - Events ------------------*/
+
+        .events {
+            background-color: $white;
+
+            margin-bottom: $space-box*2;
+
+        }
+
+        .load-more{
+            border-radius: rem-calc(5);
+            background-color: $color-blue;
+            color: $white;
+            display: block;
+            text-align: center;
+            font-family: $text-bold;
+            padding: $space-box/4;
+        }
+
+    }
+}
