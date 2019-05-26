@@ -19170,7 +19170,7 @@ readers do not read off random characters that represent icons */
 
 @media print, screen and (min-width: 64em) {
   .padding-content {
-    padding: 2.5rem 5rem;
+    padding: 2.5rem 7.5rem;
   }
 }
 
@@ -20996,6 +20996,66 @@ body:lang(en) .language li.en a {
 
 .about article p {
   color: #154064;
+}
+
+/*----------------- Home - Learn ------------------*/
+
+.learn.all {
+  /*----------------- Home - Articles ------------------*/
+  /*----------------- Home - Events ------------------*/
+}
+
+.learn.all .topic:after {
+  border: none;
+}
+
+.learn.all article {
+  margin-bottom: 0.625rem;
+}
+
+.learn.all article figure,
+.learn.all article h3 {
+  margin-bottom: 0.625rem;
+}
+
+.learn.all article h3,
+.learn.all article p {
+  color: #154064;
+}
+
+.learn.all article .category {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.learn.all article .category i {
+  margin-right: 0.3125rem;
+}
+
+.learn.all .most-popular.padding-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 63.99875em) {
+  .learn.all .articles {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.learn.all .events {
+  background-color: #FEFEFE;
+  margin-bottom: 2.5rem;
+}
+
+.learn.all .load-more {
+  border-radius: 0.3125rem;
+  background-color: #154064;
+  color: #FEFEFE;
+  display: block;
+  text-align: center;
+  font-family: "db_airystd_bd";
+  padding: 0.3125rem;
 }
 
 .admin .topic {
