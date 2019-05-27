@@ -11,6 +11,11 @@ function globalRoutes()
 
     Route::get( '/', 'HomeController@index' )->name( 'home.index' );
 
+    Route::group( [ 'prefix' => 'learn', ], function(){
+        Route::get( '', 'LearnController@index' )->name( 'learn.index' );
+        Route::get( 'article', 'LearnController@article' )->name( 'learn.article' );
+    } );
+
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( '', 'AdminController@index' )->name( 'admin.index' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
