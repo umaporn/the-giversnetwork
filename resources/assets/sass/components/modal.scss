@@ -8,11 +8,17 @@
 
     &:focus{
       outline: 0;
-    }
+	}
+	
+	@include breakpoint(large){
+		width: rem-calc(500);
+	}
 
     @include breakpoint(small only){
       height: auto;
-      min-height: auto;
+	  min-height: auto;
+	  width: 95%;
+	  margin: 0  auto;
     }
   }
 

@@ -67,7 +67,18 @@ const Form = (function() {
 
     $('#file').change(function(){
       $('#filename').val($(this).val());
-    });
+	});
+	
+	$(".toggle-password").click(function() {
+
+		$(this).text($(this).text() == 'show' ? 'hide' : 'show');
+		var input = $($(this).attr("toggle"));
+		if (input.attr("type") == "password") {
+		  input.attr("type", "text");
+		} else {
+		  input.attr("type", "password");
+		}
+	  });
   }
 
   return {
