@@ -164,6 +164,11 @@
       }
     }
   }
+
+  &-link{
+      text-decoration: underline;
+      color: $color-dark-gray;
+  }
 }
 
 .input-group {
@@ -204,6 +209,16 @@
 
       &:hover {
         background-color: darken($color-blue, 5%);
+      }
+    }
+  }
+}
+
+.modal{
+  &-content{
+    .form{
+      &-label{
+        text-align: left;
       }
     }
   }
