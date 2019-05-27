@@ -8,12 +8,18 @@
     <meta name="description" content="@yield('page-description')">
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/favicon.png') }}">
 
+    <meta property="og:url" content="@yield('og-url')"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="@yield('og-title')"/>
+    <meta property="og:description" content="@yield('og-description')"/>
+    <meta property="og:image" content="@yield('og-image')"/>
+
     <title>@yield('page-title') - {{ config( 'app.name' ) }}</title>
 
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
 
     <script>
-        window.Laravel = {!! json_encode([
+		window.Laravel = {!! json_encode([
             'csrfToken'       => csrf_token(),
             'languageCodes'   => config('app.language_codes'),
             'defaultLanguage' => Utility::getDefaultLanguageCode(),

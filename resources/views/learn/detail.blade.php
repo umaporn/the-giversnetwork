@@ -2,10 +2,17 @@
 
 @section('page-title', __('learn.page_title.detail', [
             'learn_title' => $data['title'],
-        ])))
+        ]))
 @section('page-description', __('learn.page_description.detail', [
             'learn_title' => $data['title'],
         ]))
+
+@section('og-title', __('learn.page_title.detail', [
+            'learn_title' => $data['title'],
+        ]))
+@section('og-url', url()->current())
+@section('og-description', $data['title'])
+@section('og-image', $data['image_path'])
 
 @section('content')
 
@@ -49,8 +56,16 @@
                         <div class="social cell small-12 text-right">
                             <label>Share To</label>
                             <ul class="no-bullet float-right">
-                                <li><a href="#"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter-square fa-2x"></i></a></li>
+                                <li>
+                                    <a target="popup" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}','popup','width=600,height=500');">
+                                        <i class="fab fa-facebook-square fa-2x"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a target="popup" onclick="window.open('https://twitter.com/share?text={{$data['title']}}','popup','width=600,height=500')">
+                                        <i class="fab fa-twitter-square fa-2x"></i>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
