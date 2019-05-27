@@ -5,9 +5,12 @@
 
 namespace App\Models;
 
+use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Banner extends Model
 {
@@ -20,24 +23,26 @@ class Banner extends Model
     /**
      * Get banner list.
      *
-     * @return array A list of banner
+     * @return LengthAwarePaginator A list of banner
      */
-    public function getHomeBannerList()
+    public function getHomeBannerList( Request $request )
     {
-        $bannerList = $this->where( [ 'status' => 'public' ] )->orderBy( 'order', 'asc' )->get();
-        $data       = $this->transformHomeBannerContent( $bannerList );
+        $builder = $this->where( [ 'status' => 'public' ] )->orderBy( 'order', 'asc' );
 
-        return $data;
+        $data = Search::search( $builder, 'banner', $request );
+
+        return $this->transformHomeBannerContent( $data );
+
     }
 
     /**
      * Transform privilege banner information.
      *
-     * @param Collection $homeBannerList A list of privilege
+     * @param LengthAwarePaginator $homeBannerList A list of privilege
      *
-     * @return Collection Home banner list for display
+     * @return LengthAwarePaginator Home banner list for display
      */
-    private function transformHomeBannerContent( Collection $homeBannerList )
+    private function transformHomeBannerContent( LengthAwarePaginator $homeBannerList )
     {
         foreach( $homeBannerList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );

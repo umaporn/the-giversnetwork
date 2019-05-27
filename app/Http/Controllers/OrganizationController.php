@@ -2,6 +2,7 @@
 /**
  * Organization Controller
  */
+
 namespace App\Http\Controllers;
 
 class OrganizationController extends Controller

@@ -5,10 +5,12 @@
 
 namespace App\Models;
 
+use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Events extends Model
 {
@@ -23,25 +25,25 @@ class Events extends Model
      *
      * @param Request $request Events request object
      *
-     * @return Collection A list of events for home page
+     * @return LengthAwarePaginator A list of events for home page
      */
-    public function getHomeEventsList()
+    public function getHomeEventsList( Request $request )
     {
-        $query = $this->limit( 3 )->where( 'status', 'public' )->get();
+        $builder = $this->where( 'status', 'public' );
 
-        $data = $this->transformHomeEventsContent( $query );
+        $data = Search::search( $builder, 'events', $request, [], '3' );
 
-        return $data;
+        return $this->transformHomeEventsContent( $data );
     }
 
     /**
      * Transform event information.
      *
-     * @param Collection $homeEventsList A list of event
+     * @param LengthAwarePaginator $homeEventsList A list of event
      *
-     * @return Collection Home events list for display
+     * @return LengthAwarePaginator Home events list for display
      */
-    private function transformHomeEventsContent( Collection $homeEventsList )
+    private function transformHomeEventsContent( LengthAwarePaginator $homeEventsList )
     {
         foreach( $homeEventsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );

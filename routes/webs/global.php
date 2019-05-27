@@ -26,6 +26,7 @@ function globalRoutes()
 
         Route::group( [ 'prefix' => 'learn', ], function(){
             Route::get( '', 'LearnController@index' )->name( 'learn.index' );
+            Route::get( '{id}', 'LearnController@detail' )->name( 'learn.detail' );
         } );
 
         Route::group( [ 'prefix' => 'share', ], function(){

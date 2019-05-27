@@ -14,9 +14,9 @@ $factory->define( \App\Models\Learn::class, function( Faker $faker ){
         'content_thai'     => $faker->text( 255 ),
         'content_english'  => $faker->text( 255 ),
         'file_path'        => $faker->imageUrl( 700, 400 ),
-        'view'             => $faker->numberBetween( 1, 40 ),
+        'view'             => $faker->numberBetween( 1, 1000 ),
         'status'           => $faker->randomElement( [ 'public', 'draft' ] ),
-        'highlight_status' => $faker->randomElement( [ 'pined', 'unpined' ] ),
+        'highlight_status' => $faker->randomElement( [ 'pinned', 'unpinned' ] ),
         'type'             => $faker->text( 75 ),
         'public_date'      => $faker->date( 'Y-m-d' ),
     ];

@@ -2,6 +2,7 @@
 /**
  * News Model
  */
+
 namespace App\Models;
 
 use App\Libraries\Search;
@@ -39,28 +40,28 @@ class News extends Model
      *
      * @param Request $request News request object
      *
-     * @return Collection A list of news articles for home page
+     * @return LengthAwarePaginator A list of news articles for home page
      */
-    public function getHomeNewsList()
+    public function getHomeNewsList( Request $request )
     {
-        $query = $this->with( [ 'newsImage' ] )
+        $builder = $this->with( [ 'newsImage' ] )
                       ->orderBy( 'public_date', 'desc' )
-                      ->where( 'status', 'public' )->limit(3)->get();
+                      ->where( 'status', 'public' );
 
-        $data = $this->transformHomeNewsContent( $query );
+        $data = Search::search( $builder, 'news', $request, [], '3' );
 
-        return $data;
+        return $this->transformHomeNewsContent( $data );
+
     }
-
 
     /**
      * Transform news information.
      *
-     * @param Collection $homeNewsList A list of news
+     * @param LengthAwarePaginator $homeNewsList A list of news
      *
-     * @return Collection Home news list for display
+     * @return LengthAwarePaginator Home news list for display
      */
-    private function transformHomeNewsContent( Collection $homeNewsList )
+    private function transformHomeNewsContent( LengthAwarePaginator $homeNewsList )
     {
         foreach( $homeNewsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
@@ -86,7 +87,6 @@ class News extends Model
                              date( 'Y', strtotime( $news->public_date ) )
         );
     }
-
 
     /**
      * Get a new image list into an image store.

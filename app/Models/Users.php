@@ -200,6 +200,13 @@ class Users extends Authenticatable
         return $result->isEmpty();
     }
 
+    /**
+     * Get user list
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
     public function getUserList(Request $request)
     {
         $builder = $this->with( 'permission' );

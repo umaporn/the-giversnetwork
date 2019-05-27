@@ -5,10 +5,12 @@
 
 namespace App\Models;
 
+use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
@@ -76,28 +78,28 @@ class Challenge extends Model
      *
      * @param Request $request Challenge request object
      *
-     * @return Collection A list of challenge for home page
+     * @return LengthAwarePaginator A list of challenge for home page
      */
-    public function getHomeChallengeList()
+    public function getHomeChallengeList( Request $request )
     {
-        $query = $this->with( [ 'challengeImage' ] )
-                      ->with( [ 'challengeComment' ] )
-                      ->with( [ 'challengeLike' ] )
-                      ->with( [ 'users' ] )->limit( 3 )->where( 'status', 'public' )->get();
+        $builder = $this->with( [ 'challengeImage' ] )
+                        ->with( [ 'challengeComment' ] )
+                        ->with( [ 'challengeLike' ] )
+                        ->with( [ 'users' ] )->where( 'status', 'public' );
 
-        $data = $this->transformHomeChallengeContent( $query );
+        $data = Search::search( $builder, 'challenge', $request, [], '3' );
 
-        return $data;
+        return $this->transformHomeChallengeContent( $data );
     }
 
     /**
      * Transform share information.
      *
-     * @param Collection $homeShareList A list of share
+     * @param LengthAwarePaginator $homeShareList A list of share
      *
-     * @return Collection Home share list for display
+     * @return LengthAwarePaginator Home share list for display
      */
-    private function transformHomeChallengeContent( Collection $homeChallengeList )
+    private function transformHomeChallengeContent( LengthAwarePaginator $homeChallengeList )
     {
         foreach( $homeChallengeList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
@@ -119,17 +121,17 @@ class Challenge extends Model
     private function setPublicDateForFrontEnd( Challenge $challenge )
     {
         $challenge->setAttribute( 'public_date',
-                              date( 'd', strtotime( $challenge->public_date ) ) . ' ' .
-                              date( 'F', strtotime( $challenge->public_date ) ) . ' ' .
-                              date( 'Y', strtotime( $challenge->public_date ) )
+                                  date( 'd', strtotime( $challenge->public_date ) ) . ' ' .
+                                  date( 'F', strtotime( $challenge->public_date ) ) . ' ' .
+                                  date( 'Y', strtotime( $challenge->public_date ) )
         );
     }
 
     /**
      * Get a new image list into an image store.
      *
-     * @param Challenge  $challenge     Challenge model
-     * @param string $imageSize Image size
+     * @param Challenge $challenge Challenge model
+     * @param string    $imageSize Image size
      *
      * @return array Image store
      */

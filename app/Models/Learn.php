@@ -5,10 +5,12 @@
 
 namespace App\Models;
 
+use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class Learn extends Model
 {
@@ -33,25 +35,25 @@ class Learn extends Model
      *
      * @param Request $request Learn request object
      *
-     * @return Collection A list of learn for home page
+     * @return LengthAwarePaginator A list of learn for home page
      */
-    public function getHomeLearnList()
+    public function getHomeLearnList( Request $request )
     {
-        $query = $this->with( [ 'learnCategory' ] )->limit( 3 )->where( 'status', 'public' )->get();
+        $builder = $this->with( [ 'learnCategory' ] )->where( 'status', 'public' );
 
-        $data = $this->transformHomeLearnContent( $query );
+        $data = Search::search( $builder, 'learn', $request, [], '3' );
 
-        return $data;
+        return $this->transformLearnContent( $data );
     }
 
     /**
      * Transform learn information.
      *
-     * @param Collection $homeLearnList A list of learn
+     * @param LengthAwarePaginator $homeLearnList A list of learn
      *
-     * @return Collection Home learn list for display
+     * @return LengthAwarePaginator Home learn list for display
      */
-    private function transformHomeLearnContent( Collection $homeLearnList )
+    private function transformLearnContent( LengthAwarePaginator $homeLearnList )
     {
         foreach( $homeLearnList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
@@ -76,5 +78,35 @@ class Learn extends Model
                               date( 'F', strtotime( $learn->public_date ) ) . ' ' .
                               date( 'Y', strtotime( $learn->public_date ) )
         );
+    }
+
+    /**
+     * Get a list of most popular learn.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator Learn list for display
+     */
+    public function getLearnMostPopular( Request $request )
+    {
+        $builder = $this->with( [ 'learnCategory' ] )
+                        ->orderBy( 'view', 'desc' )
+                        ->where( [ 'status' => 'public', 'highlight_status' => 'pinned' ] );
+
+        $data = Search::search( $builder, 'learn', $request, [], '3' );
+
+        return $this->transformLearnContent( $data );
+    }
+
+    public function getLearnAllList( Request $request )
+    {
+        $builder = $this->with( [ 'learnCategory' ] )
+                        ->orderBy( 'id', 'desc' )
+                        ->where( 'status', 'public' );
+
+        $data = Search::search( $builder, 'learn', $request );
+
+        return $this->transformLearnContent( $data );
+
     }
 }

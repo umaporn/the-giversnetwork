@@ -78,12 +78,12 @@ class HomeController extends Controller
     {
         $data                 = [];
         $data['user']         = Auth::user();
-        $data['banner']       = $this->bannerModel->getHomeBannerList();
-        $data['news']         = $this->newsModel->getHomeNewsList();
-        $data['share']        = $this->shareModel->getHomeShareList();
-        $data['challenge']    = $this->challengeModel->getHomeChallengeList();
-        $data['learn']        = $this->learnModel->getHomeLearnList();
-        $data['events']       = $this->eventsModel->getHomeEventsList();
+        $data['banner']       = $this->bannerModel->getHomeBannerList( $request );
+        $data['news']         = $this->newsModel->getHomeNewsList( $request );
+        $data['share']        = $this->shareModel->getHomeShareList( $request );
+        $data['challenge']    = $this->challengeModel->getHomeChallengeList( $request );
+        $data['learn']        = $this->learnModel->getHomeLearnList( $request );
+        $data['events']       = $this->eventsModel->getHomeEventsList( $request );
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
         $data['give']         = $this->giveModel->getHomeGiveList();
 

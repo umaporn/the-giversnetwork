@@ -2,6 +2,7 @@
 /**
  * News Controller
  */
+
 namespace App\Http\Controllers;
 
 class NewsController extends Controller

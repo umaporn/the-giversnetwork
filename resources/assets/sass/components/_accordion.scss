@@ -1,52 +1,52 @@
 .is-active > .accordion-title::before {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  content: "\f0d8";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f0d8";
 }
 
 :last-child:not(.is-active) > .accordion-title {
-  border-color: transparent;
+    border-color: transparent;
 }
 
 .accordion {
-  border-top-left-radius: $space-box/2;
-  border-bottom-left-radius: $space-box/2;
-  overflow: hidden;
+    border-top-left-radius: $space-box/2;
+    border-bottom-left-radius: $space-box/2;
+    overflow: hidden;
 
-  &-title {
-    font-size: rem-calc(18);
-    border-color: transparent;
-    background-color: $color-light-gray;
-    color: $color-blue;
-    font-family: "db_airystd_bd";
+    &-title {
+        font-size: rem-calc(18);
+        border-color: transparent;
+        background-color: $color-light-gray;
+        color: $color-blue;
+        font-family: "db_airystd_bd";
 
-    &::before {
-      font-family: "Font Awesome 5 Free";
-      font-weight: 900;
-      content: "\f0d7";
-    }
-  }
-
-  &-content {
-    background-color: $color-light-gray;
-    border-color: transparent;
-    color: $color-blue;
-    padding: 0;
-
-    a {
-      color: $color-blue;
-      display: block;
-      padding: $space-box/4 * 3;
-      padding-left: $space-box/2 * 3;
-
-      &.is-active {
-        color: $white;
-        background-color: $color-blue;
-      }
+        &::before {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f0d7";
+        }
     }
 
-    i {
-      font-size: rem-calc(12);
+    &-content {
+        background-color: $color-light-gray;
+        border-color: transparent;
+        color: $color-blue;
+        padding: 0;
+
+        a {
+            color: $color-blue;
+            display: block;
+            padding: $space-box/4 * 3;
+            padding-left: $space-box/2 * 3;
+
+            &.is-active {
+                color: $white;
+                background-color: $color-blue;
+            }
+        }
+
+        i {
+            font-size: rem-calc(12);
+        }
     }
-  }
 }

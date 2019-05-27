@@ -2,6 +2,7 @@
 /**
  * Share Controller
  */
+
 namespace App\Http\Controllers;
 
 class ShareController extends Controller

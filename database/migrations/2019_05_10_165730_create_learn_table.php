@@ -25,7 +25,7 @@ class CreateLearnTable extends Migration
             $table->string( 'file_path', 255 );
             $table->integer( 'view' );
             $table->enum( 'status', [ 'public', 'draft' ] );
-            $table->enum( 'highlight_status', [ 'pined', 'unpined' ] );
+            $table->enum( 'highlight_status', [ 'pinned', 'unpinned' ] );
             $table->string( 'type' );
             $table->date( 'public_date' );
             $table->timestamp( 'updated_at' );

@@ -36,4 +36,11 @@ return [
         'searchFields'   => [ 'email' ],
         'fulltextSearch' => false,
     ],
+    'learn' =>  [
+        'limit'          => 10,
+        'limits'         => [ 10, 25, 50, 100 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
+        'fulltextSearch' => false,
+    ],
 ];

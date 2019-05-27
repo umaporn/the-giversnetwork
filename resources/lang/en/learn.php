@@ -20,4 +20,7 @@ return [
         'index' => 'Learn page',
     ],
 
+    'most_popular' => 'Most popular',
+    'articles'     => 'Articles',
+
 ];

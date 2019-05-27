@@ -5,10 +5,12 @@
 
 namespace App\Models;
 
+use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
@@ -76,28 +78,29 @@ class Share extends Model
      *
      * @param Request $request Share request object
      *
-     * @return Collection A list of share for home page
+     * @return LengthAwarePaginator A list of share for home page
      */
-    public function getHomeShareList()
+    public function getHomeShareList( Request $request )
     {
-        $query = $this->with( [ 'shareImage' ] )
+        $builder = $this->with( [ 'shareImage' ] )
                       ->with( [ 'shareComment' ] )
                       ->with( [ 'shareLike' ] )
-                      ->with( [ 'users' ] )->limit( 6 )->where( 'status', 'public' )->get();
+                      ->with( [ 'users' ] )->where( 'status', 'public' );
 
-        $data = $this->transformHomeShareContent( $query );
+        $data  = Search::search( $builder, 'learn', $request, [], '6' );
 
-        return $data;
+        return $this->transformHomeShareContent( $data );
+
     }
 
     /**
      * Transform share information.
      *
-     * @param Collection $homeShareList A list of share
+     * @param LengthAwarePaginator $homeShareList A list of share
      *
-     * @return Collection Home share list for display
+     * @return LengthAwarePaginator Home share list for display
      */
-    private function transformHomeShareContent( Collection $homeShareList )
+    private function transformHomeShareContent( LengthAwarePaginator $homeShareList )
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
