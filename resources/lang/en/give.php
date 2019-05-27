@@ -20,4 +20,6 @@ return [
         'index' => 'Give page',
     ],
 
+    'category' => 'Category',
+
 ];

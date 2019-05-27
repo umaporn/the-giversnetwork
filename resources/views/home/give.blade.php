@@ -9,7 +9,7 @@
     <div class="grid-x content padding-content">
         <div class="cell medium-3 align-self-stretch">
             <ul class="vertical tabs" data-tabs id="cate-tabs">
-                <li class="">Categories</li>
+                <li class="">@lang('give.category')</li>
                 @foreach( $data['giveCategory'] as $give_category_item )
                     <li class="tabs-title @if( $loop->first ) is-active @endif" id="give-category">
                         <a href="#give-category"

@@ -6,7 +6,7 @@
             <span>- Short description to explain share section : Definition</span>
         </div>
         <div class="cell shrink view-all">
-            <a href="#">
+            <a href="{{ route('share.index') }}">
                 <span>@lang('button.view_all')</span>
                 <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
             </a>
@@ -28,11 +28,15 @@
                             <article class="cell grid-x medium-12 large-6">
                                 <div class="cell small-12 medium-5">
                                     <figure>
-                                        <img src="{{ $share_item['image_path'] }}" alt="{{ $share_item['title'] }}">
+                                        <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
+                                            <img src="{{ $share_item['image_path'] }}" alt="{{ $share_item['title'] }}">
+                                        </a>
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">
-                                    <a href="#"><h4 class="cell">{{ $share_item['title'] }}</h4></a>
+                                    <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
+                                        <h4 class="cell">{{ $share_item['title'] }}</h4>
+                                    </a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
                                             <figure class="display-profile">
@@ -60,9 +64,11 @@
                         @foreach( $data['challenge'] as $challenge_item )
                             <article class="cell small-12 medium-4">
                                 <figure>
-                                    <img src="{{ $challenge_item['file_path'] }}" alt="{{ $challenge_item['title'] }}">
+                                    <a href="{{ route('share.detail', ['share' => $challenge_item['id']]) }}">
+                                        <img src="{{ $challenge_item['file_path'] }}" alt="{{ $challenge_item['title'] }}">
+                                    </a>
                                 </figure>
-                                <a href="#"><h3>{{ $challenge_item['title'] }}</h3></a>
+                                <a href="{{ route('share.detail', ['share' => $challenge_item['id']]) }}"><h3>{{ $challenge_item['title'] }}</h3></a>
                                 <span class="category">{{ $challenge_item['category_title'] }}</span>
                             </article>
                         @endforeach

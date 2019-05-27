@@ -5,13 +5,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Banner;
-use App\Models\Challenge;
-use App\Models\Events;
-use App\Models\Learn;
-use App\Models\News;
-use App\Models\Share;
-use Illuminate\Http\Request;
 use App\Models\Give;
 use App\Models\GiveCategory;
 
@@ -59,4 +52,13 @@ class GiveController extends Controller
         return view( 'home.give_item', compact( 'data' ) );
     }
 
+    /**
+     * Display give detail page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give detail page
+     */
+    public function detail( Give $give )
+    {
+        //return view( 'events.detail' );
+    }
 }

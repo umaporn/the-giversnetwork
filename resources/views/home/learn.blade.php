@@ -6,7 +6,7 @@
             <span>- Short description to explain share section : Definition</span>
         </div>
         <div class="cell shrink view-all">
-            <a href="#">
+            <a href="{{ route('learn.index') }}">
                 <span>@lang('button.view_all')</span>
                 <i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i>
             </a>

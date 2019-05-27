@@ -17,7 +17,7 @@ class OrganizationCategory extends Model
     protected $table = 'organization_category';
 
     /**
-     * Get interest in list.
+     * Get organization category list.
      */
     public function getOrganizationCategoryList()
     {
@@ -28,11 +28,11 @@ class OrganizationCategory extends Model
     }
 
     /**
-     * Transform interest in information.
+     * Transform organization category information.
      *
-     * @param Collection $organizationCategoryList A list of interest in list
+     * @param Collection $organizationCategoryList A list of organization category list
      *
-     * @return Collection A list of interest in
+     * @return Collection A list of organization category
      */
     private function transformOrganizationCategoryList( Collection $organizationCategoryList )
     {

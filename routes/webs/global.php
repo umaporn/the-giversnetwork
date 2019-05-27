@@ -32,24 +32,28 @@ function globalRoutes()
 
         Route::group( [ 'prefix' => 'share', ], function(){
             Route::get( '', 'ShareController@index' )->name( 'share.index' );
+            Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
         } );
 
         Route::group( [ 'prefix' => 'give', ], function(){
             Route::get( '', 'GiveController@index' )->name( 'give.index' );
             Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
+            Route::get( '{give}', 'GiveController@detail' )->name( 'give.detail' );
         } );
 
         Route::group( [ 'prefix' => 'events', ], function(){
             Route::get( '', 'EventsController@index' )->name( 'events.index' );
+            Route::get( '{events}', 'EventsController@detail' )->name( 'events.detail' );
         } );
 
         Route::group( [ 'prefix' => 'news', ], function(){
             Route::get( '', 'NewsController@index' )->name( 'news.index' );
-            Route::get( '{id}', 'NewsController@detail' )->name( 'news.detail' );
+            Route::get( '{news}', 'NewsController@detail' )->name( 'news.detail' );
         } );
 
         Route::group( [ 'prefix' => 'organization', ], function(){
             Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
+            Route::get( '{organization}', 'OrganizationController@detail' )->name( 'organization.detail' );
         } );
 
         // Authentication
