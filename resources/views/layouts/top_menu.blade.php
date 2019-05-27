@@ -20,8 +20,9 @@
 					<li><a href="#contact">@lang('menu.top_menu.organization')</a></li>
 				</ul>
 			</div>
-			<div class="cell medium-shrink align-self-middle">
-				<ul class="user-profile float-left no-bullet">
+			<div class="cell medium-shrink align-self-middle grid-middle">
+				<!-- before user login -->
+				<!-- <ul class="user-profile float-left no-bullet">
 					<li><a href="#home">@lang('menu.profile_menu.sign_up')</a></li>
 					<li><a data-open="login">@lang('menu.profile_menu.log_in')</a></li>
 					<div class="reveal modal-style" id="login" data-reveal>
@@ -71,7 +72,21 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-				</ul>
+				</ul> -->
+				<!-- after user login -->
+				<section class="user-profile-after float-left" data-toggle="user-menu">
+					<figure class="user-profile-image">
+						<img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+					</figure>
+					<p class="user-profile-name">Username <i class="fas fa-caret-down"></i></p>
+					<div class="dropdown-pane user-menu" id="user-menu" data-dropdown data-hover="true" data-hover-pane="true" data-v-offset=15>
+						<ul class="user-menu-show">
+							<li><a href="#"><i class="fas fa-user-edit"></i> Edit My Profile</a></li>
+							<li><a href="#"><i class="fas fa-user-circle"></i>View My Profile</a></li>
+							<li><a href="#"><i class="fas fa-sign-out-alt"></i>  Log out</a></li>
+						</ul>
+					</div>
+				</section>
 				<ul class="language float-right no-bullet">
 					@foreach( config('app.language_codes') as $languageCode )
 					<li class="{{$languageCode}}">
