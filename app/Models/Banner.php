@@ -46,9 +46,11 @@ class Banner extends Model
     {
         foreach( $homeBannerList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
-            $list->setAttribute( 'image_path', Utility::getLanguageFields( 'image_path', $list ) );
+            $list->setAttribute( 'image_path', Utility::getImages( Utility::getLanguageFields( 'image_path', $list ) ) );
         }
 
         return $homeBannerList;
     }
+
+
 }

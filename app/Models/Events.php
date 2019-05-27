@@ -37,6 +37,22 @@ class Events extends Model
     }
 
     /**
+     * Get a list of events for displaying in learn page.
+     *
+     * @param Request $request Events request object
+     *
+     * @return LengthAwarePaginator A list of events for home page
+     */
+    public function getEventsForLearnPage( Request $request )
+    {
+        $builder = $this->where( 'status', 'public' );
+
+        $data = Search::search( $builder, 'events', $request, [], '1' );
+
+        return $this->transformHomeEventsContent( $data );
+    }
+
+    /**
      * Transform event information.
      *
      * @param LengthAwarePaginator $homeEventsList A list of event
@@ -48,6 +64,7 @@ class Events extends Model
         foreach( $homeEventsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'hostname', Utility::getLanguageFields( 'host', $list ) );
+            $list->setAttribute( 'host_image', Utility::getImages( $list['host_image'] ) );
         }
 
         return $homeEventsList;

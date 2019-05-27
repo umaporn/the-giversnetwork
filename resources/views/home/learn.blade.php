@@ -8,7 +8,7 @@
         <div class="cell shrink view-all">
             <a href="#">
                 <span>@lang('button.view_all')</span>
-                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                <i class="fas fa-caret-right"></i><i class="fas fa-caret-right"></i>
             </a>
         </div>
     </div>
@@ -16,9 +16,13 @@
         @foreach( $data['learn'] as $learn_item )
             <article class="cell small-12 medium-4">
                 <figure>
-                    <img src="{{ $learn_item['file_path'] }}" alt="{{ $learn_item['title'] }}">
+                    <a href="{{ route('learn.detail', ['learn' => $learn_item['id']]) }}">
+                        <img src="{{ $learn_item['image_path'] }}" alt="{{ $learn_item['title'] }}">
+                    </a>
                 </figure>
-                <a href="#"><h3>{{ $learn_item['title'] }}</h3></a>
+                <a href="{{ route('learn.detail', ['learn' => $learn_item['id']]) }}">
+                    <h3>{{ $learn_item['title'] }}</h3>
+                </a>
                 <span class="category">{{ $learn_item['category_title'] }}</span>
             </article>
         @endforeach

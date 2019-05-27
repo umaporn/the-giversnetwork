@@ -7,6 +7,7 @@ namespace App\Libraries;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * This class keeps all utility functions for all classes.
@@ -119,5 +120,24 @@ class Utility
         $data           = ( trim( $model->$chosenField ) ) ? $model->$chosenField : $model->$defaultField;
 
         return $data;
+    }
+
+    /**
+     * Get a new image list into an image store.
+     *
+     * @param string $imagePath Image path
+     *
+     * @return string Image store
+     */
+    public static function getImages( $imagePath )
+    {
+
+        if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $imagePath ) ){
+            $imageStore = $imagePath;
+        } else {
+            $imageStore = Storage::url( $imagePath );
+        }
+
+        return $imageStore;
     }
 }

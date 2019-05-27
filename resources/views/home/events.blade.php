@@ -14,13 +14,13 @@
                 <figure class="cover">
                     <img src="{{ $events_item['image_path'] }}" alt="{{ $events_item['title'] }}">
                     <figcaption>
-                        <time datetime="2019-04-29 12:00">{{ $events_item['event_date'] }}</time>
+                        <time datetime="{{ $events_item['event_date'] }}">{{ $events_item['event_date'] }}</time>
                     </figcaption>
                 </figure>
                 <a href="#"><h3>{{ $events_item['title'] }}</h3></a>
                 <div class="profile">
                     <figure class="display-profile">
-                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}" alt="">
+                        <img src="{{ $events_item['host_image'] }}" alt="">
                     </figure>
                     <span>By {{ $events_item['hostname'] }}</span>
                 </div>

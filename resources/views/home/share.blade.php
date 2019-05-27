@@ -28,7 +28,7 @@
                             <article class="cell grid-x medium-12 large-6">
                                 <div class="cell small-12 medium-5">
                                     <figure>
-                                        <img src="{{ $share_item['file_path'] }}" alt="{{ $share_item['title'] }}">
+                                        <img src="{{ $share_item['image_path'] }}" alt="{{ $share_item['title'] }}">
                                     </figure>
                                 </div>
                                 <div class="cell grid-x small-12 medium-7">

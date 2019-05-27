@@ -25,6 +25,7 @@ class CreateEventsTable extends Migration
             $table->string( 'location_english', 255 );
             $table->string( 'host_thai', 255 );
             $table->string( 'host_english', 255 );
+            $table->string( 'host_image' );
             $table->string( 'link', 255 );
             $table->date( 'start_date' );
             $table->date( 'end_date' );

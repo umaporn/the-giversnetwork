@@ -9,18 +9,22 @@ return [
     */
 
     'page_link' => [
-        'index' => 'Learn',
+        'index'  => 'Learn',
+        'detail' => 'Learn: :learn_title',
     ],
 
     'page_title' => [
-        'index' => 'Learn',
+        'index'  => 'Learn',
+        'detail' => 'Learn: :learn_title',
     ],
 
     'page_description' => [
-        'index' => 'Learn page',
+        'index'  => 'Learn page',
+        'detail' => 'Learn: :learn_title',
     ],
 
-    'most_popular' => 'Most popular',
-    'articles'     => 'Articles',
+    'most_popular'   => 'Most popular',
+    'articles'       => 'Articles',
+    'other_articles' => 'Other Articles',
 
 ];

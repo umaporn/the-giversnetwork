@@ -27,4 +27,5 @@ $( document )
         Form.initialize();
         HeroBanner.initialize();
         GiveCategoryTab.initialize();
+        LoadMore.initialize();
     } );

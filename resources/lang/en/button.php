@@ -19,4 +19,5 @@ return [
     'back'        => 'Back',
     'reset'       => 'Reset',
     'view_all'    => 'View All',
+    'view_more'   => 'View More',
 ];

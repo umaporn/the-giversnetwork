@@ -59,191 +59,83 @@
                     <div class="grid-x align-middle">
                         <h2 class="cell auto topic-dark">@lang('learn.articles')</h2>
                     </div>
-                    <article class="grid-x grid-margin-x grid-margin-y ">
-                        <div class="cell small-12 medium-6">
-                            <figure>
-                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" alt="" class="img-cover">
-                            </figure>
-                        </div>
-                        <div class="cell small-12 medium-6">
-                            <a href="#">
-                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget
-                                    nibh
-                                    arcu.</h3>
-                            </a>
-                            <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                               arcu. Morbi sollicitudin turpis id nisi fermentum mollis.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="grid-x grid-margin-x grid-margin-y ">
-                        <div class="cell small-12 medium-6">
-                            <figure>
-                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                            </figure>
-                        </div>
-                        <div class="cell small-12 medium-6">
-                            <a href="#">
-                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget
-                                    nibh
-                                    arcu.</h3>
-                            </a>
-                            <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                               arcu. Morbi sollicitudin turpis id nisi fermentum mollis.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="grid-x grid-margin-x grid-margin-y ">
-                        <div class="cell small-12 medium-6">
-                            <figure>
-                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                            </figure>
-                        </div>
-                        <div class="cell small-12 medium-6">
-                            <a href="#">
-                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget
-                                    nibh
-                                    arcu.</h3>
-                            </a>
-                            <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                               arcu. Morbi sollicitudin turpis id nisi fermentum mollis.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="grid-x grid-margin-x grid-margin-y ">
-                        <div class="cell small-12 medium-6">
-                            <figure>
-                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                            </figure>
-                        </div>
-                        <div class="cell small-12 medium-6">
-                            <a href="#">
-                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget
-                                    nibh
-                                    arcu.</h3>
-                            </a>
-                            <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                               arcu. Morbi sollicitudin turpis id nisi fermentum mollis.
-                            </p>
-                        </div>
-                    </article>
-                    <article class="grid-x grid-margin-x grid-margin-y ">
-                        <div class="cell small-12 medium-6">
-                            <figure>
-                                <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                            </figure>
-                        </div>
-                        <div class="cell small-12 medium-6">
-                            <a href="#">
-                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget
-                                    nibh
-                                    arcu.</h3>
-                            </a>
-                            <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                               arcu. Morbi sollicitudin turpis id nisi fermentum mollis.
-                            </p>
-                        </div>
-                    </article>
 
-                    <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
-
+                    @include('learn.list')
                 </section>
             </div>
             <div class="cell small-12 medium-12 large-4">
-
                 <section class="events">
-
                     <div class="grid-x align-middle">
-                        <h2 class="cell auto topic-dark">Events</h2>
+                        <h2 class="cell auto topic-dark">@lang('events.page_link.index')</h2>
                         <div class="cell shrink view-all">
                             <a href="#">
-                                <span>View All</span>
+                                <span>@lang('button.view_all')</span>
                                 <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
                             </a>
                         </div>
                     </div>
                     <div class="grid-x grid-margin-x">
-                        <article class="cell">
-                            <div class="grid-x grid-margin-x large-margin-collapse">
-
-                                <div class="cell small-12 medium-6 large-12">
-                                    <figure class="cover">
-                                        <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
-                                        <figcaption>
-                                            <time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time>
-                                        </figcaption>
-                                    </figure>
-                                </div>
-                                <div class="cell small-12 medium-6 large-12">
-                                    <a href="#">
-                                        <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                        </h3>
-                                    </a>
-                                    <div class="profile">
-                                        <figure class="display-profile">
-                                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                        @foreach( $data['events'] as $events_item )
+                            <article class="cell">
+                                <div class="grid-x grid-margin-x large-margin-collapse">
+                                    <div class="cell small-12 medium-6 large-12">
+                                        <figure class="cover">
+                                            <img src="{{ $events_item['image_path'] }}" alt="{{ $events_item['title'] }}">
+                                            <figcaption>
+                                                <time datetime="{{ $events_item['event_date'] }}">{{ $events_item['event_date'] }}</time>
+                                            </figcaption>
                                         </figure>
-                                        <span>By Host name or speaker name</span>
+                                    </div>
+                                    <div class="cell small-12 medium-6 large-12">
+                                        <a href="#">
+                                            <h3>{{ $events_item['title'] }}</h3>
+                                        </a>
+                                        <div class="profile">
+                                            <figure class="display-profile">
+                                                <img src="{{ $events_item['host_image'] }}" alt="{{$events_item['hostname']}}">
+                                            </figure>
+                                            <span>By {{ $events_item['hostname'] }}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                        </article>
+                            </article>
+                        @endforeach
                     </div>
-
                 </section>
+
                 <section class="news">
                     <div class="grid-x align-middle">
-                        <h2 class="cell auto topic-dark">News</h2>
+                        <h2 class="cell auto topic-dark">@lang('news.page_link.index')</h2>
                         <div class="cell shrink view-all">
                             <a href="#">
-                                <span>View All</span>
+                                <span>@lang('button.view_all')</span>
                                 <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
                             </a>
                         </div>
                     </div>
-                    <div class="grid-x grid-margin-x grid-margin-y ">
-
+                    <div class="grid-x grid-margin-x grid-margin-y">
+                        @foreach( $data['news'] as $news_items )
                         <article class="cell">
                             <div class="grid-x grid-margin-x large-margin-collapse">
                                 <div class="cell small-12 medium-6 large-12">
                                     <figure>
-                                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
+                                        <img src="{{ $news_items['images'] }}" alt="{{ $news_items['title'] }}">
                                     </figure>
                                 </div>
                                 <div class="cell small-12 medium-6 large-12">
                                     <a href="#">
-                                        <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                                        <h3>
+                                            {{ $news_items['title'] }}
                                         </h3>
                                     </a>
-                                    <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
+                                    <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>{{ $news_items['public_date'] }}</time>
                                 </div>
                             </div>
                         </article>
-
-                        <article class="cell">
-                            <div class="grid-x grid-margin-x large-margin-collapse">
-                                <div class="cell small-12 medium-6 large-12">
-                                    <figure>
-                                        <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
-                                    </figure>
-                                </div>
-                                <div class="cell small-12 medium-6 large-12">
-                                    <a href="#">
-                                        <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                        </h3>
-                                    </a>
-                                    <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
-                                </div>
-                            </div>
-                        </article>
+                        @endforeach
                     </div>
                 </section>
             </div>
-
         </div>
-
     </section>
-
-
 @endsection

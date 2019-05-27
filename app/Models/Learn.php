@@ -57,7 +57,9 @@ class Learn extends Model
     {
         foreach( $homeLearnList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
+            $list->setAttribute( 'content', Utility::getLanguageFields( 'content', $list ) );
             $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->learnCategory ) );
+            $list->setAttribute( 'image_path', Utility::getImages( $list['file_path'] ) );
             $this->setPublicDateForFrontEnd( $list );
         }
 
@@ -98,6 +100,13 @@ class Learn extends Model
         return $this->transformLearnContent( $data );
     }
 
+    /**
+     * Get learn all list.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of learn
+     */
     public function getLearnAllList( Request $request )
     {
         $builder = $this->with( [ 'learnCategory' ] )
@@ -109,4 +118,19 @@ class Learn extends Model
         return $this->transformLearnContent( $data );
 
     }
+
+    public function getLearnDetail( Learn $learn )
+    {
+        $learn = $this->where( [ 'id' => $learn->id ] )->first();
+
+        if( $learn ){
+            $learn->setAttribute( 'title', Utility::getLanguageFields( 'title', $learn ) );
+            $learn->setAttribute( 'content', Utility::getLanguageFields( 'content', $learn ) );
+            $learn->setAttribute( 'image_path', Utility::getImages( $learn['file_path'] ) );
+            $this->setPublicDateForFrontEnd( $learn );
+        }
+
+        return $learn;
+    }
+
 }

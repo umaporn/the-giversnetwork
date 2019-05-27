@@ -104,7 +104,7 @@ class Share extends Model
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
-            $list->setAttribute( 'images_path', $this->getImages( $list ) );
+            $list->setAttribute( 'image_path', $this->getImages( $list ) );
             $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->shareCategory ) );
             $this->setPublicDateForFrontEnd( $list );
         }
@@ -138,8 +138,7 @@ class Share extends Model
      */
     public function getImages( Share $share, string $imageSize = 'original' )
     {
-        $imageStore = [];
-
+        $imageStore = '';
         foreach( $share->shareImage as $image ){
 
             $attributes = $image->getAttributes();

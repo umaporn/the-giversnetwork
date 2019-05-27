@@ -105,6 +105,7 @@ class Give extends Model
     public function getFirstImages( Give $give, string $imageSize = 'original' )
     {
         $imageStore = '';
+
         foreach( $give->giveImage as $image ){
 
             $attributes = $image->getAttributes();

@@ -22,6 +22,7 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
 	           'resources/assets/js/components/Translator.js',
 	           'resources/assets/js/components/Utility.js',
 	           'resources/assets/js/components/GiveCategoryTab.js',
+	           'resources/assets/js/components/LoadMore.js',
 	           'resources/assets/js/all.js',
            ], 'public/js/all.js' )
    .version();

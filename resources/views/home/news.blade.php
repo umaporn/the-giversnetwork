@@ -13,7 +13,7 @@
             <article class="cell small-12 medium-4">
                 <a href="{{ route('news.detail', ['id' => $news_item['id']]) }}">
                     <figure>
-                        <img src="{{ $news_item['images'] }}" alt="{{ $news_item['title'] }}">
+                        <img src="{{ $news_item['image_path'] }}" alt="{{ $news_item['title'] }}">
                     </figure>
                     <h3>{{ $news_item['title'] }}</h3>
                 </a>

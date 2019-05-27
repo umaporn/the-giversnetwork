@@ -55,6 +55,25 @@ class News extends Model
     }
 
     /**
+     * Get a list of news/article for displaying on learn page.
+     *
+     * @param Request $request News request object
+     *
+     * @return LengthAwarePaginator A list of news articles for home page
+     */
+    public function getNewsForLearnPage( Request $request )
+    {
+        $builder = $this->with( [ 'newsImage' ] )
+                        ->orderBy( 'public_date', 'desc' )
+                        ->where( 'status', 'public' );
+
+        $data = Search::search( $builder, 'news', $request, [], '2' );
+
+        return $this->transformHomeNewsContent( $data );
+
+    }
+
+    /**
      * Transform news information.
      *
      * @param LengthAwarePaginator $homeNewsList A list of news
@@ -65,7 +84,7 @@ class News extends Model
     {
         foreach( $homeNewsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
-            $list->setAttribute( 'images', $this->getImages( $list ) );
+            $list->setAttribute( 'image_path', $this->getImages( $list ) );
             $this->setPublicDateForFrontEnd( $list );
         }
 

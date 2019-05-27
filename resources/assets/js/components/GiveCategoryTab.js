@@ -21,12 +21,6 @@ const GiveCategoryTab = (function(){
 				        cache:       false,
 				        contentType: false,
 				        processData: false,
-				        beforeSend: function() {
-					        $('#spinner').show();
-				        },
-				        complete: function(){
-					        $('#spinner').hide();
-				        },
 				        success:     function( result ){
 					        $('#give-category-box').html(result);
 				        },
