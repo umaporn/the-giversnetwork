@@ -19,14 +19,32 @@ function globalRoutes()
     Route::middleware( 'guest' )->group( function(){
 
         Route::get( '/', 'HomeController@index' )->name( 'home.index' );
-        Route::get( 'learn', 'LearnController@index' )->name( 'learn.index' );
-        Route::get( 'share', 'ShareController@index' )->name( 'share.index' );
-        Route::get( 'give', 'HomeController@index' )->name( 'give.index' );
-        Route::get( 'give-by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
-        Route::get( 'events', 'EventsController@index' )->name( 'events.index' );
-        Route::get( 'news', 'NewsController@index' )->name( 'news.index' );
-        Route::get( 'news/{id}', 'NewsController@detail' )->name( 'news.detail' );
-        Route::get( 'organization', 'OrganizationController@index' )->name( 'organization.index' );
+
+        Route::group( [ 'prefix' => 'learn', ], function(){
+            Route::get( '', 'LearnController@index' )->name( 'learn.index' );
+        } );
+
+        Route::group( [ 'prefix' => 'share', ], function(){
+            Route::get( '', 'ShareController@index' )->name( 'share.index' );
+        } );
+
+        Route::group( [ 'prefix' => 'give', ], function(){
+            Route::get( '', 'GiveController@index' )->name( 'give.index' );
+            Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
+        } );
+
+        Route::group( [ 'prefix' => 'events', ], function(){
+            Route::get( '', 'EventsController@index' )->name( 'events.index' );
+        } );
+
+        Route::group( [ 'prefix' => 'news', ], function(){
+            Route::get( '', 'NewsController@index' )->name( 'news.index' );
+            Route::get( '{id}', 'NewsController@detail' )->name( 'news.detail' );
+        } );
+
+        Route::group( [ 'prefix' => 'organization', ], function(){
+            Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
+        } );
 
         // Authentication
         Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
