@@ -15,7 +15,7 @@
         color: $color-blue;
     }
     & > .cell{
-        padding-right: $space-box*6;
+        padding-right: $space-box;
         @include breakpoint(small only) {
             padding-right: 0;
         }
@@ -28,6 +28,7 @@
             margin-right: $space-box/2; 
             display: inline-block;
             line-height: rem-calc(36);
+            color: $color-blue;
         }
         ul{
             li{ 

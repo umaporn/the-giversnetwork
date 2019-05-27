@@ -28,6 +28,7 @@
                     @include('admin.menu_admin')
                 </div>
                 <div class="cell small-12 large-8 xxlarge-9">
+<<<<<<< HEAD
                     <article class="admin-content">
                         <div class="grid-x">
                             <div class="cell small-12">
@@ -216,6 +217,9 @@
                             </div>
                         </div>
                     </article>
+=======
+                    @include('users.form_edit')
+>>>>>>> 1801e8bfea2c005653dfad64f90614cfda56ba9f
                 </div>
             </div>
         </div>

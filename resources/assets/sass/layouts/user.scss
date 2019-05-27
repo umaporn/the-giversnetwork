@@ -1,4 +1,4 @@
-.admin {
+.user {
     .topic {
         background-color: $color-blue;
         color: $white;
@@ -31,24 +31,6 @@
 
             @include breakpoint(large) {
                 margin-bottom: $space-box;
-            }
-        }
-    }
-
-    &-search {
-        margin-bottom: $space-box;
-
-        @include breakpoint(small only) {
-            position: relative;
-            margin-bottom: rem-calc(60);
-
-            .input {
-                &-search {
-                    position: absolute;
-                    width: 100%;
-                    left: 0;
-                    top: rem-calc(44);
-                }
             }
         }
     }
