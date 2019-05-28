@@ -55,12 +55,12 @@ function globalRoutes()
     } );
     Route::middleware( 'guest' )->group( function(){
         // Authentication
-        Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
+        //Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
         Route::post( 'login', 'Auth\LoginController@login' )->name( 'submitLogin' );
 
         // Registration
-        Route::get( 'register', 'Auth\RegisterController@showRegistrationForm' )->name( 'register' );
-        Route::post( 'register', 'Auth\RegisterController@register' )->name( 'submitRegister' );
+        Route::get( 'signup', 'Auth\RegisterController@showRegistrationForm' )->name( 'register' );
+        Route::post( 'signup', 'Auth\RegisterController@register' )->name( 'submitRegister' );
 
         // Password Reset
         Route::get( 'password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm' )->name( 'password.request' );

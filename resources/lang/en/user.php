@@ -71,4 +71,5 @@ return [
 
     'edit_profile' => 'Edit My Profile',
     'view_profile' => 'View My Profile',
+    'create_profile' => 'Create My Profile',
 ];
