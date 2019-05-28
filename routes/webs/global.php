@@ -10,7 +10,7 @@ function globalRoutes()
     Route::get( 'file/{url}', 'MediaController@getFile' )->name( 'getFile' );
 
     Route::group( [ 'prefix' => 'admin' ], function(){
-        Route::get( '', 'AdminController@index' )->name( 'admin.index' );
+        Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
     } );
 

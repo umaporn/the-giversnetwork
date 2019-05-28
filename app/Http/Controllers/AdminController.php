@@ -17,9 +17,9 @@ class AdminController extends Controller
      *
      * @return \Illuminate\View\View Admin index page
      */
-    public function index()
+    public function editProfile()
     {
-        return view( 'admin.index' );
+        return view( 'admin.editProfile' );
     }
 
     /**
