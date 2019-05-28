@@ -174,8 +174,8 @@
                                     <input type="text" class="form-flex form-fill" id="filename">
                                     <div class="form-flex btn-blue">@lang('user.browser')</div>
                                     <p class="form-flex show-text">@lang('user.maximum_upload_file')</p>
-                                    <p id="image_path-help-text" class="alert help-text hide"></p>
                                 </div>
+                                <p id="image_path-help-text" class="alert help-text hide"></p>
                             </label>
                         </div>
                     </div>
@@ -187,7 +187,7 @@
                             <div class="input-group">
                             <span class="input-group-field">
                                 <select class="form-select" name="fk_organization_category_id" id="fk_organization_category_id">
-                                    <option>@lang('user.type_of_organization')</option>
+                                    <option value="">@lang('user.type_of_organization')</option>
                                      @foreach( $organizationCategoryList as $organizationCategoryItem )
                                         <option value="{{ $organizationCategoryItem->id }}"> {{ $organizationCategoryItem->title }}</option>
                                     @endforeach
@@ -211,11 +211,10 @@
                             <ul class="show-interested">
                                 @foreach( $interestList as $interestItem )
                                     <li>{{ $interestItem->title }}</li>
-                                    {{--<input type="checkbox" name="fk_interest_in_id" id="fk_interest_in_id" value="{{ $interestItem->id }}"> {{ $interestItem->title }}--}}
+                                    <input type="hidden" name="fk_interest_in_id[]" id="fk_interest_in_id" value="{{ $interestItem->id }}">
                                 @endforeach
-                                <li>Children</li>
-                                <li>Foods</li>
                             </ul>
+                            <p id="fk_interest_in_id-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
@@ -229,6 +228,7 @@
                             <button class="btn-green btn-long">@lang('button.sign_up')</button>
                         </div>
                     </div>
+                    <input type="hidden" name="fk_permission_id" value="{{ config('user.permission_id.member') }}">
                 </form>
                 <div class="reveal modal-style" id="addInterested" data-reveal>
                     <h2 class="modal-topic">@lang('user.interest_in')</h2>

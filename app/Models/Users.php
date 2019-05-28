@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use App\Models\UserInterestIn;
 
 class Users extends Authenticatable
 {
@@ -17,7 +18,7 @@ class Users extends Authenticatable
     use Notifiable;
 
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [ 'email', 'password', 'fk_permission_id', 'fk_interest_in_id', 'fk_organization_category_id', 'username', 'image_path',
+    protected $fillable = [ 'email', 'password', 'fk_permission_id', 'fk_organization_category_id', 'username', 'image_path',
                             'firstname', 'lastname', 'organization_name', 'phone_number', 'address', 'status' ];
 
     /** @var string Table name */
@@ -49,6 +50,16 @@ class Users extends Authenticatable
     }
 
     /**
+     * Get user interest in model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo User interest in model relationship
+     */
+    public function userInterestIn()
+    {
+        return $this->belongsTo( 'App\Models\UserInterestIn', 'fk_user_id' );
+    }
+
+    /**
      * Create a new user.
      *
      * @param Request $request Data for creating a new user
@@ -68,7 +79,7 @@ class Users extends Authenticatable
             'email'                       => $request->input( 'email' ),
             'password'                    => bcrypt( $request->input( 'password' ) ),
             'fk_permission_id'            => $request->input( 'fk_permission_id' ),
-            'fk_interest_in_id'           => $request->input( 'fk_interest_in_id' ),
+           // 'fk_interest_in_id'           => $request->input( 'fk_interest_in_id' ),
             'fk_organization_category_id' => $request->input( 'fk_organization_category_id' ),
             'username'                    => $request->input( 'username' ),
             'image_path'                  => $image_path,
@@ -80,7 +91,14 @@ class Users extends Authenticatable
             'status'                      => 'draft',
         ];
 
-        return $this->create( $newUser );
+        $user = $this->create( $newUser );
+
+        $this->userInterestIn()->create([
+                                            'fk_interest_in_id' => $request->input( 'fk_interest_in_id' ),
+                                            'fk_user_id' => $user->id,
+                                        ]);
+
+        return $user;
     }
 
     /**

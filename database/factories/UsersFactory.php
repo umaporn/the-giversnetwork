@@ -9,7 +9,6 @@ use Faker\Generator as Faker;
 $factory->define( \App\Models\Users::class, function( Faker $faker ){
     return [
         'fk_permission_id'            => '2',
-        'fk_interest_in_id'           => '2',
         'fk_organization_category_id' => '3',
         'email'                       => $faker->email,
         'password'                    => bcrypt( 'umaporn01' ),

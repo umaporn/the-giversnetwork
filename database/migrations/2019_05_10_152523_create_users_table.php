@@ -22,9 +22,7 @@ class CreateUsersTable extends Migration
             $table->increments( 'id' );
             $table->unsignedInteger( 'fk_permission_id' );
             $table->foreign( 'fk_permission_id' )->references( 'id' )->on( 'permission' );
-            $table->unsignedInteger( 'fk_interest_in_id' );
-            $table->foreign( 'fk_interest_in_id' )->references( 'id' )->on( 'interest_in' );
-            $table->unsignedInteger( 'fk_organization_category_id' );
+            $table->unsignedInteger( 'fk_organization_category_id' )->nullable();
             $table->foreign( 'fk_organization_category_id' )->references( 'id' )->on( 'organization_category' );
             $table->string( 'email', 254 )->unique();
             $table->string( 'password', 255 );
