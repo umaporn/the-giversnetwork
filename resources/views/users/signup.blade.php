@@ -67,6 +67,14 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
+                        <label for="address" class="form-label">Address</label>
+                    </div>
+                    <div class="cell small-12 large-9">
+                        <textarea id="address" class="form-fill" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="grid-x grid-padding-x user-form-space">
+                    <div class="cell small-12 large-2">
                         <label for="imageProfile" class="form-label">Image Profile</label>
                     </div>
                     <div class="cell small-12 large-9">

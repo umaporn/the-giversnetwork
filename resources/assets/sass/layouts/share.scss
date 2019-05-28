@@ -1,0 +1,9 @@
+.learn {
+  &.all {
+    .topic {
+      &:after {
+        border: none;
+      }
+    }
+  }
+}
