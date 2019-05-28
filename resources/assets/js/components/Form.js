@@ -33,7 +33,6 @@ const Form = (function(){
 	function initialize(){
 		SubmissionForm.submit( function( event ){
 			event.preventDefault();
-
 			Utility.submitForm( $( this ) );
 		} );
 
@@ -51,18 +50,27 @@ const Form = (function(){
 			Search.submitForm( $( this ) );
 		} );
 
-		Search.ResultDiv.on( 'submit', DeletionConfirmationSelector, function(
-			event,
-		){
+		Search.ResultDiv.on( 'submit', DeletionConfirmationSelector, function( event ){
 			event.preventDefault();
-
 			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
 		} );
 
-		$( 'input:checkbox' ).click( function(){
-			$( this )
-				.parent()
-				.toggleClass( 'form-checkbox-ed' );
+		$( '.checkbox-inter' ).click( function(){
+			$( this ).parent().toggleClass( 'form-checkbox-ed' );
+		} );
+
+		$( '#file' ).change( function(){
+			$( '#filename' ).val( $( this ).val() );
+		} );
+
+		$( '.toggle-password' ).click( function(){
+			$( this ).text( $( this ).text() === 'show' ? 'hide' : 'show' );
+			var input = $( $( this ).attr( 'toggle' ) );
+			if( input.attr( 'type' ) === 'password' ){
+				input.attr( 'type', 'text' );
+			} else {
+				input.attr( 'type', 'password' );
+			}
 		} );
 	}
 

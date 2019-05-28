@@ -31,7 +31,6 @@ class LoginController extends Controller
      */
     public function __construct( Users $users )
     {
-        $this->redirectTo = route( 'home.index' );
         $this->usersModel = $users;
     }
 
@@ -76,14 +75,14 @@ class LoginController extends Controller
     protected function authenticated( Request $request, $user )
     {
         $redirectedUrl = Utility::getRedirectedUrl( $request );
-
+        logger('1:'.$redirectedUrl);
         if( $request->expectsJson() ){
 
             $redirectedUrl = session()->pull( 'url.intended', $redirectedUrl );
-
+            logger('2:'.$redirectedUrl);
             return response()->json( [ 'success' => true, 'redirectedUrl' => $redirectedUrl ] );
         }
-
+        logger('3:'.$redirectedUrl);
         return redirect()->intended( $redirectedUrl );
     }
 
@@ -118,5 +117,22 @@ class LoginController extends Controller
 
         return $this->loggedOut( $request ) ?: redirect( '/' );
     }
+
+    /**
+     * Send the response after the user was authenticated.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    /*protected function sendLoginResponse( Request $request )
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+            ?: redirect($this->redirectTo);
+    }*/
 
 }

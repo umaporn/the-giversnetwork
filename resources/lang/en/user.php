@@ -68,4 +68,7 @@ return [
         'remove_confirmation'       => 'Are you sure you would like to remove the user, ',
         'not_found_users'           => 'Not found the users.',
     ],
+
+    'edit_profile' => 'Edit My Profile',
+    'view_profile' => 'View My Profile',
 ];
