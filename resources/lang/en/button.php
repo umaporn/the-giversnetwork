@@ -20,4 +20,5 @@ return [
     'reset'       => 'Reset',
     'view_all'    => 'View All',
     'view_more'   => 'View More',
+    'sign_up'     => 'Sign Up',
 ];

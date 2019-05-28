@@ -59,7 +59,7 @@ const Form = (function(){
 			$( this ).parent().toggleClass( 'form-checkbox-ed' );
 		} );
 
-		$( '#file' ).change( function(){
+		$( 'input[type=file]' ).change( function(){
 			$( '#filename' ).val( $( this ).val() );
 		} );
 

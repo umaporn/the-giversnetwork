@@ -107,94 +107,112 @@
         <div class="grid-x padding-content">
             <div class="cell small-12">
                 <h2 class="topic-dark">@lang('user.create_profile')</h2>
-                <form action="" class="form-onerow">
+                <form class="submission-form form-onerow" method="POST" action="{{ route('submitRegister') }}">
+                    {{ csrf_field() }}
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="username" class="form-label">Username</label>
+                            <label for="username" class="form-label">@lang('user.username')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="text" id="username" class="form-fill" value="">
+                            <input type="text" name="username" id="username" class="form-fill" required value="umaporn01">
+                            <p id="username-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">@lang('user.password')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="password" id="password" class="form-fill" value="">
+                            <input type="password" id="password" name="password" class="form-fill" required value="umaporn01">
+                            <p id="password-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="con-password" class="form-label">Confirm-Password</label>
+                            <label for="con-password" class="form-label">@lang('user.password_confirmation')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="password" id="con-password" class="form-fill" value="">
+                            <input type="password" name="password_confirmation" required class="form-fill" value="umaporn01">
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">@lang('user.email')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="email" id="email" name="email" required autofocus value="umaporn.don@gmail.com">
-                            <input type="email" id="email" class="form-fill" value="">
+                            <input type="email" id="email" name="email" class="form-fill" required autofocus value="umaporn.don@gmail.com">
+                            <p id="email-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="phone" class="form-label">Phone</label>
+                            <label for="phone" class="form-label">@lang('user.phone_number')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="tel" id="phone" class="form-fill" value="">
+                            <input type="tel" name="phone_number" id="phone_number" class="form-fill" required value="0855555555">
+                            <p id="phone_number-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
+
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="imageProfile" class="form-label">Image Profile</label>
+                            <label for="address" class="form-label">@lang('user.address')</label>
+                        </div>
+                        <div class="cell small-12 large-9">
+                            <textarea id="address" name="address" class="form-fill" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="grid-x grid-padding-x user-form-space">
+                        <div class="cell small-12 large-2">
+                            <label for="imageProfile" class="form-label">@lang('user.image_profile')</label>
                         </div>
                         <div class="cell small-12 large-9">
                             <label class="form-file">
-                                <input type="file" id="file" class="form-fileupload">
+                                <input type="file" id="image_path" name="image_path" class="form-fileupload">
                                 <div class="form-file-style">
                                     <input type="text" class="form-flex form-fill" id="filename">
-                                    <div class="form-flex btn-blue">Browse</div>
-                                    <p class="form-flex show-text">maximun upload file size: 1MB</p>
+                                    <div class="form-flex btn-blue">@lang('user.browser')</div>
+                                    <p class="form-flex show-text">@lang('user.maximum_upload_file')</p>
+                                    <p id="image_path-help-text" class="alert help-text hide"></p>
                                 </div>
                             </label>
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="company" class="form-label">Organization</label>
+                            <label for="company" class="form-label">@lang('user.organization')</label>
                         </div>
                         <div class="cell small-12 large-9">
                             <div class="input-group">
                             <span class="input-group-field">
-                                <select class="form-select">
-                                    <option value="" selected>Type of Organization</option>
-                                    <option value="giver">Giver</option>
-                                    <option value="charitable organization">Charitable Organization</option>
-                                    <option value="ngo">NGO</option>
-                                    <option value="social enterprise">Social Enterprise</option>
-                                    <option value="Philanthropist">Philanthropist</option>
-                                    <option value="Other">Other </option>
+                                <select class="form-select" name="fk_organization_category_id" id="fk_organization_category_id">
+                                    <option>@lang('user.type_of_organization')</option>
+                                     @foreach( $organizationCategoryList as $organizationCategoryItem )
+                                        <option value="{{ $organizationCategoryItem->id }}"> {{ $organizationCategoryItem->title }}</option>
+                                    @endforeach
                                 </select>
                             </span>
-                                <input type="text" id="company" class="input-group-field form-fill" value=""
-                                       placeholder="Fill Your Organization Name">
+                                <input type="text" name="organization_name" id="organization_name"
+                                       class="input-group-field form-fill" placeholder="Fill Your Organization Name"
+                                       value="">
+                                <p id="organization_name-help-text" class="alert help-text hide"></p>
                             </div>
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
-                            <label for="interested" class="form-label">Interested</label>
+                            <label for="interested" class="form-label">@lang('user.interest_in')</label>
                         </div>
                         <div class="cell small-12 large-9">
                             <a class="btn-blue" data-open="addInterested">
-                                <i class="fas fa-plus"></i> Add My Interested
+                                <i class="fas fa-plus"></i> @lang('user.add_my_interested')
                             </a>
                             <ul class="show-interested">
+                                @foreach( $interestList as $interestItem )
+                                    <li>{{ $interestItem->title }}</li>
+                                    {{--<input type="checkbox" name="fk_interest_in_id" id="fk_interest_in_id" value="{{ $interestItem->id }}"> {{ $interestItem->title }}--}}
+                                @endforeach
                                 <li>Children</li>
                                 <li>Foods</li>
                             </ul>
@@ -208,44 +226,22 @@
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-offset-2 large-9">
-                            <button class="btn-green btn-long">Sign up</button>
+                            <button class="btn-green btn-long">@lang('button.sign_up')</button>
                         </div>
                     </div>
                 </form>
                 <div class="reveal modal-style" id="addInterested" data-reveal>
-                    <h2 class="modal-topic">Interested</h2>
+                    <h2 class="modal-topic">@lang('user.interest_in')</h2>
                     <form class="modal-form">
                         <ul class="modal-content">
+                            @foreach( $interestList as $interestItem )
                             <li>
                                 <div class="form-checkbox">
                                     <input id="checkbox1" type="checkbox" class="checkbox-inter">
-                                    <label for="checkbox1">Children</label>
+                                    <label for="checkbox1">{{ $interestItem->title }}</label>
                                 </div>
                             </li>
-                            <li>
-                                <div class="form-checkbox">
-                                    <input id="checkbox2" type="checkbox" class="checkbox-inter">
-                                    <label for="checkbox2">Interested</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-checkbox">
-                                    <input id="checkbox3" type="checkbox" class="checkbox-inter">
-                                    <label for="checkbox3">Foods</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-checkbox">
-                                    <input id="checkbox4" type="checkbox" class="checkbox-inter">
-                                    <label for="checkbox4">Interested 1</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="form-checkbox">
-                                    <input id="checkbox5" type="checkbox" class="checkbox-inter">
-                                    <label for="checkbox5">Interested 2</label>
-                                </div>
-                            </li>
+                            @endforeach
                         </ul>
                         <button class="btn-green btn-long">Save</button>
                     </form>
