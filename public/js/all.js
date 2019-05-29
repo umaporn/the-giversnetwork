@@ -1,1 +1,713 @@
-var _typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},HeroBanner=function(){function t(){new Swiper(".swiper-container",{loop:!0,autoplay:{delay:2500,disableOnInteraction:!1},pagination:{el:".swiper-pagination",clickable:!0},navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"}})}return{initialize:t}}(jQuery),Confirmation=function(){function t(t,e){n.data("form-id","#"+t.attr("id")),n.data("callback-function",function(t,r){switch(r.status){case 422:Utility.displayErrorMessageBox(Object.values(r.responseJSON.errors).join("<br>"));break;case 200:if(r.hasOwnProperty("responseJSON")){var a=r.responseJSON;!0===a.success?(Utility.displaySuccessMessageBox(a.message),e.submit()):Utility.displayErrorMessageBox(a.message)}else Utility.displayJsonResponseError(r,t.attr("action"));break;default:Utility.displayUnknownError(r,t.attr("action"))}}),a.html(t.data("deletion-confirmation-message")+t.data("info")+"?"),r.foundation("open")}function e(){n.click(function(t){t.preventDefault(),r.foundation("close"),Utility.submitForm($(n.data("form-id")),n.data("callback-function"))})}var r=$("#confirmation-box"),a=$("#confirmation-text"),n=$("#yes-answer");return{confirmToDelete:t,initialize:e}}(jQuery),Form=function(){function t(){e.submit(function(t){t.preventDefault(),Utility.submitForm($(this))}),r.submit(function(t){var e=this;t.preventDefault(),_submitEvent=function(){Utility.submitForm($(e))}}),Search.SearchForm.submit(function(t){t.preventDefault(),Search.submitForm($(this))}),Search.ResultDiv.on("submit",a,function(t){t.preventDefault(),Confirmation.confirmToDelete($(this),Search.SearchForm)}),$(".checkbox-inter").click(function(){$(this).parent().toggleClass("form-checkbox-ed")}),$("#file").change(function(){$("#filename").val($(this).val())}),$(".toggle-password").click(function(){$(this).text("show"==$(this).text()?"hide":"show");var t=$($(this).attr("toggle"));"password"==t.attr("type")?t.attr("type","text"):t.attr("type","password")})}var e=$(".submission-form"),r=$(".recaptcha-form"),a=".deletion";return{initialize:t}}(jQuery),Menu=function(){function t(){$(".menu li.active.is-submenu-item").parent().parents().each(function(t,e){$(e).is("li")&&$(e).addClass("active")})}return{initialize:t}}(jQuery),Search=function(){function t(t){a.removeClass("alert"),Utility.submitForm(t,function(t,e){switch(Utility.clearErrors(),e.status){case 422:Utility.displayInvalidInputs(e.responseJSON),a.html("");break;case 200:a.html(e.responseText);break;default:var r=e.statusText;e.hasOwnProperty("responseJSON")&&e.responseJSON.hasOwnProperty("message")&&(r=e.responseJSON.message),a.html(Translator.translate("utility.result.error")+" "+r).addClass("alert")}})}function e(){a.on("click",".pagination a",function(e){e.preventDefault();var r=document.createElement("form");r.setAttribute("method","GET"),r.setAttribute("action",$(this).attr("href")),t($(r))})}function r(){e()}var a=$("#search-result"),n=$("#search-form");return{ResultDiv:a,SearchForm:n,initialize:r,submitForm:t}}(jQuery),Translator=function(){function t(){$.holdReady(!0);var t=[];Laravel.languageCodes.forEach(function(e){t.push($.getJSON("/languages/"+e+".json",{timestamp:Date.now()}))}),$.when.apply(this,t).then(function(){for(var t=0;t<arguments.length;t++)r.add({language:Laravel.languageCodes[t],data:arguments[t][0]});r.useLanguage(Laravel.currentLanguage)},function(){Utility.displayErrorMessageBox("Error! Failed to load some translation files, please contact the system administrator.")}).always(function(){$.holdReady(!1)})}function e(t){return r.translate(t)}var r=JSTranslate.i18n({language:Laravel.languageCodes,defaultLanguage:Laravel.defaultLanguage});return{initialize:t,translate:e}}(jQuery),Utility=function(){function t(t,e){a(),m.html(t),m.hasClass("alert")?e||(p.html(Translator.translate("utility.result.success")),m.removeClass("alert")):e&&(p.html(Translator.translate("utility.result.error")),m.addClass("alert")),f.foundation("open")}function e(e){t(e,!1)}function r(e){t(e,!0)}function a(){$(":input").removeClass("error"),$(".alert.help-text").addClass("hide")}function n(t){if(a(),t.hasOwnProperty("errors"))for(var e in t.errors){var r=t.errors[e],n=/^[^.]+\.\d+$/.test(e)?e.replace(".",""):$('[name="'+e+'"]').attr("id"),i="object"===(void 0===r?"undefined":_typeof(r))?r[0]:r;if(n)$("#"+n).addClass("error"),$("#"+n+"-help-text").text(i).removeClass("hide");else{var s=$('[name="'+e+'[]"]').parents(".checkbox-group").attr("id");$("#"+s+"-help-text").text(i).removeClass("hide")}}}function i(t,e){a();var n="<h5>"+Translator.translate("utility.calling_system_administrator")+"</h5>";n+="<strong>"+Translator.translate("utility.error_url")+"</strong> "+e+"<br>",n+="<strong>"+Translator.translate("utility.error_status_code")+"</strong> "+t.status+"<br>",n+="<strong>"+Translator.translate("utility.error_status_text")+"</strong> "+t.statusText+"<br>",r(n)}function s(t,e){t.statusText=Translator.translate("utility.json_response_error"),i(t,e)}function o(t,a){switch(a.status){case 422:case 429:n(a.responseJSON);break;case 200:if(a.hasOwnProperty("responseJSON")){var o=a.responseJSON;!0===o.success?o.hasOwnProperty("message")?(f.on("closed.zf.reveal",function(){o.redirectedUrl?location.href=o.redirectedUrl:t.trigger("reset")}),e(o.message)):o.redirectedUrl&&(location.href=o.redirectedUrl):r(o.message)}else s(a,t.attr("action"));break;default:a.hasOwnProperty("responseJSON")&&a.responseJSON.hasOwnProperty("message")?r(a.responseJSON.message):i(a,t.attr("action"))}}function l(t,e,r){"function"==typeof r?r.apply(this,[t,e]):o(t,e)}function u(t){return"GET"===t.attr("method")?t.serialize():new FormData(t.get(0))}function c(t,e){$.ajax({url:t.attr("action"),method:t.attr("method"),data:u(t),cache:!1,contentType:!1,processData:!1,success:function(r,a,n){l(t,n,e)},error:function(r){l(t,r,e)}})}var f=$("#result-box"),p=$("#result-title"),m=$("#result-text");return{submitForm:c,displaySuccessMessageBox:e,displayErrorMessageBox:r,displayInvalidInputs:n,displayUnknownError:i,displayJsonResponseError:s,clearErrors:a,ResultBoxSelector:f,takeSubmitAction:o}}(jQuery),SpinnerSelector=$("#spinner, #spinner-popup");Translator.initialize(),$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}}),$(document).ajaxStart(function(){SpinnerSelector.show()}).ajaxComplete(function(){SpinnerSelector.hide()}).ready(function(){Menu.initialize(),Search.initialize(),Confirmation.initialize(),Form.initialize(),HeroBanner.initialize()});
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+/**
+ * @namespace
+ * @desc Handles hero banner management.
+ */
+
+var HeroBanner = function () {
+    /**
+     * @memberOf HeroBanner
+     * @access public
+     * @desc Initialize HeroBanner module.
+     * @constant {Object}
+     */
+
+    function initialize() {
+
+        new Swiper('.swiper-container', {
+            loop: true,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
+    }
+
+    return {
+        initialize: initialize
+    };
+}(jQuery);
+/**
+ * @namespace
+ * @desc Handles all confirmation boxes.
+ */
+var Confirmation = function () {
+
+    var
+    /**
+     * @memberOf Confirmation
+     * @access private
+     * @desc Confirmation box
+     * @constant {jQuery}
+     */
+    ConfirmationBox = $('#confirmation-box'),
+
+    /**
+     * @memberOf Confirmation
+     * @access private
+     * @desc Confirmation text
+     * @constant {jQuery}
+     */
+    ConfirmationText = $('#confirmation-text'),
+
+    /**
+     * @memberOf Confirmation
+     * @access private
+     * @desc Acceptance button
+     * @constant {jQuery}
+     */
+    AcceptanceButton = $('#yes-answer');
+
+    /**
+     * @memberOf Confirmation
+     * @access public
+     * @desc Confirm to delete an object.
+     * @param {jQuery} deletionForm - Deletion form
+     * @param {jQuery} searchForm - Search form
+     */
+    function confirmToDelete(deletionForm, searchForm) {
+
+        AcceptanceButton.data('form-id', '#' + deletionForm.attr('id'));
+        AcceptanceButton.data('callback-function', function (form, jqXHR) {
+
+            switch (jqXHR.status) {
+                case 422:
+                    Utility.displayErrorMessageBox(Object.values(jqXHR.responseJSON.errors).join('<br>'));
+                    break;
+                case 200:
+                    if (jqXHR.hasOwnProperty('responseJSON')) {
+
+                        var result = jqXHR.responseJSON;
+
+                        if (result.success === true) {
+
+                            Utility.displaySuccessMessageBox(result.message);
+
+                            searchForm.submit();
+                        } else {
+
+                            Utility.displayErrorMessageBox(result.message);
+                        }
+                    } else {
+                        Utility.displayJsonResponseError(jqXHR, form.attr('action'));
+                    }
+                    break;
+                default:
+                    Utility.displayUnknownError(jqXHR, form.attr('action'));
+                    break;
+            }
+        });
+
+        ConfirmationText.html(deletionForm.data('deletion-confirmation-message') + deletionForm.data('info') + '?');
+
+        ConfirmationBox.foundation('open');
+    }
+
+    /**
+     * @memberOf Confirmation
+     * @access public
+     * @desc Initialize Confirmation module.
+     */
+    function initialize() {
+
+        AcceptanceButton.click(function (event) {
+
+            event.preventDefault();
+
+            ConfirmationBox.foundation('close');
+
+            Utility.submitForm($(AcceptanceButton.data('form-id')), AcceptanceButton.data('callback-function'));
+        });
+    }
+
+    return {
+        confirmToDelete: confirmToDelete,
+        initialize: initialize
+    };
+}(jQuery);
+/**
+ * @namespace
+ * @desc Handles form management.
+ */
+var Form = function () {
+    var /**
+        * @memberOf Form
+        * @access private
+        * @desc Submission form
+        * @const {jQuery}
+        */
+    SubmissionForm = $(".submission-form"),
+
+    /**
+     * @memberOf Form
+     * @access private
+     * @desc reCAPTCHA form
+     * @const {jQuery}
+     */
+    RecaptchaForm = $(".recaptcha-form"),
+
+    /**
+     * @memberOf Form
+     * @access private
+     * @desc Deletion confirmation selector
+     * @const {string}
+     */
+    DeletionConfirmationSelector = ".deletion";
+
+    /**
+     * @memberOf Form
+     * @access public
+     * @desc Initialize Form module.
+     */
+    function initialize() {
+        SubmissionForm.submit(function (event) {
+            event.preventDefault();
+
+            Utility.submitForm($(this));
+        });
+
+        RecaptchaForm.submit(function (event) {
+            var _this = this;
+
+            event.preventDefault();
+
+            _submitEvent = function _submitEvent() {
+                Utility.submitForm($(_this));
+            };
+        });
+
+        Search.SearchForm.submit(function (event) {
+            event.preventDefault();
+
+            Search.submitForm($(this));
+        });
+
+        Search.ResultDiv.on("submit", DeletionConfirmationSelector, function (event) {
+            event.preventDefault();
+
+            Confirmation.confirmToDelete($(this), Search.SearchForm);
+        });
+
+        $(".checkbox-inter").click(function () {
+            $(this).parent().toggleClass("form-checkbox-ed");
+        });
+
+        $('#file').change(function () {
+            $('#filename').val($(this).val());
+        });
+
+        $(".toggle-password").click(function () {
+
+            $(this).text($(this).text() == 'show' ? 'hide' : 'show');
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+    }
+
+    return {
+        initialize: initialize
+    };
+}(jQuery);
+
+/**
+ * @namespace
+ * @desc Handles menu management.
+ */
+var Menu = function () {
+
+    /**
+     * @memberOf Menu
+     * @access public
+     * @desc Initialize Menu module.
+     */
+    function initialize() {
+
+        $('.menu li.active.is-submenu-item').parent().parents().each(function (index, element) {
+            if ($(element).is('li')) {
+                $(element).addClass('active');
+            }
+        });
+    }
+
+    return {
+        initialize: initialize
+    };
+}(jQuery);
+/**
+ * @namespace
+ * @desc Handles search form management.
+ */
+var Search = function () {
+
+    var
+    /**
+     * @memberOf Search
+     * @access public
+     * @desc div element to display a search result
+     * @constant {jQuery}
+     */
+    ResultDiv = $('#search-result'),
+
+    /**
+     * @memberOf Search
+     * @access public
+     * @desc Search form
+     * @const {jQuery}
+     */
+    SearchForm = $('#search-form');
+
+    /**
+     * @memberOf Search
+     * @access public
+     * @desc Submit a search form.
+     * @param {jQuery} form - Search form
+     */
+    function submitForm(form) {
+
+        ResultDiv.removeClass('alert');
+
+        Utility.submitForm(form, function (form, jqXHR) {
+
+            Utility.clearErrors();
+
+            switch (jqXHR.status) {
+                case 422:
+                    Utility.displayInvalidInputs(jqXHR.responseJSON);
+                    ResultDiv.html('');
+                    break;
+                case 200:
+                    ResultDiv.html(jqXHR.responseText);
+                    break;
+                default:
+                    var message = jqXHR.statusText;
+
+                    if (jqXHR.hasOwnProperty('responseJSON') && jqXHR.responseJSON.hasOwnProperty('message')) {
+                        message = jqXHR.responseJSON.message;
+                    }
+
+                    ResultDiv.html(Translator.translate('utility.result.error') + ' ' + message).addClass('alert');
+                    break;
+            }
+        });
+    }
+
+    /**
+     * @memberOf Search
+     * @access private
+     * @desc Bind pagination.
+     */
+    function bindPagination() {
+
+        ResultDiv.on('click', '.pagination a', function (event) {
+
+            event.preventDefault();
+
+            var form = document.createElement('form');
+            form.setAttribute('method', 'GET');
+            form.setAttribute('action', $(this).attr('href'));
+
+            submitForm($(form));
+        });
+    }
+
+    /**
+     * @memberOf Search
+     * @access public
+     * @desc Initialize search module.
+     */
+    function initialize() {
+
+        bindPagination();
+    }
+
+    return {
+        ResultDiv: ResultDiv,
+        SearchForm: SearchForm,
+        initialize: initialize,
+        submitForm: submitForm
+    };
+}(jQuery);
+/**
+ * @namespace
+ * @desc JavaScript translator
+ */
+var Translator = function () {
+
+    /**
+     * @memberOf Translator
+     * @access private
+     * @desc JavaScript Translator
+     * @constant {Object}
+     */
+    var JSTranslator = JSTranslate.i18n({
+        language: Laravel.languageCodes,
+        defaultLanguage: Laravel.defaultLanguage
+    });
+
+    /**
+     * @memberOf Translator
+     * @access public
+     * @desc Initialize JavaScript translator.
+     */
+    function initialize() {
+
+        $.holdReady(true);
+
+        var jsonFiles = [],
+            errorMessage = 'Error! Failed to load some translation files, please contact the system administrator.';
+
+        Laravel.languageCodes.forEach(function (languageCode) {
+            jsonFiles.push($.getJSON('/languages/' + languageCode + '.json', { timestamp: Date.now() }));
+        });
+
+        $.when.apply(this, jsonFiles).then(function () {
+
+            for (var index = 0; index < arguments.length; index++) {
+                JSTranslator.add({
+                    language: Laravel.languageCodes[index],
+                    data: arguments[index][0]
+                });
+            }
+
+            JSTranslator.useLanguage(Laravel.currentLanguage);
+        }, function () {
+            Utility.displayErrorMessageBox(errorMessage);
+        }).always(function () {
+            $.holdReady(false);
+        });
+    }
+
+    /**
+     * @memberOf Translator
+     * @access public
+     * @desc Translate text with a specific key.
+     * @param {String} key - Translation key
+     * @return {String} Translated text
+     */
+    function translate(key) {
+        return JSTranslator.translate(key);
+    }
+
+    return {
+        initialize: initialize,
+        translate: translate
+    };
+}(jQuery);
+/**
+ * @namespace
+ * @desc Handles all utility functions.
+ */
+var Utility = function () {
+
+    var
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Result box
+     * @constant {jQuery}
+     */
+    ResultBoxSelector = $('#result-box'),
+
+    /**
+     * @memberOf Utility
+     * @access private
+     * @desc Result title
+     * @constant {jQuery}
+     */
+    ResultTitleSelector = $('#result-title'),
+
+    /**
+     * @memberOf Utility
+     * @access private
+     * @desc Result text
+     * @constant {jQuery}
+     */
+    ResultTextSelector = $('#result-text');
+
+    /**
+     * @memberOf Utility
+     * @access private
+     * @desc Display a result message box.
+     * @param {String} message - Result message
+     * @param {Boolean} isError - Error flag ( true = error, false = not error )
+     */
+    function displayMessageBox(message, isError) {
+
+        clearErrors();
+
+        ResultTextSelector.html(message);
+
+        if (ResultTextSelector.hasClass('alert')) {
+            if (!isError) {
+                ResultTitleSelector.html(Translator.translate('utility.result.success'));
+                ResultTextSelector.removeClass('alert');
+            }
+        } else {
+            if (isError) {
+                ResultTitleSelector.html(Translator.translate('utility.result.error'));
+                ResultTextSelector.addClass('alert');
+            }
+        }
+
+        ResultBoxSelector.foundation('open');
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Display a success message box.
+     * @param {String} successMessage - Success message
+     */
+    function displaySuccessMessageBox(successMessage) {
+        displayMessageBox(successMessage, false);
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Display an error message box.
+     * @param {String} errorMessage - Error message
+     */
+    function displayErrorMessageBox(errorMessage) {
+        displayMessageBox(errorMessage, true);
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Clear all errors.
+     */
+    function clearErrors() {
+        $(':input').removeClass('error');
+        $('.alert.help-text').addClass('hide');
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Display invalid inputs.
+     * @param {JSON} error - Input error list
+     */
+    function displayInvalidInputs(error) {
+
+        clearErrors();
+
+        if (error.hasOwnProperty('errors')) {
+
+            for (var name in error['errors']) {
+
+                var errorMessage = error['errors'][name],
+                    id = /^[^.]+\.\d+$/.test(name) ? name.replace('.', '') : $('[name="' + name + '"]').attr('id'),
+                    errorText = (typeof errorMessage === 'undefined' ? 'undefined' : _typeof(errorMessage)) === 'object' ? errorMessage[0] : errorMessage;
+
+                if (id) {
+                    $('#' + id).addClass('error');
+                    $('#' + id + '-help-text').text(errorText).removeClass('hide');
+                } else {
+                    var parentId = $('[name="' + name + '[]"]').parents('.checkbox-group').attr('id');
+                    $('#' + parentId + '-help-text').text(errorText).removeClass('hide');
+                }
+            }
+        }
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Display an unknown error.
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
+     * @param {String} url - The URL that occurs the error
+     */
+    function displayUnknownError(jqXHR, url) {
+
+        clearErrors();
+
+        var errorText = '<h5>' + Translator.translate('utility.calling_system_administrator') + '</h5>';
+        errorText += '<strong>' + Translator.translate('utility.error_url') + '</strong> ' + url + '<br>';
+        errorText += '<strong>' + Translator.translate('utility.error_status_code') + '</strong> ' + jqXHR.status + '<br>';
+        errorText += '<strong>' + Translator.translate('utility.error_status_text') + '</strong> ' + jqXHR.statusText + '<br>';
+
+        displayErrorMessageBox(errorText);
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Display an error message box when the data type is not JSON.
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
+     * @param {String} url - The URL that occurs the error
+     */
+    function displayJsonResponseError(jqXHR, url) {
+
+        jqXHR.statusText = Translator.translate('utility.json_response_error');
+
+        displayUnknownError(jqXHR, url);
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Take a submitting action which only accepts json data type.
+     * @param {jQuery} form - Form
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
+     * > If jqXHR.status is not 422 or 429 then the jqXHR.responseJSON format must have the following keys below.
+     *
+     * Key | Explanation
+     * - | -
+     * **success** {Boolean} | It is a success status which it can be true or false.
+     * **message** {String} | It is a response message which it can be an error message or a success message. *This is an optional key for a success case.*
+     * **redirectedUrl** {String} | It is a redirected URL which the browser will be redirected to if success status is true. *This is an optional key.*
+     *
+     * **Note:** jqXHR.status is HTTP status code.
+     */
+    function takeSubmitAction(form, jqXHR) {
+
+        switch (jqXHR.status) {
+            case 422:
+            case 429:
+                displayInvalidInputs(jqXHR.responseJSON);
+                break;
+            case 200:
+                if (jqXHR.hasOwnProperty('responseJSON')) {
+
+                    var result = jqXHR.responseJSON;
+
+                    if (result.success === true) {
+
+                        if (result.hasOwnProperty('message')) {
+
+                            ResultBoxSelector.on('closed.zf.reveal', function () {
+                                if (result.redirectedUrl) {
+                                    location.href = result.redirectedUrl;
+                                } else {
+                                    form.trigger('reset');
+                                }
+                            });
+
+                            displaySuccessMessageBox(result.message);
+                        } else if (result.redirectedUrl) {
+                            location.href = result.redirectedUrl;
+                        }
+                    } else {
+                        displayErrorMessageBox(result.message);
+                    }
+                } else {
+                    displayJsonResponseError(jqXHR, form.attr('action'));
+                }
+                break;
+            default:
+                if (jqXHR.hasOwnProperty('responseJSON') && jqXHR.responseJSON.hasOwnProperty('message')) {
+                    displayErrorMessageBox(jqXHR.responseJSON.message);
+                } else {
+                    displayUnknownError(jqXHR, form.attr('action'));
+                }
+                break;
+        }
+    }
+
+    /**
+     * @memberOf Utility
+     * @access private
+     * @desc Run a callback function.
+     * @param {jQuery} form - Form
+     * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
+     * @param {function} [callbackFunction] - Callback function
+     */
+    function runCallbackFunction(form, jqXHR, callbackFunction) {
+
+        if (typeof callbackFunction === 'function') {
+            callbackFunction.apply(this, [form, jqXHR]);
+        } else {
+            takeSubmitAction(form, jqXHR);
+        }
+    }
+
+    /**
+     * @memberOf Utility
+     * @access private
+     * @desc Get form data.
+     * @param {jQuery} form - Form
+     * @return {Array|Object} Form data
+     */
+    function getFormData(form) {
+
+        return form.attr('method') === 'GET' ? form.serialize() : new FormData(form.get(0));
+    }
+
+    /**
+     * @memberOf Utility
+     * @access public
+     * @desc Submit a form and take an action.
+     * @param {jQuery} form - Form
+     * @param {function} [callbackFunction] - Callback function
+     */
+    function submitForm(form, callbackFunction) {
+
+        $.ajax({
+            url: form.attr('action'),
+            method: form.attr('method'),
+            data: getFormData(form),
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function success(result, statusText, jqXHR) {
+                runCallbackFunction(form, jqXHR, callbackFunction);
+            },
+            error: function error(jqXHR) {
+                runCallbackFunction(form, jqXHR, callbackFunction);
+            }
+        });
+    }
+
+    return {
+        submitForm: submitForm,
+        displaySuccessMessageBox: displaySuccessMessageBox,
+        displayErrorMessageBox: displayErrorMessageBox,
+        displayInvalidInputs: displayInvalidInputs,
+        displayUnknownError: displayUnknownError,
+        displayJsonResponseError: displayJsonResponseError,
+        clearErrors: clearErrors,
+        ResultBoxSelector: ResultBoxSelector,
+        takeSubmitAction: takeSubmitAction
+    };
+}(jQuery);
+
+/**
+ * @desc Spinner selector
+ * @const {jQuery}
+ */
+var SpinnerSelector = $('#spinner, #spinner-popup');
+
+Translator.initialize();
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$(document).ajaxStart(function () {
+    SpinnerSelector.show();
+}).ajaxComplete(function () {
+    SpinnerSelector.hide();
+}).ready(function () {
+    /** Initialize all JavaScript modules. */
+    Menu.initialize();
+    Search.initialize();
+    Confirmation.initialize();
+    Form.initialize();
+    HeroBanner.initialize();
+});
