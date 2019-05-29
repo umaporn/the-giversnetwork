@@ -29,7 +29,7 @@
                                 <div class="cell small-12 medium-5">
                                     <figure>
                                         <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
-                                            <img src="{{ $share_item['image_path'] }}" alt="{{ $share_item['title'] }}">
+                                            <img src="{{ $share_item['image_path'] ? $share_item['image_path'] : config('images.placeholder.300x180') }}" alt="{{ $share_item['title'] }}">
                                         </a>
                                     </figure>
                                 </div>
@@ -65,7 +65,7 @@
                             <article class="cell small-12 medium-4">
                                 <figure>
                                     <a href="{{ route('share.detail', ['share' => $challenge_item['id']]) }}">
-                                        <img src="{{ $challenge_item['file_path'] }}" alt="{{ $challenge_item['title'] }}">
+                                        <img src="{{ $challenge_item['file_path'] ? $challenge_item['file_path'] : config('images.placeholder.700x400') }}" alt="{{ $challenge_item['title'] }}">
                                     </a>
                                 </figure>
                                 <a href="{{ route('share.detail', ['share' => $challenge_item['id']]) }}"><h3>{{ $challenge_item['title'] }}</h3></a>

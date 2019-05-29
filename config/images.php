@@ -36,4 +36,11 @@ return [
         ],
     ],
 
+    'placeholder' => [
+        '1900x500' => 'images/1900x500.png',
+        '700x400'  => 'images/700x400.png',
+        '300x180'  => 'images/300x180.png',
+        '130x130'  => 'images/130x130.png',
+    ],
+
 ];

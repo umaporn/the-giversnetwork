@@ -13,7 +13,7 @@
             <article class="cell small-12 medium-4">
                 <a href="{{ route('events.detail', ['events' => $events_item['id']]) }}">
                     <figure class="cover">
-                        <img src="{{ $events_item['image_path'] }}" alt="{{ $events_item['title'] }}">
+                        <img src="{{ $events_item['image_path'] ? $events_item['image_path'] : config('images.placeholder.700x400') }}" alt="{{ $events_item['title'] }}">
                         <figcaption>
                             <time datetime="{{ $events_item['event_date'] }}">{{ $events_item['event_date'] }}</time>
                         </figcaption>

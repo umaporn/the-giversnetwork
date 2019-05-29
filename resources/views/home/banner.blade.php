@@ -3,7 +3,7 @@
         @foreach( $data['banner'] as $home_banner )
             <div class="swiper-slide">
                 <a href="{{ $home_banner['link'] }}" target="_blank">
-                    <img src="{{ $home_banner['image_path'] }}" alt="{{$home_banner['title']}}">
+                    <img src="{{ $home_banner['image_path'] ? $home_banner['image_path'] : config('images.placeholder.1900x500') }}" alt="{{$home_banner['title']}}">
                 </a>
             </div>
         @endforeach

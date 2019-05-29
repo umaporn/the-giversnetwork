@@ -4,7 +4,7 @@
         <div class="cell small-12 medium-6">
             <figure>
                 <a href="{{ route('learn.detail', ['id' => $all_list_item['id']]) }}">
-                    <img src="{{ $all_list_item['file_path'] }}" alt="{{ $all_list_item['title'] }}" class="img-cover">
+                    <img src="{{ $all_list_item['file_path'] ? $all_list_item['file_path'] : config('images.placeholder.700x400') }}" alt="{{ $all_list_item['title'] }}" class="img-cover">
                 </a>
             </figure>
         </div>
