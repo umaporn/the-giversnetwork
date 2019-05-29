@@ -73,10 +73,11 @@ class RegisterController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'email'             => config( 'validation.authentication.email' ),
-            'password'          => config( 'validation.authentication.password' ),
-            'fk_permission_id'  => config( 'validation.authentication.fk_permission_id' ),
-            'image_path'        => config( 'validation.authentication.image_path' ),
+            'email'            => config( 'validation.authentication.email' ),
+            'password'         => config( 'validation.authentication.password' ),
+            'fk_permission_id' => config( 'validation.authentication.fk_permission_id' ),
+            'image_path'       => config( 'validation.authentication.image_path' ),
+            'phone_number'     => config( 'validation.authentication.phone_number' ),
         ] );
     }
 

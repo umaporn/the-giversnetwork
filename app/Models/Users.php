@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use App\Models\UserInterestIn;
+use Illuminate\Support\Facades\DB;
 
 class Users extends Authenticatable
 {
@@ -181,7 +182,17 @@ class Users extends Authenticatable
     public function updateUser( Request $request )
     {
 
-        $data = $request->all();
+        $data = [
+            'email'                       => $request->input( 'email' ),
+            'password'                    => $request->input( 'password' ) ? bcrypt( $request->input( 'password' ) ) : Auth::user()->password,
+            'fk_organization_category_id' => $request->input( 'fk_organization_category_id' ),
+            'username'                    => $request->input( 'username' ),
+            'firstname'                   => $request->input( 'firstname' ),
+            'lastname'                    => $request->input( 'lastname' ),
+            'organization_name'           => $request->input( 'organization_name' ),
+            'phone_number'                => $request->input( 'phone_number' ),
+            'address'                     => $request->input( 'address' ),
+        ];
 
         if( $request->file( 'image_path' ) ){
             $imageInformation = $this->saveImage( $request );
@@ -194,6 +205,17 @@ class Users extends Authenticatable
         }
 
         $result = $this->where( 'id', Auth::user()->id )->update( $data );
+
+        if( $request->input( 'fk_interest_in_id' ) ){
+            DB::table( 'users_interest_in' )->where( 'fk_user_id', Auth::user()->id )->delete();
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->userInterestIn()->create( [
+                                                     'fk_interest_in_id' => $interestID,
+                                                     'fk_user_id'        => Auth::user()->id,
+                                                 ] );
+            }
+        }
 
         if( $result ){
             $response = [ 'success' => true, 'message' => __( 'user.saved_user_success' ), ];

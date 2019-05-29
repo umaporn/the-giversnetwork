@@ -7,10 +7,12 @@ namespace App\Http\Controllers;
 
 use App\Models\InterestIn;
 use App\Models\OrganizationCategory;
+use App\Models\UserInterestIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Profile Controller
@@ -27,16 +29,35 @@ class ProfileController extends Controller
     /** @var OrganizationCategory OrganizationCategory model */
     protected $organizationCategoryModel;
 
+    /** @var UserInterestIn UserInterestIn model */
+    protected $userInterestInModel;
+
     /**
      * Initialize RegisterController class.
      *
      * @param Users $users Users model
      */
-    public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory )
+    public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory, UserInterestIn $userInterestIn )
     {
         $this->usersModel                = $users;
         $this->interestInModel           = $interestIn;
         $this->organizationCategoryModel = $organizationCategory;
+        $this->userInterestInModel       = $userInterestIn;
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator( array $data )
+    {
+        return Validator::make( $data, [
+            'image_path'       => config( 'validation.authentication.image_path' ),
+            'phone_number'     => config( 'validation.authentication.phone_number' ),
+        ] );
     }
 
     /**
@@ -49,8 +70,9 @@ class ProfileController extends Controller
         $user                     = $this->usersModel->getUserProfile();
         $interestList             = $this->interestInModel->getInterestInList();
         $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList($user[0]->id);
 
-        return view( 'users.profile', compact('user', 'interestList', 'organizationCategoryList') );
+        return view( 'users.profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
     }
 
     /**
@@ -62,6 +84,8 @@ class ProfileController extends Controller
      */
     public function updateProfile( Request $request )
     {
+        $this->validator( $request->input() )->validate();
+
         $response = $this->usersModel->updateUser( $request );
 
         if( !$response['success'] ){
