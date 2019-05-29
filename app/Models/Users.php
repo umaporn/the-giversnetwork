@@ -2,6 +2,7 @@
 /**
  * Users Model
  */
+
 namespace App\Models;
 
 use App\Libraries\Image;
@@ -79,7 +80,6 @@ class Users extends Authenticatable
             'email'                       => $request->input( 'email' ),
             'password'                    => bcrypt( $request->input( 'password' ) ),
             'fk_permission_id'            => $request->input( 'fk_permission_id' ),
-           // 'fk_interest_in_id'           => $request->input( 'fk_interest_in_id' ),
             'fk_organization_category_id' => $request->input( 'fk_organization_category_id' ),
             'username'                    => $request->input( 'username' ),
             'image_path'                  => $image_path,
@@ -88,15 +88,17 @@ class Users extends Authenticatable
             'organization_name'           => $request->input( 'organization_name' ),
             'phone_number'                => $request->input( 'phone_number' ),
             'address'                     => $request->input( 'address' ),
-            'status'                      => 'draft',
+            'status'                      => 'public',
         ];
 
         $user = $this->create( $newUser );
 
-        $this->userInterestIn()->create([
-                                            'fk_interest_in_id' => $request->input( 'fk_interest_in_id' ),
-                                            'fk_user_id' => $user->id,
-                                        ]);
+        foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+            $this->userInterestIn()->create( [
+                                                 'fk_interest_in_id' => $interestID,
+                                                 'fk_user_id'        => $user->id,
+                                             ] );
+        }
 
         return $user;
     }
@@ -225,7 +227,7 @@ class Users extends Authenticatable
      *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public function getUserList(Request $request)
+    public function getUserList( Request $request )
     {
         $builder = $this->with( 'permission' );
 

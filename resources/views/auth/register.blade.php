@@ -208,11 +208,7 @@
                             <a class="btn-blue" data-open="addInterested">
                                 <i class="fas fa-plus"></i> @lang('user.add_my_interested')
                             </a>
-                            <ul class="show-interested">
-                                @foreach( $interestList as $interestItem )
-                                    <li>{{ $interestItem->title }}</li>
-                                    <input type="hidden" name="fk_interest_in_id[]" id="fk_interest_in_id" value="{{ $interestItem->id }}">
-                                @endforeach
+                            <ul class="show-interested" id="interest-list">
                             </ul>
                             <p id="fk_interest_in_id-help-text" class="alert help-text hide"></p>
                         </div>
@@ -232,19 +228,22 @@
                 </form>
                 <div class="reveal modal-style" id="addInterested" data-reveal>
                     <h2 class="modal-topic">@lang('user.interest_in')</h2>
-                    <form class="modal-form">
+                    <div class="modal-form">
                         <ul class="modal-content">
                             @foreach( $interestList as $interestItem )
                             <li>
                                 <div class="form-checkbox">
-                                    <input id="checkbox1" type="checkbox" class="checkbox-inter">
-                                    <label for="checkbox1">{{ $interestItem->title }}</label>
+                                    <input id="{{ $interestItem->id }}"
+                                           data-value="{{ $interestItem->id }}"
+                                           data-title="{{ $interestItem->title }}"
+                                           type="checkbox" class="checkbox-inter">
+                                    <label for="{{ $interestItem->id }}">{{ $interestItem->title }}</label>
                                 </div>
                             </li>
                             @endforeach
                         </ul>
-                        <button class="btn-green btn-long">Save</button>
-                    </form>
+                        <button class="btn-green btn-long" data-close aria-label="Close reveal">Save</button>
+                    </div>
                     <button class="close-button" data-close aria-label="Close reveal" type="button">
                         <span aria-hidden="true">&times;</span>
                     </button>
