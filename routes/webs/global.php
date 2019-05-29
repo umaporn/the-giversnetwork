@@ -65,6 +65,7 @@ function globalRoutes()
         Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
         Route::get( '{organization}', 'OrganizationController@detail' )->name( 'organization.detail' );
     } );
+
     Route::middleware( 'guest' )->group( function(){
         // Authentication
         //Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
