@@ -1,9 +1,74 @@
-.learn {
-  &.all {
+.share {
+  &-page {
     .topic {
-      &:after {
-        border: none;
+      background-color: $color-blue;
+      color: $white;
+    }
+
+    h2 {
+      display: inline-block;
+    }
+
+    .padding-tb-0 {
+      &.padding {
+        &-content {
+          padding-bottom: 0;
+          padding-top: 0;
+        }
       }
     }
+
+    figure {
+      margin-bottom: $space-box/2;
+    }
+
+    .events {
+      background-color: $white;
+      margin-bottom: $space-box * 2;
+    }
+
+    .load-more {
+      border-radius: rem-calc(5);
+      background-color: $color-blue;
+      color: $white;
+      display: block;
+      text-align: center;
+      font-family: $text-bold;
+      padding: $space-box/4;
+    }
+
+    .profile {
+      color: $color-blue;
+      display: inline-block;
+
+      .display-profile {
+        display: inline-block;
+
+        img {
+          display: inline-block;
+          width: rem-calc(30);
+          height: rem-calc(30);
+          border-radius: 50%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    .like,
+    .comment {
+      color: $color-blue;
+
+      i {
+        margin-right: rem-calc(5);
+      }
+
+      span {
+        margin-right: rem-calc(10);
+      }
+    }
+  }
+
+  &-image{
+    padding-right: $space-box;
   }
 }

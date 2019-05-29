@@ -6,7 +6,7 @@
 
 @section('content')
 
-<section class="share all">
+<section class="share-page all">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
             <i class="fas fa-shapes"></i>
@@ -25,10 +25,18 @@
             </nav>
         </div>
     </section>
-    <section class="most-popular padding-content">
+    <section class="padding-tb-0 padding-content">
         <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell small-12">
-                <h2 class="cell auto topic-dark">Most popular</h2>
+                <div class="grid-x align-middle">
+                    <h2 class="cell auto topic-dark">Challenge</h2>
+                    <div class="cell shrink view-all">
+                        <a href="#">
+                            <span>View All</span>
+                            <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
             <article class="cell small-12 medium-4">
                 <figure>
@@ -37,7 +45,6 @@
                 <a href="#">
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                 </a>
-                <span class="category">Category Name</span>
             </article>
             <article class="cell small-12 medium-4">
                 <figure>
@@ -46,7 +53,6 @@
                 <a href="#">
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                 </a>
-                <span class="category">Category Name</span>
             </article>
             <article class="cell small-12 medium-4">
                 <figure>
@@ -55,7 +61,6 @@
                 <a href="#">
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                 </a>
-                <span class="category">Category Name</span>
             </article>
 
         </div>
@@ -71,185 +76,46 @@
         <div class="cell small-12 medium-12 large-8">
             <section class="articles">
                 <div class="grid-x align-middle">
-                    <h2 class="cell auto topic-dark">Articles</h2>
-                </div>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-
-                <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
-
-            </section>
-        </div>
-        <div class="cell small-12 medium-12 large-4">
-
-            <section class="events">
-
-
-                <div class="grid-x align-middle">
-                    <h2 class="cell auto topic-dark">Events</h2>
+                    <h2 class="cell auto topic-dark">Threads</h2>
                     <div class="cell shrink view-all">
-                        <a href="#">
-                            <span>View All</span>
-                            <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                        <a href="#" class="btn-blue">
+                            <i class="fas fa-plus"></i> Create Thread
                         </a>
                     </div>
                 </div>
-                <div class="grid-x grid-margin-x">
-                    <article class="cell">
-                        <div class="grid-x grid-margin-x large-margin-collapse">
-
-                            <div class="cell small-12 medium-6 large-12">
-                                <figure class="cover">
-                                    <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
-                                    <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time>
-                                    </figcaption>
-                                </figure>
-                            </div>
-                            <div class="cell small-12 medium-6 large-12">
-                                <a href="#">
-                                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                    </h3>
-                                </a>
-                                <div class="profile">
+                <div class="grid-x">
+                    <article class="cell grid-x small-12">
+                        <div class="cell small-3 medium-2">
+                            <figure class="share-image">
+                                <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
+                            </figure>
+                        </div>
+                        <div class="cell grid-x small-9 medium-10">
+                            <a href="#">
+                                <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Suspendisse eget nibh arcu.</h4>
+                            </a>
+                            <div class="cell grid-x align-self-bottom">
+                                <div class="cell auto profile">
                                     <figure class="display-profile">
                                         <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
                                     </figure>
-                                    <span>By Host name or speaker name</span>
+                                    <span>username</span>
                                 </div>
-                            </div>
-                        </div>
-
-                    </article>
-                </div>
-
-
-
-            </section>
-            <section class="news">
-                <div class="grid-x align-middle">
-                    <h2 class="cell auto topic-dark">News</h2>
-                    <div class="cell shrink view-all">
-                        <a href="#">
-                            <span>View All</span>
-                            <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="grid-x grid-margin-x grid-margin-y ">
-
-                    <article class="cell">
-                        <div class="grid-x grid-margin-x large-margin-collapse">
-                            <div class="cell small-12 medium-6 large-12">
-                                <figure>
-                                    <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
-                                </figure>
-                            </div>
-                            <div class="cell small-12 medium-6 large-12">
-                                <a href="#">
-                                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                    </h3>
-                                </a>
-                                <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="cell">
-                        <div class="grid-x grid-margin-x large-margin-collapse">
-                            <div class="cell small-12 medium-6 large-12">
-                                <figure>
-                                    <img src="{{ asset(config('images.home.news.home_news_01' )) }}">
-                                </figure>
-                            </div>
-                            <div class="cell small-12 medium-6 large-12">
-                                <a href="#">
-                                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                                    </h3>
-                                </a>
-                                <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
+                                <div class="cell shrink like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
+                                </div>
+                                <div class="cell shrink comment"><i class="far fa-comments"></i><span>500
+                                        comments</span></div>
                             </div>
                         </div>
                     </article>
                 </div>
+                <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
             </section>
         </div>
-
+        <div class="cell small-12 medium-12 large-4">
+            @include('sidebar')
+        </div>
     </div>
-
 </section>
-
-
 @endsection
