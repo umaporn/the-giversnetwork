@@ -33,6 +33,11 @@ function globalRoutes()
         Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
     } );
 
+    Route::group( [ 'prefix' => 'admin' ], function(){
+        Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
+        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
+    } );
+
     Route::group( [ 'prefix' => 'give', ], function(){
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
         Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
@@ -47,6 +52,13 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'news', ], function(){
         Route::get( '', 'NewsController@index' )->name( 'news.index' );
         Route::get( '{news}', 'NewsController@detail' )->name( 'news.detail' );
+    } );
+
+    Route::group( [ 'prefix' => 'user' ], function(){
+        Route::get( 'myprofile', 'UsersController@myProfile' )->name( 'users.myProfile' );
+        Route::get( 'editprofile', 'UsersController@editProfile' )->name( 'users.editProfile' );
+        Route::get( 'forgotpassword', 'UsersController@forgotPW' )->name( 'users.forgotPW' );
+        Route::get( 'forgotpassword_sent', 'UsersController@forgotPW_sent' )->name( 'users.forgotPW_sent' );
     } );
 
     Route::group( [ 'prefix' => 'organization', ], function(){

@@ -11,7 +11,10 @@
                         <div class="cell shrink">
                             <span class="outline-dot float-right"><span class="dot"></span></span>
                         </div>
+<<<<<<< HEAD
                         <button class="btn-blue margin-left-1"><i class="fas fa-pen"></i> @lang('user.edit')</button>
+=======
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -19,8 +22,12 @@
                         <label for="username" class="form-label">@lang('user.username')</label>
                     </div>
                     <div class="cell small-12 large-9">
+<<<<<<< HEAD
                         <input type="text" name="username" id="username" class="form-fill" value="{{ $user[0]->username }}">
                         <p id="username-help-text" class="alert help-text hide"></p>
+=======
+                        <input type="text" id="username" class="form-fill" value="">
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -28,8 +35,12 @@
                         <label for="password" class="form-label">@lang('user.password')</label>
                     </div>
                     <div class="cell small-12 large-9">
+<<<<<<< HEAD
                         <input type="text" name="password" id="password" class="form-fill" value="">
                         <p id="password-help-text" class="alert help-text hide"></p>
+=======
+                        <input type="password" id="password" class="form-fill" value="">
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
             </div>
@@ -41,7 +52,10 @@
                         <div class="cell shrink">
                             <span class="outline-dot float-right"><span class="dot"></span></span>
                         </div>
+<<<<<<< HEAD
                         <button class="btn-blue margin-left-1"><i class="fas fa-pen"></i> @lang('user.edit')</button>
+=======
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -72,8 +86,12 @@
                         <label for="firstname" class="form-label">@lang('user.firstName')</label>
                     </div>
                     <div class="cell small-12 large-9">
+<<<<<<< HEAD
                         <input type="text" name="firstname" id="firstname" class="form-fill" value="{{ $user[0]->firstname }}">
                         <p id="firstname-help-text" class="alert help-text hide"></p>
+=======
+                        <input type="text" id="firstname" class="form-fill" value="">
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -81,8 +99,12 @@
                         <label for="lastname" class="form-label">@lang('user.lastName')</label>
                     </div>
                     <div class="cell small-12 large-9">
+<<<<<<< HEAD
                         <input type="text" name="lastname" class="form-fill" id="lastname" value="{{ $user[0]->lastname }}">
                         <p id="lastname-help-text" class="alert help-text hide"></p>
+=======
+                        <input type="text" id="lastname" class="form-fill" value="">
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -90,8 +112,12 @@
                         <label for="email" class="form-label">@lang('user.email')</label>
                     </div>
                     <div class="cell small-12 large-9">
+<<<<<<< HEAD
                         <input type="text" name="email" class="form-fill" id="email" value="{{ $user[0]->email }}">
                         <p id="email-help-text" class="alert help-text hide"></p>
+=======
+                        <input type="email" id="email" class="form-fill" value="">
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -99,8 +125,12 @@
                         <label for="tel" class="form-label">@lang('user.phone_number')</label>
                     </div>
                     <div class="cell small-12 large-9">
+<<<<<<< HEAD
                         <input type="tel" name="phone_number" id="phone_number" class="form-fill" value="{{ $user[0]->phone_number }}">
                         <p id="phone_number-help-text" class="alert help-text hide"></p>
+=======
+                        <input type="tel" id="tel" class="form-fill" value="">
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -108,8 +138,12 @@
                         <label for="address" class="form-label">@lang('user.address')</label>
                     </div>
                     <div class="cell small-12 large-9">
+<<<<<<< HEAD
                         <textarea id="address" name="address" class="form-fill" rows="3"></textarea>
                         <p id="address-help-text" class="alert help-text hide"></p>
+=======
+                        <textarea id="address" class="form-fill" rows="3"></textarea>
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -118,6 +152,7 @@
                     </div>
                     <div class="cell small-12 large-9">
                         <div class="input-group">
+<<<<<<< HEAD
                         <span class="input-group-field">
                             <select class="form-select" name="fk_organization_category_id" id="fk_organization_category_id">
                                 @foreach( $organizationCategoryList as $organizationCategoryItem )
@@ -129,6 +164,20 @@
                         </span>
                             <input type="text" name="organization_name" class="input-group-field form-fill" id="organization_name" value="{{ $user[0]->organization_name }}">
                             <p id="organization_name-help-text" class="alert help-text hide"></p>
+=======
+                            <span class="input-group-field">
+                                <select class="form-select">
+                                    <option value="" selected>Type of Organization</option>
+                                    <option value="giver">Giver</option>
+                                    <option value="charitable organization">Charitable Organization</option>
+                                    <option value="ngo">NGO</option>
+                                    <option value="social enterprise">Social Enterprise</option>
+                                    <option value="Philanthropist">Philanthropist</option>
+                                    <option value="Other">Other </option>
+                                </select>
+                            </span>
+                            <input type="text" id="company" class="input-group-field form-fill" value="" placeholder="Fill Your Organization Name">
+>>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
                         </div>
                     </div>
                 </div>

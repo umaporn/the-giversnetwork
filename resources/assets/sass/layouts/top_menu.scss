@@ -89,7 +89,6 @@ body {
 		&-profile {
 			background: none;
 			margin-bottom: 0;
-			//margin-left: $space-box * 2;
 			border: rem-calc(1) solid $color-blue;
 			border-radius: rem-calc(10);
 
@@ -143,21 +142,9 @@ body {
 			}
 
 			&-image {
-				overflow: hidden;
 				background-color: $white;
-				border-radius: 50%;
 				width: rem-calc(45);
 				height: rem-calc(45);
-				position: relative;
-
-				img {
-					position: absolute;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
-					width: 120%;
-					max-width: none;
-				}
 			}
 
 			&-name {

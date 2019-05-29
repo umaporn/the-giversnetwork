@@ -1,4 +1,3 @@
-/*----------------- Home - Learn ------------------*/
 .learn {
     &.all {
         .topic {
@@ -10,13 +9,11 @@
         article {
             margin-bottom: $space-box/2;
 
-            figure,
-            h3 {
+            figure, h3 {
                 margin-bottom: $space-box/2;
             }
 
-            h3,
-            p {
+            h3, p {
                 color: $color-blue;
             }
 
@@ -48,7 +45,6 @@
 
         .events {
             background-color: $white;
-
             margin-bottom: $space-box * 2;
         }
 
@@ -112,14 +108,12 @@
                 li {
                     display: inline-block;
                     margin-right: $space-box/2;
-
                     &:last-child {
                         margin-right: 0;
                     }
 
                     a {
                         color: $color-blue;
-
                         &:hover {
                             color: lighten($color-blue, 5%);
                         }
