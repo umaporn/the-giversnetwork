@@ -9,7 +9,6 @@
                         <div class="cell shrink">
                             <span class="outline-dot float-right"><span class="dot"></span></span>
                         </div>
-                        <button class="btn-blue margin-left-1"><i class="fas fa-pen"></i> Edit</button>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -17,7 +16,7 @@
                         <label for="username" class="form-label">Username</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <input type="text" id="username" class="form-fill" disabled value="">
+                        <input type="text" id="username" class="form-fill" value="">
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -25,7 +24,7 @@
                         <label for="password" class="form-label">Password</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <input type="password" id="password" class="form-fill" disabled value="">
+                        <input type="password" id="password" class="form-fill" value="">
                     </div>
                 </div>
             </form>
@@ -39,7 +38,6 @@
                         <div class="cell shrink">
                             <span class="outline-dot float-right"><span class="dot"></span></span>
                         </div>
-                        <button class="btn-blue margin-left-1"><i class="fas fa-pen"></i> Edit</button>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -65,7 +63,7 @@
                         <label for="firstname" class="form-label">First Name</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <input type="text" id="firstname" class="form-fill" disabled value="">
+                        <input type="text" id="firstname" class="form-fill" value="">
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -73,7 +71,7 @@
                         <label for="lastname" class="form-label">Last Name</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <input type="text" id="lastname" class="form-fill" disabled value="">
+                        <input type="text" id="lastname" class="form-fill" value="">
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -81,7 +79,7 @@
                         <label for="email" class="form-label">Email</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <input type="email" id="email" class="form-fill" disabled value="">
+                        <input type="email" id="email" class="form-fill" value="">
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -89,7 +87,7 @@
                         <label for="tel" class="form-label">Phone</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <input type="tel" id="tel" class="form-fill" disabled value="">
+                        <input type="tel" id="tel" class="form-fill" value="">
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -97,7 +95,7 @@
                         <label for="address" class="form-label">Address</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <textarea id="address" class="form-fill" rows="3" disabled></textarea>
+                        <textarea id="address" class="form-fill" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -117,7 +115,7 @@
                                     <option value="Other">Other </option>
                                 </select>
                             </span>
-                            <input type="text" id="company" class="input-group-field form-fill" disabled value="">
+                            <input type="text" id="company" class="input-group-field form-fill" value="" placeholder="Fill Your Organization Name">
                         </div>
                     </div>
                 </div>

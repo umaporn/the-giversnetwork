@@ -29,7 +29,10 @@ function globalRoutes()
     Route::get( 'signup', 'UsersController@signup' )->name( 'users.signup' );
 
     Route::group( [ 'prefix' => 'user' ], function(){
+        Route::get( 'myprofile', 'UsersController@myProfile' )->name( 'users.myProfile' );
         Route::get( 'editprofile', 'UsersController@editProfile' )->name( 'users.editProfile' );
+        Route::get( 'forgotpassword', 'UsersController@forgotPW' )->name( 'users.forgotPW' );
+        Route::get( 'forgotpassword_sent', 'UsersController@forgotPW_sent' )->name( 'users.forgotPW_sent' );
     } );
     
 /*

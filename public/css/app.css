@@ -19213,7 +19213,7 @@ readers do not read off random characters that represent icons */
 }
 
 .topic:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -19393,7 +19393,7 @@ readers do not read off random characters that represent icons */
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  width: 120%;
+  width: 130%;
   max-width: none;
 }
 
@@ -19543,12 +19543,13 @@ readers do not read off random characters that represent icons */
 }
 
 .padding-breadcrumbs {
-  padding: 0.625rem 2.5rem;
+  padding: 2.5rem;
+  padding-bottom: 0 !important;
 }
 
 @media print, screen and (min-width: 64em) {
   .padding-breadcrumbs {
-    padding: 0.625rem 5rem;
+    padding: 2.5rem 7.5rem;
   }
 }
 
@@ -20405,22 +20406,9 @@ body:lang(en) .language li.en a {
 }
 
 .topbar-responsive .user-profile-image {
-  overflow: hidden;
   background-color: #FEFEFE;
-  border-radius: 50%;
   width: 2.8125rem;
   height: 2.8125rem;
-  position: relative;
-}
-
-.topbar-responsive .user-profile-image img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 120%;
-  max-width: none;
 }
 
 .topbar-responsive .user-profile-name {
@@ -21382,6 +21370,7 @@ body:lang(en) .language li.en a {
 .user-head {
   color: #154064;
   margin-right: 0.3125rem;
+  margin-bottom: 0;
 }
 
 @media print, screen and (min-width: 64em) {
@@ -21404,6 +21393,153 @@ body:lang(en) .language li.en a {
   }
 }
 
+.user-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .user-profile {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.user-profile-image {
+  overflow: hidden;
+  margin-right: 0.625rem;
+  border-radius: 50%;
+  position: relative;
+  width: 4.375rem;
+  height: 4.375rem;
+}
+
+.user-profile-image img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 130%;
+  max-width: none;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .user-profile .topic-light {
+    text-align: center;
+  }
+}
+
+.user-menu {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.user-menu li {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  background-color: #F8F8F8;
+}
+
+.user-menu li:first-child {
+  border-top-left-radius: 0.625rem;
+}
+
+.user-menu li:last-child {
+  border-bottom-left-radius: 0.625rem;
+}
+
+.user-menu li a {
+  padding: 0.625rem 1.25rem;
+  display: block;
+  font-size: 1.125rem;
+}
+
+.user-menu li a.is-active {
+  background: #154064;
+  color: #FEFEFE;
+}
+
+.user-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: #154064;
+  margin-bottom: 0.625rem;
+}
+
+@media print, screen and (min-width: 64em) {
+  .user-detail {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+.user-detail p {
+  color: #154064;
+  margin-bottom: 0;
+}
+
+.user-topic {
+  margin-bottom: 0;
+}
+
+.user-topic::after {
+  content: ":";
+  margin-left: 0.3125rem;
+  display: inline-block;
+}
+
+@media print, screen and (min-width: 64em) {
+  .user-topic {
+    margin-right: 0.625rem;
+  }
+}
+
+.user-interested {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.user-interested li {
+  margin: 0 0.625rem 0.625rem 0;
+  padding: 0;
+}
+
 .show-interested {
   list-style: none;
   padding: 0;
@@ -21420,6 +21556,10 @@ body:lang(en) .language li.en a {
   color: #FEFEFE;
   border-radius: 0.3125rem;
   cursor: not-allowed;
+}
+
+.content-text {
+  color: #154064;
 }
 
 /*----------------- Home - Learn ------------------*/

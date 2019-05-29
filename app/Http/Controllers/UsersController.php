@@ -23,6 +23,21 @@ class UsersController extends Controller
         return view( 'users.signup' );
     }
 
+    public function forgotPW()
+    {
+        return view( 'users.forgotPW' );
+    }
+
+    public function forgotPW_sent()
+    {
+        return view( 'users.forgotPW_sent' );
+    }
+
+    public function myProfile()
+    {
+        return view( 'users.myProfile' );
+    }
+
     public function editProfile()
     {
         return view( 'users.editProfile' );
