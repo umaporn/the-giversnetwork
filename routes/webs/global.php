@@ -16,6 +16,11 @@ function globalRoutes()
         Route::get( 'article', 'LearnController@article' )->name( 'learn.article' );
     } );
 
+    Route::group( [ 'prefix' => 'share', ], function(){
+        Route::get( '', 'ShareController@index' )->name( 'share.index' );
+        Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
+    } );
+
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
@@ -24,7 +29,10 @@ function globalRoutes()
     Route::get( 'signup', 'UsersController@signup' )->name( 'users.signup' );
 
     Route::group( [ 'prefix' => 'user' ], function(){
+        Route::get( 'myprofile', 'UsersController@myProfile' )->name( 'users.myProfile' );
         Route::get( 'editprofile', 'UsersController@editProfile' )->name( 'users.editProfile' );
+        Route::get( 'forgotpassword', 'UsersController@forgotPW' )->name( 'users.forgotPW' );
+        Route::get( 'forgotpassword_sent', 'UsersController@forgotPW_sent' )->name( 'users.forgotPW_sent' );
     } );
     
 /*

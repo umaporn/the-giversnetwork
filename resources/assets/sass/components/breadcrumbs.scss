@@ -1,10 +1,7 @@
 .padding {
   &-breadcrumbs {
-    padding:$space-box/2 $space-box * 2;
-
-    @include breakpoint(large) {
-      padding: $space-box/2 $space-box * 4;
-    }
+    @include padding-container;
+    padding-bottom: 0!important;
   }
 }
 
