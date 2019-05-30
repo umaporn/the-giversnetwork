@@ -81,4 +81,5 @@ return [
     'account' => 'Account',
     'profile' => 'Profile',
     'edit'    => 'Edit',
+    'contact' => 'Contact',
 ];

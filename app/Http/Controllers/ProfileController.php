@@ -65,7 +65,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
      */
-    public function getProfile( Request $request )
+    public function getProfile()
     {
         $user                     = $this->usersModel->getUserProfile();
         $interestList             = $this->interestInModel->getInterestInList();
@@ -73,6 +73,21 @@ class ProfileController extends Controller
         $userInterestInList       = $this->userInterestInModel->getUserInterestInList($user[0]->id);
 
         return view( 'users.profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
+    }
+
+    /**
+     * Load a profile page of the authenticated user.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
+     */
+    public function getEditProfileForm( Request $request )
+    {
+        $user                     = $this->usersModel->getUserProfile();
+        $interestList             = $this->interestInModel->getInterestInList();
+        $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList($user[0]->id);
+
+        return view( 'users.edit_profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
     }
 
     /**

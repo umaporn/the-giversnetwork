@@ -54,12 +54,12 @@ function globalRoutes()
         Route::get( '{news}', 'NewsController@detail' )->name( 'news.detail' );
     } );
 
-    Route::group( [ 'prefix' => 'user' ], function(){
-        Route::get( 'myprofile', 'UsersController@myProfile' )->name( 'users.myProfile' );
-        Route::get( 'editprofile', 'UsersController@editProfile' )->name( 'users.editProfile' );
-        Route::get( 'forgotpassword', 'UsersController@forgotPW' )->name( 'users.forgotPW' );
-        Route::get( 'forgotpassword_sent', 'UsersController@forgotPW_sent' )->name( 'users.forgotPW_sent' );
-    } );
+    /* Route::group( [ 'prefix' => 'user' ], function(){
+         Route::get( 'myprofile', 'UsersController@myProfile' )->name( 'users.myProfile' );
+         Route::get( 'editprofile', 'UsersController@editProfile' )->name( 'users.editProfile' );
+         Route::get( 'forgotpassword', 'UsersController@forgotPW' )->name( 'users.forgotPW' );
+         Route::get( 'forgotpassword_sent', 'UsersController@forgotPW_sent' )->name( 'users.forgotPW_sent' );
+     } );*/
 
     Route::group( [ 'prefix' => 'organization', ], function(){
         Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
@@ -77,13 +77,15 @@ function globalRoutes()
 
         // Password Reset
         Route::get( 'password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm' )->name( 'password.request' );
-        Route::post( 'password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail' )->name( 'password.email' );
-
+        Route::post( 'password/email', 'Auth\ForgotPasswordController@sendResetPasswordLink' )->name( 'password.email' );
+        Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@showResetForm' )->name( 'password.reset' );
+        Route::post( 'password/reset', 'Auth\ResetPasswordController@reset' )->name( 'password.change' );
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
         Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
-        Route::get( 'profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
+        Route::get( 'my-profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
+        Route::get( 'edit-profile', 'ProfileController@getEditProfileForm' )->name( 'user.editProfile' );
         Route::post( 'profile', 'ProfileController@updateProfile' )->name( 'user.updateProfile' );
         Route::get( 'reset-password', 'ProfileController@resetPassword' )->name( 'user.resetPassword' );
     } );

@@ -106,7 +106,7 @@
                         <label for="address" class="form-label">@lang('user.address')</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <textarea id="address" name="address" class="form-fill" rows="3"></textarea>
+                        <textarea id="address" name="address" class="form-fill" rows="3">{{ $user[0]->address }}</textarea>
                         <p id="address-help-text" class="alert help-text hide"></p>
                     </div>
                 </div>
@@ -162,8 +162,8 @@
                                 @foreach( $userInterestInList as $userInterestInItem )
                                     @if($interestItem->id === $userInterestInItem['fk_interest_in_id'])
                                             form-checkbox-ed
-@endif
-                                    @endforeach
+                                    @endif
+                                @endforeach
                                             ">
                                         <input id="{{ $interestItem->id }}"
                                                data-value="{{ $interestItem->id }}"

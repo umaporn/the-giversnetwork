@@ -81,7 +81,7 @@
                         <div class="dropdown-pane user-menu" id="user-menu" data-dropdown data-hover="true" data-hover-pane="true" data-v-offset=15>
                             <ul class="user-menu-show">
                                 <li>
-                                    <a href="{{ route('user.updateProfile') }}"><i class="fas fa-user-edit"></i> @lang('user.edit_profile')
+                                    <a href="{{ route('user.editProfile') }}"><i class="fas fa-user-edit"></i> @lang('user.edit_profile')
                                     </a></li>
                                 <li>
                                     <a href="{{ route('user.getProfile') }}"><i class="fas fa-user-circle"></i> @lang('user.view_profile')

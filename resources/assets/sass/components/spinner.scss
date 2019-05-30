@@ -4,17 +4,17 @@
 
     &:before {
         content: '';
-        height: rem-calc(50);
-        width: rem-calc(50);
+        height: rem-calc(30);
+        width: rem-calc(30);
         margin: -15px auto auto -15px;
         position: fixed;
         top: 50%;
         left: 50%;
         border-width: rem-calc(5);
         border-style: solid;
-        border-color: #009057;
+        border-color: $spinner-border-color;
         border-radius: 100%;
-        animation: rotation .3s infinite linear;
+        animation: rotation .7s infinite linear;
     }
 }
 

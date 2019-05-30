@@ -7,6 +7,7 @@ namespace App\Models;
 
 use App\Libraries\Image;
 use App\Libraries\Search;
+use App\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
@@ -255,4 +256,5 @@ class Users extends Authenticatable
 
         return Search::search( $builder, 'users', $request );
     }
+
 }
