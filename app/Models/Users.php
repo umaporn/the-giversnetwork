@@ -114,8 +114,7 @@ class Users extends Authenticatable
      *
      * @return array Image saved result
      */
-    private
-    function saveImage( Request $request )
+    private function saveImage( Request $request )
     {
         $imageInformation = [];
         $file             = $request->file( 'image_path' );
@@ -140,8 +139,7 @@ class Users extends Authenticatable
      *
      * @return void
      */
-    private
-    function deleteImage()
+    private function deleteImage()
     {
         $imagesFields = [ 'image_path' ];
         $attributes   = $this->getAttributes();
@@ -157,8 +155,7 @@ class Users extends Authenticatable
      *
      * @return Users[]|\Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public
-    function getUserProfile()
+    public function getUserProfile()
     {
         return $this->with( 'permission' )->where( [ 'id' => Auth::user()->id ] )->get();
     }
@@ -170,8 +167,7 @@ class Users extends Authenticatable
      *
      * @return bool
      */
-    public
-    function checkUserStatus( array $userCredentials )
+    public function checkUserStatus( array $userCredentials )
     {
         $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public', 'fk_permission_id' => '2' ] )
                        ->get();
@@ -186,8 +182,7 @@ class Users extends Authenticatable
      *
      * @return    array
      */
-    public
-    function updateUser( Request $request )
+    public function updateUser( Request $request )
     {
 
         $data = [
@@ -242,8 +237,7 @@ class Users extends Authenticatable
      *
      * @return bool
      */
-    public
-    function checkAdminStatus( array $userCredentials )
+    public function checkAdminStatus( array $userCredentials )
     {
         $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public', 'fk_permission_id' => '1' ] )
                        ->get();
@@ -258,8 +252,7 @@ class Users extends Authenticatable
      *
      * @return \Illuminate\Pagination\LengthAwarePaginator
      */
-    public
-    function getUserList( Request $request )
+    public function getUserList( Request $request )
     {
         $builder = $this->with( 'permission' );
 
