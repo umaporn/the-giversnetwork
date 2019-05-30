@@ -28,19 +28,11 @@
                     @include('admin.menu_admin')
                 </div>
                 <div class="cell small-12 large-8 xxlarge-9">
-<<<<<<< HEAD
                     <article class="admin-content">
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x admin-form-space admin-search">
                                     <h2 class="cell shrink admin-head">All Learn</h2>
-=======
-                    <article class="user-content">
-                        <div class="grid-x">
-                            <div class="cell small-12">
-                                <div class="grid-x user-form-space admin-search">
-                                    <h2 class="cell shrink user-head">All Learn</h2>
->>>>>>> 1801e8bfea2c005653dfad64f90614cfda56ba9f
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">

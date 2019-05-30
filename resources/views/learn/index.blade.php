@@ -37,7 +37,6 @@
                                 <img src="{{ $most_popular_item['file_path'] ? $most_popular_item['file_path'] : config('images.placeholder.700x400') }}" alt="{{ $most_popular_item['title'] }}">
                             </a>
                         </figure>
-<<<<<<< HEAD
                         <a href="{{ route('learn.detail', ['id' => $most_popular_item['id']]) }}">
                             <h3>{{ $most_popular_item['title'] }}</h3>
                         </a>
@@ -142,55 +141,6 @@
                     </div>
                 </section>
             </div>
-=======
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <p>Content : Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                            arcu. Morbi sollicitudin turpis id nisi fermentum mollis. </p>
-                    </div>
-                </article>
-
-                <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
-
-            </section>
-        </div>
-        <div class="cell small-12 medium-12 large-4">
-            @include('sidebar')
->>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
         </div>
     </section>
 @endsection

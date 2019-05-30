@@ -37,10 +37,9 @@ class RegisterMailer extends Mailable implements ShouldQueue
     public function build()
     {
         $introLines = [
-            __( 'emails.users.full_name' ) . ': ' . $this->users->full_name,
+            __( 'emails.users.username' ) . ': ' . $this->users->username,
             __( 'emails.users.email' ) . ': ' . $this->users->email,
-            __( 'emails.users.phone_number' ) . ': ' . $this->users->phone_number,
-            __( 'emails.users.message' ) . ': ' . $this->users->message,
+            __( 'emails.users.mobile' ) . ': ' . $this->users->phone_number,
         ];
 
         return $this->markdown( 'notifications::email' )

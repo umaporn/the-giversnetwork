@@ -1,6 +1,4 @@
-<<<<<<< HEAD
 <?php
-=======
 @extends('layouts.app')
 
 @section('page-title', __('share.page_title.index'))
@@ -122,4 +120,3 @@
     </div>
 </section>
 @endsection
->>>>>>> a7e3f02e83945d9d7a236e184b7698d0f254a201
