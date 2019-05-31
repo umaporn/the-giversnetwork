@@ -5,21 +5,6 @@
 
 @section('content')
 
-    {{--<form class="recaptcha-form" method="POST" action="{{ route('password.email') }}">
-
-        {{ csrf_field() }}
-
-        <label>@lang('user.email'):
-            <input type="email" id="email" name="email" required autofocus>
-        </label>
-        <p id="email-help-text" class="alert help-text hide"></p>
-
-        @captcha('{{ App::getLocale() }}')
-
-        <button type="submit" class="button">@lang('passwords.request_button')</button>
-
-    </form>--}}
-
     <section class="user">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
@@ -29,7 +14,7 @@
         <nav class="grid-x padding-breadcrumbs">
             <div class="cell auto">
                 <ul class="breadcrumbs">
-                    <li><a href="#">@lang('home.page_title.index')</a></li>
+                    <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
                     <li>
                         <span class="show-for-sr">Current: </span> @lang('passwords.page_title.email')
                     </li>

@@ -12,7 +12,7 @@
             <a href="{{ route('learn.detail', ['id' => $all_list_item['id']]) }}">
                 <h3>{{ $all_list_item['title'] }}</h3>
             </a>
-            <p>{{ $all_list_item['content'] }}</p>
+            <p>{!! \Illuminate\Support\Str::limit($all_list_item['content'], 250, '...') !!}</p>
         </div>
     </article>
 @endforeach

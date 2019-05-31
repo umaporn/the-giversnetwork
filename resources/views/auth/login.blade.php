@@ -1,25 +1,28 @@
-@extends('layouts.app')
-
-@section('page-title', __('login.page_title.index'))
-@section('page-description', __('login.page_description.index'))
-
-@section('content')
-    <form class="submission-form" method="POST" action="{{ route('submitLogin') }}">
-        {{ csrf_field() }}
-
-        <label for="email">@lang('user.email'):</label>
-        <input type="text" id="email" name="email" required autofocus value="">
-        <p id="email-help-text" class="alert help-text hide"></p>
-
-        <label for="password">@lang('user.password'):</label>
-        <input type="password" id="password" name="password" required value="">
-        <p id="password-help-text" class="alert help-text hide"></p>
-
-        {{--@captcha('{{ App::getLocale() }}')--}}
-
-        <div class="button-group">
-            <button type="submit" class="button">@lang('login.login_button')</button>
-            <a class="hollow button" href="{{ route('password.request') }}">@lang('login.forgot_password')</a>
+<form class="submission-form modal-form" method="POST" action="{{ route('submitLogin') }}">
+    {{ csrf_field() }}
+    <div class="grid-x grid-padding-x user-form-space">
+        <div class="cell small-12">
+            <label for="email" class="form-label">@lang('user.email')</label>
         </div>
-    </form>
-@endsection
+        <div class="cell small-12">
+            <input type="email" id="email" name="email" class="form-fill" required autofocus value="">
+            <p id="email-help-text" class="alert help-text hide"></p>
+        </div>
+    </div>
+    <div class="grid-x grid-padding-x user-form-space">
+        <div class="cell small-12">
+            <div class="grid-flex">
+                <label for="password" class="form-label">@lang('user.password')</label>
+                <a toggle="#password" class="toggle-password">show</a>
+            </div>
+        </div>
+        <div class="cell small-12">
+            <input type="password" id="password" name="password" class="form-fill" required value="">
+            <p id="password-help-text" class="alert help-text hide"></p>
+        </div>
+        <div class="cell small-12 text-left">
+            <a href="{{ route('password.request') }}" class="form-link-sub">@lang('login.forgot_password')</a>
+        </div>
+    </div>
+    <button type="submit" class="btn-blue btn-long text-uppercase">@lang('login.login_button')</button>
+</form>

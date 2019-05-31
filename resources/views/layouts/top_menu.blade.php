@@ -24,34 +24,9 @@
                     <div class="reveal modal-style" id="login" data-reveal>
                         <h2 class="modal-topic">Login</h2>
                         <div class="modal-content">
-                            <form class="submission-form" method="POST" action="{{ route('submitLogin') }}">
-                                {{ csrf_field() }}
-                                <div class="grid-x grid-padding-x user-form-space">
-                                    <div class="cell small-12">
-                                        <label for="email">@lang('user.email')</label>
-                                    </div>
-                                    <div class="cell small-12">
-                                        <input type="email" id="email" name="email" class="form-fill" required autofocus value="">
-                                        <p id="email-help-text" class="alert help-text hide"></p>
-                                    </div>
-                                </div>
-                                <div class="grid-x grid-padding-x user-form-space">
-                                    <div class="cell small-12">
-                                        <div class="grid-flex">
-                                            <label for="password">@lang('user.password')</label>
-                                            <a toggle="#password" class="toggle-password">show</a>
-                                        </div>
-                                    </div>
-                                    <div class="cell small-12">
-                                        <input type="password" id="password" name="password" class="form-fill" required value="">
-                                        <p id="password-help-text" class="alert help-text hide"></p>
-                                    </div>
-                                    <div class="cell small-12 text-left">
-                                        <a href="{{ route('password.request') }}" class="form-link-sub">@lang('login.forgot_password')</a>
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn-blue btn-long text-uppercase">@lang('login.login_button')</button>
-                            </form>
+
+                            @include('auth.login')
+
                             <div class="grid-x align-middle login-line">
                                 <div class="cell line auto"></div>
                                 <div class="cell shrink">
@@ -62,7 +37,7 @@
                             </div>
                             <article class="login-signup">
                                 @lang('login.are_you_new')
-                                <a href="#">@lang('register.page_link.index')</a>
+                                <a href="{{ route('register') }}">@lang('register.page_link.index')</a>
                             </article>
                         </div>
                         <button class="close-button" data-close aria-label="Close reveal" type="button">

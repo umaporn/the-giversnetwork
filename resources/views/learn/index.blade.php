@@ -17,7 +17,7 @@
             <div class="cell small-12">
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
-                        <li><a href="#">@lang('home.page_link.index')</a></li>
+                        <li><a href="{{ route('home.index') }}">@lang('home.page_link.index')</a></li>
                         <li>
                             <span class="show-for-sr">Current: </span> @lang('learn.page_link.index')
                         </li>
