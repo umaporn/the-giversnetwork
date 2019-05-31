@@ -114,7 +114,7 @@
                             <label for="username" class="form-label">@lang('user.username')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="text" name="username" id="username" class="form-fill" required value="umaporn01">
+                            <input type="text" name="username" id="username" class="form-fill" required value="">
                             <p id="username-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
@@ -123,7 +123,7 @@
                             <label for="password" class="form-label">@lang('user.password')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="password" id="password" name="password" class="form-fill" required value="umaporn01">
+                            <input type="password" id="password" name="password" class="form-fill" required value="">
                             <p id="password-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
@@ -132,7 +132,7 @@
                             <label for="con-password" class="form-label">@lang('user.password_confirmation')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="password" name="password_confirmation" required class="form-fill" value="umaporn01">
+                            <input type="password" name="password_confirmation" required class="form-fill" value="">
                         </div>
                     </div>
                     <div class="grid-x grid-padding-x user-form-space">
@@ -140,7 +140,7 @@
                             <label for="email" class="form-label">@lang('user.email')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="email" id="email" name="email" class="form-fill" required autofocus value="umaporn.don@gmail.com">
+                            <input type="email" id="email" name="email" class="form-fill" required autofocus value="">
                             <p id="email-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>
@@ -149,7 +149,7 @@
                             <label for="phone" class="form-label">@lang('user.phone_number')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="tel" name="phone_number" id="phone_number" class="form-fill" required value="0855555555">
+                            <input type="tel" name="phone_number" id="phone_number" class="form-fill" required value="">
                             <p id="phone_number-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>

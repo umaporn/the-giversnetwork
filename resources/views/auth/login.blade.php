@@ -8,11 +8,11 @@
         {{ csrf_field() }}
 
         <label for="email">@lang('user.email'):</label>
-        <input type="text" id="email" name="email" required autofocus value="member@gmail.com">
+        <input type="text" id="email" name="email" required autofocus value="">
         <p id="email-help-text" class="alert help-text hide"></p>
 
         <label for="password">@lang('user.password'):</label>
-        <input type="password" id="password" name="password" required value="umaporn01">
+        <input type="password" id="password" name="password" required value="">
         <p id="password-help-text" class="alert help-text hide"></p>
 
         {{--@captcha('{{ App::getLocale() }}')--}}
