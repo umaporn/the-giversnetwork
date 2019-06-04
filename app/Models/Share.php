@@ -70,7 +70,7 @@ class Share extends Model
      */
     public function users()
     {
-        return $this->belongsTo( 'App\Models\users', 'fk_user_id' );
+        return $this->belongsTo( 'App\Models\Users', 'fk_user_id' );
     }
 
     /**
