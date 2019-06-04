@@ -8,30 +8,27 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    
     'bottom_menu_1' => [
-        'title'    => 'Menu',
-        'list' => [
-            'learn' => 'Learn',
-            'share' => 'Share',
-            'give' => 'Give',
-            'events' => 'Events',
-            'news' => 'News',
-        ]
+        'title' => 'Menu',
     ],
     'bottom_menu_2' => [
-        'title'    => 'Member',
-        'list' => [
-            'sign_up' => 'Sign up',
-            'login' => 'Login',
-        ]
+        'title' => 'Member',
     ],
     'bottom_menu_3' => [
-        'title'    => 'The Giver Network',
-        'list' => [
-            'about_us' => 'About us',
-            'contact_us' => 'Contact us',
-        ]
+        'title' => 'The Giver Network',
+        'list'  => [
+            [
+                'url'  => '#',
+                'text' => 'About us',
+            ],
+            [
+                'url'  => '#',
+                'text' => 'Contact us',
+            ],
+        ],
     ],
 
+    'join_me'          => 'Let\'s change the world together! Will you join me?',
+    'copy_rights'      => '©' . date( 'Y' ) . ' The Giver Network',
+    'term_of_services' => 'Terms of Service | Privacy Policy',
 ];

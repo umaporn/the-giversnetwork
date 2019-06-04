@@ -2,7 +2,7 @@
         <div id="spinner"></div>
         <section class="join-us grid-x padding-content text-center">
             <div class="cell small-12 grid-x align-center">
-                <h2 class="align-self-middle">Let's change the world together! Will you join me?</h2>
+                <h2 class="align-self-middle">@lang('footer.join_me')</h2>
                 <a href="#" class="btn-join-us eff-btn">Join us</a>
             </div>
         </section>
@@ -17,8 +17,8 @@
                 </div>
 
                 <ul class="no-bullet">
-                    @foreach( __('footer.bottom_menu_1.list') as $menu )
-                        <li>{{ $menu }}</li>
+                    @foreach( $mainMenu as $menu )
+                        <li><a href="{{ $menu['url'] }}">{{ $menu['menuText'] }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -32,9 +32,8 @@
                 </div>
 
                 <ul class="no-bullet">
-                    @foreach( __('footer.bottom_menu_2.list') as $menu )
-                        <li>{{ $menu }}</li>
-                    @endforeach
+                    <li><a href="{{ route('register') }}">@lang('register.page_link.index')</a></li>
+                    <li><a data-open="login">@lang('login.page_link.index')</a></li>
                 </ul>
             </div>
             <div class="cell small-12 medium-6 large-3">
@@ -47,7 +46,7 @@
                 </div>
                 <ul class="no-bullet">
                     @foreach( __('footer.bottom_menu_3.list') as $menu )
-                        <li>{{ $menu }}</li>
+                        <li><a href="{{ $menu['url'] }}">{{ $menu['text'] }}</a></li>
                     @endforeach
                 </ul>
             </div>
@@ -61,8 +60,8 @@
             </div>
         </section>
         <section class="copyright grid-x padding-content">
-            <div class="cell small-12 medium-12 large-6 text-left">©2019 The Giver Network</div>
-            <div class="cell small-12 medium-12 large-6 text-right">Terms of Service | Privacy Policy</div>
+            <div class="cell small-12 medium-12 large-6 text-left">@lang('footer.copy_rights')</div>
+            <div class="cell small-12 medium-12 large-6 text-right">@lang('footer.term_of_services')</div>
         </section>
 </footer>
 
