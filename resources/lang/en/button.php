@@ -21,4 +21,5 @@ return [
     'view_all'    => 'View All',
     'view_more'   => 'View More',
     'sign_up'     => 'Sign Up',
+    'join_us'     => 'Join Us',
 ];

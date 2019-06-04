@@ -23,16 +23,10 @@
         </div>
         <article class="grid-x grid-margin-x">
             <div class="cell small-12 medium-7 large-6">
-                <h2 class="topic-dark">about us</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu. Morbi
-                    sollicitudin turpis id nisi fermentum mollis. Praesent elementum vulputate nibh ac hendrerit.
-                    Integer a metus vitae mauris semper finibus ac vel tortor. Ut id odio lobortis, lacinia purus
-                    pharetra, cursus metus. Fusce ultricies fringilla mauris, sed condimentum massa feugiat non. Fusce
-                    faucibus, magna at auctor cursus, ipsum velit sollicitudin magna, a vulputate mauris lorem vitae
-                    nunc. Sed efficitur ultricies leo, sit amet venenatis orci ultrices non. Nam viverra neque nec risus
-                    dignissim consequat. Nunc placerat odio dui.
-                </p>
+                <h2 class="topic-dark">@lang('home.about_us.title')</h2>
+                @foreach(__('home.about_us.content') as $contents )
+                    <p>{{ $contents }}</p>
+                @endforeach
             </div>
             <div class="cell small-12 medium-5 large-6">
                 <figure>

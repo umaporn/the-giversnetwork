@@ -3,7 +3,7 @@
         <section class="join-us grid-x padding-content text-center">
             <div class="cell small-12 grid-x align-center">
                 <h2 class="align-self-middle">@lang('footer.join_me')</h2>
-                <a href="#" class="btn-join-us eff-btn">Join us</a>
+                <a href="#" class="btn-join-us eff-btn">@lang('button.join_us')</a>
             </div>
         </section>
         <section class="bottom-menu grid-x padding-content">
