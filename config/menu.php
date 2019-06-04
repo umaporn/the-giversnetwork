@@ -29,23 +29,23 @@ return [
             'menuText'  => 'learn.page_link.index',
         ],
         [
-            'routeName' => 'share.index',
+            'routeName' => '#',
             'menuText'  => 'share.page_link.index',
         ],
         [
-            'routeName' => 'give.index',
+            'routeName' => '#',
             'menuText'  => 'give.page_link.index',
         ],
         [
-            'routeName' => 'events.index',
+            'routeName' => '#',
             'menuText'  => 'events.page_link.index',
         ],
         [
-            'routeName' => 'news.index',
+            'routeName' => '#',
             'menuText'  => 'news.page_link.index',
         ],
         [
-            'routeName' => 'organization.index',
+            'routeName' => '#',
             'menuText'  => 'organization.page_link.index',
         ],
     ],

@@ -104,7 +104,7 @@
                             <div class="input-group">
                             <span class="input-group-field">
                                 <select class="form-select" name="fk_organization_category_id" id="fk_organization_category_id">
-                                    <option>@lang('user.type_of_organization')</option>
+                                    <option value="">@lang('user.type_of_organization')</option>
                                      @foreach( $organizationCategoryList as $organizationCategoryItem )
                                         <option value="{{ $organizationCategoryItem->id }}"> {{ $organizationCategoryItem->title }}</option>
                                     @endforeach

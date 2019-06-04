@@ -1,4 +1,4 @@
-@if( $menuItem['url'] !== '#' || count( $menuItem['childMenu'] ) )
+@if( $menuItem['url'] !== '' || count( $menuItem['childMenu'] ) )
     <li>
         <a href="{{ $menuItem['url'] }}">
             {{ $menuItem['menuText'] }}
