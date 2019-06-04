@@ -19,6 +19,11 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'share', ], function(){
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
         Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
+	} );
+	
+	Route::group( [ 'prefix' => 'events', ], function(){
+        Route::get( '', 'EventsController@index' )->name( 'events.index' );
+        Route::get( 'article', 'EventsController@article' )->name( 'events.article' );
     } );
 
     Route::group( [ 'prefix' => 'admin' ], function(){

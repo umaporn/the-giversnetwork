@@ -21750,6 +21750,141 @@ body:lang(en) .language li.en a {
   padding-right: 1.25rem;
 }
 
+/*----------------- Home - Events ------------------*/
+
+.events.all {
+  /*----------------- Home - Articles ------------------*/
+  /*----------------- Home - Events ------------------*/
+}
+
+.events.all .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.events.all .topic:after {
+  border: none;
+}
+
+.events.all .topic h2 {
+  display: inline-block;
+}
+
+.events.all article {
+  margin-bottom: 0.625rem;
+}
+
+.events.all article figure,
+.events.all article h3 {
+  margin-bottom: 0.625rem;
+}
+
+.events.all article h3,
+.events.all article p {
+  color: #154064;
+}
+
+.events.all article .category {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.events.all article .category i {
+  margin-right: 0.3125rem;
+}
+
+.events.all .most-popular.padding-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+@media screen and (max-width: 63.99875em) {
+  .events.all .articles {
+    margin-bottom: 2.5rem;
+  }
+}
+
+.events.all .articles .profile {
+  margin-top: 0.625rem;
+}
+
+.events.all .articles .profile span {
+  color: #434343;
+}
+
+.events.all .events {
+  background-color: #FEFEFE;
+  margin-bottom: 2.5rem;
+}
+
+.events.all .load-more {
+  border-radius: 0.3125rem;
+  background-color: #154064;
+  color: #FEFEFE;
+  display: block;
+  text-align: center;
+  font-family: "db_airystd_bd";
+  padding: 0.3125rem;
+}
+
+.events.detail.padding-content {
+  padding-top: 0;
+}
+
+.events.detail .article.padding-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.events.detail article {
+  margin-bottom: 0.625rem;
+}
+
+.events.detail article figure {
+  margin-bottom: 0.625rem;
+}
+
+.events.detail article p {
+  color: #154064;
+}
+
+.events.detail article h2 {
+  color: #154064;
+}
+
+.events.detail article time {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.events.detail article time i {
+  margin-right: 0.3125rem;
+}
+
+.events.detail .social label {
+  margin-right: 0.625rem;
+  display: inline-block;
+  line-height: 2.25rem;
+  color: #154064;
+}
+
+.events.detail .social ul li {
+  display: inline-block;
+  margin-right: 0.625rem;
+}
+
+.events.detail .social ul li:last-child {
+  margin-right: 0;
+}
+
+.events.detail .social ul li a {
+  color: #154064;
+}
+
+.events.detail .social ul li a:hover {
+  color: #194d79;
+}
+
 .admin .topic {
   background-color: #154064;
   color: #FEFEFE;
