@@ -21680,6 +21680,10 @@ body:lang(en) .language li.en a {
   color: #194d79;
 }
 
+.share-page .articles {
+  margin-bottom: 2.5rem;
+}
+
 .share-page .topic {
   background-color: #154064;
   color: #FEFEFE;
@@ -21715,7 +21719,21 @@ body:lang(en) .language li.en a {
 
 .share-page .profile {
   color: #154064;
-  display: inline-block;
+  display: block;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .share-page .profile {
+    width: 100%;
+  }
+}
+
+@media print, screen and (min-width: 40em) {
+  .share-page .profile {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+  }
 }
 
 .share-page .profile .display-profile {
@@ -21748,6 +21766,22 @@ body:lang(en) .language li.en a {
 
 .share-image {
   padding-right: 1.25rem;
+}
+
+.share-space {
+  margin: 0.625rem 0;
+  border-bottom: 1px dashed #009057;
+  padding-bottom: 0.625rem;
+}
+
+.share-grid {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .admin .topic {

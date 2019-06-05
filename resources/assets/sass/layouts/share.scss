@@ -1,5 +1,9 @@
 .share {
   &-page {
+    .articles{
+        margin-bottom: $space-box*2;
+    }
+
     .topic {
       background-color: $color-blue;
       color: $white;
@@ -39,7 +43,15 @@
 
     .profile {
       color: $color-blue;
-      display: inline-block;
+      display: block;
+
+      @include breakpoint(small only){
+          width: 100%;
+      }
+
+      @include breakpoint(medium) {
+        flex-grow: 1;
+      }
 
       .display-profile {
         display: inline-block;
@@ -68,7 +80,18 @@
     }
   }
 
-  &-image{
+  &-image {
     padding-right: $space-box;
+  }
+
+  &-space {
+    margin: $space-box/2 0;
+    border-bottom: 1px dashed $color-green;
+    padding-bottom: $space-box/2;
+  }
+
+  &-grid {
+    flex-direction: row;
+    align-items: center;
   }
 }
