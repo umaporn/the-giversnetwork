@@ -19,6 +19,7 @@ class CreateInterestInTable extends Migration
             $table->increments( 'id' );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );
+            $table->string( 'image_path', 255 )->nullable();
             $table->timestamp( 'updated_at' );
             $table->timestamp( 'created_at' )->useCurrent();
         } );

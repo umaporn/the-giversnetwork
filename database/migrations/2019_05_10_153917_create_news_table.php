@@ -19,6 +19,8 @@ class CreateNewsTable extends Migration
             $table->increments( 'id' );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );
+            $table->string( 'description_thai', 255 );
+            $table->string( 'description_english', 255 );
             $table->text( 'content_thai' );
             $table->text( 'content_english' );
             $table->integer( 'view' );

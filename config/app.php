@@ -1,8 +1,5 @@
 <?php
 
-use Intervention\Image\Facades\Image;
-use Intervention\Image\ImageServiceProvider;
-
 return [
 
     /*

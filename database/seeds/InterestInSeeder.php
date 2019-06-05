@@ -16,6 +16,10 @@ class InterestInSeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\InterestIn::class, 10 )->create();
+        //factory( \App\Models\InterestIn::class, 10 )->create();
+        $interestIn = config('interest_in');
+        foreach( $interestIn as $item ){
+            DB::table( 'interest_in' )->insert( $item );
+        }
     }
 }

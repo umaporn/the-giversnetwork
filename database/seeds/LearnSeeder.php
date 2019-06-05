@@ -2,6 +2,7 @@
 /**
  * Learn Seeder
  */
+
 use Illuminate\Database\Seeder;
 
 /**
@@ -16,6 +17,10 @@ class LearnSeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\Learn::class, 30 )->create();
+        //factory( \App\Models\Learn::class, 30 )->create();
+        $learn = config('learn');
+        foreach( $learn as $item ){
+            DB::table( 'learn' )->insert( $item );
+        }
     }
 }

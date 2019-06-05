@@ -21,6 +21,8 @@ class CreateLearnTable extends Migration
             $table->foreign( 'fk_category_id' )->references( 'id' )->on( 'learn_category' );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );
+            $table->string( 'description_thai', 255 );
+            $table->string( 'description_english', 255 );
             $table->text( 'content_thai' );
             $table->text( 'content_english' );
             $table->string( 'file_path', 255 );

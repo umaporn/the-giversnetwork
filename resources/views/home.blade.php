@@ -8,7 +8,7 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         @foreach(config('images.home_banner') as $home_banner)
-        <div class="swiper-slide"><img src="{{ asset($home_banner) }}" /></div>
+        <div class="swiper-slide"><img src="{{ asset($home_banner) }}" alt=""/></div>
         @endforeach
     </div>
     <!-- Add Arrows -->

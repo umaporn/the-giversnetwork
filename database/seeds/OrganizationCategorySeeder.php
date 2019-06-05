@@ -2,6 +2,7 @@
 /**
  * Organization Category Seeder
  */
+
 use Illuminate\Database\Seeder;
 
 /**
@@ -16,6 +17,10 @@ class OrganizationCategorySeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\OrganizationCategory::class, 10 )->create();
+        //factory( \App\Models\OrganizationCategory::class, 10 )->create();
+        $organizationCategory = config( 'organization_category' );
+        foreach( $organizationCategory as $item ){
+            DB::table( 'organization_category' )->insert( $item );
+        }
     }
 }

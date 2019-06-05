@@ -88,7 +88,7 @@
                     <article class="cell small-12 medium-4">
                         <figure>
                             <a href="{{ route('learn.detail', ['learn'=>$other_item['id']]) }}">
-                                <img src="{{ $other_item['file_path'] }}" alt="{{ $other_item['title'] }}">
+                                <img src="{{ $other_item['image_path'] }}" alt="{{ $other_item['title'] }}">
                             </a>
                         </figure>
                         <a href="{{ route('learn.detail', ['learn'=>$other_item['id']]) }}">

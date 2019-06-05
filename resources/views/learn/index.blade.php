@@ -34,7 +34,7 @@
                     <article class="cell small-12 medium-4">
                         <figure>
                             <a href="{{ route('learn.detail', ['id' => $most_popular_item['id']]) }}">
-                                <img src="{{ $most_popular_item['file_path'] ? $most_popular_item['file_path'] : config('images.placeholder.700x400') }}" alt="{{ $most_popular_item['title'] }}">
+                                <img src="{{ $most_popular_item['image_path'] ? $most_popular_item['image_path'] : config('images.placeholder.700x400') }}" alt="{{ $most_popular_item['title'] }}">
                             </a>
                         </figure>
                         <a href="{{ route('learn.detail', ['id' => $most_popular_item['id']]) }}">
