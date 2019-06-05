@@ -7,7 +7,6 @@ namespace App\Models;
 
 use App\Libraries\Search;
 use App\Libraries\Utility;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -57,6 +56,7 @@ class Learn extends Model
     {
         foreach( $homeLearnList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
+            $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
             $list->setAttribute( 'content', Utility::getLanguageFields( 'content', $list ) );
             $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->learnCategory ) );
             $list->setAttribute( 'image_path', Utility::getImages( $list['file_path'] ) );

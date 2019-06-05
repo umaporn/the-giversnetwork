@@ -7,11 +7,9 @@ namespace App\Models;
 
 use App\Libraries\Search;
 use App\Libraries\Utility;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Storage;
 
 class Challenge extends Model

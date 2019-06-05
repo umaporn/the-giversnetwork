@@ -12,7 +12,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
-use App\Models\UserInterestIn;
 use Illuminate\Support\Facades\DB;
 
 class Users extends Authenticatable
