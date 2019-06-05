@@ -21827,6 +21827,23 @@ body:lang(en) .language li.en a {
   padding: 0.3125rem;
 }
 
+.events.detail {
+  background: #FEFEFE;
+}
+
+.events.detail .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.events.detail .topic:after {
+  border: none;
+}
+
+.events.detail .topic h2 {
+  display: inline-block;
+}
+
 .events.detail.padding-content {
   padding-top: 0;
 }
@@ -21855,9 +21872,33 @@ body:lang(en) .language li.en a {
 .events.detail article time {
   color: #7F8685;
   vertical-align: middle;
+  margin-right: 1.25rem;
 }
 
 .events.detail article time i {
+  margin-right: 0.3125rem;
+}
+
+.events.detail article .join-event i,
+.events.detail article .join-event span,
+.events.detail article .join-event a {
+  color: #154064;
+}
+
+.events.detail article .join-event span,
+.events.detail article .join-event a {
+  font-family: "db_airystd_bd";
+  font-size: 1.25rem;
+}
+
+.events.detail article .location {
+  color: #7F8685;
+  vertical-align: middle;
+  display: inline-block;
+  margin-right: 1.25rem;
+}
+
+.events.detail article .location i {
   margin-right: 0.3125rem;
 }
 

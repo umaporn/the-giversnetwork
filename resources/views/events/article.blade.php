@@ -6,11 +6,10 @@
 
 @section('content')
 
-<section class="learn detail">
+<section class="events detail">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
-            <i class="fas fa-book"></i>
-            <h2 class="topic-light">Learn</h2>
+            <h2 class="topic-light">Event</h2>
         </div>
     </div>
     <section class="grid-x padding-content">
@@ -18,7 +17,7 @@
             <nav aria-label="You are here:" role="navigation">
                 <ul class="breadcrumbs">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Learn</a></li>
+                    <li><a href="#">Events</a></li>
                     <li>
                         <span class="show-for-sr">Current: </span> ArticleXXX
                     </li>
@@ -34,7 +33,15 @@
                     <div class="cell small-12">
                         <h2>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
                         </h2>
-                        <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>29 April 2019</time>
+                        <time datetime="2019-04-29 12:00"><i class="far fa-calendar-alt"></i>18 May 2019 : 12.00
+                            -16.00</time>
+                        <div class=location><i class="fas fa-map-marker-alt"></i>Whizdom club,101 the third place : near BTS punnawithi</div>
+                        <div class="profile">
+                            <figure class="display-profile">
+                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                            </figure>
+                            <span>By Host name or speaker name</span>
+                        </div>
                     </div>
                     <div class="cell small-12 text-center">
                         <figure>
@@ -72,13 +79,17 @@
                             congue est, eget pulvinar metus lobortis eu.
                         </p>
                     </div>
-                    <div class="social cell small-12 text-right">
-                            <label>Share To</label>
-                            <ul class="no-bullet float-right">
-                                <li><a href="#"><i class="fab fa-facebook-square fa-2x"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter-square fa-2x"></i></a></li>
-                            </ul>
-                        </div>
+                    <div class="cell small-12 medium-6 large-10 join-event">
+                        <i class="fas fa-link"></i><span> Join event at :</span><a
+                            href="#">www.eventpop.me/e/5662-genzmarketing</a>
+                    </div>
+                    <div class="social cell small-12 medium-6 large-2 text-right">
+                        <label>Share To</label>
+                        <ul class="no-bullet float-right">
+                            <li><a href="#"><i class="fab fa-facebook-square fa-2x"></i></a></li>
+                            <li><a href="#"><i class="fab fa-twitter-square fa-2x"></i></a></li>
+                        </ul>
+                    </div>
                 </div>
             </article>
         </div>
@@ -92,34 +103,52 @@
     <section class="most-popular padding-content">
         <div class="grid-x grid-margin-x">
             <div class="cell small-12">
-                <h2 class="cell auto topic-dark">OTHER ARTICLES</h2>
+                <h2 class="cell auto topic-dark">OTHER EVENTS</h2>
             </div>
             <article class="cell small-12 medium-4">
-                <figure>
-                    <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}">
+                <figure class="cover">
+                    <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
+                    <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
                 </figure>
                 <a href="#">
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                 </a>
-                <span class="category">Category Name</span>
+                <div class="profile">
+                    <figure class="display-profile">
+                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                    </figure>
+                    <span>By Host name or speaker name</span>
+                </div>
             </article>
             <article class="cell small-12 medium-4">
-                <figure>
-                    <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
+                <figure class="cover">
+                    <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
+                    <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
                 </figure>
                 <a href="#">
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                 </a>
-                <span class="category">Category Name</span>
+                <div class="profile">
+                    <figure class="display-profile">
+                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                    </figure>
+                    <span>By Host name or speaker name</span>
+                </div>
             </article>
             <article class="cell small-12 medium-4">
-                <figure>
-                    <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
+                <figure class="cover">
+                    <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
+                    <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
                 </figure>
                 <a href="#">
                     <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
                 </a>
-                <span class="category">Category Name</span>
+                <div class="profile">
+                    <figure class="display-profile">
+                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                    </figure>
+                    <span>By Host name or speaker name</span>
+                </div>
             </article>
 
         </div>
