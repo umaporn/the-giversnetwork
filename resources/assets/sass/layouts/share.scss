@@ -1,7 +1,7 @@
 .share {
   &-page {
-    .articles{
-        margin-bottom: $space-box*2;
+    .articles {
+      margin-bottom: $space-box * 2;
     }
 
     .topic {
@@ -45,8 +45,8 @@
       color: $color-blue;
       display: block;
 
-      @include breakpoint(small only){
-          width: 100%;
+      @include breakpoint(small only) {
+        width: 100%;
       }
 
       @include breakpoint(medium) {
@@ -76,6 +76,17 @@
 
       span {
         margin-right: rem-calc(10);
+      }
+    }
+
+    .space {
+      &-article {
+        article {
+          margin-bottom: $space-box/2;
+        }
+        p {
+          color: $color-blue;
+        }
       }
     }
   }

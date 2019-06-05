@@ -23,6 +23,15 @@ class ShareController extends Controller
         return view( 'share.index' );
     }
      /**
+     * Display challenge page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge page
+     */
+    public function challenge()
+    {
+        return view( 'share.challenge' );
+    }
+     /**
      * Display article page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page

@@ -21764,6 +21764,14 @@ body:lang(en) .language li.en a {
   margin-right: 0.625rem;
 }
 
+.share-page .space-article article {
+  margin-bottom: 0.625rem;
+}
+
+.share-page .space-article p {
+  color: #154064;
+}
+
 .share-image {
   padding-right: 1.25rem;
 }

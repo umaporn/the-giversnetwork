@@ -18,6 +18,7 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'share', ], function(){
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
+        Route::get( 'challenge', 'ShareController@challenge' )->name( 'share.challenge' );
         Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
     } );
 
