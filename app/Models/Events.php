@@ -1,6 +1,6 @@
 <?php
 /**
- * Event Model
+ * Events Model
  */
 
 namespace App\Models;
@@ -67,5 +67,60 @@ class Events extends Model
         }
 
         return $homeEventsList;
+    }
+
+    /**
+     * Get up coming events.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator Up coming events list
+     */
+    public function getUpComingEvents( Request $request )
+    {
+        $builder = $this->where( [ 'status' => 'public', 'upcoming_status' => 'yes' ] )
+                        ->orderBy( 'start_date', 'desc' );
+
+        $data = Search::search( $builder, 'events', $request, [], '3' );
+
+        return $this->transformHomeEventsContent( $data );
+    }
+
+    /**
+     * Get all list of events.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator All events list
+     */
+    public function getAllListEvents( Request $request )
+    {
+        $builder = $this->where( [ 'status' => 'public' ] )->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'events', $request );
+
+        return $this->transformHomeEventsContent( $data );
+    }
+
+    /**
+     * Get events detail information.
+     *
+     * @param Events $events Events model
+     *
+     * @return Events events detail
+     */
+    public function getEventsDetail( Events $events )
+    {
+        $events = $this->where( [ 'id' => $events->id ] )->first();
+
+        if( $events ){
+            $events->setAttribute( 'title', Utility::getLanguageFields( 'title', $events ) );
+            $events->setAttribute( 'description', Utility::getLanguageFields( 'description', $events ) );
+            $events->setAttribute( 'location', Utility::getLanguageFields( 'location', $events ) );
+            $events->setAttribute( 'host', Utility::getLanguageFields( 'host', $events ) );
+            $events->setAttribute( 'image_path', Utility::getImages( $events['image_path'] ) );
+        }
+
+        return $events;
     }
 }

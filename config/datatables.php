@@ -31,14 +31,21 @@ return [
         'searchFields'   => [ 'titles' ],
         'fulltextSearch' => true,
     ],
-    'users' => [
+    'users'   => [
         'sortby'         => 'email',
         'searchFields'   => [ 'email' ],
         'fulltextSearch' => false,
     ],
-    'learn' =>  [
-        'limit'          => 10,
-        'limits'         => [ 10, 25, 50, 100 ],
+    'learn'   => [
+        'limit'          => 5,
+        'limits'         => [ 5, 10, 15, 20 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
+        'fulltextSearch' => false,
+    ],
+    'events'  => [
+        'limit'          => 5,
+        'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,

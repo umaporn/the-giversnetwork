@@ -6,6 +6,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Events;
+use App\Models\News;
 use Illuminate\Http\Request;
 
 /**
@@ -14,14 +15,45 @@ use Illuminate\Http\Request;
  */
 class EventsController extends Controller
 {
+
+    /** @var Events events model instance */
+    private $eventsModel;
+
+    /** @var News News model instance */
+    private $newsModel;
+
+    /**
+     * EventsController constructor.
+     *
+     * @param Events $events Events model
+     * @param News   $news   News model
+     */
+    public function __construct( Events $events, News $news )
+    {
+        $this->eventsModel = $events;
+        $this->newsModel   = $news;
+    }
+
     /**
      * Display events page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Events page
+     * @param Request $request Request Object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Learn page
      */
-    public function index()
+    public function index( Request $request )
     {
-        return view( 'events.index' );
+        $data['upComing'] = $this->eventsModel->getUpComingEvents( $request );
+        $data['allList']  = $this->eventsModel->getAllListEvents( $request );
+        $data['news']     = $this->newsModel->getNewsForLearnPageSidebar( $request );
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'events.list', compact( 'data' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'events.index', compact( 'data' ) );
     }
 
     /**
@@ -29,8 +61,11 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Events detail page
      */
-    public function detail( Events $events )
+    public function detail( Events $events, Request $request )
     {
-        return view( 'events.detail' );
+        $data  = $this->eventsModel->getEventsDetail( $events );
+        $other = $this->eventsModel->getHomeEventsList( $request );
+
+        return view( 'events.detail', compact( 'data', 'other' ) );
     }
 }
