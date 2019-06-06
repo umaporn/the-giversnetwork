@@ -80,8 +80,11 @@
 				&-flex {
 					@include breakpoint(small only) {
 						flex: 1;
-						min-width: 50%;
-					}
+						min-width: 50%; 
+					}	
+					@media (min-width: 500px) and (max-width: 630px) { 
+						margin-right: $space-box/4;
+					 }	
 				}
 
 				&-fill {

@@ -19347,6 +19347,12 @@ readers do not read off random characters that represent icons */
   }
 }
 
+@media (min-width: 500px) and (max-width: 630px) {
+  .form-file-style .form-flex {
+    margin-right: 0.3125rem;
+  }
+}
+
 .form-file-style .form-fill {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
@@ -22149,6 +22155,12 @@ body:lang(en) .language li.en a {
 
 .share-share ul li a:hover {
   color: #194d79;
+}
+
+@media screen and (max-width: 63.99875em) {
+  .share.create .btn-green {
+    margin-top: 1.25rem;
+  }
 }
 
 .grid-head {

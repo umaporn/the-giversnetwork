@@ -5,7 +5,7 @@
 @section('page-icon', 'fi-home')
 
 @section('content')
-<section class="user">
+<section class="share create">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
             <h2 class="topic-light">Create Thread</h2>
@@ -15,6 +15,7 @@
         <div class="cell auto">
             <ul class="breadcrumbs">
                 <li><a href="#">Home</a></li>
+                <li><a href="#">Share</a></li>
                 <li>
                     <span class="show-for-sr">Current: </span> Create Thread
                 </li>
