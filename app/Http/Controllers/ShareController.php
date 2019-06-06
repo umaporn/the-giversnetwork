@@ -40,4 +40,9 @@ class ShareController extends Controller
     {
         return view( 'share.article' );
     }
+
+    public function createThread()
+    {
+        return view( 'share.create_thread' );
+    }
 }

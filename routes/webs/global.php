@@ -20,6 +20,7 @@ function globalRoutes()
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
         Route::get( 'challenge', 'ShareController@challenge' )->name( 'share.challenge' );
         Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
+        Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
     } );
 
     Route::group( [ 'prefix' => 'admin' ], function(){

@@ -58,6 +58,13 @@
 
 		&upload {
 			visibility: hidden;
+			&:focus{
+				outline: none;
+			}
+		}
+
+		&-add{
+			margin-bottom: $space-box/2;
 		}
 
 		&-style {

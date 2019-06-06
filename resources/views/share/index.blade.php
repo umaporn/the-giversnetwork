@@ -97,10 +97,12 @@
                             </a>
                             <div class="cell grid-x share-grid">
                                 <div class="profile">
-                                    <figure class="display-profile">
-                                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                                    </figure>
-                                    <span>username</span>
+                                    <a href="{{ route('users.myProfile') }}" target="_blank">
+                                        <figure class="display-profile">
+                                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                                        </figure>
+                                        <span>username</span>
+                                    </a>
                                 </div>
                                 <div class="like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
                                 </div>
@@ -122,10 +124,12 @@
                             </a>
                             <div class="cell grid-x share-grid">
                                 <div class="profile">
-                                    <figure class="display-profile">
-                                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                                    </figure>
-                                    <span>username</span>
+                                    <a href="{{ route('users.myProfile') }}" target="_blank">
+                                        <figure class="display-profile">
+                                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                                        </figure>
+                                        <span>username</span>
+                                    </a>
                                 </div>
                                 <div class="like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
                                 </div>
@@ -147,10 +151,12 @@
                             </a>
                             <div class="cell grid-x share-grid">
                                 <div class="profile">
-                                    <figure class="display-profile">
-                                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                                    </figure>
-                                    <span>username</span>
+                                    <a href="{{ route('users.myProfile') }}" target="_blank">
+                                        <figure class="display-profile">
+                                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                                        </figure>
+                                        <span>username</span>
+                                    </a>
                                 </div>
                                 <div class="like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
                                 </div>
