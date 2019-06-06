@@ -26,6 +26,12 @@ function globalRoutes()
         Route::get( 'article', 'EventsController@article' )->name( 'events.article' );
     } );
 
+    Route::group( [ 'prefix' => 'give', ], function(){
+        Route::get( '', 'GiveController@index' )->name( 'give.index' );
+        Route::get( 'article', 'GiveController@article' )->name( 'give.article' );
+        Route::get( 'add-item', 'GiveController@addItem' )->name( 'give.addItem' );
+    } );
+
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
