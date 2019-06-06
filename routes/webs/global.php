@@ -31,7 +31,8 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'share', ], function(){
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
         Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
-    } );
+        Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
+	} );
 
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
@@ -54,13 +55,6 @@ function globalRoutes()
         Route::get( '{news}', 'NewsController@detail' )->name( 'news.detail' );
     } );
 
-    /* Route::group( [ 'prefix' => 'user' ], function(){
-         Route::get( 'myprofile', 'UsersController@myProfile' )->name( 'users.myProfile' );
-         Route::get( 'editprofile', 'UsersController@editProfile' )->name( 'users.editProfile' );
-         Route::get( 'forgotpassword', 'UsersController@forgotPW' )->name( 'users.forgotPW' );
-         Route::get( 'forgotpassword_sent', 'UsersController@forgotPW_sent' )->name( 'users.forgotPW_sent' );
-     } );*/
-
     Route::group( [ 'prefix' => 'organization', ], function(){
         Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
         Route::get( '{organization}', 'OrganizationController@detail' )->name( 'organization.detail' );
@@ -68,7 +62,6 @@ function globalRoutes()
 
     Route::middleware( 'guest' )->group( function(){
         // Authentication
-        //Route::get( 'login', 'Auth\LoginController@showLoginForm' )->name( 'login' );
         Route::post( 'login', 'Auth\LoginController@login' )->name( 'submitLogin' );
 
         // Registration

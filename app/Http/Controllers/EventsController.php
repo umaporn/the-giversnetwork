@@ -8,6 +8,10 @@ namespace App\Http\Controllers;
 use App\Models\Events;
 use Illuminate\Http\Request;
 
+/**
+ * Events Page Controller
+ * @package App\Http\Controllers
+ */
 class EventsController extends Controller
 {
     /**
@@ -17,7 +21,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view( 'event.index' );
+        return view( 'events.index' );
     }
 
     /**
@@ -27,6 +31,6 @@ class EventsController extends Controller
      */
     public function detail( Events $events )
     {
-        //return view( 'events.detail' );
+        return view( 'events.detail' );
     }
 }
