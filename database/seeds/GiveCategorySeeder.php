@@ -15,6 +15,10 @@ class GiveCategorySeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\GiveCategory::class )->times( 10 )->create();
+        //factory( \App\Models\GiveCategory::class )->times( 10 )->create();
+        $giveCategory = config( 'give_category' );
+        foreach( $giveCategory as $item ){
+            DB::table( 'give_category' )->insert( $item );
+        }
     }
 }

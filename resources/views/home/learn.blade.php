@@ -23,7 +23,7 @@
                 <a href="{{ route('learn.detail', ['learn' => $learn_item['id']]) }}">
                     <h3>{{ $learn_item['title'] }}</h3>
                 </a>
-                <span class="category">{{ $learn_item['category_title'] }}</span>
+                {{--<span class="category">{{ $learn_item['category_title'] }}</span>--}}
             </article>
         @endforeach
     </div>

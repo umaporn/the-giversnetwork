@@ -9,7 +9,7 @@ use Faker\Generator as Faker;
 $factory->define( \App\Models\Give::class, function( Faker $faker ){
     return [
         'fk_user_id'          => $faker->numberBetween( 1, 2 ),
-        'fk_category_id'      => $faker->numberBetween( 1, 10 ),
+        'fk_category_id'      => $faker->numberBetween( 1, 9 ),
         'type'                => $faker->randomElement( [ 'give', 'receive' ] ),
         'title_thai'          => $faker->text( 100 ),
         'title_english'       => $faker->text( 100 ),
