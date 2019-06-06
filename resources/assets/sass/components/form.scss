@@ -50,21 +50,15 @@
 	&-file {
 		position: relative;
 		display: block;
-		cursor: pointer;
 
 		@include breakpoint(small only) {
 			margin-bottom: $space-box * 2;
 		}
 
 		&upload {
-			visibility: hidden;
-			&:focus{
-				outline: none;
-			}
-		}
-
-		&-add{
-			margin-bottom: $space-box/2;
+			opacity: 0;
+			margin: 0;
+			height: rem-calc(37);
 		}
 
 		&-style {
@@ -98,8 +92,6 @@
 			}
 
 			.btn-blue {
-				border-top-left-radius: 0;
-				border-bottom-left-radius: 0;
 				height: rem-calc(39);
 				display: flex;
 				align-items: center;
@@ -239,4 +231,8 @@
 			}
 		}
 	}
+}
+
+.MultiFile-remove{
+	font-size: rem-calc(20);
 }

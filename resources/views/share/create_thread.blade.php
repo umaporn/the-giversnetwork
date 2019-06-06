@@ -47,16 +47,15 @@
                     </div>
                     <div class="cell small-12 large-9">
                         <div class="form-file-image">
-                            <label class="form-file form-file-add">
-                                <input type="file" id="file" class="form-fileupload">
+                            <div class="form-file">
+                                <input type="file" class="form-fileupload" id="file-image-multi" multiple
+                                    data-maxfile="1024" />
                                 <div class="form-file-style">
-                                    <input type="text" class="form-flex form-fill" id="filename">
                                     <div class="form-flex btn-blue">Browse</div>
-                                    <p class="form-flex show-text">maximun upload file size: 1MB</p>
+                                    <p class="form-flex show-text">maximum upload : 10 and file size: 1MB/Image</p>
                                 </div>
-                            </label>
+                            </div>
                         </div>
-                        <a class="btn-blue btn-add" id="btn-click-add"><i class="fas fa-plus"></i>Add Image More</a>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -65,9 +64,8 @@
                     </div>
                     <div class="cell small-12 large-9">
                         <label class="form-file">
-                            <input type="file" id="file" class="form-fileupload">
+                            <input type="file" class="form-fileupload" id="file-pdf" data-maxfile="5120" />
                             <div class="form-file-style">
-                                <input type="text" class="form-flex form-fill" id="filename">
                                 <div class="form-flex btn-blue">Browse</div>
                                 <p class="form-flex show-text">PDF file only and maximun upload file size: 5MB</p>
                             </div>

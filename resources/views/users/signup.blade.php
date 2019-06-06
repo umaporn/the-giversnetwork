@@ -78,14 +78,14 @@
                         <label for="imageProfile" class="form-label">Image Profile</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <label class="form-file">
-                            <input type="file" id="file" class="form-fileupload">
+                        <div class="form-file">
+                            <input type="file" class="form-fileupload" id="file-image" multiple
+                                data-maxfile="1024" />
                             <div class="form-file-style">
-                                <input type="text" class="form-flex form-fill" id="filename">
                                 <div class="form-flex btn-blue">Browse</div>
                                 <p class="form-flex show-text">maximun upload file size: 1MB</p>
                             </div>
-                        </label>
+                        </div>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">

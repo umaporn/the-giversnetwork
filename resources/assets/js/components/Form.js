@@ -65,11 +65,19 @@ const Form = (function() {
         .toggleClass("form-checkbox-ed");
     });
 
-    $(".form-fileupload").change(function() {
-      //var text = $(this).val();
-      //alert(text);
-      //$(".form-fill").val(text);
-      $("#filename").val($(this).val());
+    $("#file-image").MultiFile({
+      max: 1,
+      accept: 'jpg|png|gif'
+    });
+
+    $("#file-image-multi").MultiFile({
+      max: 10,
+      accept: 'jpg|png|gif'
+    });
+
+    $("#file-pdf").MultiFile({
+      max: 1,
+      accept: 'pdf',
     });
 
     $(".toggle-password").click(function() {
@@ -80,19 +88,6 @@ const Form = (function() {
       } else {
         input.attr("type", "password");
       }
-    });
-
-    var divImage =
-      '<label class="form-file form-file-add">' +
-      '<input type="file" id="file" class="form-fileupload">' +
-      '<div class="form-file-style">' +
-      '<input type="text" class="form-flex form-fill" id="filename">' +
-      '<div class="form-flex btn-blue">Browse</div>' +
-      '<p class="form-flex show-text">maximun upload file size: 1MB</p>' +
-      "</div>" +
-      "</label>";
-    $("#btn-click-add").click(function() {
-      $(".form-file-image").append(divImage);
     });
   }
 
