@@ -19300,7 +19300,7 @@ readers do not read off random characters that represent icons */
 
 @media screen and (max-width: 39.99875em) {
   .form-file {
-    margin-bottom: 2.5rem;
+    margin-bottom: 0.625rem;
   }
 }
 
@@ -19492,6 +19492,12 @@ readers do not read off random characters that represent icons */
 
 .MultiFile-remove {
   font-size: 1.25rem;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .MultiFile-list {
+    margin-top: 1.875rem;
+  }
 }
 
 #spinner,

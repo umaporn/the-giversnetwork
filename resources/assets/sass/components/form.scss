@@ -52,7 +52,7 @@
 		display: block;
 
 		@include breakpoint(small only) {
-			margin-bottom: $space-box * 2;
+			margin-bottom: $space-box/2;
 		}
 
 		&upload {
@@ -233,6 +233,14 @@
 	}
 }
 
-.MultiFile-remove{
-	font-size: rem-calc(20);
+.MultiFile{
+	&-remove{
+		font-size: rem-calc(20);
+	}
+
+	&-list{
+		@include breakpoint(small only){
+			margin-top: rem-calc(30);
+		}
+	}
 }
