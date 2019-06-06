@@ -23,6 +23,11 @@ function globalRoutes()
         Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
     } );
 
+    Route::group( [ 'prefix' => 'events', ], function(){
+        Route::get( '', 'EventsController@index' )->name( 'events.index' );
+        Route::get( 'article', 'EventsController@article' )->name( 'events.article' );
+    } );
+
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
