@@ -29,7 +29,7 @@ return [
             'menuText'  => 'learn.page_link.index',
         ],
         [
-            'routeName' => '#',
+            'routeName' => 'share.index',
             'menuText'  => 'share.page_link.index',
         ],
         [
