@@ -2,7 +2,6 @@
 
 @section('page-title', __('share-article.page_title.index'))
 @section('page-description', __('share-articl.page_description.index'))
-@section('page-icon', 'fi-home')
 
 @section('content')
 

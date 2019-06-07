@@ -50,4 +50,11 @@ return [
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
     ],
+    'share'   => [
+        'limit'          => 5,
+        'limits'         => [ 5, 10, 15, 20 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
+        'fulltextSearch' => false,
+    ],
 ];

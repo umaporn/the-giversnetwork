@@ -19,10 +19,14 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'share', ], function(){
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
-        Route::get( 'challenge', 'ShareController@challenge' )->name( 'share.challenge' );
-        Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
+        Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
         Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
-	} );
+    } );
+
+    Route::group( [ 'prefix' => 'challenge' ], function(){
+        Route::get( '', 'ShareController@challenge' )->name( 'challenge.index' );
+        Route::get( '{challenge}', 'ShareController@challengeDetail' )->name( 'challenge.detail' );
+    } );
 
     Route::group( [ 'prefix' => 'give', ], function(){
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
@@ -84,6 +88,7 @@ function globalRoutes()
                 'except' => [ 'show', 'update' ],
                 'names'  => addPrefixResourceRouteName( 'admin.user' ),
             ] );
+
         } );
     } );
 

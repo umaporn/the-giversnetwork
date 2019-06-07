@@ -55,28 +55,6 @@ const Form = (function(){
 			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
 		} );
 
-		$( '.checkbox-inter' ).click( function(){
-
-			var interestID    = $( this ).data( 'value' ),
-			    interestTitle = $( this ).data( 'title' );
-
-			var stringInterested = '<li class="item-' + interestID + '">' + interestTitle + '</li>' +
-			                       '<input type="hidden" ' +
-			                       'name="fk_interest_in_id[]" ' +
-			                       'id="fk_interest_in_id" ' +
-			                       'class="input-' + interestID + '" ' +
-			                       'value="' + interestID + '">';
-
-			if( !$( this ).parent().hasClass( 'form-checkbox-ed' ) ){
-				$( '#interest-list' ).append( stringInterested );
-			} else {
-				$( 'li' ).remove( '.item-' + interestID );
-				$( 'input' ).remove( '.input-' + interestID );
-			}
-
-			$( this ).parent().toggleClass( 'form-checkbox-ed' );
-		} );
-
 		$( '#file-image' ).MultiFile( {
 			                              max:    1,
 			                              accept: 'jpg|png|gif',
@@ -91,18 +69,6 @@ const Form = (function(){
 			                            max:    1,
 			                            accept: 'pdf',
 		                            } );
-
-		$( '.toggle-password' ).click( function(){
-
-			$( this ).text( $( this ).text() === 'show' ? 'hide' : 'show' );
-			var input = $( $( this ).attr( 'toggle' ) );
-			if( input.attr( 'type' ) === 'password' ){
-				input.attr( 'type', 'text' );
-			} else {
-				input.attr( 'type', 'password' );
-			}
-
-		} );
 
 		$( 'input[type=file]' ).change( function(){
 			$( '#filename' ).val( $( this ).val() );

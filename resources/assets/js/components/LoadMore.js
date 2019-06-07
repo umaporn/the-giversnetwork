@@ -23,12 +23,14 @@ const LoadMore = (function(){
 				        contentType: false,
 				        processData: false,
 				        success:     function( result ){
+
 					        if( url ){
 						        $( '#loadMore' ).remove();
 						        $( '#content-list-box' ).append( result.data );
 					        } else {
 						        $( '#loadMore' ).hide();
 					        }
+
 				        },
 			        } );
 		} );

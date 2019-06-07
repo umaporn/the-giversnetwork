@@ -81,7 +81,7 @@ class HomeController extends Controller
         $data['banner']       = $this->bannerModel->getHomeBannerList( $request );
         $data['news']         = $this->newsModel->getHomeNewsList( $request );
         $data['share']        = $this->shareModel->getHomeShareList( $request );
-        $data['challenge']    = $this->challengeModel->getHomeChallengeList( $request );
+        $data['challenge']    = $this->challengeModel->getChallengeList( $request );
         $data['learn']        = $this->learnModel->getHomeLearnList( $request );
         $data['events']       = $this->eventsModel->getHomeEventsList( $request );
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();

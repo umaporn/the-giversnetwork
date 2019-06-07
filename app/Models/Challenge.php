@@ -78,14 +78,14 @@ class Challenge extends Model
      *
      * @return LengthAwarePaginator A list of challenge for home page
      */
-    public function getHomeChallengeList( Request $request )
+    public function getChallengeList( Request $request, $limit = '3' )
     {
         $builder = $this->with( [ 'challengeImage' ] )
                         ->with( [ 'challengeComment' ] )
                         ->with( [ 'challengeLike' ] )
                         ->with( [ 'users' ] )->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'challenge', $request, [], '3' );
+        $data = Search::search( $builder, 'challenge', $request, [], $limit );
 
         return $this->transformHomeChallengeContent( $data );
     }
@@ -150,4 +150,5 @@ class Challenge extends Model
 
         return $imageStore;
     }
+
 }

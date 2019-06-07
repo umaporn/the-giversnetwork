@@ -22,5 +22,6 @@ return [
 
     'recent_share' => 'Recent Share',
     'challenge'    => 'Challenge',
+    'threads'       => 'Threads',
 
 ];

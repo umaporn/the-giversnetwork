@@ -2,7 +2,6 @@
 
 @section('page-title', __('events.page_title.index'))
 @section('page-description', __('events.page_description.index'))
-@section('page-icon', 'fi-home')
 
 @section('content')
 

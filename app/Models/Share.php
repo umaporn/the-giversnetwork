@@ -87,7 +87,7 @@ class Share extends Model
 
         $data  = Search::search( $builder, 'learn', $request, [], '6' );
 
-        return $this->transformHomeShareContent( $data );
+        return $this->transformShareContent( $data );
 
     }
 
@@ -98,7 +98,7 @@ class Share extends Model
      *
      * @return LengthAwarePaginator Home share list for display
      */
-    private function transformHomeShareContent( LengthAwarePaginator $homeShareList )
+    private function transformShareContent( LengthAwarePaginator $homeShareList )
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
@@ -149,5 +149,27 @@ class Share extends Model
         }
 
         return $imageStore;
+    }
+
+    /**
+     * Get share all list.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of share
+     */
+    public function getShareAllList( Request $request )
+    {
+        $builder = $this->with( [ 'shareImage' ] )
+                        ->with( [ 'shareComment' ] )
+                        ->with( [ 'shareLike' ] )
+                        ->with( [ 'users' ] )
+                        ->orderBy( 'id', 'desc' )
+                        ->where( 'status', 'public' );
+
+        $data = Search::search( $builder, 'share', $request );
+
+        return $this->transformShareContent( $data );
+
     }
 }

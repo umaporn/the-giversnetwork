@@ -29,4 +29,5 @@ $( document )
         GiveCategoryTab.initialize();
         LoadMore.initialize();
         Slide.initialize();
+	    InterestIn.initialize();
     } );

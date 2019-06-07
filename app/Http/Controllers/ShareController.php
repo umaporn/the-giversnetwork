@@ -5,18 +5,53 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use App\Models\Share;
+use App\Models\Challenge;
+use Illuminate\Http\Request;
 
 class ShareController extends Controller
 {
+    /** @var Share share model instance */
+    private $shareModel;
+
+    /** @var Challenge challenge model instance */
+    private $challengeModel;
+
+    /** @var News News model instance */
+    private $newsModel;
+
+    /**
+     * ShareController constructor.
+     *
+     * @param Share     $share     Share Model
+     * @param Challenge $challenge Challenge Model
+     */
+    public function __construct( Share $share, Challenge $challenge, News $news )
+    {
+        $this->shareModel     = $share;
+        $this->challengeModel = $challenge;
+        $this->newsModel      = $news;
+    }
+
     /**
      * Display share page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Share page
      */
-    public function index()
+    public function index( Request $request )
     {
-        return view( 'share.index' );
+        $data['challenge'] = $this->challengeModel->getChallengeList( $request );
+        $data['news']      = $this->newsModel->getNewsForLearnPageSidebar( $request );
+        $data['share']     = $this->shareModel->getShareAllList( $request );
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'share.list', compact( 'data' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'share.index', compact( 'data' ) );
     }
 
     /**
@@ -32,13 +67,13 @@ class ShareController extends Controller
     }
 
     /**
-     * Display article page.
+     * Display detail page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
      */
-    public function article()
+    public function detail()
     {
-        return view( 'share.article' );
+        return view( 'share.detail' );
     }
 
     public function createThread()

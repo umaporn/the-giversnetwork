@@ -1,6 +1,6 @@
 <div id="content-list-box">
 @foreach( $data['allList'] as $all_list_item )
-    <article class="grid-x grid-margin-x grid-margin-y ">
+    <article class="grid-x grid-margin-x grid-margin-y">
         <div class="cell small-12 medium-6">
             <figure>
                 <a href="{{ route('learn.detail', ['id' => $all_list_item['id']]) }}">
