@@ -33,12 +33,12 @@ class GiveController extends Controller
     }
 
     /**
-     * Display add-item page.
+     * Display createItem page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View AddItem page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View createItem page
      */
-    public function addItem()
+    public function create_item()
     {
-        return view( 'give.addItem' );
+        return view( 'give.createItem' );
     }
 }

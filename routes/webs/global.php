@@ -31,7 +31,7 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'give', ], function(){
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
         Route::get( 'article', 'GiveController@article' )->name( 'give.article' );
-        Route::get( 'add-item', 'GiveController@addItem' )->name( 'give.addItem' );
+        Route::get( 'add-item', 'GiveController@createItem' )->name( 'give.create_item' );
     } );
 
     Route::group( [ 'prefix' => 'admin' ], function(){
