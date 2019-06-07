@@ -119,6 +119,13 @@ class Learn extends Model
 
     }
 
+    /**
+     * Get learn detail information.
+     *
+     * @param Learn $learn Learn model
+     *
+     * @return Learn learn detail
+     */
     public function getLearnDetail( Learn $learn )
     {
         $learn = $this->where( [ 'id' => $learn->id ] )->first();

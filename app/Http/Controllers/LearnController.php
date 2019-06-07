@@ -25,6 +25,13 @@ class LearnController extends Controller
     /** @var News news model instance */
     private $newsModel;
 
+    /**
+     * LearnController constructor.
+     *
+     * @param Learn  $learn  Learn model
+     * @param Events $events Events model
+     * @param News   $news   News model
+     */
     public function __construct( Learn $learn, Events $events, News $news )
     {
         $this->learnModel  = $learn;
@@ -44,7 +51,7 @@ class LearnController extends Controller
         $data['mostPopular'] = $this->learnModel->getLearnMostPopular( $request );
         $data['allList']     = $this->learnModel->getLearnAllList( $request );
         $data['events']      = $this->eventsModel->getEventsForLearnPage( $request );
-        $data['news']        = $this->newsModel->getNewsForLearnPage( $request );
+        $data['news']        = $this->newsModel->getNewsForLearnPageSidebar( $request );
 
         if( $request->ajax() ){
             return response()->json( [
@@ -76,7 +83,7 @@ class LearnController extends Controller
      */
     public function detail( Learn $learn, Request $request )
     {
-        $data  = $this->learnModel->getLearnDetail( $learn );
+        $data  = $this->learnModel->getEventsDetail( $learn );
         $other = $this->learnModel->getHomeLearnList( $request );
 
         return view( 'learn.detail', compact( 'data', 'other' ) );
