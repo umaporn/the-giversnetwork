@@ -92,6 +92,8 @@ body {
 			//margin-left: $space-box * 2;
 			border: rem-calc(1) solid $color-blue;
 			border-radius: rem-calc(10);
+			display: flex;
+			flex-direction: row;
 
 			@include breakpoint(rem-calc(876) down) {
 				margin-left: 0;
@@ -164,6 +166,16 @@ body {
 			border-color: transparent;
 			width: auto;
 			box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
+
+			li{
+				&:first-child{
+					border-radius: 0;
+				}
+
+				&:last-child{
+					border-radius: 0;
+				}
+			}
 			
 			&-show{
 				padding: 0;

@@ -72,7 +72,7 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-				</ul> -->
+				</ul>  -->
 				<!-- after user login -->
 				<section class="user-profile-after float-left" data-toggle="user-menu">
 					<figure class="user-profile-image">
@@ -82,11 +82,11 @@
 					<div class="dropdown-pane user-menu" id="user-menu" data-dropdown data-hover="true" data-hover-pane="true" data-v-offset=15>
 						<ul class="user-menu-show">
 							<li><a href="#"><i class="fas fa-user-edit"></i> Edit My Profile</a></li>
-							<li><a href="#"><i class="fas fa-user-circle"></i>View My Profile</a></li>
+							<li><a href="#"><i class="fas fa-user-circle"></i> View My Profile</a></li>
 							<li><a href="#"><i class="fas fa-sign-out-alt"></i>  Log out</a></li>
 						</ul>
 					</div>
-				</section>
+				</section> 
 				<ul class="language float-right no-bullet">
 					@foreach( config('app.language_codes') as $languageCode )
 					<li class="{{$languageCode}}">
