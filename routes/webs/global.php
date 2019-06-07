@@ -19,14 +19,23 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'share', ], function(){
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
-        Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
+        //Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
+       // Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
+
+        Route::get( 'challenge', 'ShareController@challenge' )->name( 'share.challenge' );
         Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
+        Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
 	} );
 
     Route::group( [ 'prefix' => 'give', ], function(){
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
         Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
         Route::get( '{give}', 'GiveController@detail' )->name( 'give.detail' );
+    } );
+
+    Route::group( [ 'prefix' => 'events', ], function(){
+        Route::get( '', 'EventsController@index' )->name( 'events.index' );
+        Route::get( 'article', 'EventsController@article' )->name( 'events.article' );
     } );
 
     Route::group( [ 'prefix' => 'events', ], function(){

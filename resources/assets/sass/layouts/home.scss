@@ -13,7 +13,7 @@
 
 .swiper-pagination-fraction,
 .swiper-pagination-custom,
-.swiper-container-horizontal>.swiper-pagination-bullets {
+.swiper-container-horizontal > .swiper-pagination-bullets {
     bottom: 5%;
     left: auto;
     width: auto;
@@ -138,14 +138,14 @@
     .tabs {
         border-bottom: rem-calc(1) solid $color-blue;
 
-        &-title>a:focus,
-        &-title>a[aria-selected='true'] {
+        &-title > a:focus,
+        &-title > a[aria-selected='true'] {
             background-color: $white;
             outline: none;
         }
 
         &-title {
-            &>a {
+            & > a {
                 font-size: rem-calc(20);
                 color: $color-blue;
                 font-family: $text-bold;
@@ -172,7 +172,8 @@
             }
 
             &.is-active {
-                &>a {}
+                & > a {
+                }
             }
         }
 
@@ -215,7 +216,7 @@
         article {
             margin-bottom: $space-box;
 
-            &>.cell:nth-child(odd) {
+            & > .cell:nth-child(odd) {
                 padding-right: $space-box;
 
                 @include breakpoint(small only) {
@@ -310,11 +311,11 @@
             color: $color-green;
         }
 
-        &>.cell:nth-child(1) {
+        & > .cell:nth-child(1) {
             background-color: $color-gray;
         }
 
-        &>.cell:nth-child(2) {
+        & > .cell:nth-child(2) {
             background-color: $color-light-gray;
         }
 
@@ -348,6 +349,7 @@
                     color: $white;
                     background-color: $color-green;
                     position: relative;
+
                     &:after {
                         content: '';
                         position: absolute;
@@ -414,14 +416,13 @@
                     margin-bottom: 0;
                 }
 
-                .sub-title {}
+                .sub-title {
+                }
             }
 
 
         }
     }
-
-
 
 
 }

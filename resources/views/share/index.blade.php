@@ -1,4 +1,3 @@
-<?php
 @extends('layouts.app')
 
 @section('page-title', __('share.page_title.index'))
@@ -7,7 +6,7 @@
 
 @section('content')
 
-<section class="share-page all">
+<section class="share-page">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
             <i class="fas fa-shapes"></i>
@@ -85,7 +84,7 @@
                     </div>
                 </div>
                 <div class="grid-x">
-                    <article class="cell grid-x small-12">
+                    <article class="cell grid-x small-12 share-space">
                         <div class="cell small-3 medium-2">
                             <figure class="share-image">
                                 <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
@@ -96,22 +95,80 @@
                                 <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Suspendisse eget nibh arcu.</h4>
                             </a>
-                            <div class="cell grid-x align-self-bottom">
-                                <div class="cell auto profile">
-                                    <figure class="display-profile">
-                                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                                    </figure>
-                                    <span>username</span>
+                            <div class="cell grid-x share-grid">
+                                <div class="profile">
+                                    <a href="{{ route('user.getProfile') }}" target="_blank">
+                                        <figure class="display-profile">
+                                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                                        </figure>
+                                        <span>username</span>
+                                    </a>
                                 </div>
-                                <div class="cell shrink like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
+                                <div class="like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
                                 </div>
-                                <div class="cell shrink comment"><i class="far fa-comments"></i><span>500
+                                <div class="comment"><i class="far fa-comments"></i><span>500
+                                        comments</span></div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="cell grid-x small-12 share-space">
+                        <div class="cell small-3 medium-2">
+                            <figure class="share-image">
+                                <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
+                            </figure>
+                        </div>
+                        <div class="cell grid-x small-9 medium-10">
+                            <a href="#">
+                                <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Suspendisse eget nibh arcu.</h4>
+                            </a>
+                            <div class="cell grid-x share-grid">
+                                <div class="profile">
+                                    <a href="{{ route('user.getProfile') }}" target="_blank">
+                                        <figure class="display-profile">
+                                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                                        </figure>
+                                        <span>username</span>
+                                    </a>
+                                </div>
+                                <div class="like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
+                                </div>
+                                <div class="comment"><i class="far fa-comments"></i><span>500
+                                        comments</span></div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="cell grid-x small-12 share-space">
+                        <div class="cell small-3 medium-2">
+                            <figure class="share-image">
+                                <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
+                            </figure>
+                        </div>
+                        <div class="cell grid-x small-9 medium-10">
+                            <a href="#">
+                                <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                    Suspendisse eget nibh arcu.</h4>
+                            </a>
+                            <div class="cell grid-x share-grid">
+                                <div class="profile">
+                                    <a href="{{ route('user.getProfile') }}" target="_blank">
+                                        <figure class="display-profile">
+                                            <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                                        </figure>
+                                        <span>username</span>
+                                    </a>
+                                </div>
+                                <div class="like"><i class="far fa-thumbs-up"></i><span>415 likes</span>
+                                </div>
+                                <div class="comment"><i class="far fa-comments"></i><span>500
                                         comments</span></div>
                             </div>
                         </div>
                     </article>
                 </div>
-                <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
+                <div class="margin-top-1">
+                    <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
+                </div>
             </section>
         </div>
         <div class="cell small-12 medium-12 large-4">

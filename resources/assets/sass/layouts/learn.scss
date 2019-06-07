@@ -1,3 +1,4 @@
+/*----------------- Home - Learn ------------------*/
 .learn {
     &.all {
         .topic {
@@ -9,11 +10,13 @@
         article {
             margin-bottom: $space-box/2;
 
-            figure, h3 {
+            figure,
+            h3 {
                 margin-bottom: $space-box/2;
             }
 
-            h3, p {
+            h3,
+            p {
                 color: $color-blue;
             }
 
@@ -33,14 +36,12 @@
                 padding-bottom: 0;
             }
         }
-
         /*----------------- Home - Articles ------------------*/
         .articles {
             @include breakpoint(medium down) {
                 margin-bottom: $space-box * 2;
             }
         }
-
         /*----------------- Home - Events ------------------*/
 
         .events {
@@ -60,17 +61,20 @@
     }
 
     &.detail {
+        .topic {
+            &::after {
+                border-top-color: transparent;
+            }
+        }
         &.padding-content {
             padding-top: 0;
         }
-
         .article {
             &.padding-content {
                 padding-top: 0;
                 padding-bottom: 0;
             }
         }
-
         article {
             margin-bottom: $space-box/2;
 
@@ -103,7 +107,6 @@
                 line-height: rem-calc(36);
                 color: $color-blue;
             }
-
             ul {
                 li {
                     display: inline-block;
@@ -111,7 +114,6 @@
                     &:last-child {
                         margin-right: 0;
                     }
-
                     a {
                         color: $color-blue;
                         &:hover {

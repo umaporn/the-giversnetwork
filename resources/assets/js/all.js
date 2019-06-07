@@ -28,4 +28,5 @@ $( document )
         HeroBanner.initialize();
         GiveCategoryTab.initialize();
         LoadMore.initialize();
+        Slide.initialize();
     } );

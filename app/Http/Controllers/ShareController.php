@@ -21,11 +21,28 @@ class ShareController extends Controller
 
     /**
      * Display share detail page.
+     * /**
+     * Display challenge page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Share detail page
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge page
      */
-    public function detail( Share $share )
+    public function challenge()
     {
-        //return view( 'share.detail' );
+        return view( 'share.challenge' );
+    }
+
+    /**
+     * Display article page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
+     */
+    public function article()
+    {
+        return view( 'share.article' );
+    }
+
+    public function createThread()
+    {
+        return view( 'share.create_thread' );
     }
 }
