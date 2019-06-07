@@ -22157,6 +22157,10 @@ body:lang(en) .language li.en a {
   color: #194d79;
 }
 
+.share.create .topic::after {
+  border-top-color: transparent;
+}
+
 @media screen and (max-width: 63.99875em) {
   .share.create .btn-green {
     margin-top: 1.25rem;
