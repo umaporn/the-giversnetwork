@@ -17,6 +17,7 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
                'resources/assets/js/components/HeroBanner.js',
                'resources/assets/js/components/Confirmation.js',
                'resources/assets/js/components/Form.js',
+               'resources/assets/js/components/Slide.js',
                'resources/assets/js/components/Menu.js',
                'resources/assets/js/components/Search.js',
                'resources/assets/js/components/Translator.js',

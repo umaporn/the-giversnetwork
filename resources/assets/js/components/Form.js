@@ -65,20 +65,30 @@ const Form = (function() {
         .toggleClass("form-checkbox-ed");
     });
 
-    $('#file').change(function(){
-      $('#filename').val($(this).val());
-	});
-	
-	$(".toggle-password").click(function() {
+    $("#file-image").MultiFile({
+      max: 1,
+      accept: 'jpg|png|gif'
+    });
 
-		$(this).text($(this).text() == 'show' ? 'hide' : 'show');
-		var input = $($(this).attr("toggle"));
-		if (input.attr("type") == "password") {
-		  input.attr("type", "text");
-		} else {
-		  input.attr("type", "password");
-		}
-	  });
+    $("#file-image-multi").MultiFile({
+      max: 10,
+      accept: 'jpg|png|gif'
+    });
+
+    $("#file-pdf").MultiFile({
+      max: 1,
+      accept: 'pdf',
+    });
+
+    $(".toggle-password").click(function() {
+      $(this).text($(this).text() == "show" ? "hide" : "show");
+      var input = $($(this).attr("toggle"));
+      if (input.attr("type") == "password") {
+        input.attr("type", "text");
+      } else {
+        input.attr("type", "password");
+      }
+    });
   }
 
   return {

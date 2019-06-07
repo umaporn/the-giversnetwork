@@ -26,4 +26,5 @@ $( document )
         Confirmation.initialize();
         Form.initialize();
         HeroBanner.initialize();
+        Slide.initialize();
     } );
