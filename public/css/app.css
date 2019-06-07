@@ -22372,6 +22372,46 @@ body:lang(en) .language li.en a {
   color: #194d79;
 }
 
+.news.all .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.news.all .topic:after {
+  border: none;
+}
+
+.news.all .topic h2 {
+  display: inline-block;
+}
+
+.news.all article {
+  margin-bottom: 0.625rem;
+}
+
+.news.all article figure,
+.news.all article h3 {
+  margin-bottom: 0.625rem;
+}
+
+.news.all article h3,
+.news.all article p {
+  color: #154064;
+}
+
+.news.all article .category {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.news.all article .category i {
+  margin-right: 0.3125rem;
+}
+
+.news.all .events {
+  background-color: transparent;
+}
+
 .admin .topic {
   background-color: #154064;
   color: #FEFEFE;

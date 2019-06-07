@@ -1,0 +1,42 @@
+.news {
+  &.all {
+    .topic {
+      background-color: $color-blue;
+      color: $white;
+
+      &:after {
+        border: none;
+      }
+
+      h2 {
+        display: inline-block;
+      }
+    }
+
+    article {
+      margin-bottom: $space-box/2;
+
+      figure,
+      h3 {
+        margin-bottom: $space-box/2;
+      }
+
+      h3,
+      p {
+        color: $color-blue;
+      }
+
+      .category {
+        color: $color-dark-gray;
+        vertical-align: middle;
+
+        i {
+          margin-right: rem-calc(5);
+        }
+      }
+	}
+	.events{
+		background-color: transparent;
+	}
+  }
+}
