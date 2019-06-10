@@ -48,7 +48,7 @@ class Share extends Model
      */
     public function shareComment()
     {
-        return $this->HasMany( 'App\Models\ShareComment', 'fk_share_id' );
+        return $this->HasMany( 'App\Models\ShareComment', 'fk_share_id' )->where('status', 'public');
     }
 
     /**
@@ -83,7 +83,8 @@ class Share extends Model
         $builder = $this->with( [ 'shareImage' ] )
                         ->with( [ 'shareComment' ] )
                         ->with( [ 'shareLike' ] )
-                        ->with( [ 'users' ] )->where( 'status', 'public' );
+                        ->with( [ 'users' ] )
+                        ->where( 'status', 'public' );
 
         $data = Search::search( $builder, 'learn', $request, [], '6' );
 
@@ -166,6 +167,9 @@ class Share extends Model
                         ->with( [ 'shareLike' ] )
                         ->with( [ 'users' ] )
                         ->orderBy( 'id', 'desc' )
+                        ->whereHas( 'shareComment', function( $query ){
+                            $query->where( 'share_comment.status', 'public' );
+                        } )
                         ->where( 'status', 'public' );
 
         $data = Search::search( $builder, 'share', $request, [], $limit );
@@ -186,6 +190,9 @@ class Share extends Model
                       ->with( [ 'shareComment' ] )
                       ->with( [ 'shareLike' ] )
                       ->with( [ 'users' ] )
+                      ->whereHas( 'shareComment', function( $query ){
+                          $query->where( 'share_comment.status', 'public' );
+                      } )
                       ->where( [ 'id' => $share->id ] )->first();
 
         if( $share ){

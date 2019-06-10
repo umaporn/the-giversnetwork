@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\Share;
 use App\Models\ShareLike;
+use App\Models\ShareComment;
 use App\Models\Challenge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,18 +27,22 @@ class ShareController extends Controller
     /** @var ShareLike Share like model instance */
     private $shareLikeModel;
 
+    /** @var ShareComment Share comment model instance */
+    private $shareCommentModel;
+
     /**
      * ShareController constructor.
      *
      * @param Share     $share     Share Model
      * @param Challenge $challenge Challenge Model
      */
-    public function __construct( Share $share, Challenge $challenge, News $news, ShareLike $shareLike )
+    public function __construct( Share $share, Challenge $challenge, News $news, ShareLike $shareLike, ShareComment $shareComment )
     {
-        $this->shareModel     = $share;
-        $this->challengeModel = $challenge;
-        $this->newsModel      = $news;
-        $this->shareLikeModel = $shareLike;
+        $this->shareModel        = $share;
+        $this->challengeModel    = $challenge;
+        $this->newsModel         = $news;
+        $this->shareLikeModel    = $shareLike;
+        $this->shareCommentModel = $shareComment;
     }
 
     /**
@@ -67,11 +72,12 @@ class ShareController extends Controller
      */
     public function detail( Share $share, Request $request )
     {
-        $data   = $this->shareModel->getShareDetail( $share );
-        $other  = $this->shareModel->getShareAllList( $request, 6 );
-        $isLike = $this->shareLikeModel->getIsShareLike( $share );
+        $data    = $this->shareModel->getShareDetail( $share );
+        $other   = $this->shareModel->getShareAllList( $request, 6 );
+        $isLike  = $this->shareLikeModel->getIsShareLike( $share );
+        $comment = $this->shareCommentModel->getShareComment( $share );
 
-        return view( 'share.detail', compact( 'data', 'other', 'isLike' ) );
+        return view( 'share.detail', compact( 'data', 'other', 'isLike', 'comment' ) );
     }
 
     public function createThread()
