@@ -19,191 +19,84 @@
                 <ul class="breadcrumbs">
                     <li><a href="#">Home</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> Give
+                        <span class="show-for-sr">Current: </span> Give - Food non-perishable
                     </li>
                 </ul>
             </nav>
         </div>
     </section>
-    <section class="most-popular padding-content">
-        <div class="grid-x grid-margin-x grid-margin-y">
-            <div class="cell small-12">
-                <h2 class="cell auto topic-dark">UP COMING EVENTS</h2>
-            </div>
-            <article class="cell small-12 medium-4">
-                <figure class="cover">
-                    <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
-                    <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
-                </figure>
-                <a href="#">
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
-                </a>
-                <div class="profile">
-                    <figure class="display-profile">
-                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                    </figure>
-                    <span>By Host name or speaker name</span>
-                </div>
-            </article>
-            <article class="cell small-12 medium-4">
-                <figure class="cover">
-                    <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
-                    <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
-                </figure>
-                <a href="#">
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
-                </a>
-                <div class="profile">
-                    <figure class="display-profile">
-                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                    </figure>
-                    <span>By Host name or speaker name</span>
-                </div>
-            </article>
-            <article class="cell small-12 medium-4">
-                <figure class="cover">
-                    <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
-                    <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
-                </figure>
-                <a href="#">
-                    <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
-                </a>
-                <div class="profile">
-                    <figure class="display-profile">
-                        <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                    </figure>
-                    <span>By Host name or speaker name</span>
-                </div>
-            </article>
-
+    <section class="grid-x padding-content align-center">
+        <div class="cell small-10 medium-10 large-8 search">
+            <input type="text" class="search-text" placeholder="Search">
+            <button type="submit" class="search-button">
+                <i class="fa fa-search"></i>
+            </button>
         </div>
-        <div class="grid-x align-middle grid-margin-y">
-            <div class="cell auto grid-x align-middle">
-                <div class="cell line auto"></div>
-                <div class="cell shrink"><span class="outline-dot float-right"><span class="dot"></span></span></div>
-            </div>
+        <div class="cell small-6">
+            <label>CATEGORY
+                <select>
+                    <option value="food-non-perishable">Food non-perishable</option>
+                    <option value="xxx">xxx</option>
+                    <option value="xxx">xxx</option>
+                    <option value="xxx">xxx</option>
+                </select>
+            </label>
         </div>
+        <div class="cell small-6">
+            <a href="#" class="btn-blue">
+                <i class="fas fa-plus"></i> Give Item
+            </a>
+        </div>
+        <div class="cell small-12">
+            <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
+                <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Give</a></li>
+                <li class="tabs-title"><a href="#panel2c">Receive</a></li>
+            </ul>
+            <div class="tabs-content" data-tabs-content="collapsing-tabs">
+                <div class="tabs-panel is-active" id="panel1c">
+                    <div class="card">
+                        <div class="grid-container">
+                            <div class="grid-x grid-padding-x small-up-2 medium-up-3">
+                                <div class="cell">
+                                    <div class="card">
+                                        <img src="assets/img/generic/rectangle-1.jpg">
+                                        <div class="card-section">
+                                            <h4>This is a row of cards.</h4>
+                                            <p>This row of cards is embedded in an X-Y Block Grid.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card">
+                                        <img src="assets/img/generic/rectangle-1.jpg">
+                                        <div class="card-section">
+                                            <h4>This is a card.</h4>
+                                            <p>It has an easy to override visual style, and is appropriately subdued.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell">
+                                    <div class="card">
+                                        <img src="assets/img/generic/rectangle-1.jpg">
+                                        <div class="card-section">
+                                            <h4>This is a card.</h4>
+                                            <p>It has an easy to override visual style, and is appropriately subdued.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tabs-panel" id="panel2c">
+                        2
+                    </div>
+                </div>
+            </div>
 
     </section>
-    <div class="grid-x grid-margin-x padding-content">
-        <div class="cell small-12 medium-12 large-8">
-            <section class="articles">
-                <div class="grid-x align-middle">
-                    <h2 class="cell auto topic-dark">All Events</h2>
-                </div>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
 
-                        <div><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></div>
-                        <div class="profile">
-                            <figure class="display-profile">
-                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                            </figure>
-                            <span>By Host name or speaker name</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <div><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></div>
-                        <div class="profile">
-                            <figure class="display-profile">
-                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                            </figure>
-                            <span>By Host name or speaker name</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <div><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></div>
-                        <div class="profile">
-                            <figure class="display-profile">
-                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                            </figure>
-                            <span>By Host name or speaker name</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <div><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></div>
-                        <div class="profile">
-                            <figure class="display-profile">
-                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                            </figure>
-                            <span>By Host name or speaker name</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="grid-x grid-margin-x grid-margin-y ">
-                    <div class="cell small-12 medium-6">
-                        <figure>
-                            <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
-                        </figure>
-                    </div>
-                    <div class="cell small-12 medium-6">
-                        <a href="#">
-                            <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh
-                                arcu.</h3>
-                        </a>
-                        <div>
-                            <time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time>
-                        </div>
-                        <div class="profile">
-                            <figure class="display-profile">
-                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                            </figure>
-                            <span>By Host name or speaker name</span>
-                        </div>
-                    </div>
-                </article>
-
-                <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
-
-            </section>
-        </div>
-        <div class="cell small-12 medium-12 large-4">
-            @include('sidebar')
-        </div>
-
-    </div>
 
 </section>
 

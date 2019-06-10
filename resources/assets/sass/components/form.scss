@@ -247,3 +247,32 @@
 		}
 	}
 }
+  
+  .search {
+		position: relative;
+		display: flex;
+	  &-text{
+		width: 100%;
+		border: rem-calc(1) solid $color-green;
+		border-right: none;
+		padding: rem-calc(5);
+		height: rem-calc(36);
+		border-radius: rem-calc(5) 0 0 rem-calc(5);
+		outline: none;
+		color: $black;
+			&:focus{
+				color: $color-dark-gray;
+			  }
+		}
+		&-button {
+			width: rem-calc(40);
+			height: rem-calc(36);
+			border: rem-calc(1) solid $color-green;
+			background: $color-green;
+			text-align: center;
+			color: $white;
+			border-radius: 0 rem-calc(5) rem-calc(5) 0;
+			cursor: pointer;
+		  }
+	  }
+  
