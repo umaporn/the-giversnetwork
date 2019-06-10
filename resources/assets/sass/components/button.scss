@@ -73,5 +73,11 @@
     text-align: center;
     font-family: $text-bold;
     padding: $space-box/4;
+    transition:all .25s ease; 
+
+    &:hover {
+      color: $white ;
+      background: lighten($color-blue,3%);  
+    }
   }
 }

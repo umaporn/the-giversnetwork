@@ -251,11 +251,13 @@
   .search {
 		position: relative;
 		display: flex;
+
 	  &-text{
 		width: 100%;
 		border: rem-calc(1) solid $color-green;
 		border-right: none;
 		padding: rem-calc(5);
+		margin-bottom: $space-box;
 		height: rem-calc(36);
 		border-radius: rem-calc(5) 0 0 rem-calc(5);
 		outline: none;

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('page-title', __('events.page_title.index'))
-@section('page-description', __('events.page_description.index'))
+@section('page-title', __('give.page_title.index'))
+@section('page-description', __('give.page_description.index'))
 @section('page-icon', 'fi-home')
 
 @section('content')
@@ -25,72 +25,123 @@
             </nav>
         </div>
     </section>
-    <section class="grid-x padding-content align-center">
-        <div class="cell small-10 medium-10 large-8 search">
+    <section class="grid-x padding-content align-center padding-top-0">
+        <div class="cell small-12 large-8 search">
             <input type="text" class="search-text" placeholder="Search">
             <button type="submit" class="search-button">
                 <i class="fa fa-search"></i>
             </button>
         </div>
-        <div class="cell small-6">
-            <label>CATEGORY
-                <select>
-                    <option value="food-non-perishable">Food non-perishable</option>
-                    <option value="xxx">xxx</option>
-                    <option value="xxx">xxx</option>
-                    <option value="xxx">xxx</option>
-                </select>
-            </label>
-        </div>
-        <div class="cell small-6">
-            <a href="#" class="btn-blue">
-                <i class="fas fa-plus"></i> Give Item
-            </a>
+        <div class="cell small-12">
+            <div class="grid-x">
+                <div class="cell-block small-12 xlarge-3">
+                    <form class="give-cat">
+                        <div class="grid-x">
+                            <div class="cell shrink">
+                                <label for="category">CATEGORY</label>
+                            </div>
+                            <div class="cell auto">
+                                <select id="category">
+                                    <option value="food-non-perishable">Food non-perishable</option>
+                                    <option value="xxx">xxx</option>
+                                    <option value="xxx">xxx</option>
+                                    <option value="xxx">xxx</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
         <div class="cell small-12">
             <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
-                <li class="tabs-title is-active"><a href="#panel1c" aria-selected="true">Give</a></li>
-                <li class="tabs-title"><a href="#panel2c">Receive</a></li>
+                <li class="tabs-title is-active"><a href="#give" aria-selected="true">Give</a></li>
+                <li class="tabs-title"><a href="#giver">Receive</a></li>
             </ul>
             <div class="tabs-content" data-tabs-content="collapsing-tabs">
-                <div class="tabs-panel is-active" id="panel1c">
-                    <div class="card">
-                        <div class="grid-container">
-                            <div class="grid-x grid-padding-x small-up-2 medium-up-3">
-                                <div class="cell">
-                                    <div class="card">
-                                        <img src="assets/img/generic/rectangle-1.jpg">
-                                        <div class="card-section">
-                                            <h4>This is a row of cards.</h4>
-                                            <p>This row of cards is embedded in an X-Y Block Grid.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="card">
-                                        <img src="assets/img/generic/rectangle-1.jpg">
-                                        <div class="card-section">
-                                            <h4>This is a card.</h4>
-                                            <p>It has an easy to override visual style, and is appropriately subdued.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="cell">
-                                    <div class="card">
-                                        <img src="assets/img/generic/rectangle-1.jpg">
-                                        <div class="card-section">
-                                            <h4>This is a card.</h4>
-                                            <p>It has an easy to override visual style, and is appropriately subdued.
-                                            </p>
-                                        </div>
-                                    </div>
+                <div class="tabs-panel is-active" id="give">
+                    <div class="give-cat-btn">
+                        <a href="#" class="btn-blue">
+                            <i class="fas fa-plus"></i> Give Item
+                        </a>
+                    </div>
+                    <section class="grid-x grid-margin-x grid-margin-y">
+                        <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                            <div class="cards-style">
+                                <figure class="cards-image">
+                                    <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
+                                        class="img-cover">
+                                </figure>
+                                <div class="cards-detail">
+                                    <h2 class="cards-topic">Ramen Noodles</h2>
+                                    <p class="cards-amount">100 items</p>
+                                    <a href="#" class="btn-blue">Contact giver</a>
                                 </div>
                             </div>
-                        </div>
+                        </article>
+                        <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                            <div class="cards-style">
+                                <figure class="cards-image">
+                                    <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
+                                        class="img-cover">
+                                </figure>
+                                <div class="cards-detail">
+                                    <h2 class="cards-topic">ปลากระป๋อง เนื้อปลาแมคเคอเรลและซอสชั้นดี ตรา สามแม่ครัว ขนาด
+                                        200 กรัม</h2>
+                                    <p class="cards-amount">100 items</p>
+                                    <a href="#" class="btn-blue">Contact giver</a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                            <div class="cards-style">
+                                <figure class="cards-image">
+                                    <img src="{{ asset(config('images.home.share.home_share_01' )) }}"
+                                        class="img-cover">
+                                </figure>
+                                <div class="cards-detail">
+                                    <h2 class="cards-topic">Ramen Noodles</h2>
+                                    <p class="cards-amount">100 items</p>
+                                    <a href="#" class="btn-blue">Contact giver</a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                            <div class="cards-style">
+                                <figure class="cards-image">
+                                    <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
+                                        class="img-cover">
+                                </figure>
+                                <div class="cards-detail">
+                                    <h2 class="cards-topic">Ramen Noodles</h2>
+                                    <p class="cards-amount">100 items</p>
+                                    <a href="#" class="btn-blue">Contact giver</a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                            <div class="cards-style">
+                                <figure class="cards-image">
+                                    <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
+                                        class="img-cover">
+                                </figure>
+                                <div class="cards-detail">
+                                    <h2 class="cards-topic">Ramen Noodles</h2>
+                                    <p class="cards-amount">100 items</p>
+                                    <a href="#" class="btn-blue">Contact giver</a>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                    <div class="give-load">
+                        <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
                     </div>
-                    <div class="tabs-panel" id="panel2c">
-                        2
+                </div>
+                <div class="tabs-panel" id="giver">
+                    <div class="give-cat-btn">
+                        <a href="#" class="btn-blue">
+                            <i class="fas fa-plus"></i> Tell Giver
+                        </a>
                     </div>
                 </div>
             </div>
