@@ -26,6 +26,12 @@ function globalRoutes()
         } );
     } );
 
+    Route::group( [ 'prefix' => 'give', ], function(){
+        Route::get( '', 'GiveController@index' )->name( 'give.index' );
+        Route::get( 'article', 'GiveController@article' )->name( 'give.article' );
+        Route::get( 'create-item', 'GiveController@createItem' )->name( 'give.create_item' );
+    } );
+
     Route::group( [ 'prefix' => 'events', ], function(){
         Route::get( '', 'EventsController@index' )->name( 'events.index' );
         Route::get( 'article', 'EventsController@article' )->name( 'events.article' );
