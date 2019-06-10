@@ -7,6 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateShareTable extends Migration
 {
     const Table = 'share';
+
     /**
      * Run the migrations.
      *
@@ -14,7 +15,7 @@ class CreateShareTable extends Migration
      */
     public function up()
     {
-        Schema::create(self::Table, function (Blueprint $table) {
+        Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
             $table->unsignedInteger( 'fk_user_id' );
             $table->foreign( 'fk_user_id' )->references( 'id' )->on( 'users' );
@@ -24,12 +25,14 @@ class CreateShareTable extends Migration
             $table->string( 'title_english', 255 );
             $table->string( 'description_thai', 255 );
             $table->string( 'description_english', 255 );
-            $table->string( 'file_path', 255 );
+            $table->text( 'content_thai' );
+            $table->text( 'content_english' );
+            $table->string( 'file_path', 255 )->nullable();
             $table->integer( 'view' );
             $table->enum( 'status', [ 'public', 'draft' ] );
             $table->timestamp( 'updated_at' );
             $table->timestamp( 'created_at' )->useCurrent();
-        });
+        } );
     }
 
     /**
@@ -39,6 +42,6 @@ class CreateShareTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(self::Table);
+        Schema::dropIfExists( self::Table );
     }
 }

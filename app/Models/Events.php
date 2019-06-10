@@ -42,7 +42,7 @@ class Events extends Model
      *
      * @return LengthAwarePaginator A list of events for home page
      */
-    public function getEventsForLearnPage( Request $request )
+    public function getEventsForSidebar( Request $request )
     {
         $builder = $this->where( 'status', 'public' );
 

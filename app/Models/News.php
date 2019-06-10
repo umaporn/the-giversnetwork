@@ -59,7 +59,7 @@ class News extends Model
      *
      * @return LengthAwarePaginator A list of news articles for home page
      */
-    public function getNewsForLearnPageSidebar( Request $request )
+    public function getNewsForSidebar( Request $request )
     {
         $builder = $this->with( [ 'newsImage' ] )
                         ->orderBy( 'public_date', 'desc' )

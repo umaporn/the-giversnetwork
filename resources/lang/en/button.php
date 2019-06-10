@@ -23,4 +23,6 @@ return [
     'sign_up'       => 'Sign Up',
     'join_us'       => 'Join Us',
     'create_thread' => 'Create Thread',
+    'download'      => 'Download',
+    'login'         => 'Login',
 ];

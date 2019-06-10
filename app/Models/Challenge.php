@@ -91,11 +91,11 @@ class Challenge extends Model
     }
 
     /**
-     * Transform share information.
+     * Transform challenge information.
      *
-     * @param LengthAwarePaginator $homeShareList A list of share
+     * @param LengthAwarePaginator $homeChallengeList A list of challenge
      *
-     * @return LengthAwarePaginator Home share list for display
+     * @return LengthAwarePaginator Home challenge list for display
      */
     private function transformHomeChallengeContent( LengthAwarePaginator $homeChallengeList )
     {
@@ -119,9 +119,9 @@ class Challenge extends Model
     private function setPublicDateForFrontEnd( Challenge $challenge )
     {
         $challenge->setAttribute( 'public_date',
-                                  date( 'd', strtotime( $challenge->public_date ) ) . ' ' .
-                                  date( 'F', strtotime( $challenge->public_date ) ) . ' ' .
-                                  date( 'Y', strtotime( $challenge->public_date ) )
+                                  date( 'd', strtotime( $challenge->created_at ) ) . ' ' .
+                                  date( 'F', strtotime( $challenge->created_at ) ) . ' ' .
+                                  date( 'Y', strtotime( $challenge->created_at ) )
         );
     }
 
@@ -138,17 +138,84 @@ class Challenge extends Model
         $imageStore = [];
 
         foreach( $challenge->challengeImage as $image ){
-
             $attributes = $image->getAttributes();
             if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes[ $imageSize ] ) ){
                 $imageStore = $attributes[ $imageSize ];
             } else {
                 $imageStore = Storage::url( $attributes[ $imageSize ] );
             }
-
         }
 
         return $imageStore;
     }
 
+    /**
+     * Get challenge all list.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of challenge
+     */
+    public function getChallengeAllList( Request $request, string $limit = '' )
+    {
+        $builder = $this->with( [ 'challengeImage' ] )
+                        ->with( [ 'challengeComment' ] )
+                        ->with( [ 'challengeLike' ] )
+                        ->with( [ 'users' ] )
+                        ->orderBy( 'id', 'desc' )
+                        ->where( 'status', 'public' );
+
+        $data = Search::search( $builder, 'challenge', $request, [], $limit );
+
+        return $this->transformChallengeContent( $data );
+    }
+
+    /**
+     * Get challenge detail information.
+     *
+     * @param Challenge $challenge Challenge model
+     *
+     * @return Challenge challenge detail
+     */
+    public function getChallengeDetail( Challenge $challenge )
+    {
+        $challenge = $this->with( [ 'challengeImage' ] )
+                          ->with( [ 'challengeComment' ] )
+                          ->with( [ 'challengeLike' ] )
+                          ->with( [ 'users' ] )
+                          ->where( [ 'id' => $challenge->id ] )->first();
+
+        if( $challenge ){
+            $challenge->setAttribute( 'title', Utility::getLanguageFields( 'title', $challenge ) );
+            $challenge->setAttribute( 'content', Utility::getLanguageFields( 'content', $challenge ) );
+            $challenge->setAttribute( 'image_path', Utility::getImages( $challenge['file_path'] ) );
+            $challenge->setAttribute( 'username', $challenge->users['username'] );
+            $this->setPublicDateForFrontEnd( $challenge );
+
+            foreach( $challenge->challengeImage as $challenge_image ){
+                $challenge_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $challenge_image ) );
+            }
+        }
+
+        return $challenge;
+    }
+
+    /**
+     * Transform challenge information.
+     *
+     * @param LengthAwarePaginator $challengeList A list of challenge
+     *
+     * @return LengthAwarePaginator Challenge list for display
+     */
+    private function transformChallengeContent( LengthAwarePaginator $ChallengeList )
+    {
+        foreach( $ChallengeList as $list ){
+            $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
+            $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
+            $list->setAttribute( 'image_path', $this->getImages( $list ) );
+            $this->setPublicDateForFrontEnd( $list );
+        }
+
+        return $ChallengeList;
+    }
 }

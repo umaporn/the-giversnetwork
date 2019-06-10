@@ -45,7 +45,7 @@ class EventsController extends Controller
     {
         $data['upComing'] = $this->eventsModel->getUpComingEvents( $request );
         $data['allList']  = $this->eventsModel->getAllListEvents( $request );
-        $data['news']     = $this->newsModel->getNewsForLearnPageSidebar( $request );
+        $data['news']     = $this->newsModel->getNewsForSidebar( $request );
 
         if( $request->ajax() ){
             return response()->json( [

@@ -15,6 +15,6 @@ class ChallengeImageSeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\ChallengeImage::class )->times( 30 )->create();
+        factory( \App\Models\ChallengeImage::class )->times( 150 )->create();
     }
 }

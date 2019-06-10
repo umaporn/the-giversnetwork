@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
-@section('page-title', __('share.page_title.detail', [
-            'share_title' => $data['title'],
+@section('page-title', __('challenge.page_title.detail', [
+            'challenge_title' => $data['title'],
         ]))
-@section('page-description', __('share.page_description.detail', [
-            'share_title' => $data['title'],
+@section('page-description', __('challenge.page_description.detail', [
+            'challenge_title' => $data['title'],
         ]))
 
-@section('og-title', __('share.page_title.detail', [
-            'share_title' => $data['title'],
+@section('og-title', __('challenge.page_title.detail', [
+            'challenge_title' => $data['title'],
         ]))
 @section('og-url', url()->current())
 @section('og-description', $data['title'])
@@ -19,7 +19,7 @@
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
                 <i class="fas fa-shapes"></i>
-                <h2 class="topic-light">@lang('share.page_title.index')</h2>
+                <h2 class="topic-light">@lang('challenge.page_title.index')</h2>
             </div>
         </div>
         <section class="grid-x padding-content">
@@ -28,6 +28,7 @@
                     <ul class="breadcrumbs">
                         <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
                         <li><a href="{{ route('share.index') }}">@lang('share.page_title.index')</a></li>
+                        <li><a href="{{ route('challenge.index') }}">@lang('challenge.page_title.index')</a></li>
                         <li>
                             <span class="show-for-sr">Current: </span> {{ $data['title'] }}
                         </li>
@@ -60,11 +61,11 @@
                         <div class="cell small-12 text-center slide-thumb">
                             <div class="gallery-top">
                                 <div class="swiper-wrapper">
-                                    @foreach( $data->shareImage as $share_image )
+                                    @foreach( $data->challengeImage as $challenge_image )
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
-                                                    <img src="{{ $share_image['original'] }}" alt="{{ $share_image['alt'] }}">
+                                                    <img src="{{ $challenge_image['original'] }}" alt="{{ $challenge_image['alt'] }}">
                                                 </figure>
                                             </div>
                                         </div>
@@ -75,11 +76,11 @@
                             </div>
                             <div class="gallery-thumbs">
                                 <div class="swiper-wrapper">
-                                    @foreach( $data->shareImage as $share_image )
+                                    @foreach( $data->challengeImage as $challenge_image )
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
-                                                    <img src="{{ $share_image['original'] }}" alt="{{ $share_image['alt'] }}">
+                                                    <img src="{{ $challenge_image['original'] }}" alt="{{ $challenge_image['alt'] }}">
                                                 </figure>
                                             </div>
                                         </div>
@@ -95,7 +96,7 @@
                                 <div class="share-like">
                                     <a class="share-like-click">
                                         <div><i class="far fa-thumbs-up"></i></div>
-                                        <p>{{ count($data->shareLike) }} @lang('share.likes_this_thread')</p>
+                                        <p>{{ count($data->challengeLike) }} @lang('share.likes_this_thread')</p>
                                     </a>
                                 </div>
                                 <div class="share-download">
@@ -230,12 +231,7 @@
             <div class="grid-x grid-margin-x">
                 <div class="cell small-12">
                     <div class="grid-x align-middle margin-bottom-1">
-                        <h2 class="cell auto topic-dark">@lang('share.other_threads')</h2>
-                        <div class="cell shrink view-all">
-                            <a href="#" class="btn-blue">
-                                <i class="fas fa-plus"></i> @lang('button.create_thread')
-                            </a>
-                        </div>
+                        <h2 class="cell auto topic-dark">@lang('challenge.other_challenge')</h2>
                     </div>
                 </div>
             </div>
@@ -243,7 +239,7 @@
                 @foreach( $other as $other_item )
                     <article class="cell grid-x medium-12 large-6">
                         <div class="cell small-12 medium-5">
-                            <a href="{{  route('share.detail', ['share' => $other_item['id']]) }}">
+                            <a href="{{  route('challenge.detail', ['share' => $other_item['id']]) }}">
                                 <figure>
                                     <img src="{{ $other_item['image_path'] ? $other_item['image_path'] : asset(config('images.placeholder.700x400' )) }}"
                                          alt="{{ $other_item['title'] }}">
@@ -251,7 +247,7 @@
                             </a>
                         </div>
                         <div class="cell grid-x small-12 medium-7">
-                            <a href="{{  route('share.detail', ['share' => $other_item['id']]) }}">
+                            <a href="{{  route('challenge.detail', ['share' => $other_item['id']]) }}">
                                 <h4 class="cell">{{ $other_item['title'] }}</h4>
                             </a>
                             <div class="cell grid-x align-self-bottom">
@@ -266,19 +262,16 @@
                                 </div>
                                 <div class="cell shrink like">
                                     <i class="far fa-thumbs-up"></i>
-                                    <span>{{ count( $other_item->shareLike ) }} likes</span>
+                                    <span>{{ count( $other_item->challengeLike ) }} likes</span>
                                 </div>
                                 <div class="cell shrink comment">
                                     <i class="far fa-comments"></i>
-                                    <span>{{ count( $other_item->shareComment ) }} comments</span></div>
+                                    <span>{{ count( $other_item->challengeComment ) }} comments</span></div>
                             </div>
                         </div>
                     </article>
                 @endforeach
             </div>
         </section>
-
     </section>
-
-
 @endsection

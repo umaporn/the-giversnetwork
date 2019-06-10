@@ -81,11 +81,11 @@ class Share extends Model
     public function getHomeShareList( Request $request )
     {
         $builder = $this->with( [ 'shareImage' ] )
-                      ->with( [ 'shareComment' ] )
-                      ->with( [ 'shareLike' ] )
-                      ->with( [ 'users' ] )->where( 'status', 'public' );
+                        ->with( [ 'shareComment' ] )
+                        ->with( [ 'shareLike' ] )
+                        ->with( [ 'users' ] )->where( 'status', 'public' );
 
-        $data  = Search::search( $builder, 'learn', $request, [], '6' );
+        $data = Search::search( $builder, 'learn', $request, [], '6' );
 
         return $this->transformShareContent( $data );
 
@@ -105,6 +105,7 @@ class Share extends Model
             $list->setAttribute( 'image_path', $this->getImages( $list ) );
             $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->shareCategory ) );
             $this->setPublicDateForFrontEnd( $list );
+
         }
 
         return $homeShareList;
@@ -120,9 +121,9 @@ class Share extends Model
     private function setPublicDateForFrontEnd( Share $share )
     {
         $share->setAttribute( 'public_date',
-                              date( 'd', strtotime( $share->public_date ) ) . ' ' .
-                              date( 'F', strtotime( $share->public_date ) ) . ' ' .
-                              date( 'Y', strtotime( $share->public_date ) )
+                              date( 'd', strtotime( $share->created_at ) ) . ' ' .
+                              date( 'F', strtotime( $share->created_at ) ) . ' ' .
+                              date( 'Y', strtotime( $share->created_at ) )
         );
     }
 
@@ -158,7 +159,7 @@ class Share extends Model
      *
      * @return LengthAwarePaginator list of share
      */
-    public function getShareAllList( Request $request )
+    public function getShareAllList( Request $request, string $limit = '' )
     {
         $builder = $this->with( [ 'shareImage' ] )
                         ->with( [ 'shareComment' ] )
@@ -167,9 +168,37 @@ class Share extends Model
                         ->orderBy( 'id', 'desc' )
                         ->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'share', $request );
+        $data = Search::search( $builder, 'share', $request, [], $limit );
 
         return $this->transformShareContent( $data );
-
     }
+
+    /**
+     * Get share detail information.
+     *
+     * @param Share $share Share model
+     *
+     * @return Share share detail
+     */
+    public function getShareDetail( Share $share )
+    {
+        $share = $this->with( [ 'shareImage' ] )
+                      ->with( [ 'shareComment' ] )
+                      ->with( [ 'shareLike' ] )
+                      ->with( [ 'users' ] )
+                      ->where( [ 'id' => $share->id ] )->first();
+
+        if( $share ){
+            $share->setAttribute( 'title', Utility::getLanguageFields( 'title', $share ) );
+            $share->setAttribute( 'content', Utility::getLanguageFields( 'content', $share ) );
+            $share->setAttribute( 'image_path', Utility::getImages( $share['file_path'] ) );
+            $share->setAttribute( 'username', $share->users['username'] );
+            $this->setPublicDateForFrontEnd( $share );
+            foreach( $share->shareImage as $share_image ){
+                $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
+            }
+        }
+        return $share;
+    }
+
 }

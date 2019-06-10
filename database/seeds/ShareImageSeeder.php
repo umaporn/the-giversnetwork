@@ -15,6 +15,6 @@ class ShareImageSeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\ShareImage::class )->times( 30 )->create();
+        factory( \App\Models\ShareImage::class )->times( 150 )->create();
     }
 }

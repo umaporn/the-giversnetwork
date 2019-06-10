@@ -24,8 +24,8 @@ function globalRoutes()
     } );
 
     Route::group( [ 'prefix' => 'challenge' ], function(){
-        Route::get( '', 'ShareController@challenge' )->name( 'challenge.index' );
-        Route::get( '{challenge}', 'ShareController@challengeDetail' )->name( 'challenge.detail' );
+        Route::get( '', 'ChallengeController@index' )->name( 'challenge.index' );
+        Route::get( '{challenge}', 'ChallengeController@detail' )->name( 'challenge.detail' );
     } );
 
     Route::group( [ 'prefix' => 'give', ], function(){

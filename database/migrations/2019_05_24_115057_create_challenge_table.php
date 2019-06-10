@@ -25,6 +25,8 @@ class CreateChallengeTable extends Migration
             $table->string( 'title_english', 255 );
             $table->string( 'description_thai', 255 );
             $table->string( 'description_english', 255 );
+            $table->text( 'content_thai' );
+            $table->text( 'content_english' );
             $table->string( 'file_path', 255 );
             $table->integer( 'view' );
             $table->enum( 'status', [ 'public', 'draft' ] );

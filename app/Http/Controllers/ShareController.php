@@ -42,7 +42,7 @@ class ShareController extends Controller
     public function index( Request $request )
     {
         $data['challenge'] = $this->challengeModel->getChallengeList( $request );
-        $data['news']      = $this->newsModel->getNewsForLearnPageSidebar( $request );
+        $data['news']      = $this->newsModel->getNewsForSidebar( $request );
         $data['share']     = $this->shareModel->getShareAllList( $request );
 
         if( $request->ajax() ){
@@ -52,6 +52,24 @@ class ShareController extends Controller
         }
 
         return view( 'share.index', compact( 'data' ) );
+    }
+
+    /**
+     * Display share detail page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Share detail page
+     */
+    public function detail( Share $share, Request $request )
+    {
+        $data  = $this->shareModel->getShareDetail( $share );
+        $other = $this->shareModel->getShareAllList( $request, 6 );
+
+        return view( 'share.detail', compact( 'data', 'other' ) );
+    }
+
+    public function createThread()
+    {
+        return view( 'share.create_thread' );
     }
 
     /**
@@ -66,18 +84,4 @@ class ShareController extends Controller
         return view( 'share.challenge' );
     }
 
-    /**
-     * Display detail page.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
-     */
-    public function detail()
-    {
-        return view( 'share.detail' );
-    }
-
-    public function createThread()
-    {
-        return view( 'share.create_thread' );
-    }
 }
