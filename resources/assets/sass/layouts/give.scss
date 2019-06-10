@@ -1,0 +1,11 @@
+/*----------------- Home - Give ------------------*/
+.give {
+    &.all {
+        .topic {
+            &:after {
+                border: none;
+            }
+        }
+
+    }
+}
