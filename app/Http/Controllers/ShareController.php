@@ -45,4 +45,9 @@ class ShareController extends Controller
     {
         return view( 'share.create_thread' );
     }
+
+    public function challenge_article()
+    {
+        return view( 'share.challenge_article' );
+    }
 }

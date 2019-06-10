@@ -20664,6 +20664,13 @@ body:lang(en) .language li.en a {
   margin-bottom: 0;
   border: 0.0625rem solid #154064;
   border-radius: 0.625rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
 
 @media screen and (max-width: 54.75em) {
@@ -20754,6 +20761,14 @@ body:lang(en) .language li.en a {
   width: auto;
   -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.25);
+}
+
+.topbar-responsive .user-menu li:first-child {
+  border-radius: 0;
+}
+
+.topbar-responsive .user-menu li:last-child {
+  border-radius: 0;
 }
 
 .topbar-responsive .user-menu-show {
@@ -22267,6 +22282,10 @@ body:lang(en) .language li.en a {
   color: #194d79;
 }
 
+.share.create .topic::after {
+  border-top-color: transparent;
+}
+
 @media screen and (max-width: 63.99875em) {
   .share.create .btn-green {
     margin-top: 1.25rem;
@@ -22481,6 +22500,104 @@ body:lang(en) .language li.en a {
 }
 
 .events.detail .social ul li a:hover {
+  color: #194d79;
+}
+
+.news.all .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.news.all .topic:after {
+  border: none;
+}
+
+.news.all .topic h2 {
+  display: inline-block;
+}
+
+.news.all article {
+  margin-bottom: 0.625rem;
+}
+
+.news.all article figure,
+.news.all article h3 {
+  margin-bottom: 0.625rem;
+}
+
+.news.all article h3,
+.news.all article p {
+  color: #154064;
+}
+
+.news.all article .category {
+  color: #7F8685;
+  vertical-align: middle;
+}
+
+.news.all article .category i {
+  margin-right: 0.3125rem;
+}
+
+.news.all .events {
+  background-color: transparent;
+}
+
+.news.detail .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.news.detail .topic:after {
+  border: none;
+}
+
+.news.detail .topic h2 {
+  display: inline-block;
+}
+
+.news.detail .article.padding-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.news.detail article {
+  margin-bottom: 0.625rem;
+}
+
+.news.detail article figure {
+  margin-bottom: 0.625rem;
+}
+
+.news.detail article p {
+  color: #154064;
+}
+
+.news.detail article h2 {
+  color: #154064;
+}
+
+.news.detail .social label {
+  margin-right: 0.625rem;
+  display: inline-block;
+  line-height: 2.25rem;
+  color: #154064;
+}
+
+.news.detail .social ul li {
+  display: inline-block;
+  margin-right: 0.625rem;
+}
+
+.news.detail .social ul li:last-child {
+  margin-right: 0;
+}
+
+.news.detail .social ul li a {
+  color: #154064;
+}
+
+.news.detail .social ul li a:hover {
   color: #194d79;
 }
 

@@ -18,9 +18,12 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'share', ], function(){
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
-        Route::get( 'challenge', 'ShareController@challenge' )->name( 'share.challenge' );
         Route::get( 'article', 'ShareController@article' )->name( 'share.article' );
         Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
+        Route::group( [ 'prefix' => 'challenge', ], function(){
+            Route::get( '', 'ShareController@challenge' )->name( 'share.challenge' );
+            Route::get( 'article', 'ShareController@challenge_article' )->name( 'share.challenge_article' );
+        } );
     } );
 
     Route::group( [ 'prefix' => 'events', ], function(){
@@ -28,10 +31,9 @@ function globalRoutes()
         Route::get( 'article', 'EventsController@article' )->name( 'events.article' );
     } );
 
-    Route::group( [ 'prefix' => 'give', ], function(){
-        Route::get( '', 'GiveController@index' )->name( 'give.index' );
-        Route::get( 'article', 'GiveController@article' )->name( 'give.article' );
-        Route::get( 'add-item', 'GiveController@createItem' )->name( 'give.create_item' );
+    Route::group( [ 'prefix' => 'news', ], function(){
+        Route::get( '', 'NewsController@index' )->name( 'news.index' );
+        Route::get( 'article', 'NewsController@article' )->name( 'news.article' );
     } );
 
     Route::group( [ 'prefix' => 'admin' ], function(){

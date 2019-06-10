@@ -1,4 +1,4 @@
-@if(Route::current()->getName() == 'learn.index')
+@if(Route::current()->getName() != 'events.index')
 <section class="events">
 	<div class="grid-x align-middle">
 		<h2 class="cell auto topic-dark">Events</h2>
@@ -38,6 +38,7 @@
 	</div>
 </section>
 @endif
+@if(Route::current()->getName() != 'news.index')
 <section class="news">
 	<div class="grid-x align-middle">
 		<h2 class="cell auto topic-dark">News</h2>
@@ -85,3 +86,4 @@
 		</article>
 	</div>
 </section>
+@endif

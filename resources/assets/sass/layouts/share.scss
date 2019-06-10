@@ -225,6 +225,11 @@
   }
 
   &.create{
+    .topic{
+      &::after {
+        border-top-color: transparent;
+      }
+    }
     .btn-green{
       @include breakpoint(medium down){
         margin-top: $space-box;
