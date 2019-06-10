@@ -15,7 +15,7 @@
                 </a>
                 <div class="cell grid-x share-grid">
                     <div class="profile">
-                        <a href="{{ route('user.getProfile') }}" target="_blank">
+                        <a href="{{ route('user.getUserProfile', ['id' => $share_item->users['id']]) }}" target="_blank">
                             <figure class="display-profile">
                                 <img src="{{ $share_item->users['image_path'] ? Storage::url($share_item->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
                                      alt="{{ $share_item->users['username'] }}">

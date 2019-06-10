@@ -30,4 +30,5 @@ $( document )
         LoadMore.initialize();
         Slide.initialize();
 	    InterestIn.initialize();
+	    Like.initialize();
     } );

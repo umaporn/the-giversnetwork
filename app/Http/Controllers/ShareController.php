@@ -7,8 +7,10 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Share;
+use App\Models\ShareLike;
 use App\Models\Challenge;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ShareController extends Controller
 {
@@ -21,17 +23,21 @@ class ShareController extends Controller
     /** @var News News model instance */
     private $newsModel;
 
+    /** @var ShareLike Share like model instance */
+    private $shareLikeModel;
+
     /**
      * ShareController constructor.
      *
      * @param Share     $share     Share Model
      * @param Challenge $challenge Challenge Model
      */
-    public function __construct( Share $share, Challenge $challenge, News $news )
+    public function __construct( Share $share, Challenge $challenge, News $news, ShareLike $shareLike )
     {
         $this->shareModel     = $share;
         $this->challengeModel = $challenge;
         $this->newsModel      = $news;
+        $this->shareLikeModel = $shareLike;
     }
 
     /**
@@ -61,10 +67,11 @@ class ShareController extends Controller
      */
     public function detail( Share $share, Request $request )
     {
-        $data  = $this->shareModel->getShareDetail( $share );
-        $other = $this->shareModel->getShareAllList( $request, 6 );
+        $data   = $this->shareModel->getShareDetail( $share );
+        $other  = $this->shareModel->getShareAllList( $request, 6 );
+        $isLike = $this->shareLikeModel->getIsShareLike( $share );
 
-        return view( 'share.detail', compact( 'data', 'other' ) );
+        return view( 'share.detail', compact( 'data', 'other', 'isLike' ) );
     }
 
     public function createThread()
@@ -82,6 +89,31 @@ class ShareController extends Controller
     public function challenge()
     {
         return view( 'share.challenge' );
+    }
+
+    public function saveLike( Request $request, Share $share )
+    {
+        if( $request->ajax() ){
+
+            $isLike = $this->shareLikeModel->getIsShareLike( $share );
+
+            if( $isLike ){
+                $this->shareLikeModel->where( [
+                                                  'fk_user_id'  => $request->input( 'fk_user_id' ),
+                                                  'fk_share_id' => $request->input( 'fk_share_id' ),
+                                              ] )->delete();
+            } else {
+                $this->shareLikeModel->create( $request->input() );
+
+            }
+
+            $isLike = $this->shareLikeModel->getIsShareLike( $share );
+            $data   = $this->shareModel->getShareDetail( $share );
+
+            return response()->json( [
+                                         'data' => view( 'share.like', compact( 'data', 'isLike' ) )->render(),
+                                     ] );
+        }
     }
 
 }

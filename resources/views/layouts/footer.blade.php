@@ -1,5 +1,5 @@
 <footer class="grid-container full">  
-        <div id="spinner"></div>
+        <div id="spinner" class="spinner-box"></div>
         <section class="join-us grid-x padding-content text-center">
             <div class="cell small-12 grid-x align-center">
                 <h2 class="align-self-middle">@lang('footer.join_me')</h2>

@@ -6,11 +6,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class ShareLike extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'fk_user_id', 'fk_share_id', 'count' ];
 
     /** @var string Table name */
     protected $table = 'share_like';
@@ -23,5 +24,21 @@ class ShareLike extends Model
     public function share()
     {
         return $this->belongsTo( 'App\Models\Share', 'fk_share_id' );
+    }
+
+    /**
+     * Get user like content.
+     *
+     * @return mixed
+     */
+    public function getIsShareLike( Share $share )
+    {
+
+        if( !empty( Auth::user()->id ) ){
+            $result = $this->where( [ 'fk_user_id' => Auth::user()->id, 'fk_share_id' => $share->id ] )->get();
+
+            return $result->isNotEmpty();
+        }
+
     }
 }

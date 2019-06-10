@@ -46,7 +46,7 @@
                                     <time datetime="2019-04-29">
                                         <i class="far fa-calendar-alt"></i> {{ $data['public_date'] }}</time>
                                     <div class="profile">
-                                        <a href="{{ route('user.getProfile') }}" target="_blank">
+                                        <a href="{{ route('user.getUserProfile', ['id' => $data->users['id']]) }}" target="_blank">
                                             <figure class="display-profile">
                                                 <img src="{{ $data->users['image_path'] ? Storage::url($data['user']->image_path ) : asset(config('images.home.profile.user_profile' )) }}"
                                                      alt="{{ $data['username'] }}">
@@ -75,7 +75,7 @@
                             </div>
                             <div class="gallery-thumbs">
                                 <div class="swiper-wrapper">
-                                    @foreach( $data->shareImage as $share_image )
+                                    @forelse( $data->shareImage as $share_image )
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
@@ -83,21 +83,25 @@
                                                 </figure>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @empty
+                                        <div class="swiper-slide">
+                                            <div class="swiper-slide-container">
+                                                <figure>
+                                                    <img src="{{ asset(config('images.placeholder.700x400')) }}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    @endforelse
                                 </div>
                             </div>
                         </div>
                         <div class="cell small-12">
                             <p>{{ $data['content'] }}</p>
                         </div>
+
                         <div class="cell small-12">
                             <article class="share-action">
-                                <div class="share-like">
-                                    <a class="share-like-click">
-                                        <div><i class="far fa-thumbs-up"></i></div>
-                                        <p>{{ count($data->shareLike) }} @lang('share.likes_this_thread')</p>
-                                    </a>
-                                </div>
+                                @include('share.like')
                                 <div class="share-download">
                                     @if($data['file_path'])
                                         <a href="{{ $data['file_path'] }}" class="btn-blue" target="_blank">@lang('button.download')</a>
@@ -245,7 +249,7 @@
                         <div class="cell small-12 medium-5">
                             <a href="{{  route('share.detail', ['share' => $other_item['id']]) }}">
                                 <figure>
-                                    <img src="{{ $other_item['image_path'] ? $other_item['image_path'] : asset(config('images.placeholder.700x400' )) }}"
+                                    <img src="{{ $other_item['image_path'] ? $other_item['image_path'] : asset(config('images.placeholder.700x400')) }}"
                                          alt="{{ $other_item['title'] }}">
                                 </figure>
                             </a>

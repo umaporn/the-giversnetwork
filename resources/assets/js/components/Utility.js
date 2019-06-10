@@ -281,12 +281,6 @@ const Utility = (function(){
 		        } );
 	}
 
-	$( document ).ready( function(){
-		$( '.share-like-click' ).click( function(){
-			$( 'div' ).toggleClass( 'is-active' );
-		} );
-	} );
-
 	return {
 		submitForm:               submitForm,
 		displaySuccessMessageBox: displaySuccessMessageBox,

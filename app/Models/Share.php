@@ -198,6 +198,7 @@ class Share extends Model
                 $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
             }
         }
+
         return $share;
     }
 

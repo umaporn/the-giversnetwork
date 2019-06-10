@@ -21,6 +21,7 @@ function globalRoutes()
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
         Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
         Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
+        Route::post('like/{share}', 'ShareController@saveLike')->name('share.saveLike');
     } );
 
     Route::group( [ 'prefix' => 'challenge' ], function(){
@@ -67,6 +68,7 @@ function globalRoutes()
     Route::group( [ 'middleware' => 'auth' ], function(){
         Route::post( 'logout', 'Auth\LoginController@logout' )->name( 'logout' );
         Route::get( 'my-profile', 'ProfileController@getProfile' )->name( 'user.getProfile' );
+        Route::get( 'profile/{user}', 'ProfileController@getUserProfile' )->name( 'user.getUserProfile' );
         Route::get( 'edit-profile', 'ProfileController@getEditProfileForm' )->name( 'user.editProfile' );
         Route::post( 'profile', 'ProfileController@updateProfile' )->name( 'user.updateProfile' );
         Route::get( 'reset-password', 'ProfileController@resetPassword' )->name( 'user.resetPassword' );

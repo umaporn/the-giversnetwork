@@ -61,7 +61,7 @@
                         <div class="cell small-12 text-center slide-thumb">
                             <div class="gallery-top">
                                 <div class="swiper-wrapper">
-                                    @foreach( $data->challengeImage as $challenge_image )
+                                    @forelse( $data->challengeImage as $challenge_image )
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
@@ -69,7 +69,15 @@
                                                 </figure>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    @empty
+                                        <div class="swiper-slide">
+                                            <div class="swiper-slide-container">
+                                                <figure>
+                                                    <img src="{{ asset(config('images.placeholder.700x400')) }}" alt="">
+                                                </figure>
+                                            </div>
+                                        </div>
+                                    @endforelse
                                 </div>
                                 <div class="swiper-button-next"><i class="fas fa-chevron-right fa-2x"></i></div>
                                 <div class="swiper-button-prev"><i class="fas fa-chevron-left fa-2x"></i></div>
