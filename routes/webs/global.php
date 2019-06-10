@@ -38,7 +38,8 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
-        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'about.learnAll' );
+        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
+        Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
     } );
 
     Route::get( 'signup', 'UsersController@signup' )->name( 'users.signup' );

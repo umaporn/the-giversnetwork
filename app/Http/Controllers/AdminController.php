@@ -31,5 +31,9 @@ class AdminController extends Controller
     {
         return view( 'admin.learnAll' );
     }
+    public function learnAdd()
+    {
+        return view( 'admin.learnAdd' );
+    }
 
 }
