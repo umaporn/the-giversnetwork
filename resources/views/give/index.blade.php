@@ -65,7 +65,7 @@
                             <i class="fas fa-plus"></i> Give Item
                         </a>
                     </div>
-                    <section class="grid-x grid-margin-x grid-margin-y">
+                    <section class="grid-x grid-margin-x margin-top-1">
                         <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
                             <div class="cards-style">
                                 <figure class="cards-image">
@@ -143,13 +143,40 @@
                             <i class="fas fa-plus"></i> Tell Giver
                         </a>
                     </div>
+                    <section class="grid-x grid-margin-x margin-top-1">
+                        <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                            <div class="cards-style">
+                                <figure class="cards-image">
+                                    <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
+                                        class="img-cover">
+                                </figure>
+                                <div class="cards-detail">
+                                    <h2 class="cards-topic">Ramen Noodles</h2>
+                                    <p class="cards-amount">100 items</p>
+                                    <a href="#" class="btn-blue">Contact giver</a>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                            <div class="cards-style">
+                                <figure class="cards-image">
+                                    <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
+                                        class="img-cover">
+                                </figure>
+                                <div class="cards-detail">
+                                    <h2 class="cards-topic">ปลากระป๋อง เนื้อปลาแมคเคอเรลและซอสชั้นดี ตรา สามแม่ครัว ขนาด
+                                        200 กรัม</h2>
+                                    <p class="cards-amount">100 items</p>
+                                    <a href="#" class="btn-blue">Contact giver</a>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                    <div class="give-load">
+                        <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
+                    </div>
                 </div>
             </div>
-
     </section>
-
-
 </section>
-
-
 @endsection
