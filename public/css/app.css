@@ -24007,6 +24007,36 @@ body:lang(en) .language li.en a {
   }
 }
 
+/*----------------- Home - article ------------------*/
+
+.give.article .topic:after {
+  border: none;
+}
+
+.give.article .give-cat-btn {
+  position: static;
+  top: auto;
+  right: auto;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .give.article .give-cat-btn a {
+    width: 100%;
+  }
+}
+
+@media print, screen and (min-width: 40em) {
+  .give.article .give-cat-btn {
+    float: right;
+  }
+}
+
+.give-product {
+  background-color: #F2F2F2;
+  padding: 1.25rem;
+  border-radius: 0.625rem;
+}
+
 /*----------------- Home - Events ------------------*/
 
 .events.all {

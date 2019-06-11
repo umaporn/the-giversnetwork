@@ -112,3 +112,40 @@
     }
   }
 }
+
+/*----------------- Home - article ------------------*/
+.give {
+  &.article {
+    .topic {
+      &:after {
+        border: none;
+      }
+    }
+
+    .give {
+      &-cat {
+        &-btn {
+          position: static;
+          top: auto;
+          right: auto;
+
+          @include breakpoint(small only) {
+            a {
+              width: 100%;
+            }
+          }
+
+          @include breakpoint(medium) {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+
+  &-product{
+      background-color: $color-grey;
+      padding: $space-box;
+      border-radius: $space-box/2;
+  }
+}
