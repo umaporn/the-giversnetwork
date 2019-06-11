@@ -168,7 +168,7 @@ class Users extends Authenticatable
      */
     public function checkUserStatus( array $userCredentials )
     {
-        $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public', 'fk_permission_id' => '2' ] )
+        $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public' ] )
                        ->get();
 
         return $result->isEmpty();

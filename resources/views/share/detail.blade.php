@@ -221,11 +221,13 @@
                 <div class="cell small-12">
                     <div class="grid-x align-middle margin-bottom-1">
                         <h2 class="cell auto topic-dark">@lang('share.other_threads')</h2>
-                        <div class="cell shrink view-all">
-                            <a href="#" class="btn-blue">
-                                <i class="fas fa-plus"></i> @lang('button.create_thread')
-                            </a>
-                        </div>
+                        @if( Auth::user() )
+                            <div class="cell shrink view-all">
+                                <a href="#" class="btn-blue">
+                                    <i class="fas fa-plus"></i> @lang('button.create_thread')
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

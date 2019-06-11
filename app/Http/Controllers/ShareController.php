@@ -191,6 +191,15 @@ class ShareController extends Controller
         }
     }
 
+    /**
+     * Get comment list.
+     *
+     * @param Request $request Request object
+     * @param Share   $share   Share model
+     *
+     * @return \Illuminate\Http\JsonResponse Comment list
+     * @throws \Throwable
+     */
     public function getCommentList( Request $request, Share $share )
     {
         if( $request->ajax() ){
@@ -202,5 +211,30 @@ class ShareController extends Controller
         }
     }
 
+    /**
+     *
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function deleteComment( Request $request )
+    {
 
+        $success = $this->shareCommentModel->where( [ 'id' => $request->input( 'id' ), ] )->delete();
+
+        if( $success ){
+            $response = [ 'success'       => true,
+                          'message'       => __( 'share.comment.remove_comment_success' ),
+                          'redirectedUrl' => url()->previous(),
+            ];
+        } else {
+            $response = [ 'success'       => false,
+                          'message'       => __( 'share.comment.remove_comment_fail' ),
+                          'redirectedUrl' => url()->previous(),
+            ];
+        }
+
+        return response()->json( $response );
+
+    }
 }

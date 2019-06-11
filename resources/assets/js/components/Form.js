@@ -46,11 +46,15 @@ const Form = (function(){
 
 		Search.SearchForm.submit( function( event ){
 			event.preventDefault();
-
 			Search.submitForm( $( this ) );
 		} );
 
 		Search.ResultDiv.on( 'submit', DeletionConfirmationSelector, function( event ){
+			event.preventDefault();
+			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
+		} );
+
+		$('.deletion').submit( function( event ){
 			event.preventDefault();
 			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
 		} );

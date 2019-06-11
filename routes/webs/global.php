@@ -24,6 +24,7 @@ function globalRoutes()
         Route::post('like/{share}', 'ShareController@saveLike')->name('share.saveLike');
         Route::post( 'comment/{share}', 'ShareController@saveComment' )->name( 'share.saveComment' );
         Route::get( 'comment/{share}', 'ShareController@getCommentList' )->name( 'share.commentList' );
+        Route::delete( 'comment/{comment}', 'ShareController@deleteComment' )->name( 'share.removeComment' );
     } );
 
     Route::group( [ 'prefix' => 'challenge' ], function(){

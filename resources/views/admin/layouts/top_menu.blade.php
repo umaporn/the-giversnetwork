@@ -17,7 +17,6 @@
             <ul class="menu">
                 @if( Auth::guest() )
                     <li><a href="{{ route('admin.login') }}">@lang('login_admin.page_link.index')</a></li>
-                    <li><a href="{{ route('login') }}">@lang('login.page_link.index')</a></li>
                 @else
                     <li>
                         <a href="{{ route('user.getProfile') }}" title="@lang('user.links.profile')">
