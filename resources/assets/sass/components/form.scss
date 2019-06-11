@@ -252,4 +252,7 @@
 
 .help-text {
     margin: 0;
+    &.textarea{
+        margin-top: rem-calc(-10);
+    }
 }

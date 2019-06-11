@@ -200,7 +200,7 @@
                                           method="POST">
                                         {{ csrf_field() }}
                                         <textarea id="comment_text" name="comment_text" class="form-fill margin-bottom-1" rows="3"></textarea>
-                                        <div id="comment_text-help-text" class="alert help-text hide"></div>
+                                        <div id="comment_text-help-text" class="alert help-text help-text textarea  hide"></div>
                                         <button class="btn-blue btn-long margin-bottom-1">@lang('button.post')</button>
                                         <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
                                         <input type="hidden" name="fk_share_id" value="{{ $data['id'] }}">
