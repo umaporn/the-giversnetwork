@@ -42,6 +42,10 @@ function globalRoutes()
         Route::get( 'article', 'NewsController@article' )->name( 'news.article' );
     } );
 
+    Route::group( [ 'prefix' => 'organization', ], function(){
+        Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
+    } );
+
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
