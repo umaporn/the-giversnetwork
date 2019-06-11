@@ -24,6 +24,7 @@ const Comment = (function(){
 		CommentForm.submit( function( event ){
 
 			event.preventDefault();
+			Utility.clearErrors();
 
 			let commentBox = $( '#show-comment-box' );
 
@@ -35,32 +36,19 @@ const Comment = (function(){
 				        contentType: false,
 				        processData: false,
 				        success:     function( result ){
+
 					        if( result.data ){
 						        commentBox.empty();
 						        commentBox.append( result.data );
 					        }
+
+					        $('#comment_text').val('');
 				        },
 				        error:       function( jqXHR ){
-					        runCallbackFunction( form, jqXHR, callbackFunction );
+					        Utility.takeSubmitAction( $( this ), jqXHR );
 				        },
 			        } );
 		} );
-	}
-
-	/**
-	 * @memberOf Utility
-	 * @access private
-	 * @desc Run a callback function.
-	 * @param {jQuery} form - Form
-	 * @param {XMLHttpRequest} jqXHR - jQuery XMLHttpRequest object
-	 * @param {function} [callbackFunction] - Callback function
-	 */
-	function runCallbackFunction( form, jqXHR, callbackFunction ){
-		if( typeof callbackFunction === 'function' ){
-			callbackFunction.apply( this, [form, jqXHR, result] );
-		} else {
-			Utility.takeSubmitAction( form, jqXHR );
-		}
 	}
 
 	/**

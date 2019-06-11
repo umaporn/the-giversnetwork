@@ -170,7 +170,7 @@
                                 </div>
                                 <div class="comment-login-content">
                                     <form action="">
-                                        <textarea id="address" class="form-fill margin-bottom-1" rows="3"></textarea>
+                                        <textarea class="form-fill margin-bottom-1" rows="3"></textarea>
                                         <button class="btn-blue btn-long margin-bottom-1">Post</button>
                                     </form>
                                 </div>

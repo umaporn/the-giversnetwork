@@ -94,7 +94,7 @@ class ShareController extends Controller
     public function detail( Share $share, Request $request )
     {
         $data    = $this->shareModel->getShareDetail( $share );
-        $other   = $this->shareModel->getShareAllList( $request, 6 );
+        $other   = $this->shareModel->getShareAllList( $request, 7 )->except(['id'=> $share->id]);
         $isLike  = $this->shareLikeModel->getIsShareLike( $share );
         $comment = $this->shareCommentModel->getShareComment( $request, $share );
 
@@ -114,8 +114,6 @@ class ShareController extends Controller
 
     /**
      * Display share detail page.
-     * /**
-     * Display challenge page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge page
      */
@@ -212,8 +210,9 @@ class ShareController extends Controller
     }
 
     /**
+     * Delete comment on share content.
      *
-     * @param Request $request
+     * @param Request $request Request Object
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

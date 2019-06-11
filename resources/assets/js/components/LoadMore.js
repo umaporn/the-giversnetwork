@@ -14,6 +14,7 @@ const LoadMore = (function(){
 
 		$( document ).on( 'click', '#loadMore', function(){
 
+			Utility.clearErrors();
 			let url = $( this ).attr( 'data-url' );
 
 			$.ajax( {

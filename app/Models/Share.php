@@ -169,7 +169,7 @@ class Share extends Model
                         ->orderBy( 'id', 'desc' )
                         ->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'share', $request, [] );
+        $data = Search::search( $builder, 'share', $request, [], $limit );
 
         return $this->transformShareContent( $data );
     }
