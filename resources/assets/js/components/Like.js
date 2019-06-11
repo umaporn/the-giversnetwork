@@ -12,7 +12,7 @@ const Like = (function(){
 	 */
 	function initialize(){
 
-		$( document ).on( 'click', '.share-like-click', function( event ){
+		$( document ).on( 'click', '.share-like-button', function( event ){
 
 			$( '.spinner-box' ).removeAttr( 'id' );
 

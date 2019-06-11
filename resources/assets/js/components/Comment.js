@@ -25,7 +25,7 @@ const Comment = (function(){
 
 			event.preventDefault();
 
-			const commentBox = $( '#show-comment-box' );
+			let commentBox = $( '#show-comment-box' );
 
 			$.ajax( {
 				        url:         $( this ).attr( 'action' ),

@@ -7,7 +7,7 @@
     @else
         <form id="like-action" action="{{ route('share.saveLike', [ 'share' => $data['id'] ]) }}" method="POST">
             {{ csrf_field() }}
-            <button class="share-like-click" type="submit">
+            <button class="share-like-click share-like-button" type="submit">
                 <div @if($isLike) class="is-active" @endif>
                     <i class="far fa-thumbs-up"></i>
                 </div>
