@@ -13,7 +13,7 @@ const GiveCategoryTab = (function(){
 	function initialize(){
 
 		$( '#give-category > a' ).click( function(){
-			var url =  $( this ).attr( "data-url" );
+			let url = $( this ).attr( 'data-url' );
 
 			$.ajax( {
 				        url:         url,

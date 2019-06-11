@@ -11,7 +11,7 @@ use App\Models\ShareLike;
 use App\Models\ShareComment;
 use App\Models\Challenge;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ShareController extends Controller
 {
@@ -46,9 +46,26 @@ class ShareController extends Controller
     }
 
     /**
+     * Get a validator for an incoming share request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator( array $data )
+    {
+        return Validator::make( $data, [
+            'comment_text' => config( 'validation.share.comment_text' ),
+        ] );
+    }
+
+    /**
      * Display share page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Share page
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Share page
+     * @throws \Throwable
      */
     public function index( Request $request )
     {
@@ -68,14 +85,24 @@ class ShareController extends Controller
     /**
      * Display share detail page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Share detail page
+     * @param Share   $share
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Share detail page
+     * @throws \Throwable
      */
     public function detail( Share $share, Request $request )
     {
         $data    = $this->shareModel->getShareDetail( $share );
         $other   = $this->shareModel->getShareAllList( $request, 6 );
         $isLike  = $this->shareLikeModel->getIsShareLike( $share );
-        $comment = $this->shareCommentModel->getShareComment( $share );
+        $comment = $this->shareCommentModel->getShareComment( $request, $share );
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'share.comment_list', compact( 'comment' ) )->render(),
+                                     ] );
+        }
 
         return view( 'share.detail', compact( 'data', 'other', 'isLike', 'comment' ) );
     }
@@ -97,6 +124,15 @@ class ShareController extends Controller
         return view( 'share.challenge' );
     }
 
+    /**
+     * Save like for share content.
+     *
+     * @param Request $request Request Object
+     * @param Share   $share   Share model
+     *
+     * @return \Illuminate\Http\JsonResponse Save like response
+     * @throws \Throwable
+     */
     public function saveLike( Request $request, Share $share )
     {
         if( $request->ajax() ){
@@ -110,7 +146,6 @@ class ShareController extends Controller
                                               ] )->delete();
             } else {
                 $this->shareLikeModel->create( $request->input() );
-
             }
 
             $isLike = $this->shareLikeModel->getIsShareLike( $share );
@@ -121,5 +156,51 @@ class ShareController extends Controller
                                      ] );
         }
     }
+
+    /**
+     * Save comment for share content.
+     *
+     * @param Request $request Request object
+     * @param Share   $share   Share model
+     *
+     * @return \Illuminate\Http\JsonResponse Json response
+     * @throws \Throwable
+     */
+    public function saveComment( Request $request, Share $share )
+    {
+        $this->validator( $request->input() )->validate();
+
+        $response['success'] = false;
+
+        if( $request->ajax() ){
+
+            $result = $this->shareCommentModel->create( $request->input() );
+
+            if( $result ){
+                $response['success'] = true;
+            } else {
+                return response()->json( $response, 422 );
+            }
+
+            $comment = $this->shareCommentModel->getShareComment( $request, $share );
+            $data    = $this->shareModel->getShareDetail( $share );
+
+            return response()->json( [
+                                         'data' => view( 'share.comment', compact( 'comment', 'data' ) )->render(),
+                                     ] );
+        }
+    }
+
+    public function getCommentList( Request $request, Share $share )
+    {
+        if( $request->ajax() ){
+            $comment = $this->shareCommentModel->getShareComment( $request, $share );
+
+            return response()->json( [
+                                         'data' => view( 'share.comment_list', compact( 'comment' ) )->render(),
+                                     ] );
+        }
+    }
+
 
 }

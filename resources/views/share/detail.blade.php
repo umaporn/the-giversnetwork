@@ -96,12 +96,14 @@
                             </div>
                         </div>
                         <div class="cell small-12">
-                            <p>{{ $data['content'] }}</p>
+                            <p>{!! $data['content'] !!}}</p>
                         </div>
 
                         <div class="cell small-12">
                             <article class="share-action">
+
                                 @include('share.like')
+
                                 <div class="share-download">
                                     @if($data['file_path'])
                                         <a href="{{ $data['file_path'] }}" class="btn-blue" target="_blank">@lang('button.download')</a>
@@ -145,77 +147,74 @@
             <div class="grid-x grid-margin-x">
                 <div class="cell small-12">
                     <article class="cell small-12 comment-login comment-login-my">
-                        @if(Auth::guest())
+                        @if( Auth::guest() )
                             <div class="before-login">
                                 <p>@lang('share.what_are_you_thoughts')</p>
                                 <a data-open="login" class="btn-blue btn-long">@lang('button.login')</a>
                             </div>
-                        @endif
-                        <div class="comment-login-user">
-                            <a href="{{ route('user.getProfile') }}" target="_blank">
-                                <figure class="display-profile">
-                                    <img src="{{ Auth::user()->image_path ? Storage::url( Auth::user()->image_path ) : asset( config( 'images.home.profile.user_profile' ) ) }}"
-                                         alt="{{ Auth::user()->username }}">
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="comment-login-detail">
-                            <div class="comment-login-grid">
-                                <div class="comment-login-username">
-                                    <a href="{{ route('user.getProfile') }}" target="_blank">
-                                        <p class="comment-name">{{ Auth::user()->username }}</p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="comment-login-content">
-                                <form action="">
-                                    <textarea id="address" class="form-fill margin-bottom-1" rows="3"></textarea>
-                                    <button class="btn-blue btn-long margin-bottom-1">Post</button>
-                                </form>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-        <section class="padding-content padding-bottom-0 padding-top-0">
-            <div class="grid-x grid-margin-x">
-                <h2 class="cell topic-dark">{{ count( $data->shareComment ) }} Comments</h2>
-            </div>
-
-            @if($data->shareComment)
-                <div class="grid-x grid-margin-x">
-                    @foreach( $comment as $comment_item )
-                        <article class="cell small-12 comment-login">
                             <div class="comment-login-user">
-                                <a href="{{ route('user.getUserProfile', ['id' => $comment_item->users['id']]) }}" target="_blank">
+                                <a href="{{ route('user.getProfile') }}" target="_blank">
                                     <figure class="display-profile">
-                                        <img src="{{ $comment_item->users['image_path'] ? Storage::url($comment_item->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
-                                             alt="{{ $comment_item->users['username'] }}">
+                                        <img src="{{ asset( config( 'images.home.profile.user_profile' ) ) }}"
+                                             alt="Username">
                                     </figure>
                                 </a>
                             </div>
                             <div class="comment-login-detail">
                                 <div class="comment-login-grid">
                                     <div class="comment-login-username">
-                                        <a href="{{ route('user.getUserProfile', ['id' => $comment_item->users['id']]) }}" target="_blank">
-                                            <p class="comment-name">{{ $comment_item->users['username'] }}</p>
+                                        <a href="#" target="_blank">
+                                            <p class="comment-name">Username</p>
                                         </a>
                                     </div>
-                                    <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i> {{ $comment_item['public_date'] }}</time>
                                 </div>
                                 <div class="comment-login-content">
-                                    {{ $comment_item['comment_text'] }}
+                                    <form action="">
+                                        <textarea id="address" class="form-fill margin-bottom-1" rows="3"></textarea>
+                                        <button class="btn-blue btn-long margin-bottom-1">Post</button>
+                                    </form>
                                 </div>
                             </div>
-                        </article>
-                    @endforeach
-                    <div class="cell small-12">
-                        <a href="#" id="loadMore" class="load-more">@lang('button.view_more')
-                            <i class="fas fa-caret-down"></i></a>
-                    </div>
+                        @endif
+
+                        @if( Auth::user() )
+                            <div class="comment-login-user">
+                                <a href="{{ route('user.getProfile') }}" target="_blank">
+                                    <figure class="display-profile">
+                                        <img src="{{ Auth::user()->image_path ? Storage::url( Auth::user()->image_path ) : asset( config( 'images.home.profile.user_profile' ) ) }}"
+                                             alt="{{ Auth::user()->username }}">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="comment-login-detail">
+                                <div class="comment-login-grid">
+                                    <div class="comment-login-username">
+                                        <a href="{{ route('user.getProfile') }}" target="_blank">
+                                            <p class="comment-name">{{ Auth::user()->username }}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="comment-login-content">
+                                    <form id="post-action" class="comment-form"
+                                          action="{{ route('share.saveComment', [ 'share' => $data['id'] ]) }}"
+                                          method="POST">
+                                        {{ csrf_field() }}
+                                        <textarea id="comment_text" name="comment_text" class="form-fill margin-bottom-1" rows="3"></textarea>
+                                        <div id="comment_text-help-text" class="alert help-text hide"></div>
+                                        <button class="btn-blue btn-long margin-bottom-1">@lang('button.post')</button>
+                                        <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="fk_share_id" value="{{ $data['id'] }}">
+                                        <input type="hidden" name="public_date" value="{{ date('Y-m-d') }}">
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
+                    </article>
                 </div>
-            @endif
+            </div>
+        </section>
+        <section class="padding-content padding-bottom-0 padding-top-0">
+            @include('share.comment')
         </section>
         <section class="most-popular padding-content">
             <div class="grid-x grid-margin-x">

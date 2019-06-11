@@ -5,15 +5,15 @@
 
 namespace App\Models;
 
-use App\Libraries\Utility;
+use App\Libraries\Search;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class ShareComment extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'fk_user_id', 'fk_share_id', 'comment_text', 'public_date' ];
 
     /** @var string Table name */
     protected $table = 'share_comment';
@@ -41,17 +41,29 @@ class ShareComment extends Model
     /**
      * Get share comment.
      *
-     * @param Share $share
+     * @param Request $request
+     * @param Share   $share
      *
      * @return LengthAwarePaginator
      */
-    public function getShareComment( Share $share )
+    public function getShareComment( Request $request, Share $share )
     {
-        $data = $this->with( [ 'users' ] )->where( [ 'fk_share_id' => $share->id ] )->get();
+        $builder = $this->with( [ 'users' ] )
+                        ->where( [ 'fk_share_id' => $share->id, 'status' => 'public' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'share_comment', $request, [] );
 
         return $this->transformShareComment( $data );
     }
 
+    /**
+     * Transform share comment information.
+     *
+     * @param $shareComment
+     *
+     * @return mixed
+     */
     private function transformShareComment( $shareComment )
     {
         foreach( $shareComment as $list ){
@@ -60,9 +72,9 @@ class ShareComment extends Model
                                  date( 'F', strtotime( $list->public_date ) ) . ' ' .
                                  date( 'Y', strtotime( $list->public_date ) )
             );
-
         }
 
         return $shareComment;
     }
+
 }

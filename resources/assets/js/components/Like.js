@@ -18,7 +18,7 @@ const Like = (function(){
 
 			event.preventDefault();
 
-			var likeAction = $( '#like-action' ),
+			let likeAction = $( '#like-action' ),
 			    url        = likeAction.attr( 'action' ),
 			    method     = likeAction.attr( 'method' ),
 			    likeBox    = $( '#show-like-box' );

@@ -22,6 +22,8 @@ class Banner extends Model
     /**
      * Get banner list.
      *
+     * @param Request $request Request object
+     *
      * @return LengthAwarePaginator A list of banner
      */
     public function getHomeBannerList( Request $request )
@@ -31,7 +33,6 @@ class Banner extends Model
         $data = Search::search( $builder, 'banner', $request );
 
         return $this->transformHomeBannerContent( $data );
-
     }
 
     /**
@@ -50,6 +51,5 @@ class Banner extends Model
 
         return $homeBannerList;
     }
-
 
 }

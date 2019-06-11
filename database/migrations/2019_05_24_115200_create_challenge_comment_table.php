@@ -21,7 +21,7 @@ class CreateChallengeCommentTable extends Migration
             $table->foreign( 'fk_user_id' )->references( 'id' )->on( 'users' );
             $table->unsignedInteger( 'fk_challenge_id' );
             $table->foreign( 'fk_challenge_id' )->references( 'id' )->on( 'challenge' );
-            $table->string( 'parent_id', 255 );
+            $table->integer( 'parent_id' )->nullable();
             $table->string( 'comment_text', 255 );
             $table->enum( 'status', [ 'public', 'draft' ] );
             $table->date( 'public_date' );

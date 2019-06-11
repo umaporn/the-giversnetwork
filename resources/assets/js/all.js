@@ -31,4 +31,5 @@ $( document )
         Slide.initialize();
 	    InterestIn.initialize();
 	    Like.initialize();
+	    Comment.initialize();
     } );

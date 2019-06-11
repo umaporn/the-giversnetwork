@@ -20,4 +20,7 @@ return [
     'user_registration' => [
         'email' => 'required|email|max:254',
     ],
+    'share'             => [
+        'comment_text' => 'required',
+    ],
 ];

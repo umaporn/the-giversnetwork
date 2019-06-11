@@ -25,4 +25,5 @@ return [
     'create_thread' => 'Create Thread',
     'download'      => 'Download',
     'login'         => 'Login',
+    'post'          => 'Post',
 ];

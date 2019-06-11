@@ -13,9 +13,9 @@ const Slide = (function(){
 	 */
 	function initialize(){
 
-		if( $('.slide-thumb').length ){
+		if( $( '.slide-thumb' ).length ){
 
-			var galleryTop                   = new Swiper( '.gallery-top', {
+			let galleryTop = new Swiper( '.gallery-top', {
 				spaceBetween: 10,
 				navigation:   {
 					nextEl: '.swiper-button-next',
@@ -25,7 +25,7 @@ const Slide = (function(){
 				loopedSlides: 4,
 			} );
 
-			var galleryThumbs                = new Swiper( '.gallery-thumbs', {
+			let galleryThumbs = new Swiper( '.gallery-thumbs', {
 				spaceBetween:        10,
 				centeredSlides:      true,
 				slidesPerView:       'auto',

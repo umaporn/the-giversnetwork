@@ -75,6 +75,7 @@ class Challenge extends Model
      * Get a list of challenge for displaying.
      *
      * @param Request $request Challenge request object
+     * @param string  $limit   Limit number
      *
      * @return LengthAwarePaginator A list of challenge for home page
      */
@@ -155,6 +156,14 @@ class Challenge extends Model
      * @param Request $request Request Object
      *
      * @return LengthAwarePaginator list of challenge
+     */
+    /**
+     * Get challenge all list.
+     *
+     * @param Request $request
+     * @param string  $limit
+     *
+     * @return LengthAwarePaginator List of challenge
      */
     public function getChallengeAllList( Request $request, string $limit = '' )
     {

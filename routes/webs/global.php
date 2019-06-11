@@ -22,6 +22,8 @@ function globalRoutes()
         Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
         Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
         Route::post('like/{share}', 'ShareController@saveLike')->name('share.saveLike');
+        Route::post( 'comment/{share}', 'ShareController@saveComment' )->name( 'share.saveComment' );
+        Route::get( 'comment/{share}', 'ShareController@getCommentList' )->name( 'share.commentList' );
     } );
 
     Route::group( [ 'prefix' => 'challenge' ], function(){

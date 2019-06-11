@@ -64,7 +64,7 @@
                             </figure>
                         </div>
                         <div class="cell small-12">
-                            {{ $data['description'] }}
+                            {!! $data['description'] !!}
                         </div>
                         <div class="cell small-12 medium-6 large-10 join-event">
                             <i class="fas fa-link"></i><span> Join event at :</span>

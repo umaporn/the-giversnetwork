@@ -26,6 +26,7 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
 	           'resources/assets/js/components/LoadMore.js',
 	           'resources/assets/js/components/InterestIn.js',
 	           'resources/assets/js/components/Like.js',
+	           'resources/assets/js/components/Comment.js',
 	           'resources/assets/js/all.js',
            ], 'public/js/all.js' )
    .version();

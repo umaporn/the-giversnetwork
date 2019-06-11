@@ -23,7 +23,7 @@ namespace config;
 */
 
 return [
-    'default' => [
+    'default'       => [
         'limit'          => 10,
         'limits'         => [ 10, 25, 50, 100 ],
         'sortby'         => 'id',
@@ -31,28 +31,35 @@ return [
         'searchFields'   => [ 'titles' ],
         'fulltextSearch' => true,
     ],
-    'users'   => [
+    'users'         => [
         'sortby'         => 'email',
         'searchFields'   => [ 'email' ],
         'fulltextSearch' => false,
     ],
-    'learn'   => [
+    'learn'         => [
         'limit'          => 5,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
     ],
-    'events'  => [
+    'events'        => [
         'limit'          => 5,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
     ],
-    'share'   => [
+    'share'         => [
         'limit'          => 5,
         'limits'         => [ 5, 10, 15, 20 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
+        'fulltextSearch' => false,
+    ],
+    'share_comment' => [
+        'limit'          => 3,
+        'limits'         => [ 3, 9, 12, 15 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,

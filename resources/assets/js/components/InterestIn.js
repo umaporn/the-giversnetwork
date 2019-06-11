@@ -13,32 +13,12 @@ const InterestIn = (function(){
 	 */
 	function initialize(){
 
-		/*$( document ).on( 'click', '#loadMore', function(){
-
-			var url = $( this ).attr( 'data-url' );
-
-			$.ajax( {
-				        url:         url,
-				        method:      'GET',
-				        cache:       false,
-				        contentType: false,
-				        processData: false,
-				        success:     function( result ){
-					        if( url ){
-						        $( '#loadMore' ).remove();
-						        $( '#content-list-box' ).append( result.data );
-					        } else {
-						        $( '#loadMore' ).hide();
-					        }
-				        },
-			        } );
-		} );*/
 		$( '.checkbox-inter' ).click( function(){
 
-			var interestID    = $( this ).data( 'value' ),
+			let interestID    = $( this ).data( 'value' ),
 			    interestTitle = $( this ).data( 'title' );
 
-			var stringInterested = '<li class="item-' + interestID + '">' + interestTitle + '</li>' +
+			let stringInterested = '<li class="item-' + interestID + '">' + interestTitle + '</li>' +
 			                       '<input type="hidden" ' +
 			                       'name="fk_interest_in_id[]" ' +
 			                       'id="fk_interest_in_id" ' +

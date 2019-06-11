@@ -167,12 +167,9 @@ class Share extends Model
                         ->with( [ 'shareLike' ] )
                         ->with( [ 'users' ] )
                         ->orderBy( 'id', 'desc' )
-                        ->whereHas( 'shareComment', function( $query ){
-                            $query->where( 'share_comment.status', 'public' );
-                        } )
                         ->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'share', $request, [], $limit );
+        $data = Search::search( $builder, 'share', $request, [] );
 
         return $this->transformShareContent( $data );
     }
@@ -190,9 +187,6 @@ class Share extends Model
                       ->with( [ 'shareComment' ] )
                       ->with( [ 'shareLike' ] )
                       ->with( [ 'users' ] )
-                      ->whereHas( 'shareComment', function( $query ){
-                          $query->where( 'share_comment.status', 'public' );
-                      } )
                       ->where( [ 'id' => $share->id ] )->first();
 
         if( $share ){
