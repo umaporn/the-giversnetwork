@@ -51,6 +51,8 @@ function globalRoutes()
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
         Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
+        Route::get( 'share-all', 'AdminController@shareAll' )->name( 'admin.shareAll' );
+        Route::get( 'share-add', 'AdminController@shareAdd' )->name( 'admin.shareAdd' );
     } );
 
     Route::get( 'signup', 'UsersController@signup' )->name( 'users.signup' );

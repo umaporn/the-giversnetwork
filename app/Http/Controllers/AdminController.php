@@ -35,5 +35,18 @@ class AdminController extends Controller
     {
         return view( 'admin.learnAdd' );
     }
+    /**
+     * Show learn-all page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View learn-all page
+     */
+    public function shareAll()
+    {
+        return view( 'admin.shareAll' );
+    }
+    public function shareAdd()
+    {
+        return view( 'admin.shareAdd' );
+    }
 
 }

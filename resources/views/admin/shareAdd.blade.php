@@ -15,9 +15,8 @@
         <div class="cell auto">
             <ul class="breadcrumbs">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> Learn
+                    <span class="show-for-sr">Current: </span> Admin
                 </li>
             </ul>
         </div>
