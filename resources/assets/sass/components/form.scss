@@ -182,6 +182,29 @@
 			text-align: left;
 		}
 	}
+
+	&-p{
+		margin-bottom: 0;
+	}
+
+	&-text{
+		display: flex;
+		align-items: center;
+		padding-top: rem-calc(3);
+
+		@include breakpoint(small only){
+			padding-top: 0;
+			margin-bottom: $space-box/4;
+		}
+
+		input{
+			margin-bottom: 0;
+		}
+
+		label{
+			padding-top: rem-calc(5);
+		}
+	}
 }
 
 .input-group {

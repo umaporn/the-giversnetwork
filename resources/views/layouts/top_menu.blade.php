@@ -22,7 +22,7 @@
 			</div>
 			<div class="cell medium-shrink align-self-middle grid-middle">
 				<!-- before user login -->
-				<!-- <ul class="user-profile float-left no-bullet">
+				<ul class="user-profile float-left no-bullet">
 					<li><a href="#home">@lang('menu.profile_menu.sign_up')</a></li>
 					<li><a data-open="login">@lang('menu.profile_menu.log_in')</a></li>
 					<div class="reveal modal-style" id="login" data-reveal>
@@ -72,9 +72,9 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-				</ul>  -->
+				</ul> 
 				<!-- after user login -->
-				<section class="user-profile-after float-left" data-toggle="user-menu">
+				<!-- <section class="user-profile-after float-left" data-toggle="user-menu">
 					<figure class="user-profile-image">
 						<img src="{{ asset(config('images.home.profile.user_profile' )) }}">
 					</figure>
@@ -86,7 +86,7 @@
 							<li><a href="#"><i class="fas fa-sign-out-alt"></i>  Log out</a></li>
 						</ul>
 					</div>
-				</section> 
+				</section>  -->
 				<ul class="language float-right no-bullet">
 					@foreach( config('app.language_codes') as $languageCode )
 					<li class="{{$languageCode}}">
