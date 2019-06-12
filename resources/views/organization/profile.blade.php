@@ -5,10 +5,10 @@
 @section('page-icon', 'fi-home')
 
 @section('content')
-<section class="admin">
+<section class="organization profile">
     <div class="grid-x align-middle topic padding-content">
-        <div class="cell small-12 user-profile">
-            <figure class="user-profile-image">
+        <div class="cell small-12 org-profile">
+            <figure class="org-profile-image">
                 <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
             </figure>
             <h2 class="topic-light">Organization Name</h2>
@@ -18,21 +18,21 @@
         <div class="cell auto">
             <div class="grid-x">
                 <div class="cell small-12 large-4 xxlarge-3 show-for-large">
-                    <ul class="user-menu">
+                    <ul class="org-menu">
                         <li><a href="#" class="is-active">Organization Profile</a></li>
                     </ul>
                 </div>
-                <div class="cell small-12 large-8 xxlarge-9 user-content">
-                    <div class="grid-x user-form-space">
+                <div class="cell small-12 large-8 xxlarge-9 org-content">
+                    <div class="grid-x org-form-space">
                         <div class="cell small-12">
-                            <article class="user-detail">
-                                <h3 class="user-topic">Category</h3>
+                            <article class="org-detail">
+                                <h3 class="org-topic">Category</h3>
                                 <p>Category name</p>
                             </article>
                         </div>
                     </div>
-                    <div class="grid-x user-form-space">
-                        <h2 class="cell shrink user-head">Contact</h2>
+                    <div class="grid-x org-form-space">
+                        <h2 class="cell shrink org-head">Contact</h2>
                         <div class="cell auto grid-x align-middle">
                             <div class="cell line auto"></div>
                             <div class="cell shrink">
@@ -40,22 +40,22 @@
                             </div>
                         </div>
                     </div>
-                    <div class="grid-x user-form-space">
+                    <div class="grid-x org-form-space">
                         <div class="cell small-12">
-                            <article class="user-detail">
-                                <h3 class="user-topic">Address</h3>
+                            <article class="org-detail">
+                                <h3 class="org-topic">Address</h3>
                                 <p>695 Sukhumvit 50, Prakanong Klongtoey, Bangkok 10260 Thailand</p>
                             </article>
                         </div>
                         <div class="cell small-12">
-                            <article class="user-detail">
-                                <h3 class="user-topic">Phone</h3>
+                            <article class="org-detail">
+                                <h3 class="org-topic">Phone</h3>
                                 <p><a href="tel:+6627429141">742-9141</a></p>
                             </article>
                         </div>
                         <div class="cell small-12">
-                            <article class="user-detail">
-                                <h3 class="user-topic">Email</h3>
+                            <article class="org-detail">
+                                <h3 class="org-topic">Email</h3>
                                 <p><a href="mailto:pr@dtgo.com">pr@dtgo.com</a></p>
                             </article>
                         </div>
