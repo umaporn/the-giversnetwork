@@ -55,8 +55,8 @@ class ProfileController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'image_path'       => config( 'validation.authentication.image_path' ),
-            'phone_number'     => config( 'validation.authentication.phone_number' ),
+            'image_path'   => config( 'validation.authentication.image_path' ),
+            'phone_number' => config( 'validation.authentication.phone_number' ),
         ] );
     }
 
@@ -70,7 +70,7 @@ class ProfileController extends Controller
         $user                     = $this->usersModel->getUserProfile();
         $interestList             = $this->interestInModel->getInterestInList();
         $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
-        $userInterestInList       = $this->userInterestInModel->getUserInterestInList($user[0]->id);
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList( $user[0]->id );
 
         return view( 'users.profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
     }
@@ -85,7 +85,7 @@ class ProfileController extends Controller
         $user                     = $this->usersModel->getUserProfile();
         $interestList             = $this->interestInModel->getInterestInList();
         $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
-        $userInterestInList       = $this->userInterestInModel->getUserInterestInList($user[0]->id);
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList( $user[0]->id );
 
         return view( 'users.edit_profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
     }
@@ -130,5 +130,20 @@ class ProfileController extends Controller
         );
 
         return response()->json( [ 'success' => $response['success'], 'message' => $response['message'] ] );
+    }
+
+    /**
+     * Load a user profile page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
+     */
+    public function getUserProfile( string $id )
+    {
+        $user                     = $this->usersModel->where( 'id', $id )->get();
+        $interestList             = $this->interestInModel->getInterestInList();
+        $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList( $id );
+
+        return view( 'users.profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
     }
 }

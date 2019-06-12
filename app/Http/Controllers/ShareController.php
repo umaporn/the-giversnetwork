@@ -56,8 +56,6 @@ class ShareController extends Controller
     {
         return Validator::make( $data, [
             'comment_text'    => config( 'validation.share.comment_text' ),
-            'title_english'   => config( 'validation.share.title_english' ),
-            'content_english' => config( 'validation.share.content_english' ),
         ] );
     }
 
