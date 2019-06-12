@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('page-title', __('challenge.page_title.index'))
-@section('page-description', __('challenge.page_description.index'))=
+@section('page-description', __('challenge.page_description.index'))
 
 @section('content')
 

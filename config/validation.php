@@ -23,4 +23,7 @@ return [
     'share'             => [
         'comment_text' => 'required|string|min:3|max:1000',
     ],
+    'challenge'         => [
+        'comment_text' => 'required|string|min:3|max:1000',
+    ],
 ];

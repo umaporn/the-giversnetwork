@@ -28,4 +28,10 @@ return [
     'likes_this_thread'     => 'Likes this thread',
     'write_comment'         => 'Write A Comment',
     'what_are_you_thoughts' => 'What are you thoughts?',
+
+    'comment' => [
+        'remove_comment_success' => 'Successfully removed the comment.',
+        'remove_comment_fail'    => 'Cannot removed the comment!!',
+        'remove_confirmation'    => 'Are you sure you would like to remove the comment ',
+    ],
 ];

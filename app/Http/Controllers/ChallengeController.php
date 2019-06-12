@@ -11,6 +11,7 @@ use App\Models\Events;
 use App\Models\ChallengeComment;
 use App\Models\ChallengeLike;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ChallengeController extends Controller
 {
@@ -38,8 +39,23 @@ class ChallengeController extends Controller
     {
         $this->challengeModel        = $challenge;
         $this->newsModel             = $news;
+        $this->eventsModel             = $events;
         $this->challengeLikeModel    = $challengeLike;
         $this->challengeCommentModel = $challengeComment;
+    }
+
+    /**
+     * Get a validator for an incoming share request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator( array $data )
+    {
+        return Validator::make( $data, [
+            'comment_text'    => config( 'validation.challenge.comment_text' ),
+        ] );
     }
 
     /**

@@ -13,7 +13,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class ChallengeComment extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'fk_user_id', 'fk_challenge_id', 'comment_text', 'public_date' ];
 
     /** @var string Table name */
     protected $table = 'challenge_comment';
@@ -41,8 +41,8 @@ class ChallengeComment extends Model
     /**
      * Get challenge comment.
      *
-     * @param Request $request
-     * @param Challenge   $challenge
+     * @param Request   $request
+     * @param Challenge $challenge
      *
      * @return LengthAwarePaginator
      */

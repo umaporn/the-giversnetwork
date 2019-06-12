@@ -142,95 +142,79 @@
         </section>
         <section class="padding-content padding-bottom-0">
             <div class="grid-x grid-margin-x">
-                <h2 class="cell topic-dark">@lang('share.write_comment')</h2>
+                <h2 class="cell topic-dark">@lang('challenge.write_comment')</h2>
             </div>
             <div class="grid-x grid-margin-x">
                 <div class="cell small-12">
                     <article class="cell small-12 comment-login comment-login-my">
-                        <div class="before-login">
-                            <p>@lang('share.what_are_you_thoughts')</p>
-                            <a href="#" class="btn-blue btn-long">@lang('button.login')</a>
-                        </div>
-                        <div class="comment-login-user">
-                            <a href="{{ route('user.getProfile') }}" target="_blank">
-                                <figure class="display-profile">
-                                    <img src="{{ asset(config('images.home.profile.user_profile' )) }}" alt="">
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="comment-login-detail">
-                            <div class="comment-login-grid">
-                                <div class="comment-login-username">
-                                    <a href="{{ route('user.getProfile') }}" target="_blank">
-                                        <p class="comment-name">Username</p>
-                                    </a>
+                        @if( Auth::guest() )
+                            <div class="before-login">
+                                <p>@lang('share.what_are_you_thoughts')</p>
+                                <a data-open="login" class="btn-blue btn-long">@lang('button.login')</a>
+                            </div>
+                            <div class="comment-login-user">
+                                <a href="{{ route('user.getProfile') }}" target="_blank">
+                                    <figure class="display-profile">
+                                        <img src="{{ asset( config( 'images.home.profile.user_profile' ) ) }}"
+                                             alt="Username">
+                                    </figure>
+                                </a>
+                            </div>
+                            <div class="comment-login-detail">
+                                <div class="comment-login-grid">
+                                    <div class="comment-login-username">
+                                        <a href="#" target="_blank">
+                                            <p class="comment-name">Username</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="comment-login-content">
+                                    <form action="">
+                                        <textarea class="form-fill margin-bottom-1" rows="3"></textarea>
+                                        <button class="btn-blue btn-long margin-bottom-1">Post</button>
+                                    </form>
                                 </div>
                             </div>
-                            <div class="comment-login-content">
-                                <form action="">
-                                    <textarea id="address" class="form-fill margin-bottom-1" rows="3"></textarea>
-                                    <button class="btn-blue btn-long margin-bottom-1">Post</button>
-                                </form>
+                        @endif
+
+                        @if( Auth::user() )
+                            <div class="comment-login-user">
+                                <a href="{{ route('user.getProfile') }}" target="_blank">
+                                    <figure class="display-profile">
+                                        <img src="{{ Auth::user()->image_path ? Storage::url( Auth::user()->image_path ) : asset( config( 'images.home.profile.user_profile' ) ) }}"
+                                             alt="{{ Auth::user()->username }}">
+                                    </figure>
+                                </a>
                             </div>
-                        </div>
+                            <div class="comment-login-detail">
+                                <div class="comment-login-grid">
+                                    <div class="comment-login-username">
+                                        <a href="{{ route('user.getProfile') }}" target="_blank">
+                                            <p class="comment-name">{{ Auth::user()->username }}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="comment-login-content">
+                                    <form id="post-action" class="comment-form"
+                                          action="{{ route('challenge.saveComment', [ 'share' => $data['id'] ]) }}"
+                                          method="POST">
+                                        {{ csrf_field() }}
+                                        <textarea id="comment_text" name="comment_text" class="form-fill margin-bottom-1" rows="3"></textarea>
+                                        <div id="comment_text-help-text" class="alert help-text help-text textarea  hide"></div>
+                                        <button class="btn-blue btn-long margin-bottom-1">@lang('button.post')</button>
+                                        <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
+                                        <input type="hidden" name="fk_challenge_id" value="{{ $data['id'] }}">
+                                        <input type="hidden" name="public_date" value="{{ date('Y-m-d') }}">
+                                    </form>
+                                </div>
+                            </div>
+                        @endif
                     </article>
                 </div>
             </div>
         </section>
         <section class="padding-content padding-bottom-0 padding-top-0">
-            <div class="grid-x grid-margin-x">
-                <h2 class="cell topic-dark">20 Comments</h2>
-            </div>
-            <div class="grid-x grid-margin-x">
-                <article class="cell small-12 comment-login">
-                    <div class="comment-login-user">
-                        <a href="{{ route('user.getProfile') }}" target="_blank">
-                            <figure class="display-profile">
-                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}" alt="">
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="comment-login-detail">
-                        <div class="comment-login-grid">
-                            <div class="comment-login-username">
-                                <a href="{{ route('user.getProfile') }}" target="_blank">
-                                    <p class="comment-name">Username</p>
-                                </a>
-                            </div>
-                            <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i> 29 April 2019</time>
-                        </div>
-                        <div class="comment-login-content">
-                            Nullam posuere dolor sed sapien lacinia feugiat. Aliquam commodo erat vel urna facilisis
-                        </div>
-                    </div>
-                </article>
-                <article class="cell small-12 comment-login">
-                    <div class="comment-login-user">
-                        <a href="{{ route('user.getProfile') }}" target="_blank">
-                            <figure class="display-profile">
-                                <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="comment-login-detail">
-                        <div class="comment-login-grid">
-                            <div class="comment-login-username">
-                                <a href="{{ route('user.getProfile') }}" target="_blank">
-                                    <p class="comment-name">Username</p>
-                                </a>
-                            </div>
-                            <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i> 29 April 2019</time>
-                        </div>
-                        <div class="comment-login-content">
-                            Nullam posuere dolor sed sapien lacinia feugiat. Aliquam commodo erat vel urna facilisis
-                        </div>
-                    </div>
-                </article>
-                <div class="cell small-12">
-                    <a href="#" id="loadMore" class="load-more">@lang('button.view_more')
-                        <i class="fas fa-caret-down"></i></a>
-                </div>
-            </div>
+            @include('challenge.comment')
         </section>
         <section class="most-popular padding-content">
             <div class="grid-x grid-margin-x">
