@@ -22,4 +22,13 @@ class OrganizationController extends Controller
     {
         return view( 'organization.index' );
     }
+    /**
+     * Display organization profile page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View organization profile page
+     */
+    public function profile()
+    {
+        return view( 'organization.profile' );
+    }
 }

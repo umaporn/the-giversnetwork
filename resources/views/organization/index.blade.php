@@ -34,7 +34,7 @@
         <div class="cell small-12">
             <div class="grid-x">
                 <div class="cell-block small-12 xlarge-3">
-                    <form class="give-cat">
+                    <form class="organization-cat">
                         <div class="grid-x">
                             <div class="cell shrink">
                                 <label for="category">CATEGORY</label>
@@ -60,9 +60,9 @@
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
                         </figure>
                         <div class="cards-detail">
-                            <h2 class="cards-topic">Ramen Noodles</h2>
+                            <h2 class="cards-topic">แชมเปญฮาลาลแม่ค้าดิกชันนารีหลวงปู่ โปรโมเตอร์อิมพีเรียล</h2>
                             <p class="cards-amount">category</p>
-                            <a href="#" class="btn-blue">Contact</a>
+                            <a href="{{ route('organization.profile') }}" class="btn-blue">Contact</a>
                         </div>
                     </div>
                 </article>
@@ -72,10 +72,9 @@
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
                         </figure>
                         <div class="cards-detail">
-                            <h2 class="cards-topic">ปลากระป๋อง เนื้อปลาแมคเคอเรลและซอสชั้นดี ตรา สามแม่ครัว ขนาด
-                                200 กรัม</h2>
+                            <h2 class="cards-topic">Organization Name</h2>
                             <p class="cards-amount">category</p>
-                            <a href="#" class="btn-blue">Contact</a>
+                            <a href="{{ route('organization.profile') }}" class="btn-blue">Contact</a>
                         </div>
                     </div>
                 </article>
@@ -85,9 +84,9 @@
                             <img src="{{ asset(config('images.home.share.home_share_01' )) }}" class="img-cover">
                         </figure>
                         <div class="cards-detail">
-                            <h2 class="cards-topic">Ramen Noodles</h2>
+                            <h2 class="cards-topic">Organization Name</h2>
                             <p class="cards-amount">category</p>
-                            <a href="#" class="btn-blue">Contact</a>
+                            <a href="{{ route('organization.profile') }}" class="btn-blue">Contact</a>
                         </div>
                     </div>
                 </article>
@@ -97,9 +96,9 @@
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
                         </figure>
                         <div class="cards-detail">
-                            <h2 class="cards-topic">Ramen Noodles</h2>
+                            <h2 class="cards-topic">Organization Name</h2>
                             <p class="cards-amount">category</p>
-                            <a href="#" class="btn-blue">Contact</a>
+                            <a href="{{ route('organization.profile') }}" class="btn-blue">Contact</a>
                         </div>
                     </div>
                 </article>
@@ -109,14 +108,14 @@
                             <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}" class="img-cover">
                         </figure>
                         <div class="cards-detail">
-                            <h2 class="cards-topic">Ramen Noodles</h2>
+                            <h2 class="cards-topic">Organization Name</h2>
                             <p class="cards-amount">category</p>
-                            <a href="#" class="btn-blue">Contact</a>
+                            <a href="{{ route('organization.profile') }}" class="btn-blue">Contact</a>
                         </div>
                     </div>
                 </article>
             </section>
-            <div class="give-load">
+            <div class="organization-load">
                 <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
             </div>
     </section>

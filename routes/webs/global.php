@@ -44,6 +44,7 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'organization', ], function(){
         Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
+        Route::get( 'profile', 'OrganizationController@profile' )->name( 'organization.profile' );
     } );
 
     Route::group( [ 'prefix' => 'admin' ], function(){
