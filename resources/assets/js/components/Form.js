@@ -64,18 +64,18 @@ const Form = (function(){
 			                              accept: 'jpg|png|gif',
 		                              } );
 
-		$( '#file-image-multi' ).MultiFile( {
+		$( '#image_path' ).MultiFile( {
 			                                    max:    10,
 			                                    accept: 'jpg|png|gif',
 		                                    } );
 
-		$( '#file-pdf' ).MultiFile( {
+		$( '#file_path' ).MultiFile( {
 			                            max:    1,
 			                            accept: 'pdf',
 		                            } );
 
 		$( 'input[type=file]' ).change( function(){
-			$( '#filename' ).val( $( this ).val() );
+			$( '#image_path' ).val( $( this ).val() );
 		} );
 
 		$( '.toggle-password' ).click( function(){

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class ShareImage extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'fk_share_id', 'original', 'thumbnail' ];
 
     /** @var string Table name */
     protected $table = 'share_image';

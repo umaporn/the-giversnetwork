@@ -17,12 +17,12 @@ class CreateShareImageTable extends Migration
     {
         Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
-            $table->unsignedInteger( 'fk_share_id' );
+            $table->unsignedInteger( 'fk_share_id' )->nullable();
             $table->foreign( 'fk_share_id' )->references( 'id' )->on( 'share' );
             $table->string( 'original', 255 );
             $table->string( 'thumbnail', 255 );
-            $table->string( 'alt_thai', 255 );
-            $table->string( 'alt_english', 255 );
+            $table->string( 'alt_thai', 255 )->nullable();
+            $table->string( 'alt_english', 255 )->nullable();
             $table->timestamp( 'updated_at' );
             $table->timestamp( 'created_at' )->useCurrent();
         } );

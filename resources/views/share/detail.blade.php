@@ -60,11 +60,12 @@
                         <div class="cell small-12 text-center slide-thumb">
                             <div class="gallery-top">
                                 <div class="swiper-wrapper">
+
                                     @foreach( $data->shareImage as $share_image )
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
-                                                    <img src="{{ $share_image['original'] }}" alt="{{ $share_image['alt'] }}">
+                                                    <img src="{{ $share_image['image_path'] }}" alt="{{ $share_image['alt'] }}">
                                                 </figure>
                                             </div>
                                         </div>
@@ -79,7 +80,7 @@
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
-                                                    <img src="{{ $share_image['original'] }}" alt="{{ $share_image['alt'] }}">
+                                                    <img src="{{ $share_image['image_path'] }}" alt="{{ $share_image['alt'] }}">
                                                 </figure>
                                             </div>
                                         </div>
@@ -96,7 +97,7 @@
                             </div>
                         </div>
                         <div class="cell small-12">
-                            <p>{!! $data['content'] !!}}</p>
+                            <p>{!! $data['content'] !!}</p>
                         </div>
 
                         <div class="cell small-12">
@@ -106,7 +107,7 @@
 
                                 <div class="share-download">
                                     @if($data['file_path'])
-                                        <a href="{{ $data['file_path'] }}" class="btn-blue" target="_blank">@lang('button.download')</a>
+                                        <a href="{{ Storage::url( $data['file_path'] ) }}" class="btn-blue" target="_blank">@lang('button.download')</a>
                                     @endif
                                 </div>
                                 <div class="share-share">
@@ -223,7 +224,7 @@
                         <h2 class="cell auto topic-dark">@lang('share.other_threads')</h2>
                         @if( Auth::user() )
                             <div class="cell shrink view-all">
-                                <a href="#" class="btn-blue">
+                                <a href="{{ route('share.showCreateThreadForm') }}" class="btn-blue">
                                     <i class="fas fa-plus"></i> @lang('button.create_thread')
                                 </a>
                             </div>

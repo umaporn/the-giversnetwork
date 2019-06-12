@@ -212,11 +212,12 @@ class Users extends Authenticatable
             DB::table( 'users_interest_in' )->where( 'fk_user_id', Auth::user()->id )->delete();
 
             foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
-                $this->userInterestIn()->create( [
+                $result = $this->userInterestIn()->create( [
                                                      'fk_interest_in_id' => $interestID,
                                                      'fk_user_id'        => Auth::user()->id,
                                                  ] );
             }
+            dd( $result );
         }
 
         if( $result ){

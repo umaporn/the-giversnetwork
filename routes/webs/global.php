@@ -19,9 +19,10 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'share', ], function(){
         Route::get( '', 'ShareController@index' )->name( 'share.index' );
+        Route::get( 'create-thread', 'ShareController@showCreateThreadForm' )->name( 'share.showCreateThreadForm' );
+        Route::post( 'create-thread', 'ShareController@createThread' )->name( 'share.createThread' );
         Route::get( '{share}', 'ShareController@detail' )->name( 'share.detail' );
-        Route::get( 'create-thread', 'ShareController@createThread' )->name( 'share.create_thread' );
-        Route::post('like/{share}', 'ShareController@saveLike')->name('share.saveLike');
+        Route::post( 'like/{share}', 'ShareController@saveLike' )->name( 'share.saveLike' );
         Route::post( 'comment/{share}', 'ShareController@saveComment' )->name( 'share.saveComment' );
         Route::get( 'comment/{share}', 'ShareController@getCommentList' )->name( 'share.commentList' );
         Route::delete( 'comment/{comment}', 'ShareController@deleteComment' )->name( 'share.removeComment' );

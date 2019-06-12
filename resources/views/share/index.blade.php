@@ -66,7 +66,7 @@
                         <h2 class="cell auto topic-dark">@lang('share.threads')</h2>
                         @if( Auth::user() )
                             <div class="cell shrink view-all">
-                                <a href="#" class="btn-blue">
+                                <a href="{{ route('share.showCreateThreadForm') }}" class="btn-blue">
                                     <i class="fas fa-plus"></i> @lang('button.create_thread')
                                 </a>
                             </div>

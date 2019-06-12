@@ -22,13 +22,13 @@ class CreateGiveTable extends Migration
             $table->unsignedInteger( 'fk_category_id' );
             $table->foreign( 'fk_category_id' )->references( 'id' )->on( 'give_category' );
             $table->enum( 'type', [ 'give', 'receive' ] );
-            $table->string( 'title_thai', 255 );
-            $table->string( 'title_english', 255 );
-            $table->string( 'description_thai', 255 );
-            $table->string( 'description_english', 255 );
+            $table->string( 'title_thai', 255 )->nullable();
+            $table->string( 'title_english', 255 )->nullable();
+            $table->string( 'description_thai', 255 )->nullable();
+            $table->string( 'description_english', 255 )->nullable();
             $table->integer( 'amount' );
             $table->text( 'address' );
-            $table->integer( 'view' );
+            $table->integer( 'view' )->nullable();
             $table->date( 'expired_date' );
             $table->enum( 'status', [ 'public', 'draft' ] );
             $table->timestamp( 'updated_at' );

@@ -55,7 +55,9 @@ class ShareController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'comment_text' => config( 'validation.share.comment_text' ),
+            'comment_text'    => config( 'validation.share.comment_text' ),
+            'title_english'   => config( 'validation.share.title_english' ),
+            'content_english' => config( 'validation.share.content_english' ),
         ] );
     }
 
@@ -94,7 +96,7 @@ class ShareController extends Controller
     public function detail( Share $share, Request $request )
     {
         $data    = $this->shareModel->getShareDetail( $share );
-        $other   = $this->shareModel->getShareAllList( $request, 7 )->except(['id'=> $share->id]);
+        $other   = $this->shareModel->getShareAllList( $request, 7 )->except( [ 'id' => $share->id ] );
         $isLike  = $this->shareLikeModel->getIsShareLike( $share );
         $comment = $this->shareCommentModel->getShareComment( $request, $share );
 
@@ -107,19 +109,66 @@ class ShareController extends Controller
         return view( 'share.detail', compact( 'data', 'other', 'isLike', 'comment' ) );
     }
 
-    public function createThread()
+    /**
+     * Show creation thread form
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Create thread form
+     */
+    public function showCreateThreadForm()
     {
         return view( 'share.create_thread' );
     }
 
-    /**
-     * Display share detail page.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge page
-     */
-    public function challenge()
+    public function createThread( Request $request )
     {
-        return view( 'share.challenge' );
+        $result = $this->shareModel->createShare( $request );
+
+        return $this->setUpdateOrCreationResponse( $request, $result );
+    }
+
+    /**
+     * Set update or creation response.
+     *
+     * @param Request $request News request object
+     * @param array   $result  Updating or creating result
+     *
+     * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    private function setUpdateOrCreationResponse( Request $request, array $result )
+    {
+        $response = $this->setResponseMessages( $result );
+
+        if( $request->ajax() ){
+            return response()->json( $response );
+        } else {
+            return redirect()->route( 'share.showCreateThreadForm' );
+        }
+    }
+
+    /**
+     * Set error messages from result.
+     *
+     * @param array $result Result of saved news/article
+     *
+     * @return    array               Error messages
+     */
+    private function setResponseMessages( array $result )
+    {
+
+        if( !$result['successForShare'] && !$result['successForShareImage'] ){
+            $data = [
+                'success' => false,
+                'error'   => __( 'share.create_thread_form.saved_share_error' ),
+            ];
+        } else {
+            $data = [
+                'success'       => true,
+                'message'       => __( 'share.create_thread_form.saved_share_success' ),
+                'redirectedUrl' => route( 'share.index' ),
+            ];
+        }
+
+        return $data;
     }
 
     /**
