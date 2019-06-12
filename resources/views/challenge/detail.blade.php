@@ -97,16 +97,13 @@
                             </div>
                         </div>
                         <div class="cell small-12">
-                            <p>{{ $data['content'] }}</p>
+                            <p>{!!  $data['content'] !!}</p>
                         </div>
                         <div class="cell small-12">
                             <article class="share-action">
-                                <div class="share-like">
-                                    <a class="share-like-click">
-                                        <div><i class="far fa-thumbs-up"></i></div>
-                                        <p>{{ count($data->challengeLike) }} @lang('share.likes_this_thread')</p>
-                                    </a>
-                                </div>
+
+                                @include('challenge.like')
+
                                 <div class="share-download">
                                     @if($data['file_path'])
                                         <a href="{{ $data['file_path'] }}" class="btn-blue" target="_blank">@lang('button.download')</a>

@@ -8,6 +8,8 @@ namespace App\Http\Controllers;
 use App\Models\News;
 use App\Models\Challenge;
 use App\Models\Events;
+use App\Models\ChallengeComment;
+use App\Models\ChallengeLike;
 use Illuminate\Http\Request;
 
 class ChallengeController extends Controller
@@ -21,16 +23,23 @@ class ChallengeController extends Controller
     /** @var Events Events model instance */
     private $eventsModel;
 
+    /** @var ChallengeLike Challenge like model instance */
+    private $challengeLikeModel;
+
+    /** @var ChallengeComment Challenge comment model instance */
+    private $challengeCommentModel;
+
     /**
      * ChallengeController constructor.
      *
      * @param Challenge $challenge Challenge Model
      */
-    public function __construct( Challenge $challenge, News $news, Events $events )
+    public function __construct( Challenge $challenge, News $news, Events $events, ChallengeLike $challengeLike, ChallengeComment $challengeComment )
     {
-        $this->challengeModel = $challenge;
-        $this->newsModel      = $news;
-        $this->eventsModel    = $events;
+        $this->challengeModel        = $challenge;
+        $this->newsModel             = $news;
+        $this->challengeLikeModel    = $challengeLike;
+        $this->challengeCommentModel = $challengeComment;
     }
 
     /**
@@ -60,15 +69,19 @@ class ChallengeController extends Controller
      */
     public function detail( Challenge $challenge, Request $request )
     {
-        $data  = $this->challengeModel->getChallengeDetail( $challenge );
-        $other = $this->challengeModel->getChallengeAllList( $request, 6 );
 
-        return view( 'challenge.detail', compact( 'data', 'other' ) );
-    }
+        $data    = $this->challengeModel->getChallengeDetail( $challenge );
+        $other   = $this->challengeModel->getChallengeAllList( $request, 6 );
+        $isLike  = $this->challengeLikeModel->getIsChallengeLike( $challenge );
+        $comment = $this->challengeCommentModel->getChallengeComment( $request, $challenge );
 
-    public function createThread()
-    {
-        return view( 'challenge.create_thread' );
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'challenge.comment_list', compact( 'comment' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'challenge.detail', compact( 'data', 'other', 'isLike', 'comment' ) );
     }
 
     /**
@@ -83,4 +96,118 @@ class ChallengeController extends Controller
         return view( 'challenge.challenge' );
     }
 
+    /**
+     * Save like for challenge content.
+     *
+     * @param Request   $request   Request Object
+     * @param Challenge $challenge Challenge model
+     *
+     * @return \Illuminate\Http\JsonResponse Save like response
+     * @throws \Throwable
+     */
+    public function saveLike( Request $request, Challenge $challenge )
+    {
+        if( $request->ajax() ){
+
+            $isLike = $this->challengeLikeModel->getIsChallengeLike( $challenge );
+
+            if( $isLike ){
+                $this->challengeLikeModel->where( [
+                                                      'fk_user_id'      => $request->input( 'fk_user_id' ),
+                                                      'fk_challenge_id' => $request->input( 'fk_challenge_id' ),
+                                                  ] )->delete();
+            } else {
+                $this->challengeLikeModel->create( $request->input() );
+            }
+
+            $isLike = $this->challengeLikeModel->getIsChallengeLike( $challenge );
+            $data   = $this->challengeModel->getChallengeDetail( $challenge );
+
+            return response()->json( [
+                                         'data' => view( 'challenge.like', compact( 'data', 'isLike' ) )->render(),
+                                     ] );
+        }
+    }
+
+    /**
+     * Save comment for challenge content.
+     *
+     * @param Request   $request   Request object
+     * @param Challenge $challenge Challenge model
+     *
+     * @return \Illuminate\Http\JsonResponse Json response
+     * @throws \Throwable
+     */
+    public function saveComment( Request $request, Challenge $challenge )
+    {
+        $this->validator( $request->input() )->validate();
+
+        $response['success'] = false;
+
+        if( $request->ajax() ){
+
+            $result = $this->challengeCommentModel->create( $request->input() );
+
+            if( $result ){
+                $response['success'] = true;
+            } else {
+                return response()->json( $response, 422 );
+            }
+
+            $comment = $this->challengeCommentModel->getChallengeComment( $request, $challenge );
+            $data    = $this->challengeModel->getChallengeDetail( $challenge );
+
+            return response()->json( [
+                                         'data' => view( 'challenge.comment', compact( 'comment', 'data' ) )->render(),
+                                     ] );
+        }
+    }
+
+    /**
+     * Get comment list.
+     *
+     * @param Request   $request   Request object
+     * @param Challenge $challenge Challenge model
+     *
+     * @return \Illuminate\Http\JsonResponse Comment list
+     * @throws \Throwable
+     */
+    public function getCommentList( Request $request, Challenge $challenge )
+    {
+        if( $request->ajax() ){
+            $comment = $this->challengeCommentModel->getChallengeComment( $request, $challenge );
+
+            return response()->json( [
+                                         'data' => view( 'challenge.comment_list', compact( 'comment' ) )->render(),
+                                     ] );
+        }
+    }
+
+    /**
+     * Delete comment on challenge content.
+     *
+     * @param Request $request Request Object
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    public function deleteComment( Request $request )
+    {
+
+        $success = $this->challengeCommentModel->where( [ 'id' => $request->input( 'id' ), ] )->delete();
+
+        if( $success ){
+            $response = [ 'success'       => true,
+                          'message'       => __( 'challenge.comment.remove_comment_success' ),
+                          'redirectedUrl' => url()->previous(),
+            ];
+        } else {
+            $response = [ 'success'       => false,
+                          'message'       => __( 'challenge.comment.remove_comment_fail' ),
+                          'redirectedUrl' => url()->previous(),
+            ];
+        }
+
+        return response()->json( $response );
+
+    }
 }

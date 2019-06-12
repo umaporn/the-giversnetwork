@@ -31,6 +31,11 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'challenge' ], function(){
         Route::get( '', 'ChallengeController@index' )->name( 'challenge.index' );
         Route::get( '{challenge}', 'ChallengeController@detail' )->name( 'challenge.detail' );
+        Route::post( 'like/{challenge}', 'ChallengeController@saveLike' )->name( 'challenge.saveLike' );
+        Route::post( 'comment/{challenge}', 'ChallengeController@saveComment' )->name( 'challenge.saveComment' );
+        Route::get( 'comment/{challenge}', 'ChallengeController@getCommentList' )->name( 'challenge.commentList' );
+        Route::delete( 'comment/{comment}', 'ChallengeController@deleteComment' )->name( 'challenge.removeComment' );
+
     } );
 
     Route::group( [ 'prefix' => 'give', ], function(){

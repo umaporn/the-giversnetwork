@@ -25,4 +25,7 @@ return [
 
     'challenge'       => 'Challenge',
     'other_challenge' => 'other challenge',
+    'likes_this_thread'     => 'Likes this thread',
+    'write_comment'         => 'Write A Comment',
+    'what_are_you_thoughts' => 'What are you thoughts?',
 ];
