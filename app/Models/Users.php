@@ -217,7 +217,9 @@ class Users extends Authenticatable
                                                      'fk_user_id'        => Auth::user()->id,
                                                  ] );
             }
-            dd( $result );
+
+        }else{
+            DB::table( 'users_interest_in' )->where( 'fk_user_id', Auth::user()->id )->delete();
         }
 
         if( $result ){
