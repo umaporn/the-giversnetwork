@@ -17,7 +17,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> Share
+                    <span class="show-for-sr">Current: </span> Share - Challenge
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space">
-                                    <h2 class="cell shrink user-head">Add New Thread</h2>
+                                    <h2 class="cell shrink user-head">Add New Challenge</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">
@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-offset-2 large-9">
-                                            <button class="btn-green btn-long">Create Thread</button>
+                                            <button class="btn-green btn-long">Create New Challenge</button>
                                         </div>
                                     </div>
                                 </form>
