@@ -18,4 +18,3 @@ $( document ).foundation();
 window.JSTranslate = require( 'js-translate' );
 window.Swiper = require( 'swiper/dist/js/swiper' );
 window.Multifile = require( 'jquery-multifile' );
-require( '@fancyapps/fancybox' );
