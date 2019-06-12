@@ -21,6 +21,6 @@ return [
         'email' => 'required|email|max:254',
     ],
     'share'             => [
-        'comment_text' => 'required|alpha_dash|min:3|max:1000',
+        'comment_text' => 'required|string|min:3|max:1000',
     ],
 ];
