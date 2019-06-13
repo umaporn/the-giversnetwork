@@ -32,8 +32,8 @@
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">Event</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All Event</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add Event</a>
+            <a href="{{ route('admin.eventAll') }}"><i class="fas fa-caret-right"></i> All Event</a>
+            <a href="{{ route('admin.eventAdd') }}"><i class="fas fa-caret-right"></i> Add Event</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>
