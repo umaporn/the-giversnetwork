@@ -144,6 +144,14 @@
 			color: $white;
 			border-color: $color-blue;
 		}
+		&.light{
+			color: $color-blue;
+			background-color: $white;
+			&:focus {
+				color: $color-blue;
+				background-color: $white;
+			}
+		}
 	}
 
 	&-checkbox {

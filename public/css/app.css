@@ -21076,6 +21076,16 @@ readers do not read off random characters that represent icons */
   border-color: #154064;
 }
 
+.form-select.light {
+  color: #154064;
+  background-color: #FEFEFE;
+}
+
+.form-select.light:focus {
+  color: #154064;
+  background-color: #FEFEFE;
+}
+
 .form-checkbox {
   border: 1px solid #154064;
   border-radius: 0.625rem;
@@ -24046,6 +24056,11 @@ body:lang(en) .language li.en a {
 
 /*----------------- Home - Give ------------------*/
 
+.give {
+  /*----------------- Article - Give ------------------*/
+  /*----------------- Add - Give ------------------*/
+}
+
 .give.all .topic:after {
   border: none;
 }
@@ -24265,6 +24280,10 @@ body:lang(en) .language li.en a {
 
 .give.detail .box-content .swiper-slide-container {
   background-color: #F8F8F8;
+}
+
+.give.create .topic:after {
+  border: none;
 }
 
 .give-cat label {

@@ -37,8 +37,8 @@ class GiveController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View createItem page
      */
-    public function create_item()
+    public function createItem()
     {
-        return view( 'give.createItem' );
+        return view( 'give.create_item' );
     }
 }

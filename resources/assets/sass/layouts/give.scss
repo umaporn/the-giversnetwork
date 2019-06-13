@@ -67,7 +67,7 @@
         }
     }
 
-
+/*----------------- Article - Give ------------------*/
     &.detail {
         .topic {
             &:after {
@@ -219,7 +219,15 @@
             }
         }
     }
+/*----------------- Add - Give ------------------*/
+    &.create {
+        .topic {
+            &:after {
+                border: none;
+            }
+        }
 
+    }
 
     &-cat {
         label {
