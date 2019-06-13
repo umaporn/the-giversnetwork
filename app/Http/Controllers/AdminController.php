@@ -73,5 +73,17 @@ class AdminController extends Controller
     {
         return view( 'admin.recAll' );
     }
-
+    /**
+     * Show event page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View event page
+     */
+    public function eventAdd()
+    {
+        return view( 'admin.eventAdd' );
+    }
+    public function eventAll()
+    {
+        return view( 'admin.eventAll' );
+    }
 }
