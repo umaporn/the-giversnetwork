@@ -86,4 +86,17 @@ class AdminController extends Controller
     {
         return view( 'admin.eventAll' );
     }
+    /**
+     * Show news page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View news page
+     */
+    public function newsAdd()
+    {
+        return view( 'admin.newsAdd' );
+    }
+    public function newsAll()
+    {
+        return view( 'admin.newsAll' );
+    }
 }
