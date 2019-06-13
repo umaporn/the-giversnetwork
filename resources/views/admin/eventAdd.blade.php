@@ -112,12 +112,11 @@
                                         <div class="cell small-12 large-9">
                                             <div class="form-file-image">
                                                 <div class="form-file">
-                                                    <input type="file" class="form-fileupload" id="file-image-multi"
+                                                    <input type="file" class="form-fileupload" id="file-image"
                                                         multiple data-maxfile="1024" />
                                                     <div class="form-file-style">
                                                         <div class="form-flex btn-blue">Browse</div>
-                                                        <p class="form-flex show-text">maximum upload : 10 and file
-                                                            size: 1MB/Image</p>
+                                                        <p class="form-flex show-text">maximun upload file size: 1MB</p>
                                                     </div>
                                                 </div>
                                             </div>

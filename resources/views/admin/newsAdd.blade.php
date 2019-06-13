@@ -17,7 +17,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> Event
+                    <span class="show-for-sr">Current: </span> News
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space">
-                                    <h2 class="cell shrink user-head">Add Event</h2>
+                                    <h2 class="cell shrink user-head">Add News</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">
@@ -46,7 +46,7 @@
                                 <form action="">
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="username" class="form-label">Event ID</label>
+                                            <label for="id" class="form-label">News ID</label>
                                         </div>
                                         <div class="cell small-12 large-9 form-text">
                                             00019
@@ -70,54 +70,16 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="location" class="form-label">Location</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <input type="text" id="location" class="form-fill" value="">
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label for="host" class="form-label">Host</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <input type="text" id="host" class="form-fill" value="">
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label for="link" class="form-label">Link</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <input type="text" id="link" class="form-fill" value="">
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label class="form-label">Date/Time</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <div class="form-date">
-                                                <label for="date-start">From</label>
-                                                <input type="datetime-local" id="date-start" class="form-fill" value="">
-                                                <label for="date-end">To</label>
-                                                <input type="datetime-local" id="date-end" class="form-fill" value="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
                                             <label for="imageProfile" class="form-label">Image</label>
                                         </div>
                                         <div class="cell small-12 large-9">
                                             <div class="form-file-image">
                                                 <div class="form-file">
-                                                    <input type="file" class="form-fileupload" id="file-image-multi"
+                                                    <input type="file" class="form-fileupload" id="file-image"
                                                         multiple data-maxfile="1024" />
                                                     <div class="form-file-style">
                                                         <div class="form-flex btn-blue">Browse</div>
-                                                        <p class="form-flex show-text">maximum upload : 10 and file
-                                                            size: 1MB/Image</p>
+                                                        <p class="form-flex show-text">maximun upload file size: 1MB</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -129,7 +91,7 @@
                                         </div>
                                         <div class="cell small-12 large-9 form-text">
                                             <input id="approve" type="checkbox">
-                                            <label for="approve">Publish this event</label>
+                                            <label for="approve">Publish this news</label>
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">

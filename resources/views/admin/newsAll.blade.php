@@ -18,7 +18,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> Event
+                    <span class="show-for-sr">Current: </span> news
                 </li>
             </ul>
         </div>
@@ -34,7 +34,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space admin-search">
-                                    <h2 class="cell shrink user-head">All Events</h2>
+                                    <h2 class="cell shrink user-head">All News</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">

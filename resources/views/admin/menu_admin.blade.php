@@ -39,8 +39,8 @@
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">News</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All News</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add News</a>
+            <a href="{{ route('admin.newsAll') }}"><i class="fas fa-caret-right"></i> All News</a>
+            <a href="{{ route('admin.newsAdd') }}"><i class="fas fa-caret-right"></i> Add News</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>
