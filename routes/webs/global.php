@@ -47,6 +47,10 @@ function globalRoutes()
         Route::get( 'profile', 'OrganizationController@profile' )->name( 'organization.profile' );
     } );
 
+    Route::group( [ 'prefix' => 'about', ], function(){
+        Route::get( '', 'AboutController@index' )->name( 'about.index' );
+    } );
+
     Route::group( [ 'prefix' => 'admin' ], function(){
         Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
         Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );

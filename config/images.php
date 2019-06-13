@@ -43,6 +43,11 @@ return [
             'home_about_01'             => 'images/home/about-1.png',
         ],
     ],
+
+    'about' => [
+        'about_01'             => 'images/about/american-casual-cellphone-1484566.png',
+        'about_02'             => 'images/about/active-activity-adult-1430116.png',
+    ],
     
 
 ];
