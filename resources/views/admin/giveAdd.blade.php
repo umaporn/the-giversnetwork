@@ -17,7 +17,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> Share
+                    <span class="show-for-sr">Current: </span> Give
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space">
-                                    <h2 class="cell shrink user-head">Add New Thread</h2>
+                                    <h2 class="cell shrink user-head">Add Give or Recive</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">
@@ -46,7 +46,7 @@
                                 <form action="">
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="username" class="form-label">Share ID</label>
+                                            <label for="username" class="form-label">ID</label>
                                         </div>
                                         <div class="cell small-12 large-9 form-text">
                                             00019
@@ -54,10 +54,10 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="topic" class="form-label">Topic</label>
+                                            <label for="product" class="form-label">Product Name</label>
                                         </div>
                                         <div class="cell small-12 large-9">
-                                            <input type="text" id="topic" class="form-fill" value="">
+                                            <input type="text" id="product" class="form-fill" value="">
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">

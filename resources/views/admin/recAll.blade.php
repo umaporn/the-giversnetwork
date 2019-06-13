@@ -17,7 +17,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> learn
+                    <span class="show-for-sr">Current: </span> share
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space admin-search">
-                                    <h2 class="cell shrink user-head">All Learn</h2>
+                                    <h2 class="cell shrink user-head">All Receive</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">
@@ -58,7 +58,8 @@
                                                 <th>No</th>
                                                 <th>Title</th>
                                                 <th>Views</th>
-                                                <th>Publish</th>
+                                                <th>Stat Click</th>
+                                                <th>Approval</th>
                                                 <th>URL</th>
                                                 <th>Edit</th>
                                                 <th>Delete</th>
@@ -69,6 +70,17 @@
                                                 <td>00019</td>
                                                 <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor erat nec augue sollicitudin, eu vulputate enim vestibulum. In hac habitasse platea dictumst. Mauris tincidunt metus turpis, eget interdum metus </td>
                                                 <td>2.1k</td>
+                                                <td>100</td>
+                                                <td><i class="far fa-square"></i></td>
+                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
+                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
+                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+                                            </tr>
+                                            <tr>
+                                                <td>00019</td>
+                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                                <td>2.1k</td>
+                                                <td>100</td>
                                                 <td><i class="far fa-check-square"></i></td>
                                                 <td><a href="#"><i class="fas fa-link"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pen"></i></a></td>
@@ -78,6 +90,7 @@
                                                 <td>00019</td>
                                                 <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
                                                 <td>2.1k</td>
+                                                <td>100</td>
                                                 <td><i class="far fa-check-square"></i></td>
                                                 <td><a href="#"><i class="fas fa-link"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pen"></i></a></td>
@@ -87,15 +100,7 @@
                                                 <td>00019</td>
                                                 <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
                                                 <td>2.1k</td>
-                                                <td><i class="far fa-check-square"></i></td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
+                                                <td>100</td>
                                                 <td><i class="far fa-check-square"></i></td>
                                                 <td><a href="#"><i class="fas fa-link"></i></a></td>
                                                 <td><a href="#"><i class="fas fa-pen"></i></a></td>

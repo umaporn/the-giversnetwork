@@ -24,9 +24,9 @@
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">Give</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All Give</a>
-            <a href="#"><i class="fas fa-caret-right"></i> All Receive</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add Give & Recive</a>
+            <a href="{{ route('admin.giveAll') }}"><i class="fas fa-caret-right"></i> All Give</a>
+            <a href="{{ route('admin.recAll') }}"><i class="fas fa-caret-right"></i> All Receive</a>
+            <a href="{{ route('admin.giveAdd') }}"><i class="fas fa-caret-right"></i> Add Give & Recive</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>

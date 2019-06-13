@@ -36,7 +36,7 @@ class AdminController extends Controller
         return view( 'admin.learnAdd' );
     }
     /**
-     * Show shaew page.
+     * Show share page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View share page
      */
@@ -55,6 +55,23 @@ class AdminController extends Controller
     public function shareAdd()
     {
         return view( 'admin.shareAdd' );
+    }
+    /**
+     * Show give page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View give page
+     */
+    public function giveAdd()
+    {
+        return view( 'admin.giveAdd' );
+    }
+    public function giveAll()
+    {
+        return view( 'admin.giveAll' );
+    }
+    public function recAll()
+    {
+        return view( 'admin.recAll' );
     }
 
 }

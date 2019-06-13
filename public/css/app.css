@@ -21481,6 +21481,10 @@ readers do not read off random characters that represent icons */
   }
 }
 
+.table-admin tbody td input {
+  margin-bottom: 0;
+}
+
 .table-admin tbody tr:nth-child(even) {
   background-color: transparent;
 }

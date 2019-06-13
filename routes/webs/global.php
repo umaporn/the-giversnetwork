@@ -55,6 +55,9 @@ function globalRoutes()
         Route::get( 'share-challenge-add', 'AdminController@shareChAdd' )->name( 'admin.shareChAdd' );
         Route::get( 'share-all', 'AdminController@shareAll' )->name( 'admin.shareAll' );
         Route::get( 'share-add', 'AdminController@shareAdd' )->name( 'admin.shareAdd' );
+        Route::get( 'give-all', 'AdminController@giveAll' )->name( 'admin.giveAll' );
+        Route::get( 'receive-all', 'AdminController@recAll' )->name( 'admin.recAll' );
+        Route::get( 'give-add', 'AdminController@giveAdd' )->name( 'admin.giveAdd' );
     } );
 
     Route::get( 'signup', 'UsersController@signup' )->name( 'users.signup' );

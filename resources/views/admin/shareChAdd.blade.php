@@ -25,10 +25,10 @@
     <div class="grid-x padding-content">
         <div class="cell auto">
             <div class="grid-x">
-                <div class="cell small-12 large-4 xxlarge-3 show-for-large">
+                <div class="cell small-12 large-3 xxlarge-2 show-for-large">
                     @include('admin.menu_admin')
                 </div>
-                <div class="cell small-12 large-8 xxlarge-9">
+                <div class="cell small-12 large-9 xxlarge-10">
                     <article class="user-content">
                         <div class="grid-x">
                             <div class="cell small-12">
