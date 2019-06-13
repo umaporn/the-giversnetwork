@@ -246,7 +246,7 @@ var Slide = function () {
    */
 
   function initialize() {
-    if ($(".slide-thumb").length) {
+    if ($(".slide-thumb, .slide-thumb-give").length) {
       var galleryTop = new Swiper(".gallery-top", {
         spaceBetween: 10,
         navigation: {
