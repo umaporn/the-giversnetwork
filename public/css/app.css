@@ -20999,14 +20999,14 @@ readers do not read off random characters that represent icons */
   border-color: #154064;
 }
 
-.form-select.light {
-  color: #154064;
+.form-select.white {
   background-color: #FEFEFE;
+  color: #154064;
 }
 
-.form-select.light:focus {
-  color: #154064;
+.form-select.white:focus {
   background-color: #FEFEFE;
+  color: #154064;
 }
 
 .form-checkbox {
