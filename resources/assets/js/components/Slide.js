@@ -1,10 +1,8 @@
 /**
  * @namespace
- * @desc Handles hero banner management.
+ * @desc Handles slide management.
  */
-
 const Slide = (function(){
-
 	/**
 	 * @memberOf Slide
 	 * @access public
@@ -12,10 +10,8 @@ const Slide = (function(){
 	 * @constant {Object}
 	 */
 	function initialize(){
-
-		if( $( '.slide-thumb' ).length ){
-
-			let galleryTop = new Swiper( '.gallery-top', {
+		if( $( '.slide-thumb, .slide-thumb-give' ).length ){
+			var galleryTop                   = new Swiper( '.gallery-top', {
 				spaceBetween: 10,
 				navigation:   {
 					nextEl: '.swiper-button-next',
@@ -24,8 +20,7 @@ const Slide = (function(){
 				loop:         true,
 				loopedSlides: 4,
 			} );
-
-			let galleryThumbs = new Swiper( '.gallery-thumbs', {
+			var galleryThumbs                = new Swiper( '.gallery-thumbs', {
 				spaceBetween:        10,
 				centeredSlides:      true,
 				slidesPerView:       'auto',
@@ -34,15 +29,12 @@ const Slide = (function(){
 				loop:                true,
 				loopedSlides:        4,
 			} );
-
 			galleryTop.controller.control    = galleryThumbs;
 			galleryThumbs.controller.control = galleryTop;
 		}
-
 	}
 
 	return {
 		initialize: initialize,
 	};
-
 })( jQuery );

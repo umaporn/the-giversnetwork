@@ -55,7 +55,7 @@ class ShareController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'comment_text'    => config( 'validation.share.comment_text' ),
+            'comment_text' => config( 'validation.share.comment_text' ),
         ] );
     }
 
@@ -281,6 +281,5 @@ class ShareController extends Controller
         }
 
         return response()->json( $response );
-
     }
 }

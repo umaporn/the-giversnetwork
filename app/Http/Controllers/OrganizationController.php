@@ -7,6 +7,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Organization;
 
+/**
+ * organization Page Controller
+ * @package App\Http\Controllers
+ */
 class OrganizationController extends Controller
 {
     /**
@@ -28,4 +32,15 @@ class OrganizationController extends Controller
     {
         //return view( 'organization.detail' );
     }
+
+    /**
+     * Display organization profile page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View organization profile page
+     */
+    public function profile()
+    {
+        return view( 'organization.profile' );
+    }
 }
+

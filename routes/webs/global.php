@@ -42,6 +42,8 @@ function globalRoutes()
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
         Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
         Route::get( '{give}', 'GiveController@detail' )->name( 'give.detail' );
+        Route::get( 'article', 'GiveController@article' )->name( 'give.article' );
+        Route::get( 'create-item', 'GiveController@createItem' )->name( 'give.create_item' );
     } );
 
     Route::group( [ 'prefix' => 'events', ], function(){
@@ -52,6 +54,22 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'news', ], function(){
         Route::get( '', 'NewsController@index' )->name( 'news.index' );
         Route::get( '{news}', 'NewsController@detail' )->name( 'news.detail' );
+        Route::get( 'article', 'NewsController@article' )->name( 'news.article' );
+    } );
+
+    Route::group( [ 'prefix' => 'organization', ], function(){
+        Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
+        Route::get( 'profile', 'OrganizationController@profile' )->name( 'organization.profile' );
+    } );
+
+    Route::group( [ 'prefix' => 'admin' ], function(){
+        Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
+        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
+        Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
+        Route::get( 'share-challenge-all', 'AdminController@shareChAll' )->name( 'admin.shareChAll' );
+        Route::get( 'share-challenge-add', 'AdminController@shareChAdd' )->name( 'admin.shareChAdd' );
+        Route::get( 'share-all', 'AdminController@shareAll' )->name( 'admin.shareAll' );
+        Route::get( 'share-add', 'AdminController@shareAdd' )->name( 'admin.shareAdd' );
     } );
 
     Route::group( [ 'prefix' => 'organization', ], function(){

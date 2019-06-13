@@ -61,4 +61,24 @@ class GiveController extends Controller
     {
         //return view( 'events.detail' );
     }
+
+    /**
+     * Display article page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
+     */
+    public function article()
+    {
+        return view( 'give.article' );
+    }
+
+    /**
+     * Display createItem page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View createItem page
+     */
+    public function createItem()
+    {
+        return view( 'give.create_item' );
+    }
 }
