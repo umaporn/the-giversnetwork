@@ -6,10 +6,10 @@
 
 @section('content')
 
-<section class="news detail">
+<section class="about detail">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
-            <h2 class="topic-light">news</h2>
+            <h2 class="topic-light">about</h2>
         </div>
     </div>
     <section class="grid-x padding-content">

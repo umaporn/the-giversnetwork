@@ -1,0 +1,40 @@
+.about {
+  &.detail {
+    .topic {
+      background-color: $color-blue;
+      color: $white;
+
+      &:after {
+        border: none;
+      }
+
+      h2 {
+        display: inline-block;
+      }
+    }
+
+    .article {
+      &.padding-content {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+    }
+
+    article {
+      margin-bottom: $space-box/2;
+
+      figure {
+        margin-bottom: $space-box/2;
+      }
+
+      p {
+        color: $color-blue;
+      }
+
+      h2 {
+        color: $color-blue;
+      }
+    }
+   
+  }
+}

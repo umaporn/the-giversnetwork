@@ -24893,6 +24893,40 @@ body:lang(en) .language li.en a {
   }
 }
 
+.about.detail .topic {
+  background-color: #154064;
+  color: #FEFEFE;
+}
+
+.about.detail .topic:after {
+  border: none;
+}
+
+.about.detail .topic h2 {
+  display: inline-block;
+}
+
+.about.detail .article.padding-content {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.about.detail article {
+  margin-bottom: 0.625rem;
+}
+
+.about.detail article figure {
+  margin-bottom: 0.625rem;
+}
+
+.about.detail article p {
+  color: #154064;
+}
+
+.about.detail article h2 {
+  color: #154064;
+}
+
 .admin .topic {
   background-color: #154064;
   color: #FEFEFE;
