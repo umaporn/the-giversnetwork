@@ -3,7 +3,7 @@
         <div class="cell auto">
             <i class="fas fa-shapes"></i>
             <h2 class="topic-light">@lang('share.page_link.index')</h2>
-            <span>- Short description to explain share section : Definition</span>
+            <span>- Connect to other GIVERS and share ideas, questions, knowledge, and solutions</span>
         </div>
         <div class="cell shrink view-all">
             <a href="{{ route('share.index') }}">

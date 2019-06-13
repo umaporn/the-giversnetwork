@@ -3,7 +3,7 @@
         <div class="cell auto">
             <i class="fas fa-gift"></i>
             <h2 class="topic-light">@lang('give.page_link.index')</h2>
-            <span>- Short description to explain share section : Definition</span>
+            <span>- An Exchange marketplace for everything you can give or need to help a cause</span>
         </div>
     </div>
     <div class="grid-x content padding-content">
