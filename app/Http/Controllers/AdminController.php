@@ -112,4 +112,13 @@ class AdminController extends Controller
     {
         return view( 'admin.organizationAll' );
     }
+    /**
+     * Show user page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View user page
+     */
+    public function userAll()
+    {
+        return view( 'admin.userAll' );
+    }
 }

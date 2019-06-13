@@ -53,7 +53,7 @@
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">User</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All User</a>
+            <a href="{{ route('admin.userAll') }}"><i class="fas fa-caret-right"></i> All User</a>
         </div>
     </li>
 </ul>
