@@ -16,7 +16,7 @@ $factory->define( \App\Models\Challenge::class, function( Faker $faker ){
         'description_english' => $faker->text( 255 ),
         'content_thai'        => $faker->paragraphs( 20, true ),
         'content_english'     => $faker->paragraphs( 20, true ),
-        'file_path'           => $faker->imageUrl( 700, 400 ),
+        'file_path'           => 'https://placeimg.com/700/400',
         'view'                => $faker->numberBetween( 1, 100 ),
         'status'              => $faker->randomElement( [ 'public', 'draft' ] ),
     ];

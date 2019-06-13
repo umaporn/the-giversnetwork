@@ -10,6 +10,6 @@ $factory->define( \App\Models\InterestIn::class, function( Faker $faker ){
     return [
         'title_thai'    => $faker->text( 10 ),
         'title_english' => $faker->text( 10 ),
-        'thumbnail'     => $faker->imageUrl( 300, 300 ),
+        'thumbnail'     => 'https://placeimg.com/300/300',
     ];
 } );
