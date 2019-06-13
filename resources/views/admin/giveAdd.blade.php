@@ -46,6 +46,17 @@
                                 <form action="">
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
+                                            <label for="product" class="form-label">Category</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <select class="form-select white">
+                                                <option value="Give Item">Give Item</option>
+                                                <option value="Recive Item">Recive Item</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
                                             <label for="username" class="form-label">ID</label>
                                         </div>
                                         <div class="cell small-12 large-9 form-text">
@@ -62,10 +73,38 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="des" class="form-label">Description</label>
+                                            <label for="price" class="form-label">Price</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <input type="number" id="price" class="form-fill" value="">
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="address" class="form-label">Address</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <textarea id="address" class="form-fill" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="des" class="form-label">Desciption</label>
                                         </div>
                                         <div class="cell small-12 large-9">
                                             <textarea id="des" class="form-fill" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="product" class="form-label">Expired Date</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <select class="form-select white">
+                                                <option value="5">5 days</option>
+                                                <option value="15">15 days</option>
+                                                <option value="30">30 days</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
@@ -88,23 +127,16 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="imageProfile" class="form-label">File</label>
+                                            <label class="form-label">Approval</label>
                                         </div>
-                                        <div class="cell small-12 large-9">
-                                            <label class="form-file">
-                                                <input type="file" class="form-fileupload" id="file-pdf"
-                                                    data-maxfile="5120" />
-                                                <div class="form-file-style">
-                                                    <div class="form-flex btn-blue">Browse</div>
-                                                    <p class="form-flex show-text">PDF file only and maximun upload file
-                                                        size: 5MB</p>
-                                                </div>
-                                            </label>
+                                        <div class="cell small-12 large-9 form-text">
+                                            <input id="approve" type="checkbox">
+                                            <label for="approve">Approved this item to publish on TGN website</label>
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-offset-2 large-9">
-                                            <button class="btn-green btn-long">Create Thread</button>
+                                            <button class="btn-green btn-long">Add</button>
                                         </div>
                                     </div>
                                 </form>

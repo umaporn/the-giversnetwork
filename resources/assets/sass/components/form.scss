@@ -1,303 +1,312 @@
 .form {
-	&-onerow {
-		@include breakpoint(medium down) {
-			margin-left: -$space-box/2;
-		}
+  &-onerow {
+    @include breakpoint(medium down) {
+      margin-left: -$space-box/2;
+    }
 
-		@include breakpoint(large) {
-			margin-top: $space-box;
-		}
+    @include breakpoint(large) {
+      margin-top: $space-box;
+    }
 
-		@include breakpoint(xxlarge) {
-			width: 70%;
-		}
-	}
-	&-label {
-		font-family: "db_airystd_bd";
-		color: $color-blue;
-		font-size: rem-calc(18);
+    @include breakpoint(xxlarge) {
+      width: 70%;
+    }
+  }
+  &-label {
+    font-family: "db_airystd_bd";
+    color: $color-blue;
+    font-size: rem-calc(18);
 
-		@include breakpoint(large) {
-			text-align: right;
-			margin-top: $space-box/4;
-		}
-	}
+    @include breakpoint(large) {
+      text-align: right;
+      margin-top: $space-box/4;
+    }
+  }
 
-	&-fill {
-		border-color: $color-blue;
-		border-radius: $space-box/4;
+  &-fill {
+    border-color: $color-blue;
+    border-radius: $space-box/4;
 
-		@include breakpoint(large) {
-			margin-bottom: 0;
-		}
-	}
+    @include breakpoint(large) {
+      margin-bottom: 0;
+    }
+  }
 
-	&-imageupload {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
+  &-imageupload {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-		&-show {
-			background-color: $color-grey;
-			width: rem-calc(70);
-			height: rem-calc(70);
-			margin-right: $space-box;
-			border-radius: 50%;
-			overflow: hidden;
-		}
-	}
+    &-show {
+      background-color: $color-grey;
+      width: rem-calc(70);
+      height: rem-calc(70);
+      margin-right: $space-box;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+  }
 
-	&-file {
-		position: relative;
-		display: block;
+  &-file {
+    position: relative;
+    display: block;
 
-		@include breakpoint(small only) {
-			margin-bottom: $space-box/2;
-		}
+    @include breakpoint(small only) {
+      margin-bottom: $space-box/2;
+    }
 
-		&upload {
-			opacity: 0;
-			margin: 0;
-			height: rem-calc(37);
-		}
+    &upload {
+      opacity: 0;
+      margin: 0;
+      height: rem-calc(37);
+    }
 
-		&-style {
-			position: absolute;
-			top: 0;
-			right: 0;
-			left: 0;
-			z-index: -1;
-			user-select: none;
-			display: flex;
-			align-items: center;
-			justify-content: flex-start;
+    &-style {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: -1;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
 
-			@include breakpoint(small only) {
-				flex-wrap: wrap;
-			}
+      @include breakpoint(small only) {
+        flex-wrap: wrap;
+      }
 
-			.form {
-				&-flex {
-					@include breakpoint(small only) {
-						flex: 1;
-						min-width: 50%; 
-					}	
-					@media (min-width: 500px) and (max-width: 630px) { 
-						margin-right: $space-box/4;
-					 }	
-				}
+      .form {
+        &-flex {
+          @include breakpoint(small only) {
+            flex: 1;
+            min-width: 50%;
+          }
+          @media (min-width: 500px) and (max-width: 630px) {
+            margin-right: $space-box/4;
+          }
+        }
 
-				&-fill {
-					border-top-right-radius: 0;
-					border-bottom-right-radius: 0;
-					margin-bottom: 0;
-				}
-			}
+        &-fill {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          margin-bottom: 0;
+        }
+      }
 
-			.btn-blue {
-				height: rem-calc(39);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
+      .btn-blue {
+        height: rem-calc(39);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-			.show {
-				&-text {
-					margin-bottom: 0;
-					min-width: 200px;
-					margin-left: $space-box/2;
-					line-height: 1;
+      .show {
+        &-text {
+          margin-bottom: 0;
+          min-width: 200px;
+          margin-left: $space-box/2;
+          line-height: 1;
 
-					@include breakpoint(small only) {
-						display: block;
-						margin: $space-box/2 0;
-					}
-				}
-			}
-		}
-	}
+          @include breakpoint(small only) {
+            display: block;
+            margin: $space-box/2 0;
+          }
+        }
+      }
+    }
+  }
 
-	&-image {
-		position: relative;
-		width: 100%;
-		height: 100%;
+  &-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
 
-		img {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: 130%;
-			max-width: none;
-		}
-	}
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 130%;
+      max-width: none;
+    }
+  }
 
-	&-select {
-		border-color: $color-blue;
-		border-radius: $space-box/4;
-		margin-bottom: 0;
-		color: $white;
-		background-color: $color-blue;
+  &-select {
+    border-color: $color-blue;
+    border-radius: $space-box/4;
+    margin-bottom: 0;
+    color: $white;
+    background-color: $color-blue;
 
-		&:focus {
-			background-color: $color-blue;
-			color: $white;
-			border-color: $color-blue;
-		}
-	}
+    &:focus {
+      background-color: $color-blue;
+      color: $white;
+      border-color: $color-blue;
+    }
 
-	&-checkbox {
-		border: 1px solid $color-blue;
-		border-radius: $space-box/2;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+    &.white {
+      background-color: $white;
+      color: $color-blue;
 
-		input {
-			margin-bottom: 0;
-			visibility: hidden;
-		}
-		label {
-			font-family: "db_airystd_bd";
-			font-size: rem-calc(18);
-			padding: $space-box/4 * 3 $space-box;
-			padding-left: $space-box/2;
-			margin: 0;
-			line-height: 0;
-		}
+      &:focus {
+        background-color: $white;
+        color: $color-blue;
+      }
+    }
+  }
 
-		&-ed {
-			background-color: $color-blue;
+  &-checkbox {
+    border: 1px solid $color-blue;
+    border-radius: $space-box/2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-			label {
-				color: $white;
-			}
-		}
-	}
+    input {
+      margin-bottom: 0;
+      visibility: hidden;
+    }
+    label {
+      font-family: "db_airystd_bd";
+      font-size: rem-calc(18);
+      padding: $space-box/4 * 3 $space-box;
+      padding-left: $space-box/2;
+      margin: 0;
+      line-height: 0;
+    }
 
-	&-link {
-		&-sub {
-			text-decoration: underline;
-			color: $color-dark-gray;
-			text-align: left;
-		}
-	}
+    &-ed {
+      background-color: $color-blue;
 
-	&-p{
-		margin-bottom: 0;
-	}
+      label {
+        color: $white;
+      }
+    }
+  }
 
-	&-text{
-		display: flex;
-		align-items: center;
-		padding-top: rem-calc(3);
+  &-link {
+    &-sub {
+      text-decoration: underline;
+      color: $color-dark-gray;
+      text-align: left;
+    }
+  }
 
-		@include breakpoint(small only){
-			padding-top: 0;
-			margin-bottom: $space-box/4;
-		}
+  &-p {
+    margin-bottom: 0;
+  }
 
-		input{
-			margin-bottom: 0;
-		}
+  &-text {
+    display: flex;
+    align-items: center;
+    padding-top: rem-calc(3);
 
-		label{
-			padding-top: rem-calc(5);
-		}
-	}
+    @include breakpoint(small only) {
+      padding-top: 0;
+      margin-bottom: $space-box/4;
+    }
+
+    input {
+      margin-bottom: 0;
+    }
+
+    label {
+      padding-top: rem-calc(5);
+    }
+  }
 }
 
 .input-group {
-	@include breakpoint(medium) {
-		margin-bottom: 0;
-	}
+  @include breakpoint(medium) {
+    margin-bottom: 0;
+  }
 
-	.form {
-		&-select {
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
-		}
+  .form {
+    &-select {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-		&-fill {
-			border-top-right-radius: $space-box/4;
-			border-bottom-right-radius: $space-box/4;
-			margin-left: rem-calc(-1);
-		}
-	}
+    &-fill {
+      border-top-right-radius: $space-box/4;
+      border-bottom-right-radius: $space-box/4;
+      margin-left: rem-calc(-1);
+    }
+  }
 }
 
 .input-search {
-	.form {
-		&-fill {
-			border-top-right-radius: 0;
-			border-bottom-right-radius: 0;
-			border-top-left-radius: $space-box/4;
-			border-bottom-left-radius: $space-box/4;
-			margin-left: 0;
-		}
-	}
+  .form {
+    &-fill {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-top-left-radius: $space-box/4;
+      border-bottom-left-radius: $space-box/4;
+      margin-left: 0;
+    }
+  }
 
-	.btn {
-		&-blue {
-			border-top-right-radius: $space-box/4 !important;
-			border-bottom-right-radius: $space-box/4 !important;
+  .btn {
+    &-blue {
+      border-top-right-radius: $space-box/4 !important;
+      border-bottom-right-radius: $space-box/4 !important;
 
-			&:hover {
-				background-color: darken($color-blue, 5%);
-			}
-		}
-	}
+      &:hover {
+        background-color: darken($color-blue, 5%);
+      }
+    }
+  }
 }
 
 .modal {
-	&-content {
-		.form {
-			&-label {
-				text-align: left;
-			}
-		}
-	}
+  &-content {
+    .form {
+      &-label {
+        text-align: left;
+      }
+    }
+  }
 }
 
-.MultiFile{
-	&-remove{
-		font-size: rem-calc(20);
-	}
+.MultiFile {
+  &-remove {
+    font-size: rem-calc(20);
+  }
 
-	&-list{
-		@include breakpoint(small only){
-			margin-top: rem-calc(30);
-		}
-	}
+  &-list {
+    @include breakpoint(small only) {
+      margin-top: rem-calc(30);
+    }
+  }
 }
-  
-  .search {
-		position: relative;
-		display: flex;
 
-	  &-text{
-		width: 100%;
-		border: rem-calc(1) solid $color-green;
-		border-right: none;
-		padding: rem-calc(5);
-		margin-bottom: $space-box*2;
-		height: rem-calc(36);
-		border-radius: rem-calc(5) 0 0 rem-calc(5);
-		outline: none;
-		color: $black;
-			&:focus{
-				color: $color-dark-gray;
-			  }
-		}
-		&-button {
-			width: rem-calc(40);
-			height: rem-calc(36);
-			border: rem-calc(1) solid $color-green;
-			background: $color-green;
-			text-align: center;
-			color: $white;
-			border-radius: 0 rem-calc(5) rem-calc(5) 0;
-			cursor: pointer;
-		  }
-	  }
-  
+.search {
+  position: relative;
+  display: flex;
+
+  &-text {
+    width: 100%;
+    border: rem-calc(1) solid $color-green;
+    border-right: none;
+    padding: rem-calc(5);
+    margin-bottom: $space-box * 2;
+    height: rem-calc(36);
+    border-radius: rem-calc(5) 0 0 rem-calc(5);
+    outline: none;
+    color: $black;
+    &:focus {
+      color: $color-dark-gray;
+    }
+  }
+  &-button {
+    width: rem-calc(40);
+    height: rem-calc(36);
+    border: rem-calc(1) solid $color-green;
+    background: $color-green;
+    text-align: center;
+    color: $white;
+    border-radius: 0 rem-calc(5) rem-calc(5) 0;
+    cursor: pointer;
+  }
+}
