@@ -66,6 +66,8 @@ function globalRoutes()
         Route::get( 'event-add', 'AdminController@eventAdd' )->name( 'admin.eventAdd' );
         Route::get( 'news-all', 'AdminController@newsAll' )->name( 'admin.newsAll' );
         Route::get( 'news-add', 'AdminController@newsAdd' )->name( 'admin.newsAdd' );
+        Route::get( 'organization-all', 'AdminController@organizationAll' )->name( 'admin.organizationAll' );
+        Route::get( 'organization-add', 'AdminController@organizationAdd' )->name( 'admin.organizationAdd' );
     } );
 
     Route::get( 'signup', 'UsersController@signup' )->name( 'users.signup' );

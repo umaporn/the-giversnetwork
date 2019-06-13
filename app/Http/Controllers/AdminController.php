@@ -99,4 +99,17 @@ class AdminController extends Controller
     {
         return view( 'admin.newsAll' );
     }
+    /**
+     * Show organization page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View organization page
+     */
+    public function organizationAdd()
+    {
+        return view( 'admin.organizationAdd' );
+    }
+    public function organizationAll()
+    {
+        return view( 'admin.organizationAll' );
+    }
 }

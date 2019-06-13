@@ -46,8 +46,8 @@
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">Organization</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All Organization</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add Organization</a>
+            <a href="{{ route('admin.organizationAll') }}"><i class="fas fa-caret-right"></i> All Organization</a>
+            <a href="{{ route('admin.organizationAdd') }}"><i class="fas fa-caret-right"></i> Add Organization</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>
