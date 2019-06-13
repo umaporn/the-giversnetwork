@@ -32,7 +32,7 @@ return [
             'home_events_03' => 'images/home/event-3.png',
         ],
         'about'   => [
-            'home_about_01' => 'images/home/about-1.png',
+            'founder' => 'images/home/founder.jpg',
         ],
     ],
 

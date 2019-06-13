@@ -24,12 +24,12 @@
             <div class="cell small-12 medium-7 large-6">
                 <h2 class="topic-dark">@lang('home.about_us.title')</h2>
                 @foreach(__('home.about_us.content') as $contents )
-                    <p>{{ $contents }}</p>
+                    <p>{!! $contents !!}</p>
                 @endforeach
             </div>
             <div class="cell small-12 medium-5 large-6">
                 <figure>
-                    <img src="{{ asset(config('images.home.about.home_about_01' )) }}" alt="">
+                    <img src="{{ asset(config('images.home.about.founder' )) }}" alt="">
                 </figure>
             </div>
         </article>
