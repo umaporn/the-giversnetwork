@@ -32,7 +32,7 @@
                         <label for="choose" class="form-label">Choose</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <select class="form-select light">
+                        <select class="form-select white">
                             <option value="" selected>Give item</option>
                             <option value="receive">Receive</option>
                         </select>
@@ -43,7 +43,7 @@
                         <label for="choose" class="form-label">Category</label>
                     </div>
                     <div class="cell small-12 large-9">
-                        <select class="form-select light">
+                        <select class="form-select white">
                             <option value="" selected>Food non-perishable</option>
                         </select>
                     </div>
