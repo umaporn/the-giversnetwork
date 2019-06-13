@@ -17,7 +17,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> Give
+                    <span class="show-for-sr">Current: </span> Event
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space">
-                                    <h2 class="cell shrink user-head">Add Give or Recive</h2>
+                                    <h2 class="cell shrink user-head">Add Event</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">
@@ -46,18 +46,7 @@
                                 <form action="">
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="product" class="form-label">Category</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <select class="form-select white">
-                                                <option value="Give Item">Give Item</option>
-                                                <option value="Recive Item">Recive Item</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label for="username" class="form-label">ID</label>
+                                            <label for="username" class="form-label">Event ID</label>
                                         </div>
                                         <div class="cell small-12 large-9 form-text">
                                             00019
@@ -65,26 +54,10 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="product" class="form-label">Product Name</label>
+                                            <label for="topic" class="form-label">Topic</label>
                                         </div>
                                         <div class="cell small-12 large-9">
-                                            <input type="text" id="product" class="form-fill" value="">
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label for="price" class="form-label">Price</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <input type="number" id="price" class="form-fill" value="">
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label for="address" class="form-label">Address</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <textarea id="address" class="form-fill" rows="3"></textarea>
+                                            <input type="text" id="topic" class="form-fill" value="">
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
@@ -97,14 +70,39 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="product" class="form-label">Expired Date</label>
+                                            <label for="location" class="form-label">Location</label>
                                         </div>
                                         <div class="cell small-12 large-9">
-                                            <select class="form-select white">
-                                                <option value="5">5 days</option>
-                                                <option value="15">15 days</option>
-                                                <option value="30">30 days</option>
-                                            </select>
+                                            <input type="text" id="location" class="form-fill" value="">
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="host" class="form-label">Host</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <input type="text" id="host" class="form-fill" value="">
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="link" class="form-label">Link</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <input type="text" id="link" class="form-fill" value="">
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label class="form-label">Date/Time</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <div class="form-date">
+                                                <label for="date-start">From</label>
+                                                <input type="datetime-local" id="date-start" class="form-fill" value="">
+                                                <label for="date-end">To</label>
+                                                <input type="datetime-local" id="date-end" class="form-fill" value="">
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
@@ -127,11 +125,11 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label class="form-label">Approval</label>
+                                            <label class="form-label">Publish</label>
                                         </div>
                                         <div class="cell small-12 large-9 form-text">
                                             <input id="approve" type="checkbox">
-                                            <label for="approve">Approved this item to publish on TGN website</label>
+                                            <label for="approve">Publish this event</label>
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">

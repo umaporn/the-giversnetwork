@@ -215,6 +215,24 @@
       padding-top: rem-calc(5);
     }
   }
+
+  &-date {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(medium) {
+      flex-direction: row;
+	  align-items: center;
+	  
+	  label{
+		  margin:0 $space-box/2;
+
+		  &:first-child{
+			  margin-left: 0;
+		  }
+	  }
+    }
+  }
 }
 
 .input-group {

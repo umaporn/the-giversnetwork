@@ -73,10 +73,10 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="price" class="form-label">Price</label>
+                                            <label for="quantity" class="form-label">Quantity</label>
                                         </div>
                                         <div class="cell small-12 large-9">
-                                            <input type="number" id="price" class="form-fill" value="">
+                                            <input type="number" id="quantity" class="form-fill" value="">
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
