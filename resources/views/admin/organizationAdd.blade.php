@@ -33,7 +33,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space">
-                                    <h2 class="cell shrink user-head">Add News</h2>
+                                    <h2 class="cell shrink user-head">Add New Origanization</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">
@@ -46,7 +46,7 @@
                                 <form action="">
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="id" class="form-label">News ID</label>
+                                            <label for="id" class="form-label">ID</label>
                                         </div>
                                         <div class="cell small-12 large-9 form-text">
                                             00019
@@ -54,49 +54,66 @@
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label for="topic" class="form-label">Topic</label>
+                                            <label for="imageProfile" class="form-label">Image Profile</label>
                                         </div>
                                         <div class="cell small-12 large-9">
-                                            <input type="text" id="topic" class="form-fill" value="">
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label for="des" class="form-label">Desciption</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <textarea id="des" class="form-fill" rows="3"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
-                                            <label for="imageProfile" class="form-label">Image</label>
-                                        </div>
-                                        <div class="cell small-12 large-9">
-                                            <div class="form-file-image">
-                                                <div class="form-file">
-                                                    <input type="file" class="form-fileupload" id="file-image"
-                                                        multiple data-maxfile="1024" />
-                                                    <div class="form-file-style">
-                                                        <div class="form-flex btn-blue">Browse</div>
-                                                        <p class="form-flex show-text">maximun upload file size: 1MB</p>
-                                                    </div>
+                                            <div class="form-file">
+                                                <input type="file" class="form-fileupload" id="file-image" multiple
+                                                    data-maxfile="1024" />
+                                                <div class="form-file-style">
+                                                    <div class="form-flex btn-blue">Browse</div>
+                                                    <p class="form-flex show-text">maximun upload file size: 1MB</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-2">
-                                            <label class="form-label">Publish</label>
+                                            <label for="category" class="form-label">Category</label>
                                         </div>
-                                        <div class="cell small-12 large-9 form-text">
-                                            <input id="approve" type="checkbox">
-                                            <label for="approve">Publish this news</label>
+                                        <div class="cell small-12 large-9">
+                                            <select class="form-select white">
+                                                <option value="">Type of Organization</option>
+                                                <option value="NGO">NGO</option>
+                                                <option value="Charitable Origanization">Charitable Origanization</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="name" class="form-label">Name</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <input type="text" id="name" class="form-fill" value="">
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="email" class="form-label">Email</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <input type="email" id="email" class="form-fill" value="">
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="phone" class="form-label">Phone</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <input type="tel" id="phone" class="form-fill" value="">
+                                        </div>
+                                    </div>
+                                    <div class="grid-x grid-padding-x user-form-space">
+                                        <div class="cell small-12 large-2">
+                                            <label for="address" class="form-label">Address</label>
+                                        </div>
+                                        <div class="cell small-12 large-9">
+                                            <textarea id="address" class="form-fill" rows="3"></textarea>
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
                                         <div class="cell small-12 large-offset-2 large-9">
-                                            <button class="btn-green btn-long">Add</button>
+                                            <button class="btn-green btn-long">Create Origanization</button>
                                         </div>
                                     </div>
                                 </form>
