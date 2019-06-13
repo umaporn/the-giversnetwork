@@ -34,10 +34,6 @@
     }
   }
 
-  &-upload {
-    display: inline-block;
-  }
-
   &-green {
     @extend %button;
     background-color: $color-green;
@@ -50,6 +46,15 @@
     &:focus {
       color: $white;
     }
+  }
+
+  &-upload {
+    display: inline-block;
+  }
+
+  &-white {
+    @extend %button;
+    background-color: $white;
   }
 
   &-long {
