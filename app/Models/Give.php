@@ -133,9 +133,10 @@ class Give extends Model
 
     public function getGiveAllList( Request $request )
     {
+        $type    = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
         $builder = $this->with( [ 'giveCategory' ] )
                         ->orderBy( 'id', 'desc' )
-                        ->where( 'status', 'public' );
+                        ->where( [ 'status' => 'public', 'type' => $type ] );
 
         $data = Search::search( $builder, 'give', $request );
 

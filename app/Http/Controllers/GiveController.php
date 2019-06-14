@@ -32,6 +32,8 @@ class GiveController extends Controller
     /**
      * Display give page.
      *
+     * @param Request $request Request object
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give page
      */
     public function index( Request $request )
