@@ -59,6 +59,8 @@ function globalRoutes()
         Route::get( '{organization}', 'OrganizationController@detail' )->name( 'organization.detail' );
     } );
 
+    Route::get( 'profile/{user}', 'ProfileController@getUserProfile' )->name( 'user.getUserProfile' );
+
     Route::middleware( 'guest' )->group( function(){
         // Authentication
         Route::post( 'login', 'Auth\LoginController@login' )->name( 'submitLogin' );
@@ -73,7 +75,6 @@ function globalRoutes()
         Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@showResetForm' )->name( 'password.reset' );
         Route::post( 'password/reset', 'Auth\ResetPasswordController@reset' )->name( 'password.change' );
 
-        Route::get( 'profile/{user}', 'ProfileController@getUserProfile' )->name( 'user.getUserProfile' );
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){
