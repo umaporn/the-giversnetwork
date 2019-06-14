@@ -24898,6 +24898,38 @@ body:lang(en) .language li.en a {
   color: #154064;
 }
 
+.about-mission {
+  margin-bottom: 1.25rem;
+}
+
+.about-mission p {
+  margin-bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.about-mission span {
+  margin-left: 0.625rem;
+}
+
+@media screen and (max-width: 63.99875em) {
+  .about-mission-text {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
+.about-number {
+  margin-right: 0.625rem;
+  font-size: 1.625rem;
+}
+
 .admin .topic {
   background-color: #154064;
   color: #FEFEFE;
