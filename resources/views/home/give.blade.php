@@ -14,7 +14,7 @@
                     <li class="tabs-title @if( $loop->first ) is-active @endif" id="give-category">
                         <a href="#give-category"
                            aria-selected="true"
-                           data-url="{{route('give.getGiveByCategory', ['id' => $give_category_item['id']])}}"
+                           data-url="{{ route('give.getGiveByCategory', [ 'id' =>  $give_category_item['id'] ]) }}"
                         >
                             {{ $give_category_item['title'] }}
                         </a>

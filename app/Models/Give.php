@@ -5,10 +5,12 @@
 
 namespace App\Models;
 
+use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
 
 class Give extends Model
@@ -44,38 +46,47 @@ class Give extends Model
      *
      * @param Request $request Give request object
      *
-     * @return Collection A list of give for home page
+     * @return LengthAwarePaginator A list of give for home page
      */
-    public function getHomeGiveList( string $id = '1' )
+    /**
+     * Get a list of give for displaying.
+     *
+     * @param string  $id      Category id
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator
+     */
+    public function getHomeGiveList( string $id, Request $request )
     {
-        $query = $this->with( [ 'giveImage' ] )->where( [ 'status' => 'public', 'type' => 'give' ] )->limit( 9 );
+        $builder = $this->with( [ 'giveImage' ] )
+                        ->where( [ 'status' => 'public', 'type' => 'give' ] );
 
         if( $id ){
-            $query->where( [ 'fk_category_id' => $id ] );
-        } else {
-            $query->where( [ 'fk_category_id' => 1 ] );
+            $builder->where( [ 'fk_category_id' => $id ] );
         }
 
-        return $this->transformHomeGiveContent( $query->get() );
+        $data = Search::search( $builder, 'give', $request, [], '9' );
+
+        return $this->transformGiveContent( $data );
     }
 
     /**
      * Transform give information.
      *
-     * @param Collection $homeGiveList A list of give
+     * @param Collection $giveList A list of give
      *
-     * @return Collection Home give list for display
+     * @return LengthAwarePaginator Home give list for display
      */
-    private function transformHomeGiveContent( Collection $homeGiveList )
+    private function transformGiveContent( LengthAwarePaginator $giveList )
     {
-        foreach( $homeGiveList as $list ){
+        foreach( $giveList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->giveCategory ) );
             $list->setAttribute( 'image_path', $this->getFirstImages( $list ) );
             $this->setExpiredDateForFrontEnd( $list );
         }
 
-        return $homeGiveList;
+        return $giveList;
     }
 
     /**
@@ -119,4 +130,16 @@ class Give extends Model
 
         return $imageStore;
     }
+
+    public function getGiveAllList( Request $request )
+    {
+        $builder = $this->with( [ 'giveCategory' ] )
+                        ->orderBy( 'id', 'desc' )
+                        ->where( 'status', 'public' );
+
+        $data = Search::search( $builder, 'give', $request );
+
+        return $this->transformGiveContent( $data );
+    }
+
 }

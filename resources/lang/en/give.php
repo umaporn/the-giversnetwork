@@ -20,6 +20,10 @@ return [
         'index' => 'Give page',
     ],
 
-    'category' => 'Category',
+    'category'                => 'Category',
+    'give_category_selection' => 'Please select category',
+    'receive'                 => 'Receive',
+    'give_item'               => 'Give Item',
+    'contact_giver'           => 'Contact giver',
 
 ];

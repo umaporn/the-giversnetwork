@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Give;
 use App\Models\GiveCategory;
+use Illuminate\Http\Request;
 
 class GiveController extends Controller
 {
@@ -33,21 +34,25 @@ class GiveController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give page
      */
-    public function index()
+    public function index( Request $request )
     {
-        return view( 'give.index' );
+        $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
+        $data['give'] = $this->giveModel->getGiveAllList( $request );
+
+        return view( 'give.index', compact('data') );
     }
 
     /**
      * Get give list by category.
      *
-     * @param string $id
+     * @param string  $id Category id
+     * @param Request $request Request object
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give item view
      */
-    public function getGiveByCategory( string $id )
+    public function getGiveByCategory( string $id, Request $request )
     {
-        $data['give'] = $this->giveModel->getHomeGiveList( $id );
+        $data['give'] = $this->giveModel->getHomeGiveList( $id, $request );
 
         return view( 'home.give_item', compact( 'data' ) );
     }
