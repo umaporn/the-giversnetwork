@@ -76,6 +76,8 @@ function globalRoutes()
         Route::get( '{organization}', 'OrganizationController@detail' )->name( 'organization.detail' );
     } );
 
+    Route::get( 'profile/{user}', 'ProfileController@getUserProfile' )->name( 'user.getUserProfile' );
+
     Route::middleware( 'guest' )->group( function(){
         // Authentication
         Route::post( 'login', 'Auth\LoginController@login' )->name( 'submitLogin' );

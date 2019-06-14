@@ -249,7 +249,7 @@
                             </a>
                             <div class="cell grid-x align-self-bottom">
                                 <div class="cell auto profile">
-                                    <a href="{{ route('user.getProfile') }}" target="_blank">
+                                    <a href="{{ route('user.getUserProfile', ['id' => $other_item->users['id']]) }}" target="_blank">
                                         <figure class="display-profile">
                                             <img src="{{ $other_item->users['image_path'] ? Storage::url($other_item->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
                                                  alt="{{ $other_item->users['username'] }}">

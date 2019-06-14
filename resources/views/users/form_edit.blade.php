@@ -44,7 +44,7 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="imageUpload" class="form-label">@lang('user.image')</label>
+                        <label for="file-image" class="form-label">@lang('user.image')</label>
                     </div>
                     <div class="cell small-12 large-9">
                         <div class="form-imageupload">
@@ -58,8 +58,8 @@
                                 </figure>
                             </div>
                             <div>
-                                <label for="image_path" class="btn-blue btn-upload">@lang('user.upload_file')</label>
-                                <input type="file" name="image_path" id="image_path" class="show-for-sr">
+                                <label for="imageUpload" class="btn-blue btn-upload">@lang('user.upload_file')</label>
+                                <input type="file" name="image_path" id="imageUpload" class="show-for-sr">
                                 <p id="image_path-help-text" class="alert help-text hide"></p>
                             </div>
                         </div>
