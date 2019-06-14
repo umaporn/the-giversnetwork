@@ -26,7 +26,7 @@
             </nav>
         </div>
     </section>
-    <div class="grid-x grid-margin-x padding-content padding-top-0 space-article">
+    <div class="grid-x grid-padding-x padding-content padding-top-0 space-article">
         <div class="cell small-12 medium-12 large-8">
             <section class="articles">
                 <div class="grid-x align-middle">
