@@ -110,6 +110,6 @@ class Handler extends ExceptionHandler
 
         App::setLocale( Utility::getLanguageCode() );
 
-        return redirect()->guest( route( 'login' ) );
+        return redirect()->guest( route( 'home.index' ) );
     }
 }
