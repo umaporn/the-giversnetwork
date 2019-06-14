@@ -25,7 +25,7 @@
         <div class="cell medium-9 align-self-stretch">
             <div class="tabs-content" data-tabs-content="cate-tabs">
                 <div class="tabs-panel is-active" id="give-category-1">
-                    <div class="grid-x large-up-5 align-center-middle text-center" id="give-category-box">
+                    <div class="grid-x large-up-5 align-center-middle text-center" id="give-result-box">
                         @include('home.give_item')
                     </div>
                 </div>

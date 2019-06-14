@@ -131,6 +131,13 @@ class Give extends Model
         return $imageStore;
     }
 
+    /**
+     * Get give all list.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator Give list for display
+     */
     public function getGiveAllList( Request $request )
     {
         $type    = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';

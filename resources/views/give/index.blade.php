@@ -54,11 +54,15 @@
             </div>
             <div class="cell small-12">
                 <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
-                    <li class="tabs-title is-active">
-                        <a href="#give" aria-selected="true">@lang('give.page_title.index')</a>
+                    <li class="tabs-title give-tab is-active">
+                        <a href="#give" data-url="{{ route('give.list', [ 'type' => 'give' ] ) }}" aria-selected="true">
+                            @lang('give.page_title.index')
+                        </a>
                     </li>
-                    <li class="tabs-title">
-                        <a href="#giver">@lang('give.receive')</a>
+                    <li class="tabs-title receive-tab">
+                        <a href="#giver" data-url="{{ route('give.list', [ 'type' => 'receive' ] ) }}">
+                            @lang('give.receive')
+                        </a>
                     </li>
                 </ul>
                 <div class="tabs-content" data-tabs-content="collapsing-tabs">
@@ -68,72 +72,17 @@
                                 <i class="fas fa-plus"></i> @lang('give.give_item')
                             </a>
                         </div>
-                        <section class="grid-x grid-margin-x margin-top-1">
-                            @foreach( $data['give'] as $give_item )
-                                <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
-                                    <div class="cards-style">
-                                        <figure class="cards-image">
-                                            <a href="{{ route('give.detail', ['give' => $give_item['id']]) }}">
-                                                <img src="{{ $give_item['image_path'] ? $give_item['image_path'] : config('images.placeholder.700x400') }}"
-                                                     alt="{{ $give_item['title'] }}"
-                                                     class="img-cover">
-                                            </a>
-                                        </figure>
-                                        <div class="cards-detail">
-                                            <a href="{{ route('give.detail', ['give' => $give_item['id']]) }}">
-                                                <h2 class="cards-topic">{{ $give_item['title'] }}</h2>
-                                            </a>
-                                            <p class="cards-amount">{{ $give_item['amount'] }} items</p>
-                                            <a href="{{ route('user.getUserProfile', [ 'user' => $give_item['fk_user_id'] ]) }}" class="btn-blue">
-                                                @lang('give.contact_giver')
-                                            </a>
-                                        </div>
-                                    </div>
-                                </article>
-                            @endforeach
-                        </section>
-                        <div class="give-load">
-                            <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
+                        <div id="give-result-box">
+                            @include('give.list')
                         </div>
                     </div>
                     <div class="tabs-panel" id="giver">
                         <div class="give-cat-btn">
                             <a href="#" class="btn-blue">
-                                <i class="fas fa-plus"></i> Tell Giver
+                                <i class="fas fa-plus"></i> @lang('give.tell_giver')
                             </a>
                         </div>
-                        <section class="grid-x grid-margin-x margin-top-1">
-                            <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
-                                <div class="cards-style">
-                                    <figure class="cards-image">
-                                        <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
-                                             class="img-cover">
-                                    </figure>
-                                    <div class="cards-detail">
-                                        <h2 class="cards-topic">Ramen Noodles</h2>
-                                        <p class="cards-amount">100 items</p>
-                                        <a href="#" class="btn-blue">Contact giver</a>
-                                    </div>
-                                </div>
-                            </article>
-                            <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
-                                <div class="cards-style">
-                                    <figure class="cards-image">
-                                        <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}"
-                                             class="img-cover">
-                                    </figure>
-                                    <div class="cards-detail">
-                                        <h2 class="cards-topic">ปลากระป๋อง เนื้อปลาแมคเคอเรลและซอสชั้นดี ตรา สามแม่ครัว
-                                                                ขนาด
-                                                                200 กรัม</h2>
-                                        <p class="cards-amount">100 items</p>
-                                        <a href="#" class="btn-blue">Contact giver</a>
-                                    </div>
-                                </div>
-                            </article>
-                        </section>
-                        <div class="give-load">
-                            <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
+                        <div id="receive-result-box">
                         </div>
                     </div>
                 </div>

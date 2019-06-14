@@ -22,7 +22,7 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
 	           'resources/assets/js/components/Search.js',
 	           'resources/assets/js/components/Translator.js',
 	           'resources/assets/js/components/Utility.js',
-	           'resources/assets/js/components/GiveCategoryTab.js',
+	           'resources/assets/js/components/GiveTab.js',
 	           'resources/assets/js/components/LoadMore.js',
 	           'resources/assets/js/components/InterestIn.js',
 	           'resources/assets/js/components/Like.js',

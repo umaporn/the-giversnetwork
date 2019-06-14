@@ -39,15 +39,15 @@ class GiveController extends Controller
     public function index( Request $request )
     {
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
-        $data['give'] = $this->giveModel->getGiveAllList( $request );
+        $data['allList']      = $this->giveModel->getGiveAllList( $request );
 
-        return view( 'give.index', compact('data') );
+        return view( 'give.index', compact( 'data' ) );
     }
 
     /**
      * Get give list by category.
      *
-     * @param string  $id Category id
+     * @param string  $id      Category id
      * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give item view
@@ -57,6 +57,20 @@ class GiveController extends Controller
         $data['give'] = $this->giveModel->getHomeGiveList( $id, $request );
 
         return view( 'home.give_item', compact( 'data' ) );
+    }
+
+    /**
+     * Get give list.
+     *
+     * @param Request $request Request Object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getGiveList( Request $request )
+    {
+        $data['allList'] = $this->giveModel->getGiveAllList( $request );
+
+        return view( 'give.list', compact( 'data' ) );
     }
 
     /**

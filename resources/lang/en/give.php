@@ -24,6 +24,7 @@ return [
     'give_category_selection' => 'Please select category',
     'receive'                 => 'Receive',
     'give_item'               => 'Give Item',
+    'tell_giver'              => 'Tell Giver',
     'contact_giver'           => 'Contact giver',
 
 ];
