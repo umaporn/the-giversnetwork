@@ -35,6 +35,28 @@
         color: $color-blue;
       }
     }
-   
+  }
+  &-mission {
+    margin-bottom: $space-box;
+
+    p {
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+    }
+    span{
+        margin-left: $space-box/2;
+    }
+
+    &-text{
+        @include breakpoint(medium down){
+            flex-direction: column;
+        }
+    }
+  }
+
+  &-number {
+    margin-right: $space-box/2;
+    font-size: rem-calc(26);
   }
 }

@@ -6,6 +6,8 @@ return [
 
     'logo' => 'images/logo-2x.png',
 
+    'share_icon' => 'images/logo-icon.png',
+
     'home_banner' => [
         'images/herobanner/banner-1.png',
         'images/herobanner/banner-1.png',
@@ -40,12 +42,12 @@ return [
             'home_events_03'             => 'images/home/event-3.png',
         ],
         'about' => [
-            'home_about_01'             => 'images/home/about-1.png',
+            'home_about_01'             => 'images/home/about-1.jpg',
         ],
     ],
 
     'about' => [
-        'about_01'             => 'images/about/american-casual-cellphone-1484566.png',
+        'about_01'             => 'images/about/about-1.jpg',
         'about_02'             => 'images/about/active-activity-adult-1430116.png',
     ],
     

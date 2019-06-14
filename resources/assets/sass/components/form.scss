@@ -52,7 +52,12 @@
     display: block;
 
     @include breakpoint(small only) {
-      margin-bottom: $space-box/2;
+      margin-bottom: $space-box;
+      width: 100%;
+
+      &-image{
+          width: 100%;
+      }
     }
 
     &upload {
@@ -222,15 +227,15 @@
 
     @include breakpoint(medium) {
       flex-direction: row;
-	  align-items: center;
-	  
-	  label{
-		  margin:0 $space-box/2;
+      align-items: center;
 
-		  &:first-child{
-			  margin-left: 0;
-		  }
-	  }
+      label {
+        margin: 0 $space-box/2;
+
+        &:first-child {
+          margin-left: 0;
+        }
+      }
     }
   }
 }

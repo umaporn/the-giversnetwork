@@ -33,6 +33,12 @@
       @include breakpoint(large) {
         margin-bottom: $space-box;
       }
+
+      & .flex {
+        @include breakpoint(small only) {
+          display: flex;
+        }
+      }
     }
   }
 
@@ -136,7 +142,7 @@
     }
   }
 
-  &-interested{
+  &-interested {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -144,10 +150,9 @@
     margin: 0;
     list-style: none;
 
-    li{
-        margin: 0 $space-box/2 $space-box/2 0;
-        padding: 0;
-
+    li {
+      margin: 0 $space-box/2 $space-box/2 0;
+      padding: 0;
     }
   }
 }

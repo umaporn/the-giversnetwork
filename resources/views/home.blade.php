@@ -65,7 +65,7 @@
 <section class="share">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
-            <i class="fas fa-shapes"></i>
+            <i> <img src="{{ asset(config('images.share_icon' )) }}"></i>
             <h2 class="topic-light">share</h2>
             <span>- Short description to explain share section : Definition</span>
         </div>
@@ -485,8 +485,8 @@
             </a>
         </div>
     </div>
-    <div class="grid-x grid-margin-x content padding-content">
-        <article class="cell small-12 medium-4">
+    <div class="grid-x grid-padding-x content padding-content">
+        <article class="cell small-12 medium-6 xxlarge-3">
             <figure>
                 <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}">
             </figure>
@@ -495,7 +495,7 @@
             </a>
             <span class="category">Category Name</span>
         </article>
-        <article class="cell small-12 medium-4">
+        <article class="cell small-12 medium-6 xxlarge-3">
             <figure>
                 <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
             </figure>
@@ -504,7 +504,16 @@
             </a>
             <span class="category">Category Name</span>
         </article>
-        <article class="cell small-12 medium-4">
+        <article class="cell small-12 medium-6 xxlarge-3">
+            <figure>
+                <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
+            </figure>
+            <a href="#">
+                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+            </a>
+            <span class="category">Category Name</span>
+        </article>
+        <article class="cell small-12 medium-6 xxlarge-3">
             <figure>
                 <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
             </figure>
@@ -528,7 +537,7 @@
         </div>
     </div>
     <div class="grid-x grid-margin-x ">
-        <article class="cell small-12 medium-4">
+        <article class="cell small-12 medium-6 xxlarge-3">
             <figure class="cover">
                 <img src="{{ asset(config('images.home.events.home_events_01' )) }}">
                 <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
@@ -543,7 +552,7 @@
                 <span>By Host name or speaker name</span>
             </div>
         </article>
-        <article class="cell small-12 medium-4">
+        <article class="cell small-12 medium-6 xxlarge-3">
             <figure class="cover">
                 <img src="{{ asset(config('images.home.events.home_events_02' )) }}">
                 <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
@@ -558,7 +567,22 @@
                 <span>By Host name or speaker name</span>
             </div>
         </article>
-        <article class="cell small-12 medium-4">
+        <article class="cell small-12 medium-6 xxlarge-3">
+            <figure class="cover">
+                <img src="{{ asset(config('images.home.events.home_events_03' )) }}">
+                <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
+            </figure>
+            <a href="#">
+                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+            </a>
+            <div class="profile">
+                <figure class="display-profile">
+                    <img src="{{ asset(config('images.home.profile.user_profile' )) }}">
+                </figure>
+                <span>By Host name or speaker name</span>
+            </div>
+        </article>
+        <article class="cell small-12 medium-6 xxlarge-3">
             <figure class="cover">
                 <img src="{{ asset(config('images.home.events.home_events_03' )) }}">
                 <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
@@ -585,19 +609,21 @@
         </div>
     </div>
     <article class="grid-x grid-margin-x">
-        <div class="cell small-12 medium-7 large-6">
+        <div class="cell small-12 medium-6 xlarge-8 xxxlarge-9">
             <h2 class="topic-dark">about us</h2>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget nibh arcu. Morbi sollicitudin
-                turpis id nisi fermentum mollis. Praesent elementum vulputate nibh ac hendrerit. Integer a metus vitae
-                mauris semper finibus ac vel tortor. Ut id odio lobortis, lacinia purus pharetra, cursus metus. Fusce
-                ultricies fringilla mauris, sed condimentum massa feugiat non. Fusce faucibus, magna at auctor cursus,
-                ipsum velit sollicitudin magna, a vulputate mauris lorem vitae nunc. Sed efficitur ultricies leo, sit
-                amet venenatis orci ultrices non. Nam viverra neque nec risus dignissim consequat. Nunc placerat odio
-                dui.
+                <strong>We are Givers Dedicated to the Idea that Through sharing ideas,learning, and working together,
+                    we can give better</strong>
+            </p>
+            <p>
+                The Givers Network is a collection of organizations and individuals that believe the best way to
+                increase the impact of our social giving is by combining our resources, knowledge, and giving to create
+                greater impact than each of us alone can achieve.
+                Guided by this ideal, the founding sponsors have created The Givers Network platform so that all Givers
+                can work together.
             </p>
         </div>
-        <div class="cell small-12 medium-5 large-6">
+        <div class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
             <figure>
                 <img src="{{ asset(config('images.home.about.home_about_01' )) }}">
             </figure>
@@ -616,4 +642,5 @@
         </div>
     </div>
 </section>
+
 @endsection

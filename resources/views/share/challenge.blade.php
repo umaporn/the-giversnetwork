@@ -9,7 +9,7 @@
 <section class="share-page">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
-            <i class="fas fa-shapes"></i>
+            <i> <img src="{{ asset(config('images.share_icon' )) }}"></i>
             <h2 class="topic-light">share</h2>
         </div>
     </div>
@@ -26,7 +26,7 @@
             </nav>
         </div>
     </section>
-    <div class="grid-x grid-margin-x padding-content padding-top-0 space-article">
+    <div class="grid-x grid-padding-x padding-content padding-top-0 space-article">
         <div class="cell small-12 medium-12 large-8">
             <section class="articles">
                 <div class="grid-x align-middle">
