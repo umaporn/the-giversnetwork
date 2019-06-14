@@ -20883,7 +20883,12 @@ readers do not read off random characters that represent icons */
 
 @media screen and (max-width: 39.99875em) {
   .form-file {
-    margin-bottom: 0.625rem;
+    margin-bottom: 1.25rem;
+    width: 100%;
+  }
+
+  .form-file-image {
+    width: 100%;
   }
 }
 
@@ -23422,6 +23427,14 @@ body:lang(en) .language li.en a {
 @media print, screen and (min-width: 64em) {
   .user-form-space {
     margin-bottom: 1.25rem;
+  }
+}
+
+@media screen and (max-width: 39.99875em) {
+  .user-form-space .flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 }
 

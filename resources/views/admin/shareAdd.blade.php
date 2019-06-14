@@ -72,7 +72,7 @@
                                         <div class="cell small-12 large-2">
                                             <label for="imageProfile" class="form-label">Image</label>
                                         </div>
-                                        <div class="cell small-12 large-9">
+                                        <div class="cell small-12 large-9 flex">
                                             <div class="form-file-image">
                                                 <div class="form-file">
                                                     <input type="file" class="form-fileupload" id="file-image-multi"
@@ -87,10 +87,10 @@
                                         </div>
                                     </div>
                                     <div class="grid-x grid-padding-x user-form-space">
-                                        <div class="cell small-12 large-2">
+                                        <div class="cell small-12 large-2 ">
                                             <label for="imageProfile" class="form-label">File</label>
                                         </div>
-                                        <div class="cell small-12 large-9">
+                                        <div class="cell small-12 large-9 flex">
                                             <label class="form-file">
                                                 <input type="file" class="form-fileupload" id="file-pdf"
                                                     data-maxfile="5120" />
