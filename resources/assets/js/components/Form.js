@@ -74,9 +74,9 @@ const Form = (function(){
 			                            accept: 'pdf',
 		                            } );
 
-		$( 'input[type=file]' ).change( function(){
+		/*$( 'input[type=file]' ).change( function(){
 			$( '#image_path' ).val( $( this ).val() );
-		} );
+		} );*/
 
 		$( '.toggle-password' ).click( function(){
 			$( this ).text( $( this ).text() === 'show' ? 'hide' : 'show' );
