@@ -23043,6 +23043,7 @@ body:lang(en) .language li.en a {
 @media screen and (max-width: 39.99875em) {
   .share .recent-share article > .cell:nth-child(odd) {
     margin-bottom: 0.625rem;
+    padding-right: 0;
   }
 }
 
