@@ -28,7 +28,7 @@
     </section>
     <div class="give-load">
         @if($data['allList']->nextPageUrl())
-            <a data-url="{{ $data['allList']->nextPageUrl() . '&type=' . $give_item['type'] . '&categoryID=' . $give_item['fk_category_id'] }}"
+            <a data-url="{{ $data['allList']->nextPageUrl() . '&type=' . $give_item['type'] . '&category_id=' . $category_id }}"
                id="loadMore-{{ $give_item['type'] }}" class="load-more">
                 @lang('button.view_more')
                 <i class="fas fa-caret-down"></i>

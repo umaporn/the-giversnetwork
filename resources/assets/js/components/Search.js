@@ -4,96 +4,122 @@
  */
 const Search = (function(){
 
-    const
-        /**
-         * @memberOf Search
-         * @access public
-         * @desc div element to display a search result
-         * @constant {jQuery}
-         */
-        ResultDiv  = $( '#search-result' ),
-        /**
-         * @memberOf Search
-         * @access public
-         * @desc Search form
-         * @const {jQuery}
-         */
-        SearchForm = $( '#search-form' );
+	const
+		/**
+		 * @memberOf Search
+		 * @access public
+		 * @desc div element to display a search result
+		 * @constant {jQuery}
+		 */
+		ResultDiv  = $( '.search-result' ),
+		/**
+		 * @memberOf Search
+		 * @access public
+		 * @desc div element to display a search result
+		 * @constant {jQuery}
+		 */
+		GiveResultDiv  = $( '#give-result-box' ),
 
-    /**
-     * @memberOf Search
-     * @access public
-     * @desc Submit a search form.
-     * @param {jQuery} form - Search form
-     */
-    function submitForm( form ){
+		/**
+		 * @memberOf Search
+		 * @access public
+		 * @desc div element to display a search result
+		 * @constant {jQuery}
+		 */
+		ReceiveResultDiv  = $( '#receive-result-box' ),
+		/**
+		 * @memberOf Search
+		 * @access public
+		 * @desc Search form
+		 * @const {jQuery}
+		 */
+		SearchForm = $( '#search-form' );
 
-        ResultDiv.removeClass( 'alert' );
+	/**
+	 * @memberOf Search
+	 * @access public
+	 * @desc Submit a search form.
+	 * @param {jQuery} form - Search form
+	 */
+	function submitForm( form ){
 
-        Utility.submitForm( form, function( form, jqXHR ){
+		ResultDiv.removeClass( 'alert' );
 
-            Utility.clearErrors();
+		Utility.submitForm( form, function( form, jqXHR ){
 
-            switch( jqXHR.status ){
-                case 422:
-                    Utility.displayInvalidInputs( jqXHR.responseJSON );
-                    ResultDiv.html( '' );
-                    break;
-                case 200:
-                    ResultDiv.html( jqXHR.responseText );
-                    break;
-                default:
-                    let message = jqXHR.statusText;
+			Utility.clearErrors();
 
-                    if( jqXHR.hasOwnProperty( 'responseJSON' ) && jqXHR.responseJSON.hasOwnProperty( 'message' ) ){
-                        message = jqXHR.responseJSON.message;
-                    }
+			switch( jqXHR.status ){
+				case 422:
+					Utility.displayInvalidInputs( jqXHR.responseJSON );
+					ResultDiv.html( '' );
+					break;
+				case 200:
 
-                    ResultDiv.html( Translator.translate( 'error' ) + ' ' + message )
-                             .addClass( 'alert' );
-                    break;
-            }
+					if(jqXHR.responseJSON.type){
+						if(jqXHR.responseJSON.type === 'give'){
+							GiveResultDiv.empty();
+							GiveResultDiv.html( jqXHR.responseJSON.data );
+						}else{
+							ReceiveResultDiv.empty();
+							ReceiveResultDiv.html( jqXHR.responseJSON.data );
+						}
+					}
 
-        } );
+					$( 'input[name=search]' ).empty();
+					break;
+				default:
+					let message = jqXHR.statusText;
 
-    }
+					if( jqXHR.hasOwnProperty( 'responseJSON' ) && jqXHR.responseJSON.hasOwnProperty( 'message' ) ){
+						message = jqXHR.responseJSON.message;
+					}
 
-    /**
-     * @memberOf Search
-     * @access private
-     * @desc Bind pagination.
-     */
-    function bindPagination(){
+					ResultDiv.html( Translator.translate( 'error' ) + ' ' + message )
+					         .addClass( 'alert' );
+					break;
+			}
 
-        ResultDiv.on( 'click', '.pagination a', function( event ){
+		} );
 
-            event.preventDefault();
+	}
 
-            let form = document.createElement( 'form' );
-            form.setAttribute( 'method', 'GET' );
-            form.setAttribute( 'action', $( this ).attr( 'href' ) );
+	/**
+	 * @memberOf Search
+	 * @access private
+	 * @desc Bind pagination.
+	 */
+	function bindPagination(){
 
-            submitForm( $( form ) );
+		ResultDiv.on( 'click', '.pagination a', function( event ){
 
-        } );
+			event.preventDefault();
 
-    }
+			let form = document.createElement( 'form' );
+			form.setAttribute( 'method', 'GET' );
+			form.setAttribute( 'action', $( this ).attr( 'href' ) );
 
-    /**
-     * @memberOf Search
-     * @access public
-     * @desc Initialize search module.
-     */
-    function initialize(){
+			submitForm( $( form ) );
 
-        bindPagination();
+		} );
 
-    }
+	}
 
-    return {
-        ResultDiv:  ResultDiv,
-        SearchForm: SearchForm,
-        initialize: initialize,
-        submitForm: submitForm,
-    };
+	/**
+	 * @memberOf Search
+	 * @access public
+	 * @desc Initialize search module.
+	 */
+	function initialize(){
+
+		bindPagination();
+
+	}
+
+	return {
+		ResultDiv:  ResultDiv,
+		SearchForm: SearchForm,
+		initialize: initialize,
+		submitForm: submitForm,
+	};
 })( jQuery );

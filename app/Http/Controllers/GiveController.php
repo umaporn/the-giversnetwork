@@ -41,15 +41,16 @@ class GiveController extends Controller
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
         $data['allList']      = $this->giveModel->getGiveAllList( $request );
         $type                 = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
-        $categoryID           = $request->get( 'categoryID' );
+        $category_id          = $request->get( 'category_id' );
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'give.list', compact( 'data', 'type', 'categoryID' ) )->render(),
+                                         'data' => view( 'give.list', compact( 'data', 'type', 'category_id' ) )->render(),
+                                         'type' => $type,
                                      ] );
         }
 
-        return view( 'give.index', compact( 'data', 'type', 'categoryID' ) );
+        return view( 'give.index', compact( 'data', 'type', 'category_id' ) );
     }
 
     /**
@@ -78,15 +79,15 @@ class GiveController extends Controller
     {
         $data['allList'] = $this->giveModel->getGiveAllList( $request );
         $type            = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
-        $categoryID      = $request->get( 'categoryID' );
+        $category_id     = $request->get( 'category_id' );
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'give.list', compact( 'data', 'type', 'categoryID' ) )->render(),
+                                         'data' => view( 'give.list', compact( 'data', 'type', 'category_id' ) )->render(),
                                      ] );
         }
 
-        return view( 'give.list', compact( 'data', 'type', 'categoryID' ) );
+        return view( 'give.list', compact( 'data', 'type', 'category_id' ) );
     }
 
     /**
@@ -100,15 +101,15 @@ class GiveController extends Controller
         $data['giveCategory']   = $this->giveCategoryModel->getGiveCategoryList();
         $data['otherUserItems'] = $this->giveModel->getGiveUserItemList( $data['fk_user_id'], $request );
         $data['allList']        = $this->giveModel->getGiveAllList( $request );
-        $categoryID             = $request->get( 'categoryID' );
+        $category_id            = $request->get( 'category_id' );
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'give.other_user_list', compact( 'data', 'categoryID' ) )->render(),
+                                         'data' => view( 'give.other_user_list', compact( 'data', 'category_id' ) )->render(),
                                      ] );
         }
 
-        return view( 'give.detail', compact( 'data', 'categoryID' ) );
+        return view( 'give.detail', compact( 'data', 'category_id' ) );
     }
 
     /**

@@ -60,7 +60,7 @@
                                         <option value="{{ route('give.index',  [ 'category_id' => '' ]) }}">@lang('give.give_category_selection')</option>
                                         @foreach( $data['giveCategory'] as $category )
                                             <option value="{{ route('give.index',  [ 'category_id' => $category['id'] ]) }}"
-                                                    @if( $categoryID == $category['id'] ) selected @endif
+                                                    @if( $category_id == $category['id'] ) selected @endif
                                             >{{ $category['title'] }}</option>
                                         @endforeach
                                     </select>

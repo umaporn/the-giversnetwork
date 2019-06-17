@@ -32,6 +32,7 @@ const GiveTab = (function(){
 		$( '.give-tab > a' ).click( function(){
 
 			let url = $( this ).attr( 'data-url' );
+			$( '#search-form > input[name=type]' ).val('give');
 
 			$.ajax( {
 				        url:         url,
@@ -49,6 +50,8 @@ const GiveTab = (function(){
 		$( '.receive-tab > a' ).click( function(){
 
 			let url = $( this ).attr( 'data-url' );
+
+			$( '#search-form > input[name=type]' ).val('receive');
 
 			$.ajax( {
 				        url:         url,
