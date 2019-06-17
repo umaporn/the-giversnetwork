@@ -224,7 +224,7 @@ class Share extends Model
             'file_path'       => $file_path,
             'fk_user_id'      => $request->input( 'fk_user_id' ),
             'fk_category_id'  => '1',
-            'status'          => $request->input( 'status' ),
+            'status'          => 'public',
         ];
 
         $successForShare = $this->create( $newShare );

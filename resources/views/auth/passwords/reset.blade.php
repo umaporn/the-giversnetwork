@@ -20,13 +20,13 @@
 
                     <label>
                         @lang('passwords.password_reset_form.new_password')
-                        <input type="password" name="password" id="password" value="umaporn1234" required>
+                        <input type="password" name="password" id="password" required>
                     </label>
                     <p id="password-help-text" class="alert help-text"></p>
 
                     <label>
                         @lang('passwords.password_reset_form.new_password_confirmation')
-                        <input type="password" name="password_confirmation" value="umaporn1234" required>
+                        <input type="password" name="password_confirmation" required>
                     </label>
 
                     <p class="text-center margin-top-3">
