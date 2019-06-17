@@ -101,10 +101,10 @@ class RegisterController extends Controller
             $message = ( $user ) ? __( 'register.form_submitted.success_message' )
                 : __( 'register.form_submitted.failed_message' );
 
-            return response()->json( [ 'success' => true, 'message' => $message ] );
-        }
+            $this->guard()->login( $user );
 
-        $this->guard()->login( $user );
+            return response()->json( [ 'success' => true, 'message' => $message, 'redirectedUrl' => route( 'home.index' ) ] );
+        }
 
         return $this->registered( $request, $user )
             ?: redirect( $this->redirectPath() );
