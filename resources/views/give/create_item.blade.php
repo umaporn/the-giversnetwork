@@ -1,24 +1,23 @@
 @extends('layouts.app')
 
-@section('page-title', __('home.page_title.index'))
-@section('page-description', __('home.page_description.index'))
-@section('page-icon', 'fi-home')
+@section('page-title', __('give.page_title.index'))
+@section('page-description', __('give.page_description.index'))
 
 @section('content')
 <section class="give create">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
             <i class="fas fa-gift"></i>
-            <h2 class="topic-light">Give</h2>
+            <h2 class="topic-light">@lang('give.page_title.index')</h2>
         </div>
     </div>
     <nav class="grid-x padding-breadcrumbs">
         <div class="cell auto">
             <ul class="breadcrumbs">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Give</a></li>
+                <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
+                <li><a href="#">@lang('give.page_title.index')</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> Give Items or Receive
+                    <span class="show-for-sr">Current: </span> @lang('give.give_or_receive')
                 </li>
             </ul>
         </div>

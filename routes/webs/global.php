@@ -39,11 +39,11 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'give', ], function(){
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
+        Route::get( 'create-item', 'GiveController@showCreateItemForm' )->name( 'give.showCreateItemForm' );
         Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
         Route::get( 'list', 'GiveController@getGiveList' )->name( 'give.list' );
         Route::get( '{give}', 'GiveController@detail' )->name( 'give.detail' );
         Route::get( 'article', 'GiveController@article' )->name( 'give.article' );
-        Route::get( 'create-item', 'GiveController@createItem' )->name( 'give.create_item' );
     } );
 
     Route::group( [ 'prefix' => 'events', ], function(){

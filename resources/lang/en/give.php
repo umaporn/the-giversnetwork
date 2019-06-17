@@ -33,5 +33,6 @@ return [
     'i_need_contact'          => 'I need contact with',
     'other_user_item'         => 'Other user\'s items',
     'other_item'              => 'Other Items',
+    'give_or_receive'         => 'Give Items or Receive',
 
 ];

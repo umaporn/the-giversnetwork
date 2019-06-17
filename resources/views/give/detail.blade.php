@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li>
-                            <span class="show-for-sr">Current: </span> Ramen Noodles
+                            <span class="show-for-sr">Current: </span> {{ $data['title'] }}
                         </li>
                     </ul>
                 </nav>
@@ -68,13 +68,15 @@
                             </div>
                         </form>
                     </div>
-                    <div class="cell small-12 xlarge-3 text-right">
-                        <div class="give-cat-btn">
-                            <a href="#" class="btn-blue">
-                                <i class="fas fa-plus"></i> @lang('give.give_item')
-                            </a>
+                    @if( Auth::user() )
+                        <div class="cell small-12 xlarge-3 text-right">
+                            <div class="give-cat-btn">
+                                <a href="{{ route('give.showCreateItemForm') }}" class="btn-blue">
+                                    <i class="fas fa-plus"></i> @lang('give.give_item')
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
 

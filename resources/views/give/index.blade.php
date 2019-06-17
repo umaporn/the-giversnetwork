@@ -73,21 +73,25 @@
                 </ul>
                 <div class="tabs-content" data-tabs-content="collapsing-tabs" id="give-content">
                     <div class="tabs-panel is-active" id="give">
-                        <div class="give-cat-btn">
-                            <a href="#" class="btn-blue">
-                                <i class="fas fa-plus"></i> @lang('give.give_item')
-                            </a>
-                        </div>
+                        @if( Auth::user() )
+                            <div class="give-cat-btn">
+                                <a href="{{ route('give.showCreateItemForm') }}" class="btn-blue">
+                                    <i class="fas fa-plus"></i> @lang('give.give_item')
+                                </a>
+                            </div>
+                        @endif
                         <div id="give-result-box">
                             @include('give.list')
                         </div>
                     </div>
                     <div class="tabs-panel" id="giver">
-                        <div class="give-cat-btn">
-                            <a href="#" class="btn-blue">
-                                <i class="fas fa-plus"></i> @lang('give.tell_giver')
-                            </a>
-                        </div>
+                        @if( Auth::user() )
+                            <div class="give-cat-btn">
+                                <a href="{{ route('give.showCreateItemForm') }}" class="btn-blue">
+                                    <i class="fas fa-plus"></i> @lang('give.tell_giver')
+                                </a>
+                            </div>
+                        @endif
                         <div id="receive-result-box">
                         </div>
                     </div>
