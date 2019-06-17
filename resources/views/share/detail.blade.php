@@ -47,16 +47,20 @@
                                         <i class="far fa-calendar-alt"></i> {{ $data['public_date'] }}</time>
                                     <div class="profile">
                                         <a href="{{ route('user.getUserProfile', ['id' => $data->users['id']]) }}" target="_blank">
+                                            @if($data->users['image_path'])
                                             <figure class="display-profile">
-                                                <img src="{{ $data->users['image_path'] ? Storage::url($data['user']->image_path ) : asset(config('images.home.profile.user_profile' )) }}"
+                                                <img src="{{ $data->users['image_path'] ? Storage::url($data->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
                                                      alt="{{ $data['username'] }}">
                                             </figure>
+                                            @endif
                                             <span>{{ $data['username'] }}</span>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        @if($data->shareImage)
                         <div class="cell small-12 text-center slide-thumb">
                             <div class="gallery-top">
                                 <div class="swiper-wrapper">
@@ -96,6 +100,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endif
                         <div class="cell small-12">
                             <p>{!! $data['content'] !!}</p>
                         </div>

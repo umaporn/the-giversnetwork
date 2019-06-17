@@ -41,10 +41,10 @@
                                 </div>
                                 <div class="cell auto">
                                     <select id="category" class="give-filter">
-                                        <option value="{{ route('give.index',  [ 'category_id' => '' ]) }}">@lang('give.give_category_selection')</option>
+                                        <option value="{{ route('give.index',  [ 'categoryID' => '' ]) }}">@lang('give.give_category_selection')</option>
                                         @foreach( $data['giveCategory'] as $category )
-                                            <option value="{{ route('give.index',  [ 'category_id' => $category['id'] ]) }}"
-                                                    @if( $category_id == $category['id'] ) selected @endif
+                                            <option value="{{ route('give.index',  [ 'categoryID' => $category['id'] ]) }}"
+                                                    @if( $categoryID == $category['id'] ) selected @endif
                                             >{{ $category['title'] }}</option>
                                         @endforeach
                                     </select>
@@ -57,12 +57,12 @@
             <div class="cell small-12">
                 <ul class="tabs" data-active-collapse="true" data-tabs id="collapsing-tabs">
                     <li class="tabs-title give-tab @if( $type === 'give' ) is-active @endif">
-                        <a href="#give" data-url="{{ route('give.list', [ 'type' => 'give', 'category_id' => $category_id ] ) }}" aria-selected="true">
+                        <a href="#give" data-url="{{ route('give.list', [ 'type' => 'give', 'categoryID' => $categoryID ] ) }}" aria-selected="true">
                             @lang('give.page_title.index')
                         </a>
                     </li>
                     <li class="tabs-title receive-tab  @if( $type === 'receive' ) is-active @endif">
-                        <a href="#giver" data-url="{{ route('give.list', [ 'type' => 'receive', 'category_id' => $category_id ] ) }}">
+                        <a href="#giver" data-url="{{ route('give.list', [ 'type' => 'receive', 'categoryID' => $categoryID ] ) }}">
                             @lang('give.receive')
                         </a>
                     </li>

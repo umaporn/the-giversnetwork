@@ -41,15 +41,15 @@ class GiveController extends Controller
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
         $data['allList']      = $this->giveModel->getGiveAllList( $request );
         $type                 = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
-        $category_id          = $request->get( 'category_id' );
+        $categoryID           = $request->get( 'categoryID' );
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'give.list', compact( 'data', 'type', 'category_id' ) )->render(),
+                                         'data' => view( 'give.list', compact( 'data', 'type', 'categoryID' ) )->render(),
                                      ] );
         }
 
-        return view( 'give.index', compact( 'data', 'type', 'category_id' ) );
+        return view( 'give.index', compact( 'data', 'type', 'categoryID' ) );
     }
 
     /**
@@ -78,15 +78,15 @@ class GiveController extends Controller
     {
         $data['allList'] = $this->giveModel->getGiveAllList( $request );
         $type            = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
-        $category_id     = $request->get( 'category_id' );
+        $categoryID      = $request->get( 'categoryID' );
 
         if( $request->ajax() ){
             return response()->json( [
-                                         'data' => view( 'give.list', compact( 'data', 'type', 'category_id' ) )->render(),
+                                         'data' => view( 'give.list', compact( 'data', 'type', 'categoryID' ) )->render(),
                                      ] );
         }
 
-        return view( 'give.list', compact( 'data', 'type', 'category_id' ) );
+        return view( 'give.list', compact( 'data', 'type', 'categoryID' ) );
     }
 
     /**
@@ -94,19 +94,21 @@ class GiveController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give detail page
      */
-    public function detail( Give $give )
+    public function detail( Give $give, Request $request )
     {
-        //return view( 'events.detail' );
-    }
+        $data                   = $this->giveModel->getGiveDetail( $give );
+        $data['giveCategory']   = $this->giveCategoryModel->getGiveCategoryList();
+        $data['otherUserItems'] = $this->giveModel->getGiveUserItemList( $data['fk_user_id'], $request );
+        $data['allList']        = $this->giveModel->getGiveAllList( $request );
+        $categoryID             = $request->get( 'categoryID' );
 
-    /**
-     * Display article page.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
-     */
-    public function article()
-    {
-        return view( 'give.article' );
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'give.other_user_list', compact( 'data', 'categoryID' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'give.detail', compact( 'data', 'categoryID' ) );
     }
 
     /**

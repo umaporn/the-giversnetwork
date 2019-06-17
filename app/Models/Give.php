@@ -42,6 +42,16 @@ class Give extends Model
     }
 
     /**
+     * Get users model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Users model relationship
+     */
+    public function users()
+    {
+        return $this->belongsTo( 'App\Models\Users', 'fk_user_id' );
+    }
+
+    /**
      * Get a list of give for displaying.
      *
      * @param Request $request Give request object
@@ -152,6 +162,60 @@ class Give extends Model
         }
 
         $data = Search::search( $builder, 'give', $request );
+
+        return $this->transformGiveContent( $data );
+    }
+
+    /**
+     * Get give detail information.
+     *
+     * @param Give $give Give model
+     *
+     * @return Give give detail
+     */
+    public function getGiveDetail( Give $give )
+    {
+        $give = $this->with( [ 'giveImage' ] )
+                     ->with( [ 'giveCategory' ] )
+                     ->with( [ 'users' ] )
+                     ->where( [ 'id' => $give->id ] )->first();
+
+        if( $give ){
+            $give->setAttribute( 'title', Utility::getLanguageFields( 'title', $give ) );
+            $give->setAttribute( 'content', Utility::getLanguageFields( 'content', $give ) );
+            $give->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $give->giveCategory ) );
+            $give->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $give->giveCategory ) );
+            $this->setDateForFrontEnd( $give );
+            foreach( $give->giveImage as $give_image ){
+                $give_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $give_image ) );
+            }
+        }
+
+        return $give;
+    }
+
+    /**
+     * Set public date attribute.
+     *
+     * @param Give $give Give model
+     *
+     * @return void
+     */
+    private function setDateForFrontEnd( Give $give )
+    {
+        $give->setAttribute( 'expired_date',
+                             date( 'd', strtotime( $give->expired_date ) ) . ' ' .
+                             date( 'F', strtotime( $give->expired_date ) ) . ' ' .
+                             date( 'Y', strtotime( $give->expired_date ) )
+        );
+    }
+
+    public function getGiveUserItemList( string $userID, Request $request )
+    {
+        $builder = $this->with( [ 'giveImage' ] )
+                     ->where( [ 'status' => 'public', 'type' => 'give', 'fk_user_id' => $userID ] );
+
+        $data = Search::search( $builder, 'give', $request, [], '4' );
 
         return $this->transformGiveContent( $data );
     }
