@@ -22380,8 +22380,7 @@ body:lang(en) .language li.en a {
 
 @media screen and (max-width: 89.99875em) {
   .topbar-responsive.padding-content {
-    padding: 1.25rem;
-    padding: 0 0.3125rem;
+    padding: 0.625rem;
   }
 }
 

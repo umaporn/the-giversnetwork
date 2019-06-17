@@ -1,7 +1,7 @@
 <header id="header" data-sticky-container>
 	<div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: xxlarge;">
-		<nav class="grid-x top-bar topbar-responsive padding-content">
-			<div class="cell  xxlarge-shrink top-bar-title">
+		<nav class="grid-x topbar-responsive padding-content">
+			<div class="cell xxlarge-shrink top-bar-title">
 				<span data-responsive-toggle="topbar-responsive" data-hide-for="xxlarge">
 					<button class="menu-icon" type="button" data-toggle></button>
 				</span>
@@ -20,7 +20,7 @@
 					<li><a href="#contact">@lang('menu.top_menu.organization')</a></li>
 				</ul>
 			</div>
-			<div class="cell xxlarge-shrink align-self-middle grid-middle">
+			<div class="cell xxlarge-shrink align-self-middle grid-middle align-right">
 				<!-- before user login -->
 				<ul class="user-profile float-left no-bullet">
 					<li><a href="#home">@lang('menu.profile_menu.sign_up')</a></li>

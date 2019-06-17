@@ -58,8 +58,7 @@ body {
 			padding-bottom: 0;
 		}
 		@include breakpoint(xlarge down) {
-			padding: $space-box;
-			padding: 0 $space-box/4;
+			padding: $space-box/2;
 		}
 	}
 
