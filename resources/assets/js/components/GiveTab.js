@@ -40,7 +40,7 @@ const GiveTab = (function(){
 				        contentType: false,
 				        processData: false,
 				        success:     function( result ){
-					        $( '#give-result-box' ).html( result );
+					        $( '#give-result-box' ).html( result.data );
 				        },
 			        } );
 
@@ -57,10 +57,14 @@ const GiveTab = (function(){
 				        contentType: false,
 				        processData: false,
 				        success:     function( result ){
-					        $( '#receive-result-box' ).html( result );
+					        $( '#receive-result-box' ).html( result.data );
 				        },
 			        } );
 
+		} );
+
+		$( '.give-filter' ).change( function(){
+			window.location = $( this ).val();
 		} );
 
 	}

@@ -40,8 +40,16 @@ class GiveController extends Controller
     {
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
         $data['allList']      = $this->giveModel->getGiveAllList( $request );
+        $type                 = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
+        $category_id          = $request->get( 'category_id' );
 
-        return view( 'give.index', compact( 'data' ) );
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'give.list', compact( 'data', 'type', 'category_id' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'give.index', compact( 'data', 'type', 'category_id' ) );
     }
 
     /**
@@ -69,8 +77,16 @@ class GiveController extends Controller
     public function getGiveList( Request $request )
     {
         $data['allList'] = $this->giveModel->getGiveAllList( $request );
+        $type            = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
+        $category_id     = $request->get( 'category_id' );
 
-        return view( 'give.list', compact( 'data' ) );
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'give.list', compact( 'data', 'type', 'category_id' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'give.list', compact( 'data', 'type', 'category_id' ) );
     }
 
     /**
