@@ -15,7 +15,7 @@
         <div class="cell auto">
             <ul class="breadcrumbs">
                 <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
-                <li><a href="#">@lang('give.page_title.index')</a></li>
+                <li><a href="{{ route('give.index') }}">@lang('give.page_title.index')</a></li>
                 <li>
                     <span class="show-for-sr">Current: </span> @lang('give.give_or_receive')
                 </li>
@@ -24,22 +24,22 @@
     </nav>
     <div class="grid-x padding-content">
         <div class="cell small-12">
-            <h2 class="topic-dark">GIVE ITEM OR RECEIVE</h2>
+            <h2 class="topic-dark"> @lang('give.give_or_receive')</h2>
             <form action="" class="form-onerow">
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="choose" class="form-label">Choose</label>
+                        <label for="choose" class="form-label">@lang('give.create_item_form.choose')</label>
                     </div>
                     <div class="cell small-12 large-9">
                         <select class="form-select light">
-                            <option value="" selected>Give item</option>
-                            <option value="receive">Receive</option>
+                            <option value="" selected>@lang('give.create_item_form.give_item')</option>
+                            <option value="receive">@lang('give.create_item_form.receive')</option>
                         </select>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="choose" class="form-label">Category</label>
+                        <label for="choose" class="form-label">@lang('give.create_item_form.category')</label>
                     </div>
                     <div class="cell small-12 large-9">
                         <select class="form-select light">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="name" class="form-label">Name</label>
+                        <label for="name" class="form-label">@lang('give.create_item_form.name')</label>
                     </div>
                     <div class="cell small-12 large-9">
                         <input type="text" id="name" class="form-fill" value="">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="amount" class="form-label">Amount</label>
+                        <label for="amount" class="form-label">@lang('give.create_item_form.amount')</label>
                     </div>
                     <div class="cell small-12 large-9">
                         <input type="number" id="amount" class="form-fill" value="">
@@ -65,11 +65,13 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="address" class="form-label">Address</label>
+                        <label for="address" class="form-label">@lang('give.create_item_form.address')</label>
                     </div>
                     <div class="cell small-12 large-9 align-self-middle">
-                        <input id="useInProfile" type="checkbox"><label for="use-in-profile">Use address in my
-                            profile</label>
+                        <input id="useInProfile" type="checkbox">
+                        <label for="use-in-profile">
+                            @lang('give.create_item_form.use_address')
+                        </label>
                     </div>
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
@@ -81,7 +83,7 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="description" class="form-label">Description</label>
+                        <label for="description" class="form-label">@lang('give.create_item_form.description')</label>
                     </div>
                     <div class="cell small-12 large-9">
                         <textarea id="description" class="form-fill" rows="3"></textarea>
@@ -89,7 +91,7 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-2">
-                        <label for="imageProfile" class="form-label">Image</label>
+                        <label for="imageProfile" class="form-label">@lang('give.create_item_form.image')</label>
                     </div>
                     <div class="cell small-12 large-9">
                         <div class="form-file-image">
@@ -97,8 +99,8 @@
                                 <input type="file" class="form-fileupload" id="file-image-multi" multiple
                                     data-maxfile="1024" />
                                 <div class="form-file-style">
-                                    <div class="form-flex btn-blue">Browse</div>
-                                    <p class="form-flex show-text">maximum file size: 1MB/Image</p>
+                                    <div class="form-flex btn-blue">@lang('give.create_item_form.browse')</div>
+                                    <p class="form-flex show-text">@lang('give.create_item_form.image_condition')</p>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +108,7 @@
                 </div>
                 <div class="grid-x grid-padding-x user-form-space">
                     <div class="cell small-12 large-offset-2 large-9">
-                        <button class="btn-green btn-long">Publish</button>
+                        <button class="btn-green btn-long">@lang('button.publish')</button>
                     </div>
                 </div>
             </form>

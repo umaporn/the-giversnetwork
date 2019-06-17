@@ -35,4 +35,19 @@ return [
     'other_item'              => 'Other Items',
     'give_or_receive'         => 'Give Items or Receive',
 
+    'create_item_form' => [
+        'choose'          => 'Choose',
+        'give_item'       => 'Give item',
+        'receive'         => 'Receive',
+        'category'        => 'Category',
+        'name'            => 'Name',
+        'amount'          => 'Amount',
+        'address'         => 'Address',
+        'use_address'     => 'Use address in my profile',
+        'description'     => 'Description',
+        'image'           => 'Image',
+        'browse'          => 'Browse',
+        'image_condition' => 'Maximum file size: 1MB/Image',
+    ],
+
 ];

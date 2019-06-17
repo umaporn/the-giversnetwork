@@ -26,4 +26,5 @@ return [
     'download'      => 'Download',
     'login'         => 'Login',
     'post'          => 'Post',
+    'publish'       => 'Publish',
 ];
