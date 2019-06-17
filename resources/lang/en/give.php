@@ -25,6 +25,7 @@ return [
 
     'category'                => 'Category',
     'give_category_selection' => 'Please select category',
+    'give_type_selection'     => 'Please select give or receive item',
     'receive'                 => 'Receive',
     'give_item'               => 'Give Item',
     'tell_giver'              => 'Tell Giver',
@@ -48,6 +49,11 @@ return [
         'image'           => 'Image',
         'browse'          => 'Browse',
         'image_condition' => 'Maximum file size: 1MB/Image',
+        'expired_date'    => 'Post expiry date',
+        '3_days'          => '3 days',
+        '1_week'          => '1 week',
+        '1_month'         => '1 month',
+        '6_months'        => '6 months',
     ],
 
 ];

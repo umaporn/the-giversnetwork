@@ -40,6 +40,7 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'give', ], function(){
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
         Route::get( 'create-item', 'GiveController@showCreateItemForm' )->name( 'give.showCreateItemForm' );
+        Route::post( 'create-item', 'GiveController@createGiveItem' )->name( 'give.createGiveItem' );
         Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
         Route::get( 'list', 'GiveController@getGiveList' )->name( 'give.list' );
         Route::get( '{give}', 'GiveController@detail' )->name( 'give.detail' );

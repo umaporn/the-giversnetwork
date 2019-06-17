@@ -213,11 +213,16 @@ class Give extends Model
     public function getGiveUserItemList( string $userID, Request $request )
     {
         $builder = $this->with( [ 'giveImage' ] )
-                     ->where( [ 'status' => 'public', 'type' => 'give', 'fk_user_id' => $userID ] );
+                        ->where( [ 'status' => 'public', 'type' => 'give', 'fk_user_id' => $userID ] );
 
         $data = Search::search( $builder, 'give', $request, [], '4' );
 
         return $this->transformGiveContent( $data );
+    }
+
+    public function createGive( Request $request )
+    {
+        dd($request->all());
     }
 
 }

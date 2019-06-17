@@ -119,6 +119,15 @@ class GiveController extends Controller
      */
     public function showCreateItemForm()
     {
-        return view( 'give.create_item' );
+        $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
+
+        return view( 'give.create_item', compact( 'data' ) );
+    }
+
+    public function createGiveItem( Request $request )
+    {
+        $result = $this->giveModel->createGive( $request );
+
+        return $result;
     }
 }
