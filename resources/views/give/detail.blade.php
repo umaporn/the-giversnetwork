@@ -42,10 +42,13 @@
         </section>
         <section class="grid-x padding-content align-center padding-top-0">
             <div class="cell small-12 large-8 search">
-                <input type="text" class="search-text" placeholder="Search">
-                <button type="submit" class="search-button">
-                    <i class="fa fa-search"></i>
-                </button>
+                <form id="search-form-detail" class="cell search" method="GET" action="{{ route('give.index') }}">
+                    {{ csrf_field() }}
+                    <input name="search" type="search" class="search-text" placeholder="Search">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
             </div>
             <div class="cell small-12">
                 <div class="grid-x align-justify">
@@ -89,7 +92,7 @@
                                     <div class="swiper-slide">
                                         <div class="swiper-slide-container">
                                             <figure>
-                                                <img src="{{ $give_image['original'] }}" alt="{{ $give_image['alt'] }}">
+                                                <img src="{{ $give_image['image_path'] }}" alt="{{ $give_image['alt'] }}">
                                             </figure>
                                         </div>
                                     </div>
@@ -105,7 +108,7 @@
                                     <div class="swiper-slide">
                                         <div class="swiper-slide-container">
                                             <figure>
-                                                <img src="{{ $give_image['thumbnail'] }}" alt="{{ $give_image['alt'] }}">
+                                                <img src="{{ $give_image['image_path'] }}" alt="{{ $give_image['alt'] }}">
                                             </figure>
                                         </div>
                                     </div>

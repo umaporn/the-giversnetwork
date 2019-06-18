@@ -27,7 +27,7 @@ class CreateGiveTable extends Migration
             $table->string( 'description_thai', 255 )->nullable();
             $table->string( 'description_english', 255 )->nullable();
             $table->integer( 'amount' );
-            $table->text( 'address' );
+            $table->text( 'address' )->nullable();
             $table->integer( 'view' )->nullable();
             $table->date( 'expired_date' );
             $table->enum( 'status', [ 'public', 'draft' ] );

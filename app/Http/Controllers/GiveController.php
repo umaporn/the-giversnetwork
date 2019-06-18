@@ -40,12 +40,12 @@ class GiveController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'type'           => config( 'validation.give.type' ),
-            'fk_category_id' => config( 'validation.give.fk_category_id' ),
-            'title'          => config( 'validation.give.title' ),
-            'amount'         => config( 'validation.give.amount' ),
-            'address'        => config( 'validation.give.address' ),
-            'description'    => config( 'validation.give.description' ),
+            'type'             => config( 'validation.give.type' ),
+            'fk_category_id'   => config( 'validation.give.fk_category_id' ),
+            'name'             => config( 'validation.give.name' ),
+            'amount'           => config( 'validation.give.amount' ),
+            'address'          => config( 'validation.give.address' ),
+            'description_text' => config( 'validation.give.description_text' ),
         ] );
     }
 
@@ -151,8 +151,55 @@ class GiveController extends Controller
      */
     public function createGiveItem( Request $request )
     {
+        $this->validator( $request->input() )->validate();
+
         $result = $this->giveModel->createGive( $request );
 
-        return $result;
+        return $this->setUpdateOrCreationResponse( $request, $result );
+    }
+
+    /**
+     * Set update or creation response.
+     *
+     * @param Request $request Request object
+     * @param array   $result  Updating or creating result
+     *
+     * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    private function setUpdateOrCreationResponse( Request $request, array $result )
+    {
+        $response = $this->setResponseMessages( $result );
+
+        if( $request->ajax() ){
+            return response()->json( $response );
+        } else {
+            return redirect()->route( 'give.showCreateItemForm' );
+        }
+    }
+
+    /**
+     * Set error messages from result.
+     *
+     * @param array $result Result of saved give item
+     *
+     * @return array Error messages
+     */
+    private function setResponseMessages( array $result )
+    {
+
+        if( !$result['successForGive'] && !$result['successForGiveImage'] ){
+            $data = [
+                'success' => false,
+                'error'   => __( 'give.create_item_form.saved_give_error' ),
+            ];
+        } else {
+            $data = [
+                'success'       => true,
+                'message'       => __( 'give.create_item_form.saved_give_success' ),
+                'redirectedUrl' => route( 'give.index' ),
+            ];
+        }
+
+        return $data;
     }
 }

@@ -11,14 +11,14 @@ const Search = (function(){
 		 * @desc div element to display a search result
 		 * @constant {jQuery}
 		 */
-		ResultDiv  = $( '.search-result' ),
+		ResultDiv        = $( '.search-result' ),
 		/**
 		 * @memberOf Search
 		 * @access public
 		 * @desc div element to display a search result
 		 * @constant {jQuery}
 		 */
-		GiveResultDiv  = $( '#give-result-box' ),
+		GiveResultDiv    = $( '#give-result-box' ),
 
 		/**
 		 * @memberOf Search
@@ -26,14 +26,21 @@ const Search = (function(){
 		 * @desc div element to display a search result
 		 * @constant {jQuery}
 		 */
-		ReceiveResultDiv  = $( '#receive-result-box' ),
+		ReceiveResultDiv = $( '#receive-result-box' ),
 		/**
 		 * @memberOf Search
 		 * @access public
 		 * @desc Search form
 		 * @const {jQuery}
 		 */
-		SearchForm = $( '#search-form' );
+		SearchForm       = $( '#search-form' ),
+		/**
+		 * @memberOf Search
+		 * @access public
+		 * @desc Search form
+		 * @const {jQuery}
+		 */
+		SearchDetailForm = $( '#search-form-detail' );
 
 	/**
 	 * @memberOf Search
@@ -56,11 +63,11 @@ const Search = (function(){
 					break;
 				case 200:
 
-					if(jqXHR.responseJSON.type){
-						if(jqXHR.responseJSON.type === 'give'){
+					if( jqXHR.responseJSON.type ){
+						if( jqXHR.responseJSON.type === 'give' ){
 							GiveResultDiv.empty();
 							GiveResultDiv.html( jqXHR.responseJSON.data );
-						}else{
+						} else {
 							ReceiveResultDiv.empty();
 							ReceiveResultDiv.html( jqXHR.responseJSON.data );
 						}
