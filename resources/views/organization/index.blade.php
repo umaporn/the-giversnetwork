@@ -47,7 +47,7 @@
                                     <select id="category" class="organization-filter">
                                         <option value="{{ route('organization.index',  [ 'category_id' => '' ]) }}">@lang('give.give_category_selection')</option>
                                         @foreach( $data['organizationCategory'] as $category )
-                                            <option value="{{ route('give.index',  [ 'category_id' => $category['id'] ]) }}"
+                                            <option value="{{ route('organization.index',  [ 'category_id' => $category['id'] ]) }}"
                                                     @if( $category_id == $category['id'] ) selected @endif
                                             >{{ $category['title'] }}</option>
                                         @endforeach
@@ -58,32 +58,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cell small-12">
-                <section class="grid-x grid-margin-x margin-top-1">
-                    @foreach($data['allList']  as $organization_item )
-                    <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
-                        <div class="cards-style">
-                            <figure class="cards-image">
-                                <a href="{{ route('organization.detail', [ 'organization' => $organization_item['id'] ]) }}">
-                                    <img src="{{ $organization_item['image_path'] ? $organization_item['image_path'] : asset( config('images.placeholder.700x400') ) }}"
-                                         alt="{{ $organization_item['title'] }}"
-                                         class="img-cover"
-                                    >
-                                </a>
-                            </figure>
-                            <div class="cards-detail">
-                                <h2 class="cards-topic">{{ $organization_item['name']  }}</h2>
-                                <p class="cards-amount">{{ $organization_item['category_title']  }}</p>
-                                <a href="{{ route('organization.detail', [ 'organization' => $organization_item['id']] ) }}" class="btn-blue">Contact</a>
-                            </div>
-                        </div>
-                    </article>
-                    @endforeach
-                </section>
-                <div class="organization-load">
-                    <a href="#" id="loadMore" class="load-more">View More <i class="fas fa-caret-down"></i></a>
-                </div>
-            </div>
+            @include('organization.list')
         </section>
 
     </section>

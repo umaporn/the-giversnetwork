@@ -66,7 +66,7 @@ const GiveTab = (function(){
 
 		} );
 
-		$( '.give-filter' ).change( function(){
+		$( '.give-filter, .organization-filter' ).change( function(){
 			window.location = $( this ).val();
 		} );
 

@@ -60,7 +60,9 @@ class OrganizationController extends Controller
      */
     public function detail( Organization $organization )
     {
-        return view( 'organization.detail' );
+        $data = $this->organizationModel->getOrganizationDetail( $organization );
+
+        return view( 'organization.detail', compact( 'data' ) );
     }
 
 }

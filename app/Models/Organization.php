@@ -60,11 +60,11 @@ class Organization extends Model
     }
 
     /**
-     * Get learn all list.
+     * Get organization all list.
      *
      * @param Request $request Request Object
      *
-     * @return LengthAwarePaginator list of learn
+     * @return LengthAwarePaginator list of organization
      */
     public function getOrganizationAllList( Request $request )
     {
@@ -81,5 +81,24 @@ class Organization extends Model
 
         return $this->transformOrganizationList( $data );
 
+    }
+
+    /**
+     * Get organization detail information.
+     *
+     * @param Organization $organization Organization model
+     *
+     * @return Organization organization detail
+     */
+    public function getOrganizationDetail( Organization $organization )
+    {
+        $organization = $this->with(['organizationCategory'])->where( [ 'id' => $organization->id ] )->first();
+
+        if( $organization ){
+            $organization->setAttribute( 'name', Utility::getLanguageFields( 'name', $organization ) );
+            $organization->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $organization->organizationCategory ) );
+        }
+
+        return $organization;
     }
 }
