@@ -65,8 +65,8 @@ return [
         'fulltextSearch' => false,
     ],
     'give' => [
-        'limit'          => 8,
-        'limits'         => [ 8, 16 ],
+        'limit'          => 12,
+        'limits'         => [ 12, 24 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
