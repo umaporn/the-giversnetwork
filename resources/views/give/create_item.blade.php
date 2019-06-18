@@ -80,7 +80,7 @@
                         <label for="address" class="form-label">@lang('give.create_item_form.address')</label>
                     </div>
                     <div class="cell small-12 large-9 align-self-middle">
-                        <input id="useInProfile" type="checkbox" name="address">
+                        <input class="toggle-use-address" id="useInProfile" type="checkbox" name="useAddressProfile">
                         <label for="use-in-profile">
                             @lang('give.create_item_form.use_address')
                         </label>
@@ -110,11 +110,12 @@
                     <div class="cell small-12 large-9">
                         <div class="form-file-image">
                             <div class="form-file">
-                                <input type="file" class="form-fileupload" id="file-image-multi" multiple
-                                    data-maxfile="1024" />
+                                <input type="file" class="form-fileupload" id="image_path" name="image_path[]" multiple
+                                       data-maxfile="1024"/>
+                                <p id="original-help-text" class="alert help-text hide"></p>
                                 <div class="form-file-style">
-                                    <div class="form-flex btn-blue">@lang('give.create_item_form.browse')</div>
-                                    <p class="form-flex show-text">@lang('give.create_item_form.image_condition')</p>
+                                    <div class="form-flex btn-blue">@lang('share.create_thread_form.browse')</div>
+                                    <p class="form-flex show-text">@lang('share.create_thread_form.image_condition')</p>
                                 </div>
                             </div>
                         </div>
