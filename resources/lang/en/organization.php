@@ -19,5 +19,5 @@ return [
     'page_description' => [
         'index' => 'Organization page',
     ],
-
+    'category'                => 'Category',
 ];

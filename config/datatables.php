@@ -64,9 +64,16 @@ return [
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
     ],
-    'give' => [
+    'give'          => [
         'limit'          => 8,
         'limits'         => [ 8, 16 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
+        'fulltextSearch' => false,
+    ],
+    'organization'  => [
+        'limit'          => 12,
+        'limits'         => [ 12, 24 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
