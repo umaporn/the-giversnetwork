@@ -16,4 +16,5 @@ return [
     'web_service_error'            => 'Found some web service request errors: ',
     'not_found_web_service_server' => 'The web service server has some problems' . $endingSentence,
     'throttle'                     => 'Too many attempts. Please try again in few minutes.',
+    'model_not_found'              => 'Unfortunately, Model Not Found.'
 ];

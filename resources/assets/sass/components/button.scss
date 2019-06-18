@@ -4,6 +4,7 @@
     border-radius: $space-box/4;
     cursor: pointer;
     line-height: 1;
+
     i {
         font-size: rem-calc(12);
     }
@@ -47,9 +48,28 @@
             color: $white;
         }
 
-        &:focus {
+        &-green {
+            @extend %button;
+            background-color: $color-green;
             color: $white;
+
+            &:focus {
+                color: $white;
+            }
         }
+
+        &-long {
+            padding: $space-box/2 $space-box * 2;
+        }
+    }
+
+    &-upload {
+        display: inline-block;
+    }
+
+    &-white {
+        @extend %button;
+        background-color: $white;
     }
 
     &-long {
@@ -58,6 +78,7 @@
 
     &-add {
         cursor: pointer;
+
         i {
             margin-right: $space-box/4;
         }
@@ -78,6 +99,22 @@
 
 .cursor-pointer {
     cursor: pointer;
+
+    &-more {
+        border-radius: rem-calc(5);
+        background-color: $color-blue;
+        color: $white;
+        display: block;
+        text-align: center;
+        font-family: $text-bold;
+        padding: $space-box/4;
+        transition: all .25s ease;
+
+        &:hover {
+            color: $white;
+            background: lighten($color-blue, 3%);
+        }
+    }
 }
 
 

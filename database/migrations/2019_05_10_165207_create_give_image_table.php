@@ -21,8 +21,8 @@ class CreateGiveImageTable extends Migration
             $table->foreign( 'fk_give_id' )->references( 'id' )->on( 'give' );
             $table->string( 'original', 255 );
             $table->string( 'thumbnail', 255 );
-            $table->string( 'alt_thai', 255 );
-            $table->string( 'alt_english', 255 );
+            $table->string( 'alt_thai', 255 )->nullable();
+            $table->string( 'alt_english', 255 )->nullable();
             $table->timestamp( 'updated_at' );
             $table->timestamp( 'created_at' )->useCurrent();
         } );

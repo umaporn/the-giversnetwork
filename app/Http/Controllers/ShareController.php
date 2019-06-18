@@ -55,7 +55,7 @@ class ShareController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'comment_text'    => config( 'validation.share.comment_text' ),
+            'comment_text' => config( 'validation.share.comment_text' ),
         ] );
     }
 
@@ -127,7 +127,7 @@ class ShareController extends Controller
     /**
      * Set update or creation response.
      *
-     * @param Request $request News request object
+     * @param Request $request Request object
      * @param array   $result  Updating or creating result
      *
      * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
@@ -146,9 +146,9 @@ class ShareController extends Controller
     /**
      * Set error messages from result.
      *
-     * @param array $result Result of saved news/article
+     * @param array $result Result of saved share
      *
-     * @return    array               Error messages
+     * @return array Error messages
      */
     private function setResponseMessages( array $result )
     {
@@ -281,6 +281,5 @@ class ShareController extends Controller
         }
 
         return response()->json( $response );
-
     }
 }

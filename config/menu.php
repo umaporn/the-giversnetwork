@@ -33,7 +33,7 @@ return [
             'menuText'  => 'share.page_link.index',
         ],
         [
-            'routeName' => '#',
+            'routeName' => 'give.index',
             'menuText'  => 'give.page_link.index',
         ],
         [

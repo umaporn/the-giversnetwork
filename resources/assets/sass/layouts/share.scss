@@ -74,6 +74,7 @@
                 article {
                     margin-bottom: $space-box/2;
                 }
+
                 p {
                     color: $color-blue;
                 }
@@ -122,6 +123,7 @@
                 color: $color-blue;
                 line-height: 1;
             }
+
             p {
                 color: $color-blue;
             }
@@ -207,15 +209,19 @@
             line-height: rem-calc(36);
             color: $color-blue;
         }
+
         ul {
             li {
                 display: inline-block;
                 margin-right: $space-box/2;
+
                 &:last-child {
                     margin-right: 0;
                 }
+
                 a {
                     color: $color-blue;
+
                     &:hover {
                         color: lighten($color-blue, 5%);
                     }
@@ -224,34 +230,40 @@
         }
     }
 
-    &.create{
-        .btn-green{
-            @include breakpoint(medium down){
+    &.create {
+        .topic {
+            &::after {
+                border-top-color: transparent;
+            }
+        }
+
+        .btn-green {
+            @include breakpoint(medium down) {
                 margin-top: $space-box;
             }
         }
     }
-}
 
-.grid {
-    &-head {
-        display: flex;
-        flex-direction: row;
+    .grid {
+        &-head {
+            display: flex;
+            flex-direction: row;
 
-        .profile {
-            color: #154064;
-            display: inline-block;
-            padding-left: $space-box/2;
-
-            .display-profile {
+            .profile {
+                color: #154064;
                 display: inline-block;
+                padding-left: $space-box/2;
 
-                img {
+                .display-profile {
                     display: inline-block;
-                    width: 1.875rem;
-                    height: 1.875rem;
-                    border-radius: 50%;
-                    object-fit: cover;
+
+                    img {
+                        display: inline-block;
+                        width: 1.875rem;
+                        height: 1.875rem;
+                        border-radius: 50%;
+                        object-fit: cover;
+                    }
                 }
             }
         }

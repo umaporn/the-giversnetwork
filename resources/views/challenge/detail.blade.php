@@ -49,7 +49,7 @@
                                     <div class="profile">
                                         <a href="{{ route('user.getProfile') }}" target="_blank">
                                             <figure class="display-profile">
-                                                <img src="{{ $data->users['image_path'] ? Storage::url($data['user']->image_path ) : asset(config('images.home.profile.user_profile' )) }}"
+                                                <img src="{{ $data->users['image_path'] ? Storage::url($data->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
                                                      alt="{{ $data['username'] }}">
                                             </figure>
                                             <span>{{ $data['username'] }}</span>

@@ -54,7 +54,7 @@ const Form = (function(){
 			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
 		} );
 
-		$('.deletion').submit( function( event ){
+		$( '.deletion' ).submit( function( event ){
 			event.preventDefault();
 			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
 		} );
@@ -65,14 +65,14 @@ const Form = (function(){
 		                              } );
 
 		$( '#image_path' ).MultiFile( {
-			                                    max:    10,
-			                                    accept: 'jpg|png|gif',
-		                                    } );
+			                              max:    10,
+			                              accept: 'jpg|png|gif',
+		                              } );
 
 		$( '#file_path' ).MultiFile( {
-			                            max:    1,
-			                            accept: 'pdf',
-		                            } );
+			                             max:    1,
+			                             accept: 'pdf',
+		                             } );
 
 		/*$( 'input[type=file]' ).change( function(){
 			$( '#image_path' ).val( $( this ).val() );
@@ -85,6 +85,17 @@ const Form = (function(){
 				input.attr( 'type', 'text' );
 			} else {
 				input.attr( 'type', 'password' );
+			}
+		} );
+
+		$( '.toggle-use-address' ).change( function(){
+
+			var address = $( '#address' );
+
+			if( $( this ).prop( 'checked' ) ){
+				address.attr( 'disabled', true );
+			} else {
+				address.removeAttr( 'disabled' );
 			}
 		} );
 	}

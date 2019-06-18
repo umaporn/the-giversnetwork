@@ -12,7 +12,6 @@
             width: 70%;
         }
     }
-
     &-label {
         font-family: "db_airystd_bd";
         color: $color-blue;
@@ -145,6 +144,14 @@
             color: $white;
             border-color: $color-blue;
         }
+        &.light{
+            color: $color-blue;
+            background-color: $white;
+            &:focus {
+                color: $color-blue;
+                background-color: $white;
+            }
+        }
     }
 
     &-checkbox {
@@ -158,7 +165,6 @@
             margin-bottom: 0;
             visibility: hidden;
         }
-
         label {
             font-family: "db_airystd_bd";
             font-size: rem-calc(18);
@@ -182,6 +188,29 @@
             text-decoration: underline;
             color: $color-dark-gray;
             text-align: left;
+        }
+    }
+
+    &-p{
+        margin-bottom: 0;
+    }
+
+    &-text{
+        display: flex;
+        align-items: center;
+        padding-top: rem-calc(3);
+
+        @include breakpoint(small only){
+            padding-top: 0;
+            margin-bottom: $space-box/4;
+        }
+
+        input{
+            margin-bottom: 0;
+        }
+
+        label{
+            padding-top: rem-calc(5);
         }
     }
 }
@@ -238,15 +267,45 @@
     }
 }
 
-.MultiFile {
-    &-remove {
+.MultiFile{
+    &-remove{
         font-size: rem-calc(20);
     }
 
-    &-list {
-        @include breakpoint(small only) {
+    &-list{
+        @include breakpoint(small only){
             margin-top: rem-calc(30);
         }
+    }
+}
+
+.search {
+    position: relative;
+    display: flex;
+
+    &-text{
+        width: 100%;
+        border: rem-calc(1) solid $color-green;
+        border-right: none;
+        padding: rem-calc(5);
+        margin-bottom: $space-box*2;
+        height: rem-calc(36);
+        border-radius: rem-calc(5) 0 0 rem-calc(5);
+        outline: none;
+        color: $black;
+        &:focus{
+            color: $color-dark-gray;
+        }
+    }
+    &-button {
+        width: rem-calc(40);
+        height: rem-calc(36);
+        border: rem-calc(1) solid $color-green;
+        background: $color-green;
+        text-align: center;
+        color: $white;
+        border-radius: 0 rem-calc(5) rem-calc(5) 0;
+        cursor: pointer;
     }
 }
 

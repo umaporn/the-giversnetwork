@@ -26,7 +26,7 @@ $( document )
         Confirmation.initialize();
         Form.initialize();
         HeroBanner.initialize();
-        GiveCategoryTab.initialize();
+        GiveTab.initialize();
         LoadMore.initialize();
         Slide.initialize();
 	    InterestIn.initialize();

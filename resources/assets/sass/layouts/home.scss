@@ -90,7 +90,6 @@
         time {
             color: $color-dark-gray;
             vertical-align: middle;
-
             i {
                 margin-right: rem-calc(5);
             }
@@ -321,7 +320,7 @@
 
     }
 
-    .tabs {
+    .tabs, .box {
         border: 0;
         background-color: $color-gray;
 

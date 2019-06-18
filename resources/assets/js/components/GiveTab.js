@@ -1,20 +1,19 @@
 /**
  * @namespace
- * @desc Handles load more content.
+ * @desc Handles give category tab.
  */
 
-const LoadMore = (function(){
+const GiveTab = (function(){
 	/**
-	 * @memberOf LoadMore
+	 * @memberOf GiveTab
 	 * @access public
-	 * @desc Initialize LoadMore module.
+	 * @desc Initialize GiveCategoryTab module.
 	 * @constant {Object}
 	 */
 	function initialize(){
 
-		$( document ).on( 'click', '#loadMore', function(){
+		$( '#give-category > a' ).click( function(){
 
-			Utility.clearErrors();
 			let url = $( this ).attr( 'data-url' );
 
 			$.ajax( {
@@ -24,22 +23,16 @@ const LoadMore = (function(){
 				        contentType: false,
 				        processData: false,
 				        success:     function( result ){
-
-					        if( url ){
-						        $( '#loadMore' ).remove();
-						        $( '#content-list-box' ).append( result.data );
-					        } else {
-						        $( '#loadMore' ).hide();
-					        }
-
+					        $( '#give-result-box' ).html( result );
 				        },
 			        } );
+
 		} );
 
-		$( document ).on( 'click', '#loadMore-give', function(){
+		$( '.give-tab > a' ).click( function(){
 
-			Utility.clearErrors();
 			let url = $( this ).attr( 'data-url' );
+			$( '#search-form > input[name=type]' ).val('give');
 
 			$.ajax( {
 				        url:         url,
@@ -48,21 +41,17 @@ const LoadMore = (function(){
 				        contentType: false,
 				        processData: false,
 				        success:     function( result ){
-					        if( url ){
-						        $( '.give-load' ).remove();
-						        $( '#give-result-box > #content-list-box' ).append( result.data );
-					        } else {
-						        $( '.give-load' ).remove();
-					        }
-
+					        $( '#give-result-box' ).html( result.data );
 				        },
 			        } );
+
 		} );
 
-		$( document ).on( 'click', '#loadMore-receive', function(){
+		$( '.receive-tab > a' ).click( function(){
 
-			Utility.clearErrors();
 			let url = $( this ).attr( 'data-url' );
+
+			$( '#search-form > input[name=type]' ).val('receive');
 
 			$.ajax( {
 				        url:         url,
@@ -71,17 +60,16 @@ const LoadMore = (function(){
 				        contentType: false,
 				        processData: false,
 				        success:     function( result ){
-
-					        if( url ){
-						        $( '.give-load' ).remove();
-						        $( '#receive-result-box > #content-list-box' ).append( result.data );
-					        } else {
-						        $( '.give-load' ).remove();
-					        }
-
+					        $( '#receive-result-box' ).html( result.data );
 				        },
 			        } );
+
 		} );
+
+		$( '.give-filter' ).change( function(){
+			window.location = $( this ).val();
+		} );
+
 	}
 
 	return {

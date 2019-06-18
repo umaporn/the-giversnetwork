@@ -35,13 +35,16 @@ function globalRoutes()
         Route::post( 'comment/{challenge}', 'ChallengeController@saveComment' )->name( 'challenge.saveComment' );
         Route::get( 'comment/{challenge}', 'ChallengeController@getCommentList' )->name( 'challenge.commentList' );
         Route::delete( 'comment/{comment}', 'ChallengeController@deleteComment' )->name( 'challenge.removeComment' );
-
     } );
 
     Route::group( [ 'prefix' => 'give', ], function(){
         Route::get( '', 'GiveController@index' )->name( 'give.index' );
+        Route::get( 'create-item', 'GiveController@showCreateItemForm' )->name( 'give.showCreateItemForm' );
+        Route::post( 'create-item', 'GiveController@createGiveItem' )->name( 'give.createGiveItem' );
         Route::get( 'by-category/{id}', 'GiveController@getGiveByCategory' )->name( 'give.getGiveByCategory' );
+        Route::get( 'list', 'GiveController@getGiveList' )->name( 'give.list' );
         Route::get( '{give}', 'GiveController@detail' )->name( 'give.detail' );
+        Route::get( 'article', 'GiveController@article' )->name( 'give.article' );
     } );
 
     Route::group( [ 'prefix' => 'events', ], function(){
@@ -52,6 +55,22 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'news', ], function(){
         Route::get( '', 'NewsController@index' )->name( 'news.index' );
         Route::get( '{news}', 'NewsController@detail' )->name( 'news.detail' );
+        Route::get( 'article', 'NewsController@article' )->name( 'news.article' );
+    } );
+
+    Route::group( [ 'prefix' => 'organization', ], function(){
+        Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
+        Route::get( 'profile', 'OrganizationController@profile' )->name( 'organization.profile' );
+    } );
+
+    Route::group( [ 'prefix' => 'admin' ], function(){
+        Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
+        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
+        Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
+        Route::get( 'share-challenge-all', 'AdminController@shareChAll' )->name( 'admin.shareChAll' );
+        Route::get( 'share-challenge-add', 'AdminController@shareChAdd' )->name( 'admin.shareChAdd' );
+        Route::get( 'share-all', 'AdminController@shareAll' )->name( 'admin.shareAll' );
+        Route::get( 'share-add', 'AdminController@shareAdd' )->name( 'admin.shareAdd' );
     } );
 
     Route::group( [ 'prefix' => 'organization', ], function(){
@@ -74,7 +93,6 @@ function globalRoutes()
         Route::post( 'password/email', 'Auth\ForgotPasswordController@sendResetPasswordLink' )->name( 'password.email' );
         Route::get( 'password/reset/{token}', 'Auth\ResetPasswordController@showResetForm' )->name( 'password.reset' );
         Route::post( 'password/reset', 'Auth\ResetPasswordController@reset' )->name( 'password.change' );
-
     } );
 
     Route::group( [ 'middleware' => 'auth' ], function(){

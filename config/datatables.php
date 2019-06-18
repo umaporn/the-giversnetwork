@@ -64,4 +64,11 @@ return [
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
     ],
+    'give' => [
+        'limit'          => 12,
+        'limits'         => [ 12, 24 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
+        'fulltextSearch' => false,
+    ],
 ];
