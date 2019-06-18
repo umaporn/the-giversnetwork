@@ -26,4 +26,12 @@ return [
     'challenge'         => [
         'comment_text' => 'required|string|min:3|max:1000',
     ],
+    'give'              => [
+        'type'           => 'required|in:give,receive',
+        'fk_category_id' => 'required|numeric',
+        'title'          => 'required|string|min:3|max:500',
+        'amount'         => 'required|numeric',
+        'address'        => 'sometimes|string|min:3|max:3000',
+        'description'    => 'required|string|min:3|max:3000',
+    ],
 ];

@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 use App\Models\Give;
 use App\Models\GiveCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class GiveController extends Controller
 {
@@ -27,6 +28,25 @@ class GiveController extends Controller
     {
         $this->giveModel         = $give;
         $this->giveCategoryModel = $giveCategory;
+    }
+
+    /**
+     * Get a validator for an incoming give item request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator( array $data )
+    {
+        return Validator::make( $data, [
+            'type'           => config( 'validation.give.type' ),
+            'fk_category_id' => config( 'validation.give.fk_category_id' ),
+            'title'          => config( 'validation.give.title' ),
+            'amount'         => config( 'validation.give.amount' ),
+            'address'        => config( 'validation.give.address' ),
+            'description'    => config( 'validation.give.description' ),
+        ] );
     }
 
     /**
@@ -124,6 +144,11 @@ class GiveController extends Controller
         return view( 'give.create_item', compact( 'data' ) );
     }
 
+    /**
+     * Create give item.
+     *
+     * @param Request $request Request object
+     */
     public function createGiveItem( Request $request )
     {
         $result = $this->giveModel->createGive( $request );
