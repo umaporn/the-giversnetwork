@@ -43,8 +43,8 @@ class News extends Model
     public function getHomeNewsList( Request $request )
     {
         $builder = $this->with( [ 'newsImage' ] )
-                      ->orderBy( 'public_date', 'desc' )
-                      ->where( 'status', 'public' );
+                        ->orderBy( 'public_date', 'desc' )
+                        ->where( 'status', 'public' );
 
         $data = Search::search( $builder, 'news', $request, [], '3' );
 
@@ -151,4 +151,48 @@ class News extends Model
 
     }
 
+    /**
+     * Get news detail information.
+     *
+     * @param News $news News model
+     *
+     * @return News news detail
+     */
+    public function getNewsDetail( News $news )
+    {
+        $news = $this->with( [ 'newsImage' ] )->where( [ 'id' => $news->id ] )->first();
+
+        if( $news ){
+            $news->setAttribute( 'title', Utility::getLanguageFields( 'title', $news ) );
+            $news->setAttribute( 'content', Utility::getLanguageFields( 'content', $news ) );
+            $this->setPublicDateForFrontEnd( $news );
+            foreach( $news->newsImage as $news_image ){
+                $news_image->setAttribute( 'image_path', $this->getNewsImages( $news_image ) );
+                $news_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $news_image ) );
+            }
+        }
+
+        return $news;
+    }
+
+    /**
+     * Get a news image list into an image store.
+     *
+     * @param NewsImage $newsImage News model
+     *
+     * @return array Image store
+     */
+    public function getNewsImages( NewsImage $newsImage )
+    {
+
+        $attributes = $newsImage->getAttributes();
+
+        if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes['original'] ) ){
+            $imageStore = $attributes['original'];
+        } else {
+            $imageStore = Storage::url( $attributes['original'] );
+        }
+
+        return $imageStore;
+    }
 }

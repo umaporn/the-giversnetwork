@@ -57,8 +57,11 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View News detail page
      */
-    public function detail( News $news )
+    public function detail( News $news, Request $request )
     {
-        return view( 'news.detail' );
+        $data  = $this->newsModel->getNewsDetail( $news );
+        $other = $this->newsModel->getHomeNewsList( $request );
+
+        return view( 'news.detail',compact('data', 'other') );
     }
 }
