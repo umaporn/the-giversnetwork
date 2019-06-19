@@ -5,7 +5,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Events;
 use App\Models\News;
+use Illuminate\Http\Request;
 
 /**
  * news Page Controller
@@ -13,14 +15,41 @@ use App\Models\News;
  */
 class NewsController extends Controller
 {
+    /** @var Events events model instance */
+    private $eventsModel;
+
+    /** @var News news model instance */
+    private $newsModel;
+
+    /**
+     * LearnController constructor.
+     *
+     * @param Events $events Events model
+     * @param News   $news   News model
+     */
+    public function __construct( Events $events, News $news )
+    {
+        $this->eventsModel = $events;
+        $this->newsModel   = $news;
+    }
+
     /**
      * Display news page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View news page
      */
-    public function index()
+    public function index( Request $request )
     {
-        return view( 'news.index' );
+        $data['allList'] = $this->newsModel->getNewsAllList( $request );
+        $data['events']  = $this->eventsModel->getEventsForSidebar( $request );
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'news.list', compact( 'data' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'news.index', compact( 'data' ) );
     }
 
     /**
@@ -30,16 +59,6 @@ class NewsController extends Controller
      */
     public function detail( News $news )
     {
-        //return view( 'news.detail' );
-    }
-
-     /**
-     * Display article page.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
-     */
-    public function article()
-    {
-        return view( 'news.article' );
+        return view( 'news.detail' );
     }
 }

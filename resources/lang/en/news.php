@@ -20,4 +20,5 @@ return [
         'index' => 'News page',
     ],
 
+    'all_news' => 'All News',
 ];

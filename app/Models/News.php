@@ -53,7 +53,7 @@ class News extends Model
     }
 
     /**
-     * Get a list of news/article for displaying on learn page.
+     * Get a list of news/article for displaying on news page.
      *
      * @param Request $request News request object
      *
@@ -82,6 +82,7 @@ class News extends Model
     {
         foreach( $homeNewsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
+            $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
             $list->setAttribute( 'image_path', $this->getImages( $list ) );
             $this->setPublicDateForFrontEnd( $list );
         }
@@ -129,6 +130,25 @@ class News extends Model
         }
 
         return $imageStore;
+    }
+
+    /**
+     * Get news all list.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of news
+     */
+    public function getNewsAllList( Request $request )
+    {
+        $builder = $this->with( [ 'newsImage' ] )
+                        ->orderBy( 'public_date', 'desc' )
+                        ->where( 'status', 'public' );
+
+        $data = Search::search( $builder, 'news', $request );
+
+        return $this->transformHomeNewsContent( $data );
+
     }
 
 }
