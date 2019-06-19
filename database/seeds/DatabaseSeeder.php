@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
                          PermissionSeeder::class,
                          InterestInSeeder::class,
                          OrganizationCategorySeeder::class,
+                         OrganizationSeeder::class,
                          UserSeeder::class,
                          BannerSeeder::class,
                          NewsSeeder::class,

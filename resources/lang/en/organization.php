@@ -16,8 +16,14 @@ return [
         'index' => 'Organization',
     ],
 
-    'page_description' => [
+    'page_description'     => [
         'index' => 'Organization page',
     ],
-
+    'category'             => 'Category',
+    'organization_name'    => 'Organization Name',
+    'organization_profile' => 'Organization Profile',
+    'contact'              => 'Contact',
+    'address'              => 'Address',
+    'phone'                => 'Phone',
+    'email'                => 'Email',
 ];

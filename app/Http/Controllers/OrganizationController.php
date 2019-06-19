@@ -6,6 +6,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organization;
+use App\Models\OrganizationCategory;
+use Illuminate\Http\Request;
 
 /**
  * organization Page Controller
@@ -13,14 +15,42 @@ use App\Models\Organization;
  */
 class OrganizationController extends Controller
 {
+    /** @var Organization organization model instance */
+    private $organizationModel;
+
+    /** @var OrganizationCategory organization category model instance */
+    private $organizationCategoryModel;
+
+    /**
+     * Initialize HomeController class.
+     *
+     * @param Organization         $organization         Organization model
+     * @param OrganizationCategory $organizationCategory Organization Category model
+     */
+    public function __construct( Organization $organization, OrganizationCategory $organizationCategory )
+    {
+        $this->organizationModel         = $organization;
+        $this->organizationCategoryModel = $organizationCategory;
+    }
+
     /**
      * Display organization page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Organization page
      */
-    public function index()
+    public function index( Request $request )
     {
-        return view( 'organization.index' );
+        $data['organizationCategory'] = $this->organizationCategoryModel->getOrganizationCategoryList();
+        $data['allList']              = $this->organizationModel->getOrganizationAllList( $request );
+        $category_id                  = $request->get( 'category_id' );
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'organization.list', compact( 'data', 'category_id' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'organization.index', compact( 'data', 'category_id' ) );
     }
 
     /**
@@ -30,17 +60,10 @@ class OrganizationController extends Controller
      */
     public function detail( Organization $organization )
     {
-        //return view( 'organization.detail' );
+        $data = $this->organizationModel->getOrganizationDetail( $organization );
+
+        return view( 'organization.detail', compact( 'data' ) );
     }
 
-    /**
-     * Display organization profile page.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View organization profile page
-     */
-    public function profile()
-    {
-        return view( 'organization.profile' );
-    }
 }
 

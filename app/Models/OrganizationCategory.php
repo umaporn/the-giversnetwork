@@ -17,6 +17,16 @@ class OrganizationCategory extends Model
     protected $table = 'organization_category';
 
     /**
+     * Get organization model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Organization model relationship
+     */
+    public function organization()
+    {
+        return $this->belongsTo( 'App\Models\Organization', 'fk_category_id' );
+    }
+
+    /**
      * Get organization category list.
      */
     public function getOrganizationCategoryList()
