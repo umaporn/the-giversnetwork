@@ -41,7 +41,7 @@ return [
             'menuText'  => 'events.page_link.index',
         ],
         [
-            'routeName' => '#',
+            'routeName' => 'news.index',
             'menuText'  => 'news.page_link.index',
         ],
         [
