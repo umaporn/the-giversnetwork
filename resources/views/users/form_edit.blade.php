@@ -60,6 +60,7 @@
                             <div>
                                 <label for="imageUpload" class="btn-blue btn-upload">@lang('user.upload_file')</label>
                                 <input type="file" name="image_path" id="imageUpload" class="show-for-sr">
+                                <p class="form-flex show-text">@lang('user.maximum_upload_file')</p>
                                 <p id="image_path-help-text" class="alert help-text hide"></p>
                             </div>
                         </div>
