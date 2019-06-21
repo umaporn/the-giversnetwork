@@ -5,7 +5,7 @@
             <label for="email" class="form-label">@lang('user.email')</label>
         </div>
         <div class="cell small-12">
-            <input type="email" id="email" name="email" class="form-fill" required autofocus value="">
+            <input type="email" id="email" name="email" class="form-fill" required autofocus value="member@gmail.com">
             <p id="email-help-text" class="alert help-text hide"></p>
         </div>
     </div>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="cell small-12">
-            <input type="password" id="password" name="password" class="form-fill" required value="">
+            <input type="password" id="password" name="password" class="form-fill" required value="umaporn01">
             <p id="password-help-text" class="alert help-text hide"></p>
         </div>
         <div class="cell small-12 text-left">

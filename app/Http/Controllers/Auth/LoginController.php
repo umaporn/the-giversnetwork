@@ -74,8 +74,14 @@ class LoginController extends Controller
      */
     protected function authenticated( Request $request, $user )
     {
-        $redirectedUrl = Utility::getRedirectedUrl( $request );
 
+        $redirectedUrl    = Utility::getRedirectedUrl( $request );
+        $userData         = $this->usersModel->checkUserStatus( $this->credentials( $request ) );
+        $userPermissionID = $userData['0']->getAttribute( 'fk_permission_id' );
+
+        if( $userPermissionID === '1' ){
+            $redirectedUrl = route('admin.home.index');
+        }
         if( $request->expectsJson() ){
 
             $redirectedUrl = session()->pull( 'url.intended', $redirectedUrl );
@@ -95,7 +101,7 @@ class LoginController extends Controller
      */
     protected function attemptLogin( Request $request )
     {
-        if( !$this->usersModel->checkUserStatus( $this->credentials( $request ) ) ){
+        if( $this->usersModel->checkUserStatus( $this->credentials( $request ) ) ){
             return $this->guard()->attempt(
                 $this->credentials( $request ), $request->filled( 'remember' )
             );
