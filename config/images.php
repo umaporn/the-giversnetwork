@@ -43,4 +43,9 @@ return [
         '130x130'  => 'images/130x130.png',
     ],
 
+    'about' => [
+        'about_01'             => 'images/about/about-1.jpg',
+        'about_02'             => 'images/about/active-activity-adult-1430116.png',
+    ],
+
 ];
