@@ -25,10 +25,10 @@
     <div class="grid-x padding-content">
         <div class="cell auto">
             <div class="grid-x">
-                <div class="cell small-12 large-4 xxlarge-3 show-for-large">
+                <div class="cell small-12 large-3 xxlarge-2 show-for-large">
                     @include('admin.menu_admin')
                 </div>
-                <div class="cell small-12 large-8 xxlarge-9">
+                <div class="cell small-12 large-9 xxlarge-10">
                     <article class="user-content">
                         <div class="grid-x">
                             <div class="cell small-12">
@@ -72,7 +72,7 @@
                                         <div class="cell small-12 large-2">
                                             <label for="imageProfile" class="form-label">Image</label>
                                         </div>
-                                        <div class="cell small-12 large-9">
+                                        <div class="cell small-12 large-9 flex">
                                             <div class="form-file-image">
                                                 <div class="form-file">
                                                     <input type="file" class="form-fileupload" id="file-image-multi"
@@ -90,7 +90,7 @@
                                         <div class="cell small-12 large-2">
                                             <label for="imageProfile" class="form-label">File</label>
                                         </div>
-                                        <div class="cell small-12 large-9">
+                                        <div class="cell small-12 large-9 flex">
                                             <label class="form-file">
                                                 <input type="file" class="form-fileupload" id="file-pdf"
                                                     data-maxfile="5120" />

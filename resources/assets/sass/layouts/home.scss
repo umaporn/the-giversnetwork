@@ -220,6 +220,7 @@
 
                 @include breakpoint(small only) {
                     margin-bottom: $space-box/2;
+                    padding-right: 0;
                 }
             }
         }

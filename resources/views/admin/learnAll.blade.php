@@ -25,11 +25,16 @@
     <div class="grid-x padding-content">
         <div class="cell auto">
             <div class="grid-x">
-                <div class="cell small-12 large-4 xxlarge-3 show-for-large">
+                <div class="cell small-12 large-3 xxlarge-2 show-for-large">
                     @include('admin.menu_admin')
                 </div>
+<<<<<<< HEAD
                 <div class="cell small-12 large-8 xxlarge-9">
                     <article class="admin-content">
+=======
+                <div class="cell small-12 large-9 xxlarge-10">
+                    <article class="user-content">
+>>>>>>> 22e592b36b55e1f851269879715d3c802c6eafdc
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x admin-form-space admin-search">

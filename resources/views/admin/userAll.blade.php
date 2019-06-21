@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('page-title', __('home.page_title.index'))
@@ -17,7 +18,7 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Admin</a></li>
                 <li>
-                    <span class="show-for-sr">Current: </span> share
+                    <span class="show-for-sr">Current: </span> Users
                 </li>
             </ul>
         </div>
@@ -33,7 +34,7 @@
                         <div class="grid-x">
                             <div class="cell small-12">
                                 <div class="grid-x user-form-space admin-search">
-                                    <h2 class="cell shrink user-head">All Share</h2>
+                                    <h2 class="cell shrink user-head">All Users</h2>
                                     <div class="cell auto grid-x align-middle">
                                         <div class="cell line auto"></div>
                                         <div class="cell shrink">
@@ -56,49 +57,34 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Title</th>
-                                                <th>Views</th>
-                                                <th>Comment</th>
-                                                <th>URL</th>
-                                                <th>Edit</th>
+                                                <th>Full Name</th>
+                                                <th>Username</th>
                                                 <th>Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor erat nec augue sollicitudin, eu vulputate enim vestibulum. In hac habitasse platea dictumst. Mauris tincidunt metus turpis, eget interdum metus </td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
+                                                <td>Susan Young</td>
+                                                <td>Young97@^</td>
                                                 <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
+                                                <td>Jacob Taylor</td>
+                                                <td>Taylor83*}</td>
                                                 <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
+                                                <td>Tammy Soto</td>
+                                                <td>TammyWow</td>
                                                 <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                                             </tr>
                                             <tr>
                                                 <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
+                                                <td>Emily Walker</td>
+                                                <td>EmilyW</td>
                                                 <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
                                             </tr>
                                         </tbody>

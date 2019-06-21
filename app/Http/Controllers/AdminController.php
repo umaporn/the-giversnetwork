@@ -36,7 +36,7 @@ class AdminController extends Controller
         return view( 'admin.learnAdd' );
     }
     /**
-     * Show shaew page.
+     * Show share page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View share page
      */
@@ -56,5 +56,69 @@ class AdminController extends Controller
     {
         return view( 'admin.shareAdd' );
     }
-
+    /**
+     * Show give page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View give page
+     */
+    public function giveAdd()
+    {
+        return view( 'admin.giveAdd' );
+    }
+    public function giveAll()
+    {
+        return view( 'admin.giveAll' );
+    }
+    public function recAll()
+    {
+        return view( 'admin.recAll' );
+    }
+    /**
+     * Show event page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View event page
+     */
+    public function eventAdd()
+    {
+        return view( 'admin.eventAdd' );
+    }
+    public function eventAll()
+    {
+        return view( 'admin.eventAll' );
+    }
+    /**
+     * Show news page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View news page
+     */
+    public function newsAdd()
+    {
+        return view( 'admin.newsAdd' );
+    }
+    public function newsAll()
+    {
+        return view( 'admin.newsAll' );
+    }
+    /**
+     * Show organization page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View organization page
+     */
+    public function organizationAdd()
+    {
+        return view( 'admin.organizationAdd' );
+    }
+    public function organizationAll()
+    {
+        return view( 'admin.organizationAll' );
+    }
+    /**
+     * Show user page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View user page
+     */
+    public function userAll()
+    {
+        return view( 'admin.userAll' );
+    }
 }

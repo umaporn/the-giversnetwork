@@ -24,36 +24,36 @@
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">Give</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All Give</a>
-            <a href="#"><i class="fas fa-caret-right"></i> All Receive</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add Give & Recive</a>
+            <a href="{{ route('admin.giveAll') }}"><i class="fas fa-caret-right"></i> All Give</a>
+            <a href="{{ route('admin.recAll') }}"><i class="fas fa-caret-right"></i> All Receive</a>
+            <a href="{{ route('admin.giveAdd') }}"><i class="fas fa-caret-right"></i> Add Give & Recive</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">Event</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All Event</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add Event</a>
+            <a href="{{ route('admin.eventAll') }}"><i class="fas fa-caret-right"></i> All Event</a>
+            <a href="{{ route('admin.eventAdd') }}"><i class="fas fa-caret-right"></i> Add Event</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">News</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All News</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add News</a>
+            <a href="{{ route('admin.newsAll') }}"><i class="fas fa-caret-right"></i> All News</a>
+            <a href="{{ route('admin.newsAdd') }}"><i class="fas fa-caret-right"></i> Add News</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">Organization</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All Organization</a>
-            <a href="#"><i class="fas fa-caret-right"></i> Add Organization</a>
+            <a href="{{ route('admin.organizationAll') }}"><i class="fas fa-caret-right"></i> All Organization</a>
+            <a href="{{ route('admin.organizationAdd') }}"><i class="fas fa-caret-right"></i> Add Organization</a>
         </div>
     </li>
     <li class="accordion-item" data-accordion-item>
         <a href="#" class="accordion-title">User</a>
         <div class="accordion-content" data-tab-content>
-            <a href="#"><i class="fas fa-caret-right"></i> All User</a>
+            <a href="{{ route('admin.userAll') }}"><i class="fas fa-caret-right"></i> All User</a>
         </div>
     </li>
 </ul>

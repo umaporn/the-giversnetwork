@@ -216,7 +216,7 @@
                             </div>
                         </div>
                     </article>
-                    @include('users.form_edit')
+                    {{--@include('users.form_edit')--}}
                 </div>
             </div>
         </div>

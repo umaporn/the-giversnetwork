@@ -29,17 +29,13 @@
                     <div class="grid-x align-middle">
                         <h2 class="cell auto topic-dark">@lang('news.all_news')</h2>
                     </div>
-
                     @include('news.list')
-
                 </section>
             </div>
             <div class="cell small-12 medium-12 large-4">
                 @include('sidebar.events')
             </div>
-
         </div>
-
     </section>
 
 @endsection
