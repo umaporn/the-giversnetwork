@@ -20,6 +20,7 @@ return [
     'reset'         => 'Reset',
     'view_all'      => 'View All',
     'view_more'     => 'View More',
+    'see_more'      => 'See More',
     'sign_up'       => 'Sign Up',
     'join_us'       => 'Join Us',
     'create_thread' => 'Create Thread',

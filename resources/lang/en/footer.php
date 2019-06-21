@@ -18,13 +18,13 @@ return [
         'title' => 'The Giver Network',
         'list'  => [
             [
-                'url'  => '#',
+                'url'  => route( 'about.index' ),
                 'text' => 'About us',
             ],
-            [
-                'url'  => '#',
-                'text' => 'Contact us',
-            ],
+            // [
+            //     'url'  => '#',
+            //     'text' => 'Contact us',
+            // ],
         ],
     ],
 
