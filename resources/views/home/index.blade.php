@@ -21,13 +21,13 @@
             </div>
         </div>
         <article class="grid-x grid-margin-x">
-            <div class="cell small-12 medium-7 large-6">
+            <div class="cell small-12 medium-6 xlarge-8 xxxlarge-9">
                 <h2 class="topic-dark">@lang('home.about_us.title')</h2>
                 @foreach(__('home.about_us.content') as $contents )
                     <p>{!! $contents !!}</p>
                 @endforeach
             </div>
-            <div class="cell small-12 medium-5 large-6">
+            <div class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
                 <figure>
                     <img src="{{ asset(config('images.home.about.founder' )) }}" alt="">
                 </figure>
@@ -39,8 +39,8 @@
                 <div class="cell shrink"><span class="outline-dot float-right"><span class="dot"></span></span></div>
             </div>
             <div class="cell shrink view-all">
-                <a href="#">
-                    <span>See more</span>
+                <a href="{{ route('about.index') }}">
+                    <span>@lang('button.see_more')</span>
                     <i class="fas fa-caret-right"></i>
                 </a>
             </div>
