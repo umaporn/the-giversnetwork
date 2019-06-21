@@ -52,12 +52,21 @@ return [
 
     'mainMenuAdmin' => [
         [
-            'routeName' => 'admin.home.index',
-            'menuText'  => 'home.page_link.index',
+            'parentMenu' => true,
+            'routeName'  => '#',
+            'menuText'   => 'user_admin.page_link.my_profile',
+            'childMenu'  => [
+                [
+                    'routeName' => '#',
+                    'menuText'  => 'user.page_link.index',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+            ],
         ],
         [
-            'routeName' => 'admin.user.index',
-            'menuText'  => 'user.page_link.index',
+            'parentMenu' => true,
+            'routeName'  => '#',
+            'menuText'   => 'user.page_link.index',
         ],
     ],
 ];

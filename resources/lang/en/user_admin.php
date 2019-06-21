@@ -9,28 +9,34 @@ return [
     */
 
     'page_link' => [
-        'index' => 'User Management',
+        'index'        => 'User',
+        'my_profile'   => 'My Profile',
+        'edit_profile' => 'Edit Profile',
     ],
 
     'page_title' => [
-        'index'   => 'User Management',
-        'create'  => 'Create a new user.',
-        'edit'    => 'Edit user',
-        'profile' => 'Profile',
+        'index'        => 'User',
+        'my_profile'   => 'My Profile',
+        'create'       => 'Create a new user.',
+        'edit'         => 'Edit user',
+        'profile'      => 'Profile',
+        'edit_profile' => 'Edit Profile',
     ],
 
     'page_description' => [
-        'index'   => 'User Management',
-        'create'  => 'Create a new user.',
-        'edit'    => 'Edit user',
-        'profile' => 'User Profile',
+        'index'        => 'User',
+        'create'       => 'Create a new user.',
+        'edit'         => 'Edit user',
+        'profile'      => 'User Profile',
+        'edit_profile' => 'Edit Profile',
     ],
 
     'page_heading' => [
-        'index'   => 'User Management',
-        'create'  => 'Create a new user.',
-        'edit'    => 'Edit user',
-        'profile' => 'Profile',
+        'index'        => 'User',
+        'create'       => 'Create a new user.',
+        'edit'         => 'Edit user',
+        'profile'      => 'Profile',
+        'edit_profile' => 'Edit Profile',
     ],
 
     'links' => [

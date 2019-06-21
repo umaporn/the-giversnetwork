@@ -79,9 +79,10 @@ class LoginController extends Controller
         $userData         = $this->usersModel->checkUserStatus( $this->credentials( $request ) );
         $userPermissionID = $userData['0']->getAttribute( 'fk_permission_id' );
 
-        if( $userPermissionID === '1' ){
+        if( $userPermissionID === 1 ){
             $redirectedUrl = route('admin.home.index');
         }
+
         if( $request->expectsJson() ){
 
             $redirectedUrl = session()->pull( 'url.intended', $redirectedUrl );
