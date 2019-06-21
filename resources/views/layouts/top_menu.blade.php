@@ -20,7 +20,7 @@
 					<li><a href="#contact">@lang('menu.top_menu.organization')</a></li>
 				</ul>
 			</div>
-			<div class="cell xxlarge-shrink align-self-middle grid-middle align-right">
+			<div class="cell xxlarge-shrink align-self-middle grid-middle">
 				<!-- before user login -->
 				<ul class="user-profile float-left no-bullet">
 					<li><a href="#home">@lang('menu.profile_menu.sign_up')</a></li>

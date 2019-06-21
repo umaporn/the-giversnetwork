@@ -241,17 +241,19 @@
                 </div>
                 <div class="tabs-panel" id="panel2c">
                     <div class="grid-x grid-margin-x challenge">
-                        <article class="cell small-12 medium-4">
-                            <figure>
+                        <article class="cell small-12 medium-6 xxlarge-3">
+                            <figure class="text-center">
                                 <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}">
                             </figure>
                             <a href="#">
-                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse Lorem
+                                    ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse Lorem ipsum dolor sit
+                                    amet, consectetur adipiscing elit. Suspendisse</h3>
                             </a>
                             <span class="category">Category Name</span>
                         </article>
-                        <article class="cell small-12 medium-4">
-                            <figure>
+                        <article class="cell small-12 medium-6 xxlarge-3">
+                            <figure class="text-center">
                                 <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
                             </figure>
                             <a href="#">
@@ -259,8 +261,17 @@
                             </a>
                             <span class="category">Category Name</span>
                         </article>
-                        <article class="cell small-12 medium-4">
-                            <figure>
+                        <article class="cell small-12 medium-6 xxlarge-3">
+                            <figure class="text-center">
+                                <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
+                            </figure>
+                            <a href="#">
+                                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                            </a>
+                            <span class="category">Category Name</span>
+                        </article>
+                        <article class="cell small-12 medium-6 xxlarge-3">
+                            <figure class="text-center">
                                 <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
                             </figure>
                             <a href="#">
@@ -487,16 +498,18 @@
     </div>
     <div class="grid-x grid-padding-x content padding-content">
         <article class="cell small-12 medium-6 xxlarge-3">
-            <figure>
+            <figure class="text-center">
                 <img src="{{ asset(config('images.home.learn.home_learn_01' )) }}">
             </figure>
             <a href="#">
-                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse</h3>
+                <h3>Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse Lorem ipsum dolor sit
+                    amet, consectetur adipiscing elit. Suspendisse Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit. Suspendisse</h3>
             </a>
             <span class="category">Category Name</span>
         </article>
         <article class="cell small-12 medium-6 xxlarge-3">
-            <figure>
+            <figure class="text-center">
                 <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
             </figure>
             <a href="#">
@@ -505,7 +518,7 @@
             <span class="category">Category Name</span>
         </article>
         <article class="cell small-12 medium-6 xxlarge-3">
-            <figure>
+            <figure class="text-center">
                 <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
             </figure>
             <a href="#">
@@ -514,7 +527,7 @@
             <span class="category">Category Name</span>
         </article>
         <article class="cell small-12 medium-6 xxlarge-3">
-            <figure>
+            <figure class="text-center">
                 <img src="{{ asset(config('images.home.learn.home_learn_03' )) }}">
             </figure>
             <a href="#">
@@ -554,7 +567,7 @@
         </article>
         <article class="cell small-12 medium-6 xxlarge-3">
             <figure class="cover">
-                <img src="{{ asset(config('images.home.events.home_events_02' )) }}">
+                <img src="{{ asset(config('images.home.learn.home_learn_02' )) }}">
                 <figcaption><time datetime="2019-04-29 12:00">18 May 2019 : 12.00 -16.00</time></figcaption>
             </figure>
             <a href="#">

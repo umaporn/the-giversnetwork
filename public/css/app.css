@@ -22645,9 +22645,10 @@ body:lang(en) .language li.en a {
   left: 0;
 }
 
-@media screen and (max-width: 89.99875em) {
+@media print, screen and (min-width: 40em) {
   .topbar-responsive .menu li a {
-    padding: 1.25rem 0;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 }
 
@@ -23117,6 +23118,22 @@ body:lang(en) .language li.en a {
   color: #154064;
 }
 
+.share .challenge article figure {
+  background-color: #F8F8F8;
+}
+
+.share .challenge article figure img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 18.75rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .share .challenge article figure img {
+    height: 15.625rem;
+  }
+}
+
 .share .challenge article .category {
   color: #7F8685;
   vertical-align: middle;
@@ -23354,6 +23371,22 @@ body:lang(en) .language li.en a {
   color: #154064;
 }
 
+.learn .content article figure {
+  background-color: #F8F8F8;
+}
+
+.learn .content article figure img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 18.75rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .learn .content article figure img {
+    height: 15.625rem;
+  }
+}
+
 .learn .content article .category {
   color: #7F8685;
   vertical-align: middle;
@@ -23379,6 +23412,7 @@ body:lang(en) .language li.en a {
 
 .events article {
   margin-bottom: 0.625rem;
+  background-color: #F8F8F8;
 }
 
 .events article .cover,
@@ -23393,9 +23427,24 @@ body:lang(en) .language li.en a {
 .events article .cover {
   position: relative;
   overflow: auto;
+  text-align: center;
+  background-color: #FEFEFE;
+}
+
+.events article .cover img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  max-height: 18.75rem;
+}
+
+@media print, screen and (min-width: 40em) {
+  .events article .cover img {
+    height: 15.625rem;
+  }
 }
 
 .events article .cover figcaption {
+  text-align: left;
   position: absolute;
   bottom: 0;
   left: 0;
