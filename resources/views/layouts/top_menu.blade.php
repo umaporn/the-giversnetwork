@@ -72,15 +72,6 @@
                         </div>
                     </section>
                 @endif
-                <ul class="language float-right no-bullet">
-                    @foreach( config('app.language_codes') as $languageCode )
-                        <li class="{{$languageCode}}">
-                            <a href="{{ route( 'language.change', [ 'languageCode' => $languageCode ] ) }}">
-                                @lang( 'languages.' . $languageCode )
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
             </div>
         </nav>
     </div>
