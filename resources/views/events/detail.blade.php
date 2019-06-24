@@ -83,6 +83,12 @@
                                         <i class="fab fa-twitter-square fa-2x"></i>
                                     </a>
                                 </li>
+                                <li>
+                                    <a target="popup"
+                                       onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?text={{$data['title']}}&url={{url()->current()}}', 'popup', 'width=600,height=500')">
+                                        <i class="fab fa-linkedin fa-2x"></i>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
