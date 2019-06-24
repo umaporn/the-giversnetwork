@@ -14,7 +14,7 @@
                     @each( 'layouts.main_menu', $mainMenu, 'menuItem' )
                 </ul>
             </div>
-            <div class="cell medium-shrink align-self-middle grid-middle">
+            <div class="cell xxlarge-shrink align-self-middle grid-middle align-right">
                 @if( Auth::guest() )
                     <ul class="user-profile float-left no-bullet">
                         <li><a href="{{ route('register') }}">@lang('register.page_link.index')</a></li>

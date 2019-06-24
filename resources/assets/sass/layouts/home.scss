@@ -241,6 +241,19 @@
                 color: $color-blue;
             }
 
+            figure {
+                background-color: $color-light-gray;
+
+                img {
+                    object-fit: cover;
+                    max-height: rem-calc(300);
+
+                    @include breakpoint(medium) {
+                        height: rem-calc(250);
+                    }
+                }
+            }
+            
             .category {
                 color: $color-dark-gray;
                 vertical-align: middle;
@@ -455,7 +468,6 @@
 
         article {
             margin-bottom: $space-box/2;
-
             figure,
             h3 {
                 margin-bottom: $space-box/2;
@@ -465,10 +477,22 @@
                 color: $color-blue;
             }
 
+            figure {
+                background-color: $color-light-gray;
+
+                img {
+                    object-fit: cover;
+                    max-height: rem-calc(300);
+
+                    @include breakpoint(medium) {
+                        height: rem-calc(250);
+                    }
+                }
+            }
+
             .category {
                 color: $color-dark-gray;
                 vertical-align: middle;
-
                 i {
                     margin-right: rem-calc(5);
                 }
@@ -492,7 +516,7 @@
 
     article {
         margin-bottom: $space-box/2;
-
+        background-color: $color-light-gray;
         .cover,
         h3 {
             margin-bottom: $space-box/2;
@@ -505,8 +529,21 @@
         .cover {
             position: relative;
             overflow: auto;
+            text-align: center;
+            background-color: $white;
+
+            img {
+                object-fit: cover;
+                max-height: rem-calc(300);
+
+                @include breakpoint(medium) {
+                    height: rem-calc(250);
+                }
+
+            }
 
             figcaption {
+                text-align: left;
                 position: absolute;
                 bottom: 0;
                 left: 0;

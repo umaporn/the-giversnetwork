@@ -293,8 +293,9 @@ body {
 					left: 0;
 				}
 
-				@include breakpoint(xlarge down) {
-					padding: $space-box 0;
+                @include breakpoint(medium) {
+                    padding-left: $space-box;
+                    padding-right: $space-box;
 				}
 			}
 		}
