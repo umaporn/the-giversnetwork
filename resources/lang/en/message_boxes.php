@@ -8,6 +8,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'result'       => 'Result',
+    'result'       => 'Success!',
     'confirmation' => 'Confirmation',
 ];

@@ -30,7 +30,7 @@
                             <figure class="display-profile">
                                 <img src="{{ $events_item['host_image'] }}" alt="{{$events_item['hostname']}}">
                             </figure>
-                            <span>By {{ $events_item['hostname'] }}</span>
+                            <span>Host By {{ $events_item['hostname'] }}</span>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-<section class="news">
+<section class="events">
     <div class="grid-x align-middle">
         <h2 class="cell auto topic-dark">@lang('news.page_link.index')</h2>
         <div class="cell shrink view-all">
@@ -26,7 +26,7 @@
                             </h3>
                         </a>
                         <time datetime="2019-04-29">
-                            <i class="far fa-calendar-alt"></i>{{ $news_items['public_date'] }}</time>
+                            <i class="far fa-calendar-alt"></i> {{ $news_items['public_date'] }}</time>
                     </div>
                 </div>
             </article>

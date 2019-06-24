@@ -58,7 +58,7 @@
                             <div class="form-file-image">
                                 <div class="form-file">
                                     <input type="file" class="form-fileupload" id="image_path" name="image_path[]" multiple
-                                           data-maxfile="1024"/>
+                                           data-maxfile="5,120"/>
                                     <p id="original-help-text" class="alert help-text hide"></p>
                                     <div class="form-file-style">
                                         <div class="form-flex btn-blue">@lang('share.create_thread_form.browse')</div>

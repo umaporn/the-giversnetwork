@@ -23,7 +23,7 @@ return [
         'detail' => 'Learn: :learn_title',
     ],
 
-    'most_popular'   => 'Most popular',
+    'most_popular'   => 'TOP POSTS',
     'articles'       => 'Articles',
     'other_articles' => 'Other Articles',
 

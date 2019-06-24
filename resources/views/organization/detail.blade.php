@@ -1,14 +1,14 @@
 @extends('layouts.app')
 
 @section('page-title', __('organization.page_title.detail', [
-            'organization_title' => $data['title'],
+            'organization_title' => $data['name'],
         ]))
 @section('page-description', __('organization.page_description.detail', [
-            'organization_title' => $data['title'],
+            'organization_title' => $data['name'],
         ]))
 
 @section('og-title', __('organization.page_title.detail', [
-            'organization_title' => $data['title'],
+            'organization_title' => $data['name'],
         ]))
 @section('og-url', url()->current())
 @section('og-description', $data['title'])

@@ -111,7 +111,7 @@
                             <div class="form-file-image">
                                 <div class="form-file">
                                     <input type="file" class="form-fileupload" id="image_path" name="image_path[]" multiple
-                                           data-maxfile="1024"/>
+                                           data-maxfile="5,120"/>
                                     <p id="original-help-text" class="alert help-text hide"></p>
                                     <div class="form-file-style">
                                         <div class="form-flex btn-blue">@lang('share.create_thread_form.browse')</div>
@@ -156,6 +156,13 @@
                         </div>
                     </div>
                     <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
+                    <div class="grid-x grid-padding-x user-form-space">
+                        <div class="cell small-12 large-offset-2 large-9">
+                            <p>
+                                @lang('give.conditions')
+                            </p>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

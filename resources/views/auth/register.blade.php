@@ -123,7 +123,7 @@
                         </div>
                         <div class="cell small-12 large-9">
                             <a class="btn-blue" data-open="addInterested">
-                                <i class="fas fa-plus"></i> @lang('user.add_my_interested')
+                                <i class="fas fa-plus"></i> / <i class="fas fa-minus"></i> @lang('user.add_my_interested')
                             </a>
                             <ul class="show-interested" id="interest-list">
                             </ul>
