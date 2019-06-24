@@ -1,7 +1,7 @@
 <section class="share">
     <div class="grid-x align-middle topic padding-content">
         <div class="cell auto">
-            <i class="fas fa-shapes"></i>
+            <i><img src="{{ asset(config('images.share_icon' )) }}" alt="share"></i>
             <h2 class="topic-light">@lang('share.page_link.index')</h2>
             <span>- Connect to other GIVERS and share ideas, questions, knowledge, and solutions</span>
         </div>

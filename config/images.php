@@ -4,7 +4,8 @@
  */
 return [
 
-    'logo' => 'images/logo-2x.png',
+    'logo'       => 'images/logo-2x.png',
+    'share_icon' => 'images/logo-icon.png',
 
     'home' => [
         'news'    => [
@@ -34,6 +35,7 @@ return [
         'about'   => [
             'founder' => 'images/home/founder.jpg',
         ],
+
     ],
 
     'placeholder' => [
@@ -44,8 +46,8 @@ return [
     ],
 
     'about' => [
-        'about_01'             => 'images/about/about-1.jpg',
-        'about_02'             => 'images/about/active-activity-adult-1430116.png',
+        'about_01' => 'images/about/about-1.jpg',
+        'about_02' => 'images/about/active-activity-adult-1430116.png',
     ],
 
 ];

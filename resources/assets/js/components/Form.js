@@ -74,13 +74,10 @@ const Form = (function(){
 			                             accept: 'pdf',
 		                             } );
 
-		/*$( 'input[type=file]' ).change( function(){
-			$( '#image_path' ).val( $( this ).val() );
-		} );*/
-
 		$( '.toggle-password' ).click( function(){
 			$( this ).text( $( this ).text() === 'show' ? 'hide' : 'show' );
-			var input = $( $( this ).attr( 'toggle' ) );
+			var input = $("input[class='form-fill password']");
+
 			if( input.attr( 'type' ) === 'password' ){
 				input.attr( 'type', 'text' );
 			} else {

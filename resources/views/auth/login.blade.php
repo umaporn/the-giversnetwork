@@ -13,11 +13,11 @@
         <div class="cell small-12">
             <div class="grid-flex">
                 <label for="password" class="form-label">@lang('user.password')</label>
-                <a toggle="#password" class="toggle-password">show</a>
+                <a class="toggle-password">show</a>
             </div>
         </div>
         <div class="cell small-12">
-            <input type="password" id="password" name="password" class="form-fill" required value="">
+            <input type="password" id="password" name="password" class="form-fill password" required value="">
             <p id="password-help-text" class="alert help-text hide"></p>
         </div>
         <div class="cell small-12 text-left">

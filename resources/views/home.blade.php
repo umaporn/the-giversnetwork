@@ -65,7 +65,7 @@
     <section class="share">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <i> <img src="{{ asset(config('images.share_icon' )) }}"></i>
+                <i><img src="{{ asset(config('images.share_icon' )) }}" alt="share"></i>
                 <h2 class="topic-light">share</h2>
                 <span>- Short description to explain share section : Definition</span>
             </div>
