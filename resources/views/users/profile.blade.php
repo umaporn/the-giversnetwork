@@ -45,13 +45,18 @@
                             <div class="cell small-12">
                                 <article class="user-detail">
                                     <h3 class="user-topic">@lang('user.interest_in')</h3>
-                                    <ul class="user-interested">
+                                    <div class="grid-x cell auto">
                                         @foreach( $userInterestInList as $userInterestInItem )
-                                            <li>
-                                                <div class="btn-blue">{{$userInterestInItem['interest_title']}}</div>
-                                            </li>
+                                            <div class="small-12 medium-2 padding-1">
+                                                <figure class="cards-image">
+                                                    <img src="{{ Storage::url($userInterestInItem->interestIn['image_path']) }}"
+                                                         alt=" {{$userInterestInItem['interest_title']}}"
+                                                         class="img-cover"
+                                                    >
+                                                </figure>
+                                            </div>
                                         @endforeach
-                                    </ul>
+                                        </div>
                                 </article>
                             </div>
                         </div>
