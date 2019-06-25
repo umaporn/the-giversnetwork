@@ -61,14 +61,17 @@
                         <i class="fab fa-facebook-square fa-2x"></i>
                     </a>
                 </li>
-                {{--<li><a href="#"><i class="fab fa-linkedin fa-2x"></i></a></li>
-                <li><a href="#"><i class="fab fa-twitter-square fa-2x"></i></a></li>--}}
             </ul>
         </div>
     </section>
     <section class="copyright grid-x padding-content">
-        <div class="cell small-12 medium-12 large-6 text-left">@lang('footer.copy_rights')</div>
-        <div class="cell small-12 medium-12 large-6 text-right">@lang('footer.term_of_services')</div>
+        <div class="cell small-12 medium-12 large-6 text-left">
+            @lang('footer.copy_rights')
+        </div>
+        <div class="cell small-12 medium-12 large-6 text-right">
+            <a href="{{ route('terms') }}">@lang('footer.term_of_services')</a> |
+            <a href="{{ route('policy') }}">@lang('footer.policy')</a>
+        </div>
     </section>
 </footer>
 
