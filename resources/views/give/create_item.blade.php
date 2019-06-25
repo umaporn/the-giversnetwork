@@ -26,7 +26,7 @@
             <div class="cell small-12">
                 <h2 class="topic-dark"> @lang('give.give_or_receive')</h2>
 
-                <form action="{{ route('give.createGiveItem') }}" method="POST" class="submission-form form-onerow">
+                <form action="{{ route('give.createGiveItem') }}" method="POST" class="recaptcha-form form-onerow">
 
                     {{ csrf_field() }}
 
@@ -149,6 +149,8 @@
 
                         </div>
                     </div>
+
+                    @captcha
 
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-offset-2 large-9">

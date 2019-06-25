@@ -28,7 +28,7 @@
                 <form action="{{ route('share.createThread') }}"
                       method="POST"
                       enctype="multipart/form-data"
-                      class="submission-form form-onerow"
+                      class="recaptcha-form form-onerow"
                 >
                     {{ csrf_field() }}
 
@@ -83,6 +83,9 @@
                             </div>
                         </div>
                     </div>
+
+                    @captcha
+
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-offset-2 large-9">
                             <button class="btn-green btn-long">@lang('button.create_thread')</button>
