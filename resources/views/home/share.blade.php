@@ -38,11 +38,13 @@
                                     </a>
                                     <div class="cell grid-x align-self-bottom">
                                         <div class="cell auto profile">
-                                            <figure class="display-profile">
-                                                <img src="{{ $share_item->users['image_path'] ? Storage::url($share_item->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
-                                                     alt="{{ $share_item->users['username'] }}">
-                                            </figure>
-                                            <span>{{ $share_item->users['username'] }}</span>
+                                            <a href="{{ route('user.getUserProfile', ['id' => $share_item->users['id']]) }}" target="_blank">
+                                                <figure class="display-profile">
+                                                    <img src="{{ $share_item->users['image_path'] ? Storage::url($share_item->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
+                                                         alt="{{ $share_item->users['username'] }}">
+                                                </figure>
+                                                <span>{{ $share_item->users['username'] }}</span>
+                                            </a>
                                         </div>
                                         <div class="cell shrink like">
                                             <i class="far fa-thumbs-up"></i>
@@ -63,11 +65,12 @@
                         @foreach( $data['challenge'] as $challenge_item )
                             <article class="cell small-12 medium-4">
                                 <figure>
-                                    <a href="{{ route('share.detail', ['share' => $challenge_item['id']]) }}">
+                                    <a href="{{ route('challenge.detail', ['challenge' => $challenge_item['id']]) }}">
                                         <img src="{{ $challenge_item['file_path'] ? $challenge_item['file_path'] : config('images.placeholder.700x400') }}" alt="{{ $challenge_item['title'] }}">
                                     </a>
                                 </figure>
-                                <a href="{{ route('share.detail', ['share' => $challenge_item['id']]) }}"><h3>{{ $challenge_item['title'] }}</h3></a>
+                                <a href="{{ route('challenge.detail', ['challenge' => $challenge_item['id']]) }}">
+                                    <h3>{{ $challenge_item['title'] }}</h3></a>
                                 <span class="category">{{ $challenge_item['category_title'] }}</span>
                             </article>
                         @endforeach
