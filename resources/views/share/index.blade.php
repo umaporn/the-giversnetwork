@@ -31,8 +31,7 @@
                         <h2 class="cell auto topic-dark">@lang('share.challenge')</h2>
                         <div class="cell shrink view-all">
                             <a href="{{ route('challenge.index') }}">
-                                <span>@lang('button.view_all')</span>
-                                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                                <span>@lang('button.view_all') @lang('share.challenge')</span>
                             </a>
                         </div>
                     </div>
