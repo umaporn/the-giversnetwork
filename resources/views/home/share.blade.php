@@ -7,8 +7,7 @@
         </div>
         <div class="cell shrink view-all">
             <a href="{{ route('share.index') }}">
-                <span>@lang('button.view_all')</span>
-                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                <span>@lang('button.view_all') @lang('share.page_link.index')</span>
             </a>
         </div>
     </div>

@@ -3,8 +3,7 @@
         <h2 class="cell auto topic-dark">@lang('events.page_link.index')</h2>
         <div class="cell shrink view-all">
             <a href="{{ route('events.index') }}">
-                <span>@lang('button.view_all')</span>
-                <i class=" fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                <span>@lang('button.view_all') @lang('events.page_link.index')</span>
             </a>
         </div>
     </div>
