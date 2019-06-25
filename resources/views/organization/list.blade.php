@@ -1,5 +1,4 @@
 <div id="content-list-box">
-    <div class="cell small-12">
         <section class="grid-x grid-margin-x margin-top-1">
             @foreach($data['allList']  as $organization_item )
                 <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
@@ -30,5 +29,4 @@
                 </a>
             @endif
         </div>
-    </div>
 </div>
