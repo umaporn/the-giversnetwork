@@ -19,7 +19,7 @@ class CreateChallengeTable extends Migration
             $table->increments( 'id' );
             $table->unsignedInteger( 'fk_user_id' );
             $table->foreign( 'fk_user_id' )->references( 'id' )->on( 'users' );
-            $table->unsignedInteger( 'fk_category_id' );
+            $table->unsignedInteger( 'fk_category_id' )->nullable();
             $table->foreign( 'fk_category_id' )->references( 'id' )->on( 'challenge_category' );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );

@@ -108,7 +108,6 @@ class Share extends Model
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'image_path', $this->getImages( $list ) );
-            $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->shareCategory ) );
             $this->setPublicDateForFrontEnd( $list );
 
         }
@@ -223,7 +222,6 @@ class Share extends Model
             'content_thai'    => $request->input( 'content_english' ),
             'file_path'       => $file_path,
             'fk_user_id'      => $request->input( 'fk_user_id' ),
-            'fk_category_id'  => '1',
             'status'          => 'public',
         ];
 

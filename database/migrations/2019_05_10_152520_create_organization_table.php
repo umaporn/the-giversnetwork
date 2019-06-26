@@ -17,7 +17,7 @@ class CreateOrganizationTable extends Migration
     {
         Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
-            $table->unsignedInteger( 'fk_category_id' );
+            $table->unsignedInteger( 'fk_category_id' )->nullable();;
             $table->foreign( 'fk_category_id' )->references( 'id' )->on( 'organization_category' );
             $table->string( 'name_thai', 255 );
             $table->string( 'name_english', 255 );
