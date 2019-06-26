@@ -17,6 +17,8 @@ class CreateEventsTable extends Migration
     {
         Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
+            $table->unsignedInteger( 'fk_user_id' );
+            $table->foreign( 'fk_user_id' )->references( 'id' )->on( 'users' );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );
             $table->text( 'description_thai' );
