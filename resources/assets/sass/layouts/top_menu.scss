@@ -57,8 +57,12 @@ body {
 			padding-top: 0;
 			padding-bottom: 0;
 		}
-		@include breakpoint(xlarge down) {
+		@include breakpoint(large down) {
 			padding: $space-box/2;
+		}
+		@media (min-width: 1000px) and (max-width: 1340px) {
+			padding-left: $space-box/2;
+			padding-right: $space-box/2;
 		}
 	}
 
@@ -66,7 +70,7 @@ body {
 		vertical-align: middle;
 
 		img {
-			@include breakpoint(xlarge down) {
+			@include breakpoint(large down) {
 			}
 		}
 	}
@@ -76,7 +80,7 @@ body {
 		padding-top: $space-box/1.5;
 		padding-bottom: $space-box/1.5;
 
-		@include breakpoint(xlarge down) {
+		@include breakpoint(large down) {
 			padding-top: 0;
 			padding-bottom: 0;
 		}
@@ -92,10 +96,12 @@ body {
 			display: flex;
 			flex-direction: row;
 
-			@include breakpoint(xlarge down) {
+			@include breakpoint(large down) {
 				float: none;
-				margin-top: $space-box;
 				margin-left: 0;
+			}
+			@include breakpoint(medium down) {
+				margin-top: $space-box;
 			}
 
 			li {
@@ -120,7 +126,7 @@ body {
 						outline: none;
 					}
 
-					@include breakpoint(xlarge down) {
+					@include breakpoint(large down) {
 						padding: 0 $space-box/2;
 					}
 				}
@@ -133,7 +139,7 @@ body {
 				align-items: center;
 				cursor: pointer;
 
-				@include breakpoint(xlarge down){
+				@include breakpoint(large down){
 					margin-top: $space-box/4*3;
 				}
 			}
@@ -209,8 +215,10 @@ body {
 		margin-bottom: 0;
 		margin-left: $space-box;
 
-		@include breakpoint(xlarge down) {
+		@include breakpoint(large down) {
 			float: none;
+		}
+		@include breakpoint(medium down) {
 			margin-top: $space-box;
 		}
 
@@ -251,11 +259,6 @@ body {
 		display: flex;
 		align-items: flex-start;
 
-		@include breakpoint(xlarge down) {
-			&.float-right {
-				float: none !important;
-			}
-		}
 
 		li {
 			align-self: stretch;
@@ -293,10 +296,13 @@ body {
 					width: 100%;
 					left: 0;
 				}
-
 				@include breakpoint(medium) {
 					padding-left: $space-box;
 					padding-right: $space-box;
+				}
+				@media (min-width: 1024px) and (max-width: 1070px) {
+					padding-left: $space-box/2;
+					padding-right: $space-box/2;
 				}
 			}
 		}
@@ -331,19 +337,18 @@ body {
 				border-color: lighten($topbar-responsive-bg, 60%);
 			}
 
-			@include breakpoint(xlarge down) {
+			@include breakpoint(large down) {
 				width: 100%;
 				margin: 0.875rem 0;
 			}
 		}
 	}
 
-	@include breakpoint(xlarge down) {
+	@include breakpoint(large down) {
 		padding: 0.75rem;
 
 		.top-bar-title {
 			position: relative;
-			width: 100%;
 
 			span {
 				position: absolute;
@@ -371,7 +376,7 @@ body {
 	}
 }
 
-@include breakpoint(xlarge down) {
+@include breakpoint(large down) {
 	.topbar-responsive-links {
 		animation-fill-mode: both;
 		animation-duration: 0.5s;

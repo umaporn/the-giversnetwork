@@ -85,7 +85,7 @@
                 </div>
                 <div class="grid-x">
                     <article class="cell grid-x small-12 share-space">
-                        <div class="cell small-3 medium-2">
+                        <div class="cell small-12 medium-2">
                             <figure class="share-image">
                                 <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
                             </figure>
@@ -112,7 +112,7 @@
                         </div>
                     </article>
                     <article class="cell grid-x small-12 share-space">
-                        <div class="cell small-3 medium-2">
+                        <div class="cell small-12 medium-2">
                             <figure class="share-image">
                                 <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
                             </figure>
@@ -139,7 +139,7 @@
                         </div>
                     </article>
                     <article class="cell grid-x small-12 share-space">
-                        <div class="cell small-3 medium-2">
+                        <div class="cell small-12 medium-2">
                             <figure class="share-image">
                                 <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
                             </figure>

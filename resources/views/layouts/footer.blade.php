@@ -2,7 +2,7 @@
         <div id="spinner"></div>      
         <section class="join-us grid-x padding-content text-center">
             <div class="cell small-12 grid-x align-center">
-                <h2 class="align-self-middle">Let's change the world together! Will you join me?</h2>
+                <h2 class="align-self-middle">LET'S CHANGE THE WORLD TOGETHER! WILL YOU JOIN US?</h2>
                 <a href="#" class="btn-join-us eff-btn">Join us</a>
             </div>
         </section>

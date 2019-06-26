@@ -21341,16 +21341,21 @@ readers do not read off random characters that represent icons */
 }
 
 .breadcrumbs li {
+  line-height: 1.25rem;
   font-size: 1rem;
   color: #154064;
+  font-weight: bold;
 }
 
 .breadcrumbs li:not(:last-child)::after {
   content: ">";
+  color: #154064;
+  font-size: 1.25rem;
 }
 
 .breadcrumbs a {
-  color: #7F8685;
+  color: #154064;
+  font-weight: normal;
 }
 
 .is-active > .accordion-title::before {
@@ -22378,9 +22383,16 @@ body:lang(en) .language li.en a {
   }
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive.padding-content {
     padding: 0.625rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1340px) {
+  .topbar-responsive.padding-content {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
   }
 }
 
@@ -22394,7 +22406,7 @@ body:lang(en) .language li.en a {
   padding-bottom: 0.83333333rem;
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive .top-bar-title {
     padding-top: 0;
     padding-bottom: 0;
@@ -22415,11 +22427,16 @@ body:lang(en) .language li.en a {
           flex-direction: row;
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive .user-profile {
     float: none;
-    margin-top: 1.25rem;
     margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 63.99875em) {
+  .topbar-responsive .user-profile {
+    margin-top: 1.25rem;
   }
 }
 
@@ -22447,7 +22464,7 @@ body:lang(en) .language li.en a {
   outline: none;
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive .user-profile li a {
     padding: 0 0.625rem;
   }
@@ -22470,7 +22487,7 @@ body:lang(en) .language li.en a {
   cursor: pointer;
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive .user-profile-after {
     margin-top: 0.9375rem;
   }
@@ -22545,9 +22562,14 @@ body:lang(en) .language li.en a {
   margin-left: 1.25rem;
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive .language {
     float: none;
+  }
+}
+
+@media screen and (max-width: 63.99875em) {
+  .topbar-responsive .language {
     margin-top: 1.25rem;
   }
 }
@@ -22589,12 +22611,6 @@ body:lang(en) .language li.en a {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-}
-
-@media screen and (max-width: 89.99875em) {
-  .topbar-responsive .menu.float-right {
-    float: none !important;
-  }
 }
 
 .topbar-responsive .menu li {
@@ -22652,6 +22668,13 @@ body:lang(en) .language li.en a {
   }
 }
 
+@media (min-width: 1024px) and (max-width: 1070px) {
+  .topbar-responsive .menu li a {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+  }
+}
+
 .topbar-responsive .menu-icon::after {
   background-color: #154064;
   -webkit-box-shadow: 0 0.4375rem 0 #154064, 0 0.875rem 0 #154064;
@@ -22685,21 +22708,20 @@ body:lang(en) .language li.en a {
   border-color: white;
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive .menu-button {
     width: 100%;
     margin: 0.875rem 0;
   }
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive {
     padding: 0.75rem;
   }
 
   .topbar-responsive .top-bar-title {
     position: relative;
-    width: 100%;
   }
 
   .topbar-responsive .top-bar-title span {
@@ -22727,7 +22749,7 @@ body:lang(en) .language li.en a {
   }
 }
 
-@media screen and (max-width: 89.99875em) {
+@media screen and (max-width: 74.99875em) {
   .topbar-responsive-links {
     -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
@@ -23125,12 +23147,30 @@ body:lang(en) .language li.en a {
 .share .challenge article figure img {
   -o-object-fit: cover;
      object-fit: cover;
-  max-height: 18.75rem;
+  height: 15.625rem;
 }
 
-@media print, screen and (min-width: 40em) {
+@media (min-width: 1300px) and (max-width: 1600px) {
   .share .challenge article figure img {
     height: 15.625rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .share .challenge article figure img {
+    height: 11.25rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1000px) {
+  .share .challenge article figure img {
+    height: 9.375rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .share .challenge article figure img {
+    height: 11.25rem;
   }
 }
 
@@ -23378,12 +23418,30 @@ body:lang(en) .language li.en a {
 .learn .content article figure img {
   -o-object-fit: cover;
      object-fit: cover;
-  max-height: 18.75rem;
+  height: 15.625rem;
 }
 
-@media print, screen and (min-width: 40em) {
+@media (min-width: 1300px) and (max-width: 1600px) {
   .learn .content article figure img {
     height: 15.625rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .learn .content article figure img {
+    height: 11.25rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1000px) {
+  .learn .content article figure img {
+    height: 9.375rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .learn .content article figure img {
+    height: 11.25rem;
   }
 }
 
@@ -23398,21 +23456,29 @@ body:lang(en) .language li.en a {
 
 /*----------------- Home - Events ------------------*/
 
-.events {
-  background-color: #F8F8F8;
-}
-
 .events .view-all {
-  color: #154064;
+  color: #FEFEFE;
 }
 
 .events .view-all a {
-  color: #154064;
+  color: #FEFEFE;
+}
+
+.events .topic {
+  background-color: #009057;
+  color: #FEFEFE;
+}
+
+.events .topic:after {
+  border-top-color: #009057;
+}
+
+.events .topic h2 {
+  display: inline-block;
 }
 
 .events article {
   margin-bottom: 0.625rem;
-  background-color: #F8F8F8;
 }
 
 .events article .cover,
@@ -23428,18 +23494,36 @@ body:lang(en) .language li.en a {
   position: relative;
   overflow: auto;
   text-align: center;
-  background-color: #FEFEFE;
+  background-color: #F8F8F8;
 }
 
 .events article .cover img {
   -o-object-fit: cover;
      object-fit: cover;
-  max-height: 18.75rem;
+  height: 15.625rem;
 }
 
-@media print, screen and (min-width: 40em) {
+@media (min-width: 1300px) and (max-width: 1600px) {
   .events article .cover img {
     height: 15.625rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .events article .cover img {
+    height: 11.25rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1000px) {
+  .events article .cover img {
+    height: 9.375rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .events article .cover img {
+    height: 11.25rem;
   }
 }
 
@@ -23730,6 +23814,47 @@ body:lang(en) .language li.en a {
   margin-bottom: 0.625rem;
 }
 
+.learn.all article figure {
+  text-align: center;
+  background-color: #F8F8F8;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .learn.all article figure {
+    background-color: #FEFEFE;
+  }
+}
+
+.learn.all article figure img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 15.625rem;
+}
+
+@media (min-width: 1300px) and (max-width: 1600px) {
+  .learn.all article figure img {
+    height: 15.625rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .learn.all article figure img {
+    height: 11.25rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1000px) {
+  .learn.all article figure img {
+    height: 9.375rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .learn.all article figure img {
+    height: 11.25rem;
+  }
+}
+
 .learn.all article h3,
 .learn.all article p {
   color: #154064;
@@ -23758,6 +23883,10 @@ body:lang(en) .language li.en a {
 .learn.all .events {
   background-color: #FEFEFE;
   margin-bottom: 2.5rem;
+}
+
+.learn.all .events article {
+  background-color: #FEFEFE;
 }
 
 .learn.all .load-more {
@@ -23852,11 +23981,47 @@ body:lang(en) .language li.en a {
 
 .share-page figure {
   margin-bottom: 0.625rem;
+  text-align: center;
+  background-color: #F8F8F8;
+}
+
+.share-page figure img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 15.625rem;
+}
+
+@media (min-width: 1300px) and (max-width: 1600px) {
+  .share-page figure img {
+    height: 15.625rem;
+  }
+}
+
+@media (min-width: 1000px) and (max-width: 1300px) {
+  .share-page figure img {
+    height: 11.25rem;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1000px) {
+  .share-page figure img {
+    height: 9.375rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .share-page figure img {
+    height: 11.25rem;
+  }
 }
 
 .share-page .events {
   background-color: #FEFEFE;
   margin-bottom: 2.5rem;
+}
+
+.share-page .events article {
+  background-color: #FEFEFE;
 }
 
 .share-page .profile {
@@ -23916,6 +24081,12 @@ body:lang(en) .language li.en a {
 
 .share-image {
   padding-right: 1.25rem;
+}
+
+@media screen and (max-width: 39.99875em) {
+  .share-image {
+    padding-right: 0;
+  }
 }
 
 .share-space {
@@ -24422,7 +24593,7 @@ body:lang(en) .language li.en a {
 }
 
 .events.all .topic {
-  background-color: #154064;
+  background-color: #009057;
   color: #FEFEFE;
 }
 
@@ -24455,6 +24626,10 @@ body:lang(en) .language li.en a {
 
 .events.all article .category i {
   margin-right: 0.3125rem;
+}
+
+.events.all article .cover {
+  background-color: #F8F8F8;
 }
 
 .events.all .most-popular.padding-content {
@@ -24492,11 +24667,11 @@ body:lang(en) .language li.en a {
 }
 
 .events.detail {
-  background: #FEFEFE;
+  background-color: #FEFEFE;
 }
 
 .events.detail .topic {
-  background-color: #154064;
+  background-color: #009057;
   color: #FEFEFE;
 }
 
@@ -24519,6 +24694,7 @@ body:lang(en) .language li.en a {
 
 .events.detail article {
   margin-bottom: 0.625rem;
+  background-color: #FEFEFE;
 }
 
 .events.detail article figure {
@@ -24627,7 +24803,11 @@ body:lang(en) .language li.en a {
 }
 
 .news.all .events {
-  background-color: transparent;
+  background-color: #FEFEFE;
+}
+
+.news.all .events article {
+  background-color: #FEFEFE;
 }
 
 .news.detail .topic {

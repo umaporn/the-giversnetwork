@@ -28,7 +28,7 @@
     <section class="most-popular padding-content">
         <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell small-12">
-                <h2 class="cell auto topic-dark">Most popular</h2>
+                <h2 class="cell auto topic-dark">TOP POSTS</h2>
             </div>
             <article class="cell small-12 medium-4">
                 <figure>

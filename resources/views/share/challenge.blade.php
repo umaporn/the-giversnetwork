@@ -20,7 +20,7 @@
                     <li><a href="#">Home</a></li>
                     <li><a href="#">share</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> Challenge
+                        <span class="show-for-sr">Current: </span> Challenges
                     </li>
                 </ul>
             </nav>
@@ -30,7 +30,7 @@
         <div class="cell small-12 medium-12 large-8">
             <section class="articles">
                 <div class="grid-x align-middle">
-                    <h2 class="cell auto topic-dark">Challenge</h2>
+                    <h2 class="cell auto topic-dark">Challenges</h2>
                 </div>
                 <article class="grid-x grid-margin-x grid-margin-y ">
                     <div class="cell small-12 medium-6">

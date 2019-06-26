@@ -9,6 +9,7 @@
 <section class="events all">
 	<div class="grid-x align-middle topic padding-content">
 		<div class="cell auto">
+			<i class="fas fa-calendar"></i>
 			<h2 class="topic-light">Events</h2>
 		</div>
 	</div>

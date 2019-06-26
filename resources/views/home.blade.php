@@ -27,7 +27,6 @@
         <div class="cell shrink view-all">
             <a href="#">
                 <span>View All</span>
-                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
             </a>
         </div>
     </div>
@@ -72,7 +71,6 @@
         <div class="cell shrink view-all">
             <a href="#">
                 <span>View All</span>
-                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
             </a>
         </div>
     </div>
@@ -492,7 +490,6 @@
         <div class="cell shrink view-all">
             <a href="#">
                 <span>View All</span>
-                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
             </a>
         </div>
     </div>
@@ -539,17 +536,20 @@
 </section>
 
 
-<section class="events padding-content">
-    <div class="grid-x align-middle">
-        <h2 class="cell auto topic-dark">Events</h2>
+<section class="events">
+    <div class="grid-x align-middle topic padding-content">
+        <div class="cell auto">
+            <i class="fas fa-calendar"></i>
+            <h2 class="topic-light">Events</h2>
+            <span>- Join or share events here</span>
+        </div>
         <div class="cell shrink view-all">
             <a href="#">
                 <span>View All</span>
-                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
             </a>
         </div>
     </div>
-    <div class="grid-x grid-margin-x ">
+    <div class="grid-x grid-margin-x padding-content">
         <article class="cell small-12 medium-6 xxlarge-3">
             <figure class="cover">
                 <img src="{{ asset(config('images.home.events.home_events_01' )) }}">

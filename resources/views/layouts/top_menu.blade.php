@@ -1,16 +1,16 @@
 <header id="header" data-sticky-container>
-	<div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: xxlarge;">
+	<div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: large;">
 		<nav class="grid-x topbar-responsive padding-content">
-			<div class="cell xxlarge-shrink top-bar-title">
-				<span data-responsive-toggle="topbar-responsive" data-hide-for="xxlarge">
+			<div class="cell large-shrink top-bar-title">
+				<span data-responsive-toggle="topbar-responsive" data-hide-for="large">
 					<button class="menu-icon" type="button" data-toggle></button>
 				</span>
 				<a href="{{ route('home.index') }}" class="topbar-responsive-logo">
 					<img src="{{ asset( config( 'app.logo' ) ) }}" alt="@lang('header.images.logo')" />
 				</a>
 			</div>
-			<div class="cell xxlarge-auto topbar-responsive-links align-self-stretch" id="topbar-responsive">
-				<ul class="menu vertical xxlarge-horizontal float-right" data-smooth-scroll>
+			<div class="cell large-auto topbar-responsive-links align-self-stretch" id="topbar-responsive">
+				<ul class="menu vertical large-horizontal float-right" data-smooth-scroll>
 					<li><a href="#home">@lang('menu.top_menu.home')</a></li>
 					<li><a href="#about">@lang('menu.top_menu.learn')</a></li>
 					<li><a href="#service">@lang('menu.top_menu.share')</a></li>
@@ -20,7 +20,7 @@
 					<li><a href="#contact">@lang('menu.top_menu.organization')</a></li>
 				</ul>
 			</div>
-			<div class="cell xxlarge-shrink align-self-middle grid-middle">
+			<div class="cell large-shrink align-self-middle grid-middle">
 				<!-- before user login -->
 				<ul class="user-profile float-left no-bullet">
 					<li><a href="#home">@lang('menu.profile_menu.sign_up')</a></li>

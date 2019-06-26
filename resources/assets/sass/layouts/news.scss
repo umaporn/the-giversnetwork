@@ -36,7 +36,11 @@
       }
     }
     .events {
-      background-color: transparent;
+      background-color: $white;
+      article{
+        background-color: $white;
+      }
+      
     }
   }
   &.detail {

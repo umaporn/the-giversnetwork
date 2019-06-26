@@ -2,7 +2,7 @@
 .events {
 	&.all {
 		.topic {
-			background-color: $color-blue;
+			background-color: $color-green;
 			color: $white;
 
 			&:after {
@@ -34,6 +34,9 @@
 				i {
 					margin-right: rem-calc(5);
 				}
+			}
+			.cover{
+				background-color: $color-light-gray;
 			}
 		}
 
@@ -78,9 +81,9 @@
 	}
 
 	&.detail {
-		background: $white;
+		background-color: $white;
 		.topic {
-			background-color: $color-blue;
+			background-color: $color-green;
 			color: $white;
 
 			&:after {
@@ -105,7 +108,7 @@
 
 		article {
 			margin-bottom: $space-box/2;
-
+			background-color: $white;
 			figure {
 				margin-bottom: $space-box/2;
 			}
