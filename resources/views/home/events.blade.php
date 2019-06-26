@@ -22,10 +22,12 @@
                     <h3>{{ $events_item['title'] }}</h3>
                 </a>
                 <div class="profile">
-                    <figure class="display-profile">
-                        <img src="{{ $events_item['host_image'] }}" alt="">
-                    </figure>
-                    <span>By {{ $events_item['hostname'] }}</span>
+                    {{--                    <figure class="display-profile">--}}
+                    {{--                        <img src="{{ $events_item['host_image'] }}" alt="">--}}
+                    {{--                    </figure>--}}
+                    @if($events_item['hostname'])
+                        <span>Host by {{ $events_item['hostname'] }}</span>
+                    @endif
                 </div>
             </article>
         @endforeach

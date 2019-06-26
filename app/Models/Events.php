@@ -74,6 +74,7 @@ class Events extends Model
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'hostname', Utility::getLanguageFields( 'host', $list ) );
             $list->setAttribute( 'host_image', Utility::getImages( $list['host_image'] ) );
+            $list->setAttribute( 'image_path', Utility::getImages( $list['image_path'] ) );
         }
 
         return $homeEventsList;
@@ -105,7 +106,7 @@ class Events extends Model
      */
     public function getAllListEvents( Request $request )
     {
-        $builder = $this->with( [ 'users' ] )->where( [ 'status' => 'public' ] )->orderBy( 'id', 'desc' );
+        $builder = $this->with( [ 'users' ] )->where( [ 'status' => 'public' ] )->orderBy( 'id', 'asc' );
 
         $data = Search::search( $builder, 'events', $request );
 

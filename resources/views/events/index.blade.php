@@ -15,7 +15,7 @@
             <div class="cell small-12">
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
-                        <li><a href="#">@lang('home.page_title.index')</a></li>
+                        <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
                         <li>
                             <span class="show-for-sr">Current: </span> @lang('events.page_title.index')
                         </li>
@@ -42,10 +42,13 @@
                             <h3>{{ $events_item['title'] }}</h3>
                         </a>
                         <div class="profile">
-                            <figure class="display-profile">
+                            {{--<figure class="display-profile">
                                 <img src="{{ $events_item['host_image'] }}" alt="{{ $events_item['hostname'] }}">
                             </figure>
-                            <span>Host By {{ $events_item['hostname'] }}</span>
+                            <span>Host By {{ $events_item['hostname'] }}</span>--}}
+                            @if($events_item['hostname'])
+                                <span>Host by {{ $events_item['hostname'] }}</span>
+                            @endif
                         </div>
                     </article>
                 @endforeach

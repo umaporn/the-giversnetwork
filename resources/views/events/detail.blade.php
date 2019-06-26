@@ -48,13 +48,16 @@
                             </time>
                             <div class=location>
                                 <i class="fas fa-map-marker-alt"></i>
-                                {{ $data['location'] }}
+                                {!! $data['location'] !!}
                             </div>
                             <div class="profile">
-                                <figure class="display-profile">
+                                @if($data['host'])
+                                    <span>Host by {{ $data['host'] }}</span>
+                                @endif
+                                {{--<figure class="display-profile">
                                     <img src="{{ $data['host_image'] }}" alt="">
                                 </figure>
-                                <span>By {{ $data['host'] }}</span>
+                                <span>By {{ $data['host'] }}</span>--}}
                             </div>
                         </div>
                         <div class="cell small-12 text-center">
@@ -122,11 +125,14 @@
                             <h3>{{ $other_item['title'] }}</h3>
                         </a>
                         <div class="profile">
-                            <figure class="display-profile">
+                            @if($other_item['hostname'])
+                                <span>Host by {{ $other_item['hostname'] }}</span>
+                            @endif
+                            {{--<figure class="display-profile">
                                 <img src="{{ $other_item['host_image'] ? $other_item['host_image'] : asset(config('images.home.profile.user_profile' )) }}"
                                      alt="{{ $other_item['hostname'] }}">
                             </figure>
-                            <span>By {{ $other_item['hostname'] }}</span>
+                            <span>By {{ $other_item['hostname'] }}</span>--}}
                         </div>
                     </article>
                 @endforeach
