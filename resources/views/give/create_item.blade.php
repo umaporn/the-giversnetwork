@@ -62,7 +62,8 @@
                             <label for="name" class="form-label">@lang('give.create_item_form.name')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="text" id="name" name="name" class="form-fill">
+                            <input type="text" id="name" name="name" class="form-fill" maxlength="90">
+                            <div class="float-right form-flex show-text" id="count_name"></div>
                             <p id="name-help-text" class="alert help-text help-text hide"></p>
                         </div>
                     </div>
@@ -99,7 +100,8 @@
                             <label for="description" class="form-label">@lang('give.create_item_form.description')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <textarea id="description_text" class="form-fill" rows="3" name="description_text"></textarea>
+                            <textarea id="description_text" class="form-fill" rows="3" name="description_text" maxlength="200"></textarea>
+                            <div class="float-right form-flex show-text" id="count_description_text"></div>
                             <p id="description_text-help-text" class="alert help-text help-text hide"></p>
                         </div>
                     </div>

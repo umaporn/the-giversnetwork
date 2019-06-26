@@ -37,7 +37,8 @@
                             <label for="topic" class="form-label">@lang('share.create_thread_form.topic')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="text" id="title_english" name="title_english" class="form-fill" required>
+                            <input type="text" id="title_english" name="title_english" class="form-fill" maxlength="90" required>
+                            <div class="float-right form-flex show-text" id="count_title_english"></div>
                             <p id="title_english-help-text" class="alert help-text help-text  hide"></p>
                         </div>
                     </div>
@@ -46,7 +47,8 @@
                             <label for="description" class="form-label">@lang('share.create_thread_form.description')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <textarea required id="content_english" name="content_english" class="form-fill" rows="3"></textarea>
+                            <textarea maxlength="5000" required id="content_english" name="content_english" class="form-fill" rows="3"></textarea>
+                            <div class="float-right form-flex show-text" id="count_content_english"></div>
                             <p id="content_english-help-text" class="alert help-text help-text  hide"></p>
                         </div>
                     </div>

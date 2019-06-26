@@ -32,6 +32,6 @@ return [
         'name'             => 'required|string|min:3|max:500',
         'amount'           => 'required|numeric',
         'address'          => 'sometimes|string',
-        'description_text' => 'required|string|min:3|max:3000',
+        'description_text' => 'required|string|min:3|max:200',
     ],
 ];
