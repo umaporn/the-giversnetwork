@@ -16,7 +16,7 @@
             <div class="cell small-12">
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
-                        <li><a href="#">@lang('home.page_title.index')</a></li>
+                        <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
                         <li>
                             <span class="show-for-sr">Current: </span> @lang('share.page_title.index')
                         </li>
@@ -89,6 +89,7 @@
             </div>
             <div class="cell small-12 medium-12 large-4">
                 @include('sidebar.news')
+                @include('sidebar.events')
             </div>
         </div>
     </section>
