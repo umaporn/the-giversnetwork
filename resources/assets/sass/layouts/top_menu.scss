@@ -1,419 +1,425 @@
 body {
-	&:lang(th) {
-		.language {
-			li.th {
-				a {
-					color: $white;
-					background-color: $color-blue;
-					border-radius: rem-calc(50);
-				}
-			}
-		}
-	}
+    &:lang(th) {
+        .language {
+            li.th {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+        }
+    }
 
-	&:lang(en) {
-		.language {
-			li.en {
-				a {
-					color: $white;
-					background-color: $color-blue;
-					border-radius: rem-calc(50);
-				}
-			}
-		}
-	}
+    &:lang(en) {
+        .language {
+            li.en {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+        }
+    }
 }
 
 .sticky {
-	transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
-	&-container {
-		z-index: 99;
-	}
+    &-container {
+        z-index: 99;
+    }
 
-	&.is-stuck {
-		.topbar-responsive {
-			&-logo {
-				img {
-					transition: all 0.2s ease-in-out;
-					height: rem-calc(40);
-				}
-			}
+    &.is-stuck {
+        .topbar-responsive {
+            &-logo {
+                img {
+                    transition: all 0.2s ease-in-out;
+                    height: rem-calc(40);
+                }
+            }
 
-			.top-bar-title {
-				padding-top: $space-box/2;
-				padding-bottom: $space-box/2;
-			}
-		}
-	}
+            .top-bar-title {
+                padding-top: $space-box/2;
+                padding-bottom: $space-box/2;
+            }
+        }
+    }
 }
 
 .topbar-responsive {
-	background: $topbar-responsive-bg;
-	box-shadow: 8px 9px 10px -13px rgba(0, 0, 0, 0.75);
+    background: $topbar-responsive-bg;
+    box-shadow: 8px 9px 10px -13px rgba(0, 0, 0, 0.75);
 
-	&.padding-content {
-		@include breakpoint(large) {
-			padding-top: 0;
-			padding-bottom: 0;
-		}
-		@include breakpoint(xlarge down) {
-			padding: $space-box/2;
-		}
-	}
+    &.padding-content {
+        @include breakpoint(large) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        @include breakpoint(large down) {
+            padding: $space-box/2;
+        }
+        @media (min-width: 1000px) and (max-width: 1340px) {
+            padding-left: $space-box/2;
+            padding-right: $space-box/2;
+        }
+    }
 
-	&-logo {
-		vertical-align: middle;
+    &-logo {
+        vertical-align: middle;
 
-		img {
-			@include breakpoint(xlarge down) {
-			}
-		}
-	}
+        img {
+            @include breakpoint(large down) {
+            }
+        }
+    }
 
-	.top-bar-title {
-		margin: 0;
-		padding-top: $space-box/1.5;
-		padding-bottom: $space-box/1.5;
+    .top-bar-title {
+        margin: 0;
+        padding-top: $space-box/1.5;
+        padding-bottom: $space-box/1.5;
 
-		@include breakpoint(xlarge down) {
-			padding-top: 0;
-			padding-bottom: 0;
-		}
-	}
+        @include breakpoint(large down) {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
 
-	.user {
-		&-profile {
-			background: none;
-			margin-bottom: 0;
-			border: rem-calc(1) solid $color-blue;
-			border-radius: rem-calc(10);
-			display: flex;
-			flex-direction: row;
+    .user {
+        &-profile {
+            background: none;
+            margin-bottom: 0;
+            //margin-left: $space-box * 2;
+            border: rem-calc(1) solid $color-blue;
+            border-radius: rem-calc(10);
+            display: flex;
+            flex-direction: row;
 
-			@include breakpoint(xlarge down) {
-				float: none;
-				margin-top: $space-box;
-				margin-left: 0;
-			}
+            @include breakpoint(large down) {
+                float: none;
+                margin-left: 0;
+            }
+            @include breakpoint(medium down) {
+                margin-top: $space-box;
+            }
 
-			li {
-				display: inline-block;
+            li {
+                display: inline-block;
 
-				&::after {
-					content: "|";
-				}
+                &::after {
+                    content: "|";
+                }
 
-				&:last-child::after {
-					content: "";
-				}
+                &:last-child::after {
+                    content: "";
+                }
 
-				a {
-					color: $color-blue;
-					background-color: none;
-					height: 100%;
-					font-size: rem-calc(20);
-					padding: 0 $space-box;
+                a {
+                    color: $color-blue;
+                    background-color: none;
+                    height: 100%;
+                    font-size: rem-calc(20);
+                    padding: 0 $space-box;
 
-					&:focus {
-						outline: none;
-					}
+                    &:focus {
+                        outline: none;
+                    }
 
-					@include breakpoint(xlarge down) {
-						padding: 0 $space-box/2;
-					}
-				}
-			}
+                    @include breakpoint(large down) {
+                        padding: 0 $space-box/2;
+                    }
+                }
+            }
 
-			&-after {
-				display: flex;
-				flex-direction: row;
-				justify-content: flex-start;
-				align-items: center;
-				cursor: pointer;
+            &-after {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                cursor: pointer;
 
-				@include breakpoint(xlarge down){
-					margin-top: $space-box/4*3;
-				}
-			}
+                @include breakpoint(large down){
+                    margin-top: $space-box/4*3;
+                }
+            }
 
-			&-image {
-				background-color: $white;
-				width: rem-calc(45);
-				height: rem-calc(45);
-			}
+            &-image {
+                background-color: $white;
+                width: rem-calc(45);
+                height: rem-calc(45);
+            }
 
-			&-name {
-				margin-bottom: 0;
-				font-size: 1.25rem;
-				color: $color-blue;
+            &-name {
+                margin-bottom: 0;
+                font-size: 1.25rem;
+                color: $color-blue;
 
-				i {
-					vertical-align: text-top;
-				}
-			}
-		}
+                i {
+                    vertical-align: text-top;
+                }
+            }
+        }
 
-		&-menu{
-			padding: 0;
-			border-color: transparent;
-			width: auto;
-			box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
+        &-menu{
+            padding: 0;
+            border-color: transparent;
+            width: auto;
+            box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25);
 
-			li{
-				&:first-child{
-					border-radius: 0;
-				}
+            li{
+                &:first-child{
+                    border-radius: 0;
+                }
 
-				&:last-child{
-					border-radius: 0;
-				}
-			}
-			
-			&-show{
-				padding: 0;
-				margin: 0;
-				list-style: none;
-				background-color: $white;
+                &:last-child{
+                    border-radius: 0;
+                }
+            }
 
-				li{
-					padding: 0;
-					margin: 0;
+            &-show{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+                background-color: $white;
 
-					&:focus{
-						outline: none;
-					}
+                li{
+                    padding: 0;
+                    margin: 0;
 
-					a{
-						padding: rem-calc(7) $space-box*3 rem-calc(7) $space-box;
-						display: block;
-						font-size: rem-calc(20);
+                    &:focus{
+                        outline: none;
+                    }
 
-						&:hover{
-							color:$white;
-							background-color: $color-blue;
-						}
+                    a{
+                        padding: rem-calc(7) $space-box*3 rem-calc(7) $space-box;
+                        display: block;
+                        font-size: rem-calc(20);
 
-						&:focus{
-							outline: none;
-						}
-					}
-				}
-			}
-		}
-	}
+                        &:hover{
+                            color:$white;
+                            background-color: $color-blue;
+                        }
 
-	.language {
-		background: none;
-		margin-bottom: 0;
-		margin-left: $space-box;
+                        &:focus{
+                            outline: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
 
-		@include breakpoint(xlarge down) {
-			float: none;
-			margin-top: $space-box;
-		}
+    .language {
+        background: none;
+        margin-bottom: 0;
+        margin-left: $space-box;
 
-		li {
-			display: inline-block;
+        @include breakpoint(large down) {
+            float: none;
+        }
+        @include breakpoint(medium down) {
+            margin-top: $space-box;
+        }
 
-			&::after {
-				content: "|";
-				padding-left: $space-box/3;
-			}
+        li {
+            display: inline-block;
 
-			&:last-child::after {
-				content: "";
-				padding-left: 0;
-			}
+            &::after {
+                content: "|";
+                padding-left: $space-box/3;
+            }
 
-			a {
-				color: $color-blue;
-				background-color: none;
-				height: 100%;
-				font-size: rem-calc(20);
-				padding: $space-box/2;
-			}
+            &:last-child::after {
+                content: "";
+                padding-left: 0;
+            }
 
-			&:hover {
-				a {
-					color: $white;
-					background-color: $color-blue;
-					border-radius: rem-calc(50);
-				}
-			}
-		}
-	}
+            a {
+                color: $color-blue;
+                background-color: none;
+                height: 100%;
+                font-size: rem-calc(20);
+                padding: $space-box/2;
+            }
 
-	.menu {
-		background: $topbar-responsive-bg;
-		height: 100%;
-		display: flex;
-		align-items: flex-start;
+            &:hover {
+                a {
+                    color: $white;
+                    background-color: $color-blue;
+                    border-radius: rem-calc(50);
+                }
+            }
+        }
+    }
 
-		@include breakpoint(xlarge down) {
-			&.float-right {
-				float: none !important;
-			}
-		}
+    .menu {
+        background: $topbar-responsive-bg;
+        height: 100%;
+        display: flex;
+        align-items: flex-start;
 
-		li {
-			align-self: stretch;
 
-			&:last-of-type {
-				margin-right: 0;
-			}
+        li {
+            align-self: stretch;
 
-			a {
-				color: $color-blue;
-				transition: color 0.15s ease-in;
-				height: 100%;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				padding-left: $space-box * 3/2;
-				padding-right: $space-box * 3/2;
-				font-size: rem-calc(20);
-				position: relative;
+            &:last-of-type {
+                margin-right: 0;
+            }
 
-				&::after {
-					background: none repeat scroll 0 0 transparent;
-					bottom: 0;
-					content: "";
-					display: block;
-					height: rem-calc(2);
-					left: 50%;
-					position: absolute;
-					background: $color-blue;
-					transition: width 0.3s ease 0s, left 0.3s ease 0s;
-					width: 0;
-				}
+            a {
+                color: $color-blue;
+                transition: color 0.15s ease-in;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-left: $space-box * 3/2;
+                padding-right: $space-box * 3/2;
+                font-size: rem-calc(20);
+                position: relative;
 
-				&:hover::after {
-					width: 100%;
-					left: 0;
-				}
+                &::after {
+                    background: none repeat scroll 0 0 transparent;
+                    bottom: 0;
+                    content: "";
+                    display: block;
+                    height: rem-calc(2);
+                    left: 50%;
+                    position: absolute;
+                    background: $color-blue;
+                    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+                    width: 0;
+                }
 
+                &:hover::after {
+                    width: 100%;
+                    left: 0;
+                }
                 @include breakpoint(medium) {
                     padding-left: $space-box;
                     padding-right: $space-box;
-				}
-			}
-		}
+                }
+                @media (min-width: 1024px) and (max-width: 1070px) {
+                    padding-left: $space-box/2;
+                    padding-right: $space-box/2;
+                }
+            }
+        }
 
-		&-icon {
-			&::after {
-				background-color: $color-blue;
-				box-shadow: 0 rem-calc(7) 0 $color-blue,
-					0 rem-calc(14) 0 $color-blue;
-			}
+        &-icon {
+            &::after {
+                background-color: $color-blue;
+                box-shadow: 0 rem-calc(7) 0 $color-blue,
+                0 rem-calc(14) 0 $color-blue;
+            }
 
-			&:hover {
-				transition: all 0.15s ease-in, border-color 0.15s ease-in;
-				background-color: $color-blue;
+            &:hover {
+                transition: all 0.15s ease-in, border-color 0.15s ease-in;
+                background-color: $color-blue;
 
-				&::after {
-					transition: all 0.15s ease-in, border-color 0.15s ease-in;
-					background-color: $white;
-					box-shadow: 0 rem-calc(7) 0 $white, 0 rem-calc(14) 0 $white;
-				}
-			}
-		}
+                &::after {
+                    transition: all 0.15s ease-in, border-color 0.15s ease-in;
+                    background-color: $white;
+                    box-shadow: 0 rem-calc(7) 0 $white, 0 rem-calc(14) 0 $white;
+                }
+            }
+        }
 
-		&-button {
-			color: $color-blue;
-			border-color: $color-blue;
-			border-radius: 5000px;
-			transition: color 0.15s ease-in, border-color 0.15s ease-in;
+        &-button {
+            color: $color-blue;
+            border-color: $color-blue;
+            border-radius: 5000px;
+            transition: color 0.15s ease-in, border-color 0.15s ease-in;
 
-			&:hover {
-				color: lighten($topbar-responsive-bg, 60%);
-				border-color: lighten($topbar-responsive-bg, 60%);
-			}
+            &:hover {
+                color: lighten($topbar-responsive-bg, 60%);
+                border-color: lighten($topbar-responsive-bg, 60%);
+            }
 
-			@include breakpoint(xlarge down) {
-				width: 100%;
-				margin: 0.875rem 0;
-			}
-		}
-	}
+            @include breakpoint(large down) {
+                width: 100%;
+                margin: 0.875rem 0;
+            }
+        }
+    }
 
-	@include breakpoint(xlarge down) {
-		padding: 0.75rem;
+    @include breakpoint(large down) {
+        padding: 0.75rem;
 
-		.top-bar-title {
-			position: relative;
-			width: 100%;
+        .top-bar-title {
+            position: relative;
 
-			span {
-				position: absolute;
-				right: 0;
-				border: rem-calc(2) solid $color-blue;
-				border-radius: rem-calc(5);
-				padding: 0.25rem 0.45rem;
-				top: 50%;
-				transform: translateY(-50%);
+            span {
+                position: absolute;
+                right: 0;
+                border: rem-calc(2) solid $color-blue;
+                border-radius: rem-calc(5);
+                padding: 0.25rem 0.45rem;
+                top: 50%;
+                transform: translateY(-50%);
 
-				&:hover {
-					border: rem-calc(2) solid $white;
-					background-color: $color-blue;
-				}
+                &:hover {
+                    border: rem-calc(2) solid $white;
+                    background-color: $color-blue;
+                }
 
-				.menu-icon {
-					cursor: pointer;
+                .menu-icon {
+                    cursor: pointer;
 
-					&:focus {
-						outline: none;
-					}
-				}
-			}
-		}
-	}
+                    &:focus {
+                        outline: none;
+                    }
+                }
+            }
+        }
+    }
 }
 
-@include breakpoint(xlarge down) {
-	.topbar-responsive-links {
-		animation-fill-mode: both;
-		animation-duration: 0.5s;
-		width: 100%;
+@include breakpoint(large down) {
+    .topbar-responsive-links {
+        animation-fill-mode: both;
+        animation-duration: 0.5s;
+        width: 100%;
 
-		@if $topbar-responsive-animation-type==slide-down {
-			animation: slideDown 1s ease-in;
-		} @else if $topbar-responsive-animation-type==fade-in {
-			animation: fadeIn 1s ease-in;
-		} @else {
-			animation: none;
-		}
-	}
+        @if $topbar-responsive-animation-type==slide-down {
+            animation: slideDown 1s ease-in;
+        } @else if $topbar-responsive-animation-type==fade-in {
+            animation: fadeIn 1s ease-in;
+        } @else {
+            animation: none;
+        }
+    }
 }
 
 .login {
-	&-line {
-		@include breakpoint(large) {
-			width: rem-calc(420);
-			margin: 0 auto;
-		}
-	}
-	&-signup {
-		color: $color-blue;
-		text-align: center;
-		margin: $space-box 0;
+    &-line {
+        @include breakpoint(large) {
+            width: rem-calc(420);
+            margin: 0 auto;
+        }
+    }
+    &-signup {
+        color: $color-blue;
+        text-align: center;
+        margin: $space-box 0;
 
-		a {
-			text-decoration: underline;
-		}
-	}
+        a {
+            text-decoration: underline;
+        }
+    }
 }
 
 .grid {
-	&-flex {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		align-items: center;
-	}
+    &-flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-	&-middle {
-		display: flex;
-		align-items: center;
-	}
+    &-middle {
+        display: flex;
+        align-items: center;
+    }
 }

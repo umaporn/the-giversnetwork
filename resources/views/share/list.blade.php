@@ -1,7 +1,7 @@
 <div id="content-list-box">
     @foreach( $data['share'] as $share_item )
         <article class="cell grid-x small-12 share-space">
-            <div class="cell small-3 medium-2">
+            <div class="cell small-12 medium-2">
                 <figure class="share-image">
                     <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
                         <img src="{{ $share_item['image_path'] ? $share_item['image_path'] : config('images.placeholder.300x180') }}"

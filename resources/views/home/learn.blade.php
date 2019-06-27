@@ -11,9 +11,9 @@
             </a>
         </div>
     </div>
-    <div class="grid-x grid-margin-x content padding-content">
+    <div class="grid-x grid-padding-x content padding-content">
         @foreach( $data['learn'] as $learn_item )
-            <article class="cell small-12 medium-4">
+            <article class="cell small-12 medium-6 xxlarge-3">
                 <figure>
                     <a href="{{ route('learn.detail', ['learn' => $learn_item['id']]) }}">
                         <img src="{{ $learn_item['image_path'] ? $learn_item['image_path'] : config('images.placeholder.700x400')  }}" alt="{{ $learn_item['title'] }}">

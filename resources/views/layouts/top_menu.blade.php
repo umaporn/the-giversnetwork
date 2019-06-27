@@ -1,20 +1,20 @@
 <header id="header" data-sticky-container>
     <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: xxlarge;">
         <nav class="grid-x topbar-responsive padding-content">
-            <div class="cell xxlarge-shrink top-bar-title">
-				<span data-responsive-toggle="topbar-responsive" data-hide-for="xxlarge">
+            <div class="cell large-shrink top-bar-title">
+				<span data-responsive-toggle="topbar-responsive" data-hide-for="large">
 					<button class="menu-icon" type="button" data-toggle></button>
 				</span>
                 <a href="{{ route('home.index') }}" class="topbar-responsive-logo">
                     <img src="{{ asset( config( 'app.logo' ) ) }}" alt="@lang('header.images.logo')" />
                 </a>
             </div>
-            <div class="cell xxlarge-auto topbar-responsive-links align-self-stretch" id="topbar-responsive">
+            <div class="cell large-auto topbar-responsive-links align-self-stretch" id="topbar-responsive">
                 <ul class="menu vertical medium-horizontal float-right" data-smooth-scroll>
                     @each( 'layouts.main_menu', $mainMenu, 'menuItem' )
                 </ul>
             </div>
-            <div class="cell xxlarge-shrink align-self-middle grid-middle">
+            <div class="cell large-shrink align-self-middle grid-middle">
                 @if( Auth::guest() )
                     <ul class="user-profile float-left no-bullet">
                         <li><a href="{{ route('register') }}">@lang('register.page_link.index')</a></li>

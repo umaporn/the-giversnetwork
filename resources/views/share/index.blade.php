@@ -67,7 +67,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
         <div class="grid-x grid-margin-x padding-content">
             <div class="cell small-12 medium-12 large-8">

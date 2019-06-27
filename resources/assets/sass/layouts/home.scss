@@ -13,7 +13,7 @@
 
 .swiper-pagination-fraction,
 .swiper-pagination-custom,
-.swiper-container-horizontal > .swiper-pagination-bullets {
+.swiper-container-horizontal>.swiper-pagination-bullets {
     bottom: 5%;
     left: auto;
     width: auto;
@@ -90,6 +90,7 @@
         time {
             color: $color-dark-gray;
             vertical-align: middle;
+
             i {
                 margin-right: rem-calc(5);
             }
@@ -137,14 +138,14 @@
     .tabs {
         border-bottom: rem-calc(1) solid $color-blue;
 
-        &-title > a:focus,
-        &-title > a[aria-selected='true'] {
+        &-title>a:focus,
+        &-title>a[aria-selected='true'] {
             background-color: $white;
             outline: none;
         }
 
         &-title {
-            & > a {
+            &>a {
                 font-size: rem-calc(20);
                 color: $color-blue;
                 font-family: $text-bold;
@@ -171,8 +172,7 @@
             }
 
             &.is-active {
-                & > a {
-                }
+                &>a {}
             }
         }
 
@@ -215,7 +215,7 @@
         article {
             margin-bottom: $space-box;
 
-            & > .cell:nth-child(odd) {
+            &>.cell:nth-child(odd) {
                 padding-right: $space-box;
 
                 @include breakpoint(small only) {
@@ -246,14 +246,26 @@
 
                 img {
                     object-fit: cover;
-                    max-height: rem-calc(300);
+                    height: rem-calc(250);
 
-                    @include breakpoint(medium) {
+                    @media (min-width: 1300px) and (max-width: 1600px) {
                         height: rem-calc(250);
+                    }
+
+                    @media (min-width: 1000px) and (max-width: 1300px) {
+                        height: rem-calc(180);
+                    }
+
+                    @media (min-width: 640px) and (max-width: 1000px) {
+                        height: rem-calc(150);
+                    }
+
+                    @media (max-width: 640px) {
+                        height: rem-calc(180);
                     }
                 }
             }
-            
+
             .category {
                 color: $color-dark-gray;
                 vertical-align: middle;
@@ -324,17 +336,18 @@
             color: $color-green;
         }
 
-        & > .cell:nth-child(1) {
+        &>.cell:nth-child(1) {
             background-color: $color-gray;
         }
 
-        & > .cell:nth-child(2) {
+        &>.cell:nth-child(2) {
             background-color: $color-light-gray;
         }
 
     }
 
-    .tabs, .box {
+    .tabs,
+    .box {
         border: 0;
         background-color: $color-gray;
 
@@ -429,13 +442,14 @@
                     margin-bottom: 0;
                 }
 
-                .sub-title {
-                }
+                .sub-title {}
             }
 
 
         }
     }
+
+
 
 
 }
@@ -468,6 +482,7 @@
 
         article {
             margin-bottom: $space-box/2;
+
             figure,
             h3 {
                 margin-bottom: $space-box/2;
@@ -482,10 +497,22 @@
 
                 img {
                     object-fit: cover;
-                    max-height: rem-calc(300);
+                    height: rem-calc(250);
 
-                    @include breakpoint(medium) {
+                    @media (min-width: 1300px) and (max-width: 1600px) {
                         height: rem-calc(250);
+                    }
+
+                    @media (min-width: 1000px) and (max-width: 1300px) {
+                        height: rem-calc(180);
+                    }
+
+                    @media (min-width: 640px) and (max-width: 1000px) {
+                        height: rem-calc(150);
+                    }
+
+                    @media (max-width: 640px) {
+                        height: rem-calc(180);
                     }
                 }
             }
@@ -493,6 +520,7 @@
             .category {
                 color: $color-dark-gray;
                 vertical-align: middle;
+
                 i {
                     margin-right: rem-calc(5);
                 }
@@ -504,19 +532,30 @@
 /*----------------- Home - Events ------------------*/
 
 .events {
-    background-color: $color-light-gray;
-
     .view-all {
-        color: $color-blue;
+        color: $white;
 
         a {
-            color: $color-blue;
+            color: $white;
+        }
+    }
+
+    .topic {
+        background-color: $color-green;
+        color: $white;
+
+        &:after {
+            border-top-color: $color-green;
+        }
+
+        h2 {
+            display: inline-block;
         }
     }
 
     article {
         margin-bottom: $space-box/2;
-        background-color: $color-light-gray;
+
         .cover,
         h3 {
             margin-bottom: $space-box/2;
@@ -530,14 +569,26 @@
             position: relative;
             overflow: auto;
             text-align: center;
-            background-color: $white;
+            background-color: $color-light-gray;
 
             img {
                 object-fit: cover;
-                max-height: rem-calc(300);
+                height: rem-calc(250);
 
-                @include breakpoint(medium) {
+                @media (min-width: 1300px) and (max-width: 1600px) {
                     height: rem-calc(250);
+                }
+
+                @media (min-width: 1000px) and (max-width: 1300px) {
+                    height: rem-calc(180);
+                }
+
+                @media (min-width: 640px) and (max-width: 1000px) {
+                    height: rem-calc(150);
+                }
+
+                @media (max-width: 640px) {
+                    height: rem-calc(180);
                 }
 
             }
