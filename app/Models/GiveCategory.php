@@ -21,8 +21,6 @@ class GiveCategory extends Model
     /**
      * Get a list of give category for displaying.
      *
-     * @param Request $request Give category request object
-     *
      * @return Collection A list of give category for home page
      */
     public function getGiveCategoryList()

@@ -27,9 +27,11 @@ class UserController extends Controller
     protected $organizationCategoryModel;
 
     /**
-     * Initialize RegisterController class.
+     * Initialize UserController class.
      *
-     * @param Users $users Users model
+     * @param Users                $users                Users model
+     * @param InterestIn           $interestIn           InterestIn model
+     * @param OrganizationCategory $organizationCategory OrganizationCategory model
      */
     public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory )
     {
@@ -41,20 +43,23 @@ class UserController extends Controller
     /**
      * Display admin user page.
      *
+     * @param Request $request Request object
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Home page
      */
     public function index( Request $request )
     {
         $users = $this->usersModel->getUserList( $request );
 
-        return view( 'admin.users.list', compact('users') );
+        return view( 'admin.users.list', compact( 'users' ) );
     }
 
     /**
      * Delete a specific user.
      *
-     * @param     UserRequest    $request    User request object
-     * @param     User           $user       User model
+     * @param Request $request Request object
+     * @param Users   $users   Users model
+     *
      * @return    \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
     public function destroy( Request $request, Users $user )
@@ -62,8 +67,8 @@ class UserController extends Controller
         $success = $user->delete();
 
         if( $request->ajax() ){
-            return response()->json([ 'success' => $success ]);
-        }else{
+            return response()->json( [ 'success' => $success ] );
+        } else {
             return redirect()->route( 'admin.user.index' );
         }
     }

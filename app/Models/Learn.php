@@ -32,7 +32,8 @@ class Learn extends Model
     /**
      * Get a list of learn for displaying.
      *
-     * @param Request $request Learn request object
+     * @param Request $request Request object
+     * @param int     $limit   Limit of content
      *
      * @return LengthAwarePaginator A list of learn for home page
      */

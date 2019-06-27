@@ -57,7 +57,10 @@ class EventsController extends Controller
     }
 
     /**
-     * Display events detail page.
+     * Display events detail page
+     *
+     * @param Events  $events Events Model
+     * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Events detail page
      */

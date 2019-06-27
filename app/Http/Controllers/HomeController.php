@@ -56,6 +56,7 @@ class HomeController extends Controller
      * @param Challenge    $challenge    Challenge model
      * @param Give         $give         Give model
      * @param GiveCategory $giveCategory GiveCategory model
+     * @param Events       $events       Events model
      */
     public function __construct( Banner $banner, News $news, Share $share, Learn $learn, Events $events, Challenge $challenge, Give $give, GiveCategory $giveCategory )
     {
@@ -71,6 +72,8 @@ class HomeController extends Controller
 
     /**
      * Display home page.
+     *
+     * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Home page
      */

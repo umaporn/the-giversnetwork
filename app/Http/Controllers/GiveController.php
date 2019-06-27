@@ -113,7 +113,10 @@ class GiveController extends Controller
     /**
      * Display give detail page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give detail page
+     * @param Give    $give Give Model
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Give detail page
      */
     public function detail( Give $give, Request $request )
     {
@@ -148,6 +151,8 @@ class GiveController extends Controller
      * Create give item.
      *
      * @param Request $request Request object
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
     public function createGiveItem( Request $request )
     {

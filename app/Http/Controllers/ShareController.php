@@ -37,8 +37,12 @@ class ShareController extends Controller
     /**
      * ShareController constructor.
      *
-     * @param Share     $share     Share Model
-     * @param Challenge $challenge Challenge Model
+     * @param Share        $share        Share Model
+     * @param Challenge    $challenge    Challenge Model
+     * @param Events       $events       Events Model
+     * @param News         $news         News Model
+     * @param ShareLike    $shareLike    ShareLike Model
+     * @param ShareComment $shareComment ShareComment Model
      */
     public function __construct( Share $share, Challenge $challenge, Events $events, News $news, ShareLike $shareLike, ShareComment $shareComment )
     {
@@ -77,7 +81,7 @@ class ShareController extends Controller
         $data['challenge'] = $this->challengeModel->getChallengeList( $request );
         $data['news']      = $this->newsModel->getNewsForSidebar( $request );
         $data['share']     = $this->shareModel->getShareAllList( $request );
-        $data['events']      = $this->eventsModel->getEventsForSidebar( $request );
+        $data['events']    = $this->eventsModel->getEventsForSidebar( $request );
 
         if( $request->ajax() ){
             return response()->json( [

@@ -16,7 +16,7 @@ return [
         'link'                => 'http://socialbusinesspedia.com/events/sbd2019/registration?fbclid=IwAR02S_nPEVzz6wJxyxmgA_NOqzhj4o-VrHH_Mn__ND3nGMVfxnPsI5a1ZbY',
         'start_date'          => '2019-06-28',
         'end_date'            => '2020-06-29',
-        'event_date'          => '28 - 29 January 2019',
+        'event_date'          => '28 - 29 June 2019',
         'image_path'          => 'uploads/events/events1.jpg',
         'view'                => '0',
         'status'              => 'public',

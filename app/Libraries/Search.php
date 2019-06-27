@@ -172,6 +172,7 @@ class Search
      * @param Request $request    Form request which extends from Request class
      * @param array   $orWhereHas A list of related tables which are searched by keyword
      *                            ( an array pair of related table and related module in datatables configuration file )
+     * @param string  $limit      Limit of content
      *
      * @return    \Illuminate\Pagination\LengthAwarePaginator    Result data
      */

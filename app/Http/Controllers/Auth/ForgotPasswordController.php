@@ -6,8 +6,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RecaptchaRequest;
-use App\Support\Facades\ClientGrant;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -35,7 +33,7 @@ class ForgotPasswordController extends Controller
     /**
      * Send a reset link by email.
      *
-     * @param RecaptchaRequest $request HTTP RecaptchaRequest request object
+     * @param Request $request HTTP RecaptchaRequest request object
      *
      * @return \Illuminate\Http\JsonResponse Sending a reset link response
      */

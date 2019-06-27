@@ -29,6 +29,8 @@ class ShareLike extends Model
     /**
      * Get user like content.
      *
+     * @param Share $share Share model
+     *
      * @return mixed
      */
     public function getIsShareLike( Share $share )

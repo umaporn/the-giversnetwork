@@ -45,7 +45,7 @@ class Organization extends Model
     /**
      * Transform organization information.
      *
-     * @param Collection $organizationList A list of organization list
+     * @param LengthAwarePaginator $organizationList A list of organization list
      *
      * @return LengthAwarePaginator A list of organization
      */
@@ -92,7 +92,7 @@ class Organization extends Model
      */
     public function getOrganizationDetail( Organization $organization )
     {
-        $organization = $this->with(['organizationCategory'])->where( [ 'id' => $organization->id ] )->first();
+        $organization = $this->with( [ 'organizationCategory' ] )->where( [ 'id' => $organization->id ] )->first();
 
         if( $organization ){
             $organization->setAttribute( 'name', Utility::getLanguageFields( 'name', $organization ) );

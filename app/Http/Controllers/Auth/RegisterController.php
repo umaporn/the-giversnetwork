@@ -51,7 +51,9 @@ class RegisterController extends Controller
     /**
      * Initialize RegisterController class.
      *
-     * @param Users $users Users model
+     * @param Users                $users                Users model
+     * @param InterestIn           $interestIn           InterestIn model
+     * @param OrganizationCategory $organizationCategory OrganizationCategory model
      */
     public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory )
     {
@@ -126,11 +128,10 @@ class RegisterController extends Controller
      * Process this function after the user has been registered.
      *
      * @param Request $request Form request object
-     * @param Users   $users   The registered user
      *
      * @return    \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    protected function registered( Request $request, Users $user )
+    protected function registered( Request $request )
     {
         if( $request->ajax() ){
             return response()->json( [ 'redirectUrl' => $this->redirectPath() ] );

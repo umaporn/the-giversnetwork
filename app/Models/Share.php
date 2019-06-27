@@ -161,6 +161,7 @@ class Share extends Model
      * Get share all list.
      *
      * @param Request $request Request Object
+     * @param string  $limit   Limit of content
      *
      * @return LengthAwarePaginator list of share
      */

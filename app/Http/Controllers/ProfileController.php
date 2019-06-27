@@ -11,7 +11,6 @@ use App\Models\UserInterestIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use App\Models\Users;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -35,7 +34,10 @@ class ProfileController extends Controller
     /**
      * Initialize RegisterController class.
      *
-     * @param Users $users Users model
+     * @param Users                $users                Users model
+     * @param InterestIn           $interestIn           InterestIn model
+     * @param OrganizationCategory $organizationCategory OrganizationCategory model
+     * @param UserInterestIn       $userInterestIn       UserInterestIn model
      */
     public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory, UserInterestIn $userInterestIn )
     {
@@ -48,7 +50,7 @@ class ProfileController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param array $data
+     * @param array $datas
      *
      * @return \Illuminate\Contracts\Validation\Validator
      */
@@ -80,7 +82,7 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
      */
-    public function getEditProfileForm( Request $request )
+    public function getEditProfileForm()
     {
         $user                     = $this->usersModel->getUserProfile();
         $interestList             = $this->interestInModel->getInterestInList();
@@ -134,6 +136,8 @@ class ProfileController extends Controller
 
     /**
      * Load a user profile page.
+     *
+     * @param string $id Users id
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
      */

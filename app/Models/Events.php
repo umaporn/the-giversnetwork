@@ -32,7 +32,8 @@ class Events extends Model
     /**
      * Get a list of events for displaying.
      *
-     * @param Request $request Events request object
+     * @param Request $request Request object
+     * @param int     $limit   limit of content
      *
      * @return LengthAwarePaginator A list of events for home page
      */
