@@ -85,12 +85,12 @@
                 </div>
                 <div class="grid-x">
                     <article class="cell grid-x small-12 share-space">
-                        <div class="cell small-12 medium-2">
+                        <div class="cell small-12 medium-6">
                             <figure class="share-image">
                                 <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
                             </figure>
                         </div>
-                        <div class="cell grid-x small-9 medium-10">
+                        <div class="cell grid-x small-12 medium-6">
                             <a href="#">
                                 <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Suspendisse eget nibh arcu.</h4>
@@ -112,12 +112,12 @@
                         </div>
                     </article>
                     <article class="cell grid-x small-12 share-space">
-                        <div class="cell small-12 medium-2">
+                        <div class="cell small-12 medium-6">
                             <figure class="share-image">
                                 <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
                             </figure>
                         </div>
-                        <div class="cell grid-x small-9 medium-10">
+                        <div class="cell grid-x small-12 medium-6">
                             <a href="#">
                                 <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Suspendisse eget nibh arcu.</h4>
@@ -139,12 +139,12 @@
                         </div>
                     </article>
                     <article class="cell grid-x small-12 share-space">
-                        <div class="cell small-12 medium-2">
+                        <div class="cell small-12 medium-6">
                             <figure class="share-image">
                                 <img src="{{ asset(config('images.home.share.home_share_01' )) }}">
                             </figure>
                         </div>
-                        <div class="cell grid-x small-9 medium-10">
+                        <div class="cell grid-x small-12 medium-6">
                             <a href="#">
                                 <h4 class="cell">Title - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                     Suspendisse eget nibh arcu.</h4>

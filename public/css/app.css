@@ -24080,7 +24080,7 @@ body:lang(en) .language li.en a {
 }
 
 .share-image {
-  padding-right: 1.25rem;
+  margin-right: 1.25rem;
 }
 
 @media screen and (max-width: 39.99875em) {

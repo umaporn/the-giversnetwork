@@ -108,7 +108,7 @@
     }
 
     &-image {
-        padding-right: $space-box;
+        margin-right: $space-box;
         @include breakpoint(small only) {
             padding-right: 0;
         }
