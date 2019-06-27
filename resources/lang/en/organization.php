@@ -29,4 +29,11 @@ return [
     'address'              => 'Address',
     'phone'                => 'Phone',
     'email'                => 'Email',
+    'website'              => 'Website',
+    'facebook'             => 'Facebook',
+    'twitter'              => 'Twitter',
+    'youtube'              => 'Youtube',
+    'instagram'            => 'Instagram',
+    'linked_in'            => 'LinkedIn',
+    'about'                => 'About',
 ];
