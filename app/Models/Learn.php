@@ -36,11 +36,11 @@ class Learn extends Model
      *
      * @return LengthAwarePaginator A list of learn for home page
      */
-    public function getHomeLearnList( Request $request )
+    public function getHomeLearnList( Request $request, $limit = 4 )
     {
         $builder = $this->with( [ 'learnCategory' ] )->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'learn', $request, [], '3' );
+        $data = Search::search( $builder, 'learn', $request, [], $limit );
 
         return $this->transformLearnContent( $data );
     }

@@ -35,7 +35,7 @@
             </div>
         </article>
     @endforeach
-    @if( $data['share']->nextPageUrl() ))
+    @if($data['share']->total())
         <a data-url="{{ $data['share']->nextPageUrl() }}" id="loadMore" class="load-more">@lang('button.view_more')
             <i class="fas fa-caret-down"></i>
         </a>

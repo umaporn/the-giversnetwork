@@ -84,7 +84,7 @@ class LearnController extends Controller
     public function detail( Learn $learn, Request $request )
     {
         $data  = $this->learnModel->getLearnDetail( $learn );
-        $other = $this->learnModel->getHomeLearnList( $request );
+        $other = $this->learnModel->getHomeLearnList( $request, '3' );
 
         return view( 'learn.detail', compact( 'data', 'other' ) );
     }

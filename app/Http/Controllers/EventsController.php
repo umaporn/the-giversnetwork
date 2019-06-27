@@ -64,7 +64,7 @@ class EventsController extends Controller
     public function detail( Events $events, Request $request )
     {
         $data  = $this->eventsModel->getEventsDetail( $events );
-        $other = $this->eventsModel->getHomeEventsList( $request );
+        $other = $this->eventsModel->getHomeEventsList( $request, '3' );
 
         return view( 'events.detail', compact( 'data', 'other' ) );
     }

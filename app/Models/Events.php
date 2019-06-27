@@ -36,11 +36,11 @@ class Events extends Model
      *
      * @return LengthAwarePaginator A list of events for home page
      */
-    public function getHomeEventsList( Request $request )
+    public function getHomeEventsList( Request $request, $limit = 4 )
     {
         $builder = $this->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'events', $request, [], '3' );
+        $data = Search::search( $builder, 'events', $request, [], $limit );
 
         return $this->transformHomeEventsContent( $data );
     }
