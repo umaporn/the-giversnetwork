@@ -5,7 +5,7 @@
             <label for="email" class="form-label">@lang('user.email')</label>
         </div>
         <div class="cell small-12">
-            <input type="email" id="email" name="email" class="form-fill" required autofocus value="member@gmail.com">
+            <input type="email" id="email" name="email" class="form-fill" required autofocus value="">
             <p id="email-help-text" class="alert help-text hide"></p>
         </div>
     </div>

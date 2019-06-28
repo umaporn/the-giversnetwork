@@ -1,21 +1,20 @@
 @extends('admin.layouts.app')
 
-@section('page-title', __('home.page_title.index'))
-@section('page-description', __('home.page_description.index'))
+@section('page-title', __('admin.page_title.index'))
+@section('page-description', __('admin.page_description.index'))
 
 @section('content')
     <section class="admin">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <h2 class="topic-light">Admin</h2>
+                <h2 class="topic-light">@lang('admin.page_title.index')</h2>
             </div>
         </div>
         <nav class="grid-x padding-breadcrumbs">
             <div class="cell auto">
                 <ul class="breadcrumbs">
-                    <li><a href="#">Home</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> Admin
+                        <span class="show-for-sr">Current: </span> @lang('admin.page_title.index')
                     </li>
                 </ul>
             </div>

@@ -1,8 +1,7 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('page-title', __('home.page_title.index'))
 @section('page-description', __('home.page_description.index'))
-@section('page-icon', 'fi-home')
 
 @section('content')
     <section class="admin">
@@ -26,7 +25,7 @@
             <div class="cell auto">
                 <div class="grid-x">
                     <div class="cell small-12 large-3 xxlarge-2 show-for-large">
-                        @include('admin.menu_admin')
+                        @include('admin.layouts.side_menu')
                     </div>
                     <div class="cell small-12 large-8 xxlarge-9">
                         <article class="admin-content">
