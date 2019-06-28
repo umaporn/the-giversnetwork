@@ -71,9 +71,11 @@ class UserController extends Controller
         }
 
         if( $request->ajax() ){
-            return response()->json( [ 'success' => $success, 'message' => __('user_admin.user_management.remove_user_success'), 'redirectedUrl' => route( 'admin.user.index' ), ] );
-        } else {
-            return redirect()->route( 'admin.user.index' );
+            return response()->json( [
+                                         'success'       => $success,
+                                         'message'       => __( 'user_admin.user_management.remove_user_success' ),
+                                         'redirectedUrl' => route( 'admin.user.index' ),
+                                     ] );
         }
     }
 }
