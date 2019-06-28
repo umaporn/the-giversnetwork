@@ -52,21 +52,31 @@ return [
 
     'mainMenuAdmin' => [
         [
-            'parentMenu' => true,
             'routeName'  => '#',
             'menuText'   => 'user_admin.page_link.my_profile',
             'childMenu'  => [
                 [
-                    'routeName' => '#',
-                    'menuText'  => 'user.page_link.index',
-                    'icon'      => 'fas fa-caret-right',
+                    'routeName'  => 'admin.editProfile',
+                    'menuText'   => 'user.page_link.edit',
+                    'icon'       => 'fas fa-caret-right',
                 ],
             ],
         ],
         [
-            'parentMenu' => true,
             'routeName'  => '#',
-            'menuText'   => 'user.page_link.index',
+            'menuText'   => 'learn_admin.page_link.index',
+            'childMenu'  => [
+                [
+                    'routeName'  => 'admin.learnAll',
+                    'menuText'   => 'learn_admin.page_link.all',
+                    'icon'       => 'fas fa-caret-right',
+                ],
+                [
+                    'routeName'  => 'admin.learnAdd',
+                    'menuText'   => 'learn_admin.page_link.add',
+                    'icon'       => 'fas fa-caret-right',
+                ],
+            ],
         ],
     ],
 ];

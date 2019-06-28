@@ -9,7 +9,10 @@ return [
     */
 
     'page_link' => [
-        'index' => 'User Management',
+        'index'   => 'User Management',
+        'create'  => 'Create a new user.',
+        'edit'    => 'Edit Profile',
+        'profile' => 'My Profile',
     ],
 
     'page_title' => [
