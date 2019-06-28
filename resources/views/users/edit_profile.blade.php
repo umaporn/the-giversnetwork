@@ -14,8 +14,8 @@
         <nav class="grid-x padding-breadcrumbs">
             <div class="cell auto">
                 <ul class="breadcrumbs">
-                    <li><a href="#">@lang('home.page_title.index')</a></li>
-                    <li><a href="#">@lang('user.page_title.profile')</a></li>
+                    <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
+                    <li><a href="{{ route('user.getProfile') }}">@lang('user.page_title.profile')</a></li>
                     <li>
                         <span class="show-for-sr">Current: </span> @lang('user.page_title.edit')
                     </li>
