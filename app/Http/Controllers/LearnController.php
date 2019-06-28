@@ -79,12 +79,15 @@ class LearnController extends Controller
     /**
      * Display learn detail page.
      *
+     * @param Learn   $learn   Learn Model
+     * @param Request $request Request object
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn detail page
      */
     public function detail( Learn $learn, Request $request )
     {
         $data  = $this->learnModel->getLearnDetail( $learn );
-        $other = $this->learnModel->getHomeLearnList( $request );
+        $other = $this->learnModel->getHomeLearnList( $request, '3' );
 
         return view( 'learn.detail', compact( 'data', 'other' ) );
     }

@@ -5,11 +5,9 @@
 
 namespace App\Models;
 
-use App\Libraries\FileUpload;
 use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
@@ -89,7 +87,7 @@ class Give extends Model
     /**
      * Transform give information.
      *
-     * @param Collection $giveList A list of give
+     * @param LengthAwarePaginator $giveList A list of give
      *
      * @return LengthAwarePaginator Home give list for display
      */

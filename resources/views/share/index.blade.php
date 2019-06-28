@@ -16,7 +16,7 @@
             <div class="cell small-12">
                 <nav aria-label="You are here:" role="navigation">
                     <ul class="breadcrumbs">
-                        <li><a href="#">@lang('home.page_title.index')</a></li>
+                        <li><a href="{{ route('home.index') }}">@lang('home.page_title.index')</a></li>
                         <li>
                             <span class="show-for-sr">Current: </span> @lang('share.page_title.index')
                         </li>
@@ -24,6 +24,17 @@
                 </nav>
             </div>
         </section>
+        <div class="grid-x padding-content align-center padding-top-0">
+            <div class="cell small-12 large-8">
+                <form id="search-form-detail" class="cell search" method="GET" action="{{ route('share.index') }}">
+                    {{ csrf_field() }}
+                    <input name="search" type="search" class="search-text" placeholder="Search">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
         <section class="padding-tb-0 padding-content">
             <div class="grid-x grid-margin-x grid-margin-y">
                 <div class="cell small-12">
@@ -31,8 +42,7 @@
                         <h2 class="cell auto topic-dark">@lang('share.challenge')</h2>
                         <div class="cell shrink view-all">
                             <a href="{{ route('challenge.index') }}">
-                                <span>@lang('button.view_all')</span>
-                                <i class="fas fa-caret-right"></i> <i class="fas fa-caret-right"></i>
+                                <span>@lang('button.view_all') @lang('share.challenge')</span>
                             </a>
                         </div>
                     </div>
@@ -57,8 +67,8 @@
                     </div>
                 </div>
             </div>
-
         </section>
+
         <div class="grid-x grid-margin-x padding-content">
             <div class="cell small-12 medium-12 large-8">
                 <section class="articles">
@@ -79,6 +89,7 @@
             </div>
             <div class="cell small-12 medium-12 large-4">
                 @include('sidebar.news')
+                @include('sidebar.events')
             </div>
         </div>
     </section>

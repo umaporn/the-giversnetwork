@@ -17,6 +17,10 @@ class OrganizationSeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\Organization::class, 20 )->create();
+        //factory( \App\Models\Organization::class, 20 )->create();
+        $organizations = config('organization');
+        foreach( $organizations as $item ){
+            DB::table( 'organization' )->insert( $item );
+        }
     }
 }

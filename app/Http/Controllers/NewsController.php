@@ -36,7 +36,9 @@ class NewsController extends Controller
     /**
      * Display news page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View news page
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      */
     public function index( Request $request )
     {
@@ -55,13 +57,16 @@ class NewsController extends Controller
     /**
      * Display news detail page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View News detail page
+     * @param News    $news    News model
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View News detail view
      */
     public function detail( News $news, Request $request )
     {
         $data  = $this->newsModel->getNewsDetail( $news );
         $other = $this->newsModel->getHomeNewsList( $request );
 
-        return view( 'news.detail',compact('data', 'other') );
+        return view( 'news.detail', compact( 'data', 'other' ) );
     }
 }

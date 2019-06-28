@@ -28,7 +28,7 @@
                 <form action="{{ route('share.createThread') }}"
                       method="POST"
                       enctype="multipart/form-data"
-                      class="submission-form form-onerow"
+                      class="recaptcha-form form-onerow"
                 >
                     {{ csrf_field() }}
 
@@ -37,7 +37,8 @@
                             <label for="topic" class="form-label">@lang('share.create_thread_form.topic')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="text" id="title_english" name="title_english" class="form-fill" required>
+                            <input type="text" id="title_english" name="title_english" class="form-fill" maxlength="90" required>
+                            <div class="float-right form-flex show-text" id="count_title_english"></div>
                             <p id="title_english-help-text" class="alert help-text help-text  hide"></p>
                         </div>
                     </div>
@@ -46,7 +47,8 @@
                             <label for="description" class="form-label">@lang('share.create_thread_form.description')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <textarea required id="content_english" name="content_english" class="form-fill" rows="3"></textarea>
+                            <textarea maxlength="5000" required id="content_english" name="content_english" class="form-fill" rows="3"></textarea>
+                            <div class="float-right form-flex show-text" id="count_content_english"></div>
                             <p id="content_english-help-text" class="alert help-text help-text  hide"></p>
                         </div>
                     </div>
@@ -58,7 +60,7 @@
                             <div class="form-file-image">
                                 <div class="form-file">
                                     <input type="file" class="form-fileupload" id="image_path" name="image_path[]" multiple
-                                           data-maxfile="1024"/>
+                                           data-maxfile="5,120"/>
                                     <p id="original-help-text" class="alert help-text hide"></p>
                                     <div class="form-file-style">
                                         <div class="form-flex btn-blue">@lang('share.create_thread_form.browse')</div>
@@ -83,6 +85,9 @@
                             </div>
                         </div>
                     </div>
+
+                    @captcha
+
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-offset-2 large-9">
                             <button class="btn-green btn-long">@lang('button.create_thread')</button>

@@ -17,14 +17,16 @@ class CreateEventsTable extends Migration
     {
         Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
+            $table->unsignedInteger( 'fk_user_id' )->nullable();
+            $table->foreign( 'fk_user_id' )->references( 'id' )->on( 'users' );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );
             $table->text( 'description_thai' );
             $table->text( 'description_english' );
             $table->string( 'location_thai', 255 );
             $table->string( 'location_english', 255 );
-            $table->string( 'host_thai', 255 );
-            $table->string( 'host_english', 255 );
+            $table->string( 'host_thai', 255 )->nullable();
+            $table->string( 'host_english', 255 )->nullable();
             $table->string( 'host_image' );
             $table->string( 'link', 255 );
             $table->date( 'start_date' );

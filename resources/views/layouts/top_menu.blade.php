@@ -1,20 +1,20 @@
 <header id="header" data-sticky-container>
-    <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: small;">
-        <nav class="grid-x top-bar topbar-responsive padding-content">
-            <div class="cell medium-shrink top-bar-title">
-				<span data-responsive-toggle="topbar-responsive" data-hide-for="medium">
+    <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: xxlarge;">
+        <nav class="grid-x topbar-responsive padding-content">
+            <div class="cell large-shrink top-bar-title">
+				<span data-responsive-toggle="topbar-responsive" data-hide-for="large">
 					<button class="menu-icon" type="button" data-toggle></button>
 				</span>
                 <a href="{{ route('home.index') }}" class="topbar-responsive-logo">
                     <img src="{{ asset( config( 'app.logo' ) ) }}" alt="@lang('header.images.logo')"/>
                 </a>
             </div>
-            <div id="topbar-responsive" class="cell medium-auto topbar-responsive-links align-self-stretch">
+            <div class="cell large-auto topbar-responsive-links align-self-stretch" id="topbar-responsive">
                 <ul class="menu vertical medium-horizontal float-right" data-smooth-scroll>
                     @each( 'layouts.main_menu', $mainMenu, 'menuItem' )
                 </ul>
             </div>
-            <div class="cell medium-shrink align-self-middle grid-middle">
+            <div class="cell large-shrink align-self-middle grid-middle">
                 @if( Auth::guest() )
                     <ul class="user-profile float-left no-bullet">
                         <li><a href="{{ route('register') }}">@lang('register.page_link.index')</a></li>
@@ -47,13 +47,13 @@
                 @endif
 
                 @if( Auth::user() )
-                    <section class="user-profile-after float-left" data-toggle="user-menu">
+                    <section class="user-profile-after" data-toggle="user-menu">
                         <figure class="user-profile-image">
                             <img src="{{ Auth::user()->image_path ? Storage::url( Auth::user()->image_path ) : asset( config( 'images.home.profile.user_profile' ) ) }}"
                                  alt="{{ Auth::user()->username }}">
                         </figure>
                         <p class="user-profile-name">{{ Auth::user()->username }} <i class="fas fa-caret-down"></i></p>
-                        <div class="dropdown-pane user-menu" id="user-menu" data-dropdown data-hover="true" data-hover-pane="true" data-v-offset=15>
+                        <div class="dropdown-pane user-menu" id="user-menu" data-dropdown data-hover="true">
                             <ul class="user-menu-show">
                                 <li>
                                     <a href="{{ route('user.editProfile') }}"><i class="fas fa-user-edit"></i> @lang('user.edit_profile')
@@ -72,7 +72,6 @@
                         </div>
                     </section>
                 @endif
-
                 <ul class="language float-right no-bullet">
                     @foreach( config('app.language_codes') as $languageCode )
                         <li class="{{$languageCode}}">

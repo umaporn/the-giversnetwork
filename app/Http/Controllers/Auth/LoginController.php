@@ -10,8 +10,6 @@ use App\Models\Users;
 use App\Support\Facades\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 /**
  * Login Controller
@@ -27,7 +25,9 @@ class LoginController extends Controller
     }
 
     /**
-     * Initialize LoginController class.
+     * LoginController constructor.
+     *
+     * @param Users $users Users model
      */
     public function __construct( Users $users )
     {

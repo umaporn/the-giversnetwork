@@ -62,6 +62,13 @@
     background-color: $color-dark-gray;
     color: $white;
 
+    a {
+        color: $white;
+        &:hover {
+            color: $color-blue;
+        }
+    }
+
     &.padding-content {
         padding-top: $space-box;
         padding-bottom: $space-box;

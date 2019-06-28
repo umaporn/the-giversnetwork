@@ -24,7 +24,7 @@
         <div class="grid-x padding-content">
             <div class="cell small-12">
                 <h2 class="topic-dark">@lang('user.create_profile')</h2>
-                <form class="submission-form form-onerow" method="POST" action="{{ route('submitRegister') }}">
+                <form class="recaptcha-form form-onerow" method="POST" action="{{ route('submitRegister') }}">
                     {{ csrf_field() }}
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-2">
@@ -123,7 +123,7 @@
                         </div>
                         <div class="cell small-12 large-9">
                             <a class="btn-blue" data-open="addInterested">
-                                <i class="fas fa-plus"></i> @lang('user.add_my_interested')
+                                <i class="fas fa-plus"></i> / <i class="fas fa-minus"></i> @lang('user.add_my_interested')
                             </a>
                             <ul class="show-interested" id="interest-list">
                             </ul>
@@ -136,6 +136,9 @@
                             <label for="terms">Agree with <a href=""> Terms of Service & Privacy</a></label>
                         </div>
                     </div>
+
+                    @captcha
+
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-offset-2 large-9">
                             <button class="btn-green btn-long">@lang('button.sign_up')</button>

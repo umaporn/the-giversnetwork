@@ -9,22 +9,22 @@ return [
     */
 
     'page_link' => [
-        'index'  => 'Challenge',
-        'detail' => 'Challenge: :challenge_title',
+        'index'  => 'Challenges',
+        'detail' => 'Challenges: :challenge_title',
     ],
 
     'page_title' => [
-        'index'  => 'Challenge',
-        'detail' => 'Challenge: :challenge_title',
+        'index'  => 'Challenges',
+        'detail' => 'Challenges: :challenge_title',
     ],
 
     'page_description' => [
-        'index'  => 'Challenge page',
-        'detail' => 'Challenge: :challenge_title',
+        'index'  => 'Challenges page',
+        'detail' => 'Challenges: :challenge_title',
     ],
 
-    'challenge'       => 'Challenge',
-    'other_challenge' => 'other challenge',
+    'challenge'       => 'Challenges',
+    'other_challenge' => 'other challenges',
     'likes_this_thread'     => 'Likes this thread',
     'write_comment'         => 'Write A Comment',
     'what_are_you_thoughts' => 'What are you thoughts?',

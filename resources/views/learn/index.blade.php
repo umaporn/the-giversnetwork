@@ -24,6 +24,18 @@
                 </nav>
             </div>
         </section>
+
+        <div class="grid-x padding-content align-center padding-top-0">
+            <div class="cell small-12 large-8">
+                <form id="search-form-detail" class="cell search" method="GET" action="{{ route('learn.index') }}">
+                    {{ csrf_field() }}
+                    <input name="search" type="search" class="search-text" placeholder="Search">
+                    <button type="submit" class="search-button">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
         <section class="most-popular padding-content">
             <div class="grid-x grid-margin-x grid-margin-y">
                 <div class="cell small-12">
@@ -50,7 +62,6 @@
                     </div>
                 </div>
             </div>
-
         </section>
         <div class="grid-x grid-margin-x padding-content">
             <div class="cell small-12 medium-12 large-8">

@@ -21,7 +21,9 @@
             </div>
         </article>
     @endforeach
-    <a data-url="{{ $data['challenge']->nextPageUrl() }}" id="loadMore" class="load-more">@lang('button.view_more')
-        <i class="fas fa-caret-down"></i>
-    </a>
+    @if($data['challenge']->nextPageUrl())
+        <a data-url="{{ $data['challenge']->nextPageUrl() }}" id="loadMore" class="load-more">@lang('button.view_more')
+            <i class="fas fa-caret-down"></i>
+        </a>
+    @endif
 </div>

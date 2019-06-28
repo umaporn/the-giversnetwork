@@ -7,7 +7,7 @@ return [
         'currentPassword'  => 'sometimes|required|correct_password',
         'fk_permission_id' => 'required',
         'phone_number'     => 'sometimes|numeric',
-        'image_path'       => 'sometimes|required_without:display_image|image|max:1000|dimensions:max_width=500,max_height=500',
+        'image_path'       => 'sometimes|required_without:display_image|image|max:5000|dimensions:max_width=500,max_height=500',
     ],
     'reset_password'    => [
         'email'    => 'required|email|max:254',
@@ -32,6 +32,6 @@ return [
         'name'             => 'required|string|min:3|max:500',
         'amount'           => 'required|numeric',
         'address'          => 'sometimes|string',
-        'description_text' => 'required|string|min:3|max:3000',
+        'description_text' => 'required|string|min:3|max:200',
     ],
 ];

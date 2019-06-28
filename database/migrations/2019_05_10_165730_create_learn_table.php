@@ -17,7 +17,7 @@ class CreateLearnTable extends Migration
     {
         Schema::create( self::Table, function( Blueprint $table ){
             $table->increments( 'id' );
-            $table->unsignedInteger( 'fk_category_id' );
+            $table->unsignedInteger( 'fk_category_id' )->nullable();;
             $table->foreign( 'fk_category_id' )->references( 'id' )->on( 'learn_category' );
             $table->string( 'title_thai', 255 );
             $table->string( 'title_english', 255 );

@@ -33,13 +33,17 @@ class ChallengeController extends Controller
     /**
      * ChallengeController constructor.
      *
-     * @param Challenge $challenge Challenge Model
+     * @param Challenge        $challenge        Challenge Model
+     * @param News             $news             News Model
+     * @param Events           $events           Events Model
+     * @param ChallengeLike    $challengeLike    ChallengeLike Model
+     * @param ChallengeComment $challengeComment ChallengeComment Model
      */
     public function __construct( Challenge $challenge, News $news, Events $events, ChallengeLike $challengeLike, ChallengeComment $challengeComment )
     {
         $this->challengeModel        = $challenge;
         $this->newsModel             = $news;
-        $this->eventsModel             = $events;
+        $this->eventsModel           = $events;
         $this->challengeLikeModel    = $challengeLike;
         $this->challengeCommentModel = $challengeComment;
     }
@@ -54,7 +58,7 @@ class ChallengeController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'comment_text'    => config( 'validation.challenge.comment_text' ),
+            'comment_text' => config( 'validation.challenge.comment_text' ),
         ] );
     }
 

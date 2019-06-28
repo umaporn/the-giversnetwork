@@ -32,15 +32,16 @@ class Learn extends Model
     /**
      * Get a list of learn for displaying.
      *
-     * @param Request $request Learn request object
+     * @param Request $request Request object
+     * @param int     $limit   Limit of content
      *
      * @return LengthAwarePaginator A list of learn for home page
      */
-    public function getHomeLearnList( Request $request )
+    public function getHomeLearnList( Request $request, $limit = 4 )
     {
         $builder = $this->with( [ 'learnCategory' ] )->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'learn', $request, [], '3' );
+        $data = Search::search( $builder, 'learn', $request, [], $limit );
 
         return $this->transformLearnContent( $data );
     }

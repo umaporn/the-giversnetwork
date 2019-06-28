@@ -4,10 +4,8 @@
  */
 namespace App\Libraries;
 
-use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
-use Illuminate\Support\Facades\Storage;
 use InterventionImage;
 
 /**

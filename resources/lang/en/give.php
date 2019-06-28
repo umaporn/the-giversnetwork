@@ -27,8 +27,8 @@ return [
     'give_category_selection' => 'Please select category',
     'give_type_selection'     => 'Please select give or receive item',
     'receive'                 => 'Receive',
-    'give_item'               => 'Give Item',
-    'tell_giver'              => 'Tell Giver',
+    'give_item'               => 'Give/Receive Item',
+    'tell_giver'              => 'Give/Receive Item',
     'contact_giver'           => 'Contact giver',
     'do_you_need'             => 'Do you need this items?',
     'i_need_contact'          => 'I need contact with',
@@ -39,16 +39,16 @@ return [
     'create_item_form' => [
         'choose'              => 'Choose',
         'give_item'           => 'Give item',
-        'receive'             => 'Receive',
+        'receive'             => 'Receive / Needed Item',
         'category'            => 'Category',
-        'name'                => 'Name',
+        'name'                => 'Title',
         'amount'              => 'Amount',
         'address'             => 'Address',
         'use_address'         => 'Use address in my profile',
         'description'         => 'Description',
         'image'               => 'Image',
         'browse'              => 'Browse',
-        'image_condition'     => 'Maximum file size: 1MB/Image',
+        'image_condition'     => 'Maximum file size: 5MB/Image',
         'expired_date'        => 'Post expiry date',
         '3_days'              => '3 days',
         '1_week'              => '1 week',
@@ -56,8 +56,11 @@ return [
         '6_months'            => '6 months',
         'saved_give_error'    => 'The give content was not saved successfully.',
         'saved_image_error'   => 'The give image was not saved successfully.',
-        'saved_give_success'  => 'Successfully save the give content. Please wait for approval.',
+        'saved_give_success'  => 'You have successfully added an item to The Givers Network Exchange.
+                                    Your item will be posted as soon as it is approved.',
         'saved_image_success' => 'Successfully save the give image',
     ],
+
+    'conditions' => ' All posts are subject to Admin review and will be public once reviewed and approved. The admins of the Givers Network have the right to refuse posts at their discretion. Content containing offensive, illegal or spam will be deleted without notice.'
 
 ];

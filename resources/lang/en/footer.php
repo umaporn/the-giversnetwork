@@ -28,7 +28,8 @@ return [
         ],
     ],
 
-    'join_me'          => 'Let\'s change the world together! Will you join me?',
+    'join_me'          => 'Let\'s change the world together! Will you join us?',
     'copy_rights'      => '©' . date( 'Y' ) . ' The Giver Network',
-    'term_of_services' => 'Terms of Service | Privacy Policy',
+    'term_of_services' => 'Terms of Service',
+    'policy'           => 'Privacy Policy',
 ];

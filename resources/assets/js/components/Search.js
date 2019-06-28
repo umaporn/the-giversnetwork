@@ -11,7 +11,7 @@ const Search = (function(){
 		 * @desc div element to display a search result
 		 * @constant {jQuery}
 		 */
-		ResultDiv        = $( '.search-result' ),
+		ResultDiv        = $( '#search-result' ),
 		/**
 		 * @memberOf Search
 		 * @access public

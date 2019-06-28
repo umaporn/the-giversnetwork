@@ -13,7 +13,8 @@
 @section('og-url', url()->current())
 @section('og-description', $data['title'])
 @section('og-image', $data['image_path'])
-
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script type="IN/Share" data-url="{{ url()->current() }}" data-counter="top"></script>
 @section('content')
     <section class="share detail">
         <div class="grid-x align-middle topic padding-content">
@@ -48,10 +49,10 @@
                                     <div class="profile">
                                         <a href="{{ route('user.getUserProfile', ['id' => $data->users['id']]) }}" target="_blank">
                                             @if($data->users['image_path'])
-                                            <figure class="display-profile">
-                                                <img src="{{ $data->users['image_path'] ? Storage::url($data->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
-                                                     alt="{{ $data['username'] }}">
-                                            </figure>
+                                                <figure class="display-profile">
+                                                    <img src="{{ $data->users['image_path'] ? Storage::url($data->users['image_path'] ) : asset(config('images.home.profile.user_profile' )) }}"
+                                                         alt="{{ $data['username'] }}">
+                                                </figure>
                                             @endif
                                             <span>{{ $data['username'] }}</span>
                                         </a>
@@ -61,45 +62,45 @@
                         </div>
 
                         @if($data->shareImage)
-                        <div class="cell small-12 text-center slide-thumb">
-                            <div class="gallery-top">
-                                <div class="swiper-wrapper">
+                            <div class="cell small-12 text-center slide-thumb">
+                                <div class="gallery-top">
+                                    <div class="swiper-wrapper">
 
-                                    @foreach( $data->shareImage as $share_image )
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-container">
-                                                <figure>
-                                                    <img src="{{ $share_image['image_path'] }}" alt="{{ $share_image['alt'] }}">
-                                                </figure>
+                                        @foreach( $data->shareImage as $share_image )
+                                            <div class="swiper-slide">
+                                                <div class="swiper-slide-container">
+                                                    <figure>
+                                                        <img src="{{ $share_image['image_path'] }}" alt="{{ $share_image['alt'] }}">
+                                                    </figure>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
+                                    </div>
+                                    <div class="swiper-button-next"><i class="fas fa-chevron-right fa-2x"></i></div>
+                                    <div class="swiper-button-prev"><i class="fas fa-chevron-left fa-2x"></i></div>
                                 </div>
-                                <div class="swiper-button-next"><i class="fas fa-chevron-right fa-2x"></i></div>
-                                <div class="swiper-button-prev"><i class="fas fa-chevron-left fa-2x"></i></div>
-                            </div>
-                            <div class="gallery-thumbs">
-                                <div class="swiper-wrapper">
-                                    @forelse( $data->shareImage as $share_image )
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-container">
-                                                <figure>
-                                                    <img src="{{ $share_image['image_path'] }}" alt="{{ $share_image['alt'] }}">
-                                                </figure>
+                                <div class="gallery-thumbs">
+                                    <div class="swiper-wrapper">
+                                        @forelse( $data->shareImage as $share_image )
+                                            <div class="swiper-slide">
+                                                <div class="swiper-slide-container">
+                                                    <figure>
+                                                        <img src="{{ $share_image['image_path'] }}" alt="{{ $share_image['alt'] }}">
+                                                    </figure>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @empty
-                                        <div class="swiper-slide">
-                                            <div class="swiper-slide-container">
-                                                <figure>
-                                                    <img src="{{ asset(config('images.placeholder.700x400')) }}" alt="">
-                                                </figure>
+                                        @empty
+                                            <div class="swiper-slide">
+                                                <div class="swiper-slide-container">
+                                                    <figure>
+                                                        <img src="{{ asset(config('images.placeholder.700x400')) }}" alt="">
+                                                    </figure>
+                                                </div>
                                             </div>
-                                        </div>
-                                    @endforelse
+                                        @endforelse
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         @endif
                         <div class="cell small-12">
                             <p>{!! $data['content'] !!}</p>
@@ -128,6 +129,12 @@
                                             <a target="popup"
                                                onclick="window.open('https://twitter.com/share?text={{$data['title']}}','popup','width=600,height=500')">
                                                 <i class="fab fa-twitter-square fa-2x"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a target="popup"
+                                               onclick="window.open('https://www.linkedin.com/sharing/share-offsite/?text={{$data['title']}}&url={{url()->current()}}', 'popup', 'width=600,height=500')">
+                                                <i class="fab fa-linkedin fa-2x"></i>
                                             </a>
                                         </li>
                                     </ul>

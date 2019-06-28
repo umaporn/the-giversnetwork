@@ -20,17 +20,28 @@ class Events extends Model
     protected $table = 'events';
 
     /**
+     * Get user model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo User model relationship
+     */
+    public function users()
+    {
+        return $this->belongsTo( 'App\Models\Users', 'fk_user_id' );
+    }
+
+    /**
      * Get a list of events for displaying.
      *
-     * @param Request $request Events request object
+     * @param Request $request Request object
+     * @param int     $limit   limit of content
      *
      * @return LengthAwarePaginator A list of events for home page
      */
-    public function getHomeEventsList( Request $request )
+    public function getHomeEventsList( Request $request, $limit = 4 )
     {
         $builder = $this->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'events', $request, [], '3' );
+        $data = Search::search( $builder, 'events', $request, [], $limit );
 
         return $this->transformHomeEventsContent( $data );
     }
@@ -44,7 +55,7 @@ class Events extends Model
      */
     public function getEventsForSidebar( Request $request )
     {
-        $builder = $this->where( 'status', 'public' );
+        $builder = $this->with( [ 'users' ] )->where( 'status', 'public' );
 
         $data = Search::search( $builder, 'events', $request, [], '1' );
 
@@ -64,6 +75,7 @@ class Events extends Model
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'hostname', Utility::getLanguageFields( 'host', $list ) );
             $list->setAttribute( 'host_image', Utility::getImages( $list['host_image'] ) );
+            $list->setAttribute( 'image_path', Utility::getImages( $list['image_path'] ) );
         }
 
         return $homeEventsList;
@@ -78,7 +90,7 @@ class Events extends Model
      */
     public function getUpComingEvents( Request $request )
     {
-        $builder = $this->where( [ 'status' => 'public', 'upcoming_status' => 'yes' ] )
+        $builder = $this->with( [ 'users' ] )->where( [ 'status' => 'public', 'upcoming_status' => 'yes' ] )
                         ->orderBy( 'start_date', 'desc' );
 
         $data = Search::search( $builder, 'events', $request, [], '3' );
@@ -95,7 +107,7 @@ class Events extends Model
      */
     public function getAllListEvents( Request $request )
     {
-        $builder = $this->where( [ 'status' => 'public' ] )->orderBy( 'id', 'desc' );
+        $builder = $this->with( [ 'users' ] )->where( [ 'status' => 'public' ] )->orderBy( 'id', 'asc' );
 
         $data = Search::search( $builder, 'events', $request );
 
@@ -111,7 +123,7 @@ class Events extends Model
      */
     public function getEventsDetail( Events $events )
     {
-        $events = $this->where( [ 'id' => $events->id ] )->first();
+        $events = $this->with( [ 'users' ] )->where( [ 'id' => $events->id ] )->first();
 
         if( $events ){
             $events->setAttribute( 'title', Utility::getLanguageFields( 'title', $events ) );

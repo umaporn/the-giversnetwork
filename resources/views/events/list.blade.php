@@ -16,10 +16,13 @@
                     <time datetime="{{ $events_all_list_item['event_date'] }}">{{ $events_all_list_item['event_date'] }}</time>
                 </div>
                 <div class="profile">
-                    <figure class="display-profile">
+                    {{--<figure class="display-profile">
                         <img src="{{ $events_all_list_item['host_image'] }}" alt="{{ $events_all_list_item['host_name'] }}">
                     </figure>
-                    <span>By {{ $events_all_list_item['hostname'] }}</span>
+                    <span>By {{ $events_all_list_item['hostname'] }}</span>--}}
+                    @if($events_all_list_item['hostname'])
+                        <span>Host by {{ $events_all_list_item['hostname'] }}</span>
+                    @endif
                 </div>
             </div>
         </article>

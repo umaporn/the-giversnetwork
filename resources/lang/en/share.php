@@ -24,7 +24,7 @@ return [
     ],
 
     'recent_share'          => 'Recent Share',
-    'challenge'             => 'Challenge',
+    'challenge'             => 'Challenges',
     'threads'               => 'Threads',
     'create_thread'         => 'Create Thread',
     'likes_this_thread'     => 'Likes this thread',
@@ -44,7 +44,7 @@ return [
         'description'         => 'Description',
         'image'               => 'Image',
         'browse'              => 'Browse',
-        'image_condition'     => 'maximum upload : 10 and file size: 1MB/Image',
+        'image_condition'     => 'maximum upload : 10 and file size: 5MB/Image',
         'file'                => 'File',
         'file_condition'      => 'PDF file only and maximun upload file size: 5MB',
         'saved_share_error'   => 'The share content was not saved successfully.',

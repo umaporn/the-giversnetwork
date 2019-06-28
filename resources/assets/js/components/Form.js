@@ -74,13 +74,10 @@ const Form = (function(){
 			                             accept: 'pdf',
 		                             } );
 
-		/*$( 'input[type=file]' ).change( function(){
-			$( '#image_path' ).val( $( this ).val() );
-		} );*/
-
 		$( '.toggle-password' ).click( function(){
 			$( this ).text( $( this ).text() === 'show' ? 'hide' : 'show' );
-			var input = $( $( this ).attr( 'toggle' ) );
+			var input = $("input[class='form-fill password']");
+
 			if( input.attr( 'type' ) === 'password' ){
 				input.attr( 'type', 'text' );
 			} else {
@@ -98,6 +95,16 @@ const Form = (function(){
 				address.removeAttr( 'disabled' );
 			}
 		} );
+
+		var text_max = 200;
+		$('#count_message').html(text_max + ' remaining');
+
+		$('#content_english').keyup(function() {
+			var text_length = $('#content_english').val().length;
+			var text_remaining = text_max - text_length;
+
+			$('#count_message').html(text_remaining + ' remaining');
+		});
 	}
 
 	return {

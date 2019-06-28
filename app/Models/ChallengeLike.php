@@ -29,6 +29,8 @@ class ChallengeLike extends Model
     /**
      * Get user like content.
      *
+     * @param Challenge $challenge Challenge Model
+     *
      * @return mixed
      */
     public function getIsChallengeLike( Challenge $challenge )

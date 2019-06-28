@@ -10,6 +10,8 @@ function globalRoutes()
     Route::get( 'file/{url}', 'MediaController@getFile' )->name( 'getFile' );
 
     Route::get( '/', 'HomeController@index' )->name( 'home.index' );
+    Route::get( 'terms', 'TermsController@terms' )->name( 'terms' );
+    Route::get( 'policy', 'TermsController@policy' )->name( 'policy' );
 
     Route::group( [ 'prefix' => 'learn', ], function(){
         Route::get( '', 'LearnController@index' )->name( 'learn.index' );

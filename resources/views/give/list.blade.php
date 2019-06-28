@@ -27,7 +27,7 @@
         @endforeach
     </section>
     <div class="give-load">
-        @if($data['allList']->nextPageUrl())
+        @if( $data['allList']->nextPageUrl() )
             <a data-url="{{ $data['allList']->nextPageUrl() . '&type=' . $give_item['type'] . '&category_id=' . $category_id }}"
                id="loadMore-{{ $give_item['type'] }}" class="load-more">
                 @lang('button.view_more')

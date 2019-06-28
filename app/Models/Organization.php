@@ -45,7 +45,7 @@ class Organization extends Model
     /**
      * Transform organization information.
      *
-     * @param Collection $organizationList A list of organization list
+     * @param LengthAwarePaginator $organizationList A list of organization list
      *
      * @return LengthAwarePaginator A list of organization
      */
@@ -54,6 +54,7 @@ class Organization extends Model
         foreach( $organizationList as $list ){
             $list->setAttribute( 'name', Utility::getLanguageFields( 'name', $list ) );
             $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->organizationCategory ) );
+            $list->setAttribute( 'image_path', Utility::getImages( $list['image_path'] ) );
         }
 
         return $organizationList;
@@ -69,7 +70,7 @@ class Organization extends Model
     public function getOrganizationAllList( Request $request )
     {
         $builder = $this->with( [ 'organizationCategory' ] )
-                        ->orderBy( 'id', 'desc' );
+                        ->orderBy( 'id', 'asc' );
 
         $fk_category_id = $request->get( 'category_id' ) ? $request->get( 'category_id' ) : '';
 
@@ -92,11 +93,13 @@ class Organization extends Model
      */
     public function getOrganizationDetail( Organization $organization )
     {
-        $organization = $this->with(['organizationCategory'])->where( [ 'id' => $organization->id ] )->first();
+        $organization = $this->with( [ 'organizationCategory' ] )->where( [ 'id' => $organization->id ] )->first();
 
         if( $organization ){
             $organization->setAttribute( 'name', Utility::getLanguageFields( 'name', $organization ) );
+            $organization->setAttribute( 'content', Utility::getLanguageFields( 'content', $organization ) );
             $organization->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $organization->organizationCategory ) );
+            $organization->setAttribute( 'image_path', Utility::getImages( $organization->image_path ) );
         }
 
         return $organization;

@@ -53,7 +53,7 @@ return [
     'phone_number'          => 'Phone',
     'address'               => 'Address',
     'organization'          => 'Organization',
-    'add_my_interested'     => 'Add My Interested',
+    'add_my_interested'     => 'My Interested',
     'type_of_organization'  => 'Type of Organization',
 
     'saved_user_success' => 'User saved successfully.',
@@ -61,7 +61,7 @@ return [
 
     'browser'             => 'Browser',
     'upload_file'         => 'Upload File',
-    'maximum_upload_file' => 'Maximum upload file size: 1MB',
+    'maximum_upload_file' => 'Maximum upload file size: 1MB, Recommended dimensions 300x300',
 
     'user_management' => [
         'add_button'                => 'Add a new user.',

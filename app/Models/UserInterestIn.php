@@ -29,6 +29,10 @@ class UserInterestIn extends Model
 
     /**
      * Get user interest in list.
+     *
+     * @param string $userID User's id
+     *
+     * @return Collection Users interest in list
      */
     public function getUserInterestInList( string $userID )
     {

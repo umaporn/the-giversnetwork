@@ -5,6 +5,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Events;
 use App\Models\News;
 use App\Models\Share;
 use App\Models\ShareLike;
@@ -30,19 +31,27 @@ class ShareController extends Controller
     /** @var ShareComment Share comment model instance */
     private $shareCommentModel;
 
+    /** @var Events Events model instance */
+    private $eventsModel;
+
     /**
      * ShareController constructor.
      *
-     * @param Share     $share     Share Model
-     * @param Challenge $challenge Challenge Model
+     * @param Share        $share        Share Model
+     * @param Challenge    $challenge    Challenge Model
+     * @param Events       $events       Events Model
+     * @param News         $news         News Model
+     * @param ShareLike    $shareLike    ShareLike Model
+     * @param ShareComment $shareComment ShareComment Model
      */
-    public function __construct( Share $share, Challenge $challenge, News $news, ShareLike $shareLike, ShareComment $shareComment )
+    public function __construct( Share $share, Challenge $challenge, Events $events, News $news, ShareLike $shareLike, ShareComment $shareComment )
     {
         $this->shareModel        = $share;
         $this->challengeModel    = $challenge;
         $this->newsModel         = $news;
         $this->shareLikeModel    = $shareLike;
         $this->shareCommentModel = $shareComment;
+        $this->eventsModel       = $events;
     }
 
     /**
@@ -72,6 +81,7 @@ class ShareController extends Controller
         $data['challenge'] = $this->challengeModel->getChallengeList( $request );
         $data['news']      = $this->newsModel->getNewsForSidebar( $request );
         $data['share']     = $this->shareModel->getShareAllList( $request );
+        $data['events']    = $this->eventsModel->getEventsForSidebar( $request );
 
         if( $request->ajax() ){
             return response()->json( [

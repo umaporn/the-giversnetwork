@@ -26,7 +26,7 @@
             <div class="cell small-12">
                 <h2 class="topic-dark"> @lang('give.give_or_receive')</h2>
 
-                <form action="{{ route('give.createGiveItem') }}" method="POST" class="submission-form form-onerow">
+                <form action="{{ route('give.createGiveItem') }}" method="POST" class="recaptcha-form form-onerow">
 
                     {{ csrf_field() }}
 
@@ -62,7 +62,8 @@
                             <label for="name" class="form-label">@lang('give.create_item_form.name')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="text" id="name" name="name" class="form-fill">
+                            <input type="text" id="name" name="name" class="form-fill" maxlength="90">
+                            <div class="float-right form-flex show-text" id="count_name"></div>
                             <p id="name-help-text" class="alert help-text help-text hide"></p>
                         </div>
                     </div>
@@ -99,7 +100,8 @@
                             <label for="description" class="form-label">@lang('give.create_item_form.description')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <textarea id="description_text" class="form-fill" rows="3" name="description_text"></textarea>
+                            <textarea id="description_text" class="form-fill" rows="3" name="description_text" maxlength="200"></textarea>
+                            <div class="float-right form-flex show-text" id="count_description_text"></div>
                             <p id="description_text-help-text" class="alert help-text help-text hide"></p>
                         </div>
                     </div>
@@ -111,7 +113,7 @@
                             <div class="form-file-image">
                                 <div class="form-file">
                                     <input type="file" class="form-fileupload" id="image_path" name="image_path[]" multiple
-                                           data-maxfile="1024"/>
+                                           data-maxfile="5,120"/>
                                     <p id="original-help-text" class="alert help-text hide"></p>
                                     <div class="form-file-style">
                                         <div class="form-flex btn-blue">@lang('share.create_thread_form.browse')</div>
@@ -150,12 +152,21 @@
                         </div>
                     </div>
 
+                    @captcha
+
                     <div class="grid-x grid-padding-x user-form-space">
                         <div class="cell small-12 large-offset-2 large-9">
                             <button class="btn-green btn-long">@lang('button.publish')</button>
                         </div>
                     </div>
                     <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
+                    <div class="grid-x grid-padding-x user-form-space">
+                        <div class="cell small-12 large-offset-2 large-9">
+                            <p>
+                                @lang('give.conditions')
+                            </p>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>

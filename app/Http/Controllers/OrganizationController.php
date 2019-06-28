@@ -36,7 +36,9 @@ class OrganizationController extends Controller
     /**
      * Display organization page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Organization page
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Organization page
      */
     public function index( Request $request )
     {
@@ -55,6 +57,8 @@ class OrganizationController extends Controller
 
     /**
      * Display organization detail page.
+     *
+     * @param Organization $organization Organization model
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Organization detail page
      */

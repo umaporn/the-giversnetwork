@@ -16,6 +16,10 @@ class EventsSeeder extends Seeder
      */
     public function run()
     {
-        factory( \App\Models\Events::class, 10 )->create();
+        //factory( \App\Models\Events::class, 10 )->create();
+        $events = config('events');
+        foreach( $events as $item ){
+            DB::table( 'events' )->insert( $item );
+        }
     }
 }

@@ -24,11 +24,36 @@
 
         figure {
             margin-bottom: $space-box/2;
+            text-align: center;
+            background-color: $color-light-gray;
+            img {
+                object-fit: cover;
+                height: rem-calc(250);
+
+                @media (min-width: 1300px) and (max-width: 1600px) {
+                    height: rem-calc(250);
+                }
+
+                @media (min-width: 1000px) and (max-width: 1300px) {
+                    height: rem-calc(180);
+                }
+
+                @media (min-width: 640px) and (max-width: 1000px) {
+                    height: rem-calc(150);
+                }
+
+                @media (max-width: 640px) {
+                    height: rem-calc(180);
+                }
+            }
         }
 
         .events {
             background-color: $white;
             margin-bottom: $space-box * 2;
+            article{
+                background-color: $white;
+            }
         }
 
         .profile {
@@ -83,7 +108,10 @@
     }
 
     &-image {
-        padding-right: $space-box;
+        margin-right: $space-box;
+        @include breakpoint(small only) {
+            padding-right: 0;
+        }
     }
 
     &-space {
@@ -191,6 +219,7 @@
 
     &-download {
         margin-right: $space-box;
+
         @include breakpoint(small only) {
             flex: 1;
         }
@@ -199,6 +228,7 @@
     &-share {
         display: flex;
         flex-direction: row;
+
         @include breakpoint(small only) {
             flex: 1;
         }
@@ -243,27 +273,27 @@
             }
         }
     }
+}
 
-    .grid {
-        &-head {
-            display: flex;
-            flex-direction: row;
+.grid {
+    &-head {
+        display: flex;
+        flex-direction: row;
 
-            .profile {
-                color: #154064;
+        .profile {
+            color: #154064;
+            display: inline-block;
+            padding-left: $space-box/2;
+
+            .display-profile {
                 display: inline-block;
-                padding-left: $space-box/2;
 
-                .display-profile {
+                img {
                     display: inline-block;
-
-                    img {
-                        display: inline-block;
-                        width: 1.875rem;
-                        height: 1.875rem;
-                        border-radius: 50%;
-                        object-fit: cover;
-                    }
+                    width: 1.875rem;
+                    height: 1.875rem;
+                    border-radius: 50%;
+                    object-fit: cover;
                 }
             }
         }

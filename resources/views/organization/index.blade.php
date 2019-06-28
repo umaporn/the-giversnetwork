@@ -58,7 +58,10 @@
                     </div>
                 </div>
             </div>
-            @include('organization.list')
+
+            <div class="cell small-12">
+                @include('organization.list')
+            </div>
         </section>
 
     </section>

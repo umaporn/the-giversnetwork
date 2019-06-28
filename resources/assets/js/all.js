@@ -32,4 +32,5 @@ $( document )
 	    InterestIn.initialize();
 	    Like.initialize();
 	    Comment.initialize();
+	    Counter.initialize();
     } );

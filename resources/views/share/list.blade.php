@@ -1,7 +1,7 @@
 <div id="content-list-box">
     @foreach( $data['share'] as $share_item )
         <article class="cell grid-x small-12 share-space">
-            <div class="cell small-3 medium-2">
+            <div class="cell small-12 medium-6">
                 <figure class="share-image">
                     <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
                         <img src="{{ $share_item['image_path'] ? $share_item['image_path'] : config('images.placeholder.300x180') }}"
@@ -9,7 +9,7 @@
                     </a>
                 </figure>
             </div>
-            <div class="cell grid-x small-9 medium-10">
+            <div class="cell grid-x small-9 medium-6">
                 <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
                     <h4 class="cell">{{ $share_item['title'] }}</h4>
                 </a>
@@ -35,7 +35,9 @@
             </div>
         </article>
     @endforeach
-    <a data-url="{{ $data['share']->nextPageUrl() }}" id="loadMore" class="load-more">@lang('button.view_more')
-        <i class="fas fa-caret-down"></i>
-    </a>
+    @if($data['share']->total())
+        <a data-url="{{ $data['share']->nextPageUrl() }}" id="loadMore" class="load-more">@lang('button.view_more')
+            <i class="fas fa-caret-down"></i>
+        </a>
+    @endif
 </div>
