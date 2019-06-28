@@ -51,7 +51,13 @@ class UserController extends Controller
     {
         $users = $this->usersModel->getUserList( $request );
 
-        return view( 'admin.users.list', compact( 'users' ) );
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'data' => view( 'admin.users.list', compact( 'users' ) )->render(),
+                                     ] );
+        }
+
+        return view( 'admin.users.index', compact( 'users' ) );
     }
 
     /**

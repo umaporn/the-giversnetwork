@@ -71,6 +71,9 @@ const Search = (function(){
 							ReceiveResultDiv.empty();
 							ReceiveResultDiv.html( jqXHR.responseJSON.data );
 						}
+					}else{
+						ResultDiv.empty();
+						ResultDiv.html( jqXHR.responseJSON.data );
 					}
 
 					$( 'input[name=search]' ).empty();
