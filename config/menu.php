@@ -62,7 +62,7 @@ return [
                 ],
             ],
         ],
-        [
+        /*[
             'routeName'  => '#',
             'menuText'   => 'learn_admin.page_link.index',
             'childMenu'  => [
@@ -77,6 +77,18 @@ return [
                     'icon'       => 'fas fa-caret-right',
                 ],
             ],
+        ],*/
+        [
+            'routeName'  => '#',
+            'menuText'   => 'user_admin.page_link.index',
+            'childMenu'  => [
+                [
+                    'routeName'  => 'admin.user.index',
+                    'menuText'   => 'user_admin.page_link.all_user',
+                    'icon'       => 'fas fa-caret-right',
+                ],
+            ],
         ],
+
     ],
 ];

@@ -9,13 +9,15 @@ return [
     */
 
     'page_link' => [
-        'index'        => 'User',
+        'index'        => 'Users',
+        'all_user'     => 'All Users',
         'my_profile'   => 'My Profile',
         'edit_profile' => 'Edit Profile',
     ],
 
     'page_title' => [
-        'index'        => 'User',
+        'index'        => 'Users',
+        'all_user'     => 'All Users',
         'my_profile'   => 'My Profile',
         'create'       => 'Create a new user.',
         'edit'         => 'Edit user',
@@ -24,7 +26,8 @@ return [
     ],
 
     'page_description' => [
-        'index'        => 'User',
+        'index'        => 'Users',
+        'all_user'     => 'All Users',
         'create'       => 'Create a new user.',
         'edit'         => 'Edit user',
         'profile'      => 'User Profile',
@@ -32,7 +35,8 @@ return [
     ],
 
     'page_heading' => [
-        'index'        => 'User',
+        'index'        => 'Users',
+        'all_user'     => 'All Users',
         'create'       => 'Create a new user.',
         'edit'         => 'Edit user',
         'profile'      => 'Profile',
@@ -62,5 +66,16 @@ return [
 
     'saved_user_success' => 'User saved successfully.',
     'saved_user_error'   => 'User was not saved successfully.',
+
+    'user_management' => [
+        'add_button'           => 'Add a new user.',
+        'group_selection'      => 'Please select a user group.',
+        'search_placeholder'   => 'Fulltext search by name or email.',
+        'add_to_group_success' => 'Successfully added the user to the group.',
+        'remove_user_success'  => 'Successfully removed the user.',
+        'delete'               => 'Delete',
+        'remove_confirmation'  => 'Are you sure you would like to remove the user, ',
+        'not_found_users'      => 'Not found the users.',
+    ],
 
 ];
