@@ -51,7 +51,7 @@ return [
     ],
 
     'mainMenuAdmin' => [
-        [
+        /*[
             'routeName'  => '#',
             'menuText'   => 'user_admin.page_link.my_profile',
             'childMenu'  => [
@@ -61,8 +61,8 @@ return [
                     'icon'       => 'fas fa-caret-right',
                 ],
             ],
-        ],
-        /*[
+        ],*/
+        [
             'routeName'  => '#',
             'menuText'   => 'learn_admin.page_link.index',
             'childMenu'  => [
@@ -77,7 +77,7 @@ return [
                     'icon'       => 'fas fa-caret-right',
                 ],
             ],
-        ],*/
+        ],
         [
             'routeName'  => '#',
             'menuText'   => 'user_admin.page_link.index',
