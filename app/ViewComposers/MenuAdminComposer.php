@@ -7,6 +7,7 @@ namespace App\ViewComposers;
 
 use App\Support\Facades\Utility;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 /**
@@ -81,8 +82,9 @@ class MenuAdminComposer
 
         }
 
-        return $active ? 'active' : '';
+        return $active ? 'is-active' : '';
     }
+
 
     /**
      * Create a menu choice with active style.
@@ -99,9 +101,9 @@ class MenuAdminComposer
             $menuItem['url']    = '#';
             $menuItem['active'] = '';
         } else {
-            $parameters         = $menuChoice['parameters'] ?? [];
-            $menuItem['url']    = route( $menuChoice['routeName'], $parameters );
-            $menuItem['active'] = $this->getActiveStyle( $menuItem['url'] );
+            $parameters               = $menuChoice['parameters'] ?? [];
+            $menuItem['url']          = route( $menuChoice['routeName'], $parameters );
+            $menuItem['active']       = $this->getActiveStyle( $menuItem['url'] );
         }
 
         $menuItem['menuText'] = __( $menuChoice['menuText'] );

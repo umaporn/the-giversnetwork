@@ -21,4 +21,5 @@ return [
     ],
 
     'admin' => 'Admin',
+    'home'  => 'Home',
 ];

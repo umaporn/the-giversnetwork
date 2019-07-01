@@ -1,7 +1,6 @@
 @if( $menuItem['url'] !== '#' || count( $menuItem['childMenu'] ) )
     @if(count( $menuItem['childMenu'] ))
         <li class="accordion-item {{ $menuItem['active'] }}" data-accordion-item>
-
             <a class="accordion-title" href="{{ $menuItem['url'] }}">
                 {{ $menuItem['menuText'] }}
             </a>
@@ -12,7 +11,7 @@
             @endif
         </li>
     @else
-        <a href="{{ $menuItem['url'] }}">
+        <a href="{{ $menuItem['url'] }}" class="{{ $menuItem['active'] }}">
             <i class="fas fa-caret-right"></i>
             {{ $menuItem['menuText'] }}
         </a>

@@ -63,29 +63,29 @@ return [
             ],
         ],*/
         [
-            'routeName'  => '#',
-            'menuText'   => 'learn_admin.page_link.index',
-            'childMenu'  => [
+            'routeName' => '#',
+            'menuText'  => 'learn_admin.page_link.index',
+            'childMenu' => [
                 [
-                    'routeName'  => 'admin.learnAll',
-                    'menuText'   => 'learn_admin.page_link.all',
-                    'icon'       => 'fas fa-caret-right',
+                    'routeName' => 'admin.learn.index',
+                    'menuText'  => 'learn_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
                 ],
                 [
-                    'routeName'  => 'admin.learnAdd',
-                    'menuText'   => 'learn_admin.page_link.add',
-                    'icon'       => 'fas fa-caret-right',
+                    'routeName' => 'admin.learn.create',
+                    'menuText'  => 'learn_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
                 ],
             ],
         ],
         [
-            'routeName'  => '#',
-            'menuText'   => 'user_admin.page_link.index',
-            'childMenu'  => [
+            'routeName' => '#',
+            'menuText'  => 'user_admin.page_link.index',
+            'childMenu' => [
                 [
-                    'routeName'  => 'admin.user.index',
-                    'menuText'   => 'user_admin.page_link.all_user',
-                    'icon'       => 'fas fa-caret-right',
+                    'routeName' => 'admin.user.index',
+                    'menuText'  => 'user_admin.page_link.all_user',
+                    'icon'      => 'fas fa-caret-right',
                 ],
             ],
         ],

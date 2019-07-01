@@ -116,9 +116,13 @@ function globalRoutes()
                 'names'  => addPrefixResourceRouteName( 'admin.user' ),
             ] );
 
-            Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
-            Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
-            Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
+            Route::resource( 'learn', 'Admin\LearnController', [
+                'names' => addPrefixResourceRouteName( 'admin.learn' ),
+            ] );
+
+            // Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
+            // Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
+            // Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
             Route::get( 'share-challenge-all', 'AdminController@shareChAll' )->name( 'admin.shareChAll' );
             Route::get( 'share-challenge-add', 'AdminController@shareChAdd' )->name( 'admin.shareChAdd' );
             Route::get( 'share-all', 'AdminController@shareAll' )->name( 'admin.shareAll' );
@@ -132,7 +136,7 @@ function globalRoutes()
             Route::get( 'news-add', 'AdminController@newsAdd' )->name( 'admin.newsAdd' );
             Route::get( 'organization-all', 'AdminController@organizationAll' )->name( 'admin.organizationAll' );
             Route::get( 'organization-add', 'AdminController@organizationAdd' )->name( 'admin.organizationAdd' );
-            Route::get( 'user-all', 'AdminController@userAll' )->name( 'admin.userAll' );
+            // Route::get( 'user-all', 'AdminController@userAll' )->name( 'admin.userAll' );
 
         } );
     } );
