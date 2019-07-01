@@ -14,7 +14,7 @@
                 {{ method_field('DELETE') }}
                 <input type="hidden" name="email" value="{{ $user->email }}">
                 <button type="submit" class="cursor-pointer" title="@lang('user.user_management.remove')">
-                    <i class="fi-x-circle"></i>
+                    <i class="fas fa-trash-alt"></i>
                 </button>
             </form>
         </td>
