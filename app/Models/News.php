@@ -83,7 +83,10 @@ class News extends Model
         foreach( $homeNewsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
-            $list->setAttribute( 'image_path', $this->getImages( $list ) );
+           foreach( $list->newsImage as $news_image ){
+                $news_image->setAttribute( 'image_path', $this->getNewsImages( $news_image ) );
+                $news_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $news_image ) );
+            }
             $this->setPublicDateForFrontEnd( $list );
         }
 

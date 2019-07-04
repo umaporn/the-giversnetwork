@@ -15,7 +15,7 @@
                         <div class="cell small-12 medium-6 large-12">
                             <figure>
                                 <a href="{{ route('news.detail', [ 'news' => $news_items['id'] ]) }}">
-                                    <img src="{{ $news_items['image_path'] }}" alt="{{ $news_items['title'] }}">
+                                    <img src="{{ $news_items['image_path'] ? $news_items['image_path'] : config('images.placeholder.700x400') }}" alt="{{ $news_items['title'] }}">
                                 </a>
                             </figure>
                         </div>

@@ -82,7 +82,7 @@ const Counter = (function(){
 		}
 
 		if( CounterDescriptionText.length ){
-			var text_description_text_max = 200;
+			var text_description_text_max = 2000;
 			$( '#count_description_text' ).html( text_description_text_max + ' remaining' );
 
 			$( CounterDescriptionText ).keyup( function(){

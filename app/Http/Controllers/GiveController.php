@@ -43,7 +43,6 @@ class GiveController extends Controller
             'type'             => config( 'validation.give.type' ),
             'fk_category_id'   => config( 'validation.give.fk_category_id' ),
             'name'             => config( 'validation.give.name' ),
-            'amount'           => config( 'validation.give.amount' ),
             'address'          => config( 'validation.give.address' ),
             'description_text' => config( 'validation.give.description_text' ),
         ] );

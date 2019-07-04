@@ -30,7 +30,6 @@ return [
         'type'             => 'required|in:give,receive',
         'fk_category_id'   => 'required|numeric',
         'name'             => 'required|string|min:3|max:500',
-        'amount'           => 'required|numeric',
         'address'          => 'sometimes|string',
         'description_text' => 'required|string|min:3|max:200',
     ],

@@ -100,7 +100,7 @@
                             <label for="description" class="form-label">@lang('give.create_item_form.description')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <textarea id="description_text" class="form-fill" rows="3" name="description_text" maxlength="200"></textarea>
+                            <textarea id="description_text" class="form-fill" rows="3" name="description_text" maxlength="2000"></textarea>
                             <div class="float-right form-flex show-text" id="count_description_text"></div>
                             <p id="description_text-help-text" class="alert help-text help-text hide"></p>
                         </div>
