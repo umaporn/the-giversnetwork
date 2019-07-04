@@ -134,6 +134,10 @@ return [
     */
     'logo'      => '/images/logo.png',
 
+    'api_keys' => [
+        'google_tag_manager' => 'GTM-KXZ55QD',
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
