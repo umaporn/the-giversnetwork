@@ -61,6 +61,11 @@
                         <i class="fab fa-facebook-square fa-2x"></i>
                     </a>
                 </li>
+                <li>
+                    <a href="{{ config('url.linked_in') }}" target="_blank">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </section>
