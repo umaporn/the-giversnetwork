@@ -46,7 +46,7 @@ return [
     'links' => [
         'profile' => 'Go to your profile page',
     ],
-
+    'id'                    => 'ID',
     'email'                 => 'E-Mail Address',
     'password'              => 'Password',
     'password_confirmation' => 'Confirm Password',

@@ -56,11 +56,11 @@
                                         <table>
                                             <thead>
                                             <tr>
-                                                <th class="width-10">@lang('user.id')</th>
-                                                <th class="width-40">@lang('user.email')</th>
-                                                <th class="width-50">@lang('user.fullname')</th>
-                                                <th class="width-50">@lang('user.username')</th>
-                                                <th class="width-5 text-center">@lang('user.user_management.delete')</th>
+                                                <th class="width-10">@lang('user_admin.id')</th>
+                                                <th class="width-40">@lang('user_admin.email')</th>
+                                                <th class="width-50">@lang('user_admin.fullname')</th>
+                                                <th class="width-50">@lang('user_admin.username')</th>
+                                                <th class="width-5 text-center">@lang('user_admin.user_management.delete')</th>
                                             </tr>
                                             </thead>
                                             <tbody id="search-result">
