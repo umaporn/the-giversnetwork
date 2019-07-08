@@ -34,4 +34,7 @@ return [
         'address'          => 'sometimes|string',
         'description_text' => 'required|string|min:3|max:200',
     ],
+    'media'             => [
+        'image' => 'image|max:2000|dimensions:max_width=2000,max_height=2000',
+    ],
 ];

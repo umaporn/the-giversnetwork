@@ -15,14 +15,14 @@
     "js-translate": "^1.0.0",
     "jsdoc": "^3.6.2",
     "laravel-mix": "^2.1.14",
-    "lodash": "^4.17.11",
-    "what-input": "^5.2.3"
+    "lodash": "^4.17.11"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.9.0",
     "cross-env": "^5.2.0",
     "jquery-multifile": "^2.2.2",
     "npm": "^6.9.0",
-    "swiper": "^4.5.0"
+    "swiper": "^4.5.0",
+    "tinymce": "^5.0.11"
   }
 }

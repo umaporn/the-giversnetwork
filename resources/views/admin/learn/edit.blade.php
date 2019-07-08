@@ -89,6 +89,24 @@
 
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
+                                                <label for="des" class="form-label">@lang('learn_admin.content_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="tinymce-content-thai" class="form-fill" rows="3">{{ $learn->content_thai }}</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="des" class="form-label">@lang('learn_admin.content_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="tinymce-content-english" class="form-fill tinyMCE-form" rows="3">{{ $learn->content_english }}</textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
                                                 <label for="image" class="form-label">@lang('learn_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -126,6 +144,13 @@
                                             </div>
                                         </div>
                                     </form>
+
+                                    {{-- File upload form for TinyMCE Editor --}}
+                                    <form id="tinymce-uploadform" action="{{ route('admin.image.upload') }}">
+                                        {{ csrf_field() }}
+                                        <input id="tinymce-uploadfile" type="file" name="image"/>
+                                    </form>
+
                                 </div>
                             </div>
                         </article>

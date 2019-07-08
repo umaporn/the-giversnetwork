@@ -13,6 +13,9 @@ const mix = require( 'laravel-mix' );
 
 mix.js( 'resources/assets/js/app.js', 'public/js' )
    .sass( 'resources/assets/sass/app.scss', 'public/css' )
+   .copy('node_modules/tinymce/plugins','public/js/plugins')
+   .copy('node_modules/tinymce/skins','public/js/skins')
+   .copy('node_modules/tinymce/themes','public/js/themes')
    .babel( [
 	           'resources/assets/js/components/HeroBanner.js',
 	           'resources/assets/js/components/Confirmation.js',
@@ -28,6 +31,7 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
 	           'resources/assets/js/components/Like.js',
 	           'resources/assets/js/components/Comment.js',
 	           'resources/assets/js/components/Counter.js',
+	           'resources/assets/js/components/TinyMCE.js',
 	           'resources/assets/js/all.js',
            ], 'public/js/all.js' )
    .version();

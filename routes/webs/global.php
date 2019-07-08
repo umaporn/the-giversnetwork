@@ -109,6 +109,8 @@ function globalRoutes()
 
         Route::group( [ 'middleware' => 'auth.admin' ], function(){
 
+            Route::post( 'upload', 'Admin\ImageController@upload' )->name( 'admin.image.upload' );
+
             Route::get( '', 'Admin\HomeController@index' )->name( 'admin.home.index' );
 
             Route::resource( 'user', 'Admin\UserController', [
