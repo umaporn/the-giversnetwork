@@ -36,6 +36,18 @@ class LearnController extends Controller
     {
         $learns = $this->learnModel->getLearnAllList( $request );
 
-        return view( 'admin.learn.index', compact('learns') );
+        return view( 'admin.learn.index', compact( 'learns' ) );
+    }
+
+    /**
+     * Display admin learn edition form.
+     *
+     * @param Learn $learn Learn model
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn edit form
+     */
+    public function edit( Learn $learn )
+    {
+        return view( 'admin.learn.edit', compact( 'learn' ) );
     }
 }

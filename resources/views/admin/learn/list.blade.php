@@ -4,8 +4,12 @@
         <td>{{ $learn->title }}</td>
         <td>{{ $learn->view }}</td>
         <td><i class="far fa-check-square"></i></td>
-        <td><a href="#"><i class="fas fa-link"></i></a></td>
-        <td><a href="#"><i class="fas fa-pen"></i></a></td>
+        <td>
+            <a href="{{ route('learn.detail', [ 'learn' => $learn->id ]) }}" target="_blank">
+                <i class="fas fa-link"></i>
+            </a>
+        </td>
+        <td><a href="{{ route('admin.learn.edit', [ 'learn' =>  $learn->id ]) }}"><i class="fas fa-pen"></i></a></td>
         <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
     </tr>
 @empty
