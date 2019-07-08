@@ -8,6 +8,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Learn;
 use App\Http\Requests\LearnRequest;
+use Illuminate\Http\Request;
 
 /**
  * Admin Learn Page Controller
@@ -30,9 +31,11 @@ class LearnController extends Controller
     /**
      * Display admin learn page.
      *
+     * @param Request $request Request object
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn page
      */
-    public function index( Learn $learn, LearnRequest $request )
+    public function index( Request $request )
     {
         $learns = $this->learnModel->getLearnAllList( $request );
 
@@ -44,13 +47,21 @@ class LearnController extends Controller
      *
      * @param Learn $learn Learn model
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn edit form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn edition form
      */
     public function edit( Learn $learn )
     {
         return view( 'admin.learn.edit', compact( 'learn' ) );
     }
 
+    /**
+     * Updating learn information.
+     *
+     * @param LearnRequest $request Learn request object
+     * @param Learn        $learn   Learn model
+     *
+     * @return \Illuminate\Http\JsonResponse Updating response
+     */
     public function update( LearnRequest $request, Learn $learn )
     {
         $response = $this->learnModel->updateLearnInformation( $request, $learn );

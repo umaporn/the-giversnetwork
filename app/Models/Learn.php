@@ -12,8 +12,6 @@ use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class Learn extends Model
 {
@@ -145,6 +143,14 @@ class Learn extends Model
         return $learn;
     }
 
+    /**
+     * Updating learn information.
+     *
+     * @param LearnRequest $request Learn request object
+     * @param Learn        $learn   Learn model
+     *
+     * @return array Response information
+     */
     public function updateLearnInformation( LearnRequest $request, Learn $learn )
     {
         $data = [
