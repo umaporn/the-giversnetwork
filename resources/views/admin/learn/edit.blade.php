@@ -41,10 +41,16 @@
                                     </div>
                                 </div>
                                 <div class="cell small-12">
-                                    <form action="">
+                                    <form action="{{ route('admin.learn.update', ['learn' => $learn->id ]) }}"
+                                          method="POST"
+                                          enctype="multipart/form-data"
+                                          class="submission-form"
+                                    >
+                                        @method('PUT')
+                                        {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="username" class="form-label">@lang('learn_admin.learn_id')</label>
+                                                <label for="learn_id" class="form-label">@lang('learn_admin.learn_id')</label>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
                                                 {{ $learn->id }}
@@ -53,10 +59,16 @@
 
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="topic" class="form-label">@lang('learn_admin.title_thai')</label>
+                                                <label for="title_thai" class="form-label">@lang('learn_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="topic" class="form-fill" value=" {{ $learn->title_thai }}">
+                                                <input type="text"
+                                                       id="title_thai"
+                                                       class="form-fill"
+                                                       name="title_thai"
+                                                       value="{{ $learn->title_thai }}"
+                                                >
+                                                <p id="title_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
@@ -65,43 +77,57 @@
                                                 <label for="topic" class="form-label">@lang('learn_admin.title_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="topic" class="form-fill" value=" {{ $learn->title_english }}">
+                                                <input type="text"
+                                                       id="title_english"
+                                                       class="form-fill"
+                                                       name="title_english"
+                                                       value="{{ $learn->title_english }}"
+                                                >
+                                                <p id="title_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="des" class="form-label">@lang('learn_admin.description_thai')</label>
+                                                <label for="description_thai" class="form-label">@lang('learn_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="des" class="form-fill" rows="3">{{ $learn->description_thai }}</textarea>
+                                                <textarea id="description_thai" class="form-fill" name="description_thai" rows="3">
+                                                    {{ $learn->description_thai }}
+                                                </textarea>
+                                                <p id="description_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="des" class="form-label">@lang('learn_admin.description_english')</label>
+                                                <label for="description_english" class="form-label">@lang('learn_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="des" class="form-fill" rows="3">{{ $learn->description_english }}</textarea>
+                                                <textarea id="description_english" class="form-fill" name="description_english" rows="3">{{ $learn->description_english }}</textarea>
+                                                <p id="description_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="des" class="form-label">@lang('learn_admin.content_thai')</label>
+                                                <label for="content_thai" class="form-label">@lang('learn_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="tinymce-content-thai" class="form-fill" rows="3">{{ $learn->content_thai }}</textarea>
+                                                <textarea id="tinymce-content-thai" class="form-fill" name="content_thai" rows="3">{{ $learn->content_thai }}</textarea>
+                                                <input type="hidden" name="current_content" value="{{ $learn->content_thai }}"/>
+                                                <p id="content_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="des" class="form-label">@lang('learn_admin.content_english')</label>
+                                                <label for="content_english" class="form-label">@lang('learn_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="tinymce-content-english" class="form-fill tinyMCE-form" rows="3">{{ $learn->content_english }}</textarea>
+                                                <textarea id="tinymce-content-english" class="form-fill tinyMCE-form" name="content_english" rows="3">{{ $learn->content_english }}</textarea>
+                                                <input type="hidden" name="current_content" value="{{ $learn->content_english }}"/>
+                                                <p id="content_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
@@ -110,12 +136,20 @@
                                                 <label for="image" class="form-label">@lang('learn_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <div class="form-file">
-                                                    <input type="file" class="form-fileupload" id="file-image"
-                                                           data-maxfile="1024"/>
-                                                    <div class="form-file-style">
-                                                        <div class="form-flex btn-blue">@lang('learn_admin.browse')</div>
-                                                        <p class="form-flex show-text">@lang('learn_admin.image_condition')</p>
+                                                @if($learn->file_path)
+                                                    <div class="padding-bottom-1">
+                                                        <img src="{{ Storage::url($learn->file_path) }}" width="200" alt="@lang('learn_admin.image')">
+                                                    </div>
+                                                @endif
+                                                <div class="form-file-image">
+                                                    <div class="form-file">
+                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path"
+                                                               data-maxfile="5,120"/>
+                                                        <div class="form-file-style">
+                                                            <div class="form-flex btn-blue">@lang('learn_admin.browse')</div>
+                                                            <p class="form-flex show-text">@lang('learn_admin.image_condition')</p>
+                                                        </div>
+                                                        <p id="file_path-help-text" class="alert help-text help-text hide"></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,8 +159,8 @@
                                                 <p class="form-label form-p">@lang('learn_admin.publish')</p>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
-                                                <input id="publish" type="checkbox">
-                                                <label for="publish">@lang('learn_admin.publish_post')</label>
+                                                <input id="status" type="checkbox" name="status" {{ $learn->status === 'public' ? 'checked' : '' }}>
+                                                <label for="status">@lang('learn_admin.publish_post')</label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
@@ -134,7 +168,7 @@
                                                 <p class="form-label form-p">@lang('learn_admin.highlight')</p>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
-                                                <input id="pinned" type="checkbox">
+                                                <input id="pinned" type="checkbox" name="highlight_status" {{ $learn->highlight_status === 'pinned' ? 'checked' : '' }}>
                                                 <label for="pinned">@lang('learn_admin.pin_to_highlight')</label>
                                             </div>
                                         </div>

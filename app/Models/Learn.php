@@ -5,11 +5,15 @@
 
 namespace App\Models;
 
+use App\Http\Requests\LearnRequest;
+use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Learn extends Model
 {
@@ -139,6 +143,84 @@ class Learn extends Model
         }
 
         return $learn;
+    }
+
+    public function updateLearnInformation( LearnRequest $request, Learn $learn )
+    {
+        $data = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+            'highlight_status'    => $request->input( 'highlight_status' ) ? 'pinned' : 'unpinned',
+        ];
+
+        if( $request->file( 'image_path' ) ){
+            $imageInformation = $this->saveImage( $request );
+
+            if( isset( $imageInformation['imageInformation']['original'] ) ){
+                $image_file = $imageInformation['imageInformation']['original'];
+
+                $data['file_path'] = $image_file;
+            }
+        }
+
+        $result = $this->where( 'id', $learn->id )->update( $data );
+
+        if( $result ){
+            $response = [ 'success' => true, 'message' => __( 'learn_admin.saved_learn_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'learn_admin.saved_learn_error' ), ];
+        }
+
+        return $response;
+
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param LearnRequest $request LearnRequest object
+     *
+     * @return array Image saved result
+     */
+    private function saveImage( LearnRequest $request )
+    {
+        $imageInformation = [];
+        $file             = $request->file( 'image_path' );
+        $success          = true;
+
+        if( $file ){
+
+            $imageInformation = Image::upload( $file, 'learns' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'imageInformation' => $imageInformation ];
+    }
+
+    /**
+     * Delete an uploaded image.
+     *
+     * @return void
+     */
+    private function deleteImage()
+    {
+        $imagesFields = [ 'image_path' ];
+        $attributes   = $this->getAttributes();
+
+        $this->setAttribute( 'image_path', Storage::url( $attributes['image_path'] ) );
+
+        Image::deleteImage( [ $this->getAttributes() ], $imagesFields );
+
     }
 
 }

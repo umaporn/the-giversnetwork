@@ -37,4 +37,9 @@ return [
     'media'             => [
         'image' => 'image|max:2000|dimensions:max_width=2000,max_height=2000',
     ],
+    'learn_admin'       => [
+        'title_english'       => 'required|string|min:3|max:255',
+        'description_english' => 'required|string|min:3|max:255',
+        'content_english'     => 'required|string|min:3|max:2000',
+    ],
 ];

@@ -160,11 +160,13 @@ const TinyMCE = (function(){
 					        if( response.success === true ){
 						        callback( response.path );
 					        } else {
-						        tinymce.activeEditor.windowManager.alert( errorMessage );
+					        	Utility.displayErrorMessageBox(errorMessage)
+						        //tinymce.activeEditor.windowManager.alert( errorMessage );
 					        }
 				        },
 				        error:       function(){
-					        tinymce.activeEditor.windowManager.alert( errorMessage );
+					        Utility.displayErrorMessageBox(errorMessage)
+					        //tinymce.activeEditor.windowManager.alert( errorMessage );
 				        },
 			        } );
 		} );

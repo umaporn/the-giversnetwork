@@ -7,7 +7,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Learn;
-use Illuminate\Http\Request;
+use App\Http\Requests\LearnRequest;
 
 /**
  * Admin Learn Page Controller
@@ -32,7 +32,7 @@ class LearnController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn page
      */
-    public function index( Learn $learn, Request $request )
+    public function index( Learn $learn, LearnRequest $request )
     {
         $learns = $this->learnModel->getLearnAllList( $request );
 
@@ -50,4 +50,20 @@ class LearnController extends Controller
     {
         return view( 'admin.learn.edit', compact( 'learn' ) );
     }
+
+    public function update( LearnRequest $request, Learn $learn )
+    {
+        $response = $this->learnModel->updateLearnInformation( $request, $learn );
+
+        if( !$response['success'] ){
+            return response()->json( $response, 422 );
+        }
+
+        return response()->json( [
+                                     'success'       => $response['success'],
+                                     'message'       => $response['message'],
+                                     'redirectedUrl' => url()->previous(),
+                                 ] );
+    }
+
 }
