@@ -10,7 +10,21 @@
             </a>
         </td>
         <td><a href="{{ route('admin.learn.edit', [ 'learn' =>  $learn->id ]) }}"><i class="fas fa-pen"></i></a></td>
-        <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
+        <td>
+            {{--<a href="#"><i class="fas fa-trash-alt"></i></a>--}}
+            <form class="deletion" id="learn-group-deletion-{{ $loop->iteration }}"
+                  data-info="{{ $learn->email }}"
+                  data-deletion-confirmation-message="@lang('learn_admin.learn_management.remove_confirmation')"
+                  method="POST" action="{{ route('admin.learn.destroy', ['learn' => $learn->id]) }}"
+            >
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <input type="hidden" name="email" value="{{ $learn->email }}">
+                <button type="submit" class="cursor-pointer" title="@lang('learn_admin.learn_management.remove')">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </form>
+        </td>
     </tr>
 @empty
     <tr>

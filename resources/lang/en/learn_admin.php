@@ -55,12 +55,12 @@ return [
     'saved_learn_error'   => 'User was not saved successfully.',
 
     'learn_management' => [
-        'add_button'          => 'Add a new learn.',
-        'search_placeholder'  => 'Fulltext search by title.',
+        'add_button'           => 'Add a new learn.',
+        'search_placeholder'   => 'Fulltext search by title.',
         'remove_learn_success' => 'Successfully removed the learn.',
-        'delete'              => 'Delete',
-        'remove_confirmation' => 'Are you sure you would like to remove the learn, ',
-        'not_found_learn'     => 'Not found the learns.',
+        'delete'               => 'Delete',
+        'remove_confirmation'  => 'Are you sure you would like to remove the learn, ',
+        'not_found_learn'      => 'Not found the learns.',
     ],
 
 ];

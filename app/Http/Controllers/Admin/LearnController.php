@@ -77,4 +77,25 @@ class LearnController extends Controller
                                  ] );
     }
 
+    /**
+     * Delete a specific learn.
+     *
+     * @param Request $request Request object
+     * @param Learn   $learn   Learn model
+     *
+     * @return    \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    public function destroy( Request $request, Learn $learn )
+    {
+        $success = $learn->delete();
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'success'       => $success,
+                                         'message'       => __( 'learn_admin.learn_management.remove_learn_success' ),
+                                         'redirectedUrl' => route( 'admin.learn.index' ),
+                                     ] );
+        }
+    }
+
 }
