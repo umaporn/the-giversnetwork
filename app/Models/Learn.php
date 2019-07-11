@@ -17,7 +17,7 @@ class Learn extends Model
 {
     /** @var array A list of fields which are able to update in this model */
     protected $fillable = [ 'title_thai', 'title_english', 'description_thai', 'description_english', 'content_thai', 'content_english', 'file_path', 'view',
-                            'status', 'highlight_status', 'type', ];
+                            'status', 'highlight_status', 'type', 'public_date' ];
 
     /** @var string Table name */
     protected $table = 'learn';
@@ -62,7 +62,6 @@ class Learn extends Model
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
             $list->setAttribute( 'content', Utility::getLanguageFields( 'content', $list ) );
-            $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->learnCategory ) );
             $list->setAttribute( 'image_path', Utility::getImages( $list['file_path'] ) );
             $this->setPublicDateForFrontEnd( $list );
         }
@@ -197,7 +196,7 @@ class Learn extends Model
     private function saveImage( LearnRequest $request )
     {
         $imageInformation = [];
-        $file             = $request->file( 'image_path' );
+        $file             = $request->file( 'image_path' )[0];
         $success          = true;
 
         if( $file ){
@@ -258,13 +257,18 @@ class Learn extends Model
         }
 
         $newLearn = [
-            'title_english'   => $request->input( 'title_english' ),
-            'title_thai'      => $request->input( 'title_english' ),
-            'content_english' => $request->input( 'content_english' ),
-            'content_thai'    => $request->input( 'content_english' ),
-            'file_path'       => $file_path,
-            'fk_user_id'      => $request->input( 'fk_user_id' ),
-            'status'          => 'public',
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_english' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_english' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_english' ),
+            'file_path'           => $file_path,
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
+            'status'              => 'public',
+            'view'                => '0',
+            'type'                => '',
+            'public_date'         => date( 'Y-m-d' ),
         ];
 
         $successForLearn = $this->create( $newLearn );

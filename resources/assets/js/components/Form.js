@@ -23,7 +23,15 @@ const Form = (function(){
 	       * @desc Deletion confirmation selector
 	       * @const {string}
 	       */
-	      DeletionConfirmationSelector = '.deletion';
+	      DeletionConfirmationSelector = '.deletion',
+
+	      /**
+	       * @memberOf Form
+	       * @access private
+	       * @desc TinyMCE form
+	       * @const {jQuery}
+	       */
+	      TinyMCEForm               = $( '.tinyMCE-form' );
 
 	/**
 	 * @memberOf Form
@@ -42,6 +50,12 @@ const Form = (function(){
 			_submitEvent = () => {
 				Utility.submitForm( $( this ) );
 			};
+		} );
+
+		TinyMCEForm.submit( function( event ){
+			tinyMCE.triggerSave();
+			event.preventDefault();
+			Utility.submitForm( $( this ) );
 		} );
 
 		Search.SearchForm.submit( function( event ){

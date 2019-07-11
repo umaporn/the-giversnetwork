@@ -44,7 +44,7 @@
                                     <form action="{{ route('admin.learn.store') }}"
                                           method="POST"
                                           enctype="multipart/form-data"
-                                          class="submission-form tin"
+                                          class="tinyMCE-form"
                                     >
                                         {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
@@ -108,7 +108,7 @@
                                                 <label for="content_thai" class="form-label">@lang('learn_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="tinymce-content-thai" class="form-fill" name="content_thai" rows="3"></textarea>
+                                                <textarea id="content-thai" class="form-fill" name="content_thai" rows="3"></textarea>
                                                 <p id="content_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -118,7 +118,7 @@
                                                 <label for="content_english" class="form-label">@lang('learn_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="tinymce-content-english" class="form-fill tinyMCE-form" name="content_english" rows="3"></textarea>
+                                                <textarea id="content-english" class="form-fill" name="content_english" rows="3"></textarea>
                                                 <p id="content_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -130,7 +130,7 @@
                                             <div class="cell small-12 large-9">
                                                 <div class="form-file-image">
                                                     <div class="form-file">
-                                                        <input type="file" class="form-fileupload" id="file_path" name="file_path"
+                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
                                                                data-maxfile="5,120"/>
                                                         <div class="form-file-style">
                                                             <div class="form-flex btn-blue">@lang('learn_admin.browse')</div>

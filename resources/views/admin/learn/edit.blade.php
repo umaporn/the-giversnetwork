@@ -143,13 +143,13 @@
                                                 @endif
                                                 <div class="form-file-image">
                                                     <div class="form-file">
-                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path"
+                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
                                                                data-maxfile="5,120"/>
                                                         <div class="form-file-style">
                                                             <div class="form-flex btn-blue">@lang('learn_admin.browse')</div>
                                                             <p class="form-flex show-text">@lang('learn_admin.image_condition')</p>
                                                         </div>
-                                                        <p id="file_path-help-text" class="alert help-text help-text hide"></p>
+                                                        <p id="image_path-help-text" class="alert help-text help-text hide"></p>
                                                     </div>
                                                 </div>
                                             </div>

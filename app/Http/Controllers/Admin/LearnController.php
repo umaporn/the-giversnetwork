@@ -98,12 +98,12 @@ class LearnController extends Controller
         if( !$result['successForLearn'] && !$result['successForLearnImage'] ){
             $data = [
                 'success' => false,
-                'error'   => __( 'learn.create_thread_form.saved_learn_error' ),
+                'error'   => __( 'learn.saved_learn_error' ),
             ];
         } else {
             $data = [
                 'success'       => true,
-                'message'       => __( 'learn.create_thread_form.saved_learn_success' ),
+                'message'       => __( 'learn.saved_learn_success' ),
                 'redirectedUrl' => route( 'learn.index' ),
             ];
         }
