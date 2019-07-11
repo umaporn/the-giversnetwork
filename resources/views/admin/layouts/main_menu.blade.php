@@ -11,7 +11,7 @@
             @endif
         </li>
     @else
-        <a href="{{ $menuItem['url'] }}" class="{{ $menuItem['active'] }}">
+        <a href="{{ $menuItem['url'] }}" class="{{ $menuItem['url'] === url()->current() ? $menuItem['active'] : '' }}">
             <i class="fas fa-caret-right"></i>
             {{ $menuItem['menuText'] }}
         </a>

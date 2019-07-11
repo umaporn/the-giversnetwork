@@ -37,7 +37,7 @@ class LearnController extends Controller
      */
     public function index( Request $request )
     {
-        $learns = $this->learnModel->getLearnAllList( $request );
+        $learns = $this->learnModel->getLearnAllListForAdmin( $request );
 
         return view( 'admin.learn.index', compact( 'learns' ) );
     }
@@ -52,6 +52,63 @@ class LearnController extends Controller
     public function edit( Learn $learn )
     {
         return view( 'admin.learn.edit', compact( 'learn' ) );
+    }
+
+    public function create()
+    {
+        return view( 'admin.learn.create' );
+    }
+
+    public function store( LearnRequest $request )
+    {
+        $result = $this->learnModel->createLearn( $request );
+
+        return $this->setUpdateOrCreationResponse( $request, $result );
+    }
+
+    /**
+     * Set update or creation response.
+     *
+     * @param Request $request Request object
+     * @param array   $result  Updating or creating result
+     *
+     * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    private function setUpdateOrCreationResponse( Request $request, array $result )
+    {
+        $response = $this->setResponseMessages( $result );
+
+        if( $request->ajax() ){
+            return response()->json( $response );
+        } else {
+            return redirect()->route( 'admin.learn.index' );
+        }
+    }
+
+    /**
+     * Set error messages from result.
+     *
+     * @param array $result Result of saved learn
+     *
+     * @return array Error messages
+     */
+    private function setResponseMessages( array $result )
+    {
+
+        if( !$result['successForLearn'] && !$result['successForLearnImage'] ){
+            $data = [
+                'success' => false,
+                'error'   => __( 'learn.create_thread_form.saved_learn_error' ),
+            ];
+        } else {
+            $data = [
+                'success'       => true,
+                'message'       => __( 'learn.create_thread_form.saved_learn_success' ),
+                'redirectedUrl' => route( 'learn.index' ),
+            ];
+        }
+
+        return $data;
     }
 
     /**

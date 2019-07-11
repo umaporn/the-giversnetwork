@@ -37,6 +37,7 @@ return [
     'edit'                => 'Edit',
     'delete'              => 'Delete',
     'edit_learn'          => 'Edit Learn',
+    'add_learn'           => 'Add Learn',
     'learn_id'            => 'Learn ID',
     'title_thai'          => 'Title Thai',
     'title_english'       => 'Title English',

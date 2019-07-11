@@ -16,7 +16,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class Learn extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'title_thai', 'title_english', 'description_thai', 'description_english', 'content_thai', 'content_english', 'file_path', 'view',
+                            'status', 'highlight_status', 'type', ];
 
     /** @var string Table name */
     protected $table = 'learn';
@@ -226,6 +227,49 @@ class Learn extends Model
         $this->setAttribute( 'image_path', Storage::url( $attributes['image_path'] ) );
 
         Image::deleteImage( [ $this->getAttributes() ], $imagesFields );
+
+    }
+
+    /**
+     * Get learn all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of learn
+     */
+    public function getLearnAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'learnCategory' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'learn', $request );
+
+        return $this->transformLearnContent( $data );
+
+    }
+
+    public function createLearn( LearnRequest $request )
+    {
+        $file_path        = '';
+        $imageInformation = $this->saveImage( $request );
+
+        if( isset( $imageInformation['imageInformation']['original'] ) ){
+            $file_path = $imageInformation['imageInformation']['original'];
+        }
+
+        $newLearn = [
+            'title_english'   => $request->input( 'title_english' ),
+            'title_thai'      => $request->input( 'title_english' ),
+            'content_english' => $request->input( 'content_english' ),
+            'content_thai'    => $request->input( 'content_english' ),
+            'file_path'       => $file_path,
+            'fk_user_id'      => $request->input( 'fk_user_id' ),
+            'status'          => 'public',
+        ];
+
+        $successForLearn = $this->create( $newLearn );
+
+        return [ 'successForLearn' => $successForLearn ];
 
     }
 

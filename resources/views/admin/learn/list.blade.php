@@ -3,7 +3,13 @@
         <td>{{ $learn->id }}</td>
         <td>{{ $learn->title }}</td>
         <td>{{ $learn->view }}</td>
-        <td><i class="far fa-check-square"></i></td>
+        <td>
+            @if($learn->status === 'public')
+                <i class="far fa-check-square"></i>
+            @else
+                <i class="far fa-square"></i>
+            @endif
+        </td>
         <td>
             <a href="{{ route('learn.detail', [ 'learn' => $learn->id ]) }}" target="_blank">
                 <i class="fas fa-link"></i>
@@ -11,7 +17,6 @@
         </td>
         <td><a href="{{ route('admin.learn.edit', [ 'learn' =>  $learn->id ]) }}"><i class="fas fa-pen"></i></a></td>
         <td>
-            {{--<a href="#"><i class="fas fa-trash-alt"></i></a>--}}
             <form class="deletion" id="learn-group-deletion-{{ $loop->iteration }}"
                   data-info="{{ $learn->email }}"
                   data-deletion-confirmation-message="@lang('learn_admin.learn_management.remove_confirmation')"
