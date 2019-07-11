@@ -49,14 +49,6 @@
                                         {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="username" class="form-label">@lang('learn_admin.learn_id')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9 form-text">
-                                                00019
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
                                                 <label for="title_thai" class="form-label">@lang('learn_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">

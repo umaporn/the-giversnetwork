@@ -26,7 +26,23 @@
                     <div class="cell small-12 large-4 xxlarge-3 show-for-large">
                         @include('admin.layouts.side_menu')
                     </div>
-
+                    <div class="cell small-12 large-8 xxlarge-9">
+                        <article class="admin-content">
+                            <div class="grid-x">
+                                <div class="cell small-12">
+                                    <div class="grid-x admin-form-space admin-search">
+                                        <h2 class="cell shrink admin-head">Admin Panel</h2>
+                                        <div class="cell auto grid-x align-middle">
+                                            <div class="cell line auto"></div>
+                                            <div class="cell shrink">
+                                                <span class="outline-dot float-right"><span class="dot"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
                 </div>
             </div>
         </div>
