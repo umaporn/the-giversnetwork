@@ -33,6 +33,6 @@
     </tr>
 @empty
     <tr>
-        <td class="not-found" colspan="3">@lang('learn.learn_management.not_found_learn')</td>
+        <td class="not-found" colspan="3">@lang('learn_admin.learn_management.not_found_learn')</td>
     </tr>
 @endforelse

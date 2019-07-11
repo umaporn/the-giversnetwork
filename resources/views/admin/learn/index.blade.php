@@ -39,10 +39,12 @@
                                             </div>
                                             <div class="margin-left-1">
                                                 <div class="input-group input-search">
-                                                    <input class="input-group-field form-fill" type="text">
-                                                    <div class="input-group-button">
-                                                        <input type="button" class="button btn-blue" value="Search">
-                                                    </div>
+                                                    <form id="search-form-detail" class="cell search" method="GET" action="{{ route('admin.learn.index') }}">
+                                                        <input name="search" type="text" class="input-group-field form-fill" placeholder="Search">
+                                                        <div class="input-group-button">
+                                                            <input type="submit" class="button btn-blue" value="Search">
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

@@ -61,7 +61,7 @@ return [
         'remove_learn_success' => 'Successfully removed the learn.',
         'delete'               => 'Delete',
         'remove_confirmation'  => 'Are you sure you would like to remove the learn, ',
-        'not_found_learn'      => 'Not found the learns.',
+        'not_found_learn'      => 'Not found the learn information.',
     ],
 
 
