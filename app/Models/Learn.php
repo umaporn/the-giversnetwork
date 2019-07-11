@@ -247,6 +247,13 @@ class Learn extends Model
 
     }
 
+    /**
+     * Create learn information.
+     *
+     * @param LearnRequest $request Learn request object
+     *
+     * @return array Response information
+     */
     public function createLearn( LearnRequest $request )
     {
         $file_path        = '';

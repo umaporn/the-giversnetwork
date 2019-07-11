@@ -54,11 +54,23 @@ class LearnController extends Controller
         return view( 'admin.learn.edit', compact( 'learn' ) );
     }
 
+    /**
+     * Display admin learn creation form.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn creation form
+     */
     public function create()
     {
         return view( 'admin.learn.create' );
     }
 
+    /**
+     * Creating learn information.
+     *
+     * @param LearnRequest $request Learn request object
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Response information
+     */
     public function store( LearnRequest $request )
     {
         $result = $this->learnModel->createLearn( $request );
