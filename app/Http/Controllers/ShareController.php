@@ -71,7 +71,7 @@ class ShareController extends Controller
     /**
      * Display share page.
      *
-     * @param Request $request
+     * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Share page
      * @throws \Throwable
@@ -95,8 +95,8 @@ class ShareController extends Controller
     /**
      * Display share detail page.
      *
-     * @param Share   $share
-     * @param Request $request
+     * @param Share   $share   Share model
+     * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Share detail page
      * @throws \Throwable

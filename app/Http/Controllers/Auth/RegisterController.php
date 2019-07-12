@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RecaptchaRequest;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 /**

@@ -76,7 +76,7 @@ const Form = (function(){
 
 		$( '.toggle-password' ).click( function(){
 			$( this ).text( $( this ).text() === 'show' ? 'hide' : 'show' );
-			var input = $("input[class='form-fill password']");
+			let input = $( 'input[class=\'form-fill password\']' );
 
 			if( input.attr( 'type' ) === 'password' ){
 				input.attr( 'type', 'text' );
@@ -87,7 +87,7 @@ const Form = (function(){
 
 		$( '.toggle-use-address' ).change( function(){
 
-			var address = $( '#address' );
+			let address = $( '#address' );
 
 			if( $( this ).prop( 'checked' ) ){
 				address.attr( 'disabled', true );
@@ -96,12 +96,12 @@ const Form = (function(){
 			}
 		} );
 
-		var text_max = 200;
+		let text_max = 200;
 		$('#count_message').html(text_max + ' remaining');
 
 		$('#content_english').keyup(function() {
-			var text_length = $('#content_english').val().length;
-			var text_remaining = text_max - text_length;
+			let text_length    = $( '#content_english' ).val().length;
+			let text_remaining = text_max - text_length;
 
 			$('#count_message').html(text_remaining + ' remaining');
 		});

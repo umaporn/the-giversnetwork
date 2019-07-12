@@ -65,7 +65,10 @@ class ChallengeController extends Controller
     /**
      * Display challenge page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge page
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Challenge page
+     * @throws \Throwable
      */
     public function index( Request $request )
     {
@@ -85,7 +88,12 @@ class ChallengeController extends Controller
     /**
      * Display challenge detail page.
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge detail page
+     * @param Challenge $challenge Challenge model
+     * @param Request   $request   Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Challenge detail
+     *                                                                                                page
+     * @throws \Throwable
      */
     public function detail( Challenge $challenge, Request $request )
     {
@@ -105,8 +113,6 @@ class ChallengeController extends Controller
     }
 
     /**
-     * Display challenge detail page.
-     * /**
      * Display challenge page.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge page
@@ -206,7 +212,7 @@ class ChallengeController extends Controller
     /**
      * Delete comment on challenge content.
      *
-     * @param Request $request Request Object
+     * @param Request $request Request object
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

@@ -15,7 +15,7 @@
                         <a href="{{ route('give.detail', [ 'give' => $give_item['id'] ]) }}">
                             <h2 class="cards-topic">{{ $give_item['title'] }}</h2>
                         </a>
-                        <p class="cards-amount">{{ $give_item['amount'] }} items</p>
+                        <p class="cards-amount">{{ $give_item['amount'] ? $give_item['amount'] : '0' }} items</p>
                         <a href="{{ route('give.detail', [ 'give' => $give_item['id'] ]) }}"
                            class="btn-blue"
                         >

@@ -15,7 +15,9 @@
                         <a href="{{ route('give.detail', [ 'give' => $otherUserItems['id'] ]) }}">
                             <h2 class="cards-topic">{{ $otherUserItems['title'] }}</h2>
                         </a>
-                        <p class="cards-amount">{{ $otherUserItems['amount'] }} items</p>
+                        <p class="cards-amount">{{ $otherUserItems['amount'] ? $otherUserItems['amount'] : '0' }}
+                            items
+                        </p>
                     </div>
                 </div>
             </article>

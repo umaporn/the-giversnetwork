@@ -11,7 +11,8 @@ const Slide = (function(){
 	 */
 	function initialize(){
 		if( $( '.slide-thumb, .slide-thumb-give' ).length ){
-			var galleryTop                   = new Swiper( '.gallery-top', {
+
+			let galleryTop = new Swiper( '.gallery-top', {
 				spaceBetween: 10,
 				navigation:   {
 					nextEl: '.swiper-button-next',
@@ -20,7 +21,8 @@ const Slide = (function(){
 				loop:         true,
 				loopedSlides: 4,
 			} );
-			var galleryThumbs                = new Swiper( '.gallery-thumbs', {
+
+			let galleryThumbs = new Swiper( '.gallery-thumbs', {
 				spaceBetween:        10,
 				centeredSlides:      true,
 				slidesPerView:       'auto',
@@ -29,6 +31,7 @@ const Slide = (function(){
 				loop:                true,
 				loopedSlides:        4,
 			} );
+
 			galleryTop.controller.control    = galleryThumbs;
 			galleryThumbs.controller.control = galleryTop;
 		}

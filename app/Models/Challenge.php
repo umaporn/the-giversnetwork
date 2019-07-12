@@ -153,8 +153,8 @@ class Challenge extends Model
     /**
      * Get challenge all list.
      *
-     * @param Request $request
-     * @param string  $limit
+     * @param Request $request Request object
+     * @param string  $limit   Limit number
      *
      * @return LengthAwarePaginator List of challenge
      */
