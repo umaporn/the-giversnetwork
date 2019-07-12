@@ -3,7 +3,7 @@
         <article>
             <figure>
                 <a href="{{ route('give.detail', ['give' => $give_item['id'] ]) }}">
-                    <img src="{{ $give_item['image_path'] ? $give_item['image_path'] : config('images.placeholder.700x400') }}" alt="{{ $give_item['title'] }}" class="img-cover">
+                    <img src="{{ $give_item['image_path'] ? $give_item['image_path'] : config('images.placeholder.130x130') }}" alt="{{ $give_item['title'] }}" class="img-cover">
                 </a>
             </figure>
             <a href="{{ route('give.detail', ['give' => $give_item['id'] ]) }}">

@@ -5,7 +5,7 @@
                 <div class="cards-style">
                     <figure class="cards-image">
                         <a href="{{ route('give.detail', [ 'give' => $give_item['id'] ]) }}">
-                            <img src="{{ $give_item['image_path'] ? $give_item['image_path'] : asset( config('images.placeholder.700x400') ) }}"
+                            <img src="{{ $give_item['image_path'] ? $give_item['image_path'] : asset( config('images.placeholder.130x130') ) }}"
                                  alt="{{ $give_item['title'] }}"
                                  class="img-cover"
                             >

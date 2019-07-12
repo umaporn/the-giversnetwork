@@ -88,15 +88,24 @@
                     <div class="cell small-12 medium-12 large-6 text-center slide-thumb-give">
                         <div class="gallery-top">
                             <div class="swiper-wrapper">
-                                @foreach( $data->giveImage as $give_image )
+                                @forelse( $data->giveImage as $give_image )
                                     <div class="swiper-slide">
                                         <div class="swiper-slide-container">
                                             <figure>
-                                                <img src="{{ $give_image['image_path'] }}" alt="{{ $give_image['alt'] }}">
+                                                <img src="{{ $give_image['image_path'] ? $give_image['image_path'] : asset( config('images.placeholder.700x400') ) }}"
+                                                     alt="{{ $give_image['alt'] }}">
                                             </figure>
                                         </div>
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div class="swiper-slide">
+                                        <div class="swiper-slide-container">
+                                            <figure>
+                                                <img src="{{ asset( config('images.placeholder.700x400') ) }}" alt="">
+                                            </figure>
+                                        </div>
+                                    </div>
+                                @endforelse
                             </div>
                             <!-- Add Arrows -->
                             <div class="swiper-button-next"><i class="fas fa-chevron-right fa-2x"></i></div>
@@ -108,7 +117,8 @@
                                     <div class="swiper-slide">
                                         <div class="swiper-slide-container">
                                             <figure>
-                                                <img src="{{ $give_image['image_path'] }}" alt="{{ $give_image['alt'] }}">
+                                                <img src="{{ $give_image['image_path'] ? $give_image['image_path'] : asset( config('images.placeholder.700x400') ) }}"
+                                                     alt="{{ $give_image['alt'] }}">
                                             </figure>
                                         </div>
                                     </div>
@@ -183,7 +193,7 @@
                             <div class="cards-style">
                                 <figure class="cards-image">
                                     <a href="{{ route('give.detail', [ 'give' => $give_item['id'] ]) }}">
-                                        <img src="{{ $give_item['image_path'] ? $give_item['image_path'] : asset(config('images.placeholder.700x400')) }}"
+                                        <img src="{{ $give_item['image_path'] ? $give_item['image_path'] : asset(config('images.placeholder.130x130')) }}"
                                              alt="{{ $give_item['title'] }}"
                                              class="img-cover"
                                         >
