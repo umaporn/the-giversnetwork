@@ -222,14 +222,16 @@ class ChallengeController extends Controller
         $success = $this->challengeCommentModel->where( [ 'id' => $request->input( 'id' ), ] )->delete();
 
         if( $success ){
-            $response = [ 'success'       => true,
-                          'message'       => __( 'challenge.comment.remove_comment_success' ),
-                          'redirectedUrl' => url()->previous(),
+            $response = [
+                'success'       => true,
+                'message'       => __( 'challenge.comment.remove_comment_success' ),
+                'redirectedUrl' => url()->previous(),
             ];
         } else {
-            $response = [ 'success'       => false,
-                          'message'       => __( 'challenge.comment.remove_comment_fail' ),
-                          'redirectedUrl' => url()->previous(),
+            $response = [
+                'success'       => false,
+                'message'       => __( 'challenge.comment.remove_comment_fail' ),
+                'redirectedUrl' => url()->previous(),
             ];
         }
 
