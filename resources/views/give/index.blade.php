@@ -4,7 +4,6 @@
 @section('page-description', __('give.page_description.index'))
 
 @section('content')
-
     <section class="give all">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">

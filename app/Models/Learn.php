@@ -59,7 +59,6 @@ class Learn extends Model
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
             $list->setAttribute( 'content', Utility::getLanguageFields( 'content', $list ) );
-            $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->learnCategory ) );
             $list->setAttribute( 'image_path', Utility::getImages( $list['file_path'] ) );
             $this->setPublicDateForFrontEnd( $list );
         }

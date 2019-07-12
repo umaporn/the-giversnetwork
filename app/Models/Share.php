@@ -208,6 +208,13 @@ class Share extends Model
         return $share;
     }
 
+    /**
+     * Creating share item.
+     *
+     * @param Request $request Request object
+     *
+     * @return array Response information
+     */
     public function createShare( Request $request )
     {
         $file_path       = '';

@@ -149,7 +149,7 @@
                                 @endif
                                 <div class="comment-login-detail">
                                     <div class="comment-login-content">
-                                        <a href="{{ route('user.getUserProfile', ['id' => $data->users['id']]) }}">
+                                        <a href="{{ route('give.detail', [ 'give' => $data['id'] ]) }}">
                                             <button class="btn-blue btn-long">@lang('give.i_need_contact') {{ $data->users['username'] }}</button>
                                         </a>
                                     </div>
@@ -194,7 +194,7 @@
                                         <h2 class="cards-topic">{{ $give_item['title'] }}</h2>
                                     </a>
                                     <p class="cards-amount">{{ $give_item['amount'] }} items</p>
-                                    <a href="{{ route('user.getUserProfile', [ 'user' => $give_item['fk_user_id'] ]) }}"
+                                    <a href="{{ route('give.detail', [ 'give' => $give_item['id'] ]) }}"
                                        class="btn-blue"
                                     >
                                         @lang('give.contact_giver')

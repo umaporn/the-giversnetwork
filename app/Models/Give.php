@@ -154,15 +154,18 @@ class Give extends Model
      */
     public function getGiveAllList( Request $request )
     {
-        $type           = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
+        $type           = $request->get( 'type' ) ? $request->get( 'type' ) : '';
         $fk_category_id = $request->get( 'category_id' ) ? $request->get( 'category_id' ) : '';
 
         $builder = $this->with( [ 'giveCategory' ] )
                         ->orderBy( 'id', 'desc' )
-                        ->where( [ 'status' => 'public', 'type' => $type ] );
+                        ->where( [ 'status' => 'public' ] );
 
         if( $fk_category_id ){
             $builder->where( [ 'fk_category_id' => $fk_category_id ] );
+        }
+        if( $type ){
+            $builder->where( [ 'type' => $type ] );
         }
 
         $data = Search::search( $builder, 'give', $request );
@@ -246,14 +249,27 @@ class Give extends Model
      */
     public function getGiveUserItemList( string $userID, Request $request )
     {
+        $type = $request->get( 'type' ) ? $request->get( 'type' ) : '';
+
         $builder = $this->with( [ 'giveImage' ] )
-                        ->where( [ 'status' => 'public', 'type' => 'give', 'fk_user_id' => $userID ] );
+                        ->where( [ 'status' => 'public', 'fk_user_id' => $userID ] );
+
+        if( $type ){
+            $builder->where( [ 'type' => $type ] );
+        }
 
         $data = Search::search( $builder, 'give', $request, [], '4' );
 
         return $this->transformGiveContent( $data );
     }
 
+    /**
+     * Creating give or receive item.
+     *
+     * @param Request $request Request object
+     *
+     * @return array Response information
+     */
     public function createGive( Request $request )
     {
 

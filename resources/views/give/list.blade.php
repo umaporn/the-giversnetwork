@@ -16,7 +16,7 @@
                             <h2 class="cards-topic">{{ $give_item['title'] }}</h2>
                         </a>
                         <p class="cards-amount">{{ $give_item['amount'] }} items</p>
-                        <a href="{{ route('user.getUserProfile', [ 'user' => $give_item['fk_user_id'] ]) }}"
+                        <a href="{{ route('give.detail', [ 'give' => $give_item['id'] ]) }}"
                            class="btn-blue"
                         >
                             @lang('give.contact_giver')
