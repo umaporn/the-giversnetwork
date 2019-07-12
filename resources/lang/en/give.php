@@ -31,7 +31,7 @@ return [
     'tell_giver'              => 'Give/Receive Item',
     'contact_giver'           => 'Contact giver',
     'do_you_need'             => 'Do you need this items?',
-    'i_need_contact'          => 'I need contact with',
+    'i_need_contact'          => 'I want to contact this person',
     'other_user_item'         => 'Other user\'s items',
     'other_item'              => 'Other Items',
     'give_or_receive'         => 'Give Items or Receive',

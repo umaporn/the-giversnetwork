@@ -160,7 +160,7 @@
                                 <div class="comment-login-detail">
                                     <div class="comment-login-content">
                                         <a href="{{ route('give.detail', [ 'give' => $data['id'] ]) }}">
-                                            <button class="btn-blue btn-long">@lang('give.i_need_contact') {{ $data->users['username'] }}</button>
+                                            <button class="btn-blue btn-long">@lang('give.i_need_contact')</button>
                                         </a>
                                     </div>
                                 </div>

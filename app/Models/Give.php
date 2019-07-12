@@ -58,13 +58,6 @@ class Give extends Model
     /**
      * Get a list of give for displaying.
      *
-     * @param Request $request Give request object
-     *
-     * @return LengthAwarePaginator A list of give for home page
-     */
-    /**
-     * Get a list of give for displaying.
-     *
      * @param string  $id      Category id
      * @param Request $request Request object
      *
@@ -189,8 +182,7 @@ class Give extends Model
 
         if( $give ){
             $give->setAttribute( 'title', Utility::getLanguageFields( 'title', $give ) );
-            $give->setAttribute( 'content', Utility::getLanguageFields( 'content', $give ) );
-            $give->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $give->giveCategory ) );
+            $give->setAttribute( 'description', Utility::getLanguageFields( 'description', $give ) );
             $give->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $give->giveCategory ) );
             $this->setDateForFrontEnd( $give );
             foreach( $give->giveImage as $give_image ){
