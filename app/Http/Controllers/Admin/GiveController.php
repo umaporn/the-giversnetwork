@@ -93,9 +93,11 @@ class GiveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id )
+    public function edit( Give $give )
     {
-        //
+        $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
+
+        return view( 'admin.give.edit', compact( 'give', 'data' ) );
     }
 
     /**
