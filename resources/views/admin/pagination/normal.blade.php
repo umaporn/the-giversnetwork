@@ -1,5 +1,5 @@
 @if( $paginator->hasPages() )
-    <ul class="pagination text-right" aria-label="{{ trans('pagination.pagination') }}">
+    <ul class="pagination text-center" aria-label="{{ trans('pagination.pagination') }}">
         <!-- Previous Page Link -->
         @if( $paginator->onFirstPage() )
             <li class="pagination-previous disabled">

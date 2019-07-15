@@ -80,6 +80,22 @@ return [
         ],
         [
             'routeName' => '#',
+            'menuText'  => 'give_admin.page_link.index',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.give.index',
+                    'menuText'  => 'give_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+                [
+                    'routeName' => 'admin.give.create',
+                    'menuText'  => 'give_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+            ],
+        ],
+        [
+            'routeName' => '#',
             'menuText'  => 'user_admin.page_link.index',
             'childMenu' => [
                 [

@@ -356,4 +356,16 @@ class Give extends Model
 
     }
 
+
+    public function getGiveAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'giveCategory' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'give', $request );
+
+        return $this->transformGiveContent( $data );
+
+    }
+
 }
