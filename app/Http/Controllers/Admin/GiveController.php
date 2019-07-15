@@ -6,6 +6,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Give;
+use App\Models\GiveCategory;
 use App\Models\GiveImage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -22,19 +23,25 @@ class GiveController extends Controller
     /** @var GiveImage Give Image model */
     protected $giveImageModel;
 
+    /** @var GiveCategory Give Category model */
+    protected $giveCategoryModel;
+
     /**
      * GiveController constructor.
      */
-    public function __construct( Give $give, GiveImage $giveImage )
+    public function __construct( Give $give, GiveImage $giveImage, GiveCategory $giveCategory )
     {
-        $this->giveModel      = $give;
-        $this->giveImageModel = $giveImage;
+        $this->giveModel         = $give;
+        $this->giveImageModel    = $giveImage;
+        $this->giveCategoryModel = $giveCategory;
     }
 
     /**
-     * Display a listing of the resource.
+     * Display a listing of give.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give page
      */
     public function index( Request $request )
     {
@@ -44,13 +51,15 @@ class GiveController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new give.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Response Give creation page
      */
     public function create()
     {
-        //
+        $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
+
+        return view( 'admin.give.create', compact( 'data' ) );
     }
 
     /**
