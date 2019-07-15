@@ -16,7 +16,7 @@
 
 @if( count ( $data['give'] ) === 9 )
     <div class="cell small-6 medium-4 view-all align-self-top text-center">
-        <a href="#">
+        <a href="{{ route('give.index', ['category_id' => $give_item['fk_category_id'] ]) }}">
             <i class="fas fa-plus"></i>
         </a>
         <span class="sub-title">MORE</span>
