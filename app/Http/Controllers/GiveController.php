@@ -40,23 +40,11 @@ class GiveController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-<<<<<<< HEAD
             'type'             => config( 'validation.give.type' ),
             'fk_category_id'   => config( 'validation.give.fk_category_id' ),
             'name'             => config( 'validation.give.name' ),
             'address'          => config( 'validation.give.address' ),
             'description_text' => config( 'validation.give.description_text' ),
-=======
-            'type'                => config( 'validation.give_admin.type' ),
-            'fk_category_id'      => config( 'validation.give_admin.fk_category_id' ),
-            'title_thai'          => config( 'validation.give_admin.title_thai' ),
-            'title_english'       => config( 'validation.give_admin.title_english' ),
-            'description_thai'    => config( 'validation.give_admin.description_thai' ),
-            'description_english' => config( 'validation.give_admin.description_english' ),
-            'amount'              => config( 'validation.give_admin.amount' ),
-            'address'             => config( 'validation.give_admin.address' ),
-            'description_text'    => config( 'validation.give_admin.description_text' ),
->>>>>>> 7a80b6b7a3f1779ade4c04bf8d2c74f336ee5220
         ] );
     }
 
