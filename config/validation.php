@@ -31,6 +31,6 @@ return [
         'fk_category_id'   => 'required|numeric',
         'name'             => 'required|string|min:3|max:500',
         'address'          => 'sometimes|string',
-        'description_text' => 'required|string|min:3|max:200',
+        'description_text' => 'required|string|min:3|max:2000',
     ],
 ];
