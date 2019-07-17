@@ -80,33 +80,68 @@ class GiveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param GiveRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function store( Request $request )
+    public function store( GiveRequest $request )
     {
-        //
+        $result = $this->giveModel->createGiveForAdmin( $request );
+
+        return $this->setUpdateOrCreationResponse( $request, $result );
     }
 
     /**
-     * Display the specified resource.
+     * Set update or creation response.
      *
-     * @param int $id
+     * @param Request $request Request object
+     * @param array   $result  Updating or creating result
      *
-     * @return \Illuminate\Http\Response
+     * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function show( $id )
+    private function setUpdateOrCreationResponse( Request $request, array $result )
     {
-        //
+        $response = $this->setResponseMessages( $result );
+
+        if( $request->ajax() ){
+            return response()->json( $response );
+        } else {
+            return redirect()->route( 'admin.give.index' );
+        }
+    }
+
+    /**
+     * Set error messages from result.
+     *
+     * @param array $result Result of saved give
+     *
+     * @return array Error messages
+     */
+    private function setResponseMessages( array $result )
+    {
+
+        if( !$result['successForGive'] && !$result['successForGiveImage'] ){
+            $data = [
+                'success' => false,
+                'error'   => __( 'give_admin.saved_give_error' ),
+            ];
+        } else {
+            $data = [
+                'success'       => true,
+                'message'       => __( 'give_admin.saved_give_success' ),
+                'redirectedUrl' => route( 'admin.give.index' ),
+            ];
+        }
+
+        return $data;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param Give $give Give model
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Edit form
      */
     public function edit( Give $give )
     {
@@ -140,14 +175,24 @@ class GiveController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a specific give.
      *
-     * @param int $id
+     * @param Request $request Request object
+     * @param Give    $give    Give model
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
-    public function destroy( $id )
+    public function destroy( Request $request, Give $give )
     {
-        //
+        $success = $give->deleteGive();
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'success'       => $success,
+                                         'message'       => __( 'give_admin.give_management.remove_give_success' ),
+                                         'redirectedUrl' => route( 'admin.give.index' ),
+                                     ] );
+        }
     }
 }

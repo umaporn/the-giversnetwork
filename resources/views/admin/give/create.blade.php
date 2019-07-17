@@ -41,7 +41,10 @@
                                     </div>
                                 </div>
                                 <div class="cell small-12">
-                                    <form action="">
+                                    <form action="{{ route('admin.give.store') }}"
+                                          method="POST"
+                                          enctype="multipart/form-data"
+                                          class="submission-form">
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
                                                 <label for="product" class="form-label">@lang('give_admin.choose')</label>
@@ -130,7 +133,7 @@
                                                 <label for="product" class="form-label">@lang('give_admin.expired_date')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <select class="form-select white">
+                                                <select class="form-select white" name="expired_date">
                                                     @foreach( __('give_admin.expired_date_list') as $expired_date )
                                                         <option value="{{ $expired_date }}">{{ $expired_date }}</option>
                                                     @endforeach
@@ -169,6 +172,7 @@
                                                 <button class="btn-green btn-long">@lang('give_admin.add_give')</button>
                                             </div>
                                         </div>
+                                        <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
                                     </form>
 
                                 </div>

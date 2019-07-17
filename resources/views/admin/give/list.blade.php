@@ -24,7 +24,7 @@
             >
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <input type="hidden" name="email" value="{{ $giveItem->email }}">
+                <input type="hidden" name="give" value="{{ $giveItem->id }}">
                 <button type="submit" class="cursor-pointer" title="@lang('give_admin.give_management.remove')">
                     <i class="fas fa-trash-alt"></i>
                 </button>

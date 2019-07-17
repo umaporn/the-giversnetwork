@@ -176,13 +176,15 @@
                                             <div class="cell small-12 large-2">
                                                 <label for="image" class="form-label">@lang('give_admin.image')</label>
                                             </div>
-                                            <div class="cell small-12 large-9 grid-x">
+                                            <div class="cell small-12 large-9">
                                                 @if($give->giveImage)
-                                                    @foreach( $give->giveImage as $giveImage )
-                                                        <div class="cell small-4 padding-1">
+                                                    <div class="grid-x">
+                                                        @foreach( $give->giveImage as $giveImage )
+                                                            <div class="cell small-4 padding-1">
                                                                 <img src="{{ $giveImage->image_path }}" width="200" alt="@lang('give_admin.image')">
-                                                        </div>
-                                                    @endforeach
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
                                                 @endif
                                                 <div class="form-file-image">
                                                     <div class="form-file">

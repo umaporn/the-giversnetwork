@@ -59,17 +59,10 @@ class Give extends Model
     /**
      * Get a list of give for displaying.
      *
-     * @param Request $request Give request object
-     *
-     * @return LengthAwarePaginator A list of give for home page
-     */
-    /**
-     * Get a list of give for displaying.
-     *
      * @param string  $id      Category id
      * @param Request $request Request object
      *
-     * @return LengthAwarePaginator
+     * @return LengthAwarePaginator  A list of give for home page
      */
     public function getHomeGiveList( string $id, Request $request )
     {
@@ -255,6 +248,13 @@ class Give extends Model
         return $this->transformGiveContent( $data );
     }
 
+    /**
+     * Give Creation.
+     *
+     * @param Request $request Request object
+     *
+     * @return array Creation give response
+     */
     public function createGive( Request $request )
     {
 
@@ -293,6 +293,7 @@ class Give extends Model
                     $imageInformation = $this->saveImage( $imagePath );
 
                     if( isset( $imageInformation['imageInformation']['original'] ) ){
+
                         $imagePathOriginal  = $imageInformation['imageInformation']['original'];
                         $imagePathThumbnail = $imageInformation['imageInformation']['thumbnail'];
                     }
@@ -344,19 +345,23 @@ class Give extends Model
     /**
      * Delete an uploaded image.
      *
-     * @return void
+     * @param array $images Image's information
+     *
+     * @return    void
      */
-    private function deleteImage()
+    private function deleteImage( array $images )
     {
-        $imagesFields = [ 'image_path' ];
-        $attributes   = $this->getAttributes();
-
-        $this->setAttribute( 'image_path', Storage::url( $attributes['image_path'] ) );
-
-        Image::deleteImage( [ $this->getAttributes() ], $imagesFields );
-
+        $imagesFields = [ 'original', 'thumbnail' ];
+        Image::deleteImage( $images, $imagesFields );
     }
 
+    /**
+     * Get give list.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator List of give
+     */
     public function getGiveAllListForAdmin( Request $request )
     {
         $builder = $this->with( [ 'giveCategory' ] )
@@ -369,6 +374,13 @@ class Give extends Model
 
     }
 
+    /**
+     * Get receive list.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator List of receive
+     */
     public function getReceiveAllListForAdmin( Request $request )
     {
         $builder = $this->with( [ 'giveCategory' ] )
@@ -379,6 +391,69 @@ class Give extends Model
 
         return $this->transformGiveContent( $data );
 
+    }
+
+    /**
+     * Creating give for admin page.
+     *
+     * @param GiveRequest $request Request object
+     *
+     * @return array Creation response
+     */
+    public function createGiveForAdmin( GiveRequest $request )
+    {
+
+        if( $request->input( 'expired_date' ) ){
+            $expiredDate = date( 'Y-m-d', strtotime( $request->input( 'expired_date' ) ) );
+        }
+
+        $newGive = [
+            'type'                => $request->input( 'type' ),
+            'fk_category_id'      => $request->input( 'fk_category_id' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'title_english'       => $request->input( 'title_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'amount'              => $request->input( 'amount' ),
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
+            'address'             => $request->input( 'address' ),
+            'expired_date'        => $expiredDate,
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        $successForGive = $this->create( $newGive );
+
+        if( $successForGive ){
+
+            $successForGiveImage = '';
+
+            if( $request->file( 'image_path' ) ){
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+
+                        $imagePathOriginal  = $imageInformation['imageInformation']['original'];
+                        $imagePathThumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $giveID = $successForGive->id;
+
+                    $giveImageInformation = [
+                        'original'   => $imagePathOriginal,
+                        'thumbnail'  => $imagePathThumbnail,
+                        'fk_give_id' => $giveID,
+                    ];
+
+                    $successForGiveImage = $this->giveImage()->updateOrCreate( [ 'fk_give_id' => $giveID ],
+                                                                               $giveImageInformation );
+                }
+            }
+        }
+
+        return [ 'successForGive' => $successForGive, 'successForGiveImage' => $successForGiveImage ];
     }
 
     /**
@@ -421,11 +496,14 @@ class Give extends Model
 
             if( $request->file( 'image_path' ) ){
 
+                DB::table( 'give_image' )->where( 'fk_give_id', $give->id )->delete();
+
                 foreach( $request->file( 'image_path' ) as $imagePath ){
 
                     $imageInformation = $this->saveImage( $imagePath );
 
                     if( isset( $imageInformation['imageInformation']['original'] ) ){
+
                         $imagePathOriginal  = $imageInformation['imageInformation']['original'];
                         $imagePathThumbnail = $imageInformation['imageInformation']['thumbnail'];
                     }
@@ -451,5 +529,56 @@ class Give extends Model
         }
 
         return $response;
+    }
+
+    /**
+     * Delete give content.
+     *
+     * @return    bool|mixed|null    Deleted status
+     */
+    public function deleteGive()
+    {
+        $success = false;
+        $images  = $this->getImages( $this );
+
+        if( $images ){
+
+            $this->deleteImage( $images );
+            $success = $this->giveImage()->delete();
+
+        }
+
+        if( $success ){
+            $success = $this->delete();
+        }
+
+        return $success;
+    }
+
+    /**
+     * Get a new image list into image store.
+     *
+     * @param Give $give Give model
+     *
+     * @return    array            Image store
+     */
+    public function getImages( Give $give )
+    {
+        $imageStore = [];
+
+        foreach( $give->giveImage as $image ){
+
+            $attributes = $image->getAttributes();
+
+            array_push( $imageStore, [
+                'id'                  => $attributes['id'],
+                'fk_give_articles_id' => $attributes['fk_give_id'],
+                'original'            => Storage::url( $attributes['original'] ),
+                'thumbnail'           => Storage::url( $attributes['thumbnail'] ),
+            ] );
+
+        }
+
+        return $imageStore;
     }
 }
