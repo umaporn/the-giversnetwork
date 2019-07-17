@@ -40,12 +40,15 @@ class GiveController extends Controller
     protected function validator( array $data )
     {
         return Validator::make( $data, [
-            'type'             => config( 'validation.give.type' ),
-            'fk_category_id'   => config( 'validation.give.fk_category_id' ),
-            'name'             => config( 'validation.give.name' ),
-            'amount'           => config( 'validation.give.amount' ),
-            'address'          => config( 'validation.give.address' ),
-            'description_text' => config( 'validation.give.description_text' ),
+            'type'                => config( 'validation.give_admin.type' ),
+            'fk_category_id'      => config( 'validation.give_admin.fk_category_id' ),
+            'title_thai'          => config( 'validation.give_admin.title_thai' ),
+            'title_english'       => config( 'validation.give_admin.title_english' ),
+            'description_thai'    => config( 'validation.give_admin.description_thai' ),
+            'description_english' => config( 'validation.give_admin.description_english' ),
+            'amount'              => config( 'validation.give_admin.amount' ),
+            'address'             => config( 'validation.give_admin.address' ),
+            'description_text'    => config( 'validation.give_admin.description_text' ),
         ] );
     }
 
@@ -113,7 +116,7 @@ class GiveController extends Controller
     /**
      * Display give detail page.
      *
-     * @param Give    $give Give Model
+     * @param Give    $give    Give Model
      * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View Give detail page

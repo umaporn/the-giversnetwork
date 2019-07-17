@@ -88,6 +88,11 @@ return [
                     'icon'      => 'fas fa-caret-right',
                 ],
                 [
+                    'routeName' => 'admin.receive.index',
+                    'menuText'  => 'give_admin.page_link.receive_all',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+                [
                     'routeName' => 'admin.give.create',
                     'menuText'  => 'give_admin.page_link.add',
                     'icon'      => 'fas fa-caret-right',

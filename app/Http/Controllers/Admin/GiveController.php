@@ -51,6 +51,20 @@ class GiveController extends Controller
     }
 
     /**
+     * Display a listing of receive.
+     *
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Receive page
+     */
+    public function receive( Request $request )
+    {
+        $give = $this->giveModel->getReceiveAllListForAdmin( $request );
+
+        return view( 'admin.give.index', compact( 'give' ) );
+    }
+
+    /**
      * Show the form for creating a new give.
      *
      * @return \Illuminate\Http\Response Give creation page

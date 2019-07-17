@@ -356,10 +356,10 @@ class Give extends Model
 
     }
 
-
     public function getGiveAllListForAdmin( Request $request )
     {
         $builder = $this->with( [ 'giveCategory' ] )
+                        ->where( 'type', 'give' )
                         ->orderBy( 'id', 'desc' );
 
         $data = Search::search( $builder, 'give', $request );
@@ -368,4 +368,15 @@ class Give extends Model
 
     }
 
+    public function getReceiveAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'giveCategory' ] )
+                        ->where( 'type', 'receive' )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'give', $request );
+
+        return $this->transformGiveContent( $data );
+
+    }
 }

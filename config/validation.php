@@ -42,4 +42,15 @@ return [
         'description_english' => 'required|string|min:3|max:255',
         'content_english'     => 'required|string|min:3',
     ],
+    'give_admin'        => [
+        'type'                => 'required|in:give,receive',
+        'fk_category_id'      => 'required|numeric',
+        'title_thai'          => 'required|string|min:3|max:500',
+        'title_english'       => 'required|string|min:3|max:500',
+        'description_thai'    => 'required|string|min:3|max:5000',
+        'description_english' => 'required|string|min:3|max:5000',
+        'amount'              => 'required|numeric',
+        'address'             => 'sometimes|string',
+        'description_text'    => 'required|string|min:3|max:200',
+    ],
 ];

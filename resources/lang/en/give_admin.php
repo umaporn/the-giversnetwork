@@ -9,24 +9,27 @@ return [
     */
 
     'page_link' => [
-        'index' => 'Give',
-        'all'   => 'Give All',
-        'add'   => 'Give Add',
-        'edit'  => 'Give Edit',
+        'index'       => 'Give',
+        'all'         => 'Give All',
+        'add'         => 'Give Add',
+        'edit'        => 'Give Edit',
+        'receive_all' => 'Receive All',
     ],
 
     'page_title' => [
-        'index' => 'Give',
-        'all'   => 'Give All',
-        'add'   => 'Give Add',
-        'edit'  => 'Give Edit',
+        'index'       => 'Give',
+        'all'         => 'Give All',
+        'add'         => 'Give Add',
+        'edit'        => 'Give Edit',
+        'receive_all' => 'Receive All',
     ],
 
     'page_description' => [
-        'index' => 'Give page',
-        'all'   => 'Give All page',
-        'add'   => 'Give Add page',
-        'edit'  => 'Give Edit page',
+        'index'       => 'Give page',
+        'all'         => 'Give All page',
+        'add'         => 'Give Add page',
+        'edit'        => 'Give Edit page',
+        'receive_all' => 'Receive All',
     ],
 
     'add_give_or_receive' => 'Add Give or Receive',

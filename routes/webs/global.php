@@ -126,6 +126,8 @@ function globalRoutes()
                 'names' => addPrefixResourceRouteName( 'admin.give' ),
             ] );
 
+            Route::get( 'receive', 'Admin\GiveController@receive' )->name( 'admin.receive.index' );
+
             // Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
             // Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
             // Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
