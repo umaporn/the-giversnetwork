@@ -5,6 +5,7 @@
 
 namespace App\Models;
 
+use App\Http\Requests\GiveRequest;
 use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
@@ -378,5 +379,77 @@ class Give extends Model
 
         return $this->transformGiveContent( $data );
 
+    }
+
+    /**
+     * Updating give information.
+     *
+     * @param GiveRequest $request Give request object
+     * @param Give        $give    Give model
+     *
+     * @return array Response information
+     */
+    public function updateGiveInformation( GiveRequest $request, Give $give )
+    {
+
+        if( $request->input( 'expired_date' ) ){
+            $expiredDate = date( 'Y-m-d', strtotime( $request->input( 'expired_date' ) ) );
+        }
+
+        if( $request->input( 'useAddressProfile' ) === 'on' ){
+            $result = DB::select( 'select address from users where id = ' . $request->input( 'fk_user_id' ) );
+        }
+
+        $data = [
+            'type'                => $request->input( 'type' ),
+            'fk_category_id'      => $request->input( 'fk_category_id' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'title_english'       => $request->input( 'title_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'amount'              => $request->input( 'amount' ),
+            'address'             => $request->input( 'address' ) ? $request->input( 'address' ) : $result[0]->address,
+            'expired_date'        => $expiredDate,
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        $successForGive = $this->where( 'id', $give->id )->update( $data );
+
+        if( $successForGive ){
+
+            $successForGiveImage = '';
+
+            if( $request->file( 'image_path' ) ){
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+                        $imagePathOriginal  = $imageInformation['imageInformation']['original'];
+                        $imagePathThumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $giveID = $give->id;
+
+                    $giveImageInformation = [
+                        'original'   => $imagePathOriginal,
+                        'thumbnail'  => $imagePathThumbnail,
+                        'fk_give_id' => $giveID,
+                    ];
+
+                    $successForGiveImage = $this->giveImage()->updateOrCreate( [ 'fk_give_id' => $giveID ],
+                                                                               $giveImageInformation );
+                }
+            }
+        }
+
+        if( $successForGive || $successForGiveImage ){
+            $response = [ 'success' => true, 'message' => __( 'give_admin.saved_give_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'give_admin.saved_give_error' ), ];
+        }
+
+        return $response;
     }
 }

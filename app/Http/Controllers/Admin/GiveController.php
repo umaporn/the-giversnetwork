@@ -5,6 +5,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\GiveRequest;
 use App\Models\Give;
 use App\Models\GiveCategory;
 use App\Models\GiveImage;
@@ -110,6 +111,7 @@ class GiveController extends Controller
     public function edit( Give $give )
     {
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
+        $give                 = $this->giveModel->getGiveDetail( $give );
 
         return view( 'admin.give.edit', compact( 'give', 'data' ) );
     }
@@ -117,14 +119,24 @@ class GiveController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param GiveRequest $request Request object
+     * @param Give        $give    Give model
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function update( Request $request, $id )
+    public function update( GiveRequest $request, Give $give )
     {
-        //
+        $response = $this->giveModel->updateGiveInformation( $request, $give );
+
+        if( !$response['success'] ){
+            return response()->json( $response, 422 );
+        }
+
+        return response()->json( [
+                                     'success'       => $response['success'],
+                                     'message'       => $response['message'],
+                                     'redirectedUrl' => url()->previous(),
+                                 ] );
     }
 
     /**

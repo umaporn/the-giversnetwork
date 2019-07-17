@@ -52,8 +52,8 @@ return [
     'highlight'           => 'Highlight',
     'pin_to_highlight'    => 'Pinned to highlight',
 
-    'saved_learn_success' => 'User saved successfully.',
-    'saved_learn_error'   => 'User was not saved successfully.',
+    'saved_learn_success' => 'Learn information saved successfully.',
+    'saved_learn_error'   => 'Learn information was not saved successfully.',
 
     'learn_management' => [
         'add_button'           => 'Add a new learn.',

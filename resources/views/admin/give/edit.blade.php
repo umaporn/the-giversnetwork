@@ -64,8 +64,8 @@
                                             <div class="cell small-12 large-9">
                                                 <select class="form-select white" name="type" id="type">
                                                     <option value="">@lang('give.give_type_selection')</option>
-                                                    <option value="give">@lang('give.create_item_form.give_item')</option>
-                                                    <option value="receive">@lang('give.create_item_form.receive')</option>
+                                                    <option value="give" {{ $give->type === 'give' ? 'selected' : '' }}>@lang('give.create_item_form.give_item')</option>
+                                                    <option value="receive" {{ $give->type === 'receive' ? 'selected' : '' }}>@lang('give.create_item_form.receive')</option>
                                                 </select>
                                                 <p id="type-help-text" class="alert help-text help-text hide"></p>
                                             </div>
@@ -79,7 +79,11 @@
                                                 <select class="form-select white" name="fk_category_id" id="fk_category_id">
                                                     <option value="">@lang('give.give_category_selection')</option>
                                                     @foreach( $data['giveCategory'] as $category )
-                                                        <option value="{{ $category['id'] }}">{{ $category['title'] }}</option>
+                                                        <option value="{{ $category['id'] }}"
+                                                                {{ $category['id'] === $give->fk_category_id ? 'selected' : '' }}
+                                                        >
+                                                            {{ $category['title'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 <p id="fk_category_id-help-text" class="alert help-text help-text hide"></p>
@@ -115,13 +119,30 @@
                                                 <p id="title_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
-
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="amount" class="form-label">@lang('give_admin.amount')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <input type="number" id="amount" class="form-fill" value="{{ $give->amount }}" name="amount">
+                                                <p id="amount-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="address" class="form-label">@lang('give_admin.address')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="address" name="address" class="form-fill" rows="3">{{ $give->address }}</textarea>
+                                                <p id="address-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
                                                 <label for="description_thai" class="form-label">@lang('give_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="description_thai" class="form-fill" name="description_thai" rows="3">
+                                                <textarea id="description_thai" class="form-fill" name="description_thai" rows="3" maxlength="2000">
                                                     {{ $give->description_thai }}
                                                 </textarea>
                                                 <p id="description_thai-help-text" class="alert help-text help-text hide"></p>
@@ -133,7 +154,9 @@
                                                 <label for="description_english" class="form-label">@lang('give_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="description_english" class="form-fill" name="description_english" rows="3">{{ $give->description_english }}</textarea>
+                                                <textarea id="description_english" class="form-fill" name="description_english" rows="3">
+                                                    {{ $give->description_english }}
+                                                </textarea>
                                                 <p id="description_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -142,7 +165,7 @@
                                                 <label for="product" class="form-label">@lang('give_admin.expired_date')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <select class="form-select white">
+                                                <select class="form-select white" name="expired_date">
                                                     @foreach( __('give_admin.expired_date_list') as $expired_date )
                                                         <option value="{{ $expired_date }}">{{ $expired_date }}</option>
                                                     @endforeach
@@ -153,11 +176,13 @@
                                             <div class="cell small-12 large-2">
                                                 <label for="image" class="form-label">@lang('give_admin.image')</label>
                                             </div>
-                                            <div class="cell small-12 large-9">
-                                                @if($give->file_path)
-                                                    <div class="padding-bottom-1">
-                                                        <img src="{{ Storage::url($give->file_path) }}" width="200" alt="@lang('give_admin.image')">
-                                                    </div>
+                                            <div class="cell small-12 large-9 grid-x">
+                                                @if($give->giveImage)
+                                                    @foreach( $give->giveImage as $giveImage )
+                                                        <div class="cell small-4 padding-1">
+                                                                <img src="{{ $giveImage->image_path }}" width="200" alt="@lang('give_admin.image')">
+                                                        </div>
+                                                    @endforeach
                                                 @endif
                                                 <div class="form-file-image">
                                                     <div class="form-file">
@@ -177,7 +202,7 @@
                                                 <label class="form-label">@lang('give_admin.approval')</label>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
-                                                <input id="status" type="checkbox" name="status">
+                                                <input id="status" type="checkbox" name="status" {{ $give['status'] === 'public' ? 'checked' : '' }}>
                                                 <label for="approve">@lang('give_admin.approval_text')</label>
                                             </div>
                                         </div>

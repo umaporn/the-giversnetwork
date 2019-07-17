@@ -69,8 +69,8 @@ return [
     'publish'             => 'Publish',
     'publish_post'        => 'Publish Post',
 
-    'saved_give_success' => 'User saved successfully.',
-    'saved_give_error'   => 'User was not saved successfully.',
+    'saved_give_success' => 'Give information saved successfully.',
+    'saved_give_error'   => 'Give information was not saved successfully.',
 
     'give_management' => [
         'add_button'          => 'Add a new give.',

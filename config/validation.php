@@ -45,12 +45,11 @@ return [
     'give_admin'        => [
         'type'                => 'required|in:give,receive',
         'fk_category_id'      => 'required|numeric',
-        'title_thai'          => 'required|string|min:3|max:500',
-        'title_english'       => 'required|string|min:3|max:500',
-        'description_thai'    => 'required|string|min:3|max:5000',
-        'description_english' => 'required|string|min:3|max:5000',
+        'title_thai'          => 'required|string|min:3|max:255',
+        'title_english'       => 'required|string|min:3|max:255',
+        'description_thai'    => 'required|string|min:3|max:2000',
+        'description_english' => 'required|string|min:3|max:2000',
         'amount'              => 'required|numeric',
         'address'             => 'sometimes|string',
-        'description_text'    => 'required|string|min:3|max:200',
     ],
 ];
