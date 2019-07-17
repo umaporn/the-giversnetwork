@@ -128,6 +128,13 @@ function globalRoutes()
 
             Route::get( 'receive', 'Admin\GiveController@receive' )->name( 'admin.receive.index' );
 
+            Route::resource( 'share', 'Admin\ShareController', [
+                'names' => addPrefixResourceRouteName( 'admin.share' ),
+            ] );
+
+            Route::get( 'challenge', 'Admin\ShareController@challenge' )->name( 'admin.challenge.index' );
+            Route::get( 'challenge/create', 'Admin\ShareController@challengeCreate' )->name( 'admin.challenge.create' );
+
             // Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
             // Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
             // Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );

@@ -65,48 +65,88 @@ return [
         [
             'routeName' => '#',
             'menuText'  => 'learn_admin.page_link.index',
+            'name'      => 'learn',
             'childMenu' => [
                 [
                     'routeName' => 'admin.learn.index',
                     'menuText'  => 'learn_admin.page_link.all',
                     'icon'      => 'fas fa-caret-right',
+                    'name'      => 'learn',
                 ],
                 [
                     'routeName' => 'admin.learn.create',
                     'menuText'  => 'learn_admin.page_link.add',
                     'icon'      => 'fas fa-caret-right',
+                    'name'      => 'learn',
                 ],
             ],
         ],
         [
             'routeName' => '#',
             'menuText'  => 'give_admin.page_link.index',
+            'name'      => 'give',
             'childMenu' => [
                 [
                     'routeName' => 'admin.give.index',
                     'menuText'  => 'give_admin.page_link.all',
                     'icon'      => 'fas fa-caret-right',
+                    'name'      => 'give',
                 ],
                 [
                     'routeName' => 'admin.receive.index',
                     'menuText'  => 'give_admin.page_link.receive_all',
                     'icon'      => 'fas fa-caret-right',
+                    'name'      => 'give',
                 ],
                 [
                     'routeName' => 'admin.give.create',
                     'menuText'  => 'give_admin.page_link.add',
                     'icon'      => 'fas fa-caret-right',
+                    'name'      => 'give',
+                ],
+            ],
+        ],
+        [
+            'routeName' => '#',
+            'menuText'  => 'share_admin.page_link.index',
+            'name'      => 'share',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.share.index',
+                    'menuText'  => 'share_admin.page_link.share_all',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'share',
+                ],
+                [
+                    'routeName' => 'admin.share.create',
+                    'menuText'  => 'share_admin.page_link.share_add',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'share',
+                ],
+                [
+                    'routeName' => 'admin.challenge.index',
+                    'menuText'  => 'share_admin.page_link.challenge_all',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'share',
+                ],
+                [
+                    'routeName' => 'admin.challenge.create',
+                    'menuText'  => 'share_admin.page_link.challenge_add',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'share',
                 ],
             ],
         ],
         [
             'routeName' => '#',
             'menuText'  => 'user_admin.page_link.index',
+            'name'      => 'user',
             'childMenu' => [
                 [
                     'routeName' => 'admin.user.index',
                     'menuText'  => 'user_admin.page_link.all_user',
                     'icon'      => 'fas fa-caret-right',
+                    'name'      => 'user',
                 ],
             ],
         ],
