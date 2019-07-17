@@ -32,8 +32,10 @@ return [
         'fulltextSearch' => true,
     ],
     'users'         => [
+        'limit'          => 10,
+        'limits'         => [ 10, 20, 30 ],
         'sortby'         => 'email',
-        'searchFields'   => [ 'email' ],
+        'searchFields'   => [ 'email', 'username'],
         'fulltextSearch' => false,
     ],
     'learn'         => [

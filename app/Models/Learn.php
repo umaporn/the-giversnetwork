@@ -5,6 +5,8 @@
 
 namespace App\Models;
 
+use App\Http\Requests\LearnRequest;
+use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +16,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class Learn extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'title_thai', 'title_english', 'description_thai', 'description_english', 'content_thai', 'content_english', 'file_path', 'view',
+                            'status', 'highlight_status', 'type', 'public_date' ];
 
     /** @var string Table name */
     protected $table = 'learn';
@@ -138,6 +141,147 @@ class Learn extends Model
         }
 
         return $learn;
+    }
+
+    /**
+     * Updating learn information.
+     *
+     * @param LearnRequest $request Learn request object
+     * @param Learn        $learn   Learn model
+     *
+     * @return array Response information
+     */
+    public function updateLearnInformation( LearnRequest $request, Learn $learn )
+    {
+        $data = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+            'highlight_status'    => $request->input( 'highlight_status' ) ? 'pinned' : 'unpinned',
+        ];
+
+        if( $request->file( 'image_path' ) ){
+            $imageInformation = $this->saveImage( $request );
+
+            if( isset( $imageInformation['imageInformation']['original'] ) ){
+                $image_file = $imageInformation['imageInformation']['original'];
+
+                $data['file_path'] = $image_file;
+            }
+        }
+
+        $result = $this->where( 'id', $learn->id )->update( $data );
+
+        if( $result ){
+            $response = [ 'success' => true, 'message' => __( 'learn_admin.saved_learn_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'learn_admin.saved_learn_error' ), ];
+        }
+
+        return $response;
+
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param LearnRequest $request LearnRequest object
+     *
+     * @return array Image saved result
+     */
+    private function saveImage( LearnRequest $request )
+    {
+        $imageInformation = [];
+        $file             = $request->file( 'image_path' )[0];
+        $success          = true;
+
+        if( $file ){
+
+            $imageInformation = Image::upload( $file, 'learns' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'imageInformation' => $imageInformation ];
+    }
+
+    /**
+     * Delete an uploaded image.
+     *
+     * @return void
+     */
+    private function deleteImage()
+    {
+        $imagesFields = [ 'image_path' ];
+        $attributes   = $this->getAttributes();
+
+        $this->setAttribute( 'image_path', Storage::url( $attributes['image_path'] ) );
+
+        Image::deleteImage( [ $this->getAttributes() ], $imagesFields );
+
+    }
+
+    /**
+     * Get learn all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of learn
+     */
+    public function getLearnAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'learnCategory' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'learn', $request );
+
+        return $this->transformLearnContent( $data );
+
+    }
+
+    /**
+     * Create learn information.
+     *
+     * @param LearnRequest $request Learn request object
+     *
+     * @return array Response information
+     */
+    public function createLearn( LearnRequest $request )
+    {
+        $file_path        = '';
+        $imageInformation = $this->saveImage( $request );
+
+        if( isset( $imageInformation['imageInformation']['original'] ) ){
+            $file_path = $imageInformation['imageInformation']['original'];
+        }
+
+        $newLearn = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_english' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_english' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_english' ),
+            'file_path'           => $file_path,
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
+            'status'              => 'public',
+            'view'                => '0',
+            'type'                => '',
+            'public_date'         => date( 'Y-m-d' ),
+        ];
+
+        $successForLearn = $this->create( $newLearn );
+
+        return [ 'successForLearn' => $successForLearn ];
+
     }
 
 }

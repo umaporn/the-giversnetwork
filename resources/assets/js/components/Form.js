@@ -23,7 +23,15 @@ const Form = (function(){
 	       * @desc Deletion confirmation selector
 	       * @const {string}
 	       */
-	      DeletionConfirmationSelector = '.deletion';
+	      DeletionConfirmationSelector = '.deletion',
+
+	      /**
+	       * @memberOf Form
+	       * @access private
+	       * @desc TinyMCE form
+	       * @const {jQuery}
+	       */
+	      TinyMCEForm               = $( '.tinyMCE-form' );
 
 	/**
 	 * @memberOf Form
@@ -42,6 +50,12 @@ const Form = (function(){
 			_submitEvent = () => {
 				Utility.submitForm( $( this ) );
 			};
+		} );
+
+		TinyMCEForm.submit( function( event ){
+			tinyMCE.triggerSave();
+			event.preventDefault();
+			Utility.submitForm( $( this ) );
 		} );
 
 		Search.SearchForm.submit( function( event ){
@@ -98,13 +112,12 @@ const Form = (function(){
 
 		let text_max = 200;
 		$('#count_message').html(text_max + ' remaining');
-
 		$('#content_english').keyup(function() {
 			let text_length    = $( '#content_english' ).val().length;
 			let text_remaining = text_max - text_length;
 
-			$('#count_message').html(text_remaining + ' remaining');
-		});
+			$( '#count_message' ).html( text_remaining + ' remaining' );
+		} );
 	}
 
 	return {

@@ -69,26 +69,6 @@ function globalRoutes()
         Route::get( '', 'AboutController@index' )->name( 'about.index' );
     } );
 
-    Route::group( [ 'prefix' => 'admin' ], function(){
-        Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
-        Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
-        Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
-        Route::get( 'share-challenge-all', 'AdminController@shareChAll' )->name( 'admin.shareChAll' );
-        Route::get( 'share-challenge-add', 'AdminController@shareChAdd' )->name( 'admin.shareChAdd' );
-        Route::get( 'share-all', 'AdminController@shareAll' )->name( 'admin.shareAll' );
-        Route::get( 'share-add', 'AdminController@shareAdd' )->name( 'admin.shareAdd' );
-        Route::get( 'give-all', 'AdminController@giveAll' )->name( 'admin.giveAll' );
-        Route::get( 'receive-all', 'AdminController@recAll' )->name( 'admin.recAll' );
-        Route::get( 'give-add', 'AdminController@giveAdd' )->name( 'admin.giveAdd' );
-        Route::get( 'event-all', 'AdminController@eventAll' )->name( 'admin.eventAll' );
-        Route::get( 'event-add', 'AdminController@eventAdd' )->name( 'admin.eventAdd' );
-        Route::get( 'news-all', 'AdminController@newsAll' )->name( 'admin.newsAll' );
-        Route::get( 'news-add', 'AdminController@newsAdd' )->name( 'admin.newsAdd' );
-        Route::get( 'organization-all', 'AdminController@organizationAll' )->name( 'admin.organizationAll' );
-        Route::get( 'organization-add', 'AdminController@organizationAdd' )->name( 'admin.organizationAdd' );
-        Route::get( 'user-all', 'AdminController@userAll' )->name( 'admin.userAll' );
-    } );
-
     Route::group( [ 'prefix' => 'organization', ], function(){
         Route::get( '', 'OrganizationController@index' )->name( 'organization.index' );
         Route::get( '{organization}', 'OrganizationController@detail' )->name( 'organization.detail' );
@@ -129,12 +109,42 @@ function globalRoutes()
 
         Route::group( [ 'middleware' => 'auth.admin' ], function(){
 
+            Route::post( 'upload', 'Admin\ImageController@upload' )->name( 'admin.image.upload' );
+
             Route::get( '', 'Admin\HomeController@index' )->name( 'admin.home.index' );
 
             Route::resource( 'user', 'Admin\UserController', [
                 'except' => [ 'show', 'update' ],
                 'names'  => addPrefixResourceRouteName( 'admin.user' ),
             ] );
+
+            Route::resource( 'learn', 'Admin\LearnController', [
+                'names' => addPrefixResourceRouteName( 'admin.learn' ),
+            ] );
+
+            Route::resource( 'give', 'Admin\GiveController', [
+                'names' => addPrefixResourceRouteName( 'admin.give' ),
+            ] );
+
+            Route::get( 'receive', 'Admin\GiveController@receive' )->name( 'admin.receive.index' );
+
+            // Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
+            // Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
+            // Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );
+            Route::get( 'share-challenge-all', 'AdminController@shareChAll' )->name( 'admin.shareChAll' );
+            Route::get( 'share-challenge-add', 'AdminController@shareChAdd' )->name( 'admin.shareChAdd' );
+            Route::get( 'share-all', 'AdminController@shareAll' )->name( 'admin.shareAll' );
+            Route::get( 'share-add', 'AdminController@shareAdd' )->name( 'admin.shareAdd' );
+            Route::get( 'give-all', 'AdminController@giveAll' )->name( 'admin.giveAll' );
+            Route::get( 'receive-all', 'AdminController@recAll' )->name( 'admin.recAll' );
+            Route::get( 'give-add', 'AdminController@giveAdd' )->name( 'admin.giveAdd' );
+            Route::get( 'event-all', 'AdminController@eventAll' )->name( 'admin.eventAll' );
+            Route::get( 'event-add', 'AdminController@eventAdd' )->name( 'admin.eventAdd' );
+            Route::get( 'news-all', 'AdminController@newsAll' )->name( 'admin.newsAll' );
+            Route::get( 'news-add', 'AdminController@newsAdd' )->name( 'admin.newsAdd' );
+            Route::get( 'organization-all', 'AdminController@organizationAll' )->name( 'admin.organizationAll' );
+            Route::get( 'organization-add', 'AdminController@organizationAdd' )->name( 'admin.organizationAdd' );
+            // Route::get( 'user-all', 'AdminController@userAll' )->name( 'admin.userAll' );
 
         } );
     } );

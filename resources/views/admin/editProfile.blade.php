@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('page-title', __('home.page_title.index'))
 @section('page-description', __('home.page_description.index'))
@@ -25,7 +25,7 @@
         <div class="cell auto">
             <div class="grid-x">
                 <div class="cell small-12 large-4 xxlarge-3 show-for-large">
-                    @include('admin.menu_admin')
+                    @include('admin.layouts.side_menu')
                 </div>
                 <div class="cell small-12 large-8 xxlarge-9">
                     <article class="admin-content">

@@ -33,4 +33,5 @@ $( document )
 	    Like.initialize();
 	    Comment.initialize();
 	    Counter.initialize();
+	    TinyMCE.initialize();
     } );

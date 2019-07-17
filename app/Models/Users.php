@@ -171,7 +171,7 @@ class Users extends Authenticatable
         $result = $this->where( [ 'email' => $userCredentials['email'], 'status' => 'public' ] )
                        ->get();
 
-        return $result->isEmpty();
+        return $result;
     }
 
     /**

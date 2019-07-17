@@ -51,13 +51,65 @@ return [
     ],
 
     'mainMenuAdmin' => [
+        /*[
+            'routeName'  => '#',
+            'menuText'   => 'user_admin.page_link.my_profile',
+            'childMenu'  => [
+                [
+                    'routeName'  => 'admin.editProfile',
+                    'menuText'   => 'user.page_link.edit',
+                    'icon'       => 'fas fa-caret-right',
+                ],
+            ],
+        ],*/
         [
-            'routeName' => 'admin.home.index',
-            'menuText'  => 'home.page_link.index',
+            'routeName' => '#',
+            'menuText'  => 'learn_admin.page_link.index',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.learn.index',
+                    'menuText'  => 'learn_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+                [
+                    'routeName' => 'admin.learn.create',
+                    'menuText'  => 'learn_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+            ],
         ],
         [
-            'routeName' => 'admin.user.index',
-            'menuText'  => 'user.page_link.index',
+            'routeName' => '#',
+            'menuText'  => 'give_admin.page_link.index',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.give.index',
+                    'menuText'  => 'give_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+                [
+                    'routeName' => 'admin.receive.index',
+                    'menuText'  => 'give_admin.page_link.receive_all',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+                [
+                    'routeName' => 'admin.give.create',
+                    'menuText'  => 'give_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+            ],
         ],
+        [
+            'routeName' => '#',
+            'menuText'  => 'user_admin.page_link.index',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.user.index',
+                    'menuText'  => 'user_admin.page_link.all_user',
+                    'icon'      => 'fas fa-caret-right',
+                ],
+            ],
+        ],
+
     ],
 ];

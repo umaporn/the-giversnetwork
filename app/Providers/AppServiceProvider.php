@@ -27,7 +27,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer( 'layouts.app', 'App\ViewComposers\MenuComposer' );
-        View::composer( 'admin.layouts.app', 'App\ViewComposers\MenuAdminComposer' );
+        View::composer( 'admin.layouts.app', 'App\ViewComposers\MenuComposer' );
+        View::composer( 'admin.layouts.side_menu', 'App\ViewComposers\MenuAdminComposer' );
 
         Validator::extend( 'correct_password', 'App\Libraries\ValidationRules\Common@validatePassword' );
         Validator::extend( 'zero_or_exists', 'App\Libraries\ValidationRules\Common@validateZeroOrExistsRule' );
