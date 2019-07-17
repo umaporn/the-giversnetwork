@@ -58,7 +58,7 @@
                                                 <th>@lang('give_admin.no')</th>
                                                 <th>@lang('give_admin.title')</th>
                                                 <th>@lang('give_admin.views')</th>
-                                                <th>@lang('give_admin.stat_click')</th>
+                                                {{--<th>@lang('give_admin.stat_click')</th>--}}
                                                 <th>@lang('give_admin.approval')</th>
                                                 <th>@lang('give_admin.url')</th>
                                                 <th>@lang('give_admin.edit')</th>

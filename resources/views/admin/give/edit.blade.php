@@ -137,7 +137,18 @@
                                                 <p id="description_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
-
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="product" class="form-label">@lang('give_admin.expired_date')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <select class="form-select white">
+                                                    @foreach( __('give_admin.expired_date_list') as $expired_date )
+                                                        <option value="{{ $expired_date }}">{{ $expired_date }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
                                                 <label for="image" class="form-label">@lang('give_admin.image')</label>
@@ -163,11 +174,11 @@
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <p class="form-label form-p">@lang('give_admin.publish')</p>
+                                                <label class="form-label">@lang('give_admin.approval')</label>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
-                                                <input id="status" type="checkbox" name="status" {{ $give->status === 'public' ? 'checked' : '' }}>
-                                                <label for="status">@lang('give_admin.publish_post')</label>
+                                                <input id="status" type="checkbox" name="status">
+                                                <label for="approve">@lang('give_admin.approval_text')</label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">

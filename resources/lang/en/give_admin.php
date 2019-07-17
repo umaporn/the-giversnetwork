@@ -32,6 +32,7 @@ return [
     'add_give_or_receive' => 'Add Give or Receive',
     'choose'              => 'Choose',
     'no'                  => 'No',
+    'title'               => 'Title',
     'title_thai'          => 'Title Thai',
     'title_english'       => 'Title English',
     'description_thai'    => 'Description Thai',
@@ -62,6 +63,8 @@ return [
         '+1 month',
         '+6 months',
     ],
+    'publish'             => 'Publish',
+    'publish_post'        => 'Publish Post',
 
     'saved_give_success' => 'User saved successfully.',
     'saved_give_error'   => 'User was not saved successfully.',
