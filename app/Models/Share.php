@@ -109,7 +109,10 @@ class Share extends Model
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
-            $list->setAttribute( 'image_path', $this->getImages( $list ) );
+            foreach( $list->shareImage as $share_image ){
+                $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image ) );
+                $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
+            }
             $this->setPublicDateForFrontEnd( $list );
 
         }
@@ -143,16 +146,18 @@ class Share extends Model
      */
     public function getImages( Share $share, string $imageSize = 'original' )
     {
-        $imageStore = '';
+        $imageStore = [];
 
         foreach( $share->shareImage as $image ){
 
             $attributes = $image->getAttributes();
-            if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes[ $imageSize ] ) ){
-                $imageStore = $attributes[ $imageSize ];
-            } else {
-                $imageStore = Storage::url( $attributes[ $imageSize ] );
-            }
+
+            array_push( $imageStore, [
+                'id'          => $attributes['id'],
+                'fk_share_id' => $attributes['fk_share_id'],
+                'original'    => Storage::url( $attributes['original'] ),
+                'thumbnail'   => Storage::url( $attributes['thumbnail'] ),
+            ] );
 
         }
 
@@ -504,6 +509,39 @@ class Share extends Model
         }
 
         return [ 'successForShare' => $successForShare, 'successForShareImage' => $successForShareImage ];
-
     }
+
+    /**
+     * Delete share content.
+     *
+     * @return    bool|mixed|null    Deleted status
+     */
+    public function deleteShare()
+    {
+        $success = false;
+        $images  = $this->getImages( $this );
+
+        if( $images ){
+            $this->deleteShareImage( $images );
+            $this->shareImage()->delete();
+        }
+
+        $success = $this->delete();
+
+        return $success;
+    }
+
+    /**
+     * Delete an uploaded image.
+     *
+     * @param array $images Image's information
+     *
+     * @return    void
+     */
+    private function deleteShareImage( array $images )
+    {
+        $imagesFields = [ 'original', 'thumbnail' ];
+        Image::deleteImage( $images, $imagesFields );
+    }
+
 }

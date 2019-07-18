@@ -128,13 +128,22 @@ class ShareController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Request $request Request object
+     * @param Share   $share   Share model
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id )
+    public function destroy( Request $request, Share $share )
     {
-        //
+        $success = $share->deleteShare();
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'success'       => $success,
+                                         'message'       => __( 'share_admin.share_management.remove_share_success' ),
+                                         'redirectedUrl' => route( 'admin.share.index' ),
+                                     ] );
+        }
     }
 
     /**

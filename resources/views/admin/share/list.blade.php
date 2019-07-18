@@ -14,11 +14,12 @@
                 <i class="fas fa-link"></i>
             @endif
         </td>
-        <td><a href="{{ route('admin.share.edit', [ 'share' =>  $shareItem->id ]) }}"><i class="fas fa-pen"></i></a>
+        <td>
+            <a href="{{ route('admin.share.edit', [ 'share' =>  $shareItem->id ]) }}"><i class="fas fa-pen"></i></a>
         </td>
         <td>
             <form class="deletion" id="share-group-deletion-{{ $loop->iteration }}"
-                  data-info="{{ $shareItem->email }}"
+                  data-info="{{ $shareItem->id }}"
                   data-deletion-confirmation-message="@lang('share_admin.share_management.remove_confirmation')"
                   method="POST" action="{{ route('admin.share.destroy', ['share' => $shareItem->id]) }}"
             >
