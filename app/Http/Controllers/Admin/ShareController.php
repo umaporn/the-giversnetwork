@@ -91,40 +91,38 @@ class ShareController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show( $id )
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param Share $share
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit( $id )
+    public function edit( Share $share )
     {
-        return view( 'admin.share.edit' );
+        return view( 'admin.share.edit', compact( 'share' ) );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param ShareRequest $request Request object
+     * @param Share        $share   Share model
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse Updating response
      */
-    public function update( Request $request, $id )
+    public function update( ShareRequest $request, Share $share )
     {
-        //
+        $response = $this->shareModel->updateShareInformation( $request, $share );
+
+        if( !$response['success'] ){
+            return response()->json( $response, 422 );
+        }
+
+        return response()->json( [
+                                     'success'       => $response['success'],
+                                     'message'       => $response['message'],
+                                     'redirectedUrl' => url()->previous(),
+                                 ] );
     }
 
     /**

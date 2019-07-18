@@ -46,6 +46,7 @@
                                           enctype="multipart/form-data"
                                           class="tinyMCE-form"
                                     >
+                                        {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
                                                 <label for="topic" class="form-label">@lang('share_admin.title_thai')</label>
@@ -106,7 +107,7 @@
                                             </div>
                                             <div class="cell small-12 large-9 flex">
                                                 <label class="form-file">
-                                                    <<input type="file" class="form-fileupload" id="file_path" name="file_path[]" data-maxfile="5120"/>
+                                                    <input type="file" class="form-fileupload" id="file_path" name="file_path[]" data-maxfile="5120"/>
                                                     <p id="file_path-help-text" class="alert help-text hide"></p>
                                                     <div class="form-file-style">
                                                         <div class="form-flex btn-blue">@lang('share_admin.browse')</div>

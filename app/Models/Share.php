@@ -12,6 +12,7 @@ use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 use App\Http\Requests\ShareRequest;
@@ -264,6 +265,76 @@ class Share extends Model
         }
 
         return [ 'successForShare' => $successForShare, 'successForShareImage' => $successForShareImage ];
+
+    }
+
+    /**
+     * Updating share information.
+     *
+     * @param ShareRequest $request Share request object
+     * @param Share        $share   Share model
+     *
+     * @return array Response information
+     */
+    public function updateShareInformation( ShareRequest $request, Share $share )
+    {
+
+        $file_path = '';
+
+        $data = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        if( $request->file( 'file_path' ) ){
+
+            $fileInformation   = $this->saveFile( $request );
+            $data['file_path'] = $fileInformation['fileInformation']['file_path'];
+        }
+
+        $successForShare = $this->where( 'id', $share->id )->update( $data );
+
+        if( $successForShare ){
+
+            $successForShareImage = '';
+
+            if( $request->file( 'image_path' ) ){
+
+                DB::table( 'share_image' )->where( 'fk_share_id', $share->id )->delete();
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+                        $image_path_original  = $imageInformation['imageInformation']['original'];
+                        $image_path_thumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $shareID = $share->id;
+
+                    $shareImageInformation = [
+                        'original'    => $image_path_original,
+                        'thumbnail'   => $image_path_thumbnail,
+                        'fk_share_id' => $shareID,
+                    ];
+
+                    $successForShareImage = $this->shareImage()->updateOrCreate( [ 'fk_share_id' => $shareID ],
+                                                                                 $shareImageInformation );
+                }
+            }
+        }
+
+        if( $successForShare || $successForShareImage ){
+            $response = [ 'success' => true, 'message' => __( 'share_admin.saved_share_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'share_admin.saved_share_error' ), ];
+        }
+
+        return $response;
 
     }
 

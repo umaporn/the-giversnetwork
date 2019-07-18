@@ -44,144 +44,56 @@
                                     <form action="{{ route('admin.share.update', ['share' => $share->id ]) }}"
                                           method="POST"
                                           enctype="multipart/form-data"
-                                          class="submission-form"
+                                          class="tinyMCE-form"
                                     >
                                         @method('PUT')
                                         {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="share_id" class="form-label">@lang('share_admin.share_id')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9 form-text">
-                                                {{ $share->id }}
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="product" class="form-label">@lang('share_admin.choose')</label>
+                                                <label for="topic" class="form-label">@lang('share_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <select class="form-select white" name="type" id="type">
-                                                    <option value="">@lang('share.share_type_selection')</option>
-                                                    <option value="share" {{ $share->type === 'share' ? 'selected' : '' }}>@lang('share.create_item_form.share_item')</option>
-                                                    <option value="receive" {{ $share->type === 'receive' ? 'selected' : '' }}>@lang('share.create_item_form.receive')</option>
-                                                </select>
-                                                <p id="type-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="choose" class="form-label">@lang('share.create_item_form.category')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <select class="form-select white" name="fk_category_id" id="fk_category_id">
-                                                    <option value="">@lang('share.share_category_selection')</option>
-                                                    @foreach( $data['shareCategory'] as $category )
-                                                        <option value="{{ $category['id'] }}"
-                                                                {{ $category['id'] === $share->fk_category_id ? 'selected' : '' }}
-                                                        >
-                                                            {{ $category['title'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <p id="fk_category_id-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="title_thai" class="form-label">@lang('share_admin.title_thai')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <input type="text"
-                                                       id="title_thai"
-                                                       class="form-fill"
-                                                       name="title_thai"
-                                                       value="{{ $share->title_thai }}"
-                                                >
+                                                <input type="text" id="title_thai" name="title_thai" class="form-fill" value="{{ $share->title_thai }}">
                                                 <p id="title_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
-
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
                                                 <label for="topic" class="form-label">@lang('share_admin.title_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text"
-                                                       id="title_english"
-                                                       class="form-fill"
-                                                       name="title_english"
-                                                       value="{{ $share->title_english }}"
-                                                >
+                                                <input type="text" id="title_english" name="title_english" class="form-fill" value="{{ $share->title_english }}">
                                                 <p id="title_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="amount" class="form-label">@lang('share_admin.amount')</label>
+                                                <label for="des" class="form-label">@lang('share_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="number" id="amount" class="form-fill" value="{{ $share->amount }}" name="amount">
-                                                <p id="amount-help-text" class="alert help-text help-text hide"></p>
+                                                <textarea id="description-thai" name="description_thai" class="form-fill" rows="3">{{ $share->description_thai }}</textarea>
+                                                <p id="description-thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="address" class="form-label">@lang('share_admin.address')</label>
+                                                <label for="des" class="form-label">@lang('share_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="address" name="address" class="form-fill" rows="3">{{ $share->address }}</textarea>
-                                                <p id="address-help-text" class="alert help-text help-text hide"></p>
+                                                <textarea id="description-english" name="description_english" class="form-fill" rows="3">{{ $share->description_english }}</textarea>
+                                                <p id="description-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="description_thai" class="form-label">@lang('share_admin.description_thai')</label>
+                                                <label for="imageProfile" class="form-label">@lang('share_admin.image')</label>
                                             </div>
-                                            <div class="cell small-12 large-9">
-                                                <textarea id="description_thai" class="form-fill" name="description_thai" rows="3" maxlength="2000">
-                                                    {{ $share->description_thai }}
-                                                </textarea>
-                                                <p id="description_thai-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="description_english" class="form-label">@lang('share_admin.description_english')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <textarea id="description_english" class="form-fill" name="description_english" rows="3">
-                                                    {{ $share->description_english }}
-                                                </textarea>
-                                                <p id="description_english-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="product" class="form-label">@lang('share_admin.expired_date')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <select class="form-select white" name="expired_date">
-                                                    @foreach( __('share_admin.expired_date_list') as $expired_date )
-                                                        <option value="{{ $expired_date }}">{{ $expired_date }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="image" class="form-label">@lang('share_admin.image')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
+                                            <div class="cell small-12 large-9 flex">
                                                 @if($share->shareImage)
                                                     <div class="grid-x">
                                                         @foreach( $share->shareImage as $shareImage )
                                                             <div class="cell small-4 padding-1">
-                                                                <img src="{{ $shareImage->image_path }}" width="200" alt="@lang('share_admin.image')">
+                                                                <img src="{{ Storage::url( $shareImage->original ) }}" width="200" alt="@lang('share_admin.image')">
                                                             </div>
                                                         @endforeach
                                                     </div>
@@ -189,28 +101,52 @@
                                                 <div class="form-file-image">
                                                     <div class="form-file">
                                                         <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
-                                                               data-maxfile="5,120"/>
+                                                               multiple data-maxfile="5,120"/>
+                                                        <p id="original-help-text" class="alert help-text hide"></p>
                                                         <div class="form-file-style">
                                                             <div class="form-flex btn-blue">@lang('share_admin.browse')</div>
                                                             <p class="form-flex show-text">@lang('share_admin.image_condition')</p>
                                                         </div>
-                                                        <p id="image_path-help-text" class="alert help-text help-text hide"></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label class="form-label">@lang('share_admin.approval')</label>
+                                            <div class="cell small-12 large-2 ">
+                                                <label for="imageProfile" class="form-label">@lang('share_admin.file')</label>
                                             </div>
-                                            <div class="cell small-12 large-9 form-text">
-                                                <input id="status" type="checkbox" name="status" {{ $share['status'] === 'public' ? 'checked' : '' }}>
-                                                <label for="approve">@lang('share_admin.approval_text')</label>
+                                            <div class="cell small-12 large-9 flex">
+                                                @if($share->file_path)
+                                                    <div class="padding-bottom-1">
+                                                        <a href="{{ Storage::url( $share->file_path ) }}" target="_blank">
+                                                            {{$share->file_path}}
+                                                        </a>
+                                                    </div>
+                                                @endif
+                                                <label class="form-file">
+                                                    <input type="file" class="form-fileupload" id="file_path" name="file_path[]" data-maxfile="5120"/>
+                                                    <p id="file_path-help-text" class="alert help-text hide"></p>
+                                                    <div class="form-file-style">
+                                                        <div class="form-flex btn-blue">@lang('share_admin.browse')</div>
+                                                        <p class="form-flex show-text">@lang('share_admin.file_condition')</p>
+                                                    </div>
+                                                    <p id="file_path-help-text" class="alert help-text help-text hide"></p>
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <p class="form-label form-p">@lang('share_admin.publish')</p>
+                                            </div>
+                                            <div class="cell small-12 large-9 form-text">
+                                                <input id="status" type="checkbox" name="status" {{ $share->status === 'public' ? 'checked' : '' }}>
+                                                <label for="status">@lang('share_admin.publish')</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
+                                        <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-offset-2 large-9">
-                                                <button class="btn-green btn-long">@lang('share_admin.edit_share')</button>
+                                                <button class="btn-green btn-long">@lang('share_admin.edit')</button>
                                             </div>
                                         </div>
                                     </form>
