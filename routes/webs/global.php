@@ -136,6 +136,10 @@ function globalRoutes()
                 'names' => addPrefixResourceRouteName( 'admin.challenge' ),
             ] );
 
+            Route::resource( 'events', 'Admin\EventsController', [
+                'names' => addPrefixResourceRouteName( 'admin.events' ),
+            ] );
+
             // Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
             // Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
             // Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );

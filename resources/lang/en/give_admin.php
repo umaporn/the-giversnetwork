@@ -70,7 +70,7 @@ return [
     'publish_post'        => 'Publish Post',
 
     'saved_give_success' => 'Give information saved successfully.',
-    'saved_give_error'   => 'Give informationgive_admin.php was not saved successfully.',
+    'saved_give_error'   => 'Give information was not saved successfully.',
 
     'give_management' => [
         'add_button'          => 'Add a new give.',

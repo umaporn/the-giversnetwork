@@ -51,17 +51,6 @@ return [
     ],
 
     'mainMenuAdmin' => [
-        /*[
-            'routeName'  => '#',
-            'menuText'   => 'user_admin.page_link.my_profile',
-            'childMenu'  => [
-                [
-                    'routeName'  => 'admin.editProfile',
-                    'menuText'   => 'user.page_link.edit',
-                    'icon'       => 'fas fa-caret-right',
-                ],
-            ],
-        ],*/
         [
             'routeName' => '#',
             'menuText'  => 'learn_admin.page_link.index',
@@ -134,6 +123,25 @@ return [
                     'menuText'  => 'share_admin.page_link.challenge_add',
                     'icon'      => 'fas fa-caret-right',
                     'name'      => 'share',
+                ],
+            ],
+        ],
+        [
+            'routeName' => '#',
+            'menuText'  => 'events_admin.page_link.index',
+            'name'      => 'events',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.events.index',
+                    'menuText'  => 'events_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'events',
+                ],
+                [
+                    'routeName' => 'admin.events.create',
+                    'menuText'  => 'events_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'events',
                 ],
             ],
         ],
