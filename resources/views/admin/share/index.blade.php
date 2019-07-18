@@ -59,6 +59,7 @@
                                                 <th>@lang('share_admin.title')</th>
                                                 <th>@lang('share_admin.views')</th>
                                                 <th>@lang('share_admin.comment')</th>
+                                                <th>@lang('share_admin.status')</th>
                                                 <th>@lang('share_admin.url')</th>
                                                 <th>@lang('share_admin.edit')</th>
                                                 <th>@lang('share_admin.delete')</th>

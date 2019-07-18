@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use App\Http\Requests\ShareRequest;
 
 class Share extends Model
 {
@@ -90,7 +91,7 @@ class Share extends Model
                         ->with( [ 'users' ] )
                         ->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'learn', $request, [], '6' );
+        $data = Search::search( $builder, 'share', $request, [], '6' );
 
         return $this->transformShareContent( $data );
 
@@ -192,7 +193,7 @@ class Share extends Model
                       ->with( [ 'shareComment' ] )
                       ->with( [ 'shareLike' ] )
                       ->with( [ 'users' ] )
-                      ->where( [ 'id' => $share->id ] )->first();
+                      ->where( [ 'id' => $share->id, 'status' => 'public' ] )->first();
 
         if( $share ){
             $share->setAttribute( 'title', Utility::getLanguageFields( 'title', $share ) );
@@ -371,9 +372,67 @@ class Share extends Model
                         ->with( [ 'users' ] )
                         ->orderBy( 'id', 'desc' );
 
-        $data = Search::search( $builder, 'learn', $request );
+        $data = Search::search( $builder, 'share', $request );
 
         return $this->transformShareContent( $data );
+
+    }
+
+    /**
+     * Create share information.
+     *
+     * @param ShareRequest $request Share request object
+     *
+     * @return array Response information
+     */
+    public function createShareForAdmin( ShareRequest $request )
+    {
+        $file_path       = '';
+        $fileInformation = $this->saveFile( $request );
+
+        if( isset( $fileInformation['fileInformation']['file_path'] ) ){
+            $file_path = $fileInformation['fileInformation']['file_path'];
+        }
+        $newShare = [
+            'title_english'   => $request->input( 'title_english' ),
+            'title_thai'      => $request->input( 'title_english' ),
+            'content_english' => $request->input( 'content_english' ),
+            'content_thai'    => $request->input( 'content_english' ),
+            'file_path'       => $file_path,
+            'fk_user_id'      => $request->input( 'fk_user_id' ),
+            'status'          => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        $successForShare = $this->create( $newShare );
+
+        if( $successForShare ){
+            $successForShareImage = '';
+            if( $request->file( 'image_path' ) ){
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+                        $image_path_original  = $imageInformation['imageInformation']['original'];
+                        $image_path_thumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $shareID = $successForShare->id;
+
+                    $shareImageInformation = [
+                        'original'    => $image_path_original,
+                        'thumbnail'   => $image_path_thumbnail,
+                        'fk_share_id' => $shareID,
+                    ];
+
+                    $successForShareImage = $this->shareImage()->updateOrCreate( [ 'fk_share_id' => $shareID ],
+                                                                                 $shareImageInformation );
+                }
+            }
+        }
+
+        return [ 'successForShare' => $successForShare, 'successForShareImage' => $successForShareImage ];
 
     }
 }

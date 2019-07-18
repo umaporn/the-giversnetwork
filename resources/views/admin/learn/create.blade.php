@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="cell small-12 large-9">
                                                 <textarea id="content-english" class="form-fill" name="content_english" rows="3"></textarea>
-                                                <p id="content_english-help-text" class="alert help-text help-text hide"></p>
+                                                <p id="content-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 

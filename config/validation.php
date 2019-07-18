@@ -45,11 +45,13 @@ return [
     'give_admin'        => [
         'type'                => 'required|in:give,receive',
         'fk_category_id'      => 'required|numeric',
-        'title_thai'          => 'required|string|min:3|max:255',
         'title_english'       => 'required|string|min:3|max:255',
-        'description_thai'    => 'required|string|min:3|max:2000',
         'description_english' => 'required|string|min:3|max:2000',
         'amount'              => 'required|numeric',
         'address'             => 'sometimes|string',
+    ],
+    'share_admin'        => [
+        'title_english'       => 'required|string|min:3|max:255',
+        'description_english' => 'required|string|min:3|max:2000',
     ],
 ];

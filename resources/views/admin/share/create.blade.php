@@ -1,22 +1,21 @@
 @extends('admin.layouts.app')
 
-@section('page-title', __('give_admin.page_title.add'))
-@section('page-description', __('give_admin.page_description.add'))
+@section('page-title', __('share_admin.page_title.share_add'))
+@section('page-description', __('share_admin.page_description.share_add'))
 
 @section('content')
     <section class="admin">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <h2 class="topic-light">Admin</h2>
+                <h2 class="topic-light">@lang('share_admin.page_title.index')</h2>
             </div>
         </div>
         <nav class="grid-x padding-breadcrumbs">
             <div class="cell auto">
                 <ul class="breadcrumbs">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="{{ route('admin.home.index') }}">@lang('admin.page_title.index')</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> Share
+                        <span class="show-for-sr">Current: </span> @lang('share_admin.page_title.index')
                     </li>
                 </ul>
             </div>
@@ -32,7 +31,7 @@
                             <div class="grid-x">
                                 <div class="cell small-12">
                                     <div class="grid-x user-form-space">
-                                        <h2 class="cell shrink user-head">Add New Thread</h2>
+                                        <h2 class="cell shrink user-head">@lang('share_admin.add_new_thread')</h2>
                                         <div class="cell auto grid-x align-middle">
                                             <div class="cell line auto"></div>
                                             <div class="cell shrink">
@@ -42,44 +41,60 @@
                                     </div>
                                 </div>
                                 <div class="cell small-12">
-                                    <form action="">
+                                    <form action="{{ route('admin.share.store') }}"
+                                          method="POST"
+                                          enctype="multipart/form-data"
+                                          class="tinyMCE-form"
+                                    >
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="username" class="form-label">Share ID</label>
-                                            </div>
-                                            <div class="cell small-12 large-9 form-text">
-                                                00019
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="topic" class="form-label">Topic</label>
+                                                <label for="topic" class="form-label">@lang('share_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="topic" class="form-fill" value="">
+                                                <input type="text" id="title_thai" name="title_thai" class="form-fill">
+                                                <p id="title_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="des" class="form-label">Description</label>
+                                                <label for="topic" class="form-label">@lang('share_admin.title_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="des" class="form-fill" rows="3"></textarea>
+                                                <input type="text" id="title_english" name="title_english" class="form-fill">
+                                                <p id="title_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="imageProfile" class="form-label">Image</label>
+                                                <label for="des" class="form-label">@lang('share_admin.description_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="description-thai" name="description_thai" class="form-fill" rows="3"></textarea>
+                                                <p id="description-thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="des" class="form-label">@lang('share_admin.description_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="description-english" name="description_english" class="form-fill" rows="3"></textarea>
+                                                <p id="description-english-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="imageProfile" class="form-label">@lang('share_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9 flex">
                                                 <div class="form-file-image">
                                                     <div class="form-file">
-                                                        <input type="file" class="form-fileupload" id="file-image-multi"
-                                                               multiple data-maxfile="1024" />
+                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
+                                                               multiple data-maxfile="5,120"/>
+                                                        <p id="original-help-text" class="alert help-text hide"></p>
                                                         <div class="form-file-style">
-                                                            <div class="form-flex btn-blue">Browse</div>
-                                                            <p class="form-flex show-text">maximum upload : 10 and file
-                                                                                           size: 1MB/Image</p>
+                                                            <div class="form-flex btn-blue">@lang('share_admin.browse')</div>
+                                                            <p class="form-flex show-text">@lang('share_admin.image_condition')</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -87,27 +102,36 @@
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2 ">
-                                                <label for="imageProfile" class="form-label">File</label>
+                                                <label for="imageProfile" class="form-label">@lang('share_admin.file')</label>
                                             </div>
                                             <div class="cell small-12 large-9 flex">
                                                 <label class="form-file">
-                                                    <input type="file" class="form-fileupload" id="file-pdf"
-                                                           data-maxfile="5120" />
+                                                    <<input type="file" class="form-fileupload" id="file_path" name="file_path[]" data-maxfile="5120"/>
+                                                    <p id="file_path-help-text" class="alert help-text hide"></p>
                                                     <div class="form-file-style">
-                                                        <div class="form-flex btn-blue">Browse</div>
-                                                        <p class="form-flex show-text">PDF file only and maximun upload file
-                                                                                       size: 5MB</p>
+                                                        <div class="form-flex btn-blue">@lang('share_admin.browse')</div>
+                                                        <p class="form-flex show-text">@lang('share_admin.file_condition')</p>
                                                     </div>
+                                                    <p id="file_path-help-text" class="alert help-text help-text hide"></p>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <p class="form-label form-p">@lang('share_admin.publish')</p>
+                                            </div>
+                                            <div class="cell small-12 large-9 form-text">
+                                                <input id="status" type="checkbox" name="status">
+                                                <label for="status">@lang('share_admin.publish')</label>
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
+                                        <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-offset-2 large-9">
-                                                <button class="btn-green btn-long">Create Thread</button>
+                                                <button class="btn-green btn-long">@lang('share_admin.create_thread')</button>
                                             </div>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </article>

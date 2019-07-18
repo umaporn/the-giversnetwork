@@ -4,12 +4,18 @@
         <td>{{ $shareItem->title }}</td>
         <td>{{ $shareItem->view }}</td>
         <td>{{ count( $shareItem->shareComment ) }}</td>
+        <td>{{ $shareItem->status }}</td>
         <td>
-            <a href="{{ route('share.detail', [ 'share' => $shareItem->id ]) }}" target="_blank">
+            @if($shareItem->status === 'public')
+                <a href="{{ route('share.detail', [ 'share' => $shareItem->id ]) }}" target="_blank">
+                    <i class="fas fa-link"></i>
+                </a>
+            @else
                 <i class="fas fa-link"></i>
-            </a>
+            @endif
         </td>
-        <td><a href="{{ route('admin.share.edit', [ 'share' =>  $shareItem->id ]) }}"><i class="fas fa-pen"></i></a></td>
+        <td><a href="{{ route('admin.share.edit', [ 'share' =>  $shareItem->id ]) }}"><i class="fas fa-pen"></i></a>
+        </td>
         <td>
             <form class="deletion" id="share-group-deletion-{{ $loop->iteration }}"
                   data-info="{{ $shareItem->email }}"

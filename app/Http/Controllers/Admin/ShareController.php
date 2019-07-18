@@ -6,8 +6,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Share;
+use App\Models\Challenge;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ShareRequest;
 
 /**
  * Admin Share Page Controller
@@ -18,13 +20,16 @@ class ShareController extends Controller
     /** @var Share Share model */
     protected $shareModel;
 
+    /** @var Challenge Challenge model */
+    protected $challengeModel;
+
     /**
      * ShareController constructor.
-     *
      */
-    public function __construct( Share $share )
+    public function __construct( Share $share, Challenge $challenge )
     {
-        $this->shareModel = $share;
+        $this->shareModel     = $share;
+        $this->challengeModel = $challenge;
     }
 
     /**
@@ -54,9 +59,11 @@ class ShareController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function challenge()
+    public function challenge( Request $request )
     {
-        return view( 'admin.challenge.index' );
+        $challenge = $this->challengeModel->getChallengeAllListForAdmin( $request );
+
+        return view( 'admin.challenge.index', compact( 'challenge' ) );
     }
 
     /**
@@ -74,11 +81,13 @@ class ShareController extends Controller
      *
      * @param \Illuminate\Http\Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Creation response
      */
-    public function store( Request $request )
+    public function store( ShareRequest $request )
     {
-        //
+        $result = $this->shareModel->createShareForAdmin( $request );
+
+        return $this->setUpdateOrCreationResponse( $request, $result );
     }
 
     /**
@@ -102,7 +111,7 @@ class ShareController extends Controller
      */
     public function edit( $id )
     {
-        //
+        return view( 'admin.share.edit' );
     }
 
     /**
@@ -128,5 +137,50 @@ class ShareController extends Controller
     public function destroy( $id )
     {
         //
+    }
+
+    /**
+     * Set update or creation response.
+     *
+     * @param ShareRequest $request Request object
+     * @param array        $result  Updating or creating result
+     *
+     * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    private function setUpdateOrCreationResponse( ShareRequest $request, array $result )
+    {
+        $response = $this->setResponseMessages( $result );
+
+        if( $request->ajax() ){
+            return response()->json( $response );
+        } else {
+            return redirect()->route( 'admin.share.index' );
+        }
+    }
+
+    /**
+     * Set error messages from result.
+     *
+     * @param array $result Result of saved share
+     *
+     * @return array Error messages
+     */
+    private function setResponseMessages( array $result )
+    {
+
+        if( !$result['successForShare'] && !$result['successForShareImage'] ){
+            $data = [
+                'success' => false,
+                'error'   => __( 'share_admin.saved_share_error' ),
+            ];
+        } else {
+            $data = [
+                'success'       => true,
+                'message'       => __( 'share_admin.saved_share_success' ),
+                'redirectedUrl' => route( 'admin.share.index' ),
+            ];
+        }
+
+        return $data;
     }
 }

@@ -32,9 +32,7 @@ class GiveRequest extends FormRequest
         return [
             'type'                => config( 'validation.give_admin.type' ),
             'fk_category_id'      => config( 'validation.give_admin.fk_category_id' ),
-            'title_thai'          => config( 'validation.give_admin.title_thai' ),
             'title_english'       => config( 'validation.give_admin.title_english' ),
-            'description_thai'    => config( 'validation.give_admin.description_thai' ),
             'description_english' => config( 'validation.give_admin.description_english' ),
             'amount'              => config( 'validation.give_admin.amount' ),
             'address'             => config( 'validation.give_admin.address' ),
