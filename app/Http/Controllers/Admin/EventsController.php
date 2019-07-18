@@ -12,15 +12,23 @@ class EventsController extends Controller
     protected $eventsModel;
 
     /**
+     * GiveController constructor.
+     */
+    public function __construct( Events $events )
+    {
+        $this->eventsModel = $events;
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index( Request $request )
     {
-        //$give = $this->eventsModel->getGiveAllListForAdmin( $request );
+        $events = $this->eventsModel->getEventsAllListForAdmin( $request );
 
-        return view( 'admin.events.index' );
+        return view( 'admin.events.index', compact( 'events' ) );
     }
 
     /**
@@ -28,7 +36,8 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public
+    function create()
     {
         return view( 'admin.events.create' );
     }
@@ -40,7 +49,8 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store( Request $request )
+    public
+    function store( Request $request )
     {
         //
     }
@@ -52,7 +62,8 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show( $id )
+    public
+    function show( $id )
     {
         //
     }
@@ -64,7 +75,8 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id )
+    public
+    function edit( $id )
     {
         //
     }
@@ -77,7 +89,8 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update( Request $request, $id )
+    public
+    function update( Request $request, $id )
     {
         //
     }
@@ -89,7 +102,8 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id )
+    public
+    function destroy( $id )
     {
         //
     }

@@ -54,67 +54,22 @@
                                         <table>
                                             <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Title</th>
-                                                <th>Views</th>
-                                                <th>Publish</th>
-                                                <th>URL</th>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
+                                                <th>@lang('events_admin.no')</th>
+                                                <th>@lang('events_admin.title')</th>
+                                                <th>@lang('events_admin.views')</th>
+                                                <th>@lang('events_admin.status')</th>
+                                                <th>@lang('events_admin.url')</th>
+                                                <th>@lang('events_admin.edit')</th>
+                                                <th>@lang('events_admin.delete')</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor erat nec augue sollicitudin, eu vulputate enim vestibulum. In hac habitasse platea dictumst. Mauris tincidunt metus turpis, eget interdum metus </td>
-                                                <td>2.1k</td>
-                                                <td><i class="far fa-square"></i></td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td><i class="far fa-check-square"></i></td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td><i class="far fa-check-square"></i></td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td><i class="far fa-check-square"></i></td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
+                                            @include('admin.events.list')
                                             </tbody>
                                         </table>
                                     </section>
                                     <nav aria-label="Pagination">
-                                        <ul class="pagination text-center">
-                                            <li class="pagination-previous disabled">Previous</li>
-                                            <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                                            <li><a href="#" aria-label="Page 2">2</a></li>
-                                            <li><a href="#" aria-label="Page 3">3</a></li>
-                                            <li><a href="#" aria-label="Page 4">4</a></li>
-                                            <li class="ellipsis"></li>
-                                            <li><a href="#" aria-label="Page 12">12</a></li>
-                                            <li><a href="#" aria-label="Page 13">13</a></li>
-                                            <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
-                                        </ul>
+                                        {{ $events->links('admin.pagination.normal') }}
                                     </nav>
                                 </div>
                             </div>

@@ -41,7 +41,7 @@ return [
     'description_thai'      => 'Description Thai',
     'description_english'   => 'Description English',
     'views'                 => 'Views',
-    'stat_click'            => 'Stat Click',
+    'status'                => 'Status',
     'approval'              => 'Approval',
     'approval_text'         => 'Approved this item to publish on TGN website',
     'url'                   => 'URL',

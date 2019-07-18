@@ -135,4 +135,20 @@ class Events extends Model
 
         return $events;
     }
+
+    /**
+     * Get all list of events for admin.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator All events list
+     */
+    public function getEventsAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'users' ] )->orderBy( 'id', 'asc' );
+
+        $data = Search::search( $builder, 'events', $request );
+
+        return $this->transformHomeEventsContent( $data );
+    }
 }
