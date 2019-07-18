@@ -1,22 +1,21 @@
 @extends('admin.layouts.app')
 
-@section('page-title', __('give_admin.page_title.index'))
-@section('page-description', __('give_admin.page_description.index'))
+@section('page-title', __('share_admin.page_title.index'))
+@section('page-description', __('share_admin.page_description.index'))
 
 @section('content')
     <section class="admin">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <h2 class="topic-light">Admin</h2>
+                <h2 class="topic-light">@lang('share_admin.page_title.index')</h2>
             </div>
         </div>
         <nav class="grid-x padding-breadcrumbs">
             <div class="cell auto">
                 <ul class="breadcrumbs">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="{{ route('admin.home.index') }}">@lang('admin.page_title.index')</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> share
+                        <span class="show-for-sr">Current: </span> @lang('share_admin.page_title.index')
                     </li>
                 </ul>
             </div>
@@ -32,7 +31,7 @@
                             <div class="grid-x">
                                 <div class="cell small-12">
                                     <div class="grid-x user-form-space admin-search">
-                                        <h2 class="cell shrink user-head">All Share</h2>
+                                        <h2 class="cell shrink user-head">@lang('share_admin.page_title.share_all')</h2>
                                         <div class="cell auto grid-x align-middle">
                                             <div class="cell line auto"></div>
                                             <div class="cell shrink">
@@ -40,10 +39,12 @@
                                             </div>
                                             <div class="margin-left-1">
                                                 <div class="input-group input-search">
-                                                    <input class="input-group-field form-fill" type="text">
-                                                    <div class="input-group-button">
-                                                        <input type="button" class="button btn-blue" value="Search">
-                                                    </div>
+                                                    <form id="search-form-detail" class="cell search" method="GET" action="{{ route('admin.share.index') }}">
+                                                        <input name="search" type="text" class="input-group-field form-fill" placeholder="Search">
+                                                        <div class="input-group-button">
+                                                            <input type="submit" class="button btn-blue" value="Search">
+                                                        </div>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
@@ -54,67 +55,22 @@
                                         <table>
                                             <thead>
                                             <tr>
-                                                <th>No</th>
-                                                <th>Title</th>
-                                                <th>Views</th>
-                                                <th>Comment</th>
-                                                <th>URL</th>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
+                                                <th>@lang('share_admin.no')</th>
+                                                <th>@lang('share_admin.title')</th>
+                                                <th>@lang('share_admin.views')</th>
+                                                <th>@lang('share_admin.comment')</th>
+                                                <th>@lang('share_admin.url')</th>
+                                                <th>@lang('share_admin.edit')</th>
+                                                <th>@lang('share_admin.delete')</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tempor erat nec augue sollicitudin, eu vulputate enim vestibulum. In hac habitasse platea dictumst. Mauris tincidunt metus turpis, eget interdum metus </td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
-                                            <tr>
-                                                <td>00019</td>
-                                                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-                                                <td>2.1k</td>
-                                                <td>100</td>
-                                                <td><a href="#"><i class="fas fa-link"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-pen"></i></a></td>
-                                                <td><a href="#"><i class="fas fa-trash-alt"></i></a></td>
-                                            </tr>
+                                            @include('admin.share.list')
                                             </tbody>
                                         </table>
                                     </section>
                                     <nav aria-label="Pagination">
-                                        <ul class="pagination text-center">
-                                            <li class="pagination-previous disabled">Previous</li>
-                                            <li class="current"><span class="show-for-sr">You're on page</span> 1</li>
-                                            <li><a href="#" aria-label="Page 2">2</a></li>
-                                            <li><a href="#" aria-label="Page 3">3</a></li>
-                                            <li><a href="#" aria-label="Page 4">4</a></li>
-                                            <li class="ellipsis"></li>
-                                            <li><a href="#" aria-label="Page 12">12</a></li>
-                                            <li><a href="#" aria-label="Page 13">13</a></li>
-                                            <li class="pagination-next"><a href="#" aria-label="Next page">Next</a></li>
-                                        </ul>
+                                        {{ $share->links('admin.pagination.normal') }}
                                     </nav>
                                 </div>
                             </div>

@@ -208,6 +208,13 @@ class Share extends Model
         return $share;
     }
 
+    /**
+     * Create share item for frontend.
+     *
+     * @param Request $request Request object
+     *
+     * @return array Creation response
+     */
     public function createShare( Request $request )
     {
         $file_path       = '';
@@ -347,5 +354,26 @@ class Share extends Model
         }
 
         return $imageStore;
+    }
+
+    /**
+     * Get share all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of share
+     */
+    public function getShareAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'shareImage' ] )
+                        ->with( [ 'shareComment' ] )
+                        ->with( [ 'shareLike' ] )
+                        ->with( [ 'users' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'learn', $request );
+
+        return $this->transformShareContent( $data );
+
     }
 }
