@@ -150,7 +150,7 @@
                                                 <div class="form-file-image">
                                                     <div class="form-file">
                                                         <input type="file" class="form-fileupload" id="file-image"
-                                                               multiple data-maxfile="1024" />
+                                                               multiple data-maxfile="5,120" />
                                                         <div class="form-file-style">
                                                             <div class="form-flex btn-blue">@lang('events_admin.browse')</div>
                                                             <p class="form-flex show-text">@lang('events_admin.image_condition')</p>
@@ -170,11 +170,10 @@
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-offset-2 large-9">
-                                                <button class="btn-green btn-long">Add</button>
+                                                <button class="btn-green btn-long">@lang('events_admin.add_events')</button>
                                             </div>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
                         </article>
