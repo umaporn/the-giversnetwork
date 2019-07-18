@@ -13,15 +13,15 @@
         </td>
         <td><a href="{{ route('admin.events.edit', [ 'events' =>  $eventsItem->id ]) }}"><i class="fas fa-pen"></i></a></td>
         <td>
-            <form class="deletion" id="give-group-deletion-{{ $loop->iteration }}"
+            <form class="deletion" id="events-group-deletion-{{ $loop->iteration }}"
                   data-info="{{ $eventsItem->id }}"
-                  data-deletion-confirmation-message="@lang('give_admin.give_management.remove_confirmation')"
+                  data-deletion-confirmation-message="@lang('events_admin.events_management.remove_confirmation')"
                   method="POST" action="{{ route('admin.events.destroy', ['events' => $eventsItem->id]) }}"
             >
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <input type="hidden" name="give" value="{{ $eventsItem->id }}">
-                <button type="submit" class="cursor-pointer" title="@lang('give_admin.give_management.remove')">
+                <input type="hidden" name="events" value="{{ $eventsItem->id }}">
+                <button type="submit" class="cursor-pointer" title="@lang('events_admin.events_management.remove')">
                     <i class="fas fa-trash-alt"></i>
                 </button>
             </form>
@@ -29,6 +29,6 @@
     </tr>
 @empty
     <tr>
-        <td class="not-found" colspan="3">@lang('give_admin.give_management.not_found_give')</td>
+        <td class="not-found" colspan="3">@lang('events_admin.events_management.not_found_events')</td>
     </tr>
 @endforelse

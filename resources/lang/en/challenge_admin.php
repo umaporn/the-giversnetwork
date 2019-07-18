@@ -71,6 +71,7 @@ return [
         'search_placeholder'       => 'Fulltext search by title.',
         'remove_challenge_success' => 'Successfully removed the challenge.',
         'delete'                   => 'Delete',
+        'remove'                   => 'Remove',
         'remove_confirmation'      => 'Are you sure you would like to remove the challenge, ',
         'not_found_challenge'      => 'Not found the challenge information.',
     ],

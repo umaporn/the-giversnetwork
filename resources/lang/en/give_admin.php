@@ -77,6 +77,7 @@ return [
         'search_placeholder'  => 'Fulltext search by title.',
         'remove_give_success' => 'Successfully removed the give.',
         'delete'              => 'Delete',
+        'remove'              => 'Remove',
         'remove_confirmation' => 'Are you sure you would like to remove the give, ',
         'not_found_give'      => 'Not found the give information.',
     ],

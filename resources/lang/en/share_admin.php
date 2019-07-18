@@ -77,6 +77,7 @@ return [
         'search_placeholder'   => 'Fulltext search by title.',
         'remove_share_success' => 'Successfully removed the share.',
         'delete'               => 'Delete',
+        'remove'               => 'Remove',
         'remove_confirmation'  => 'Are you sure you would like to remove the share, ',
         'not_found_share'      => 'Not found the share information.',
     ],
