@@ -50,8 +50,13 @@ return [
         'amount'              => 'required|numeric',
         'address'             => 'sometimes|string',
     ],
-    'share_admin'        => [
+    'share_admin'       => [
         'title_english'       => 'required|string|min:3|max:255',
         'description_english' => 'required|string|min:3|max:2000',
+    ],
+    'challenge_admin'   => [
+        'title_english'       => 'required|string|min:3|max:255',
+        'description_english' => 'required|string|min:3|max:2000',
+        'content_english'     => 'required|string|min:3|max:2000',
     ],
 ];

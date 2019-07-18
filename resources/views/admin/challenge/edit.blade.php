@@ -1,22 +1,21 @@
 @extends('admin.layouts.app')
 
-@section('page-title', __('give_admin.page_title.edit'))
-@section('page-description', __('give_admin.page_description.edit'))
+@section('page-title', __('challenge_admin.page_title.edit'))
+@section('page-description', __('challenge_admin.page_description.edit'))
 
 @section('content')
     <section class="admin">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <h2 class="topic-light">Admin</h2>
+                <h2 class="topic-light">@lang('challenge_admin.page_title.index')</h2>
             </div>
         </div>
         <nav class="grid-x padding-breadcrumbs">
             <div class="cell auto">
                 <ul class="breadcrumbs">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Admin</a></li>
+                    <li><a href="{{ route('admin.home.index') }}">@lang('admin.page_title.index')</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> Share - Challenge
+                        <span class="show-for-sr">Current: </span> @lang('challenge_admin.page_title.index')
                     </li>
                 </ul>
             </div>
@@ -32,7 +31,7 @@
                             <div class="grid-x">
                                 <div class="cell small-12">
                                     <div class="grid-x user-form-space">
-                                        <h2 class="cell shrink user-head">Add New Challenge</h2>
+                                        <h2 class="cell shrink user-head">@lang('challenge_admin.edit_challenge')</h2>
                                         <div class="cell auto grid-x align-middle">
                                             <div class="cell line auto"></div>
                                             <div class="cell shrink">
@@ -42,70 +41,138 @@
                                     </div>
                                 </div>
                                 <div class="cell small-12">
-                                    <form action="">
+                                    <form action="{{ route('admin.challenge.update', ['challenge' => $challenge->id ]) }}"
+                                          method="POST"
+                                          enctype="multipart/form-data"
+                                          class="tinyMCE-form"
+                                    >
+                                        @method('PUT')
+                                        {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="username" class="form-label">Share ID</label>
-                                            </div>
-                                            <div class="cell small-12 large-9 form-text">
-                                                00019
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="topic" class="form-label">Topic</label>
+                                                <label for="topic" class="form-label">@lang('challenge_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="topic" class="form-fill" value="">
+                                                <input type="text" id="title_thai" name="title_thai" class="form-fill" value="{{ $challenge->title_thai }}">
+                                                <p id="title_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="des" class="form-label">Description</label>
+                                                <label for="topic" class="form-label">@lang('challenge_admin.title_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="des" class="form-fill" rows="3"></textarea>
+                                                <input type="text" id="title_english" name="title_english" class="form-fill" value="{{ $challenge->title_english }}">
+                                                <p id="title_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="imageProfile" class="form-label">Image</label>
+                                                <label for="des" class="form-label">@lang('challenge_admin.description_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="description-thai" name="description_thai" class="form-fill" rows="3">{{ $challenge->description_thai }}</textarea>
+                                                <p id="description-thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="des" class="form-label">@lang('challenge_admin.description_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="description-english" name="description_english" class="form-fill" rows="3">{{ $challenge->description_english }}</textarea>
+                                                <p id="description-english-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="des" class="form-label">@lang('challenge_admin.content_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="content-thai" name="content_thai" class="form-fill" rows="3">{{ $challenge->content_thai }}</textarea>
+                                                <p id="content-thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="des" class="form-label">@lang('challenge_admin.content_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="content-english" name="content_english" class="form-fill" rows="3">{{ $challenge->content_english }}</textarea>
+                                                <p id="content-english-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="imageProfile" class="form-label">@lang('challenge_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9 flex">
+                                                @if($challenge->challengeImage)
+                                                    <div class="grid-x">
+                                                        @foreach( $challenge->challengeImage as $challengeImage )
+                                                            <div class="cell small-4 padding-1">
+                                                                <img src="{{ Storage::url( $challengeImage->original ) }}" width="200" alt="@lang('challenge_admin.image')">
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
                                                 <div class="form-file-image">
                                                     <div class="form-file">
-                                                        <input type="file" class="form-fileupload" id="file-image-multi"
-                                                               multiple data-maxfile="1024" />
+                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
+                                                               multiple data-maxfile="5,120"/>
+                                                        <p id="original-help-text" class="alert help-text hide"></p>
                                                         <div class="form-file-style">
-                                                            <div class="form-flex btn-blue">Browse</div>
-                                                            <p class="form-flex show-text">maximum upload : 10 and file
-                                                                                           size: 1MB/Image</p>
+                                                            <div class="form-flex btn-blue">@lang('challenge_admin.browse')</div>
+                                                            <p class="form-flex show-text">@lang('challenge_admin.image_condition')</p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="imageProfile" class="form-label">File</label>
+                                            <div class="cell small-12 large-2 ">
+                                                <label for="imageProfile" class="form-label">@lang('challenge_admin.file')</label>
                                             </div>
                                             <div class="cell small-12 large-9 flex">
-                                                <label class="form-file">
-                                                    <input type="file" class="form-fileupload" id="file-pdf"
-                                                           data-maxfile="5120" />
-                                                    <div class="form-file-style">
-                                                        <div class="form-flex btn-blue">Browse</div>
-                                                        <p class="form-flex show-text">PDF file only and maximun upload file
-                                                                                       size: 5MB</p>
+                                                @if($challenge->file_path)
+                                                    <div class="padding-bottom-1">
+                                                        <a href="{{ Storage::url( $challenge->file_path ) }}" target="_blank">
+                                                            {{$challenge->file_path}}
+                                                        </a>
                                                     </div>
+                                                @endif
+                                                <label class="form-file">
+                                                    <input type="file" class="form-fileupload" id="file_path" name="file_path[]" data-maxfile="5120"/>
+                                                    <p id="file_path-help-text" class="alert help-text hide"></p>
+                                                    <div class="form-file-style">
+                                                        <div class="form-flex btn-blue">@lang('challenge_admin.browse')</div>
+                                                        <p class="form-flex show-text">@lang('challenge_admin.file_condition')</p>
+                                                    </div>
+                                                    <p id="file_path-help-text" class="alert help-text help-text hide"></p>
                                                 </label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-offset-2 large-9">
-                                                <button class="btn-green btn-long">Create New Challenge</button>
+                                            <div class="cell small-12 large-2">
+                                                <p class="form-label form-p">@lang('challenge_admin.publish')</p>
+                                            </div>
+                                            <div class="cell small-12 large-9 form-text">
+                                                <input id="status" type="checkbox" name="status" {{ $challenge->status === 'public' ? 'checked' : '' }}>
+                                                <label for="status">@lang('challenge_admin.publish')</label>
                                             </div>
                                         </div>
+                                        <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-offset-2 large-9">
+                                                <button class="btn-green btn-long">@lang('challenge_admin.edit')</button>
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                    {{-- File upload form for TinyMCE Editor --}}
+                                    <form id="tinymce-uploadform" action="{{ route('admin.image.upload') }}">
+                                        {{ csrf_field() }}
+                                        <input id="tinymce-uploadfile" type="file" name="image"/>
                                     </form>
 
                                 </div>

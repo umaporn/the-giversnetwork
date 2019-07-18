@@ -132,8 +132,9 @@ function globalRoutes()
                 'names' => addPrefixResourceRouteName( 'admin.share' ),
             ] );
 
-            Route::get( 'challenge', 'Admin\ShareController@challenge' )->name( 'admin.challenge.index' );
-            Route::get( 'challenge/create', 'Admin\ShareController@challengeCreate' )->name( 'admin.challenge.create' );
+            Route::resource( 'challenge', 'Admin\ChallengeController', [
+                'names' => addPrefixResourceRouteName( 'admin.challenge' ),
+            ] );
 
             // Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
             // Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );

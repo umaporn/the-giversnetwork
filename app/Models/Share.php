@@ -291,6 +291,8 @@ class Share extends Model
             'title_thai'          => $request->input( 'title_thai' ),
             'description_english' => $request->input( 'description_english' ),
             'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
             'status'              => $request->input( 'status' ) ? 'public' : 'draft',
         ];
 
@@ -470,13 +472,15 @@ class Share extends Model
             $file_path = $fileInformation['fileInformation']['file_path'];
         }
         $newShare = [
-            'title_english'   => $request->input( 'title_english' ),
-            'title_thai'      => $request->input( 'title_english' ),
-            'content_english' => $request->input( 'content_english' ),
-            'content_thai'    => $request->input( 'content_english' ),
-            'file_path'       => $file_path,
-            'fk_user_id'      => $request->input( 'fk_user_id' ),
-            'status'          => $request->input( 'status' ) ? 'public' : 'draft',
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'file_path'           => $file_path,
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
         ];
 
         $successForShare = $this->create( $newShare );

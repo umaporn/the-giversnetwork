@@ -1,30 +1,30 @@
 <?php
 /**
- * Admin Share Page Controller
+ * Admin Challenge Page Controller
  */
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Share;
+use App\Models\Challenge;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ShareRequest;
+use App\Http\Requests\ChallengeRequest;
 
 /**
- * Admin Share Page Controller
+ * Admin Challenge Page Controller
  * @package App\Http\Controllers
  */
-class ShareController extends Controller
+class ChallengeController extends Controller
 {
-    /** @var Share Share model */
-    protected $shareModel;
+    /** @var Challenge Challenge model */
+    protected $challengeModel;
 
     /**
-     * ShareController constructor.
+     * ChallengeController constructor.
      */
-    public function __construct( Share $share )
+    public function __construct( Challenge $challenge )
     {
-        $this->shareModel     = $share;
+        $this->challengeModel = $challenge;
     }
 
     /**
@@ -34,9 +34,9 @@ class ShareController extends Controller
      */
     public function index( Request $request )
     {
-        $share = $this->shareModel->getShareAllListForAdmin( $request );
+        $challenge = $this->challengeModel->getChallengeAllListForAdmin( $request );
 
-        return view( 'admin.share.index', compact( 'share' ) );
+        return view( 'admin.challenge.index', compact( 'challenge' ) );
     }
 
     /**
@@ -46,7 +46,7 @@ class ShareController extends Controller
      */
     public function create()
     {
-        return view( 'admin.share.create' );
+        return view( 'admin.challenge.create' );
     }
 
     /**
@@ -78,9 +78,9 @@ class ShareController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Creation response
      */
-    public function store( ShareRequest $request )
+    public function store( ChallengeRequest $request )
     {
-        $result = $this->shareModel->createShareForAdmin( $request );
+        $result = $this->challengeModel->createChallengeForAdmin( $request );
 
         return $this->setUpdateOrCreationResponse( $request, $result );
     }
@@ -88,26 +88,26 @@ class ShareController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Share $share
+     * @param Challenge $challenge
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit( Share $share )
+    public function edit( Challenge $challenge )
     {
-        return view( 'admin.share.edit', compact( 'share' ) );
+        return view( 'admin.challenge.edit', compact( 'challenge' ) );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param ShareRequest $request Request object
-     * @param Share        $share   Share model
+     * @param ChallengeRequest $request Request object
+     * @param Challenge        $challenge   Challenge model
      *
      * @return \Illuminate\Http\JsonResponse Updating response
      */
-    public function update( ShareRequest $request, Share $share )
+    public function update( ChallengeRequest $request, Challenge $challenge )
     {
-        $response = $this->shareModel->updateShareInformation( $request, $share );
+        $response = $this->challengeModel->updateChallengeInformation( $request, $challenge );
 
         if( !$response['success'] ){
             return response()->json( $response, 422 );
@@ -124,19 +124,19 @@ class ShareController extends Controller
      * Remove the specified resource from storage.
      *
      * @param Request $request Request object
-     * @param Share   $share   Share model
+     * @param Challenge   $challenge   Challenge model
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy( Request $request, Share $share )
+    public function destroy( Request $request, Challenge $challenge )
     {
-        $success = $share->deleteShare();
+        $success = $challenge->deleteChallenge();
 
         if( $request->ajax() ){
             return response()->json( [
                                          'success'       => $success,
-                                         'message'       => __( 'share_admin.share_management.remove_share_success' ),
-                                         'redirectedUrl' => route( 'admin.share.index' ),
+                                         'message'       => __( 'challenge_admin.challenge_management.remove_challenge_success' ),
+                                         'redirectedUrl' => route( 'admin.challenge.index' ),
                                      ] );
         }
     }
@@ -144,42 +144,42 @@ class ShareController extends Controller
     /**
      * Set update or creation response.
      *
-     * @param ShareRequest $request Request object
+     * @param ChallengeRequest $request Request object
      * @param array        $result  Updating or creating result
      *
      * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    private function setUpdateOrCreationResponse( ShareRequest $request, array $result )
+    private function setUpdateOrCreationResponse( ChallengeRequest $request, array $result )
     {
         $response = $this->setResponseMessages( $result );
 
         if( $request->ajax() ){
             return response()->json( $response );
         } else {
-            return redirect()->route( 'admin.share.index' );
+            return redirect()->route( 'admin.challenge.index' );
         }
     }
 
     /**
      * Set error messages from result.
      *
-     * @param array $result Result of saved share
+     * @param array $result Result of saved challenge
      *
      * @return array Error messages
      */
     private function setResponseMessages( array $result )
     {
 
-        if( !$result['successForShare'] && !$result['successForShareImage'] ){
+        if( !$result['successForChallenge'] && !$result['successForChallengeImage'] ){
             $data = [
                 'success' => false,
-                'error'   => __( 'share_admin.saved_share_error' ),
+                'error'   => __( 'challenge_admin.saved_challenge_error' ),
             ];
         } else {
             $data = [
                 'success'       => true,
-                'message'       => __( 'share_admin.saved_share_success' ),
-                'redirectedUrl' => route( 'admin.share.index' ),
+                'message'       => __( 'challenge_admin.saved_challenge_success' ),
+                'redirectedUrl' => route( 'admin.challenge.index' ),
             ];
         }
 
