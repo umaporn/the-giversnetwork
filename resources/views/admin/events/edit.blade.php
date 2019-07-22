@@ -188,6 +188,7 @@
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-offset-2 large-9">
+                                                <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
                                                 <button class="btn-green btn-long">@lang('events_admin.edit_events')</button>
                                             </div>
                                         </div>

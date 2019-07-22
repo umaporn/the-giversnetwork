@@ -21,6 +21,7 @@ class AlterEventsTable extends Migration
             $table->string( 'location_thai', 255 )->nullable()->after('description_english');
             $table->string( 'host_thai', 255 )->nullable()->after('location_english');
             $table->string( 'host_image', 255 )->nullable()->after('host_english');
+            $table->string( 'image_path', 255 )->nullable()->after('host_image');
         } );
     }
 
@@ -37,6 +38,7 @@ class AlterEventsTable extends Migration
             $table->string( 'location_thai', 255 );
             $table->string( 'host_thai', 255 );
             $table->string( 'host_image', 255 );
+            $table->string( 'image_path', 255 );
         } );
     }
 }

@@ -134,11 +134,8 @@
                                             </div>
                                             <div class="cell small-12 large-9">
                                                 <div class="form-date">
-                                                    <label for="date-start">@lang('events_admin.from')</label>
-                                                    <input type="datetime-local" id="start_date" name="start_date" class="form-fill">
+                                                    <input type="text" id="event_date" name="event_date" class="form-fill">
                                                     <p id="start_date-help-text" class="alert help-text help-text hide"></p>
-                                                    <label for="date-end">@lang('events_admin.to')</label>
-                                                    <input type="datetime-local" id="end_date" name="end_date" class="form-fill" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -149,12 +146,13 @@
                                             <div class="cell small-12 large-9">
                                                 <div class="form-file-image">
                                                     <div class="form-file">
-                                                        <input type="file" class="form-fileupload" id="file-image"
-                                                               multiple data-maxfile="5,120" />
+                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
+                                                               data-maxfile="5,120"/>
                                                         <div class="form-file-style">
                                                             <div class="form-flex btn-blue">@lang('events_admin.browse')</div>
                                                             <p class="form-flex show-text">@lang('events_admin.image_condition')</p>
                                                         </div>
+                                                        <p id="image_path[]-help-text" class="alert help-text help-text hide"></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -164,12 +162,13 @@
                                                 <label class="form-label">@lang('events_admin.publish')</label>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
-                                                <input id="approve" type="checkbox">
+                                                <input id="status" type="checkbox" name="status">
                                                 <label for="approve">@lang('events_admin.publish_events')</label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-offset-2 large-9">
+                                                <input type="hidden" name="fk_user_id" value="{{ Auth::user()->id }}">
                                                 <button class="btn-green btn-long">@lang('events_admin.add_events')</button>
                                             </div>
                                         </div>

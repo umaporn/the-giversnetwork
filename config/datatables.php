@@ -46,7 +46,7 @@ return [
         'fulltextSearch' => false,
     ],
     'events'        => [
-        'limit'          => 5,
+        'limit'          => 10,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],

@@ -45,33 +45,23 @@ class EventsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request Request object
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Creation response
      */
-    public function store( Request $request )
+    public function store( EventsRequest $request )
     {
-        //
-    }
+        $result = $this->eventsModel->createEvents( $request );
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show( $id )
-    {
-        //
+        return $this->setUpdateOrCreationResponse( $request, $result );
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Events $events
+     * @param Events $events Events model
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Events edition page
      */
     public function edit( Events $event )
     {
@@ -81,10 +71,10 @@ class EventsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param EventsRequest $request Request object
+     * @param Events        $event   Events model
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse Update response
      */
     public function update( EventsRequest $request, Events $event )
     {
@@ -111,5 +101,50 @@ class EventsController extends Controller
     public function destroy( $id )
     {
         //
+    }
+
+    /**
+     * Set update or creation response.
+     *
+     * @param EventsRequest $request Request object
+     * @param array         $result  Updating or creating result
+     *
+     * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    private function setUpdateOrCreationResponse( EventsRequest $request, array $result )
+    {
+        $response = $this->setResponseMessages( $result );
+
+        if( $request->ajax() ){
+            return response()->json( $response );
+        } else {
+            return redirect()->route( 'admin.events.index' );
+        }
+    }
+
+    /**
+     * Set error messages from result.
+     *
+     * @param array $result Result of saved events
+     *
+     * @return array Error messages
+     */
+    private function setResponseMessages( array $result )
+    {
+
+        if( !$result['successForEvents'] && !$result['successForEventsImage'] ){
+            $data = [
+                'success' => false,
+                'error'   => __( 'events_admin.saved_events_error' ),
+            ];
+        } else {
+            $data = [
+                'success'       => true,
+                'message'       => __( 'events_admin.saved_events_success' ),
+                'redirectedUrl' => route( 'admin.events.index' ),
+            ];
+        }
+
+        return $data;
     }
 }

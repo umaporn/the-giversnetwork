@@ -34,6 +34,7 @@ class EventsRequest extends FormRequest
             'description_english' => config( 'validation.events_admin.description_english' ),
             'location_english'    => config( 'validation.events_admin.location_english' ),
             'host_english'        => config( 'validation.events_admin.host_english' ),
+            'event_date'          => config( 'validation.events_admin.event_date' ),
         ];
     }
 }

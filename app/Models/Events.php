@@ -184,6 +184,7 @@ class Events extends Model
             'end_date'            => date( 'Y-m-d' ),
             'status'              => $request->input( 'status' ) ? 'public' : 'draft',
             'upcoming_status'     => 'yes',
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
         ];
 
         if( $request->file( 'image_path' ) ){
@@ -235,4 +236,47 @@ class Events extends Model
         return [ 'success' => $success, 'imageInformation' => $imageInformation ];
     }
 
+    /**
+     * Create events information.
+     *
+     * @param EventsRequest $request Events request object
+     *
+     * @return array Response information
+     */
+    public function createEvents( EventsRequest $request )
+    {
+
+        $newEvents = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'location_english'    => $request->input( 'location_english' ),
+            'location_thai'       => $request->input( 'location_thai' ),
+            'host_thai'           => $request->input( 'host_thai' ),
+            'host_english'        => $request->input( 'host_english' ),
+            'link'                => $request->input( 'link' ),
+            'event_date'          => $request->input( 'event_date' ),
+            'start_date'          => date( 'Y-m-d' ),
+            'end_date'            => date( 'Y-m-d' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+            'upcoming_status'     => 'yes',
+            'view'                => '0',
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
+        ];
+
+        if( $request->file( 'image_path' ) ){
+            $imageInformation = $this->saveImage( $request );
+
+            if( isset( $imageInformation['imageInformation']['original'] ) ){
+                $image_file              = $imageInformation['imageInformation']['original'];
+                $newEvents['image_path'] = $image_file ? $image_file : config('images.placeholder.700x400') ;
+            }
+        }
+
+        $successForEvents = $this->create( $newEvents );
+
+        return [ 'successForEvents' => $successForEvents ];
+
+    }
 }

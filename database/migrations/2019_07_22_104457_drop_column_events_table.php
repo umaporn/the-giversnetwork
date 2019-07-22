@@ -21,6 +21,7 @@ class DropColumnEventsTable extends Migration
             $table->dropColumn( 'location_thai' );
             $table->dropColumn( 'host_thai' );
             $table->dropColumn( 'host_image' );
+            $table->dropColumn( 'image_path' );
         } );
     }
 
@@ -37,6 +38,7 @@ class DropColumnEventsTable extends Migration
             $table->string( 'location_thai', 255 );
             $table->string( 'host_thai', 255 );
             $table->string( 'host_image', 255 );
+            $table->string( 'image_path', 255 );
         } );
     }
 }
