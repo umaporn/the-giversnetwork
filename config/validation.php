@@ -59,4 +59,10 @@ return [
         'description_english' => 'required|string|min:3|max:2000',
         'content_english'     => 'required|string|min:3|max:2000',
     ],
+    'events_admin'      => [
+        'title_english'       => 'required|string|min:3|max:255',
+        'description_english' => 'required|string|min:3|max:2000',
+        'location_english'    => 'required|string|min:3|max:255',
+        'host_english'        => 'required|string|min:3|max:255',
+    ],
 ];

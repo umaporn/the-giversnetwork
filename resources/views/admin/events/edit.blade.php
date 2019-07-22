@@ -117,7 +117,8 @@
                                                 <label for="host" class="form-label">@lang('events_admin.host_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="host_english" name="host_english" class="form-fill">
+                                                <input type="text" id="host_english" name="host_english" class="form-fill"
+                                                        value="{{ $event->host_thai }}">
                                                 <p id="host_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -126,7 +127,8 @@
                                                 <label for="host" class="form-label">@lang('events_admin.host_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="host_thai" name="host_thai" class="form-fill">
+                                                <input type="text" id="host_thai" name="host_thai" class="form-fill"
+                                                       value="{{ $event->host_english }}">
                                                 <p id="host_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -135,7 +137,8 @@
                                                 <label for="link" class="form-label">@lang('events_admin.link')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="link" name="link" class="form-fill">
+                                                <input type="text" id="link" name="link" class="form-fill"
+                                                       value="{{ $event->link }}">
                                                 <p id="link-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -145,11 +148,9 @@
                                             </div>
                                             <div class="cell small-12 large-9">
                                                 <div class="form-date">
-                                                    <label for="date-start">@lang('events_admin.from')</label>
-                                                    <input type="datetime-local" id="start_date" name="start_date" class="form-fill">
+                                                    <input type="text" id="event_date" name="event_date" class="form-fill"
+                                                            value="{{ $event->event_date }}">
                                                     <p id="start_date-help-text" class="alert help-text help-text hide"></p>
-                                                    <label for="date-end">@lang('events_admin.to')</label>
-                                                    <input type="datetime-local" id="end_date" name="end_date" class="form-fill" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -158,14 +159,20 @@
                                                 <label for="imageProfile" class="form-label">@lang('events_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
+                                                @if($event->image_path)
+                                                    <div class="padding-bottom-1">
+                                                        <img src="{{ Storage::url($event->image_path) }}" width="200" alt="@lang('events_admin.image')">
+                                                    </div>
+                                                @endif
                                                 <div class="form-file-image">
                                                     <div class="form-file">
-                                                        <input type="file" class="form-fileupload" id="file-image"
-                                                               multiple data-maxfile="5,120"/>
+                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
+                                                               data-maxfile="5,120"/>
                                                         <div class="form-file-style">
                                                             <div class="form-flex btn-blue">@lang('events_admin.browse')</div>
                                                             <p class="form-flex show-text">@lang('events_admin.image_condition')</p>
                                                         </div>
+                                                        <p id="image_path-help-text" class="alert help-text help-text hide"></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -175,13 +182,13 @@
                                                 <label class="form-label">@lang('events_admin.publish')</label>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
-                                                <input id="approve" type="checkbox">
+                                                <input id="status" type="checkbox" name="status" {{ $event->status === 'public' ? 'checked' : '' }}>
                                                 <label for="approve">@lang('events_admin.publish_events')</label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-offset-2 large-9">
-                                                <button class="btn-green btn-long">@lang('events_admin.add_events')</button>
+                                                <button class="btn-green btn-long">@lang('events_admin.edit_events')</button>
                                             </div>
                                         </div>
                                     </form>

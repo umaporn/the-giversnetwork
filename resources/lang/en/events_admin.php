@@ -45,7 +45,7 @@ return [
     'host_thai'             => 'Host Thai',
     'host_english'          => 'Host English',
     'link'                  => 'Link',
-    'date_time'             => 'Date/Time',
+    'date_time'             => 'Event Date/Time',
     'from'                  => 'From',
     'to'                    => 'To',
     'views'                 => 'Views',

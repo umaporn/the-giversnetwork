@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Events;
+use App\Http\Requests\EventsRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -85,9 +86,19 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update( Request $request, $id )
+    public function update( EventsRequest $request, Events $event )
     {
-        //
+        $response = $this->eventsModel->updateEventsInformation( $request, $event );
+
+        if( !$response['success'] ){
+            return response()->json( $response, 422 );
+        }
+
+        return response()->json( [
+                                     'success'       => $response['success'],
+                                     'message'       => $response['message'],
+                                     'redirectedUrl' => url()->previous(),
+                                 ] );
     }
 
     /**

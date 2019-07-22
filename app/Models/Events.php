@@ -5,10 +5,13 @@
 
 namespace App\Models;
 
+use App\Http\Requests\EventsRequest;
+use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class Events extends Model
@@ -50,7 +53,7 @@ class Events extends Model
     }
 
     /**
-     * Get a list of events for displaying in learn page.
+     * Get a list of events for displaying in events page.
      *
      * @param Request $request Events request object
      *
@@ -154,4 +157,82 @@ class Events extends Model
 
         return $this->transformHomeEventsContent( $data );
     }
+
+    /**
+     * Updating events information.
+     *
+     * @param EventsRequest $request Events request object
+     * @param Events        $events  Events model
+     *
+     * @return array Response information
+     */
+    public function updateEventsInformation( EventsRequest $request, Events $events )
+    {
+
+        $data = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'location_english'    => $request->input( 'location_english' ),
+            'location_thai'       => $request->input( 'location_thai' ),
+            'host_thai'           => $request->input( 'host_thai' ),
+            'host_english'        => $request->input( 'host_english' ),
+            'link'                => $request->input( 'link' ),
+            'event_date'          => $request->input( 'event_date' ),
+            'start_date'          => date( 'Y-m-d' ),
+            'end_date'            => date( 'Y-m-d' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+            'upcoming_status'     => 'yes',
+        ];
+
+        if( $request->file( 'image_path' ) ){
+            $imageInformation = $this->saveImage( $request );
+
+            if( isset( $imageInformation['imageInformation']['original'] ) ){
+                $image_file = $imageInformation['imageInformation']['original'];
+
+                $data['image_path'] = $image_file;
+            }
+        }
+
+        $result = $this->where( 'id', $events->id )->update( $data );
+
+        if( $result ){
+            $response = [ 'success' => true, 'message' => __( 'events_admin.saved_events_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'events_admin.saved_events_error' ), ];
+        }
+
+        return $response;
+
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param EventsRequest $request EventsRequest object
+     *
+     * @return array Image saved result
+     */
+    private function saveImage( EventsRequest $request )
+    {
+        $imageInformation = [];
+        $file             = $request->file( 'image_path' )[0];
+        $success          = true;
+
+        if( $file ){
+
+            $imageInformation = Image::upload( $file, 'events' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'imageInformation' => $imageInformation ];
+    }
+
 }
