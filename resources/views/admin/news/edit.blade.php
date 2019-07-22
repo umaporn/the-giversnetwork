@@ -115,7 +115,6 @@
                                             </div>
                                             <div class="cell small-12 large-9">
                                                 <textarea id="content-tinymce-thai" class="form-fill" name="content_thai" rows="3">{{ $news->content_thai }}</textarea>
-                                                <input type="hidden" name="current_content" value="{{ $news->content_thai }}"/>
                                                 <p id="content_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -125,8 +124,7 @@
                                                 <label for="content_english" class="form-label">@lang('news_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-tinymce-english" class="form-fill tinyMCE-form" name="content_english" rows="3">{{ $news->content_english }}</textarea>
-                                                <input type="hidden" name="current_content" value="{{ $news->content_english }}"/>
+                                                <textarea id="content-tinymce-english" class="form-fill" name="content_english" rows="3">{{ $news->content_english }}</textarea>
                                                 <p id="content_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -136,9 +134,13 @@
                                                 <label for="image" class="form-label">@lang('news_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                @if($news->file_path)
-                                                    <div class="padding-bottom-1">
-                                                        <img src="{{ Storage::url($news->file_path) }}" width="200" alt="@lang('news_admin.image')">
+                                                @if($news->newsImage)
+                                                    <div class="grid-x">
+                                                        @foreach( $news->newsImage as $newsImage )
+                                                            <div class="cell small-4 padding-1">
+                                                                <img src="{{ Storage::url( $newsImage->thumbnail ) }}" width="200" alt="@lang('news_admin.image')">
+                                                            </div>
+                                                        @endforeach
                                                     </div>
                                                 @endif
                                                 <div class="form-file-image">
@@ -161,15 +163,6 @@
                                             <div class="cell small-12 large-9 form-text">
                                                 <input id="status" type="checkbox" name="status" {{ $news->status === 'public' ? 'checked' : '' }}>
                                                 <label for="status">@lang('news_admin.publish_post')</label>
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <p class="form-label form-p">@lang('news_admin.highlight')</p>
-                                            </div>
-                                            <div class="cell small-12 large-9 form-text">
-                                                <input id="pinned" type="checkbox" name="highlight_status" {{ $news->highlight_status === 'pinned' ? 'checked' : '' }}>
-                                                <label for="pinned">@lang('news_admin.pin_to_highlight')</label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">

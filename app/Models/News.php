@@ -5,12 +5,16 @@
 
 namespace App\Models;
 
+use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\NewsRequest;
 
 class News extends Model
 {
@@ -211,5 +215,113 @@ class News extends Model
 
         return $this->transformHomeNewsContent( $data );
 
+    }
+
+    /**
+     * Updating news information.
+     *
+     * @param NewsRequest $request News request object
+     * @param News        $news    News model
+     *
+     * @return array Response information
+     */
+    public function updateNewsInformation( NewsRequest $request, News $news )
+    {
+
+        $data = [
+            'title_thai'          => $request->input( 'title_thai' ),
+            'title_english'       => $request->input( 'title_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'view'                => '0',
+            'type'                => $request->input( 'type' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        $successForGive = $this->where( 'id', $news->id )->update( $data );
+
+        if( $successForGive ){
+
+            $successForGiveImage = '';
+
+            if( $request->file( 'image_path' ) ){
+
+                DB::table( 'news_image' )->where( 'fk_news_id', $news->id )->delete();
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+
+                        $imagePathOriginal  = $imageInformation['imageInformation']['original'];
+                        $imagePathThumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $newsID = $news->id;
+
+                    $newsImageInformation = [
+                        'original'    => $imagePathOriginal,
+                        'thumbnail'   => $imagePathThumbnail,
+                        'fk_news_id'  => $newsID,
+                        'alt_thai'    => $request->input( 'title_thai' ),
+                        'alt_english' => $request->input( 'title_english' ),
+                    ];
+
+                    $successForGiveImage = $this->newsImage()->updateOrCreate( [ 'fk_news_id' => $newsID ],
+                                                                               $newsImageInformation );
+                }
+            }
+        }
+
+        if( $successForGive || $successForGiveImage ){
+            $response = [ 'success' => true, 'message' => __( 'news_admin.saved_news_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'news_admin.saved_news_error' ), ];
+        }
+
+        return $response;
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param UploadedFile $imagePath UploadedFile object
+     *
+     * @return array Image saved result
+     */
+    private function saveImage( UploadedFile $imagePath )
+    {
+        $imageInformation = [];
+        $file             = $imagePath;
+        $success          = true;
+
+        if( $file ){
+
+            $imageInformation = Image::upload( $file, 'news' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'imageInformation' => $imageInformation ];
+    }
+
+    /**
+     * Delete an uploaded image.
+     *
+     * @param array $images Image's information
+     *
+     * @return    void
+     */
+    private function deleteImage( array $images )
+    {
+        $imagesFields = [ 'original', 'thumbnail' ];
+        Image::deleteImage( $images, $imagesFields );
     }
 }
