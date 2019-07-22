@@ -195,4 +195,21 @@ class News extends Model
 
         return $imageStore;
     }
+
+    /**
+     * Get news all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of news
+     */
+    public function getNewsAllListForAdmin( Request $request )
+    {
+        $builder = $this->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'news', $request );
+
+        return $this->transformHomeNewsContent( $data );
+
+    }
 }

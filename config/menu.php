@@ -147,6 +147,25 @@ return [
         ],
         [
             'routeName' => '#',
+            'menuText'  => 'news_admin.page_link.index',
+            'name'      => 'news',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.news.index',
+                    'menuText'  => 'news_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'news',
+                ],
+                [
+                    'routeName' => 'admin.news.create',
+                    'menuText'  => 'news_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'news',
+                ],
+            ],
+        ],
+        [
+            'routeName' => '#',
             'menuText'  => 'user_admin.page_link.index',
             'name'      => 'user',
             'childMenu' => [
@@ -158,6 +177,5 @@ return [
                 ],
             ],
         ],
-
     ],
 ];
