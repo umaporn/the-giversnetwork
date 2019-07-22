@@ -92,15 +92,24 @@ class EventsController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a specific events.
      *
-     * @param int $id
+     * @param Request $request Request object
+     * @param Events  $events  Events model
      *
-     * @return \Illuminate\Http\Response
+     * @return    \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    public function destroy( $id )
+    public function destroy( Request $request, Events $event )
     {
-        //
+        $success = $event->delete();
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'success'       => $success,
+                                         'message'       => __( 'events_admin.events_management.remove_events_success' ),
+                                         'redirectedUrl' => route( 'admin.events.index' ),
+                                     ] );
+        }
     }
 
     /**
