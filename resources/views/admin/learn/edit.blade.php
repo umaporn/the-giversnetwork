@@ -114,7 +114,7 @@
                                                 <label for="content_thai" class="form-label">@lang('learn_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-thai" class="form-fill" name="content_thai" rows="3">{{ $learn->content_thai }}</textarea>
+                                                <textarea id="content-tinymce-thai" class="form-fill" name="content_thai" rows="3">{{ $learn->content_thai }}</textarea>
                                                 <input type="hidden" name="current_content" value="{{ $learn->content_thai }}"/>
                                                 <p id="content_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
@@ -125,7 +125,7 @@
                                                 <label for="content_english" class="form-label">@lang('learn_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-english" class="form-fill tinyMCE-form" name="content_english" rows="3">{{ $learn->content_english }}</textarea>
+                                                <textarea id="content-tinymce-english" class="form-fill tinyMCE-form" name="content_english" rows="3">{{ $learn->content_english }}</textarea>
                                                 <input type="hidden" name="current_content" value="{{ $learn->content_english }}"/>
                                                 <p id="content_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>

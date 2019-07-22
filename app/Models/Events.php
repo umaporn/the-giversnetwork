@@ -14,7 +14,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class Events extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'title_thai', 'title_english', 'description_thai', 'description_english',
+                            'location_thai', 'location_english', 'host_thai', 'host_english',
+                            'link', 'start_date', 'end_date', 'event_date', 'image_path', 'view',
+                            'status', 'upcoming_status' ];
 
     /** @var string Table name */
     protected $table = 'events';

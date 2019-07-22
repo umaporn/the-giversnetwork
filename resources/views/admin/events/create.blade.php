@@ -70,8 +70,8 @@
                                                 <label for="des" class="form-label">@lang('events_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="description-thai" name="description_thai" class="form-fill" rows="3"></textarea>
-                                                <p id="description-thai-help-text" class="alert help-text help-text hide"></p>
+                                                <textarea id="content-tinymce-thai" name="description_thai" class="form-fill" rows="3"></textarea>
+                                                <p id="content-tinymce-thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
@@ -79,17 +79,8 @@
                                                 <label for="des" class="form-label">@lang('events_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="description-english" name="description_english" class="form-fill" rows="3"></textarea>
-                                                <p id="description-english-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="location" class="form-label">@lang('events_admin.location_english')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <input type="text" id="location_english" name="location_english" class="form-fill">
-                                                <p id="location_english-help-text" class="alert help-text help-text hide"></p>
+                                                <textarea id="content-tinymce-english" name="description_english" class="form-fill" rows="3"></textarea>
+                                                <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
@@ -99,6 +90,15 @@
                                             <div class="cell small-12 large-9">
                                                 <input type="text" id="location_thai" name="location_thai" class="form-fill">
                                                 <p id="location_thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="location" class="form-label">@lang('events_admin.location_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <input type="text" id="location_english" name="location_english" class="form-fill">
+                                                <p id="location_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">

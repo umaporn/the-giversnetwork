@@ -1,13 +1,13 @@
 @extends('admin.layouts.app')
 
-@section('page-title', __('give_admin.page_title.edit'))
-@section('page-description', __('give_admin.page_description.edit'))
+@section('page-title', __('events_admin.page_title.edit'))
+@section('page-description', __('events_admin.page_description.edit'))
 
 @section('content')
     <section class="admin">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <h2 class="topic-light">@lang('give_admin.page_title.index')</h2>
+                <h2 class="topic-light">@lang('events_admin.page_title.index')</h2>
             </div>
         </div>
         <nav class="grid-x padding-breadcrumbs">
@@ -15,7 +15,7 @@
                 <ul class="breadcrumbs">
                     <li><a href="{{ route('admin.home.index') }}">@lang('admin.page_title.index')</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> @lang('give_admin.page_title.index')
+                        <span class="show-for-sr">Current: </span> @lang('events_admin.page_title.index')
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
                             <div class="grid-x">
                                 <div class="cell small-12">
                                     <div class="grid-x user-form-space">
-                                        <h2 class="cell shrink user-head">@lang('give_admin.edit_give')</h2>
+                                        <h2 class="cell shrink user-head">@lang('events_admin.page_title.edit')</h2>
                                         <div class="cell auto grid-x align-middle">
                                             <div class="cell line auto"></div>
                                             <div class="cell shrink">
@@ -41,186 +41,150 @@
                                     </div>
                                 </div>
                                 <div class="cell small-12">
-                                    <form action="{{ route('admin.give.update', ['give' => $give->id ]) }}"
+                                    <form action="{{ route('admin.events.update', [ 'event' => $event->id ]) }}"
                                           method="POST"
                                           enctype="multipart/form-data"
-                                          class="submission-form"
+                                          class="tinyMCE-form"
                                     >
                                         @method('PUT')
                                         {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="give_id" class="form-label">@lang('give_admin.give_id')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9 form-text">
-                                                {{ $give->id }}
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="product" class="form-label">@lang('give_admin.choose')</label>
+                                                <label for="topic" class="form-label">@lang('events_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <select class="form-select white" name="type" id="type">
-                                                    <option value="">@lang('give.give_type_selection')</option>
-                                                    <option value="give" {{ $give->type === 'give' ? 'selected' : '' }}>@lang('give.create_item_form.give_item')</option>
-                                                    <option value="receive" {{ $give->type === 'receive' ? 'selected' : '' }}>@lang('give.create_item_form.receive')</option>
-                                                </select>
-                                                <p id="type-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="choose" class="form-label">@lang('give.create_item_form.category')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <select class="form-select white" name="fk_category_id" id="fk_category_id">
-                                                    <option value="">@lang('give.give_category_selection')</option>
-                                                    @foreach( $data['giveCategory'] as $category )
-                                                        <option value="{{ $category['id'] }}"
-                                                                {{ $category['id'] === $give->fk_category_id ? 'selected' : '' }}
-                                                        >
-                                                            {{ $category['title'] }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                                <p id="fk_category_id-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="title_thai" class="form-label">@lang('give_admin.title_thai')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <input type="text"
-                                                       id="title_thai"
-                                                       class="form-fill"
-                                                       name="title_thai"
-                                                       value="{{ $give->title_thai }}"
-                                                >
+                                                <input type="text" id="title_thai" name="title_thai" class="form-fill"
+                                                       value="{{ $event->title_thai }}">
                                                 <p id="title_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
-
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="topic" class="form-label">@lang('give_admin.title_english')</label>
+                                                <label for="topic" class="form-label">@lang('events_admin.title_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text"
-                                                       id="title_english"
-                                                       class="form-fill"
-                                                       name="title_english"
-                                                       value="{{ $give->title_english }}"
-                                                >
+                                                <input type="text" id="title_english" name="title_english" class="form-fill"
+                                                       value="{{ $event->title_english }}">
                                                 <p id="title_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="amount" class="form-label">@lang('give_admin.amount')</label>
+                                                <label for="des" class="form-label">@lang('events_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="number" id="amount" class="form-fill" value="{{ $give->amount }}" name="amount">
-                                                <p id="amount-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="address" class="form-label">@lang('give_admin.address')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <textarea id="address" name="address" class="form-fill" rows="3">{{ $give->address }}</textarea>
-                                                <p id="address-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="description_thai" class="form-label">@lang('give_admin.description_thai')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <textarea id="description_thai" class="form-fill" name="description_thai" rows="3" maxlength="2000">
-                                                    {{ $give->description_thai }}
+                                                <textarea id="content-tinymce-thai" name="description_thai" class="form-fill" rows="3">
+                                                    {{ $event->description_thai }}
                                                 </textarea>
-                                                <p id="description_thai-help-text" class="alert help-text help-text hide"></p>
+                                                <p id="content-tinymce-thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="des" class="form-label">@lang('events_admin.description_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="content-tinymce-english" name="description_english" class="form-fill" rows="3">
+                                                    {{ $event->description_english }}
+                                                </textarea>
+                                                <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="location" class="form-label">@lang('events_admin.location_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <input type="text" id="location_thai" name="location_thai" class="form-fill"
+                                                       value="{{ $event->location_english }}"
+                                                >
+                                                <p id="location_thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="location" class="form-label">@lang('events_admin.location_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <input type="text" id="location_english" name="location_english" class="form-fill"
+                                                       value="{{ $event->location_thai }}">
+                                                <p id="location_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="description_english" class="form-label">@lang('give_admin.description_english')</label>
+                                                <label for="host" class="form-label">@lang('events_admin.host_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="description_english" class="form-fill" name="description_english" rows="3">
-                                                    {{ $give->description_english }}
-                                                </textarea>
-                                                <p id="description_english-help-text" class="alert help-text help-text hide"></p>
+                                                <input type="text" id="host_english" name="host_english" class="form-fill">
+                                                <p id="host_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="product" class="form-label">@lang('give_admin.expired_date')</label>
+                                                <label for="host" class="form-label">@lang('events_admin.host_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <select class="form-select white" name="expired_date">
-                                                    @foreach( __('give_admin.expired_date_list') as $expired_date )
-                                                        <option value="{{ $expired_date }}">{{ $expired_date }}</option>
-                                                    @endforeach
-                                                </select>
+                                                <input type="text" id="host_thai" name="host_thai" class="form-fill">
+                                                <p id="host_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label for="image" class="form-label">@lang('give_admin.image')</label>
+                                                <label for="link" class="form-label">@lang('events_admin.link')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                @if($give->giveImage)
-                                                    <div class="grid-x">
-                                                        @foreach( $give->giveImage as $giveImage )
-                                                            <div class="cell small-4 padding-1">
-                                                                <img src="{{ $giveImage->image_path }}" width="200" alt="@lang('give_admin.image')">
-                                                            </div>
-                                                        @endforeach
-                                                    </div>
-                                                @endif
+                                                <input type="text" id="link" name="link" class="form-fill">
+                                                <p id="link-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label class="form-label">@lang('events_admin.date_time')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <div class="form-date">
+                                                    <label for="date-start">@lang('events_admin.from')</label>
+                                                    <input type="datetime-local" id="start_date" name="start_date" class="form-fill">
+                                                    <p id="start_date-help-text" class="alert help-text help-text hide"></p>
+                                                    <label for="date-end">@lang('events_admin.to')</label>
+                                                    <input type="datetime-local" id="end_date" name="end_date" class="form-fill" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="imageProfile" class="form-label">@lang('events_admin.image')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
                                                 <div class="form-file-image">
                                                     <div class="form-file">
-                                                        <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
-                                                               data-maxfile="5,120"/>
+                                                        <input type="file" class="form-fileupload" id="file-image"
+                                                               multiple data-maxfile="5,120"/>
                                                         <div class="form-file-style">
-                                                            <div class="form-flex btn-blue">@lang('give_admin.browse')</div>
-                                                            <p class="form-flex show-text">@lang('give_admin.image_condition')</p>
+                                                            <div class="form-flex btn-blue">@lang('events_admin.browse')</div>
+                                                            <p class="form-flex show-text">@lang('events_admin.image_condition')</p>
                                                         </div>
-                                                        <p id="image_path-help-text" class="alert help-text help-text hide"></p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
-                                                <label class="form-label">@lang('give_admin.approval')</label>
+                                                <label class="form-label">@lang('events_admin.publish')</label>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
-                                                <input id="status" type="checkbox" name="status" {{ $give['status'] === 'public' ? 'checked' : '' }}>
-                                                <label for="approve">@lang('give_admin.approval_text')</label>
+                                                <input id="approve" type="checkbox">
+                                                <label for="approve">@lang('events_admin.publish_events')</label>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-offset-2 large-9">
-                                                <button class="btn-green btn-long">@lang('give_admin.edit_give')</button>
+                                                <button class="btn-green btn-long">@lang('events_admin.add_events')</button>
                                             </div>
                                         </div>
                                     </form>
-
-                                    {{-- File upload form for TinyMCE Editor --}}
-                                    <form id="tinymce-uploadform" action="{{ route('admin.image.upload') }}">
-                                        {{ csrf_field() }}
-                                        <input id="tinymce-uploadfile" type="file" name="image"/>
-                                    </form>
-
                                 </div>
                             </div>
                         </article>

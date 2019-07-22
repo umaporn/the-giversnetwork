@@ -36,8 +36,7 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public
-    function create()
+    public function create()
     {
         return view( 'admin.events.create' );
     }
@@ -49,8 +48,7 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public
-    function store( Request $request )
+    public function store( Request $request )
     {
         //
     }
@@ -62,8 +60,7 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public
-    function show( $id )
+    public function show( $id )
     {
         //
     }
@@ -71,14 +68,13 @@ class EventsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param Events $events
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public
-    function edit( $id )
+    public function edit( Events $event )
     {
-        //
+        return view( 'admin.events.edit', compact( 'event' ) );
     }
 
     /**
@@ -89,8 +85,7 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public
-    function update( Request $request, $id )
+    public function update( Request $request, $id )
     {
         //
     }
@@ -102,8 +97,7 @@ class EventsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public
-    function destroy( $id )
+    public function destroy( $id )
     {
         //
     }

@@ -88,8 +88,8 @@
                                                 <label for="des" class="form-label">@lang('share_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-thai" name="content_thai" class="form-fill" rows="3"></textarea>
-                                                <p id="content-thai-help-text" class="alert help-text help-text hide"></p>
+                                                <textarea id="content-tinymce-thai" name="content_thai" class="form-fill" rows="3"></textarea>
+                                                <p id="content-tinymce-thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
@@ -97,8 +97,8 @@
                                                 <label for="des" class="form-label">@lang('share_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-english" name="content_english" class="form-fill" rows="3"></textarea>
-                                                <p id="content-english-help-text" class="alert help-text help-text hide"></p>
+                                                <textarea id="content-tinymce-english" name="content_english" class="form-fill" rows="3"></textarea>
+                                                <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
