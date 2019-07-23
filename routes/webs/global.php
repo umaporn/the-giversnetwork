@@ -144,6 +144,10 @@ function globalRoutes()
                 'names' => addPrefixResourceRouteName( 'admin.news' ),
             ] );
 
+            Route::resource( 'organization', 'Admin\OrganizationController', [
+                'names' => addPrefixResourceRouteName( 'admin.organization' ),
+            ] );
+
             // Route::get( 'editprofile', 'AdminController@editProfile' )->name( 'admin.editProfile' );
             // Route::get( 'learn-all', 'AdminController@learnAll' )->name( 'admin.learnAll' );
             // Route::get( 'learn-add', 'AdminController@learnAdd' )->name( 'admin.learnAdd' );

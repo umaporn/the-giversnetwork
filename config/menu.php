@@ -166,6 +166,25 @@ return [
         ],
         [
             'routeName' => '#',
+            'menuText'  => 'organization_admin.page_link.index',
+            'name'      => 'organization',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.organization.index',
+                    'menuText'  => 'organization_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'organization',
+                ],
+                [
+                    'routeName' => 'admin.organization.create',
+                    'menuText'  => 'organization_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'organization',
+                ],
+            ],
+        ],
+        [
+            'routeName' => '#',
             'menuText'  => 'user_admin.page_link.index',
             'name'      => 'user',
             'childMenu' => [
