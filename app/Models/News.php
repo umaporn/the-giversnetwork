@@ -383,4 +383,26 @@ class News extends Model
 
         return [ 'successForNews' => $successForNews, 'successForNewsImage' => $successForNewsImage ];
     }
+
+    /**
+     * Delete news content.
+     *
+     * @return    bool|mixed|null    Deleted status
+     */
+    public function deleteNews()
+    {
+        $success = false;
+        $images  = $this->getImages( $this );
+
+        if( $images ){
+
+            $this->deleteImage( $images );
+            $success = $this->newsImage()->delete();
+
+        }
+
+        $success = $this->delete();
+
+        return $success;
+    }
 }

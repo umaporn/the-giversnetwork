@@ -111,9 +111,17 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy( $id )
+    public function destroy( Request $request, News $news )
     {
-        //
+        $success = $news->deleteNews();
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'success'       => $success,
+                                         'message'       => __( 'news_admin.news_management.remove_news_success' ),
+                                         'redirectedUrl' => route( 'admin.news.index' ),
+                                     ] );
+        }
     }
 
     /**
