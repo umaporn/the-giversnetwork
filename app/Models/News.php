@@ -20,8 +20,8 @@ class News extends Model
 {
     /** @var array A list of fields which are able to update in this model */
     protected $fillable = [
-        'title_english', 'title_thai', 'content_english', 'content_thai',
-        'type', 'status', 'public_date',
+        'title_english', 'title_thai', 'description_english', 'description_thai', 'content_english', 'content_thai',
+        'type', 'status', 'public_date', 'view',
     ];
 
     /** @var string Table name */
@@ -240,11 +240,11 @@ class News extends Model
             'status'              => $request->input( 'status' ) ? 'public' : 'draft',
         ];
 
-        $successForGive = $this->where( 'id', $news->id )->update( $data );
+        $successForNews = $this->where( 'id', $news->id )->update( $data );
 
-        if( $successForGive ){
+        if( $successForNews ){
 
-            $successForGiveImage = '';
+            $successForNewsImage = '';
 
             if( $request->file( 'image_path' ) ){
 
@@ -270,13 +270,13 @@ class News extends Model
                         'alt_english' => $request->input( 'title_english' ),
                     ];
 
-                    $successForGiveImage = $this->newsImage()->updateOrCreate( [ 'fk_news_id' => $newsID ],
+                    $successForNewsImage = $this->newsImage()->updateOrCreate( [ 'fk_news_id' => $newsID ],
                                                                                $newsImageInformation );
                 }
             }
         }
 
-        if( $successForGive || $successForGiveImage ){
+        if( $successForNews || $successForNewsImage ){
             $response = [ 'success' => true, 'message' => __( 'news_admin.saved_news_success' ), ];
         } else {
             $response = [ 'success' => false, 'message' => __( 'news_admin.saved_news_error' ), ];
@@ -323,5 +323,64 @@ class News extends Model
     {
         $imagesFields = [ 'original', 'thumbnail' ];
         Image::deleteImage( $images, $imagesFields );
+    }
+
+    /**
+     * Creating news for admin page.
+     *
+     * @param NewsRequest $request Request object
+     *
+     * @return array Creation response
+     */
+    public function createNews( NewsRequest $request )
+    {
+        $newNews = [
+            'title_thai'          => $request->input( 'title_thai' ),
+            'title_english'       => $request->input( 'title_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'view'                => '0',
+            'type'                => $request->input( 'type' ),
+            'public_date'         => date( 'Y-m-d' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        $successForNews = $this->create( $newNews );
+
+        if( $successForNews ){
+
+            $successForNewsImage = '';
+
+            if( $request->file( 'image_path' ) ){
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+
+                        $imagePathOriginal  = $imageInformation['imageInformation']['original'];
+                        $imagePathThumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $newsID = $successForNews->id;
+
+                    $newsImageInformation = [
+                        'original'    => $imagePathOriginal,
+                        'thumbnail'   => $imagePathThumbnail,
+                        'fk_news_id'  => $newsID,
+                        'alt_thai'    => $request->input( 'title_thai' ),
+                        'alt_english' => $request->input( 'title_english' ),
+                    ];
+
+                    $successForNewsImage = $this->newsImage()->updateOrCreate( [ 'fk_news_id' => $newsID ],
+                                                                               $newsImageInformation );
+                }
+            }
+        }
+
+        return [ 'successForNews' => $successForNews, 'successForNewsImage' => $successForNewsImage ];
     }
 }

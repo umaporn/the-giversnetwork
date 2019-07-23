@@ -50,7 +50,7 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store( Request $request )
+    public function store( NewsRequest $request )
     {
         $result = $this->newsModel->createNews( $request );
 
@@ -124,7 +124,7 @@ class NewsController extends Controller
      *
      * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    private function setUpdateOrCreationResponse( Request $request, array $result )
+    private function setUpdateOrCreationResponse( NewsRequest $request, array $result )
     {
         $response = $this->setResponseMessages( $result );
 
@@ -145,7 +145,7 @@ class NewsController extends Controller
     private function setResponseMessages( array $result )
     {
 
-        if( !$result['successForLearn'] && !$result['successForLearnImage'] ){
+        if( !$result['successForNews'] && !$result['successForNewsImage'] ){
             $data = [
                 'success' => false,
                 'error'   => __( 'news_admin.saved_news_error' ),
@@ -154,7 +154,7 @@ class NewsController extends Controller
             $data = [
                 'success'       => true,
                 'message'       => __( 'news_admin.saved_news_success' ),
-                'redirectedUrl' => route( 'news.index' ),
+                'redirectedUrl' => route( 'admin.news.index' ),
             ];
         }
 
