@@ -69,18 +69,6 @@ class OrganizationController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function show( $id )
-    {
-        //
-    }
-
-    /**
      * Display admin organization edition form.
      *
      * @param Organization $organization organization model
