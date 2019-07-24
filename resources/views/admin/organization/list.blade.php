@@ -11,7 +11,7 @@
         <td><a href="{{ route('admin.organization.edit', [ 'organization' =>  $organization->id ]) }}"><i class="fas fa-pen"></i></a></td>
         <td>
             <form class="deletion" id="organization-group-deletion-{{ $loop->iteration }}"
-                  data-info="{{ $organization->email }}"
+                  data-info="{{ $organization->id }}"
                   data-deletion-confirmation-message="@lang('organization_admin.organization_management.remove_confirmation')"
                   method="POST" action="{{ route('admin.organization.destroy', ['organization' => $organization->id]) }}"
             >

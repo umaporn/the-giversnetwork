@@ -53,7 +53,7 @@
                                                 <label for="name_thai" class="form-label">@lang('organization_admin.name_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="name_thai" class="form-fill" name="name_thai">
+                                                <input type="text" id="name_thai" class="form-fill" name="name_thai" value="{{ $organization->name_thai }}">
                                                 <p id="name_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -63,7 +63,7 @@
                                                 <label for="topic" class="form-label">@lang('organization_admin.name_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="text" id="name_english" class="form-fill" name="name_english">
+                                                <input type="text" id="name_english" class="form-fill" name="name_english" value="{{ $organization->name_english }}">
                                                 <p id="name_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -73,7 +73,7 @@
                                                 <label for="content_thai" class="form-label">@lang('organization_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-tinymce-thai" class="form-fill" name="content_thai" rows="3"></textarea>
+                                                <textarea id="content-tinymce-thai" class="form-fill" name="content_thai" rows="3">{{ $organization->content_thai }}</textarea>
                                                 <p id="content_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -83,7 +83,7 @@
                                                 <label for="content_english" class="form-label">@lang('organization_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-tinymce-english" class="form-fill" name="content_english" rows="3"></textarea>
+                                                <textarea id="content-tinymce-english" class="form-fill" name="content_english" rows="3">{{ $organization->content_english }}</textarea>
                                                 <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -93,6 +93,11 @@
                                                 <label for="image" class="form-label">@lang('organization_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
+                                                @if($organization->image_path)
+                                                    <div class="padding-bottom-1">
+                                                        <img src="{{ Storage::url($organization->image_path) }}" width="200" alt="@lang('organization_admin.image')">
+                                                    </div>
+                                                @endif
                                                 <div class="form-file-image">
                                                     <div class="form-file">
                                                         <input type="file" class="form-fileupload" id="image_path" name="image_path[]"
@@ -114,7 +119,11 @@
                                                 <select class="form-select white" id="fk_category_id" name="fk_category_id">
                                                     <option>@lang('organization_admin.type_of_organization')</option>
                                                     @foreach( $organizationCategory as $organizationCategoryItem )
-                                                        <option value="{{ $organizationCategoryItem['id'] }}">{{ $organizationCategoryItem['title_english'] }}</option>
+                                                        <option value="{{ $organizationCategoryItem['id'] }}"
+                                                                {{ ( $organization->fk_category_id === $organizationCategoryItem['id'] ) ? 'selected' : ''  }}
+                                                        >
+                                                            {{ $organizationCategoryItem['title_english'] }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                                 <p id="fk_category_id-help-text" class="alert help-text help-text hide"></p>
@@ -126,7 +135,7 @@
                                                 <label for="email" class="form-label">@lang('organization_admin.email')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="email" id="email" class="form-fill" name="email">
+                                                <input type="email" id="email" class="form-fill" name="email" value="{{ $organization->email }}">
                                                 <p id="email-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -135,7 +144,7 @@
                                                 <label for="phone" class="form-label">@lang('organization_admin.phone')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="tel" id="phone_number" name="phone_number" class="form-fill">
+                                                <input type="tel" id="phone_number" name="phone_number" class="form-fill" value="{{ $organization->phone_number }}">
                                                 <p id="phone_number-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -144,7 +153,7 @@
                                                 <label for="address" class="form-label">@lang('organization_admin.address')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="address" name="address" class="form-fill" rows="3"></textarea>
+                                                <textarea id="address" name="address" class="form-fill" rows="3">{{ $organization->address }}</textarea>
                                                 <p id="address-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -153,7 +162,7 @@
                                                 <label for="website" class="form-label">@lang('organization_admin.website')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="tel" id="website" name="website" class="form-fill">
+                                                <input type="tel" id="website" name="website" class="form-fill" value="{{ $organization->website }}">
                                                 <p id="website-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -162,7 +171,7 @@
                                                 <label for="facebook" class="form-label">@lang('organization_admin.facebook')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="tel" id="facebook" name="facebook" class="form-fill">
+                                                <input type="tel" id="facebook" name="facebook" class="form-fill" value="{{ $organization->facebook }}">
                                                 <p id="facebook-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -171,7 +180,7 @@
                                                 <label for="twitter" class="form-label">@lang('organization_admin.twitter')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="tel" id="twitter" name="twitter" class="form-fill">
+                                                <input type="tel" id="twitter" name="twitter" class="form-fill" value="{{ $organization->twitter }}">
                                                 <p id="twitter-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -180,7 +189,7 @@
                                                 <label for="youtube" class="form-label">@lang('organization_admin.youtube')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="tel" id="youtube" name="youtube" class="form-fill">
+                                                <input type="tel" id="youtube" name="youtube" class="form-fill" value="{{ $organization->youtube }}">
                                                 <p id="youtube-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -189,7 +198,7 @@
                                                 <label for="instagram" class="form-label">@lang('organization_admin.instagram')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="tel" id="instagram" name="instagram" class="form-fill">
+                                                <input type="tel" id="instagram" name="instagram" class="form-fill" value="{{ $organization->instagram }}">
                                                 <p id="instagram-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -198,7 +207,7 @@
                                                 <label for="linked_in" class="form-label">@lang('organization_admin.linked_in')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="tel" id="linked_in" name="linked_in" class="form-fill">
+                                                <input type="tel" id="linked_in" name="linked_in" class="form-fill" value="{{ $organization->linked_in }}">
                                                 <p id="linked_in-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>

@@ -81,40 +81,61 @@ class OrganizationController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display admin organization edition form.
      *
-     * @param int $id
+     * @param Organization $organization organization model
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Organization edition form
      */
-    public function edit( $id )
+    public function edit( Organization $organization )
     {
-        //
+        $organizationCategory = $this->organizationCategoryModel->getOrganizationCategoryList();
+
+        return view( 'admin.organization.edit', compact( 'organization', 'organizationCategory' ) );
     }
 
     /**
-     * Update the specified resource in storage.
+     * Updating organization information.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param OrganizationRequest $request      Organization request object
+     * @param Organization        $organization Organization model
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse Updating response
      */
-    public function update( Request $request, $id )
+    public function update( OrganizationRequest $request, Organization $organization )
     {
-        //
+        $response = $this->organizationModel->updateOrganizationInformation( $request, $organization );
+
+        if( !$response['success'] ){
+            return response()->json( $response, 422 );
+        }
+
+        return response()->json( [
+                                     'success'       => $response['success'],
+                                     'message'       => $response['message'],
+                                     'redirectedUrl' => url()->previous(),
+                                 ] );
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a specific organization.
      *
-     * @param int $id
+     * @param Request      $request      Request object
+     * @param Organization $organization Organization model
      *
-     * @return \Illuminate\Http\Response
+     * @return    \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
-    public function destroy( $id )
+    public function destroy( Request $request, Organization $organization )
     {
-        //
+        $success = $organization->delete();
+
+        if( $request->ajax() ){
+            return response()->json( [
+                                         'success'       => $success,
+                                         'message'       => __( 'organization_admin.organization_management.remove_organization_success' ),
+                                         'redirectedUrl' => route( 'admin.organization.index' ),
+                                     ] );
+        }
     }
 
     /**

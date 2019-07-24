@@ -193,4 +193,53 @@ class Organization extends Model
 
         return [ 'success' => $success, 'imageInformation' => $imageInformation ];
     }
+
+    /**
+     * Updating organization information.
+     *
+     * @param OrganizationRequest $request      Organization request object
+     * @param Learn               $organization Organization model
+     *
+     * @return array Response information
+     */
+    public function updateOrganizationInformation( OrganizationRequest $request, Organization $organization )
+    {
+        $data = [
+            'name_english'    => $request->input( 'name_english' ),
+            'name_thai'       => $request->input( 'name_english' ),
+            'content_english' => $request->input( 'content_english' ),
+            'content_thai'    => $request->input( 'content_english' ),
+            'fk_category_id'  => $request->input( 'fk_category_id' ),
+            'email'           => $request->input( 'email' ),
+            'phone_number'    => $request->input( 'phone_number' ),
+            'address'         => $request->input( 'address' ),
+            'website'         => $request->input( 'website' ),
+            'facebook'        => $request->input( 'facebook' ),
+            'twitter'         => $request->input( 'twitter' ),
+            'youtube'         => $request->input( 'youtube' ),
+            'instagram'       => $request->input( 'instagram' ),
+            'linked_in'       => $request->input( 'linked_in' ),
+        ];
+
+        if( $request->file( 'image_path' ) ){
+            $imageInformation = $this->saveImage( $request );
+
+            if( isset( $imageInformation['imageInformation']['original'] ) ){
+                $image_file = $imageInformation['imageInformation']['original'];
+
+                $data['image_path'] = $image_file;
+            }
+        }
+
+        $result = $this->where( 'id', $organization->id )->update( $data );
+
+        if( $result ){
+            $response = [ 'success' => true, 'message' => __( 'organization_admin.saved_organization_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'organization_admin.saved_organization_error' ), ];
+        }
+
+        return $response;
+
+    }
 }
