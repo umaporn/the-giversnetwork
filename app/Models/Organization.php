@@ -12,7 +12,6 @@ use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 class Organization extends Model
 {
@@ -198,7 +197,7 @@ class Organization extends Model
      * Updating organization information.
      *
      * @param OrganizationRequest $request      Organization request object
-     * @param Learn               $organization Organization model
+     * @param Organization        $organization Organization model
      *
      * @return array Response information
      */
