@@ -114,7 +114,7 @@ function globalRoutes()
             Route::get( '', 'Admin\HomeController@index' )->name( 'admin.home.index' );
 
             Route::resource( 'user', 'Admin\UserController', [
-                'except' => [ 'show', 'update' ],
+                'except' => [ 'show', ],
                 'names'  => addPrefixResourceRouteName( 'admin.user' ),
             ] );
 

@@ -8,6 +8,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\UserInterestIn;
 use App\Models\OrganizationCategory;
+use App\Models\Permission;
 use App\Models\Users;
 use Illuminate\Http\Request;
 
@@ -26,6 +27,9 @@ class UserController extends Controller
     /** @var OrganizationCategory OrganizationCategory model */
     protected $organizationCategoryModel;
 
+    /** @var Permission Permission model */
+    protected $permissionModel;
+
     /**
      * Initialize UserController class.
      *
@@ -33,11 +37,12 @@ class UserController extends Controller
      * @param UserInterestIn       $userInterestIn       UserInterestIn model
      * @param OrganizationCategory $organizationCategory OrganizationCategory model
      */
-    public function __construct( Users $users, UserInterestIn $userInterestIn, OrganizationCategory $organizationCategory )
+    public function __construct( Users $users, UserInterestIn $userInterestIn, OrganizationCategory $organizationCategory, Permission $permission )
     {
         $this->usersModel                = $users;
         $this->userInterestInModel       = $userInterestIn;
         $this->organizationCategoryModel = $organizationCategory;
+        $this->permissionModel           = $permission;
     }
 
     /**
@@ -83,5 +88,43 @@ class UserController extends Controller
                                          'redirectedUrl' => route( 'admin.user.index' ),
                                      ] );
         }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param Users $user
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit( Users $user )
+    {
+        $permission = $this->permissionModel->get();
+
+        return view( 'admin.users.edit', compact( 'user', 'permission' ) );
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param Request $request Request object
+     * @param Users   $user    User model
+     *
+     * @return \Illuminate\Http\JsonResponse Updating response
+     */
+    public function update( Request $request, Users $user )
+    {
+        $response = $this->usersModel->where( 'id', $user->id )
+                         ->update( [ 'fk_permission_id' => $request->input( 'fk_permission_id' ) ] );
+
+        if( !$response ){
+            return response()->json( $response, 422 );
+        }
+
+        return response()->json( [
+                                     'success'       => true,
+                                     'message'       => __( 'user_admin.user_management.edit_user_success' ),
+                                     'redirectedUrl' => url()->previous(),
+                                 ] );
     }
 }
