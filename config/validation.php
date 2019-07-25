@@ -77,4 +77,8 @@ return [
         'phone_number'   => 'required|numeric',
         'address'        => 'required|string|min:3|max:2000',
     ],
+    'banner_admin'       => [
+        'title_english'      => 'required|string|min:3|max:255',
+        'image_path_english' => 'sometimes|required|image',
+    ],
 ];

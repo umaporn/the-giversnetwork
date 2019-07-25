@@ -94,4 +94,11 @@ return [
         'searchFields'   => [ 'name_thai', 'name_english' ],
         'fulltextSearch' => false,
     ],
+    'banner'        => [
+        'limit'          => 10,
+        'limits'         => [ 5, 10, 15, 20 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
+        'fulltextSearch' => false,
+    ],
 ];

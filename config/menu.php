@@ -147,6 +147,25 @@ return [
         ],
         [
             'routeName' => '#',
+            'menuText'  => 'banner_admin.page_link.index',
+            'name'      => 'banner',
+            'childMenu' => [
+                [
+                    'routeName' => 'admin.banner.index',
+                    'menuText'  => 'banner_admin.page_link.all',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'banner',
+                ],
+                [
+                    'routeName' => 'admin.banner.create',
+                    'menuText'  => 'banner_admin.page_link.add',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'banner',
+                ],
+            ],
+        ],
+        [
+            'routeName' => '#',
             'menuText'  => 'news_admin.page_link.index',
             'name'      => 'news',
             'childMenu' => [
