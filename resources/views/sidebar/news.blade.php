@@ -13,11 +13,13 @@
                 <article class="cell">
                     <div class="grid-x grid-margin-x large-margin-collapse">
                         <div class="cell small-12 medium-6 large-12">
-                            <figure>
-                                <a href="{{ route('news.detail', [ 'news' => $news_items['id'] ]) }}">
-                                    <img src="{{ $news_items['image_path'] }}" alt="{{ $news_items['title'] }}">
-                                </a>
-                            </figure>
+                            @if( $news_items['image_path'])
+                                <figure>
+                                    <a href="{{ route('news.detail', [ 'news' => $news_items['id'] ]) }}">
+                                        <img src="{{ $news_items['image_path'] }}" alt="{{ $news_items['title'] }}">
+                                    </a>
+                                </figure>
+                            @endif
                         </div>
                         <div class="cell small-12 medium-6 large-12">
                             <a href="{{ route('news.detail', [ 'news' => $news_items['id'] ]) }}">
