@@ -181,7 +181,7 @@ class Organization extends Model
 
         if( $file ){
 
-            $imageInformation = Image::upload( $file, 'organization' );
+            $imageInformation = Image::upload( $file, 'organizations' );
             $success          = ( count( $imageInformation ) ) ? true : false;
 
             if( $this->id ){
