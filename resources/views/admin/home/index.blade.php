@@ -38,6 +38,8 @@
                                                 <span class="outline-dot float-right"><span class="dot"></span></span>
                                             </div>
                                         </div>
+                                        <div class="cell small-12">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

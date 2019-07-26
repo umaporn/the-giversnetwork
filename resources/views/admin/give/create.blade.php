@@ -113,9 +113,9 @@
                                                 <label for="des" class="form-label">@lang('give_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="description_thai" class="form-fill" rows="3" name="description_thai" maxlength="200"></textarea>
+                                                <textarea id="content-tinymce-thai" class="form-fill" rows="3" name="description_thai" maxlength="200"></textarea>
                                                 <div class="float-right form-flex show-text" id="count_description_text"></div>
-                                                <p id="description_thai-help-text" class="alert help-text help-text hide"></p>
+                                                <p id="content-tinymce-thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
@@ -123,9 +123,9 @@
                                                 <label for="des" class="form-label">@lang('give_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="description_english" class="form-fill" rows="3" name="description_english" maxlength="200"></textarea>
+                                                <textarea id="content-tinymce-english" class="form-fill" rows="3" name="description_english" maxlength="200"></textarea>
                                                 <div class="float-right form-flex show-text" id="count_description_text"></div>
-                                                <p id="description_english-help-text" class="alert help-text help-text hide"></p>
+                                                <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">

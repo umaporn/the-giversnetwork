@@ -60,6 +60,8 @@
                                                 <th class="width-40">@lang('user_admin.email')</th>
                                                 <th class="width-50">@lang('user_admin.fullname')</th>
                                                 <th class="width-50">@lang('user_admin.username')</th>
+                                                <th class="width-50">@lang('user_admin.permission')</th>
+                                                <th class="width-5 text-center">@lang('user_admin.user_management.edit')</th>
                                                 <th class="width-5 text-center">@lang('user_admin.user_management.delete')</th>
                                             </tr>
                                             </thead>

@@ -5,18 +5,24 @@
 
 namespace App\Models;
 
+use App\Http\Requests\ChallengeRequest;
+use App\Libraries\FileUpload;
+use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class Challenge extends Model
 {
     /** @var array A list of fields which are able to update in this model */
     protected $fillable = [ 'fk_user_id', 'fk_category_id', 'title_thai', 'title_english',
-                            'description_thai', 'description_english', 'file_path', 'view', 'status', ];
+                            'description_thai', 'description_english', 'content_thai', 'content_english',
+                            'file_path', 'view', 'status', ];
 
     /** @var string Table name */
     protected $table = 'challenge';
@@ -220,4 +226,281 @@ class Challenge extends Model
 
         return $ChallengeList;
     }
+
+    /**
+     * Updating challenge information.
+     *
+     * @param ChallengeRequest $request   Challenge request object
+     * @param Challenge        $challenge Challenge model
+     *
+     * @return array Response information
+     */
+    public function updateChallengeInformation( ChallengeRequest $request, Challenge $challenge )
+    {
+
+        $file_path = '';
+
+        $data = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        if( $request->file( 'file_path' ) ){
+
+            $fileInformation   = $this->saveFile( $request );
+            $data['file_path'] = $fileInformation['fileInformation']['file_path'];
+        }
+
+        $successForChallenge = $this->where( 'id', $challenge->id )->update( $data );
+
+        if( $successForChallenge ){
+
+            $successForChallengeImage = '';
+
+            if( $request->file( 'image_path' ) ){
+
+                DB::table( 'challenge_image' )->where( 'fk_challenge_id', $challenge->id )->delete();
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+                        $image_path_original  = $imageInformation['imageInformation']['original'];
+                        $image_path_thumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $challengeID = $challenge->id;
+
+                    $challengeImageInformation = [
+                        'original'        => $image_path_original,
+                        'thumbnail'       => $image_path_thumbnail,
+                        'fk_challenge_id' => $challengeID,
+                    ];
+
+                    $successForChallengeImage = $this->challengeImage()->updateOrCreate( [ 'fk_challenge_id' => $challengeID ],
+                                                                                         $challengeImageInformation );
+                }
+            }
+        }
+
+        if( $successForChallenge || $successForChallengeImage ){
+            $response = [ 'success' => true, 'message' => __( 'challenge_admin.saved_challenge_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'challenge_admin.saved_challenge_error' ), ];
+        }
+
+        return $response;
+
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param Request $request Request object
+     *
+     * @return array Image saved result
+     */
+    private function saveFile( Request $request )
+    {
+        $imageInformation = [];
+        $file             = $request->file( 'file_path' );
+        $success          = true;
+        if( $file ){
+
+            $imageInformation = FileUpload::upload( $file[0], 'challenge' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'fileInformation' => $imageInformation ];
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param UploadedFile $imagePath UploadedFile object
+     *
+     * @return array Image saved result
+     */
+    private function saveImage( UploadedFile $imagePath )
+    {
+        $imageInformation = [];
+        $file             = $imagePath;
+        $success          = true;
+
+        if( $file ){
+
+            $imageInformation = Image::upload( $file, 'challenge' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'imageInformation' => $imageInformation ];
+    }
+
+    /**
+     * Delete an uploaded image.
+     *
+     * @return void
+     */
+    private function deleteImage()
+    {
+        $imagesFields = [ 'image_path' ];
+        $attributes   = $this->getAttributes();
+
+        $this->setAttribute( 'image_path', Storage::url( $attributes['image_path'] ) );
+
+        Image::deleteImage( [ $this->getAttributes() ], $imagesFields );
+
+    }
+
+    /**
+     * Get a challenge image list into an image store.
+     *
+     * @param ChallengeImage $challengeImage Challenge model
+     *
+     * @return array Image store
+     */
+    public function getChallengeImages( ChallengeImage $challengeImage )
+    {
+
+        $attributes = $challengeImage->getAttributes();
+
+        if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes['original'] ) ){
+            $imageStore = $attributes['original'];
+        } else {
+            $imageStore = Storage::url( $attributes['original'] );
+        }
+
+        return $imageStore;
+    }
+
+    /**
+     * Get challenge all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of challenge
+     */
+    public function getChallengeAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'challengeImage' ] )
+                        ->with( [ 'challengeComment' ] )
+                        ->with( [ 'challengeLike' ] )
+                        ->with( [ 'users' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'challenge', $request );
+
+        return $this->transformChallengeContent( $data );
+
+    }
+
+    /**
+     * Create challenge information.
+     *
+     * @param ChallengeRequest $request Challenge request object
+     *
+     * @return array Response information
+     */
+    public function createChallengeForAdmin( ChallengeRequest $request )
+    {
+        $file_path       = '';
+        $fileInformation = $this->saveFile( $request );
+
+        if( isset( $fileInformation['fileInformation']['file_path'] ) ){
+            $file_path = $fileInformation['fileInformation']['file_path'];
+        }
+        $newChallenge = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'file_path'           => $file_path,
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
+            'view'                => '0',
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        $successForChallenge = $this->create( $newChallenge );
+
+        if( $successForChallenge ){
+            $successForChallengeImage = '';
+            if( $request->file( 'image_path' ) ){
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+                        $image_path_original  = $imageInformation['imageInformation']['original'];
+                        $image_path_thumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $challengeID = $successForChallenge->id;
+
+                    $challengeImageInformation = [
+                        'original'        => $image_path_original,
+                        'thumbnail'       => $image_path_thumbnail,
+                        'fk_challenge_id' => $challengeID,
+                    ];
+
+                    $successForChallengeImage = $this->challengeImage()->updateOrCreate( [ 'fk_challenge_id' => $challengeID ],
+                                                                                         $challengeImageInformation );
+                }
+            }
+        }
+
+        return [ 'successForChallenge' => $successForChallenge, 'successForChallengeImage' => $successForChallengeImage ];
+    }
+
+    /**
+     * Delete challenge content.
+     *
+     * @return    bool|mixed|null    Deleted status
+     */
+    public function deleteChallenge()
+    {
+        $success = false;
+        $images  = $this->getImages( $this );
+
+        if( $images ){
+            $this->deleteChallengeImage( $images );
+            $this->challengeImage()->delete();
+        }
+
+        $success = $this->delete();
+
+        return $success;
+    }
+
+    /**
+     * Delete an uploaded image.
+     *
+     * @param array $images Image's information
+     *
+     * @return    void
+     */
+    private function deleteChallengeImage( array $images )
+    {
+        $imagesFields = [ 'original', 'thumbnail' ];
+        Image::deleteImage( $images, $imagesFields );
+    }
+
 }

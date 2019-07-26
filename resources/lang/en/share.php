@@ -46,7 +46,7 @@ return [
         'browse'              => 'Browse',
         'image_condition'     => 'maximum upload : 10 and file size: 5MB/Image',
         'file'                => 'File',
-        'file_condition'      => 'PDF file only and maximun upload file size: 5MB',
+        'file_condition'      => 'PDF file only and maximum upload file size: 5MB',
         'saved_share_error'   => 'The share content was not saved successfully.',
         'saved_image_error'   => 'The share image was not saved successfully.',
         'saved_share_success' => 'Successfully save the share content. Please wait for approval.',

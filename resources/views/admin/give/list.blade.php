@@ -18,7 +18,7 @@
         <td><a href="{{ route('admin.give.edit', [ 'give' =>  $giveItem->id ]) }}"><i class="fas fa-pen"></i></a></td>
         <td>
             <form class="deletion" id="give-group-deletion-{{ $loop->iteration }}"
-                  data-info="{{ $giveItem->email }}"
+                  data-info="{{ $giveItem->id }}"
                   data-deletion-confirmation-message="@lang('give_admin.give_management.remove_confirmation')"
                   method="POST" action="{{ route('admin.give.destroy', ['give' => $giveItem->id]) }}"
             >

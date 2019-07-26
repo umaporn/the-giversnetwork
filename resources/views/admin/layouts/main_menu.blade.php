@@ -1,6 +1,8 @@
 @if( $menuItem['url'] !== '#' || count( $menuItem['childMenu'] ) )
     @if(count( $menuItem['childMenu'] ))
-        <li class="accordion-item is-active" data-accordion-item>
+        <li class="accordion-item {{ ( Request::is('admin/' . $menuItem['name'] . '/*') || Request::is('admin/' . $menuItem['name'] ))  ? 'is-active' : '' }}"
+            data-accordion-item
+        >
             <a class="accordion-title" href="{{ $menuItem['url'] }}">
                 {{ $menuItem['menuText'] }}
             </a>

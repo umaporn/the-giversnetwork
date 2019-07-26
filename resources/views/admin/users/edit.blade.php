@@ -4,74 +4,79 @@
 @section('page-description', __('user_admin.page_description.profile'))
 
 @section('content')
-
-    <form class="submission-form" method="POST" action="{{ route('user.updateProfile') }}">
-
-        <label>
-            @lang('user.username'):
-            <input type="text" name="username" id="username" value="{{ $user[0]->username }}">
-        </label>
-        <p id="username-help-text" class="alert help-text hide"></p>
-
-        <label>
-            @lang('user.avatar'):
-            @if($user[0]->image_path)
-                <img src="{{ Storage::url($user[0]->image_path) }}" width="200" alt="@lang('avatar')">
-            @endif
-            <input type="file" name="image_path" id="image_path">
-        </label>
-        <p id="image_path-help-text" class="alert help-text hide"></p>
-
-        <label>
-            @lang('user.firstName'):
-            <input type="text" name="firstName" id="firstName" value="{{ $user[0]->firstname }}">
-        </label>
-        <p id="firstName-help-text" class="alert help-text hide"></p>
-
-        <label>
-            @lang('user.lastName'):
-            <input type="text" name="lastName" id="lastName" value="{{ $user[0]->lastname }}">
-        </label>
-        <p id="lastName-help-text" class="alert help-text hide"></p>
-
-        <label>
-            @lang('user.phone_number'):
-            <input type="text" name="phone_number" id="phone_number" value="{{ $user[0]->phone_number }}">
-        </label>
-        <p id="phone_number-help-text" class="alert help-text hide"></p>
-
-        <label>
-            @lang('user.organization'):
-            <select name="fk_organization_category_id" id="fk_organization_category_id">
-                @foreach( $organizationCategoryList as $organizationCategoryItem )
-                    <option value="{{ $organizationCategoryItem->id }}"
-                            {{ ( $user[0]->fk_organization_category_id === $organizationCategoryItem->id ) ? 'selected' : '' }}
-                    > {{ $organizationCategoryItem->title }}
-                @endforeach
-            </select>
-            <input type="text" name="organization_name" id="organization_name" value="{{ $user[0]->organization_name }}">
-        </label>
-        <p id="organization_name-help-text" class="alert help-text hide"></p>
-
-        <label>
-            @lang('user.interest_in'):
-            <div>
-                @foreach( $interestList as $interestItem )
-                    <input type="checkbox"
-                           name="fk_interest_in_id"
-                           id="fk_interest_in_id" value="{{ $interestItem->id }}"
-                           {{ ( $user[0]->fk_interest_in_id === $interestItem->id ) ? 'checked' : '' }}
-                    > {{ $interestItem->title }}
-                @endforeach
+    <section class="admin">
+        <div class="grid-x align-middle topic padding-content">
+            <div class="cell auto">
+                <h2 class="topic-light">@lang('user_admin.page_title.index')</h2>
             </div>
-        </label>
-        <p id="fk_interest_in_id-help-text" class="alert help-text hide"></p>
-
-        <input type="hidden" name="fk_permission_id" value="{{ config('user.permission_id.member') }}">
-
-        <button type="submit" class="button">@lang('button.update')</button>
-        <button type="reset" class="button">@lang('button.reset')</button>
-
-    </form>
+        </div>
+        <nav class="grid-x padding-breadcrumbs">
+            <div class="cell auto">
+                <ul class="breadcrumbs">
+                    <li><a href="{{ route('admin.home.index') }}">@lang('admin.page_title.index')</a></li>
+                    <li>
+                        <span class="show-for-sr">Current: </span> @lang('user_admin.page_title.index')
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="grid-x padding-content">
+            <div class="cell auto">
+                <div class="grid-x">
+                    <div class="cell small-12 large-3 xxlarge-2 show-for-large">
+                        @include('admin.layouts.side_menu')
+                    </div>
+                    <div class="cell small-12 large-9 xxlarge-10">
+                        <article class="user-content">
+                            <div class="grid-x">
+                                <div class="cell small-12">
+                                    <div class="grid-x user-form-space">
+                                        <h2 class="cell shrink user-head">@lang('user_admin.edit_user')</h2>
+                                        <div class="cell auto grid-x align-middle">
+                                            <div class="cell line auto"></div>
+                                            <div class="cell shrink">
+                                                <span class="outline-dot float-right"><span class="dot"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cell small-12">
+                                    <form action="{{ route('admin.user.update', ['user' => $user->id ]) }}"
+                                          method="POST"
+                                          class="submission-form"
+                                    >
+                                        @method('PUT')
+                                        {{ csrf_field() }}
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2 ">
+                                                <label for="imageProfile" class="form-label">@lang('user_admin.permission')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9 flex">
+                                                <select class="form-select white" name="fk_permission_id" id="fk_permission_id">
+                                                    @foreach( $permission as $permissionItem)
+                                                        <option value="{{$permissionItem['id']}}"
+                                                                {{ $permissionItem['id'] === $user->fk_permission_id ? 'selected' : '' }}
+                                                        >
+                                                            {{ $permissionItem['scope'] }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <p id="type-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-offset-2 large-9">
+                                                <button class="btn-green btn-long">@lang('user_admin.user_management.edit')</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 @endsection

@@ -59,6 +59,7 @@ return [
         'add_button'           => 'Add a new learn.',
         'search_placeholder'   => 'Fulltext search by title.',
         'remove_learn_success' => 'Successfully removed the learn.',
+        'remove'               => 'Remove',
         'delete'               => 'Delete',
         'remove_confirmation'  => 'Are you sure you would like to remove the learn, ',
         'not_found_learn'      => 'Not found the learn information.',

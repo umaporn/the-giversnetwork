@@ -12,8 +12,10 @@ use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
+use App\Http\Requests\ShareRequest;
 
 class Share extends Model
 {
@@ -90,7 +92,7 @@ class Share extends Model
                         ->with( [ 'users' ] )
                         ->where( 'status', 'public' );
 
-        $data = Search::search( $builder, 'learn', $request, [], '6' );
+        $data = Search::search( $builder, 'share', $request, [], '6' );
 
         return $this->transformShareContent( $data );
 
@@ -107,7 +109,10 @@ class Share extends Model
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
-            $list->setAttribute( 'image_path', $this->getImages( $list ) );
+            foreach( $list->shareImage as $share_image ){
+                $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image ) );
+                $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
+            }
             $this->setPublicDateForFrontEnd( $list );
 
         }
@@ -141,16 +146,18 @@ class Share extends Model
      */
     public function getImages( Share $share, string $imageSize = 'original' )
     {
-        $imageStore = '';
+        $imageStore = [];
 
         foreach( $share->shareImage as $image ){
 
             $attributes = $image->getAttributes();
-            if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes[ $imageSize ] ) ){
-                $imageStore = $attributes[ $imageSize ];
-            } else {
-                $imageStore = Storage::url( $attributes[ $imageSize ] );
-            }
+
+            array_push( $imageStore, [
+                'id'          => $attributes['id'],
+                'fk_share_id' => $attributes['fk_share_id'],
+                'original'    => Storage::url( $attributes['original'] ),
+                'thumbnail'   => Storage::url( $attributes['thumbnail'] ),
+            ] );
 
         }
 
@@ -192,7 +199,7 @@ class Share extends Model
                       ->with( [ 'shareComment' ] )
                       ->with( [ 'shareLike' ] )
                       ->with( [ 'users' ] )
-                      ->where( [ 'id' => $share->id ] )->first();
+                      ->where( [ 'id' => $share->id, 'status' => 'public' ] )->first();
 
         if( $share ){
             $share->setAttribute( 'title', Utility::getLanguageFields( 'title', $share ) );
@@ -263,6 +270,78 @@ class Share extends Model
         }
 
         return [ 'successForShare' => $successForShare, 'successForShareImage' => $successForShareImage ];
+
+    }
+
+    /**
+     * Updating share information.
+     *
+     * @param ShareRequest $request Share request object
+     * @param Share        $share   Share model
+     *
+     * @return array Response information
+     */
+    public function updateShareInformation( ShareRequest $request, Share $share )
+    {
+
+        $file_path = '';
+
+        $data = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        if( $request->file( 'file_path' ) ){
+
+            $fileInformation   = $this->saveFile( $request );
+            $data['file_path'] = $fileInformation['fileInformation']['file_path'];
+        }
+
+        $successForShare = $this->where( 'id', $share->id )->update( $data );
+
+        if( $successForShare ){
+
+            $successForShareImage = '';
+
+            if( $request->file( 'image_path' ) ){
+
+                DB::table( 'share_image' )->where( 'fk_share_id', $share->id )->delete();
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+                        $image_path_original  = $imageInformation['imageInformation']['original'];
+                        $image_path_thumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $shareID = $share->id;
+
+                    $shareImageInformation = [
+                        'original'    => $image_path_original,
+                        'thumbnail'   => $image_path_thumbnail,
+                        'fk_share_id' => $shareID,
+                    ];
+
+                    $successForShareImage = $this->shareImage()->updateOrCreate( [ 'fk_share_id' => $shareID ],
+                                                                                 $shareImageInformation );
+                }
+            }
+        }
+
+        if( $successForShare || $successForShareImage ){
+            $response = [ 'success' => true, 'message' => __( 'share_admin.saved_share_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'share_admin.saved_share_error' ), ];
+        }
+
+        return $response;
 
     }
 
@@ -355,4 +434,118 @@ class Share extends Model
 
         return $imageStore;
     }
+
+    /**
+     * Get share all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of share
+     */
+    public function getShareAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'shareImage' ] )
+                        ->with( [ 'shareComment' ] )
+                        ->with( [ 'shareLike' ] )
+                        ->with( [ 'users' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'share', $request );
+
+        return $this->transformShareContent( $data );
+
+    }
+
+    /**
+     * Create share information.
+     *
+     * @param ShareRequest $request Share request object
+     *
+     * @return array Response information
+     */
+    public function createShareForAdmin( ShareRequest $request )
+    {
+        $file_path       = '';
+        $fileInformation = $this->saveFile( $request );
+
+        if( isset( $fileInformation['fileInformation']['file_path'] ) ){
+            $file_path = $fileInformation['fileInformation']['file_path'];
+        }
+        $newShare = [
+            'title_english'       => $request->input( 'title_english' ),
+            'title_thai'          => $request->input( 'title_thai' ),
+            'description_english' => $request->input( 'description_english' ),
+            'description_thai'    => $request->input( 'description_thai' ),
+            'content_english'     => $request->input( 'content_english' ),
+            'content_thai'        => $request->input( 'content_thai' ),
+            'file_path'           => $file_path,
+            'fk_user_id'          => $request->input( 'fk_user_id' ),
+            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
+        ];
+
+        $successForShare = $this->create( $newShare );
+
+        if( $successForShare ){
+            $successForShareImage = '';
+            if( $request->file( 'image_path' ) ){
+
+                foreach( $request->file( 'image_path' ) as $imagePath ){
+
+                    $imageInformation = $this->saveImage( $imagePath );
+
+                    if( isset( $imageInformation['imageInformation']['original'] ) ){
+                        $image_path_original  = $imageInformation['imageInformation']['original'];
+                        $image_path_thumbnail = $imageInformation['imageInformation']['thumbnail'];
+                    }
+
+                    $shareID = $successForShare->id;
+
+                    $shareImageInformation = [
+                        'original'    => $image_path_original,
+                        'thumbnail'   => $image_path_thumbnail,
+                        'fk_share_id' => $shareID,
+                    ];
+
+                    $successForShareImage = $this->shareImage()->updateOrCreate( [ 'fk_share_id' => $shareID ],
+                                                                                 $shareImageInformation );
+                }
+            }
+        }
+
+        return [ 'successForShare' => $successForShare, 'successForShareImage' => $successForShareImage ];
+    }
+
+    /**
+     * Delete share content.
+     *
+     * @return    bool|mixed|null    Deleted status
+     */
+    public function deleteShare()
+    {
+        $success = false;
+        $images  = $this->getImages( $this );
+
+        if( $images ){
+            $this->deleteShareImage( $images );
+            $this->shareImage()->delete();
+        }
+
+        $success = $this->delete();
+
+        return $success;
+    }
+
+    /**
+     * Delete an uploaded image.
+     *
+     * @param array $images Image's information
+     *
+     * @return    void
+     */
+    private function deleteShareImage( array $images )
+    {
+        $imagesFields = [ 'original', 'thumbnail' ];
+        Image::deleteImage( $images, $imagesFields );
+    }
+
 }

@@ -31,7 +31,7 @@ const Form = (function(){
 	       * @desc TinyMCE form
 	       * @const {jQuery}
 	       */
-	      TinyMCEForm               = $( '.tinyMCE-form' );
+	      TinyMCEForm                  = $( '.tinyMCE-form' );
 
 	/**
 	 * @memberOf Form
@@ -82,6 +82,16 @@ const Form = (function(){
 			                              max:    10,
 			                              accept: 'jpg|png|gif',
 		                              } );
+
+		$( '#image_path_thai' ).MultiFile( {
+			                                   max:    10,
+			                                   accept: 'jpg|png|gif',
+		                                   } );
+
+		$( '#image_path_english' ).MultiFile( {
+			                                      max:    10,
+			                                      accept: 'jpg|png|gif',
+		                                      } );
 
 		$( '#file_path' ).MultiFile( {
 			                             max:    1,

@@ -85,7 +85,6 @@ class MenuAdminComposer
         return $active ? 'is-active' : '';
     }
 
-
     /**
      * Create a menu choice with active style.
      *
@@ -101,12 +100,13 @@ class MenuAdminComposer
             $menuItem['url']    = '#';
             $menuItem['active'] = '';
         } else {
-            $parameters               = $menuChoice['parameters'] ?? [];
-            $menuItem['url']          = route( $menuChoice['routeName'], $parameters );
-            $menuItem['active']       = $this->getActiveStyle( $menuItem['url'] );
+            $parameters         = $menuChoice['parameters'] ?? [];
+            $menuItem['url']    = route( $menuChoice['routeName'], $parameters );
+            $menuItem['active'] = $this->getActiveStyle( $menuItem['url'] );
         }
 
         $menuItem['menuText'] = __( $menuChoice['menuText'] );
+        $menuItem['name']     = $menuChoice['name'];
 
         if( isset( $menuChoice['childMenu'] ) ){
             foreach( $menuChoice['childMenu'] as $childMenuChoice ){

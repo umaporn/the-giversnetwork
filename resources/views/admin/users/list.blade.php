@@ -4,6 +4,8 @@
         <td>{{ $user->email }}</td>
         <td>{{ $user->firstname . ' ' . $user->lastname }}</td>
         <td>{{ $user->username }}</td>
+        <td>{{ $user->permission->scope }}</td>
+        <td><a href="{{ route('admin.user.edit', [ 'user' =>  $user->id ]) }}"><i class="fas fa-pen"></i></a></td>
         <td class="text-center">
             <form class="deletion" id="user-group-deletion-{{ $loop->iteration }}"
                   data-info="{{ $user->email }}"

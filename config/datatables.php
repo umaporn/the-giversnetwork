@@ -46,7 +46,7 @@ return [
         'fulltextSearch' => false,
     ],
     'events'        => [
-        'limit'          => 5,
+        'limit'          => 10,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
@@ -74,7 +74,7 @@ return [
         'fulltextSearch' => false,
     ],
     'news'         => [
-        'limit'          => 5,
+        'limit'          => 10,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
@@ -92,6 +92,13 @@ return [
         'limits'         => [ 12, 24 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'name_thai', 'name_english' ],
+        'fulltextSearch' => false,
+    ],
+    'banner'        => [
+        'limit'          => 10,
+        'limits'         => [ 5, 10, 15, 20 ],
+        'sortby'         => 'id',
+        'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
     ],
 ];

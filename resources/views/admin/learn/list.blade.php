@@ -24,7 +24,7 @@
             >
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
-                <input type="hidden" name="email" value="{{ $learn->email }}">
+                <input type="hidden" name="id" value="{{ $learn->id }}">
                 <button type="submit" class="cursor-pointer" title="@lang('learn_admin.learn_management.remove')">
                     <i class="fas fa-trash-alt"></i>
                 </button>

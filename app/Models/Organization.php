@@ -5,6 +5,8 @@
 
 namespace App\Models;
 
+use App\Http\Requests\OrganizationRequest;
+use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
@@ -14,8 +16,10 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class Organization extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [ 'fk_category_id', 'name_thai', 'name_english', 'image_path', 'email',
-                            'phone_number', 'address' ];
+    protected $fillable = [ 'fk_category_id', 'name_thai', 'name_english', 'content_thai', 'content_english',
+                            'image_path', 'email', 'phone_number', 'address', 'website', 'facebook', 'twitter',
+                            'youtube', 'instagram', 'linked_in',
+    ];
 
     /** @var string Table name */
     protected $table = 'organization';
@@ -102,5 +106,139 @@ class Organization extends Model
         }
 
         return $organization;
+    }
+
+    /**
+     * Get organization all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of organization
+     */
+    public function getOrganizationAllListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'organizationCategory' ] )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'organization', $request );
+
+        return $this->transformOrganizationList( $data );
+
+    }
+
+    /**
+     * Create organization information.
+     *
+     * @param OrganizationRequest $request Organization request object
+     *
+     * @return array Response information
+     */
+    public function createOrganization( OrganizationRequest $request )
+    {
+        $file_path        = '';
+        $imageInformation = $this->saveImage( $request );
+
+        if( isset( $imageInformation['imageInformation']['original'] ) ){
+            $file_path = $imageInformation['imageInformation']['original'];
+        }
+
+        $newOrganization = [
+            'name_english'    => $request->input( 'name_english' ),
+            'name_thai'       => $request->input( 'name_english' ),
+            'content_english' => $request->input( 'content_english' ),
+            'content_thai'    => $request->input( 'content_english' ),
+            'image_path'      => $file_path,
+            'fk_category_id'  => $request->input( 'fk_category_id' ),
+            'email'           => $request->input( 'email' ),
+            'phone_number'    => $request->input( 'phone_number' ),
+            'address'         => $request->input( 'address' ),
+            'website'         => $request->input( 'website' ),
+            'facebook'        => $request->input( 'facebook' ),
+            'twitter'         => $request->input( 'twitter' ),
+            'youtube'         => $request->input( 'youtube' ),
+            'instagram'       => $request->input( 'instagram' ),
+            'linked_in'       => $request->input( 'linked_in' ),
+        ];
+
+        $successForOrganization = $this->create( $newOrganization );
+
+        return [ 'successForOrganization' => $successForOrganization ];
+
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param OrganizationRequest $request Request object
+     *
+     * @return array Image saved result
+     */
+    private function saveImage( OrganizationRequest $request )
+    {
+        $imageInformation = [];
+        $file             = $request->file( 'image_path' )[0];
+        $success          = true;
+
+        if( $file ){
+
+            $imageInformation = Image::upload( $file, 'organization' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'imageInformation' => $imageInformation ];
+    }
+
+    /**
+     * Updating organization information.
+     *
+     * @param OrganizationRequest $request      Organization request object
+     * @param Organization        $organization Organization model
+     *
+     * @return array Response information
+     */
+    public function updateOrganizationInformation( OrganizationRequest $request, Organization $organization )
+    {
+        $data = [
+            'name_english'    => $request->input( 'name_english' ),
+            'name_thai'       => $request->input( 'name_english' ),
+            'content_english' => $request->input( 'content_english' ),
+            'content_thai'    => $request->input( 'content_english' ),
+            'fk_category_id'  => $request->input( 'fk_category_id' ),
+            'email'           => $request->input( 'email' ),
+            'phone_number'    => $request->input( 'phone_number' ),
+            'address'         => $request->input( 'address' ),
+            'website'         => $request->input( 'website' ),
+            'facebook'        => $request->input( 'facebook' ),
+            'twitter'         => $request->input( 'twitter' ),
+            'youtube'         => $request->input( 'youtube' ),
+            'instagram'       => $request->input( 'instagram' ),
+            'linked_in'       => $request->input( 'linked_in' ),
+        ];
+
+        if( $request->file( 'image_path' ) ){
+            $imageInformation = $this->saveImage( $request );
+
+            if( isset( $imageInformation['imageInformation']['original'] ) ){
+                $image_file = $imageInformation['imageInformation']['original'];
+
+                $data['image_path'] = $image_file;
+            }
+        }
+
+        $result = $this->where( 'id', $organization->id )->update( $data );
+
+        if( $result ){
+            $response = [ 'success' => true, 'message' => __( 'organization_admin.saved_organization_success' ), ];
+        } else {
+            $response = [ 'success' => false, 'message' => __( 'organization_admin.saved_organization_error' ), ];
+        }
+
+        return $response;
+
     }
 }

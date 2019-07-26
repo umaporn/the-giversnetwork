@@ -100,7 +100,7 @@
                                                 <label for="content_thai" class="form-label">@lang('learn_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-thai" class="form-fill" name="content_thai" rows="3"></textarea>
+                                                <textarea id="content-tinymce-thai" class="form-fill" name="content_thai" rows="3"></textarea>
                                                 <p id="content_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
@@ -110,8 +110,8 @@
                                                 <label for="content_english" class="form-label">@lang('learn_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-english" class="form-fill" name="content_english" rows="3"></textarea>
-                                                <p id="content_english-help-text" class="alert help-text help-text hide"></p>
+                                                <textarea id="content-tinymce-english" class="form-fill" name="content_english" rows="3"></textarea>
+                                                <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
