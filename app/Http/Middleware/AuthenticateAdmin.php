@@ -40,9 +40,11 @@ class AuthenticateAdmin
      */
     public function handle( $request, Closure $next, ...$guards )
     {
-        $this->authenticate( $request, $guards );
-
-        return $next( $request );
+        if( auth()->user()->isAdmin() ) {
+            return $next($request);
+        } else {
+            abort(403);
+        }
     }
 
     /**

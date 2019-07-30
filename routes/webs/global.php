@@ -119,28 +119,34 @@ function globalRoutes()
             ] );
 
             Route::resource( 'learn', 'Admin\LearnController', [
+                'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.learn' ),
             ] );
 
             Route::resource( 'give', 'Admin\GiveController', [
+                'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.give' ),
             ] );
 
             Route::get( 'receive', 'Admin\GiveController@receive' )->name( 'admin.receive.index' );
 
             Route::resource( 'share', 'Admin\ShareController', [
+                'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.share' ),
             ] );
 
             Route::resource( 'challenge', 'Admin\ChallengeController', [
+                'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.challenge' ),
             ] );
 
             Route::resource( 'events', 'Admin\EventsController', [
+                'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.events' ),
             ] );
 
             Route::resource( 'news', 'Admin\NewsController', [
+                'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.news' ),
             ] );
 
@@ -149,6 +155,7 @@ function globalRoutes()
             ] );
 
             Route::resource( 'banner', 'Admin\BannerController', [
+                'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.banner' ),
             ] );
         } );

@@ -31,6 +31,9 @@ class Users extends Authenticatable
         'password', 'remember_token',
     ];
 
+    const ADMIN_TYPE   = 1;
+    const DEFAULT_TYPE = 2;
+
     /**
      * Get Permission model relationship.
      *
@@ -213,12 +216,12 @@ class Users extends Authenticatable
 
             foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
                 $result = $this->userInterestIn()->create( [
-                                                     'fk_interest_in_id' => $interestID,
-                                                     'fk_user_id'        => Auth::user()->id,
-                                                 ] );
+                                                               'fk_interest_in_id' => $interestID,
+                                                               'fk_user_id'        => Auth::user()->id,
+                                                           ] );
             }
 
-        }else{
+        } else {
             DB::table( 'users_interest_in' )->where( 'fk_user_id', Auth::user()->id )->delete();
         }
 
@@ -261,4 +264,13 @@ class Users extends Authenticatable
         return Search::search( $builder, 'users', $request );
     }
 
+    /**
+     * Check admin permission.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return $this->fk_permission_id === self::ADMIN_TYPE;
+    }
 }
