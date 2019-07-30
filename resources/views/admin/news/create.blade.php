@@ -13,7 +13,7 @@
         <nav class="grid-x padding-breadcrumbs">
             <div class="cell auto">
                 <ul class="breadcrumbs">
-                    <li><a href="#">@lang('news_admin.page_title.index')</a></li>
+                    <li><a href="{{ route('admin.home.index') }}">@lang('admin.page_title.index')</a></li>
                     <li>
                         <span class="show-for-sr">Current: </span> @lang('news_admin.page_title.index')
                     </li>
