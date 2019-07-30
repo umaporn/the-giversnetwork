@@ -44,7 +44,7 @@
                                     <form action="{{ route('admin.give.store') }}"
                                           method="POST"
                                           enctype="multipart/form-data"
-                                          class="submission-form">
+                                          class="tinyMCE-form">
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
                                                 <label for="product" class="form-label">@lang('give_admin.choose')</label>
@@ -123,8 +123,7 @@
                                                 <label for="des" class="form-label">@lang('give_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-tinymce-english" class="form-fill" rows="3" name="description_english" maxlength="200"></textarea>
-                                                <div class="float-right form-flex show-text" id="count_description_text"></div>
+                                                <textarea id="content-tinymce-english" name="description_english" class="form-fill" rows="3"></textarea>
                                                 <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>

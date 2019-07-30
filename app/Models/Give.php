@@ -556,9 +556,7 @@ class Give extends Model
 
         }
 
-        if( $success ){
-            $success = $this->delete();
-        }
+        $success = $this->delete();
 
         return $success;
     }
