@@ -151,7 +151,7 @@ class Events extends Model
      */
     public function getEventsAllListForAdmin( Request $request )
     {
-        $builder = $this->with( [ 'users' ] )->orderBy( 'id', 'asc' );
+        $builder = $this->with( [ 'users' ] )->orderBy( 'id', 'desc' );
 
         $data = Search::search( $builder, 'events', $request );
 
