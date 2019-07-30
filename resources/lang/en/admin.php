@@ -20,6 +20,7 @@ return [
         'index' => 'Admin page',
     ],
 
-    'admin' => 'Admin',
-    'home'  => 'Home',
+    'admin'       => 'Admin',
+    'home'        => 'Home',
+    'admin_panel' => 'Admin Panel',
 ];

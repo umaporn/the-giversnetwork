@@ -101,13 +101,13 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'admin' ], function(){
 
-        Route::middleware( 'guest' )->group( function(){
+        Route::middleware( 'admin' )->group( function(){
             // Authentication
             Route::get( 'login', 'Admin\Auth\LoginController@showAdminLoginForm' )->name( 'admin.login' );
             Route::post( 'login', 'Admin\Auth\LoginController@login' )->name( 'admin.submitLogin' );
         } );
 
-        Route::group( [ 'middleware' => 'auth.admin' ], function(){
+        Route::group( [ 'middleware' => 'admin' ], function(){
 
             Route::post( 'upload', 'Admin\ImageController@upload' )->name( 'admin.image.upload' );
 

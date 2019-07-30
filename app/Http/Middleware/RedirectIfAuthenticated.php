@@ -26,7 +26,7 @@ class RedirectIfAuthenticated
     public function handle( $request, Closure $next, $guard = null )
     {
         if( Auth::guard( $guard )->check() ){
-            if( Auth::user()->fk_permission_id == '1' ){
+            if( Auth::user()->fk_permission_id === '1' ){
                 return redirect( route( 'admin.home.index' ) );
             } else {
                 return redirect( route( 'home.index' ) );

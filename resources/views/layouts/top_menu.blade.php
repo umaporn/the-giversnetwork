@@ -56,15 +56,27 @@
                         <div class="dropdown-pane user-menu" id="user-menu" data-dropdown data-hover="true">
                             <ul class="user-menu-show">
                                 <li>
-                                    <a href="{{ route('user.editProfile') }}"><i class="fas fa-user-edit"></i> @lang('user.edit_profile')
-                                    </a></li>
+                                    <a href="{{ route('user.editProfile') }}">
+                                        <i class="fas fa-user-edit"></i> @lang('user.edit_profile')
+                                    </a>
+                                </li>
                                 <li>
-                                    <a href="{{ route('user.getProfile') }}"><i class="fas fa-user-circle"></i> @lang('user.view_profile')
-                                    </a></li>
+                                    <a href="{{ route('user.getProfile') }}">
+                                        <i class="fas fa-user-circle"></i> @lang('user.view_profile')
+                                    </a>
+                                </li>
+                                @if( Auth::user()->fk_permission_id === 1 )
+                                    <li>
+                                        <a href="{{ route('admin.home.index') }}">
+                                            <i class="fa fa-cog"></i> @lang('admin.admin_panel')
+                                        </a>
+                                    </li>
+                                @endif
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST" name="logout">
                                         {{ csrf_field() }}
-                                        <a onclick="document.logout.submit();"><i class="fas fa-sign-out-alt"></i> @lang('login.logout_button')
+                                        <a onclick="document.logout.submit();">
+                                            <i class="fas fa-sign-out-alt"></i> @lang('login.logout_button')
                                         </a>
                                     </form>
                                 </li>
