@@ -180,8 +180,8 @@ class Events extends Model
             'host_english'        => $request->input( 'host_english' ),
             'link'                => $request->input( 'link' ),
             'event_date'          => $request->input( 'event_date' ),
-            'start_date'          => date( 'Y-m-d' ),
-            'end_date'            => date( 'Y-m-d' ),
+            'start_date'          => $request->input( 'start_date' ),
+            'end_date'            => $request->input( 'end_date' ),
             'status'              => $request->input( 'status' ) ? 'public' : 'draft',
             'upcoming_status'     => 'yes',
             'fk_user_id'          => $request->input( 'fk_user_id' ),
@@ -191,8 +191,7 @@ class Events extends Model
             $imageInformation = $this->saveImage( $request );
 
             if( isset( $imageInformation['imageInformation']['original'] ) ){
-                $image_file = $imageInformation['imageInformation']['original'];
-
+                $image_file         = $imageInformation['imageInformation']['original'];
                 $data['image_path'] = $image_file;
             }
         }
@@ -257,8 +256,8 @@ class Events extends Model
             'host_english'        => $request->input( 'host_english' ),
             'link'                => $request->input( 'link' ),
             'event_date'          => $request->input( 'event_date' ),
-            'start_date'          => date( 'Y-m-d' ),
-            'end_date'            => date( 'Y-m-d' ),
+            'start_date'          => $request->input( 'start_date' ),
+            'end_date'            => $request->input( 'end_date' ),
             'status'              => $request->input( 'status' ) ? 'public' : 'draft',
             'upcoming_status'     => 'yes',
             'view'                => '0',
@@ -270,7 +269,7 @@ class Events extends Model
 
             if( isset( $imageInformation['imageInformation']['original'] ) ){
                 $image_file              = $imageInformation['imageInformation']['original'];
-                $newEvents['image_path'] = $image_file ? $image_file : config('images.placeholder.700x400') ;
+                $newEvents['image_path'] = $image_file ? $image_file : config( 'images.placeholder.700x400' );
             }
         }
 

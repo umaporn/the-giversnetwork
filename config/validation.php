@@ -64,6 +64,7 @@ return [
         'location_english'    => 'required|string|min:3|max:255',
         'host_english'        => 'required|string|min:3|max:255',
         'event_date'          => 'required|string|min:3|max:255',
+        'link'                => 'required|string|min:3|max:255',
     ],
     'news_admin'         => [
         'title_english'       => 'required|string|min:3|max:255',

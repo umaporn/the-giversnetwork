@@ -150,7 +150,31 @@
                                                 <div class="form-date">
                                                     <input type="text" id="event_date" name="event_date" class="form-fill"
                                                             value="{{ $event->event_date }}">
+                                                    <p class="form-flex show-text">@lang('events_admin.event_date_condition')</p>
                                                     <p id="start_date-help-text" class="alert help-text help-text hide"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label class="form-label">@lang('events_admin.start_date')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <div class="form-date">
+                                                    <input type="date" id="start_date" class="form-fill" name="start_date" value="{{ $event->start_date }}">
+                                                    <p id="start_date-help-text" class="alert help-text help-text hide"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label class="form-label">@lang('events_admin.end_date')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <div class="form-date">
+                                                    <input type="date" id="end_date" class="form-fill" name="end_date" value="{{ $event->end_date }}">
+                                                    <p class="form-flex show-text">@lang('events_admin.end_date_condition')</p>
+                                                    <p id="end_date-help-text" class="alert help-text help-text hide"></p>
                                                 </div>
                                             </div>
                                         </div>
