@@ -69,10 +69,12 @@
                         <div class="cell small-12">
                             {!! $data['description'] !!}
                         </div>
-                        <div class="cell small-12 medium-6 large-10 join-event">
-                            <i class="fas fa-link"></i><span> Join event at :</span>
-                            <a href="{{ $data['link'] }}" target="_blank">{{ $data['link'] }}</a>
-                        </div>
+                        @if($data['link'])
+                            <div class="cell small-12 medium-6 large-10 join-event">
+                                <i class="fas fa-link"></i><span> Join event at :</span>
+                                <a href="{{ $data['link'] }}" target="_blank">{{ $data['link'] }}</a>
+                            </div>
+                        @endif
                         <div class="social cell small-12 medium-6 large-2 text-right">
                             <label>Share To</label>
                             <ul class="no-bullet float-right">

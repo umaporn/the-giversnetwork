@@ -97,6 +97,7 @@ class Events extends Model
     public function getUpComingEvents( Request $request )
     {
         $builder = $this->with( [ 'users' ] )->where( [ 'status' => 'public', 'upcoming_status' => 'yes' ] )
+                        ->where( 'start_date', '>', date( 'Y-m-d' ) )
                         ->orderBy( 'start_date', 'desc' );
 
         $data = Search::search( $builder, 'events', $request, [], '3' );
