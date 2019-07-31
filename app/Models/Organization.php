@@ -17,8 +17,8 @@ class Organization extends Model
 {
     /** @var array A list of fields which are able to update in this model */
     protected $fillable = [ 'fk_category_id', 'name_thai', 'name_english', 'content_thai', 'content_english',
-                            'image_path', 'email', 'phone_number', 'address', 'website', 'facebook', 'twitter',
-                            'youtube', 'instagram', 'linked_in',
+                            'image_path', 'email', 'phone_number', 'address', 'google_map_embed', 'website',
+                            'facebook', 'twitter', 'youtube', 'instagram', 'linked_in',
     ];
 
     /** @var string Table name */
@@ -143,21 +143,22 @@ class Organization extends Model
         }
 
         $newOrganization = [
-            'name_english'    => $request->input( 'name_english' ),
-            'name_thai'       => $request->input( 'name_english' ),
-            'content_english' => $request->input( 'content_english' ),
-            'content_thai'    => $request->input( 'content_english' ),
-            'image_path'      => $file_path,
-            'fk_category_id'  => $request->input( 'fk_category_id' ),
-            'email'           => $request->input( 'email' ),
-            'phone_number'    => $request->input( 'phone_number' ),
-            'address'         => $request->input( 'address' ),
-            'website'         => $request->input( 'website' ),
-            'facebook'        => $request->input( 'facebook' ),
-            'twitter'         => $request->input( 'twitter' ),
-            'youtube'         => $request->input( 'youtube' ),
-            'instagram'       => $request->input( 'instagram' ),
-            'linked_in'       => $request->input( 'linked_in' ),
+            'name_english'     => $request->input( 'name_english' ),
+            'name_thai'        => $request->input( 'name_english' ),
+            'content_english'  => $request->input( 'content_english' ),
+            'content_thai'     => $request->input( 'content_english' ),
+            'image_path'       => $file_path,
+            'fk_category_id'   => $request->input( 'fk_category_id' ),
+            'email'            => $request->input( 'email' ),
+            'phone_number'     => $request->input( 'phone_number' ),
+            'address'          => $request->input( 'address' ),
+            'google_map_embed' => $request->input( 'google_map_embed' ),
+            'website'          => $request->input( 'website' ),
+            'facebook'         => $request->input( 'facebook' ),
+            'twitter'          => $request->input( 'twitter' ),
+            'youtube'          => $request->input( 'youtube' ),
+            'instagram'        => $request->input( 'instagram' ),
+            'linked_in'        => $request->input( 'linked_in' ),
         ];
 
         $successForOrganization = $this->create( $newOrganization );
@@ -204,20 +205,21 @@ class Organization extends Model
     public function updateOrganizationInformation( OrganizationRequest $request, Organization $organization )
     {
         $data = [
-            'name_english'    => $request->input( 'name_english' ),
-            'name_thai'       => $request->input( 'name_english' ),
-            'content_english' => $request->input( 'content_english' ),
-            'content_thai'    => $request->input( 'content_english' ),
-            'fk_category_id'  => $request->input( 'fk_category_id' ),
-            'email'           => $request->input( 'email' ),
-            'phone_number'    => $request->input( 'phone_number' ),
-            'address'         => $request->input( 'address' ),
-            'website'         => $request->input( 'website' ),
-            'facebook'        => $request->input( 'facebook' ),
-            'twitter'         => $request->input( 'twitter' ),
-            'youtube'         => $request->input( 'youtube' ),
-            'instagram'       => $request->input( 'instagram' ),
-            'linked_in'       => $request->input( 'linked_in' ),
+            'name_english'     => $request->input( 'name_english' ),
+            'name_thai'        => $request->input( 'name_english' ),
+            'content_english'  => $request->input( 'content_english' ),
+            'content_thai'     => $request->input( 'content_english' ),
+            'fk_category_id'   => $request->input( 'fk_category_id' ),
+            'email'            => $request->input( 'email' ),
+            'phone_number'     => $request->input( 'phone_number' ),
+            'address'          => $request->input( 'address' ),
+            'google_map_embed' => $request->input( 'google_map_embed' ),
+            'website'          => $request->input( 'website' ),
+            'facebook'         => $request->input( 'facebook' ),
+            'twitter'          => $request->input( 'twitter' ),
+            'youtube'          => $request->input( 'youtube' ),
+            'instagram'        => $request->input( 'instagram' ),
+            'linked_in'        => $request->input( 'linked_in' ),
         ];
 
         if( $request->file( 'image_path' ) ){

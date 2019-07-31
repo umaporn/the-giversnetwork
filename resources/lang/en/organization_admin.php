@@ -48,6 +48,8 @@ return [
     'content_thai'         => 'Content Thai',
     'content_english'      => 'Content English',
     'address'              => 'Address',
+    'google_map_embed'     => 'Google Map Embed',
+    'google_map_condition' => 'Example: https://www.google.com/maps/embed?pb=xxxxxxxx',
     'email'                => 'Email',
     'phone'                => 'Phone',
     'website'              => 'Website',

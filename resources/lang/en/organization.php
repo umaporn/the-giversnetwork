@@ -27,6 +27,7 @@ return [
     'organization_profile' => 'Organization Profile',
     'contact'              => 'Contact',
     'address'              => 'Address',
+    'google_map_embed'     => 'Map',
     'phone'                => 'Phone',
     'email'                => 'Email',
     'website'              => 'Website',

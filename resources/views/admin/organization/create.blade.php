@@ -149,6 +149,16 @@
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
+                                                <label for="google-map-embed" class="form-label">@lang('organization_admin.google_map_embed')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="google_map_embed" name="google_map_embed" class="form-fill" rows="3"></textarea>
+                                                <p class="form-flex show-text">@lang('organization_admin.google_map_condition')</p>
+                                                <p id="google_map_embed-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
                                                 <label for="website" class="form-label">@lang('organization_admin.website')</label>
                                             </div>
                                             <div class="cell small-12 large-9">

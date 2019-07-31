@@ -60,6 +60,16 @@
                                     </article>
                                 </div>
                             @endif
+                            @if($data['google_map_embed'])
+                                <div class="cell small-12">
+                                    <article class="org-detail">
+                                        <h3 class="org-topic">@lang('organization.google_map_embed')</h3>
+                                    </article>
+                                    <div>
+                                        <iframe src="{{ $data['google_map_embed'] }}" width="500" height="350" frameborder="0" class="border-none" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            @endif
                             @if($data['phone_number'])
                                 <div class="cell small-12">
                                     <article class="org-detail">
