@@ -59,18 +59,17 @@ class Give extends Model
     /**
      * Get a list of give for displaying.
      *
-     * @param string  $id      Category id
      * @param Request $request Request object
      *
      * @return LengthAwarePaginator  A list of give for home page
      */
-    public function getHomeGiveList( string $id, Request $request )
+    public function getHomeGiveList( Request $request )
     {
         $builder = $this->with( [ 'giveImage' ] )
                         ->where( [ 'status' => 'public', 'type' => 'give' ] );
 
-        if( $id ){
-            $builder->where( [ 'fk_category_id' => $id ] );
+        if( $request->get('id') ){
+            $builder->where( [ 'fk_category_id' => $request->get('id') ] );
         }
 
         $data = Search::search( $builder, 'give', $request, [], '9' );

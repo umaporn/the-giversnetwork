@@ -24,6 +24,7 @@ return [
     ],
 
     'category'                => 'Category',
+    'all'                     => 'All',
     'give_category_selection' => 'Please select category',
     'give_type_selection'     => 'Please select give or receive item',
     'receive'                 => 'Receive',
@@ -61,6 +62,6 @@ return [
         'saved_image_success' => 'Successfully save the give image',
     ],
 
-    'conditions' => ' All posts are subject to Admin review and will be public once reviewed and approved. The admins of the Givers Network have the right to refuse posts at their discretion. Content containing offensive, illegal or spam will be deleted without notice.'
+    'conditions' => ' All posts are subject to Admin review and will be public once reviewed and approved. The admins of the Givers Network have the right to refuse posts at their discretion. Content containing offensive, illegal or spam will be deleted without notice.',
 
 ];

@@ -88,7 +88,7 @@ class HomeController extends Controller
         $data['learn']        = $this->learnModel->getHomeLearnList( $request );
         $data['events']       = $this->eventsModel->getHomeEventsList( $request );
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
-        $data['give']         = $this->giveModel->getHomeGiveList( '1', $request );
+        $data['give']         = $this->giveModel->getHomeGiveList( $request );
 
         return view( 'home.index', compact( 'data' ) );
     }

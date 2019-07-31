@@ -75,14 +75,13 @@ class GiveController extends Controller
     /**
      * Get give list by category.
      *
-     * @param string  $id      Category id
      * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Give item view
      */
-    public function getGiveByCategory( string $id, Request $request )
+    public function getGiveByCategory( Request $request )
     {
-        $data['give'] = $this->giveModel->getHomeGiveList( $id, $request );
+        $data['give'] = $this->giveModel->getHomeGiveList( $request );
 
         return view( 'home.give_item', compact( 'data' ) );
     }
