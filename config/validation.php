@@ -31,7 +31,7 @@ return [
         'fk_category_id'   => 'required|numeric',
         'name'             => 'required|string|min:3|max:500',
         'address'          => 'sometimes|string',
-        'description_text' => 'required|string|min:3|max:2000',
+        'description_text' => 'required|string|min:3|max:5000',
     ],
     'media'              => [
         'image' => 'image|max:2000|dimensions:max_width=2000,max_height=2000',
@@ -45,7 +45,7 @@ return [
         'type'                => 'required|in:give,receive',
         'fk_category_id'      => 'required|numeric',
         'title_english'       => 'required|string|min:3|max:255',
-        'description_english' => 'required|string|min:3|max:2000',
+        'description_english' => 'required|string|min:3|max:5000',
         'amount'              => 'required|numeric',
         'address'             => 'sometimes|string',
     ],
@@ -55,12 +55,12 @@ return [
     ],
     'challenge_admin'    => [
         'title_english'       => 'required|string|min:3|max:255',
-        'description_english' => 'required|string|min:3|max:2000',
-        'content_english'     => 'required|string|min:3|max:2000',
+        'description_english' => 'required|string|min:3|max:5000',
+        'content_english'     => 'required|string|min:3|max:5000',
     ],
     'events_admin'       => [
         'title_english'       => 'required|string|min:3|max:255',
-        'description_english' => 'required|string|min:3|max:2000',
+        'description_english' => 'required|string|min:3|max:5000',
         'location_english'    => 'required|string|min:3|max:255',
         'host_english'        => 'required|string|min:3|max:255',
         'event_date'          => 'required|string|min:3|max:255',
@@ -68,8 +68,8 @@ return [
     ],
     'news_admin'         => [
         'title_english'       => 'required|string|min:3|max:255',
-        'description_english' => 'required|string|min:3|max:2000',
-        'content_english'     => 'required|string|min:3|max:2000',
+        'description_english' => 'required|string|min:3|max:5000',
+        'content_english'     => 'required|string|min:3|max:5000',
     ],
     'organization_admin' => [
         'fk_category_id' => 'required|numeric',
