@@ -32,7 +32,10 @@ class Banner extends Model
      */
     public function getHomeBannerList( Request $request )
     {
-        $builder = $this->where( [ 'status' => 'public' ] )->orderBy( 'order', 'asc' );
+        $builder = $this->where( [ 'status' => 'public', ] )
+                        ->where( 'start_date', '<=', date( 'Y-m-d' ) )
+                        ->where( 'end_date', '>=', date( 'Y-m-d' ) )
+                        ->orderBy( 'order', 'asc' );
 
         $data = Search::search( $builder, 'banner', $request );
 
