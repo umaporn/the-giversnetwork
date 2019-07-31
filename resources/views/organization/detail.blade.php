@@ -88,68 +88,38 @@
                                     </article>
                                 </div>
                             @endif
-                            @if($data['facebook'])
-                                <div class="cell small-12">
-                                    <article class="org-detail">
-                                        <h3 class="org-topic">@lang('organization.facebook')</h3>
-                                        <p>
-                                            <a href="{{ $data['website'] }}" target="_blank">
-                                                {{ $data['facebook'] }}
-                                            </a>
-                                        </p>
-                                    </article>
-                                </div>
-                            @endif
-                            @if($data['twitter'])
-                                <div class="cell small-12">
-                                    <article class="org-detail">
-                                        <h3 class="org-topic">@lang('organization.twitter')</h3>
-                                        <p>
-                                            <a href="{{ $data['twitter'] }}" target="_blank">
-                                                {{ $data['twitter'] }}
-                                            </a>
-                                        </p>
-                                    </article>
-                                </div>
-                            @endif
-                            @if($data['youtube'])
-                                <div class="cell small-12">
-                                    <article class="org-detail">
-                                        <h3 class="org-topic">@lang('organization.youtube')</h3>
-                                        <p>
-                                            <a href="{{ $data['youtube'] }}" target="_blank">
-                                                {{ $data['youtube'] }}
-                                            </a>
-                                        </p>
-                                    </article>
-                                </div>
-                            @endif
-                            @if($data['instagram'])
-                                <div class="cell small-12">
-                                    <article class="org-detail">
-                                        <h3 class="org-topic">@lang('organization.instagram')</h3>
-                                        <p>
-                                            <a href="{{ $data['instagram'] }}" target="_blank">
-                                                {{ $data['instagram'] }}
-                                            </a>
-                                        </p>
-                                    </article>
-                                </div>
-                            @endif
-                            @if($data['linked_in'])
-                                <div class="cell small-12">
-                                    <article class="org-detail">
-                                        <h3 class="org-topic">@lang('organization.linked_in')</h3>
-                                        <p>
-                                            <a href="{{ $data['linked_in'] }}" target="_blank">
-                                                {{ $data['linked_in'] }}
-                                            </a>
-                                        </p>
-                                    </article>
-                                </div>
-                            @endif
+                            <div class="no-bullet float-right">
+                                <article class="org-detail">
+                                    <h3 class="org-topic">@lang('organization.social_media')</h3>
+                                </article>
+                                @if($data['facebook'])
+                                    <a href="{{ $data['facebook'] }}" target="_blank">
+                                        <i class="fab fa-facebook-square fa-2x"></i>
+                                    </a>
+                                @endif
+                                @if($data['twitter'])
+                                    <a href="{{ $data['twitter'] }}" target="_blank">
+                                        <i class="fab fa-twitter-square fa-2x"></i>
+                                    </a>
+                                @endif
+                                @if($data['youtube'])
+                                    <a href="{{ $data['youtube'] }}" target="_blank">
+                                        <i class="fab fa-youtube-square fa-2x"></i>
+                                    </a>
+                                @endif
+                                @if($data['instagram'])
+                                    <a href="{{ $data['instagram'] }}" target="_blank">
+                                        <i class="fab fa-instagram fa-2x"></i>
+                                    </a>
+                                @endif
+                                @if($data['linked_in'])
+                                    <a href="{{ $data['linked_in'] }}" target="_blank">
+                                        <i class="fab fa-linkedin fa-2x"></i>
+                                    </a>
+                                @endif
+                            </div>
                             @if($data['content'])
-                                <div class="cell small-12">
+                                <div class="cell small-12 padding-top-1">
                                     <article class="org-detail">
                                         <h3 class="org-topic">@lang('organization.about') {{ $data['name'] }}</h3>
                                     </article>
