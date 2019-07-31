@@ -17,7 +17,8 @@ use App\Http\Requests\BannerRequest;
 class Banner extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [ 'title_english', 'title_thai', 'image_path_english', 'image_path_thai', 'link', 'status'];
+    protected $fillable = [ 'title_english', 'title_thai', 'image_path_english', 'image_path_thai',
+                            'link', 'start_date', 'end_date', 'status' ];
 
     /** @var string Table name */
     protected $table = 'banner';
@@ -84,7 +85,7 @@ class Banner extends Model
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
             $list->setAttribute( 'content', Utility::getLanguageFields( 'content', $list ) );
-            if($list['image_path_english']){
+            if( $list['image_path_english'] ){
                 $list->setAttribute( 'image_path', Utility::getImages( $list['image_path_english'] ) );
             }
         }
@@ -109,6 +110,8 @@ class Banner extends Model
             'title_english' => $request->input( 'title_english' ),
             'title_thai'    => $request->input( 'title_thai' ),
             'link'          => $request->input( 'link' ),
+            'start_date'    => $request->input( 'start_date' ),
+            'end_date'      => $request->input( 'end_date' ),
             'status'        => $request->input( 'status' ) ? 'public' : 'draft',
         ];
 
@@ -196,6 +199,8 @@ class Banner extends Model
             'title_english' => $request->input( 'title_english' ),
             'title_thai'    => $request->input( 'title_thai' ),
             'link'          => $request->input( 'link' ),
+            'start_date'    => $request->input( 'start_date' ),
+            'end_date'      => $request->input( 'end_date' ),
             'status'        => $request->input( 'status' ) ? 'public' : 'draft',
         ];
 

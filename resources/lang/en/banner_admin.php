@@ -52,7 +52,9 @@ return [
     'file_condition'     => 'PDF file only and maximum upload file size: 5MB',
     'publish'            => 'Publish',
     'publish_post'       => 'Publish Banner',
-    'link'               => 'Link',
+    'link'               => 'Link', 'start_date' => 'Start Date',
+    'end_date'           => 'End Date',
+    'end_date_condition' => 'Please +1 day for end of showing banner date.The event will go to past event section when end of banner.',
 
     'saved_banner_success' => 'Banner information saved successfully.',
     'saved_banner_error'   => 'Banner information was not saved successfully.',

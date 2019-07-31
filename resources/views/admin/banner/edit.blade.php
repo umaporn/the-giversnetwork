@@ -147,6 +147,29 @@
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
+                                                <label class="form-label">@lang('banner_admin.start_date')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <div class="form-date">
+                                                    <input type="date" id="start_date" class="form-fill" name="start_date" value="{{ $banner->start_date }}">
+                                                    <p id="start_date-help-text" class="alert help-text help-text hide"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label class="form-label">@lang('banner_admin.end_date')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <div class="form-date">
+                                                    <input type="date" id="end_date" class="form-fill" name="end_date" value="{{ $banner->end_date }}">
+                                                    <p class="form-flex show-text">@lang('banner_admin.end_date_condition')</p>
+                                                    <p id="end_date-help-text" class="alert help-text help-text hide"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
                                                 <p class="form-label form-p">@lang('banner_admin.publish')</p>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
