@@ -26,4 +26,5 @@ return [
     'up_coming'    => 'up coming events',
     'all_events'   => 'all events',
     'other_events' => 'other events',
+    'past_events'  => 'past events',
 ];

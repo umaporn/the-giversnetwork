@@ -43,9 +43,10 @@ class EventsController extends Controller
      */
     public function index( Request $request )
     {
-        $data['upComing'] = $this->eventsModel->getUpComingEvents( $request );
-        $data['allList']  = $this->eventsModel->getAllListEvents( $request );
-        $data['news']     = $this->newsModel->getNewsForSidebar( $request );
+        $data['upComing']   = $this->eventsModel->getUpComingEvents( $request );
+        $data['pastEvents'] = $this->eventsModel->getPastEvents( $request );
+        $data['allList']    = $this->eventsModel->getAllListEvents( $request );
+        $data['news']       = $this->newsModel->getNewsForSidebar( $request );
 
         if( $request->ajax() ){
             return response()->json( [
@@ -59,7 +60,7 @@ class EventsController extends Controller
     /**
      * Display events detail page
      *
-     * @param Events  $events Events Model
+     * @param Events  $events  Events Model
      * @param Request $request Request object
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Events detail page

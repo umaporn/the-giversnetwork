@@ -72,7 +72,41 @@
                 </section>
             </div>
             <div class="cell small-12 medium-12 large-4">
-                @include('sidebar.news')
+                <section class="events">
+                    <div class="grid-x align-middle">
+                        <h2 class="cell auto topic-dark">@lang('events.past_events')</h2>
+                    </div>
+                    @if($data['pastEvents'])
+                        <section class="events">
+                            <div class="grid-x grid-margin-x">
+                                @foreach( $data['pastEvents'] as $past_events_item )
+                                    <article class="cell">
+                                        <div class="grid-x grid-margin-x large-margin-collapse">
+                                            <div class="cell small-12 medium-6 large-12">
+                                                <a href="{{ route('events.detail', ['events' => $past_events_item['id']]) }}">
+                                                    <figure class="cover">
+                                                        <img src="{{ $past_events_item['image_path'] }}" alt="{{ $past_events_item['title'] }}">
+                                                        <figcaption>
+                                                            <time datetime="{{ $past_events_item['event_date'] }}">{{ $past_events_item['event_date'] }}</time>
+                                                        </figcaption>
+                                                    </figure>
+                                                </a>
+                                            </div>
+                                            <div class="cell small-12 medium-6 large-12">
+                                                <a href="{{ route('events.detail', ['events' => $past_events_item['id']]) }}">
+                                                    <h3>{{ $past_events_item['title'] }}</h3>
+                                                </a>
+                                                <div class="profile">
+                                                    <span>Host By {{ $past_events_item['hostname'] }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                @endforeach
+                            </div>
+                        </section>
+                    @endif
+                </section>
             </div>
         </div>
     </section>

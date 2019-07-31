@@ -96,9 +96,29 @@ class Events extends Model
      */
     public function getUpComingEvents( Request $request )
     {
-        $builder = $this->with( [ 'users' ] )->where( [ 'status' => 'public', 'upcoming_status' => 'yes' ] )
+        $builder = $this->with( [ 'users' ] )
+                        ->where( [ 'status' => 'public' ] )
                         ->where( 'start_date', '>', date( 'Y-m-d' ) )
-                        ->orderBy( 'start_date', 'desc' );
+                        ->orderBy( 'start_date', 'asc' );
+
+        $data = Search::search( $builder, 'events', $request, [], '3' );
+
+        return $this->transformHomeEventsContent( $data );
+    }
+
+    /**
+     * Get past events.
+     *
+     * @param Request $request Request object
+     *
+     * @return LengthAwarePaginator Up coming events list
+     */
+    public function getPastEvents( Request $request )
+    {
+        $builder = $this->with( [ 'users' ] )
+                        ->where( [ 'status' => 'public' ] )
+                        ->where( 'end_date', '<', date( 'Y-m-d' ) )
+                        ->orderBy( 'end_date', 'desc' );
 
         $data = Search::search( $builder, 'events', $request, [], '3' );
 
