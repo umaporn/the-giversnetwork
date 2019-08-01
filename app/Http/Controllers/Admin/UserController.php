@@ -93,9 +93,9 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Users $user
+     * @param Users $user Usersmodel
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Edition view
      */
     public function edit( Users $user )
     {

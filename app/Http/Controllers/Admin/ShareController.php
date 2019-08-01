@@ -24,13 +24,15 @@ class ShareController extends Controller
      */
     public function __construct( Share $share )
     {
-        $this->shareModel     = $share;
+        $this->shareModel = $share;
     }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Share index view
      */
     public function index( Request $request )
     {
@@ -42,33 +44,11 @@ class ShareController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Creation view
      */
     public function create()
     {
         return view( 'admin.share.create' );
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function challenge( Request $request )
-    {
-        $challenge = $this->challengeModel->getChallengeAllListForAdmin( $request );
-
-        return view( 'admin.challenge.index', compact( 'challenge' ) );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function challengeCreate()
-    {
-        return view( 'admin.challenge.create' );
     }
 
     /**

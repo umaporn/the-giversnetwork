@@ -80,7 +80,7 @@ class GiveController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param GiveRequest $request
+     * @param GiveRequest $request Request object
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */

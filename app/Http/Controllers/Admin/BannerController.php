@@ -21,7 +21,6 @@ class BannerController extends Controller
 
     /**
      * BannerController constructor.
-     *
      */
     public function __construct( Banner $banner )
     {

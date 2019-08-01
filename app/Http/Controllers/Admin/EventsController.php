@@ -23,7 +23,9 @@ class EventsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Events index view
      */
     public function index( Request $request )
     {
@@ -35,7 +37,7 @@ class EventsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Creation view
      */
     public function create()
     {

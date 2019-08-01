@@ -45,7 +45,7 @@ class OrganizationController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Creation view
      */
     public function create()
     {
@@ -59,7 +59,7 @@ class OrganizationController extends Controller
      *
      * @param OrganizationRequest $request Request object
      *
-     * @return mixed
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Response information
      */
     public function store( OrganizationRequest $request )
     {

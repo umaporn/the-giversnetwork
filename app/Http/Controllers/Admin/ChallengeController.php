@@ -30,7 +30,9 @@ class ChallengeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge admin view
      */
     public function index( Request $request )
     {
@@ -42,7 +44,7 @@ class ChallengeController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Challenge creation view
      */
     public function create()
     {
@@ -50,21 +52,9 @@ class ChallengeController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function challenge( Request $request )
-    {
-        $challenge = $this->challengeModel->getChallengeAllListForAdmin( $request );
-
-        return view( 'admin.challenge.index', compact( 'challenge' ) );
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function challengeCreate()
     {
@@ -74,7 +64,7 @@ class ChallengeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param ChallengeRequest $request Request object
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse Creation response
      */
@@ -88,9 +78,9 @@ class ChallengeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Challenge $challenge
+     * @param Challenge $challenge Challenge model
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Edition view
      */
     public function edit( Challenge $challenge )
     {
@@ -100,8 +90,8 @@ class ChallengeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param ChallengeRequest $request Request object
-     * @param Challenge        $challenge   Challenge model
+     * @param ChallengeRequest $request   Request object
+     * @param Challenge        $challenge Challenge model
      *
      * @return \Illuminate\Http\JsonResponse Updating response
      */
@@ -123,8 +113,8 @@ class ChallengeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Request $request Request object
-     * @param Challenge   $challenge   Challenge model
+     * @param Request   $request   Request object
+     * @param Challenge $challenge Challenge model
      *
      * @return \Illuminate\Http\Response
      */
@@ -145,7 +135,7 @@ class ChallengeController extends Controller
      * Set update or creation response.
      *
      * @param ChallengeRequest $request Request object
-     * @param array        $result  Updating or creating result
+     * @param array            $result  Updating or creating result
      *
      * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
