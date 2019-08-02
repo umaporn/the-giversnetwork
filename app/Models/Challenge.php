@@ -281,6 +281,8 @@ class Challenge extends Model
                         'original'        => $image_path_original,
                         'thumbnail'       => $image_path_thumbnail,
                         'fk_challenge_id' => $challengeID,
+                        'alt_thai'        => $image_path_original,
+                        'alt_english'     => $image_path_original,
                     ];
 
                     $successForChallengeImage = $this->challengeImage()->updateOrCreate( [ 'fk_challenge_id' => $challengeID ],
@@ -459,6 +461,8 @@ class Challenge extends Model
                         'original'        => $image_path_original,
                         'thumbnail'       => $image_path_thumbnail,
                         'fk_challenge_id' => $challengeID,
+                        'alt_english'     => $image_path_original,
+                        'alt_thai'        => $image_path_original,
                     ];
 
                     $successForChallengeImage = $this->challengeImage()->updateOrCreate( [ 'fk_challenge_id' => $challengeID ],

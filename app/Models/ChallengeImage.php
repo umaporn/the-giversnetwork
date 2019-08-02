@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 class ChallengeImage extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [];
+    protected $fillable = [ 'fk_challenge_id', 'original', 'thumbnail', 'alt_thai', 'alt_english' ];
 
     /** @var string Table name */
     protected $table = 'challenge_image';
