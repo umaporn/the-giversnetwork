@@ -485,7 +485,6 @@ class Challenge extends Model
         $images  = $this->getImages( $this );
 
         if( $images ){
-            $this->deleteChallengeImage( $images );
             $this->challengeImage()->delete();
         }
 

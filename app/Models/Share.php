@@ -526,7 +526,6 @@ class Share extends Model
         $images  = $this->getImages( $this );
 
         if( $images ){
-            $this->deleteShareImage( $images );
             $this->shareImage()->delete();
         }
 
