@@ -109,7 +109,6 @@ class Challenge extends Model
         foreach( $homeChallengeList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'image_path', $this->getImages( $list ) );
-            $list->setAttribute( 'category_title', Utility::getLanguageFields( 'title', $list->challengeCategory ) );
             $this->setPublicDateForFrontEnd( $list );
         }
 
@@ -201,6 +200,7 @@ class Challenge extends Model
             $this->setPublicDateForFrontEnd( $challenge );
 
             foreach( $challenge->challengeImage as $challenge_image ){
+                $challenge_image->setAttribute( 'image_path', $this->getChallengeImages( $challenge_image ) );
                 $challenge_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $challenge_image ) );
             }
         }

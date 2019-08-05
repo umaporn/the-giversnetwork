@@ -33,6 +33,7 @@ return [
     'title'               => 'Title',
     'views'               => 'Views',
     'publish'             => 'Publish',
+    'highlight'           => 'Highlight',
     'url'                 => 'URL',
     'edit'                => 'Edit',
     'delete'              => 'Delete',

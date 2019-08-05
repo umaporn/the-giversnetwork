@@ -65,7 +65,7 @@
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
-                                                    <img src="{{ $challenge_image['original'] }}" alt="{{ $challenge_image['alt'] }}">
+                                                    <img src="{{ $challenge_image['image_path'] }}" alt="{{ $challenge_image['alt'] }}">
                                                 </figure>
                                             </div>
                                         </div>
@@ -88,7 +88,7 @@
                                         <div class="swiper-slide">
                                             <div class="swiper-slide-container">
                                                 <figure>
-                                                    <img src="{{ $challenge_image['original'] }}" alt="{{ $challenge_image['alt'] }}">
+                                                    <img src="{{ $challenge_image['image_path'] }}" alt="{{ $challenge_image['alt'] }}">
                                                 </figure>
                                             </div>
                                         </div>

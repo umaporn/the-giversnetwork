@@ -63,18 +63,22 @@
                     </div>
                     <div class="tabs-panel" id="challenge">
                         <div class="grid-x grid-margin-x challenge">
-                            @foreach( $data['challenge'] as $challenge_item )
+                            @forelse( $data['challenge'] as $challenge_item )
                                 <article class="cell small-12 medium-4">
                                     <figure>
                                         <a href="{{ route('challenge.detail', ['challenge' => $challenge_item['id']]) }}">
-                                            <img src="{{ $challenge_item['file_path'] ? $challenge_item['file_path'] : config('images.placeholder.700x400') }}" alt="{{ $challenge_item['title'] }}">
+                                            <img src="{{ $challenge_item['image_path'] ? $challenge_item['image_path'] : config('images.placeholder.700x400') }}" alt="{{ $challenge_item['title'] }}">
                                         </a>
                                     </figure>
                                     <a href="{{ route('challenge.detail', ['challenge' => $challenge_item['id']]) }}">
                                         <h3>{{ $challenge_item['title'] }}</h3></a>
                                     <span class="category">{{ $challenge_item['category_title'] }}</span>
                                 </article>
-                            @endforeach
+                            @empty
+                                <article class="cell small-12 medium-4">
+                                    <p>Coming Soon</p>
+                                </article>
+                            @endforelse
                         </div>
                     </div>
                 </div>

@@ -2,9 +2,15 @@
     <tr>
         <td>{{ $learn->id }}</td>
         <td>{{ $learn->title }}</td>
-        <td>{{ $learn->view }}</td>
         <td>
             @if($learn->status === 'public')
+                <i class="far fa-check-square"></i>
+            @else
+                <i class="far fa-square"></i>
+            @endif
+        </td>
+        <td>
+            @if($learn->highlight_status === 'pinned')
                 <i class="far fa-check-square"></i>
             @else
                 <i class="far fa-square"></i>

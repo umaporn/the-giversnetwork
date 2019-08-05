@@ -140,7 +140,7 @@
                                 <h2>{{ $data['title'] }}</h2>
                                 <p class="amount">{{ $data['amount'] }} items</p>
                                 <time datetime="2019-04-29">
-                                    <i class="far fa-calendar-alt"></i>{{ $data['expired_date'] }}</time>
+                                    <i class="far fa-calendar-alt"></i>Posted on {{ date("m F Y", strtotime($data['created_at'])) }}</time>
                                 <div class="location">
                                     <i class="fas fa-map-marker-alt"></i>
                                     {{ $data['address'] }}
@@ -148,6 +148,9 @@
                                 <p>
                                     {!! $data['description'] !!}
                                 </p>
+                                <time datetime="2019-04-29">
+                                    <i class="far fa-calendar-alt"></i>This listing expires on {{ date("m F Y", strtotime($data['expired_date'])) }}
+                                </time>
                             </div>
 
                             <article class="cell small-12 comment-login comment-login-my">
@@ -159,7 +162,7 @@
                                 @endif
                                 <div class="comment-login-detail">
                                     <div class="comment-login-content">
-                                        <a href="{{ route('give.detail', [ 'give' => $data['id'] ]) }}">
+                                        <a href="{{ route('user.getUserProfile', ['id' => $data->users['id']]) }}" target="_blank">
                                             <button class="btn-blue btn-long">@lang('give.i_need_contact')</button>
                                         </a>
                                     </div>

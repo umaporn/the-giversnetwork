@@ -95,7 +95,6 @@ class Learn extends Model
     public function getLearnMostPopular( Request $request )
     {
         $builder = $this->with( [ 'learnCategory' ] )
-                        ->orderBy( 'view', 'desc' )
                         ->where( [ 'status' => 'public', 'highlight_status' => 'pinned' ] );
 
         $data = Search::search( $builder, 'learn', $request, [], '3' );

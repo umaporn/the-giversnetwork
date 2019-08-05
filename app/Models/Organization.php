@@ -144,9 +144,9 @@ class Organization extends Model
 
         $newOrganization = [
             'name_english'     => $request->input( 'name_english' ),
-            'name_thai'        => $request->input( 'name_english' ),
+            'name_thai'        => $request->input( 'name_thai' ),
             'content_english'  => $request->input( 'content_english' ),
-            'content_thai'     => $request->input( 'content_english' ),
+            'content_thai'     => $request->input( 'content_thai' ),
             'image_path'       => $file_path,
             'fk_category_id'   => $request->input( 'fk_category_id' ),
             'email'            => $request->input( 'email' ),
@@ -206,9 +206,9 @@ class Organization extends Model
     {
         $data = [
             'name_english'     => $request->input( 'name_english' ),
-            'name_thai'        => $request->input( 'name_english' ),
+            'name_thai'        => $request->input( 'name_thai' ),
             'content_english'  => $request->input( 'content_english' ),
-            'content_thai'     => $request->input( 'content_english' ),
+            'content_thai'     => $request->input( 'content_thai' ),
             'fk_category_id'   => $request->input( 'fk_category_id' ),
             'email'            => $request->input( 'email' ),
             'phone_number'     => $request->input( 'phone_number' ),

@@ -57,8 +57,8 @@
                                             <tr>
                                                 <th>@lang('learn_admin.no')</th>
                                                 <th>@lang('learn_admin.title')</th>
-                                                <th>@lang('learn_admin.views')</th>
                                                 <th>@lang('learn_admin.publish')</th>
+                                                <th>@lang('learn_admin.highlight')</th>
                                                 <th>@lang('learn_admin.url')</th>
                                                 <th>@lang('learn_admin.edit')</th>
                                                 <th>@lang('learn_admin.delete')</th>
