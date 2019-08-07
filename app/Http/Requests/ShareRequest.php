@@ -31,7 +31,11 @@ class ShareRequest extends FormRequest
     {
         return [
             'title_english'       => config( 'validation.share_admin.title_english' ),
+            'title_thai'          => config( 'validation.share_admin.title_thai' ),
             'description_english' => config( 'validation.share_admin.description_english' ),
+            'description_thai'    => config( 'validation.share_admin.description_thai' ),
+            'content_english'     => config( 'validation.share_admin.content_english' ),
+            'content_thai'        => config( 'validation.share_admin.content_thai' ),
         ];
     }
 }
