@@ -51,16 +51,19 @@ return [
     ],
     'share_admin'        => [
         'title_english'       => 'required|string|min:3|max:255',
-        'title_thai'          => 'string|min:3|max:255',
+        'title_thai'          => 'sometimes|max:255',
         'description_english' => 'required|string|min:3|max:255',
-        'description_thai'    => 'string|min:3|max:255',
+        'description_thai'    => 'sometimes|max:255',
         'content_english'     => 'required|string|min:3|max:5000',
-        'content_thai'        => 'string|min:3|max:5000',
+        'content_thai'        => 'sometimes|max:5000',
     ],
     'challenge_admin'    => [
         'title_english'       => 'required|string|min:3|max:255',
-        'description_english' => 'required|string|min:3|max:5000',
+        'title_thai'          => 'sometimes|max:255',
+        'description_english' => 'required|string|min:3|max:255',
+        'description_thai'    => 'sometimes|max:255',
         'content_english'     => 'required|string|min:3|max:5000',
+        'content_thai'        => 'sometimes|max:5000',
     ],
     'events_admin'       => [
         'title_english'       => 'required|string|min:3|max:255',
