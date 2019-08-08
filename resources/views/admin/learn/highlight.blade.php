@@ -1,13 +1,13 @@
 @extends('admin.layouts.app')
 
-@section('page-title', __('learn_admin.page_title.index'))
-@section('page-description', __('learn_admin.page_description.index'))
+@section('page-title', __('learn_admin.page_title.highlight'))
+@section('page-description', __('learn_admin.page_description.highlight'))
 
 @section('content')
     <section class="admin">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">
-                <h2 class="topic-light">@lang('learn_admin.page_title.index')</h2>
+                <h2 class="topic-light">@lang('learn_admin.page_title.highlight')</h2>
             </div>
         </div>
         <nav class="grid-x padding-breadcrumbs">
@@ -15,7 +15,7 @@
                 <ul class="breadcrumbs">
                     <li><a href="{{ route('admin.home.index') }}">@lang('admin.page_title.index')</a></li>
                     <li>
-                        <span class="show-for-sr">Current: </span> @lang('learn_admin.page_title.index')
+                        <span class="show-for-sr">Current: </span> @lang('learn_admin.page_title.highlight')
                     </li>
                 </ul>
             </div>
@@ -31,7 +31,7 @@
                             <div class="grid-x">
                                 <div class="cell small-12">
                                     <div class="grid-x admin-form-space admin-search">
-                                        <h2 class="cell shrink admin-head">@lang('learn_admin.page_title.all')</h2>
+                                        <h2 class="cell shrink admin-head">@lang('learn_admin.page_title.highlight')</h2>
                                         <div class="cell auto grid-x align-middle">
                                             <div class="cell line auto"></div>
                                             <div class="cell shrink">
