@@ -46,7 +46,7 @@ return [
     'host_english'          => 'Host English',
     'link'                  => 'Link',
     'date_time'             => 'Event Date/Time',
-    'event_date_condition'  => 'Example: '. date( 'd F Y H:i' ) . ' - ' . date('H:i', strtotime('+8 hour')),
+    'event_date_condition'  => 'Example: ' . date( 'd F Y H:i' ) . ' - ' . date( 'H:i', strtotime( '+8 hour' ) ),
     'start_date'            => 'Start Date',
     'end_date'              => 'End Date',
     'end_date_condition'    => 'Please +1 day for end of event date.The event will go to past event section when end of event.',

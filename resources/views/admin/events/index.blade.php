@@ -57,7 +57,8 @@
                                             <tr>
                                                 <th>@lang('events_admin.no')</th>
                                                 <th>@lang('events_admin.title')</th>
-                                                <th>@lang('events_admin.views')</th>
+                                                <th>@lang('events_admin.start_date')</th>
+                                                <th>@lang('events_admin.end_date')</th>
                                                 <th>@lang('events_admin.status')</th>
                                                 <th>@lang('events_admin.url')</th>
                                                 <th>@lang('events_admin.edit')</th>

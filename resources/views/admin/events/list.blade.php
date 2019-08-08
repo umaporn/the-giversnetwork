@@ -2,7 +2,8 @@
     <tr>
         <td>{{ $eventsItem->id }}</td>
         <td>{{ $eventsItem->title }}</td>
-        <td>{{ $eventsItem->view }}</td>
+        <td>{{ $eventsItem->start_date }}</td>
+        <td>{{ $eventsItem->end_date }}</td>
         <td>
             {{ $eventsItem->status }}
         </td>

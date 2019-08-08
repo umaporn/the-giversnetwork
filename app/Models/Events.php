@@ -47,7 +47,8 @@ class Events extends Model
     {
         $builder = $this->where( 'status', 'public' )
                         ->where( 'end_date', '>', date( 'Y-m-d' ) )
-                        ->orderBy( 'start_date', 'asc' );
+                        ->where( 'start_date', '>', date( 'Y-m-d' ) )
+                        ->orderBy( 'start_date', 'desc' );
 
         $data = Search::search( $builder, 'events', $request, [], $limit );
 
@@ -83,7 +84,7 @@ class Events extends Model
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'hostname', Utility::getLanguageFields( 'host', $list ) );
             $list->setAttribute( 'host_image', Utility::getImages( $list['host_image'] ) );
-            $list->setAttribute( 'image_path', Utility::getImages( $list['image_path'] ) );
+            $list->setAttribute( 'image_path', $list['image_path'] ? Utility::getImages( $list['image_path'] ) : '' );
         }
 
         return $homeEventsList;

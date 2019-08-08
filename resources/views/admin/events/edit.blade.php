@@ -96,7 +96,7 @@
                                             </div>
                                             <div class="cell small-12 large-9">
                                                 <input type="text" id="location_thai" name="location_thai" class="form-fill"
-                                                       value="{{ $event->location_english }}"
+                                                       value="{{ $event->location_thai }}"
                                                 >
                                                 <p id="location_thai-help-text" class="alert help-text help-text hide"></p>
                                             </div>
@@ -107,19 +107,8 @@
                                             </div>
                                             <div class="cell small-12 large-9">
                                                 <input type="text" id="location_english" name="location_english" class="form-fill"
-                                                       value="{{ $event->location_thai }}">
+                                                       value="{{ $event->location_english }}">
                                                 <p id="location_english-help-text" class="alert help-text help-text hide"></p>
-                                            </div>
-                                        </div>
-
-                                        <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
-                                                <label for="host" class="form-label">@lang('events_admin.host_english')</label>
-                                            </div>
-                                            <div class="cell small-12 large-9">
-                                                <input type="text" id="host_english" name="host_english" class="form-fill"
-                                                        value="{{ $event->host_thai }}">
-                                                <p id="host_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
@@ -128,8 +117,18 @@
                                             </div>
                                             <div class="cell small-12 large-9">
                                                 <input type="text" id="host_thai" name="host_thai" class="form-fill"
-                                                       value="{{ $event->host_english }}">
+                                                       value="{{ $event->host_thai }}">
                                                 <p id="host_thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
+                                                <label for="host" class="form-label">@lang('events_admin.host_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <input type="text" id="host_english" name="host_english" class="form-fill"
+                                                        value="{{ $event->host_english }}">
+                                                <p id="host_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
