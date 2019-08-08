@@ -49,7 +49,8 @@
                 margin-bottom: 0;
             }
 
-            .sub-title {}
+            .sub-title {
+            }
         }
     }
 
@@ -241,4 +242,8 @@
             width: 65%;
         }
     }
+}
+
+.detail-text, .detail-text > p {
+    color: $color-blue;
 }

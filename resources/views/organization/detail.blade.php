@@ -133,7 +133,7 @@
                                     <article class="org-detail">
                                         <h3 class="org-topic">@lang('organization.about') {{ $data['name'] }}</h3>
                                     </article>
-                                    <div>
+                                    <div class="detail-text">
                                         {!! $data['content'] !!}
                                     </div>
                                 </div>
