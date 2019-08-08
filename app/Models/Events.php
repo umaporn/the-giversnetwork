@@ -46,9 +46,9 @@ class Events extends Model
     public function getHomeEventsList( Request $request, $limit = 4 )
     {
         $builder = $this->where( 'status', 'public' )
-                        ->where( 'end_date', '>', date( 'Y-m-d' ) )
-                        ->where( 'start_date', '>', date( 'Y-m-d' ) )
-                        ->orderBy( 'start_date', 'desc' );
+                        ->where( 'end_date', '>=', date( 'Y-m-d' ) )
+                        ->where( 'start_date', '>=', date( 'Y-m-d' ) )
+                        ->orderBy( 'start_date', 'asc' );
 
         $data = Search::search( $builder, 'events', $request, [], $limit );
 
@@ -101,7 +101,7 @@ class Events extends Model
     {
         $builder = $this->with( [ 'users' ] )
                         ->where( [ 'status' => 'public' ] )
-                        ->where( 'start_date', '>', date( 'Y-m-d' ) )
+                        ->where( 'start_date', '>=', date( 'Y-m-d' ) )
                         ->orderBy( 'start_date', 'asc' );
 
         $data = Search::search( $builder, 'events', $request, [], '3' );
@@ -139,8 +139,8 @@ class Events extends Model
     {
         $builder = $this->with( [ 'users' ] )
                         ->where( [ 'status' => 'public' ] )
-                        ->where( 'end_date', '>', date( 'Y-m-d' ) )
-                        ->orderBy( 'id', 'asc' );
+                        ->where( 'end_date', '>=', date( 'Y-m-d' ) )
+                        ->orderBy( 'start_date', 'asc' );
 
         $data = Search::search( $builder, 'events', $request );
 
