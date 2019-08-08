@@ -1,4 +1,4 @@
-@if($data['share']->total())
+@if($data['share']->total()  !== 0)
     <section class="share">
         <div class="grid-x align-middle topic padding-content">
             <div class="cell auto">

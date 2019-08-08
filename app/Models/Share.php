@@ -524,7 +524,8 @@ class Share extends Model
     {
         $success = false;
         $images  = $this->getImages( $this );
-
+        $this->shareComment()->delete();
+        $this->shareLike()->delete();
         if( $images ){
             $this->shareImage()->delete();
         }
