@@ -137,7 +137,10 @@ class Events extends Model
      */
     public function getAllListEvents( Request $request )
     {
-        $builder = $this->with( [ 'users' ] )->where( [ 'status' => 'public' ] )->orderBy( 'id', 'asc' );
+        $builder = $this->with( [ 'users' ] )
+                        ->where( [ 'status' => 'public' ] )
+                        ->where( 'end_date', '>', date( 'Y-m-d' ) )
+                        ->orderBy( 'id', 'asc' );
 
         $data = Search::search( $builder, 'events', $request );
 
