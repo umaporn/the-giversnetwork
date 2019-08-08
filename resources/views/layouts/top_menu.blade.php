@@ -1,5 +1,5 @@
 <header id="header" data-sticky-container>
-    <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: xxlarge;">
+    <div class="sticky sticky-topbar" data-sticky data-options="anchor: page; marginTop: 0; stickyOn: xlarge;">
         <nav class="grid-x topbar-responsive padding-content">
             <div class="cell large-shrink top-bar-title">
 				<span data-responsive-toggle="topbar-responsive" data-hide-for="large">
