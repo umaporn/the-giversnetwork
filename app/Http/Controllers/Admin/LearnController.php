@@ -43,6 +43,20 @@ class LearnController extends Controller
     }
 
     /**
+     * Display admin learn highlight page.
+     *
+     * @param Request $request Request object
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Learn page
+     */
+    public function highlight( Request $request )
+    {
+        $learn_highlight = $this->learnModel->getLearnHighlightListForAdmin( $request );
+
+        return view( 'admin.learn.highlight', compact( 'learn_highlight' ) );
+    }
+
+    /**
      * Display admin learn edition form.
      *
      * @param Learn $learn Learn model

@@ -39,7 +39,7 @@ return [
         'fulltextSearch' => false,
     ],
     'learn'         => [
-        'limit'          => 5,
+        'limit'          => 10,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
@@ -53,14 +53,14 @@ return [
         'fulltextSearch' => false,
     ],
     'challenge'         => [
-        'limit'          => 5,
+        'limit'          => 10,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],
         'fulltextSearch' => false,
     ],
     'share'         => [
-        'limit'          => 5,
+        'limit'          => 10,
         'limits'         => [ 5, 10, 15, 20 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'title_english', 'title_thai' ],

@@ -9,24 +9,27 @@ return [
     */
 
     'page_link' => [
-        'index' => 'Learn',
-        'all'   => 'Learn All',
-        'add'   => 'Learn Add',
-        'edit'  => 'Learn Edit',
+        'index'     => 'Learn',
+        'all'       => 'Learn All',
+        'highlight' => 'Learn Highlight',
+        'add'       => 'Learn Add',
+        'edit'      => 'Learn Edit',
     ],
 
     'page_title' => [
-        'index' => 'Learn',
-        'all'   => 'Learn All',
-        'add'   => 'Learn Add',
-        'edit'  => 'Learn Edit',
+        'index'     => 'Learn',
+        'all'       => 'Learn All',
+        'highlight' => 'Learn Highlight',
+        'add'       => 'Learn Add',
+        'edit'      => 'Learn Edit',
     ],
 
     'page_description' => [
-        'index' => 'Learn page',
-        'all'   => 'Learn All page',
-        'add'   => 'Learn Add page',
-        'edit'  => 'Learn Edit page',
+        'index'     => 'Learn page',
+        'all'       => 'Learn All page',
+        'highlight' => 'Learn Highlight page',
+        'add'       => 'Learn Add page',
+        'edit'      => 'Learn Edit page',
     ],
 
     'no'                  => 'No',

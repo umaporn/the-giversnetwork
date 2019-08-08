@@ -247,6 +247,25 @@ class Learn extends Model
     }
 
     /**
+     * Get learn all list for admin.
+     *
+     * @param Request $request Request Object
+     *
+     * @return LengthAwarePaginator list of learn
+     */
+    public function getLearnHighlightListForAdmin( Request $request )
+    {
+        $builder = $this->with( [ 'learnCategory' ] )
+                        ->where( 'highlight_status', 'pinned' )
+                        ->orderBy( 'id', 'desc' );
+
+        $data = Search::search( $builder, 'learn', $request );
+
+        return $this->transformLearnContent( $data );
+
+    }
+
+    /**
      * Create learn information.
      *
      * @param LearnRequest $request Learn request object

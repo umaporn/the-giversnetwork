@@ -123,6 +123,8 @@ function globalRoutes()
                 'names' => addPrefixResourceRouteName( 'admin.learn' ),
             ] );
 
+            Route::get('learn/highlight', 'Admin\LearnController@highlight')->name('admin.learn.highlight');
+
             Route::resource( 'give', 'Admin\GiveController', [
                 'except' => [ 'show', ],
                 'names' => addPrefixResourceRouteName( 'admin.give' ),

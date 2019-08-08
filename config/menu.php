@@ -63,6 +63,12 @@ return [
                     'name'      => 'learn',
                 ],
                 [
+                    'routeName' => 'admin.learn.highlight',
+                    'menuText'  => 'learn_admin.page_link.highlight',
+                    'icon'      => 'fas fa-caret-right',
+                    'name'      => 'learn',
+                ],
+                [
                     'routeName' => 'admin.learn.create',
                     'menuText'  => 'learn_admin.page_link.add',
                     'icon'      => 'fas fa-caret-right',
