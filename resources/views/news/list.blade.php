@@ -4,7 +4,7 @@
             <div class="cell small-12 medium-6">
                 <figure>
                     <a href="{{ route('news.detail', ['news' => $news_items['id']]) }}">
-                        <img src="{{ $news_items['image_path'] }}"
+                        <img src="{{ $news_items['image_path'] ? $news_items['image_path'] : asset(config('images.placeholder.700x400')) }}"
                              alt="{{ $news_items['title'] }}"
                              class="img-cover"
                         >

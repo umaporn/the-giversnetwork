@@ -40,10 +40,10 @@ return [
             'routeName' => 'events.index',
             'menuText'  => 'events.page_link.index',
         ],
-        /*[
+        [
             'routeName' => 'news.index',
             'menuText'  => 'news.page_link.index',
-        ],*/
+        ],
         [
             'routeName' => 'organization.index',
             'menuText'  => 'organization.page_link.index',

@@ -84,17 +84,41 @@ class News extends Model
      */
     private function transformHomeNewsContent( LengthAwarePaginator $homeNewsList )
     {
+
         foreach( $homeNewsList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
-           foreach( $list->newsImage as $news_image ){
-                $news_image->setAttribute( 'image_path', $this->getNewsImages( $news_image ) );
-                $news_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $news_image ) );
-            }
+            $list->setAttribute( 'image_path', $this->getFirstImages( $list ) );
             $this->setPublicDateForFrontEnd( $list );
         }
 
         return $homeNewsList;
+    }
+
+    /**
+     * Get a new image list into an image store.
+     *
+     * @param News   $news      News model
+     * @param string $imageSize Image size
+     *
+     * @return array Image store
+     */
+    public function getFirstImages( News $news, string $imageSize = 'original' )
+    {
+        $imageStore = '';
+
+        foreach( $news->newsImage as $image ){
+
+            $attributes = $image->getAttributes();
+            if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes[ $imageSize ] ) ){
+                $imageStore = $attributes[ $imageSize ];
+            } else {
+                $imageStore = Storage::url( $attributes[ $imageSize ] );
+            }
+
+        }
+
+        return $imageStore;
     }
 
     /**
