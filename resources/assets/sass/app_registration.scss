@@ -1,0 +1,45 @@
+// Settings
+@import "settings/foundation";
+
+// External libraries
+@import "~foundation-icon-fonts/_foundation-icons";
+@import "~foundation-sites/scss/foundation";
+
+@include foundation-everything($flex: true, $prototype: true);
+
+@import "~@fancyapps/fancybox/dist/jquery.fancybox.min.css";
+
+// Settings
+@import "settings/variables";
+@import "settings/icons";
+@import "settings/fonts";
+
+//icons
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+
+// Components
+@import "components/animation";
+@import "components/base";
+@import "components/form";
+@import "components/spinner";
+@import "components/breadcrumbs";
+@import "components/accordion";
+@import "components/button";
+@import "components/modal";
+@import "components/table";
+@import "components/pagination";
+@import "components/slide";
+@import "components/comment";
+@import "components/card";
+
+//Hero Banner
+@import "~swiper/src/swiper";
+@import "~swiper/src/components/pagination/pagination";
+@import "~swiper/src/components/navigation/navigation";
+
+// Layouts
+
+@import "layouts/registration";

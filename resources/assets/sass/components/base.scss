@@ -68,3 +68,19 @@
     }
   }
 }
+
+
+
+@mixin img-top($pos) {
+	position: absolute;
+	top: $pos;
+	left: 50%;
+	transform: translate(-50%, -$pos);
+}
+
+@mixin img-center {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

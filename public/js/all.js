@@ -2,6 +2,39 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /**
  * @namespace
+ * @desc Handles fancybox management.
+ */
+
+var Fancybox = function () {
+  /**
+   * @memberOf Fancybox
+   * @access public
+   * @desc Initialize Fancybox module.
+   * @constant {Object}
+   */
+
+  function initialize() {
+
+    'use strict';
+
+    $("[data-fancybox]").fancybox({
+      loop: true,
+      protect: true,
+      buttons: ["slideShow", "zoom", "close"]
+
+    });
+    $(".map-click").fancybox({
+      buttons: ["download", "zoom", "close"]
+    });
+  }
+
+  return {
+    initialize: initialize
+  };
+}(jQuery);
+
+/**
+ * @namespace
  * @desc Handles hero banner management.
  */
 
@@ -224,6 +257,20 @@ var Form = function () {
       } else {
         input.attr("type", "password");
       }
+    });
+
+    $(".reg-min").click(function () {
+      $(".form-group, .button-reg").slideToggle(180, "linear", function () {
+        if ($(this).is(':hidden')) {
+          $(".form-head").css("margin-bottom", "0");
+          $(".reg-min").find('i').addClass('fa-angle-up');
+          $(".reg-min").find('i').removeClass('fa-angle-down');
+        } else {
+          $(".form-head").css("margin-bottom", "20px");
+          $(".reg-min").find('i').removeClass('fa-angle-up');
+          $(".reg-min").find('i').addClass('fa-angle-down');
+        }
+      });
     });
   }
 

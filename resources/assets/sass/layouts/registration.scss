@@ -1,0 +1,1531 @@
+p, ul, table, strong, th{
+    font-size: rem-calc(20);
+}
+//---------------------Start Header -----------------------------
+.head {
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    background-color: rgba(244, 244, 244, .5);
+
+    @include breakpoint(1200 up) {
+        height: rem-calc(130) !important;
+    }
+
+    &-box {
+        color: $white;
+        transition: all 300ms ease;
+
+        @include breakpoint(xlarge) {
+            margin-top: $space-box*2 !important;
+            padding-right: $space-box*3;
+        }
+
+        @include breakpoint(xxlarge) {
+            margin-top: $space-box*3 !important;
+        }
+
+        &-size {
+            transition: all 300ms ease;
+            background-color: $color-light-gray;
+            margin-top: 0 !important;
+            padding-top: $space-box/2;
+            padding-bottom: $space-box/2;
+
+            .nav-mobile-click {
+                padding-top: 0;
+                background-color: $color-light-gray;
+            }
+
+            @include breakpoint(xlarge) {
+                background-color: rgba(244, 244, 244, .9);
+            }
+        }
+    }
+
+    &-show {
+        display: flex;
+        flex-direction: column-reverse;
+        background-color: $color-light-gray;
+        padding-bottom: $space-box;
+
+        @include breakpoint(xlarge) {
+            flex-direction: row-reverse;
+            background-color: transparent;
+            padding-bottom: 0;
+        }
+    }
+
+    &-nav {
+        display: flex;
+        list-style: none;
+        padding: 0 rem-calc(10);
+        margin: 0;
+        justify-content: center;
+        flex-direction: column;
+
+        @include breakpoint(xlarge) {
+            margin-right: $space-box*5;
+            flex-direction: row;
+        }
+
+        li {
+            padding: $space-box/2 0;
+
+            &:first-child {
+                padding-top: $space-box;
+            }
+
+            &:last-child {
+                padding-bottom: $space-box;
+            }
+
+            @include breakpoint(xlarge) {
+                height: 100%;
+                border-left: rem-calc(1) solid $color-line;
+                padding: 0;
+                padding-left: $space-box/4;
+                margin-right: $space-box/2*3;
+
+                &:first-child {
+                    padding-top: 0;
+                }
+
+                &:last-child {
+                    padding-bottom: 0;
+                }
+            }
+        }
+    }
+
+    &-lang {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        justify-content: center;
+
+        @include breakpoint(xlarge) {
+            margin-right: $space-box*5;
+        }
+
+        li {
+            margin-right: $space-box/4;
+        }
+    }
+}
+
+.nav {
+    &-click {
+        color: $color-text;
+        font-family: $text-bold;
+        font-size: rem-calc(16);
+        line-height: rem-calc(32);
+        height: 100%;
+        text-align: center;
+        text-transform: uppercase;
+
+        &:hover {
+            color: $color-blue;
+        }
+
+        &:focus {
+            color: $color-text;
+        }
+
+        &.is-active {
+            color: $color-blue;
+        }
+
+        span {
+            @include breakpoint(xlarge) {
+                display: block;
+                line-height: 0.5;
+                text-align: left;
+            }
+        }
+
+        @include breakpoint(xlarge) {
+            font-size: rem-calc(22);
+            text-align: left;
+        }
+
+        &:lang(th) {
+            font-family: $text-normal;
+            font-size: rem-calc(24);
+            line-height: 1;
+
+            @include breakpoint(xxlarge) {
+                font-size: rem-calc(26);
+            }
+        }
+    }
+
+    &-mobile {
+        &-click {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: $space-box;
+            padding-top: $space-box;
+            padding-bottom: $space-box;
+            transition: all 300ms ease;
+
+            button {
+                color: $color-blue;
+            }
+
+            @include breakpoint(medium) {
+                padding-right: $space-box*3;
+                padding-bottom: $space-box/3;
+            }
+            @include breakpoint(medium down) {
+                padding-bottom: $space-box/3;
+            }
+        }
+
+        &-bg {
+            background-color: $color-light-gray;
+        }
+    }
+
+    &-animation {
+        -webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    }
+}
+
+.lang {
+    &-click {
+        color: $color-text;
+        background-color: $color-light-gray;
+        border-radius: 50%;
+        font-size: rem-calc(12);
+        padding: rem-calc(10);
+
+        &.active {
+            color: darken($white, 50%);
+            background-color: $color-yellow;
+        }
+
+        &:lang(th) {
+            font-size: rem-calc(16);
+            line-height: 1;
+        }
+    }
+}
+
+//---------------------End Header -----------------------------
+
+.padding-content {
+    padding: $space-box*2 0;
+
+    @include breakpoint(large) {
+        padding: $space-box*4 0;
+    }
+}
+
+.head {
+    &-topic {
+        text-align: center;
+        font-size: rem-calc(22);
+        font-family: $text-bold;
+        margin-top: $space-box/2*3;
+        margin-bottom: $space-box/2*3;
+        text-transform: uppercase;
+
+        @include breakpoint(medium) {
+            font-size: rem-calc(28);
+        }
+
+        &:lang(th) {
+            font-family: $text-normal;
+            font-size: rem-calc(30);
+            line-height: 1;
+
+            @include breakpoint(medium) {
+                font-size: rem-calc(38);
+            }
+        }
+    }
+}
+
+
+
+.concept {
+    color: $white;
+    text-align: center;
+    background: $color-gray;
+
+    &-head {
+        display: inline-block;
+        padding: $space-box/2 $space-box;
+        font-size: rem-calc(24);
+        margin-bottom: $space-box/2*3;
+
+        img {
+            width: 70%;
+        }
+
+        &:lang(th) {
+            font-family: $text-normal;
+            font-size: rem-calc(28);
+        }
+    }
+
+    &-detail {
+        text-indent: 5%;
+        color: $color-blue;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    &-video {
+        margin-bottom: 0;
+    }
+}
+
+.video {
+    &-js {
+        position: relative;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &-cover {
+        background: url('/images/registration/video-cover.jpg') no-repeat center;
+        background-size: cover;
+        width: 100%;
+        height: rem-calc(160);
+
+        @include breakpoint(medium) {
+            height: rem-calc(300);
+        }
+
+        @include breakpoint(large) {
+            height: rem-calc(450);
+        }
+
+        @include breakpoint(xlarge) {
+            height: rem-calc(550);
+        }
+
+        @include breakpoint(xxlarge) {
+            height: rem-calc(630);
+        }
+    }
+}
+
+.play {
+    width: 100%;
+    height: 100%;
+    display: block;
+    @include img-center;
+    cursor: pointer;
+    opacity: 1;
+
+    i {
+        font-size: $space-box*2;
+        @include img-center;
+
+        span {
+            display: block;
+            font-family: $text-bold;
+            font-size: $space-box/2;
+            margin-top: $space-box/2;
+            text-shadow: 0px 0px 20px rgba(0, 0, 0, .85);
+        }
+
+        @include breakpoint(medium) {
+            font-size: $space-box*4;
+        }
+    }
+
+    &:hover {
+        opacity: .85;
+    }
+}
+
+.info {
+    background-color: #39454F;
+
+    &-img {
+        overflow: hidden;
+        position: relative;
+        height: 0;
+        padding-bottom: 75%;
+        margin-bottom: $space-box;
+
+        img {
+            @include img-center;
+            width: 100%;
+        }
+    }
+
+    &-head {
+        font-size: rem-calc(16);
+        font-family: $text-bold;
+        text-transform: uppercase;
+        margin-bottom: 0;
+
+        &:lang(th) {
+            font-family: $text-normal;
+            line-height: 1;
+            font-size: rem-calc(24);
+        }
+    }
+
+    &-des {
+        font-size: rem-calc(14);
+
+        &:lang(th) {
+            font-family: $text-normal;
+            line-height: 1;
+            font-size: rem-calc(18);
+        }
+    }
+}
+
+.agenda {
+    background: $white url('/images/registration/bg-concept.png') top left no-repeat;
+
+    @include breakpoint(small only) {
+        background-size: 80%;
+    }
+    &-date {
+        position: relative;
+
+        p {
+            color: $white;
+            background-color: $color-dark-gray;
+            box-shadow: 10px 10px 0px 0px rgba(0, 0, 0, 0.75);
+            display: inline-block;
+            padding: $space-box $space-box*2;
+            font-family: $text-bold;
+            margin-bottom: $space-box*2;
+            position: relative;
+            z-index: 2;
+        }
+
+        .line {
+            border-bottom: $color-dark-gray 3px dashed;
+            width: 100%;
+            height: rem-calc(1);
+            position: absolute;
+            top: 35%;
+            z-index: 1;
+        }
+    }
+
+    table {
+        &.unstriped {
+            tbody {
+                background-color: transparent;
+                border: 0;
+                font-family: $text-normal;
+                font-size: rem-calc(14);
+
+                tr {
+                    background-color: transparent;
+                    border-bottom: 0;
+                    vertical-align: top;
+
+                    &:hover {
+                        cursor: pointer;
+
+                        .circle {
+                            &:before {
+                                animation: spin 10s linear infinite;
+                            }
+                        }
+
+                        th,
+                        td {
+                            color: darken($color-text, 10%);
+                        }
+                    }
+
+                    th {
+                        font-family: $text-bold;
+                        width: 25%;
+                        text-align: right;
+                        color: lighten($color-text, 10%);
+
+                        @include breakpoint(small only) {
+                            width: 40%;
+                        }
+                    }
+
+                    td {
+                        color: lighten($color-text, 10%);
+
+                        strong {
+                            font-family: $text-bold;
+                        }
+
+                        @include breakpoint(small only) {
+                            padding: $space-box/4;
+                        }
+                    }
+
+                }
+
+
+
+            }
+
+        }
+    }
+
+    .circle {
+        position: relative;
+        border-radius: 50%;
+        background-color: $color-text;
+        height: rem-calc(100);
+        width: rem-calc(100);
+        margin: rem-calc(10);
+
+        @include breakpoint(small only) {
+            height: rem-calc(60);
+            width: rem-calc(60);
+        }
+
+        &:before {
+            position: absolute;
+            content: '';
+            height: calc(100% + 20px);
+            width: calc(100% + 20px);
+            border: rem-calc(2) dashed $color-text;
+            top: rem-calc(-10);
+            left: rem-calc(-10);
+            border-radius: inherit;
+
+            @include breakpoint(small only) {
+                height: calc(100% + 10px);
+                width: calc(100% + 10px);
+                top: rem-calc(-5);
+                left: rem-calc(-5);
+            }
+        }
+
+
+        figure {
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            height: rem-calc(100);
+            width: rem-calc(100);
+
+            @include breakpoint(small only) {
+                height: rem-calc(60);
+                width: rem-calc(60);
+            }
+        }
+    }
+
+}
+
+.speakers {
+    &-show {
+        h3 {
+            color: $white;
+            font-family: $text-bold;
+            font-size: rem-calc(18);
+            position: relative;
+            padding-bottom: rem-calc(10);
+
+            &:before {
+                content: "";
+                position: absolute;
+                width: 50%;
+                height: rem-calc(1);
+                bottom: 0;
+                left: 25%;
+                background-color: $white;
+                visibility: hidden;
+                transform: scaleX(0);
+                transition: all 0.3s ease-in-out 0s;
+            }
+        }
+
+        p {
+            color: $white;
+            font-family: $text-normal;
+            font-size: rem-calc(14);
+        }
+
+        .cell {
+
+            &:nth-child(2),
+            &:nth-child(4),
+            &:nth-child(5),
+            &:nth-child(7) {
+                padding: $space-box;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    border-style: solid;
+                    display: block;
+                    width: 0;
+                    z-index: 1;
+                    top: 45%;
+                    transition: 0.5s ease-in-out;
+
+                    @include breakpoint(small only) {
+                        visibility: hidden;
+                    }
+                }
+
+                &:hover:after {
+                    transform: translateY(-140%);
+                }
+
+                &:hover {
+                    cursor: pointer;
+
+                    h3:before {
+                        visibility: visible;
+                        transform: scaleX(1);
+                    }
+                }
+
+            }
+
+            &:nth-child(2),
+            &:nth-child(4) {
+                &:after {
+                    border-width: rem-calc(15) rem-calc(15) rem-calc(15) rem-calc(0);
+                    left: rem-calc(-15);
+                }
+            }
+
+            &:nth-child(5),
+            &:nth-child(7) {
+                &:after {
+                    border-width: rem-calc(15) 0 rem-calc(15) rem-calc(15);
+                    right: rem-calc(-15);
+                }
+            }
+
+            &:nth-child(2) {
+                background-color: $color-yellow;
+
+                &:after {
+                    border-color: transparent $color-yellow;
+                }
+            }
+
+            &:nth-child(4) {
+                background-color: $color-navy;
+
+                &:after {
+                    border-color: transparent $color-navy;
+                }
+            }
+
+            &:nth-child(5) {
+                background-color: $color-green;
+
+                &:after {
+                    border-color: transparent $color-green;
+                }
+            }
+
+            &:nth-child(7) {
+                background-color: $color-pink;
+
+                &:after {
+                    border-color: transparent $color-pink;
+                }
+            }
+
+        }
+    }
+}
+
+.gallery {
+    background-color: $color-light-gray;
+    color: $color-dark-gray;
+
+    .head-topic {
+        color: $color-dark-gray;
+    }
+
+    .tabs-title {
+        >a {
+            color: $color-dark-gray;
+
+            &:focus {
+                color: $color-dark-gray;
+            }
+        }
+    }
+
+    &-show {
+        .cell {
+            padding: $space-box/3;
+        }
+    }
+
+    &-pic {
+        position: relative;
+        overflow: hidden;
+        height: rem-calc(120);
+        display: block;
+
+        &::before {
+            content: "";
+            background: url('/images/registration/cursor.png') no-repeat center;
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: absolute;
+            z-index: 5;
+            transition: all 500ms ease;
+            opacity: 0;
+        }
+
+        &:hover {
+            &::before {
+                opacity: 1;
+            }
+
+            img {
+                opacity: .4;
+                width: 190%;
+
+                @include breakpoint(medium) {
+                    width: 130%;
+                }
+            }
+        }
+
+        img {
+            @include img-center;
+            max-width: initial;
+            width: 180%;
+            transition: all 500ms ease;
+        }
+
+        @include breakpoint(medium) {
+            height: rem-calc(200);
+
+            img {
+                width: 120%;
+            }
+        }
+
+        @include breakpoint(large) {
+            height: rem-calc(260);
+        }
+
+        @include breakpoint(xlarge) {
+            height: rem-calc(300);
+        }
+    }
+
+    &-detail {
+        background-color: $white;
+        padding: $space-box/2*3;
+        height: 100%;
+
+        ul {
+            font-size: rem-calc(14);
+            text-transform: uppercase;
+            margin-bottom: 0;
+            color: #353836;
+
+            &:lang(th) {
+                font-family: $text-normal;
+                font-size: rem-calc(20);
+                line-height: 1;
+            }
+        }
+    }
+
+    &-head {
+        font-size: rem-calc(16);
+        text-transform: uppercase;
+        font-family: $text-bold;
+        color: $color-text;
+    }
+}
+
+.floorplan {
+    background-color: $white;
+}
+
+.floor {
+    &-dropdown {
+        text-align: center;
+    }
+
+    &-btn {
+        margin-bottom: $space-box*2;
+        border: rem-calc(1) solid lighten($color-text, 60%);
+        padding: $space-box/2 rem-calc(30) $space-box/2 $space-box/2;
+        font-size: rem-calc(14);
+        width: rem-calc(250);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        position: relative;
+        text-align: left;
+
+        &:hover {
+            border-color: $color-link;
+        }
+
+        &::after {
+            width: rem-calc(30);
+            height: 100%;
+            position: absolute;
+            right: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            content: "\f107";
+        }
+    }
+
+    &-detail {
+        padding: $space-box/2;
+        margin: 0;
+        list-style: none;
+        text-align: left;
+        max-height: rem-calc(300);
+        width: rem-calc(250);
+        overflow: hidden;
+        overflow-y: scroll;
+
+        .tabs-title {
+            border-bottom: rem-calc(1) solid lighten($color-text, 60%);
+            width: 100%;
+            background-color: transparent;
+
+            >a[aria-selected='true'] {
+                background-color: transparent;
+            }
+
+            >a {
+                font-size: rem-calc(14);
+                color: $color-text;
+                padding: $space-box $space-box/2;
+
+                &:hover {
+                    color: darken($color-link, 20%);
+                }
+
+                &:focus {
+                    background-color: transparent;
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+.map {
+    background-color: $white;
+    position: relative;
+    overflow: hidden;
+
+    &-show {
+        img {
+            max-width: initial;
+            width: 100%;
+        }
+    }
+}
+
+.tabs {
+    &-googlemap {
+        padding: 0;
+        margin-top: $space-box;
+
+        @include breakpoint(large) {
+            .responsive-embed {
+                margin-bottom: 0;
+                padding-bottom: rem-calc(600);
+            }
+        }
+    }
+}
+
+.tabs {
+    &-info {
+        background-color: transparent;
+        border: none;
+        text-align: center;
+
+        &-con {
+            background-color: transparent;
+            border: none;
+        }
+    }
+
+    .tabs {
+        &-title {
+            display: inline-block;
+            margin-bottom: $space-box;
+            float: initial;
+            padding: 0 $space-box/2;
+
+            @include breakpoint(medium) {
+                padding: 0 $space-box;
+            }
+
+            >a {
+                font-size: rem-calc(16);
+                color: $color-text;
+                border-bottom: rem-calc(3) solid transparent;
+                padding: 0 0 $space-box/2 0;
+
+                &:hover {
+                    background-color: transparent;
+                    color: lighten($color-text, 25%);
+                    border-bottom-color: lighten($color-text, 50%);
+                }
+
+                &:focus {
+                    outline: 0;
+                    background-color: transparent;
+                    color: $color-text;
+                }
+
+                &:lang(th) {
+                    font-family: $text-normal;
+                    font-size: rem-calc(20);
+                    line-height: 1;
+                }
+            }
+
+            >a[aria-selected='true'] {
+                background-color: transparent;
+                font-family: $text-bold;
+                border-bottom-color: $color-link;
+
+                &:lang(th) {
+                    font-family: $text-normal;
+                    line-height: 1;
+                }
+            }
+        }
+    }
+
+    &-panel {
+        transition: all 500ms ease;
+
+        &.is-active {
+            -webkit-animation: fade-in-left 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+            animation: fade-in-left 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        }
+    }
+}
+
+//---------------------Start Footer -----------------------------
+.footer {
+    background-color: #f4f4f4;
+    position: relative;
+
+    .padding-content {
+        padding: $space-box*4 $space-box $space-box*2;
+    }
+
+    &-logo {
+        text-align: center;
+        //margin-bottom: $space-box*4;
+
+    }
+
+    &-copyright {
+        font-size: rem-calc(10);
+        text-align: center;
+        margin: rem-calc(30) 0;
+
+        @include breakpoint(small only) {
+            margin: rem-calc(16) 0;
+        }
+
+        &:lang(th) {
+            font-family: $text-normal;
+            font-size: rem-calc(16);
+            line-height: 1;
+        }
+    }
+
+    &-logo {
+
+        ul,
+        li {
+            display: inline-block;
+        }
+    }
+}
+
+.gototop {
+    background-color: $color-dark-gray;
+    border-radius: 50%;
+    width: rem-calc(50);
+    height: rem-calc(50);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    @include img-top(0);
+    top: -$space-box;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+
+    span {
+        width: rem-calc(30);
+        height: rem-calc(30);
+        border-radius: 50%;
+        border: rem-calc(2) solid $white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .fa-arrow-up {
+            color: $white;
+        }
+    }
+}
+
+//---------------------End Footer -----------------------------
+
+//---------------------Start Form -----------------------------
+
+button {
+    cursor: pointer;
+    transition: all 500ms ease;
+
+    &:hover {
+        color: darken($color-link, 20%);
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.button {
+    &-reg {
+        background-color: $color-link;
+        color: $white;
+        padding: $space-box/2 $space-box;
+        display: block;
+        margin: 0 auto;
+        border-radius: rem-calc(10);
+        font-family: $text-bold;
+    }
+}
+
+
+.social {
+    &-click {
+        &-sub {
+            background-color: transparent;
+            border: none;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            a {
+                width: rem-calc(40);
+                height: rem-calc(40);
+                border-radius: 50%;
+                text-align: center;
+                padding-top: $space-box/4;
+                color: $white;
+                margin-top: $space-box/2;
+
+                &:hover {
+                    color: $color-link;
+                }
+            }
+
+            @include breakpoint(xlarge) {
+                flex-direction: column;
+                display: none;
+
+                a {
+                    position: absolute;
+                    background-color: $color-text;
+                }
+
+                .sub2 {
+                    top: $space-box*4.5;
+                }
+
+                .sub3 {
+                    top: $space-box*7;
+                }
+            }
+        }
+
+    }
+}
+
+.share {
+    &-btn {
+        width: rem-calc(40);
+        height: rem-calc(40);
+        background-color: $color-text;
+        border-radius: 50%;
+        color: $white;
+        text-align: center;
+        padding-top: $space-box/3;
+        transition: all 500ms ease;
+        margin: 0 !important;
+        display: none;
+
+        &:hover {
+            color: $color-link;
+        }
+
+        @include breakpoint(xlarge) {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+
+            i {
+                line-height: 1.5;
+            }
+        }
+    }
+}
+
+
+.form {
+    &-reg {
+        background: rgba($color-dark-gray, .75);
+        color: $white;
+        padding: $space-box;
+        position: relative;
+        border-radius: 20px 20px 0px 0px;
+        border: rem-calc(10) solid rgba($color-light-gray, .60);
+        border-width: rem-calc(10) rem-calc(10) 0 rem-calc(10);
+        width: 82%;
+        @include img-top(100%);
+        z-index: 3;
+
+        @include breakpoint(medium) {
+            padding: $space-box $space-box/2*3;
+            width: initial;
+        }
+
+        @include breakpoint(medium only) {
+            @include img-top(94%);
+            width: 50%;
+        }
+
+        @include breakpoint(large only) {
+            @include img-top(100%);
+            width: 50%;
+        }
+
+        @include breakpoint(xlarge) {
+            right: $space-box*2;
+            left: initial;
+            transform: translate(0, -100%);
+            position: fixed;
+            width: 25%;
+        }
+    }
+
+    &-head {
+        margin-bottom: $space-box;
+        font-size: rem-calc(14);
+        font-family: $text-bold;
+        text-align: center;
+
+        @include breakpoint(360px down) {
+            font-size: rem-calc(12);
+        }
+
+        @include breakpoint(medium) {
+            font-size: rem-calc(20);
+        }
+
+        &:lang(th) {
+            font-family: $text-normal;
+            font-size: rem-calc(20);
+            line-height: 1;
+
+            @include breakpoint(medium) {
+                width: rem-calc(360);
+                font-size: rem-calc(30);
+            }
+        }
+    }
+
+    &-group {
+        position: relative;
+        margin-bottom: $space-box;
+    }
+
+    &-control {
+        background-color: transparent;
+        padding: $space-box/5 0 $space-box/5 $space-box/2;
+        ;
+        color: $white;
+        font-size: rem-calc(16);
+        border-radius: 0;
+        height: auto;
+
+        &:focus {
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        &::placeholder {
+            color: transparent;
+        }
+
+        &:placeholder-shown+label {
+            transform: translateY(0);
+            opacity: 1;
+            color: $white;
+            font-size: rem-calc(14);
+            padding-left: $space-box/2;
+            margin-top: $space-box/4;
+            font-family: $text-normal;
+            cursor: text;
+        }
+
+        &-place {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            transition: all 250ms ease-in-out;
+            color: $white;
+            transform: translateY(-16px);
+            text-transform: uppercase;
+            font-size: rem-calc(14);
+            font-family: $text-bold;
+
+            &-select {
+                position: absolute;
+                pointer-events: none;
+                left: $space-box/2;
+                top: $space-box/4;
+                transition: 0.2s ease all;
+                -moz-transition: 0.2s ease all;
+                -webkit-transition: 0.2s ease all;
+                color: $white;
+                text-transform: uppercase;
+                font-size: rem-calc(14);
+                width: 90%;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                overflow: hidden;
+            }
+        }
+
+        &-select {
+            background-color: transparent;
+            padding: $space-box/3 0 $space-box/3 $space-box/2;
+            color: $white;
+            margin-bottom: 0;
+            border-radius: 0;
+            height: auto;
+            font-size: rem-calc(14);
+
+            &:focus {
+                background-color: transparent;
+                box-shadow: none;
+            }
+
+            option {
+                color: $color-text;
+            }
+        }
+    }
+}
+
+.form-control-select:focus~label,
+.form-control-select:not([value=""]):valid~label {
+    top: -17px;
+    font-size: rem-calc(14);
+    color: $white;
+    font-family: $text-bold;
+    left: 0;
+    width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.form-control-select:focus~.bar:before,
+.form-control-select:focus~.bar:after {
+    width: 50%;
+}
+
+.reg {
+    //background: url(../images/bg-head.png) no-repeat; background-size: cover;
+    height: 100vh;
+    position: relative;
+    background-position-x: 27%;
+
+    @include breakpoint(medium) {
+        background-position-x: 25%;
+    }
+
+    @include breakpoint(xlarge) {
+        background-position: center;
+    }
+
+    &-min {
+        display: none;
+
+        @include breakpoint(xlarge) {
+            position: absolute;
+            right: $space-box/4*3;
+            top: $space-box/4;
+            display: block;
+        }
+    }
+
+    &-sub {
+        font-size: rem-calc(16);
+        color: $white;
+        text-align: center;
+        letter-spacing: rem-calc(1);
+        display: block;
+        width: 70%;
+
+        span {
+            display: inline-block;
+        }
+
+        @include img-top(22%);
+        text-shadow: 0px 0px 20px rgba(0, 0, 0, .5);
+        font-family: $text-normal;
+
+        @include breakpoint(360 down) {
+            font-size: rem-calc(16);
+            @include img-top(24%);
+        }
+
+        @include breakpoint(350 down) {
+            display: none;
+        }
+
+        @include breakpoint(medium) {
+            font-size: rem-calc(20);
+            @include img-top(28%);
+            font-size: rem-calc(26);
+            width: auto;
+        }
+
+        @include breakpoint(large) {
+            @include img-top(27%);
+            font-size: rem-calc(26);
+        }
+
+        @include breakpoint(xlarge) {
+            font-size: rem-calc(35);
+            left: 60%;
+            text-align: left;
+        }
+
+        @include breakpoint(xxlarge) {
+            @include img-top(25%);
+            left: 58%;
+        }
+
+        @include breakpoint(xxxlarge) {
+            left: 55%;
+        }
+
+        &-span1 {
+            text-transform: uppercase;
+            color: $color-link;
+            font-size: rem-calc(20);
+            font-family: $text-bold;
+            letter-spacing: rem-calc(5);
+
+            @include breakpoint(medium) {
+                font-size: rem-calc(32);
+            }
+
+            @include breakpoint(xlarge) {
+                font-size: rem-calc(30);
+            }
+        }
+
+        &-span2 {
+            font-size: rem-calc(16);
+
+            @include breakpoint(medium) {
+                font-size: rem-calc(24);
+            }
+        }
+    }
+
+}
+/*
+@media screen and #{breakpoint(landscape)} and #{breakpoint(large down)} {
+    .reg {
+        height: rem-calc(1000);
+
+        &-whiz {
+            img {
+                height: rem-calc(1000);
+            }
+        }
+    }
+}*/
+
+//---------------------End Form -----------------------------
+
+//---------------------Start Swiper -----------------------------
+
+.swiper {
+    &-container {
+        width: 100%;
+        height: 90vh;
+        background-color: #f4f4f4;
+
+        //padding: rem-calc(40) rem-calc(60);
+        @include breakpoint(rem-calc(1400) down) {
+            padding: rem-calc(40) 0;
+        }
+
+        @include breakpoint(rem-calc(1200) down) {
+            //padding: rem-calc(20) rem-calc(30);
+            height: 60vh;
+        }
+
+        @include breakpoint(rem-calc(640) down) {
+            //padding: rem-calc(10) rem-calc(15);
+            height: 40vh;
+        }
+
+        @include breakpoint(small only) {
+            //padding: rem-calc(10) rem-calc(15);
+            height: 100vh;
+        }
+    }
+
+    &-slide {
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+
+        &.grid-padding-x {
+            &>.cell {
+                padding-right: 0;
+                padding-left: 0;
+            }
+        }
+
+        .text {
+            font-size: rem-calc(28);
+            font-family: $text-bold;
+            color: $color-text;
+
+            @include breakpoint(rem-calc(1200) down) {
+                font-size: rem-calc(14);
+            }
+
+            &.bold {
+                font-family: $text-bold;
+            }
+        }
+
+        .capital-letter {
+            padding-top: $space-box*7;
+
+            @include breakpoint(small only) {
+                padding-top: $space-box;
+            }
+        }
+
+        .bg-slide {
+            @include breakpoint(xlarge) {
+                padding-top: $space-box*7;
+            }
+
+            @include breakpoint(rem-calc(1200) down) {
+                padding-top: $space-box*7;
+            }
+
+            @include breakpoint(rem-calc(640) down) {
+                padding-top: $space-box;
+            }
+        }
+
+        &.slide-default {
+            background-position: right bottom;
+
+            .title {
+                padding-top: 0;
+            }
+
+            .cell {
+                &.align-self-middle {
+                    align-self: center;
+
+                    @include breakpoint(rem-calc(1200) down) {}
+
+                    @include breakpoint(rem-calc(640) down) {
+                        align-self: flex-end;
+                    }
+                }
+            }
+        }
+
+        .cell {
+            &.align-self-middle {
+                align-self: flex-start;
+
+                @include breakpoint(rem-calc(640) down) {
+                    align-self: flex-end;
+                }
+
+                &.capital-letter {
+                    @include breakpoint(rem-calc(640) down) {}
+                }
+            }
+
+        }
+    }
+
+}
+
+.swiper-pagination-bullet {
+    width: rem-calc(14);
+    height: rem-calc(14);
+    background: $color-dark-gray;
+    opacity: 0.7;
+
+    &.swiper-pagination-bullet-active {
+        background: $color-blue;
+    }
+}
+
+.swiper-container-horizontal {
+    &>.swiper-pagination-bullets {
+        bottom: rem-calc(30);
+
+        .swiper-pagination-bullet {
+            margin: 0 rem-calc(5);
+        }
+    }
+}
+
+//---------------------End Swiper -----------------------------

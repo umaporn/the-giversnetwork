@@ -1,5 +1,7 @@
 .slide {
-  &-thumb, &-thumb-give {
+
+  &-thumb,
+  &-thumb-give {
     overflow: hidden;
 
     .swiper-slide-container {
@@ -14,8 +16,8 @@
 
     .gallery-top {
       position: relative;
-	  width: 100%;
-	  cursor: pointer;
+      width: 100%;
+      cursor: pointer;
 
       @include breakpoint(xxlarge) {
         width: 55%;
@@ -23,42 +25,46 @@
         overflow: hidden;
       }
     }
+
     .gallery-thumbs {
       box-sizing: border-box;
       padding: 10px 0;
-	    overflow: hidden;
+      overflow: hidden;
 
       @include breakpoint(xxlarge) {
         width: 55%;
         margin: 0 auto;
       }
     }
+
     .gallery-thumbs .swiper-slide {
       width: 20%;
       height: 100%;
-	  opacity: 0.4;
-	  cursor: pointer;
+      opacity: 0.4;
+      cursor: pointer;
     }
+
     .gallery-thumbs .swiper-slide-active {
       opacity: 1;
     }
 
     .swiper-button-prev {
-	  background-image: none;
-	  left: rem-calc(5);
-	  height: auto;
-	  margin-top: 0;
+      background-image: none;
+      left: rem-calc(5);
+      height: auto;
+      margin-top: 0;
 
       i {
         color: $color-blue;
         opacity: 0.8;
       }
     }
+
     .swiper-button-next {
-	  background-image: none;
-	  right: rem-calc(5);
-	  height: auto;
-	  margin-top: 0;
+      background-image: none;
+      right: rem-calc(5);
+      height: auto;
+      margin-top: 0;
 
       i {
         color: $color-blue;
@@ -68,12 +74,12 @@
   }
 
 
-  &-thumb-give{
+  &-thumb-give {
     .gallery-top {
-  
-        @include breakpoint(xxlarge) {
-          width: 100%;
-        }
+
+      @include breakpoint(xxlarge) {
+        width: 100%;
       }
+    }
   }
 }

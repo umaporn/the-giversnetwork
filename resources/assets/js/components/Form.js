@@ -2,7 +2,7 @@
  * @namespace
  * @desc Handles form management.
  */
-const Form = (function() {
+const Form = (function () {
   const /**
      * @memberOf Form
      * @access private
@@ -31,13 +31,13 @@ const Form = (function() {
    * @desc Initialize Form module.
    */
   function initialize() {
-    SubmissionForm.submit(function(event) {
+    SubmissionForm.submit(function (event) {
       event.preventDefault();
 
       Utility.submitForm($(this));
     });
 
-    RecaptchaForm.submit(function(event) {
+    RecaptchaForm.submit(function (event) {
       event.preventDefault();
 
       _submitEvent = () => {
@@ -45,13 +45,13 @@ const Form = (function() {
       };
     });
 
-    Search.SearchForm.submit(function(event) {
+    Search.SearchForm.submit(function (event) {
       event.preventDefault();
 
       Search.submitForm($(this));
     });
 
-    Search.ResultDiv.on("submit", DeletionConfirmationSelector, function(
+    Search.ResultDiv.on("submit", DeletionConfirmationSelector, function (
       event
     ) {
       event.preventDefault();
@@ -59,7 +59,7 @@ const Form = (function() {
       Confirmation.confirmToDelete($(this), Search.SearchForm);
     });
 
-    $(".checkbox-inter").click(function() {
+    $(".checkbox-inter").click(function () {
       $(this)
         .parent()
         .toggleClass("form-checkbox-ed");
@@ -80,7 +80,7 @@ const Form = (function() {
       accept: 'pdf',
     });
 
-    $(".toggle-password").click(function() {
+    $(".toggle-password").click(function () {
       $(this).text($(this).text() == "show" ? "hide" : "show");
       var input = $($(this).attr("toggle"));
       if (input.attr("type") == "password") {
@@ -88,6 +88,21 @@ const Form = (function() {
       } else {
         input.attr("type", "password");
       }
+    });
+
+
+    $(".reg-min").click(function () {
+      $(".form-group, .button-reg").slideToggle(180, "linear", function () {
+        if ($(this).is(':hidden')) {
+          $(".form-head").css("margin-bottom", "0");
+          $(".reg-min").find('i').addClass('fa-angle-up');
+          $(".reg-min").find('i').removeClass('fa-angle-down');
+        } else {
+          $(".form-head").css("margin-bottom", "20px");
+          $(".reg-min").find('i').removeClass('fa-angle-up');
+          $(".reg-min").find('i').addClass('fa-angle-down');
+        }
+      });
     });
   }
 

@@ -31,4 +31,14 @@ class EventsController extends Controller
     {
         return view( 'events.article' );
     }
+
+     /**
+     * Display registration page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Article page
+     */
+    public function registration()
+    {
+        return view( 'events.registration' );
+    }
 }

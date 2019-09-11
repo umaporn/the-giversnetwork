@@ -35,6 +35,7 @@ function globalRoutes()
     Route::group( [ 'prefix' => 'events', ], function(){
         Route::get( '', 'EventsController@index' )->name( 'events.index' );
         Route::get( 'article', 'EventsController@article' )->name( 'events.article' );
+        Route::get( 'registration', 'EventsController@registration' )->name( 'events.registration' );
     } );
 
     Route::group( [ 'prefix' => 'news', ], function(){
