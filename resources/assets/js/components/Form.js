@@ -128,6 +128,20 @@ const Form = (function(){
 
 			$( '#count_message' ).html( text_remaining + ' remaining' );
 		} );
+
+		$(".reg-min").click(function () {
+			$(".form-group, .button-reg").slideToggle(180, "linear", function () {
+				if ($(this).is(':hidden')) {
+					$(".form-head").css("margin-bottom", "0");
+					$(".reg-min").find('i').addClass('fa-angle-up');
+					$(".reg-min").find('i').removeClass('fa-angle-down');
+				} else {
+					$(".form-head").css("margin-bottom", "20px");
+					$(".reg-min").find('i').removeClass('fa-angle-up');
+					$(".reg-min").find('i').addClass('fa-angle-down');
+				}
+			});
+		});
 	}
 
 	return {

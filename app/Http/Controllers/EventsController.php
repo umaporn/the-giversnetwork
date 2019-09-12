@@ -72,4 +72,9 @@ class EventsController extends Controller
 
         return view( 'events.detail', compact( 'data', 'other' ) );
     }
+
+    public function registration()
+    {
+        return view('events.registration');
+    }
 }

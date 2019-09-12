@@ -1,79 +1,85 @@
 .slide {
-  &-thumb, &-thumb-give {
-    overflow: hidden;
 
-    .swiper-slide-container {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      height: 100%;
-      margin: auto;
-      display: flex;
-      align-items: center;
-    }
-
-    .gallery-top {
-      position: relative;
-	  width: 100%;
-	  cursor: pointer;
-
-      @include breakpoint(xxlarge) {
-        width: 55%;
-        margin: 0 auto;
+    &-thumb,
+    &-thumb-give {
         overflow: hidden;
-      }
-    }
-    .gallery-thumbs {
-      box-sizing: border-box;
-      padding: 10px 0;
-	    overflow: hidden;
 
-      @include breakpoint(xxlarge) {
-        width: 55%;
-        margin: 0 auto;
-      }
-    }
-    .gallery-thumbs .swiper-slide {
-      width: 20%;
-      height: 100%;
-	  opacity: 0.4;
-	  cursor: pointer;
-    }
-    .gallery-thumbs .swiper-slide-active {
-      opacity: 1;
-    }
-
-    .swiper-button-prev {
-	  background-image: none;
-	  left: rem-calc(5);
-	  height: auto;
-	  margin-top: 0;
-
-      i {
-        color: $color-blue;
-        opacity: 0.8;
-      }
-    }
-    .swiper-button-next {
-	  background-image: none;
-	  right: rem-calc(5);
-	  height: auto;
-	  margin-top: 0;
-
-      i {
-        color: $color-blue;
-        opacity: 0.8;
-      }
-    }
-  }
-
-
-  &-thumb-give{
-    .gallery-top {
-  
-        @include breakpoint(xxlarge) {
-          width: 100%;
+        .swiper-slide-container {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            height: 100%;
+            margin: auto;
+            display: flex;
+            align-items: center;
         }
-      }
-  }
+
+        .gallery-top {
+            position: relative;
+            width: 100%;
+            cursor: pointer;
+
+            @include breakpoint(xxlarge) {
+                width: 55%;
+                margin: 0 auto;
+                overflow: hidden;
+            }
+        }
+
+        .gallery-thumbs {
+            box-sizing: border-box;
+            padding: 10px 0;
+            overflow: hidden;
+
+            @include breakpoint(xxlarge) {
+                width: 55%;
+                margin: 0 auto;
+            }
+        }
+
+        .gallery-thumbs .swiper-slide {
+            width: 20%;
+            height: 100%;
+            opacity: 0.4;
+            cursor: pointer;
+        }
+
+        .gallery-thumbs .swiper-slide-active {
+            opacity: 1;
+        }
+
+        .swiper-button-prev {
+            background-image: none;
+            left: rem-calc(5);
+            height: auto;
+            margin-top: 0;
+
+            i {
+                color: $color-blue;
+                opacity: 0.8;
+            }
+        }
+
+        .swiper-button-next {
+            background-image: none;
+            right: rem-calc(5);
+            height: auto;
+            margin-top: 0;
+
+            i {
+                color: $color-blue;
+                opacity: 0.8;
+            }
+        }
+    }
+
+
+    &-thumb-give {
+        .gallery-top {
+
+            @include breakpoint(xxlarge) {
+                width: 100%;
+            }
+        }
+    }
 }
