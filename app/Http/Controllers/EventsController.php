@@ -75,6 +75,6 @@ class EventsController extends Controller
 
     public function registration()
     {
-        return view('events.registration');
+        return view('events.registration.index');
     }
 }

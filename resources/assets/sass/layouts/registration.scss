@@ -1169,8 +1169,7 @@ button {
             line-height: 1;
 
             @include breakpoint(medium) {
-                width: rem-calc(360);
-                font-size: rem-calc(30);
+                font-size: rem-calc(20);
             }
         }
     }
@@ -1183,7 +1182,7 @@ button {
     &-control {
         background-color: transparent;
         padding: $space-box/5 0 $space-box/5 $space-box/2;
-    ;
+        ;
         color: $white;
         font-size: rem-calc(16);
         border-radius: 0;
