@@ -23390,6 +23390,10 @@ th {
   display: inline-block;
 }
 
+.footer-logo li {
+  margin: 0 1.25rem;
+}
+
 .gototop {
   background-color: #7F8685;
   border-radius: 50%;

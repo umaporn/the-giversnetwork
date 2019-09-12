@@ -970,6 +970,9 @@ p, ul, table, strong, th{
         li {
             display: inline-block;
         }
+        li{
+            margin: 0 $space-box;
+        }
     }
 }
 
