@@ -5,7 +5,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EventsRegistrationRequest;
 use App\Models\Events;
+use App\Models\EventsRegistration;
 use App\Models\News;
 use Illuminate\Http\Request;
 
@@ -22,16 +24,21 @@ class EventsController extends Controller
     /** @var News News model instance */
     private $newsModel;
 
+    /** @var EventsRegistration eventRegistration model instance */
+    private $eventsRegistrationModel;
+
     /**
      * EventsController constructor.
      *
-     * @param Events $events Events model
-     * @param News   $news   News model
+     * @param Events             $events            Events model
+     * @param News               $news              News model
+     * @param EventsRegistration $eventRegistration eventRegistration model
      */
-    public function __construct( Events $events, News $news )
+    public function __construct( Events $events, News $news, EventsRegistration $eventsRegistration )
     {
-        $this->eventsModel = $events;
-        $this->newsModel   = $news;
+        $this->eventsModel            = $events;
+        $this->newsModel              = $news;
+        $this->eventsRegistrationModel = $eventsRegistration;
     }
 
     /**
@@ -75,6 +82,58 @@ class EventsController extends Controller
 
     public function registration()
     {
-        return view('events.registration.index');
+        return view( 'events.registration.index' );
+    }
+
+    public function createEventsRegistration( EventsRegistrationRequest $request )
+    {
+        $result = $this->eventsRegistrationModel->createEventsRegistration( $request );
+
+        return $this->setUpdateOrCreationResponse( $request, $result );
+    }
+
+    /**
+     * Set update or creation response.
+     *
+     * @param Request $request Request object
+     * @param array   $result  Updating or creating result
+     *
+     * @return    \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
+    private function setUpdateOrCreationResponse( Request $request, array $result )
+    {
+        $response = $this->setResponseMessages( $result );
+
+        if( $request->ajax() ){
+            return response()->json( $response );
+        } else {
+            return redirect()->route( 'events.registration' );
+        }
+    }
+
+    /**
+     * Set error messages from result.
+     *
+     * @param array $result Result of saved share
+     *
+     * @return array Error messages
+     */
+    private function setResponseMessages( array $result )
+    {
+
+        if( !$result['successForEventsRegistration'] ){
+            $data = [
+                'success' => false,
+                'error'   => __( 'event_registration.saved_error' ),
+            ];
+        } else {
+            $data = [
+                'success'       => true,
+                'message'       => __( 'event_registration.saved_success' ),
+                'redirectedUrl' => route( 'events.registration' ),
+            ];
+        }
+
+        return $data;
     }
 }

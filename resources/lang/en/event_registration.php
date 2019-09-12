@@ -24,7 +24,7 @@ return [
         'index' => 'Register',
     ],
 
-    'meta_title' => 'WATS Forum Registration',
+    'meta_title' => 'Registration',
 
     'form_heading' => 'STAY in TOUCH!',
 
@@ -34,8 +34,8 @@ return [
     'form_email'      => 'Email Address',
     'form_gender'     => 'Gender',
     'gender'          => [
-        'Male',
-        'Female',
+        'male'   => 'Male',
+        'female' => 'Female',
     ],
     'form_country'    => 'Country',
     'country'         => [
@@ -54,8 +54,8 @@ return [
 
     'register_button' => 'Register Now',
 
-    'thankyou_message'      => 'Thank you for your interest. ',
-    'thankyou_fail_message' => 'Register Fail. Please try again.',
+    'saved_success' => 'Thank you for your interest. ',
+    'saved_error'   => 'Register Fail. Please try again.',
 
     'loading' => 'Saving information',
 

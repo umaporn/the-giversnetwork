@@ -34,8 +34,8 @@ return [
     'form_email'      => 'อีเมล',
     'form_gender'     => 'เพศ',
     'gender'          => [
-        'ชาย',
-        'หญิง',
+        'male'   => 'ชาย',
+        'female' => 'หญิง',
     ],
     'form_country'    => 'ประเทศ',
     'country'         => [
