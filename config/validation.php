@@ -88,4 +88,13 @@ return [
         'title_english'      => 'required|string|min:3|max:255',
         'image_path_english' => 'sometimes|required|image',
     ],
+    'event_registration' => [
+        'first_name' => 'required|string',
+        'last_name'  => 'required|string',
+        'phone'      => 'required|numeric',
+        'mail'       => 'required|email|max:254|',
+        'gender'     => 'required|in:male,female',
+        'country'    => 'required|string',
+        'profession' => 'required|string',
+    ],
 ];

@@ -2,7 +2,7 @@
     <a class="reg-min"><i class="fas fa-angle-down"></i></a>
     <h3 class="form-head">@lang('event_registration.form_heading')</h3>
     <div class="form-group">
-        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="NAME">
+        <input type="text" id="first_name" name="first_name" class="form-control" placeholder="@lang('event_registration.form_first_name')">
         <label for="name" class="form-control-place">@lang('event_registration.form_first_name')</label>
         <p id="first_name-help-text" class="alert help-text help-text hide"></p>
     </div>
@@ -49,11 +49,11 @@
         </select>
         <p id="country-help-text" class="alert help-text help-text hide"></p>
     </div>
-    <button type="button" class="button-reg" id="register-btn">@lang('event_registration.register_button')</button>
-    <div class="reveal" id="result-box" data-reveal style="border-radius: 5px;">
+    <button type="submit" class="button-reg" id="register-btn">@lang('event_registration.register_button')</button>
+    {{--<div class="reveal" id="result-box" data-reveal style="border-radius: 5px;">
         <button class="close-button" data-close aria-label="Close modal" type="button"
                 onclick="window.location.reload();">
             <span>&times;</span>
         </button>
-    </div>
+    </div>--}}
 </form>
