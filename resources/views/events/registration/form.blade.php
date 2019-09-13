@@ -34,8 +34,8 @@
     <div class="form-group">
         <select name="social_challenge" id="social_challenge" class="form-control-select">
             <option value="">@lang('event_registration.form_social_challenge')</option>
-            @foreach( __('event_registration.social_challenge') as $item )
-                <option value="{{ $item }}">{{ $item }}</option>
+            @foreach( __('event_registration.social_challenge') as $key => $value )
+                <option value="{{ $key }}">{{ $value }}</option>
             @endforeach
         </select>
         <p id="social_challenge-help-text" class="alert help-text help-text hide"></p>
@@ -50,10 +50,5 @@
     <input type="hidden" name="utm_term" value="{{ \Request::get('utm_term') }}">
 
     <button type="submit" class="button-reg" id="register-btn">@lang('event_registration.register_button')</button>
-    {{--<div class="reveal" id="result-box" data-reveal style="border-radius: 5px;">
-        <button class="close-button" data-close aria-label="Close modal" type="button"
-                onclick="window.location.reload();">
-            <span>&times;</span>
-        </button>
-    </div>--}}
+
 </form>
