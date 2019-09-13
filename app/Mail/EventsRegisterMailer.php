@@ -8,7 +8,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RegisterMailer extends Mailable implements ShouldQueue
+class EventsRegisterMailer extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -23,10 +23,10 @@ class RegisterMailer extends Mailable implements ShouldQueue
      *
      * @param EventsRegistration $eventsRegistration
      */
-    public function __construct( EventsRegistration $eventsRegistration )
+    public function __construct( $result )
     {
-        $this->eventsRegistration = $eventsRegistration;
-        $this->onQueue( env( 'REGISTER_MAIL_QUEUE', 'register_email' ) );
+        $this->eventsRegistration = $result;
+        $this->onQueue( env( 'EVENTS_REGISTER_MAIL_QUEUE', 'events_register_email' ) );
     }
 
     /**
@@ -37,21 +37,21 @@ class RegisterMailer extends Mailable implements ShouldQueue
     public function build()
     {
         $introLines = [
-            __( 'emails.users.username' ) . ': ' . $this->eventsRegistration->username,
-            __( 'emails.users.email' ) . ': ' . $this->eventsRegistration->email,
-            __( 'emails.users.mobile' ) . ': ' . $this->eventsRegistration->phone_number,
+            __( 'emails.events_registration.name' ) . ': ' . $this->eventsRegistration->first_name . ' ' . $this->eventsRegistration->last_name ,
+            __( 'emails.events_registration.email' ) . ': ' . $this->eventsRegistration->email,
+            __( 'emails.events_registration.phone' ) . ': ' . $this->eventsRegistration->phone_number,
         ];
 
         return $this->markdown( 'notifications::email' )
-                    ->subject( __( 'emails.users.subject' ) )
+                    ->subject( __( 'emails.events_registration.subject' ) )
                     ->with( [
-                                'greeting'   => __( 'emails.users.greeting' ),
+                                'greeting'   => __( 'emails.events_registration.greeting' ),
                                 'level'      => '',
                                 'introLines' => $introLines,
-                                'actionText' => __( 'emails.users.actionText' ),
+                                'actionText' => __( 'emails.events_registration.actionText' ),
                                 'actionUrl'  => route( 'home.index' ),
                                 'outroLines' => [
-                                    __( 'emails.users.actionDetail' ),
+                                    __( 'emails.events_registration.actionDetail' ),
                                 ],
                             ] );
     }

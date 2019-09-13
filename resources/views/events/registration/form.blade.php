@@ -16,6 +16,12 @@
         <p id="last_name-help-text" class="alert help-text help-text hide"></p>
     </div>
     <div class="form-group">
+        <input type="text" id="organization" name="organization" class="form-control margin-0"
+               placeholder="@lang('event_registration.form_organization')">
+        <label for="organization" class="form-control-place">@lang('event_registration.form_organization')</label>
+        <p id="organization-help-text" class="alert help-text help-text hide"></p>
+    </div>
+    <div class="form-group">
         <input type="text" id="phone" name="phone" class="form-control margin-0" placeholder="Phone">
         <label for="phone" class="form-control-place">@lang('event_registration.form_phone')</label>
         <p id="phone-help-text" class="alert help-text help-text hide"></p>
@@ -26,31 +32,13 @@
         <p id="email-help-text" class="alert help-text help-text hide"></p>
     </div>
     <div class="form-group">
-        <select name="gender" id="gender" class="form-control-select">
-            <option value="">@lang('event_registration.form_gender')</option>
-            @foreach( __('event_registration.gender') as $key => $value )
-                <option value="{{ $key }}">{{ $value }}</option>
+        <select name="social_challenge" id="social_challenge" class="form-control-select">
+            <option value="">@lang('event_registration.form_social_challenge')</option>
+            @foreach( __('event_registration.social_challenge') as $item )
+                <option value="{{ $item }}">{{ $item }}</option>
             @endforeach
         </select>
-        <p id="gender-help-text" class="alert help-text help-text hide"></p>
-    </div>
-    <div class="form-group">
-        <select name="country" id="country" class="form-control-select">
-            <option value="">@lang('event_registration.form_country')</option>
-            @foreach( __('event_registration.country') as $country )
-                <option value="{{ $country }}">{{ $country }}</option>
-            @endforeach
-        </select>
-        <p id="country-help-text" class="alert help-text help-text hide"></p>
-    </div>
-    <div class="form-group">
-        <select id="profession" name="profession" class="form-control-select">
-            <option value="">@lang('event_registration.form_profession')</option>
-            @foreach( __('event_registration.profession') as $profession )
-                <option value="{{  $profession }}">{{  $profession }}</option>
-            @endforeach
-        </select>
-        <p id="profession-help-text" class="alert help-text help-text hide"></p>
+        <p id="social_challenge-help-text" class="alert help-text help-text hide"></p>
     </div>
 
     @captcha

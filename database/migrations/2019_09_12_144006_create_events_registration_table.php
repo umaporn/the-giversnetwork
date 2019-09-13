@@ -19,9 +19,8 @@ class CreateEventsRegistrationTable extends Migration
             $table->string( 'last_name', 255 );
             $table->string( 'phone', 255 );
             $table->string( 'email', 255 );
-            $table->enum( 'gender', [ 'male', 'female' ] );
-            $table->string( 'profession', 255 );
-            $table->string( 'country', 255 );
+            $table->string( 'social_challenge' );
+            $table->string( 'organization', 255 );
             $table->string( 'utm_source', 255 )->nullable();
             $table->string( 'utm_medium', 255 )->nullable();
             $table->string( 'utm_content', 255 )->nullable();

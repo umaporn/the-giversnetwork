@@ -6,10 +6,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EventsRegistrationRequest;
+use App\Mail\EventsRegisterMailer;
 use App\Models\Events;
 use App\Models\EventsRegistration;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * Events Page Controller
@@ -36,8 +38,8 @@ class EventsController extends Controller
      */
     public function __construct( Events $events, News $news, EventsRegistration $eventsRegistration )
     {
-        $this->eventsModel            = $events;
-        $this->newsModel              = $news;
+        $this->eventsModel             = $events;
+        $this->newsModel               = $news;
         $this->eventsRegistrationModel = $eventsRegistration;
     }
 

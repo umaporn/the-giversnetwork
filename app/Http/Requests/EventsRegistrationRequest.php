@@ -30,13 +30,11 @@ class EventsRegistrationRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name' => config( 'validation.events_registration.first_name' ),
-            'last_name'  => config( 'validation.events_registration.last_name' ),
-            'phone'      => config( 'validation.events_registration.phone' ),
-            'email'      => config( 'validation.events_registration.email' ),
-            'gender'     => config( 'validation.events_registration.gender' ),
-            'country'    => config( 'validation.events_registration.country' ),
-            'profession' => config( 'validation.events_registration.profession' ),
+            'first_name'       => config( 'validation.events_registration.first_name' ),
+            'last_name'        => config( 'validation.events_registration.last_name' ),
+            'phone'            => config( 'validation.events_registration.phone' ),
+            'email'            => config( 'validation.events_registration.email' ),
+            'social_challenge' => config( 'validation.events_registration.social_challenge' ),
         ];
     }
 }
