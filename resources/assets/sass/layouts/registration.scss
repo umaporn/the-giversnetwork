@@ -7,10 +7,9 @@ p, ul, table, strong, th{
     position: absolute;
     z-index: 4;
     width: 100%;
-    background-color: rgba(244, 244, 244, .5);
 
     @include breakpoint(1200 up) {
-        height: rem-calc(130) !important;
+        height: rem-calc(80) !important;
     }
 
     &-box {
@@ -18,18 +17,18 @@ p, ul, table, strong, th{
         transition: all 300ms ease;
 
         @include breakpoint(xlarge) {
-            margin-top: $space-box*2 !important;
+            margin-top: $space-box!important;
             padding-right: $space-box*3;
         }
 
         @include breakpoint(xxlarge) {
-            margin-top: $space-box*3 !important;
+            margin-top: $space-box!important;
         }
 
         &-size {
             transition: all 300ms ease;
             background-color: $color-light-gray;
-            margin-top: 0 !important;
+            margin-top: 0!important;
             padding-top: $space-box/2;
             padding-bottom: $space-box/2;
 
@@ -283,9 +282,9 @@ p, ul, table, strong, th{
     &-video {
         margin-bottom: 0;
     }
-    
+
     .head-topic {
-        color: $color-dark-gray;
+        color: $color-blue;
     }
 }
 
@@ -679,7 +678,7 @@ p, ul, table, strong, th{
     color: $color-dark-gray;
 
     .head-topic {
-        color: $color-dark-gray;
+        color: $color-blue;
     }
 
     .tabs-title {
@@ -1031,7 +1030,15 @@ p, ul, table, strong, th{
 //---------------------End Footer -----------------------------
 
 //---------------------Start Form -----------------------------
-
+.form-control-select, [type='text'], [type='password'], [type='date'], [type='datetime'], [type='datetime-local'], [type='month'], [type='week'], [type='email'], [type='number'], [type='search'], [type='tel'], [type='time'], [type='url'], [type='color'], textarea{
+    margin-bottom: rem-calc(5)!important;
+}
+.help-text{
+    margin-bottom: 0px;
+}
+.form-control-select{
+    margin-bottom: rem-calc(15);
+}
 button {
     cursor: pointer;
     transition: all 500ms ease;
@@ -1174,7 +1181,7 @@ button {
     }
 
     &-head {
-        margin-bottom: $space-box;
+        margin-bottom: $space-box/2;
         font-size: rem-calc(14);
         font-family: $text-bold;
         text-align: center;
@@ -1201,7 +1208,6 @@ button {
 
     &-group {
         position: relative;
-        margin-bottom: $space-box;
     }
 
     &-control {
@@ -1304,7 +1310,7 @@ button {
 
 .reg {
     //background: url(../images/bg-head.png) no-repeat; background-size: cover;
-    height: 100vh;
+    height: 90vh;
     position: relative;
     background-position-x: 27%;
 
@@ -1427,7 +1433,7 @@ button {
         width: 100%;
         height: 90vh;
         background-color: #f4f4f4;
-
+        padding-top: rem-cal(40);
         //padding: rem-calc(40) rem-calc(60);
         @include breakpoint(rem-calc(1400) down) {
             padding: rem-calc(40) 0;

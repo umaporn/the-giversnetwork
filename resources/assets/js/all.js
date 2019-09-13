@@ -27,4 +27,5 @@ $( document )
         Form.initialize();
         HeroBanner.initialize();
         Slide.initialize();
+        Video.initialize();
     } );
