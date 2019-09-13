@@ -133,6 +133,14 @@
                 <p class="concept-detail fade">
                     @lang('event_registration.concept_detail')
                 </p>
+                <h2 class="head-topic fade">@lang('event_registration.vision')</h2>
+                <p class="concept-detail fade">
+                    @lang('event_registration.vision_detail')
+                </p>
+                <h2 class="head-topic fade">@lang('event_registration.mission')</h2>
+                <p class="concept-detail fade">
+                    @lang('event_registration.mission_detail')
+                </p>
             </article>
         </div>
     </section>
@@ -144,7 +152,7 @@
                 <div class="agenda-date fade">
                     <div class="line"></div>
                     <p>
-                        MONDAY 3<sup>rd</sup> JUNE 2019
+                        SAT 5<sup>th</sup> OCTOBER 2019
                     </p>
                 </div>
                 <div class="grid-x align-center">
@@ -188,10 +196,129 @@
                         </tr>
                     </table>
                 </div>
-
             </article>
         </div>
     </section>
+    <!--
+    <section class="speakers" id="speakers" data-magellan-target="speakers">
+        <div class="grid-container">
+            <article class="padding-content text-center">
+                <img src="../images/registration/icons/icon-speaker.svg" class="icon-speaker animate-icon" />
+                <h2 class="head-topic fade">@lang('event_registration.speakers.title')</h2>
+                <article class="speakers-show fade">
+                    <div class="grid-x">
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-01.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-1" href="javascript:;">
+                                    <h3>
+                                        @lang('event_registration.speakers.speaker_1.name')
+                                    </h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_1.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-1">
+                                    <p>@lang('event_registration.speakers.speaker_1.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-02.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-2" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_2.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_2.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-2">
+                                    <p>@lang('event_registration.speakers.speaker_2.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-3" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_3.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_3.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-3">
+                                    <p>@lang('event_registration.speakers.speaker_3.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <img src="../images/registration/speakers/speaker-03.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-4" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_4.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_4.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-4">
+                                    <p>@lang('event_registration.speakers.speaker_4.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-04.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-05.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-5" href="javascript:;">
+                                    <h3>
+                                        @lang('event_registration.speakers.speaker_5.name')
+                                    </h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_5.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-5">
+                                    <p>@lang('event_registration.speakers.speaker_5.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-06.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-6" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_6.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_6.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-6">
+                                    <p>@lang('event_registration.speakers.speaker_6.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </article>
+        </div>
+    </section>-->
     <section class="gallery" id="gallery" data-magellan-target="gallery">
         <div class="grid-container">
             <article class="gallery-tabs padding-content text-center">
@@ -268,7 +395,8 @@
                 <div class="tabs-content tabs-info-con" data-tabs-content="tabs-map">
                     <div class="tabs-panel is-active tabs-googlemap" id="map-google">
                         <div class="responsive-embed">
-                            <iframe src="https://snazzymaps.com/embed/183918" width="100%" height="600px" style="border:none;"></iframe>
+                            <iframe src="https://snazzymaps.com/embed/183918" width="100%" height="600px"
+                                style="border:none;"></iframe>
                         </div>
                     </div>
                 </div>

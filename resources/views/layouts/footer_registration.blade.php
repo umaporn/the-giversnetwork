@@ -6,10 +6,13 @@
             <div class="cell small-10 medium-12 align-self-top">
                 <ul class="no-bullet">
                     <li>
-                        <img src="../images/registration/logo-mqdc.svg" class="icon-mqdc" alt="">
+                        <img src="../images/registration/partners/apc.png" class="icon-mqdc" alt="">
                     </li>
                     <li>
-                        <img src="../images/logo.png" class="icon-risc" alt="">         
+                        <img src="../images/registration/partners/typn.png" class="icon-risc" alt="">         
+                    </li>
+                    <li>
+                        <img src="../images/registration/partners/dhanin.jpg" class="icon-risc" alt="">         
                     </li>
                 </ul>
             </div>
