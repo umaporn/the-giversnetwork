@@ -1,4 +1,4 @@
-<section class="content-all">
+<section class="content-all" id="gotop">
     <section class="reg fade-index" id="register" data-magellan-target="register">
         <div class="swiper-container">
             <div class="swiper-wrapper">
