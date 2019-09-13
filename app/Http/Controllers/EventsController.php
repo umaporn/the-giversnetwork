@@ -6,12 +6,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\EventsRegistrationRequest;
-use App\Mail\EventsRegisterMailer;
 use App\Models\Events;
 use App\Models\EventsRegistration;
 use App\Models\News;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 
 /**
  * Events Page Controller
@@ -82,11 +80,23 @@ class EventsController extends Controller
         return view( 'events.detail', compact( 'data', 'other' ) );
     }
 
+    /**
+     * Show events registration page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Registration view
+     */
     public function registration()
     {
         return view( 'events.registration.index' );
     }
 
+    /**
+     * Events registration creation.
+     *
+     * @param EventsRegistrationRequest $request Request Object
+     *
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
+     */
     public function createEventsRegistration( EventsRegistrationRequest $request )
     {
         $result = $this->eventsRegistrationModel->createEventsRegistration( $request );
