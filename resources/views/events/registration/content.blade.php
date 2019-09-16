@@ -1,4 +1,4 @@
-<section class="content-all">
+<section class="content-all" id="gotop">
     <section class="reg fade-index" id="register" data-magellan-target="register">
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -30,7 +30,7 @@
                     <div class="cell small-12 show-for-medium">
                         <img src="{{ asset('images/registration/hero-banner/banner-th-4.jpg') }}" />
                     </div>
-                    <div class="cell small-12 show-for-small-only">
+                    <div class="cell smalagendal-12 show-for-small-only">
                         <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-4.jpg') }}">
                     </div>
                 </div>
@@ -40,6 +40,14 @@
                     </div>
                     <div class="cell small-12 show-for-small-only">
                         <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-5.jpg') }}">
+                    </div>
+                </div>
+                <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
+                    <div class="cell small-12 show-for-medium">
+                        <img src="{{ asset('images/registration/hero-banner/banner-th-6.jpg') }}" />
+                    </div>
+                    <div class="cell small-12 show-for-small-only">
+                        <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-6.jpg') }}">
                     </div>
                 </div>
             </div>
@@ -72,16 +80,13 @@
         </div>
     </section>
 
-    <section class="concept" id="concept" data-magellan-target="concept">
-        <div class="grid-container concept-box">
-            <article class="padding-content">
-                <h2 class="concept-head fade"><img src="{{ asset('images/logo-2x.png') }}" /></h2>
-                <p class="concept-detail fade">
-                    @lang('event_registration.concept_detail')
-                </p>
-            </article>
-        </div>
-    </section>
+    <article class="concept-video">
+        <div class="video-js">
+            <div class="video-cover">
+            </div>
+            <div class="play"><i class="fas fa-play"></i></div>
+            <iframe style="display: none;" width="560" height="315" src="https://www.youtube.com/embed/2xs4dAXzw40?autoplay=1&amp;rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
+    </article>
     <section class="agenda" id="agenda" data-magellan-target="agenda">
         <div class="grid-container">
             <article class="padding-content text-center">
@@ -90,53 +95,139 @@
                 <div class="agenda-date fade">
                     <div class="line"></div>
                     <p>
-                        SAT 5<sup>th</sup> OCTOBER 2019
+                        @lang('event_registration.agenda_date')
+
                     </p>
                 </div>
                 <div class="grid-x align-center">
+                    <div class="concept-detail">{{ __('event_registration.agenda_description') }}</div>
                     <table class="unstriped text-left cell small-12 medium-10">
-                        <tr>
-                            <th>1 : 45 PM - 2 : 30 PM <i class="fas fa-clock"></i></th>
-                            <td>
-                                <strong>ลงทะเบียน</strong>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>9 : 00 AM – 11:30 AM <i class="fas fa-clock"></i></th>
-                            <td>
-                                <strong>แบ่งปันประสบการณ์ของผู้ให้โดยวิทยากร ณ ห้องแมกโนเลีย บอลรูม ชั้น 10</strong>
-                                <p>
-                                    มร.บิลล์ โซเมอร์วิลล์ เจ้าของสูตรสำเร็จ “การให้” ง่ายๆที่สร้างผลลัพธ์ที่ยิ่งใหญ่
-                                </p>
-                                <p>
-                                    ด.ญ.ระริน สถิตธนาสาร (น้องลิลลี่) นักสิ่งแวดล้อมรุ่นจิ๋ว กับภารกิจกอบกู้โลก
-                                </p>
-                                <p>
-                                    คุณมีชัย วีระไวทยะ ผู้นำการเปลี่ยนแปลง ไม่ว่าจะมีบทบาทไหนในสังคม
-                                </p>
-                                <p>
-                                    นพ.วรวิทย์ ตันติวัฒนทรัพย์ หมอชนบทที่คุณค่าของทุกชีวิต คือความหมายของ 27
-                                    ปีแห่งความเสียสละ
-                                </p>
-                                <p>
-                                    ด.ญ.ไหน แซ่เติ๋น เด็กหญิงธรรมดาที่ต้นทุนในชีวิตไม่ใช่ข้อจำกัดของการให้
-                                </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>11:30 AM – 13:00 PM <i class="fas fa-clock"></i></th>
-                            <td>
-                                <strong>รับประทานอาหารกลางวัน</strong>
-                            </td>
-                            <td></td>
-                        </tr>
+                        {!! __('event_registration.agenda_content') !!}
                     </table>
                 </div>
             </article>
         </div>
     </section>
+<!--
+    <section class="speakers" id="speakers" data-magellan-target="speakers">
+        <div class="grid-container">
+            <article class="padding-content text-center">
+                <img src="../images/registration/icons/icon-speaker.svg" class="icon-speaker animate-icon" />
+                <h2 class="head-topic fade">@lang('event_registration.speakers.title')</h2>
+                <article class="speakers-show fade">
+                    <div class="grid-x">
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-01.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-1" href="javascript:;">
+                                    <h3>
+                                        @lang('event_registration.speakers.speaker_1.name')
+        </h3>
+        <p>
+@lang('event_registration.speakers.speaker_1.short_description')
+        </p>
+        <p><i class="fas fa-comment"></i></p>
+
+    </a>
+    <div style="display: none; max-width:600px;" id="speaker-1">
+        <p>@lang('event_registration.speakers.speaker_1.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-02.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-2" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_2.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_2.short_description')
+        </p>
+        <p><i class="fas fa-comment"></i></p>
+    </a>
+    <div style="display: none; max-width:600px;" id="speaker-2">
+        <p>@lang('event_registration.speakers.speaker_2.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-3" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_3.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_3.short_description')
+        </p>
+        <p><i class="fas fa-comment"></i></p>
+    </a>
+    <div style="display: none; max-width:600px;" id="speaker-3">
+        <p>@lang('event_registration.speakers.speaker_3.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <img src="../images/registration/speakers/speaker-03.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-4" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_4.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_4.short_description')
+        </p>
+        <p><i class="fas fa-comment"></i></p>
+    </a>
+    <div style="display: none; max-width:600px;" id="speaker-4">
+        <p>@lang('event_registration.speakers.speaker_4.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-04.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-05.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-5" href="javascript:;">
+                                    <h3>
+                                        @lang('event_registration.speakers.speaker_5.name')
+        </h3>
+        <p>
+@lang('event_registration.speakers.speaker_5.short_description')
+        </p>
+        <p><i class="fas fa-comment"></i></p>
+    </a>
+    <div style="display: none; max-width:600px;" id="speaker-5">
+        <p>@lang('event_registration.speakers.speaker_5.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3">
+                            <img src="../images/registration/speakers/speaker-06.jpg" />
+                        </div>
+                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                            <div class="align-self-middle">
+                                <a data-fancybox data-src="#speaker-6" href="javascript:;">
+                                    <h3> @lang('event_registration.speakers.speaker_6.name')</h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_6.short_description')
+        </p>
+        <p><i class="fas fa-comment"></i></p>
+    </a>
+    <div style="display: none; max-width:600px;" id="speaker-6">
+        <p>@lang('event_registration.speakers.speaker_6.description')</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </article>
+        </div>
+    </section>-->
     <section class="gallery" id="gallery" data-magellan-target="gallery">
         <div class="grid-container">
             <article class="gallery-tabs padding-content text-center">
