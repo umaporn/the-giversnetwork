@@ -11,6 +11,9 @@ require( 'foundation-sites/dist/js/foundation.min' );
 /** Load TinyMCE library */
 require( 'tinymce' );
 
+/** Load Fancybox library */
+require( '@fancyapps/fancybox' );
+
 /** Initialize Foundation framework. */
 $( document ).foundation();
 

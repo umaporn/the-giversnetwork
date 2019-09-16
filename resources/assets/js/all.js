@@ -34,4 +34,5 @@ $( document )
 	    Comment.initialize();
 	    Counter.initialize();
 	    TinyMCE.initialize();
+	    Fancybox.initialize();
     } );
