@@ -144,5 +144,50 @@ return [
             'description'       => 'Karndee',
         ],
     ],
+    'agenda_date' => 'SAT 5<sup>th</sup> OCTOBER 2019',
+    'agenda_description' => 'The Givers Network’s 2nd annual conference is dedicated to our conviction that ‘Together we can give better.’Join us to learn and exchange experiences about sharing with inspirational speakers involved in the many aspects of givingTogether we will explore ideas and actions that can help us all give better. Because what each of us achieves is multiplied when we combine our resources, knowledge, and giving.',
+    'agenda_content' => '<tr>
+                            <th>8:30 – 9:00 <i class="fas fa-clock"></i></th>
+                            <td>
+                                <strong>Registration</strong>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>9:00 – 11:30 <i class="fas fa-clock"></i></th>
+                            <td>
+                                <strong>Sharing by inspirational speakers</strong>
+                                <p>
+                                     Bill Somerville – A renown social impactor through his practice of “keeping it simple” in giving
+                                </p>
+                                <p>
+                                    Lilly Satidtanasarn - A young environmentalist with a “save the earth” mission
+                                </p>
+                                <p>
+                                    Mechai Viravaidya - A leading Thai changemaker whatever his role
+                                </p>
+                                <p>
+                                    Worawit Tantiwattanasap - A rural doctor with a 27-year devotion to saving lives
+                                </p>
+                                <p>
+                                    Nai Saetoen - An ordinary young girl, a living example of giving beyond oneself
+                                </p>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>11:30 – 13:00 <i class="fas fa-clock"></i></th>
+                            <td>
+                                <strong>Lunch</strong>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th>13:00 <i class="fas fa-clock"></i></th>
+                            <td>
+                                <strong>Closing</strong>
+                            </td>
+                            <td></td>
+                        </tr>',
 
 ];

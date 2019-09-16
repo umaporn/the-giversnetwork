@@ -42,6 +42,14 @@
                         <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-5.jpg') }}">
                     </div>
                 </div>
+                <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
+                    <div class="cell small-12 show-for-medium">
+                        <img src="{{ asset('images/registration/hero-banner/banner-th-6.jpg') }}" />
+                    </div>
+                    <div class="cell small-12 show-for-small-only">
+                        <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-6.jpg') }}">
+                    </div>
+                </div>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination swiper-pagination-white"></div>
@@ -87,48 +95,14 @@
                 <div class="agenda-date fade">
                     <div class="line"></div>
                     <p>
-                        SAT 5<sup>th</sup> OCTOBER 2019
+                        @lang('event_registration.agenda_date')
+
                     </p>
                 </div>
                 <div class="grid-x align-center">
+                    <div class="concept-detail">{{ __('event_registration.agenda_description') }}</div>
                     <table class="unstriped text-left cell small-12 medium-10">
-                        <tr>
-                            <th>1 : 45 PM - 2 : 30 PM <i class="fas fa-clock"></i></th>
-                            <td>
-                                <strong>ลงทะเบียน</strong>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>9 : 00 AM – 11:30 AM <i class="fas fa-clock"></i></th>
-                            <td>
-                                <strong>แบ่งปันประสบการณ์ของผู้ให้โดยวิทยากร ณ ห้องแมกโนเลีย บอลรูม ชั้น 10</strong>
-                                <p>
-                                    มร.บิลล์ โซเมอร์วิลล์ เจ้าของสูตรสำเร็จ “การให้” ง่ายๆที่สร้างผลลัพธ์ที่ยิ่งใหญ่
-                                </p>
-                                <p>
-                                    ด.ญ.ระริน สถิตธนาสาร (น้องลิลลี่) นักสิ่งแวดล้อมรุ่นจิ๋ว กับภารกิจกอบกู้โลก
-                                </p>
-                                <p>
-                                    คุณมีชัย วีระไวทยะ ผู้นำการเปลี่ยนแปลง ไม่ว่าจะมีบทบาทไหนในสังคม
-                                </p>
-                                <p>
-                                    นพ.วรวิทย์ ตันติวัฒนทรัพย์ หมอชนบทที่คุณค่าของทุกชีวิต คือความหมายของ 27
-                                    ปีแห่งความเสียสละ
-                                </p>
-                                <p>
-                                    ด.ญ.ไหน แซ่เติ๋น เด็กหญิงธรรมดาที่ต้นทุนในชีวิตไม่ใช่ข้อจำกัดของการให้
-                                </p>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>11:30 AM – 13:00 PM <i class="fas fa-clock"></i></th>
-                            <td>
-                                <strong>รับประทานอาหารกลางวัน</strong>
-                            </td>
-                            <td></td>
-                        </tr>
+                        {!! __('event_registration.agenda_content') !!}
                     </table>
                 </div>
             </article>

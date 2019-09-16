@@ -1200,8 +1200,7 @@ button {
             line-height: 1;
 
             @include breakpoint(medium) {
-                width: rem-calc(360);
-                font-size: rem-calc(30);
+                font-size: rem-calc(16);
             }
         }
     }
