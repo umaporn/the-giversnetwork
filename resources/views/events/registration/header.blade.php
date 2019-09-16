@@ -11,8 +11,8 @@
             </div>
             <ul class="head-lang">
                 @foreach( config('app.language_codes') as $languageCode )
-                    <li class={{ App::getLocale() === $languageCode ? 'lang-click' : '' }}>
-                        <a class="text-uppercase" href="{{ route( 'language.change', [ 'languageCode' => $languageCode ] ) }}">
+                    <li>
+                        <a class="text-uppercase {{ App::getLocale() === $languageCode ? 'lang-click' : '' }}" href="{{ route( 'language.change', [ 'languageCode' => $languageCode ] ) }}">
                             {{ $languageCode }}
                         </a>
                     </li>
