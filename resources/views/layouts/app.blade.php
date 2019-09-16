@@ -17,7 +17,11 @@
 
     <title>@yield('page-title') - {{ config( 'app.name' ) }}</title>
 
-    <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    @if( url()->current() === route('events.registration') )
+        <link rel="stylesheet" href="{{ mix('/css/app_registration.css') }}">
+    @else
+        <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    @endif
 
     <script>
 		window.Laravel = {!! json_encode([
@@ -35,9 +39,15 @@
 
 @include('google_tag_manager.noscript')
 
-@include('layouts.header')
-@include('layouts.content')
-@include('layouts.footer')
+@if( url()->current() === route('events.registration') )
+    @yield('header_events_registration')
+    @yield('content_events_registration')
+    @yield('footer_events_registration')
+@else
+    @include('layouts.header')
+    @include('layouts.content')
+    @include('layouts.footer')
+@endif
 
 @include('message_boxes.result')
 @include('message_boxes.confirmation')
