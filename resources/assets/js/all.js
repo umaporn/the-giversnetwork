@@ -25,4 +25,13 @@ $( document )
         Search.initialize();
         Confirmation.initialize();
         Form.initialize();
+        HeroBanner.initialize();
+        GiveTab.initialize();
+        LoadMore.initialize();
+        Slide.initialize();
+	    InterestIn.initialize();
+	    Like.initialize();
+	    Comment.initialize();
+	    Counter.initialize();
+	    TinyMCE.initialize();
     } );

@@ -1,0 +1,28 @@
+.padding {
+  &-breadcrumbs {
+    @include padding-container;
+    padding-bottom: 0!important;
+  }
+}
+
+.breadcrumbs{
+    margin-bottom: 0;
+    
+    li{
+        line-height: rem-calc(20);
+        font-size: rem-calc(16);
+        color: $color-blue;
+        font-weight: bold;
+
+        &:not(:last-child)::after{
+            content: ">";
+            color: $color-blue;
+            font-size: rem-calc(20);
+        }
+    }
+
+    a{
+        color: $color-blue;
+        font-weight: normal;
+    }
+}

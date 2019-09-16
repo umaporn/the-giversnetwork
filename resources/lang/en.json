@@ -4,7 +4,10 @@
   "utility.error_url": "Error URL:",
   "utility.error_status_code": "Error status code:",
   "utility.error_status_text": "Error status text:",
-  "utility.result.success": "Result",
+  "utility.result.success": "Success!",
   "utility.result.error": "Error!",
-  "utility.json_response_error": "The data type is not JSON."
+  "utility.json_response_error": "The data type is not JSON.",
+  "tinymce.success_update": "Updated successfully.",
+  "tinymce.error_message": "Failed to upload your content!",
+  "tinymce.uploading_file_failure": "Failed to upload your input file."
 }

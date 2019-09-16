@@ -28,5 +28,6 @@ return [
     'forgot_password' => 'Forgot password?',
     'login_button'    => 'Login',
     'logout_button'   => 'Logout',
+    'are_you_new'     => 'Are you new?',
 
 ];

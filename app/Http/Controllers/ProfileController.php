@@ -5,10 +5,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Support\Facades\ClientGrant;
-use App\Support\Facades\PasswordGrant;
+use App\Models\InterestIn;
+use App\Models\OrganizationCategory;
+use App\Models\UserInterestIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Models\Users;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Profile Controller
@@ -16,6 +19,49 @@ use Illuminate\Support\Facades\App;
  */
 class ProfileController extends Controller
 {
+    /** @var Users User model */
+    protected $usersModel;
+
+    /** @var InterestIn InterestIn model */
+    protected $interestInModel;
+
+    /** @var OrganizationCategory OrganizationCategory model */
+    protected $organizationCategoryModel;
+
+    /** @var UserInterestIn UserInterestIn model */
+    protected $userInterestInModel;
+
+    /**
+     * Initialize RegisterController class.
+     *
+     * @param Users                $users                Users model
+     * @param InterestIn           $interestIn           InterestIn model
+     * @param OrganizationCategory $organizationCategory OrganizationCategory model
+     * @param UserInterestIn       $userInterestIn       UserInterestIn model
+     */
+    public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory, UserInterestIn $userInterestIn )
+    {
+        $this->usersModel                = $users;
+        $this->interestInModel           = $interestIn;
+        $this->organizationCategoryModel = $organizationCategory;
+        $this->userInterestInModel       = $userInterestIn;
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param array $datas
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator( array $data )
+    {
+        return Validator::make( $data, [
+            'image_path'   => config( 'validation.authentication.image_path' ),
+            'phone_number' => config( 'validation.authentication.phone_number' ),
+        ] );
+    }
+
     /**
      * Load a profile page of the authenticated user.
      *
@@ -23,9 +69,27 @@ class ProfileController extends Controller
      */
     public function getProfile()
     {
-        $response = PasswordGrant::call( 'GET', '/api/profile' );
+        $user                     = $this->usersModel->getUserProfile();
+        $interestList             = $this->interestInModel->getInterestInList();
+        $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList( $user[0]->id );
 
-        return view( 'users.profile', [ 'user' => $response['data'] ] );
+        return view( 'users.profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
+    }
+
+    /**
+     * Load a profile page of the authenticated user.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
+     */
+    public function getEditProfileForm()
+    {
+        $user                     = $this->usersModel->getUserProfile();
+        $interestList             = $this->interestInModel->getInterestInList();
+        $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList( $user[0]->id );
+
+        return view( 'users.edit_profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
     }
 
     /**
@@ -37,23 +101,11 @@ class ProfileController extends Controller
      */
     public function updateProfile( Request $request )
     {
-        $parameters = [];
+        $this->validator( $request->input() )->validate();
 
-        foreach( $request->except( 'avatar' ) as $key => $value ){
-            array_push( $parameters, [ 'name' => $key, 'contents' => $value ] );
-        }
+        $response = $this->usersModel->updateUser( $request );
 
-        if( $request->hasFile( 'avatar' ) ){
-            array_push( $parameters, [
-                'name'     => 'avatar',
-                'contents' => file_get_contents( $request->file( 'avatar' )->path() ),
-                'filename' => $request->file( 'avatar' )->getClientOriginalName(),
-            ] );
-        }
-
-        $response = PasswordGrant::call( 'POST', '/api/profile', [ 'multipart' => $parameters ] );
-
-        if( isset( $response['errors'] ) ){
+        if( !$response['success'] ){
             return response()->json( $response, 422 );
         }
 
@@ -80,5 +132,22 @@ class ProfileController extends Controller
         );
 
         return response()->json( [ 'success' => $response['success'], 'message' => $response['message'] ] );
+    }
+
+    /**
+     * Load a user profile page.
+     *
+     * @param string $id Users id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View User's profile page
+     */
+    public function getUserProfile( string $id )
+    {
+        $user                     = $this->usersModel->where( 'id', $id )->get();
+        $interestList             = $this->interestInModel->getInterestInList();
+        $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
+        $userInterestInList       = $this->userInterestInModel->getUserInterestInList( $id );
+
+        return view( 'users.profile', compact( 'user', 'interestList', 'organizationCategoryList', 'userInterestInList' ) );
     }
 }

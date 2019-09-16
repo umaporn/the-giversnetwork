@@ -9,20 +9,25 @@ return [
     */
 
     'page_link' => [
-        'index' => 'Register',
+        'index' => 'Sign up',
     ],
 
     'page_title' => [
-        'index' => 'Register',
+        'index' => 'Sign up',
     ],
 
     'page_description' => [
-        'index' => 'Register page',
+        'index' => 'Sign up page',
     ],
 
     'page_heading' => [
-        'index' => 'Register',
+        'index' => 'Sign up',
     ],
 
     'register_button' => 'Register',
+
+    'form_submitted' => [
+        'success_message' => 'Thank you for getting in touch!',
+        'failed_message'  => 'Sorry! Failed to send the message.',
+    ],
 ];

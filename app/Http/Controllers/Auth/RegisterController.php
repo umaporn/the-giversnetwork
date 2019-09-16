@@ -1,15 +1,20 @@
 <?php
 /**
- * Register a user.
+ * This is a controller that use for registering an account.
  */
 
 namespace App\Http\Controllers\Auth;
 
+use App\Mail\RegisterMailer;
+use App\Models\OrganizationCategory;
+use App\Models\Users;
+use App\Models\InterestIn;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RecaptchaRequest;
-use App\Support\Facades\ClientGrant;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\App;
 
 /**
  * Register User Controller
@@ -30,25 +35,121 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    /**
-     * Register a new user.
-     *
-     * @param RecaptchaRequest $request Recaptcha request object
-     *
-     * @return \Illuminate\Http\JsonResponse Registration response
-     */
-    public function register( RecaptchaRequest $request )
-    {
-        $response = ClientGrant::call(
-            'POST',
-            '/api/beginning/register/' . App::getLocale(),
-            [ 'form_params' => $request->all() ]
-        );
+    /** @var string Where to redirect users after register */
+    protected $redirectTo;
 
-        if( isset( $response['errors'] ) ){
-            return response()->json( $response, 422 );
+    /** @var Users User model */
+    protected $usersModel;
+
+    /** @var InterestIn InterestIn model */
+    protected $interestInModel;
+
+    /** @var OrganizationCategory OrganizationCategory model */
+    protected $organizationCategoryModel;
+
+    /**
+     * Initialize RegisterController class.
+     *
+     * @param Users                $users                Users model
+     * @param InterestIn           $interestIn           InterestIn model
+     * @param OrganizationCategory $organizationCategory OrganizationCategory model
+     */
+    public function __construct( Users $users, InterestIn $interestIn, OrganizationCategory $organizationCategory )
+    {
+        $this->middleware( 'guest' );
+
+        $this->usersModel                = $users;
+        $this->interestInModel           = $interestIn;
+        $this->organizationCategoryModel = $organizationCategory;
+        $this->redirectTo                = route( 'home.index' );
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param array $data
+     *
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator( array $data )
+    {
+        return Validator::make( $data, [
+            'email'            => config( 'validation.authentication.email' ),
+            'password'         => config( 'validation.authentication.password' ),
+            'fk_permission_id' => config( 'validation.authentication.fk_permission_id' ),
+            'image_path'       => config( 'validation.authentication.image_path' ),
+            'phone_number'     => config( 'validation.authentication.phone_number' ),
+        ] );
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function register( Request $request )
+    {
+        $this->validator( $request->input() )->validate();
+
+        event( new Registered( $user = $this->create( $request ) ) );
+
+        Mail::to( $request->input( 'email' ) )
+            ->send( new RegisterMailer( $user ) );
+
+        if( $request->expectsJson() ){
+            $message = ( $user ) ? __( 'register.form_submitted.success_message' )
+                : __( 'register.form_submitted.failed_message' );
+
+            $this->guard()->login( $user );
+
+            return response()->json( [ 'success' => true, 'message' => $message, 'redirectedUrl' => route( 'home.index' ) ] );
         }
 
-        return response()->json( [ 'success' => $response['success'], 'message' => $response['message'] ] );
+        return $this->registered( $request, $user )
+            ?: redirect( $this->redirectPath() );
     }
+
+    /**
+     * Create a new user instance after a valid registration.
+     *
+     * @param Request $request User data
+     *
+     * @return Users              Users model
+     */
+    protected function create( Request $request )
+    {
+        return $this->usersModel->createUser( $request );
+    }
+
+    /**
+     * Process this function after the user has been registered.
+     *
+     * @param Request $request Form request object
+     *
+     * @return    \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
+     */
+    protected function registered( Request $request )
+    {
+        if( $request->ajax() ){
+            return response()->json( [ 'redirectUrl' => $this->redirectPath() ] );
+        } else {
+            return redirect( $this->redirectPath() );
+        }
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    protected function showRegistrationForm()
+    {
+        $interestList             = $this->interestInModel->getInterestInList();
+        $organizationCategoryList = $this->organizationCategoryModel->getOrganizationCategoryList();
+
+        return view( 'auth.register', compact( 'interestList', 'organizationCategoryList' ) );
+    }
+
 }

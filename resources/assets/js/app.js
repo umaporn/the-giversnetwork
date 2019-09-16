@@ -8,6 +8,9 @@ window.$ = window.jQuery = require( 'jquery' );
 /** Load Foundation framework. */
 require( 'foundation-sites/dist/js/foundation.min' );
 
+/** Load TinyMCE library */
+require( 'tinymce' );
+
 /** Initialize Foundation framework. */
 $( document ).foundation();
 
@@ -16,3 +19,5 @@ $( document ).foundation();
  * @type {Object}
  */
 window.JSTranslate = require( 'js-translate' );
+window.Swiper    = require( 'swiper/dist/js/swiper' );
+window.Multifile = require( 'jquery-multifile' );

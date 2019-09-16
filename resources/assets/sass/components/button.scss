@@ -1,0 +1,120 @@
+%button {
+    display: inline-block;
+    padding: $space-box/2 $space-box;
+    border-radius: $space-box/4;
+    cursor: pointer;
+    line-height: 1;
+
+    i {
+        font-size: rem-calc(12);
+    }
+}
+
+.btn {
+    &-join-us {
+        padding: $space-box/1.5 $space-box * 3.5;
+        margin: 0 $space-box;
+        color: $white;
+        display: inline-block;
+        @include breakpoint(small only) {
+            margin: $space-box;
+        }
+    }
+
+    &-blue {
+        @extend %button;
+        background-color: $color-blue;
+        color: $white;
+
+        &:hover {
+            color: $white;
+        }
+
+        &:focus {
+            color: $white;
+        }
+    }
+
+    &-upload {
+        display: inline-block;
+    }
+
+    &-green {
+        @extend %button;
+        background-color: $color-green;
+        color: $white;
+
+        &:hover {
+            color: $white;
+        }
+
+        &-green {
+            @extend %button;
+            background-color: $color-green;
+            color: $white;
+
+            &:focus {
+                color: $white;
+            }
+        }
+
+        &-long {
+            padding: $space-box/2 $space-box * 2;
+        }
+    }
+
+    &-upload {
+        display: inline-block;
+    }
+
+    &-white {
+        @extend %button;
+        background-color: $white;
+    }
+
+    &-long {
+        padding: $space-box/2 $space-box * 2;
+    }
+
+    &-add {
+        cursor: pointer;
+
+        i {
+            margin-right: $space-box/4;
+        }
+    }
+}
+
+.load {
+    &-more {
+        border-radius: rem-calc(5);
+        background-color: $color-blue;
+        color: $white;
+        display: block;
+        text-align: center;
+        font-family: $text-bold;
+        padding: $space-box/4;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+
+    &-more {
+        border-radius: rem-calc(5);
+        background-color: $color-blue;
+        color: $white;
+        display: block;
+        text-align: center;
+        font-family: $text-bold;
+        padding: $space-box/4;
+        transition: all .25s ease;
+
+        &:hover {
+            color: $white;
+            background: lighten($color-blue, 3%);
+        }
+    }
+}
+
+

@@ -22,6 +22,7 @@ use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use App\Http\Middleware\AuthenticateAdmin;
 
 /**
  * Web Application Kernel
@@ -74,6 +75,7 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth'       => Authenticate::class,
+        'admin'      => AuthenticateAdmin::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
         'bindings'   => SubstituteBindings::class,
         'can'        => Authorize::class,

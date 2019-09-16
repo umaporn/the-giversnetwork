@@ -1,14 +1,42 @@
-.card-divider.title, .card-section.title {
-    background-color: $card-title-background;
-    color: $card-title-color;
-    font-weight: bold;
-}
+.cards {
+  &-style {
+    border: 1px solid $color-blue;
+    display: flex;
+    flex-direction: row;
+    padding: $space-box;
+  }
 
-.card-section.title {
-    padding-bottom: 0.5rem;
+  &-image{
+      margin-bottom: 0;
+  }
 
-    i {
-        background-color: $white;
-        border-radius: $button-radius;
-    }
+  &-detail{
+      padding-left: $space-box/2;
+      display:flex;
+      flex-direction: column;
+      flex: 1;
+
+      .btn-blue{
+          margin-top: auto;
+          color: $white!important;
+          text-align: center;
+
+          @include breakpoint(xxlarge){
+              width: rem-calc(150);
+          }
+      }
+  }
+
+  &-topic{
+      margin-bottom: 0;
+      line-height: 1;
+      font-size: rem-calc(20);
+      max-height: rem-calc(40);
+      overflow: hidden;
+      color: $color-text-bold;
+  }
+
+  &-amount{
+      margin-bottom: 0;
+  }
 }

@@ -3,77 +3,135 @@
  * @desc Handles form management.
  */
 const Form = (function(){
+	const /**
+	       * @memberOf Form
+	       * @access private
+	       * @desc Submission form
+	       * @const {jQuery}
+	       */
+	      SubmissionForm               = $( '.submission-form' ),
+	      /**
+	       * @memberOf Form
+	       * @access private
+	       * @desc reCAPTCHA form
+	       * @const {jQuery}
+	       */
+	      RecaptchaForm                = $( '.recaptcha-form' ),
+	      /**
+	       * @memberOf Form
+	       * @access private
+	       * @desc Deletion confirmation selector
+	       * @const {string}
+	       */
+	      DeletionConfirmationSelector = '.deletion',
 
-    const
-        /**
-         * @memberOf Form
-         * @access private
-         * @desc Submission form
-         * @const {jQuery}
-         */
-        SubmissionForm               = $( '.submission-form' ),
-        /**
-         * @memberOf Form
-         * @access private
-         * @desc reCAPTCHA form
-         * @const {jQuery}
-         */
-        RecaptchaForm                = $( '.recaptcha-form' ),
-        /**
-         * @memberOf Form
-         * @access private
-         * @desc Deletion confirmation selector
-         * @const {string}
-         */
-        DeletionConfirmationSelector = '.deletion';
+	      /**
+	       * @memberOf Form
+	       * @access private
+	       * @desc TinyMCE form
+	       * @const {jQuery}
+	       */
+	      TinyMCEForm                  = $( '.tinyMCE-form' );
 
-    /**
-     * @memberOf Form
-     * @access public
-     * @desc Initialize Form module.
-     */
-    function initialize(){
+	/**
+	 * @memberOf Form
+	 * @access public
+	 * @desc Initialize Form module.
+	 */
+	function initialize(){
+		SubmissionForm.submit( function( event ){
+			event.preventDefault();
+			Utility.submitForm( $( this ) );
+		} );
 
-        SubmissionForm.submit( function( event ){
+		RecaptchaForm.submit( function( event ){
+			event.preventDefault();
 
-            event.preventDefault();
+			_submitEvent = () => {
+				Utility.submitForm( $( this ) );
+			};
+		} );
 
-            Utility.submitForm( $( this ) );
+		TinyMCEForm.submit( function( event ){
+			tinyMCE.triggerSave();
+			event.preventDefault();
+			Utility.submitForm( $( this ) );
+		} );
 
-        } );
+		Search.SearchForm.submit( function( event ){
+			event.preventDefault();
+			Search.submitForm( $( this ) );
+		} );
 
-        RecaptchaForm.submit( function( event ){
+		Search.ResultDiv.on( 'submit', DeletionConfirmationSelector, function( event ){
+			event.preventDefault();
+			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
+		} );
 
-            event.preventDefault();
+		$( '.deletion' ).submit( function( event ){
+			event.preventDefault();
+			Confirmation.confirmToDelete( $( this ), Search.SearchForm );
+		} );
 
-            _submitEvent = () =>{
+		$( '#file-image' ).MultiFile( {
+			                              max:    1,
+			                              accept: 'jpg|png|gif',
+		                              } );
 
-                Utility.submitForm( $( this ) );
+		$( '#image_path' ).MultiFile( {
+			                              max:    10,
+			                              accept: 'jpg|png|gif',
+		                              } );
 
-            };
+		$( '#image_path_thai' ).MultiFile( {
+			                                   max:    10,
+			                                   accept: 'jpg|png|gif',
+		                                   } );
 
-        } );
+		$( '#image_path_english' ).MultiFile( {
+			                                      max:    10,
+			                                      accept: 'jpg|png|gif',
+		                                      } );
 
-        Search.SearchForm.submit( function( event ){
+		$( '#file_path' ).MultiFile( {
+			                             max:    1,
+			                             accept: 'pdf',
+		                             } );
 
-            event.preventDefault();
+		$( '.toggle-password' ).click( function(){
+			$( this ).text( $( this ).text() === 'show' ? 'hide' : 'show' );
+			let input = $( 'input[class=\'form-fill password\']' );
 
-            Search.submitForm( $( this ) );
+			if( input.attr( 'type' ) === 'password' ){
+				input.attr( 'type', 'text' );
+			} else {
+				input.attr( 'type', 'password' );
+			}
+		} );
 
-        } );
+		$( '.toggle-use-address' ).change( function(){
 
-        Search.ResultDiv.on( 'submit', DeletionConfirmationSelector, function( event ){
+			let address = $( '#address' );
 
-            event.preventDefault();
+			if( $( this ).prop( 'checked' ) ){
+				address.attr( 'disabled', true );
+			} else {
+				address.removeAttr( 'disabled' );
+			}
+		} );
 
-            Confirmation.confirmToDelete( $( this ), Search.SearchForm );
+		let text_max = 200;
+		$('#count_message').html(text_max + ' remaining');
+		$('#content_english').keyup(function() {
+			let text_length    = $( '#content_english' ).val().length;
+			let text_remaining = text_max - text_length;
 
-        } );
+			$( '#count_message' ).html( text_remaining + ' remaining' );
+		} );
+	}
 
-    }
-
-    return {
-        initialize: initialize,
-    };
+	return {
+		initialize: initialize,
+	};
 
 })( jQuery );

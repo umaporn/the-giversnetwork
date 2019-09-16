@@ -17,16 +17,20 @@ class RedirectIfAuthenticated
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request $request HTTP request object
-     * @param  \Closure                 $next    Closer
-     * @param  string|null              $guard   Guard name
+     * @param \Illuminate\Http\Request $request HTTP request object
+     * @param \Closure                 $next    Closer
+     * @param string|null              $guard   Guard name
      *
      * @return mixed
      */
     public function handle( $request, Closure $next, $guard = null )
     {
         if( Auth::guard( $guard )->check() ){
-            return redirect()->route( 'home.index' );
+            if( Auth::user()->fk_permission_id === '1' ){
+                return redirect( route( 'admin.home.index' ) );
+            } else {
+                return redirect( route( 'home.index' ) );
+            }
         }
 
         return $next( $request );

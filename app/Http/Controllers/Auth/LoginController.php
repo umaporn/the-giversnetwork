@@ -6,13 +6,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Support\Facades\PasswordGrant;
+use App\Models\Users;
 use App\Support\Facades\Utility;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
-use App\Http\Requests\RecaptchaRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 
 /**
  * Login Controller
@@ -20,20 +17,33 @@ use Illuminate\Support\Facades\Log;
  */
 class LoginController extends Controller
 {
+    /** @var Users User model */
+    protected $usersModel;
+
     use AuthenticatesUsers {
         logout as traitLogout;
     }
 
     /**
+     * LoginController constructor.
+     *
+     * @param Users $users Users model
+     */
+    public function __construct( Users $users )
+    {
+        $this->usersModel = $users;
+    }
+
+    /**
      * Handle a login request to the application.
      *
-     * @param RecaptchaRequest $request Recaptcha request object
+     * @param Request $request Recaptcha request object
      *
      * @return \Illuminate\Http\Response Login response
      *
      * @throws \Illuminate\Validation\ValidationException Validation exception
      */
-    public function login( RecaptchaRequest $request )
+    public function login( Request $request )
     {
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
@@ -57,14 +67,21 @@ class LoginController extends Controller
     /**
      * Redirect the user to another page after the user has been authenticated.
      *
-     * @param  \Illuminate\Http\Request $request HTTP request object
-     * @param  mixed                    $user    User
+     * @param \Illuminate\Http\Request $request HTTP request object
+     * @param mixed                    $user    User
      *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse HTTP response object
      */
     protected function authenticated( Request $request, $user )
     {
-        $redirectedUrl = Utility::getRedirectedUrl( $request );
+
+        $redirectedUrl    = Utility::getRedirectedUrl( $request );
+        $userData         = $this->usersModel->checkUserStatus( $this->credentials( $request ) );
+        $userPermissionID = $userData['0']->getAttribute( 'fk_permission_id' );
+
+        if( $userPermissionID === 1 ){
+            $redirectedUrl = route('admin.home.index');
+        }
 
         if( $request->expectsJson() ){
 
@@ -77,41 +94,35 @@ class LoginController extends Controller
     }
 
     /**
+     * Attempt to log the user into the application.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return bool
+     */
+    protected function attemptLogin( Request $request )
+    {
+        if( $this->usersModel->checkUserStatus( $this->credentials( $request ) ) ){
+            return $this->guard()->attempt(
+                $this->credentials( $request ), $request->filled( 'remember' )
+            );
+        }
+    }
+
+    /**
      * Log the user out of the application.
      *
-     * @param  \Illuminate\Http\Request $request HTTP request object
+     * @param \Illuminate\Http\Request $request HTTP request object
      *
      * @return \Illuminate\Http\Response HTTP response object
      */
     public function logout( Request $request )
     {
-        $response = PasswordGrant::call( 'GET', '/api/logout' );
+        $this->guard()->logout();
 
-        if( !$response['success'] ){
-            Log::error( 'Failed to revoke an access token, ' . PasswordGrant::getAccessToken() . '.' );
-        }
+        $request->session()->invalidate();
 
-        $this->traitLogout( $request );
-
-        return redirect()->route( 'home.index' );
-    }
-
-    /**
-     * Attempt to log the user into the application.
-     *
-     * @param Request $request HTTP request object
-     *
-     * @return bool Success status
-     */
-    protected function attemptLogin( Request $request )
-    {
-        $success = PasswordGrant::attemptLogin( $this->credentials( $request ) );
-
-        if( $success ){
-            $this->guard()->login( Auth::getProvider()->retrieveByCredentials( $this->credentials( $request ) ) );
-        }
-
-        return $success;
+        return $this->loggedOut( $request ) ?: redirect( '/' );
     }
 
 }
