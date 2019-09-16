@@ -1,6 +1,7 @@
 p, ul, table, strong, th{
     font-size: rem-calc(20);
 }
+
 //---------------------Start Header -----------------------------
 .head {
     position: absolute;
@@ -282,6 +283,10 @@ p, ul, table, strong, th{
     &-video {
         margin-bottom: 0;
     }
+
+    .head-topic {
+        color: $color-dark-gray;
+    }
 }
 
 .video {
@@ -556,7 +561,6 @@ p, ul, table, strong, th{
         p {
             color: $white;
             font-family: $text-normal;
-            font-size: rem-calc(14);
         }
 
         .cell {
@@ -564,7 +568,9 @@ p, ul, table, strong, th{
             &:nth-child(2),
             &:nth-child(4),
             &:nth-child(5),
-            &:nth-child(7) {
+            &:nth-child(7),
+            &:nth-child(10),
+            &:nth-child(12) {
                 padding: $space-box;
                 position: relative;
 
@@ -599,7 +605,9 @@ p, ul, table, strong, th{
             }
 
             &:nth-child(2),
-            &:nth-child(4) {
+            &:nth-child(4),
+            &:nth-child(10),
+            &:nth-child(12) {
                 &:after {
                     border-width: rem-calc(15) rem-calc(15) rem-calc(15) rem-calc(0);
                     left: rem-calc(-15);
@@ -639,10 +647,26 @@ p, ul, table, strong, th{
             }
 
             &:nth-child(7) {
-                background-color: $color-pink;
+                background-color: $color-dark-gray;
 
                 &:after {
-                    border-color: transparent $color-pink;
+                    border-color: transparent $color-dark-gray;
+                }
+            }
+
+            &:nth-child(10) {
+                background-color: $color-red;
+
+                &:after {
+                    border-color: transparent $color-red;
+                }
+            }
+
+            &:nth-child(12) {
+                background-color: $color-light-blue;
+
+                &:after {
+                    border-color: transparent $color-light-blue;
                 }
             }
 
@@ -1169,19 +1193,20 @@ button {
             line-height: 1;
 
             @include breakpoint(medium) {
-                font-size: rem-calc(20);
+                font-size: rem-calc(30);
             }
         }
     }
 
     &-group {
         position: relative;
-        margin-bottom: 10px;
+        margin-bottom: $space-box;
     }
 
     &-control {
         background-color: transparent;
         padding: $space-box/5 0 $space-box/5 $space-box/2;
+    ;
         color: $white;
         font-size: rem-calc(16);
         border-radius: 0;

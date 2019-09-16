@@ -60,6 +60,25 @@
                 <p class="concept-detail fade">
                     @lang('event_registration.concept_detail')
                 </p>
+                <h2 class="head-topic fade">@lang('event_registration.vision')</h2>
+                <p class="concept-detail fade">
+                    @lang('event_registration.vision_detail')
+                </p>
+                <h2 class="head-topic fade">@lang('event_registration.mission')</h2>
+                <p class="concept-detail fade">
+                    @lang('event_registration.mission_detail')
+                </p>
+            </article>
+        </div>
+    </section>
+
+    <section class="concept" id="concept" data-magellan-target="concept">
+        <div class="grid-container concept-box">
+            <article class="padding-content">
+                <h2 class="concept-head fade"><img src="{{ asset('images/logo-2x.png') }}" /></h2>
+                <p class="concept-detail fade">
+                    @lang('event_registration.concept_detail')
+                </p>
             </article>
         </div>
     </section>
@@ -71,7 +90,7 @@
                 <div class="agenda-date fade">
                     <div class="line"></div>
                     <p>
-                        MONDAY 3<sup>rd</sup> JUNE 2019
+                        SAT 5<sup>th</sup> OCTOBER 2019
                     </p>
                 </div>
                 <div class="grid-x align-center">
@@ -115,7 +134,6 @@
                         </tr>
                     </table>
                 </div>
-
             </article>
         </div>
     </section>

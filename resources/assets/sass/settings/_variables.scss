@@ -11,32 +11,34 @@ $images-path: '/images';
 | Color Settings
 |--------------------------------------------------------------------------
 */
-$color-light-gray: #F8F8F8;
-$color-gray: #F2F2F2;
-$color-dark-gray: #7F8685;
-$color-grey: #F2F2F2;
-$color-blue: #154064;
-$color-green: #009057;
+$color-light-gray    : #F8F8F8;
+$color-gray          : #F2F2F2;
+$color-dark-gray     : #7F8685;
+$color-grey          : #F2F2F2;
+$color-blue          : #154064;
+$color-green         : #009057;
 
-$color-text-normal: $color-dark-gray;
-$color-text-bold: #434343;
+$color-text-normal   : $color-dark-gray;
+$color-text-bold   : #434343;
+
 
 
 //color
-$color-text: #39454F;
-$color-link: #154064;
-$color-line: #154064;
-$color-yellow: #FFC410;
+$color-text:#39454F ;
+$color-link:#154064 ;
+$color-line:#154064 ;
+$color-yellow:#c97b2b ;
 $color-navy: #154064;
 $color-pink: #B45BA2;
-
+$color-red: #cc413f;
+$color-light-blue: #5093a3;
 /*
 |--------------------------------------------------------------------------
 | Font Settings
 |--------------------------------------------------------------------------
 */
-$text-normal: 'db_airystd_med';
-$text-bold: 'db_airystd_bd';
+$text-normal  : 'db_airystd_med';
+$text-bold    : 'db_airystd_bd';
 
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +79,3 @@ $language-pipe-color: lightblue;
 |--------------------------------------------------------------------------
 */
 $spinner-border-color: deepskyblue deepskyblue whitesmoke whitesmoke;
-
-
-
