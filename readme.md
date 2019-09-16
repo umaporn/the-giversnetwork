@@ -1,4 +1,4 @@
-# The Givers Network Project
+# The Givers Network Project.
 This project is a standard project for every project. 
 It includes all useful features which are easy to customize and change some configurations to support a new project.
 
