@@ -34,6 +34,7 @@ mix.js( 'resources/assets/js/app.js', 'public/js' )
 	           'resources/assets/js/components/Counter.js',
 	           'resources/assets/js/components/TinyMCE.js',
 	           'resources/assets/js/components/Fancybox.js',
+	           'resources/assets/js/components/Video.js',
 	           'resources/assets/js/all.js',
            ], 'public/js/all.js' )
    .version();

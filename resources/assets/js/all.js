@@ -35,4 +35,5 @@ $( document )
 	    Counter.initialize();
 	    TinyMCE.initialize();
 	    Fancybox.initialize();
+	    Video.initialize();
     } );
