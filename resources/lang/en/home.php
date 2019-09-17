@@ -28,11 +28,11 @@ return [
         'sub_title' => 'Together, We Can Give Better',
         'what_is'   => 'What is the Givers Network?',
         'content'   => [
-            '<b>We are Givers Dedicated to the Idea that Through sharing ideas,learning, and working together, we can give better</b>',
-            'The Givers Network is a collection of organizations and individuals that believe the best way to increase 
-            the impact of our social giving is by combining our resources, knowledge, and giving 
-            to create greater impact than each of us alone can achieve.Guided by this ideal, the founding sponsors have 
-            created The Givers Network platform so that all Givers can work together.',
+            'The Givers Network is a collection of organizations and individuals that believe 
+            the best way to scale up our giving is by sharing our resources, knowledge, 
+            and giving to create greater social impact than each of us alone can achieve.  
+            Guided by this ideal, the founding members have created “The Givers Network” to be 
+            a platform for all givers who share the belief that together we can give better.',
         ],
     ],
     'vision'     => [
@@ -40,9 +40,7 @@ return [
         'content' => 'To nurture and empower a network of givers to meet the key needs of individuals, society and the environment.',
     ],
     'what_we_do' => [
-        'title'       => 'WHAT ARE WE GOING TO DO?',
         'our_mission' => 'OUR MISSION',
-        'sub_title'   => 'The Givers Network has been established to nurture a community of charitable organizations and givers to….',
         'content'     => [
             [
                 'number' => '01.',

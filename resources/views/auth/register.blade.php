@@ -66,7 +66,7 @@
                             <label for="phone" class="form-label">@lang('user.phone_number')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="tel" name="phone_number" id="phone_number" class="form-fill" required>
+                            <input type="tel" name="phone_number" id="phone_number" class="form-fill">
                             <p id="phone_number-help-text" class="alert help-text hide"></p>
                         </div>
                     </div>

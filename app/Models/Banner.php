@@ -35,7 +35,7 @@ class Banner extends Model
         $builder = $this->where( [ 'status' => 'public', ] )
                         ->where( 'start_date', '<=', date( 'Y-m-d' ) )
                         ->where( 'end_date', '>=', date( 'Y-m-d' ) )
-                        ->orderBy( 'order', 'asc' );
+                        ->orderBy( 'id', 'desc' );
 
         $data = Search::search( $builder, 'banner', $request );
 

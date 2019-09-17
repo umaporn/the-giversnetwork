@@ -43,10 +43,9 @@
 
                             <h2>@lang('home.vision.title')</h2>
                             <p>@lang('home.vision.content')</p>
-                            <h2>@lang('home.what_we_do.title')</h2>
                             <div class="about-mission">
-                                <p class="about-mission-text"><strong>@lang('home.what_we_do.our_mission')</strong>
-                                    <span>@lang('home.what_we_do.sub_title')</span>
+                                <p class="about-mission-text">
+                                    <strong>@lang('home.what_we_do.our_mission')</strong>
                                 </p>
                                 @foreach( __('home.what_we_do.content') as $what_we_do_content )
                                     <p>
