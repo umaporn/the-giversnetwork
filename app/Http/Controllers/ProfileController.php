@@ -58,7 +58,6 @@ class ProfileController extends Controller
     {
         return Validator::make( $data, [
             'image_path'   => config( 'validation.authentication.image_path' ),
-            'phone_number' => config( 'validation.authentication.phone_number' ),
         ] );
     }
 

@@ -78,7 +78,6 @@ class RegisterController extends Controller
             'password'         => config( 'validation.authentication.password' ),
             'fk_permission_id' => config( 'validation.authentication.fk_permission_id' ),
             'image_path'       => config( 'validation.authentication.image_path' ),
-            'phone_number'     => config( 'validation.authentication.phone_number' ),
         ] );
     }
 
