@@ -110,7 +110,8 @@ class Share extends Model
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             foreach( $list->shareImage as $share_image ){
-                $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image ) );
+                $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image, 'original' ) );
+                $share_image->setAttribute( 'thumbnail_path', $this->getShareImages( $share_image,'thumbnail' ) );
                 $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
             }
             $this->setPublicDateForFrontEnd( $list );
@@ -207,7 +208,7 @@ class Share extends Model
             $share->setAttribute( 'username', $share->users['username'] );
             $this->setPublicDateForFrontEnd( $share );
             foreach( $share->shareImage as $share_image ){
-                $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image ) );
+                $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image, 'original' ) );
                 $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
             }
         }
@@ -421,7 +422,7 @@ class Share extends Model
      *
      * @return array Image store
      */
-    public function getShareImages( ShareImage $shareImage )
+    public function getShareImages( ShareImage $shareImage, $imageSize )
     {
 
         $attributes = $shareImage->getAttributes();
@@ -429,7 +430,7 @@ class Share extends Model
         if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes['original'] ) ){
             $imageStore = $attributes['original'];
         } else {
-            $imageStore = Storage::url( $attributes['original'] );
+            $imageStore = Storage::url( $attributes[$imageSize] );
         }
 
         return $imageStore;
