@@ -4,7 +4,7 @@
             <div class="cell small-12 medium-6">
                 <figure class="share-image">
                     <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
-                        <img src="{{ empty( $share_item->shareImage ) ? $share_item->shareImage[0]['image_path'] : config('images.placeholder.700x400') }}"
+                        <img src="{{ isset( $share_item->shareImage[0] ) ? $share_item->shareImage[0]['thumbnail_path'] : config('images.placeholder.700x400') }}"
                              alt="{{ $share_item['title'] }}">
                     </a>
                 </figure>
