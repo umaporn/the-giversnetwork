@@ -26,7 +26,7 @@ return [
 
     'meta_title' => 'Registration',
 
-    'form_heading' => 'STAY in TOUCH!',
+    'form_heading' => 'Register Now',
 
     'form_first_name'       => 'Name',
     'form_last_name'        => 'Surname',
@@ -53,7 +53,7 @@ return [
         'GOAL 16' => 'GOAL 16: Peace and Justice Strong Institutions',
     ],
 
-    'register_button' => 'Register Now',
+    'register_button' => 'Register',
 
     'saved_success' => 'Thank you for your interest. ',
     'saved_error'   => 'Register Fail. Please try again.',
