@@ -737,6 +737,9 @@ p, ul, table, strong, th{
             transition: all 500ms ease;
         }
 
+        @include breakpoint(small) {
+            height: rem-calc(250);
+        }
         @include breakpoint(medium) {
             height: rem-calc(200);
 
@@ -1313,6 +1316,10 @@ button {
     height: 90vh;
     position: relative;
     background-position-x: 27%;
+
+    @include breakpoint(small) {
+        height: auto;
+    }
 
     @include breakpoint(medium) {
         background-position-x: 25%;

@@ -341,53 +341,51 @@
                 <h2 class="head-topic fade">@lang('event_registration.previous_event')</h2>
                 <article class="gallery-show">
                     <div class="grid-x">
-                        <div class="cell small-4">
+                        <div class="cell small-6 medium-4 small-order-1 medium-order-1">
                             <a href="../images/registration/previous-event/event-01.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-01.jpg" alt="">
                             </a>
                         </div>
-                        <div class="cell small-4">
+                        <div class="cell small-6 medium-4 small-order-2 medium-order-2">
                             <a href="../images/registration/previous-event/event-02.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-02.jpg" alt="">
                             </a>
                         </div>
-                        <div class="cell small-4">
+                        <div class="cell small-6 medium-4 small-order-3 medium-order-3">
                             <a href="../images/registration/previous-event/event-03.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-03.jpg" alt="">
                             </a>
                         </div>
-                    </div>
-                    <div class="grid-x">
-                        <div class="cell small-12 xlarge-4">
+                    
+                        <div class="cell small-12 medium-4 xlarge-4 small-order-5 medium-order-4">
                             <a href="../images/registration/previous-event/event-04.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-04.jpg" alt="">
                             </a>
                         </div>
-                        <div class="cell small-12 xlarge-8">
+                        <div class="cell small-12 medium-8 xlarge-8 small-order-6 medium-order-5">
                             <a href="../images/registration/previous-event/event-06.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-06.jpg" alt="">
                             </a>
                         </div>
-                    </div>
-                    <div class="grid-x">
-                        <div class="cell small-4">
+                    
+                        <div class="cell small-6 medium-4 small-order-7 medium-order-6">
                             <a href="../images/registration/previous-event/event-09.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-09.jpg" alt="">
                             </a>
                         </div>
-                        <div class="cell small-4">
+                        <div class="cell small-6 medium-4 small-order-8 medium-order-7">
                             <a href="../images/registration/previous-event/event-07.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-07.jpg" alt="">
                             </a>
                         </div>
-                        <div class="cell small-4">
+                        <div class="cell small-6 medium-4 small-order-4 medium-order-8">
                             <a href="../images/registration/previous-event/event-08.jpg" class="gallery-pic"
                                 data-fancybox="previous-event" data-caption="">
                                 <img src="../images/registration/previous-event/event-thumbs-08.jpg" alt="">

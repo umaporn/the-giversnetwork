@@ -23122,6 +23122,7 @@ th {
   overflow: hidden;
   height: 7.5rem;
   display: block;
+  height: 15.625rem;
 }
 
 .gallery-pic::before {
@@ -23818,6 +23819,7 @@ button:focus {
   height: 90vh;
   position: relative;
   background-position-x: 27%;
+  height: auto;
 }
 
 @media print, screen and (min-width: 40em) {
