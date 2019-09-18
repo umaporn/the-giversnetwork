@@ -100,7 +100,7 @@
                     </p>
                 </div>
                 <div class="grid-x align-center">
-                    <div class="concept-detail">{{ __('event_registration.agenda_description') }}</div>
+                    <p class="concept-detail">{{ __('event_registration.agenda_description') }}</p>
                     <table class="unstriped text-left cell small-12 medium-10">
                         {!! __('event_registration.agenda_content') !!}
                     </table>

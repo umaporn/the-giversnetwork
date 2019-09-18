@@ -22835,6 +22835,10 @@ th {
   z-index: 1;
 }
 
+.agenda table.unstriped {
+  margin-top: 1.25rem;
+}
+
 .agenda table.unstriped tbody {
   background-color: transparent;
   border: 0;

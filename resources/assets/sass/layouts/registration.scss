@@ -428,6 +428,7 @@ p, ul, table, strong, th{
 
     table {
         &.unstriped {
+            margin-top: rem-calc(20);
             tbody {
                 background-color: transparent;
                 border: 0;
