@@ -998,6 +998,9 @@ p, ul, table, strong, th{
         }
         li{
             margin: 0 $space-box;
+            @include breakpoint(small only) {
+                margin: $space-box/2 $space-box;
+            }
         }
     }
 }
