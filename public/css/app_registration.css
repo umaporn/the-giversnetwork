@@ -23429,6 +23429,12 @@ th {
   margin: 0 1.25rem;
 }
 
+@media screen and (max-width: 39.99875em) {
+  .footer-logo li {
+    margin: 0.625rem 1.25rem;
+  }
+}
+
 .gototop {
   background-color: #7F8685;
   border-radius: 50%;
