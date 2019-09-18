@@ -42,6 +42,14 @@
                         <img src="../images/registration/hero-banner/banner-th-mobile-5.jpg">
                     </div>
                 </div>
+                <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
+                    <div class="cell small-12 show-for-medium">
+                        <img src="../images/registration/hero-banner/banner-th-6.jpg" />
+                    </div>
+                    <div class="cell small-12 show-for-small-only">
+                        <img src="../images/registration/hero-banner/banner-th-mobile-6.jpg">
+                    </div>
+                </div>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination swiper-pagination-white"></div>
@@ -206,7 +214,7 @@
             </article>
         </div>
     </section>
-    <!--
+    
     <section class="speakers" id="speakers" data-magellan-target="speakers">
         <div class="grid-container">
             <article class="padding-content text-center">
@@ -325,7 +333,7 @@
                 </article>
             </article>
         </div>
-    </section>-->
+    </section>
     <section class="gallery" id="gallery" data-magellan-target="gallery">
         <div class="grid-container">
             <article class="gallery-tabs padding-content text-center">
