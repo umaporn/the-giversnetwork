@@ -4,11 +4,11 @@
             <button type="button" data-toggle><i class="fas fa-bars fa-lg"></i></button>
         </div>
         <div class="head-show" id="nav-mobile">
-            <div class="head-social">
+            <!--<div class="head-social">
                 <div class="social-click">
                     <a href="#" class="share-btn"><i class="fas fa-share-alt fa-sm"></i></a>
                 </div>
-            </div>
+            </div>-->
             <ul class="head-lang">
                 @foreach( config('app.language_codes') as $languageCode )
                     <li>

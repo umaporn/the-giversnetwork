@@ -12,7 +12,7 @@
                     <img src="{{ asset('images/registration/partners/typn.png') }}" class="icon-risc" alt="">
                 </li>
                 <li>
-                    <img src="{{ asset('images/registration/partners/dhanin.jpg') }}" class="icon-risc" alt="">
+                    <img src="{{ asset('images/registration/partners/dhanin.png') }}" class="icon-risc" alt="">
                 </li>
             </ul>
         </div>

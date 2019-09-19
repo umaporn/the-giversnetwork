@@ -197,7 +197,7 @@ const Utility = (function(){
 					if( result.success === true ){
 						if( result.hasOwnProperty( 'message' ) ){
 							ResultBoxSelector.on( 'closed.zf.reveal', function(){
-
+								$('form[name=register]').hide();
 								if( result.redirectedUrl ){
 									location.href = result.redirectedUrl;
 								} else {
