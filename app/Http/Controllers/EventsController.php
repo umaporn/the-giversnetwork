@@ -142,7 +142,6 @@ class EventsController extends Controller
             $data = [
                 'success'       => true,
                 'message'       => __( 'event_registration.saved_success' ),
-                'redirectedUrl' => route( 'events.registration' ),
             ];
         }
 
