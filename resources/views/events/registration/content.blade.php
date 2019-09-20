@@ -66,15 +66,7 @@
             <article class="padding-content">
                 <h2 class="concept-head fade"><img src="{{ asset('images/logo-2x.png') }}" /></h2>
                 <p class="concept-detail fade">
-                    @lang('event_registration.concept_detail')
-                </p>
-                <h2 class="head-topic fade">@lang('event_registration.vision')</h2>
-                <p class="concept-detail fade">
-                    @lang('event_registration.vision_detail')
-                </p>
-                <h2 class="head-topic fade">@lang('event_registration.mission')</h2>
-                <p class="concept-detail fade">
-                    @lang('event_registration.mission_detail')
+                    @lang('event_registration.agenda_description')
                 </p>
             </article>
         </div>
@@ -96,11 +88,9 @@
                     <div class="line"></div>
                     <p>
                         @lang('event_registration.agenda_date')
-
                     </p>
                 </div>
                 <div class="grid-x align-center">
-                    <p class="concept-detail">{{ __('event_registration.agenda_description') }}</p>
                     <table class="unstriped text-left cell small-12 medium-10">
                         {!! __('event_registration.agenda_content') !!}
                     </table>

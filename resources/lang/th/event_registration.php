@@ -26,7 +26,7 @@ return [
 
     'meta_title' => 'TGN Forum Registration',
 
-    'form_heading' => 'ลงทะเบียนเพื่อรับสิทธิพิเศษ',
+    'form_heading' => 'ลงทะเบียนร่วมงาน (จำนวนจำกัด)',
 
     'form_first_name'       => 'ชื่อ',
     'form_last_name'        => 'นามสกุล',
