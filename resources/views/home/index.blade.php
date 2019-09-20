@@ -13,13 +13,6 @@
     @include('home.events')
 
     <section class="about padding-content">
-        <div class="grid-x align-center">
-            <div class="cell small-5 medium-3 large-2">
-                <a href="{{ route('home.index') }}">
-                    <img src="{{ asset( config( 'images.logo' ) ) }}" alt="@lang('header.images.logo')"/>
-                </a>
-            </div>
-        </div>
         <article class="grid-x grid-margin-x">
             <div class="cell small-12 medium-6 xlarge-8 xxxlarge-9">
                 <h2 class="topic-dark">@lang('home.about_us.title')</h2>
