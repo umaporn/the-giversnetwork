@@ -1,6 +1,6 @@
 <div id="content-list-box">
     <section class="grid-x grid-margin-x">
-        @foreach( $data['allList'] as $give_item )
+        @forelse( $data['allList'] as $give_item )
             <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
                 <div class="cards-style">
                     <figure class="cards-image">
@@ -24,7 +24,11 @@
                     </div>
                 </div>
             </article>
-        @endforeach
+            @empty
+            <article class="cell small-12 medium-6 xlarge-4 xxxlarge-3">
+                Coming soon
+            </article>
+        @endforelse
     </section>
     <div class="give-load">
         @if( $data['allList']->nextPageUrl() )
