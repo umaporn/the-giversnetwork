@@ -145,7 +145,7 @@ return [
         ],
     ],
     'agenda_date' => 'SAT 5<sup>th</sup> OCTOBER 2019',
-    'agenda_description' => 'The Givers Network’s 2nd annual conference is dedicated to our conviction that ‘Together we can give better. ’Join us to learn and exchange experiences about sharing with inspirational speakers involved in the many aspects of giving Together we will explore ideas and actions that can help us all give better. Because what each of us achieves is multiplied when we combine our resources, knowledge, and giving.',
+    'agenda_description' => 'The Givers Network’s 2nd annual conference is dedicated to our conviction that ‘Together we can give better’. Join us to learn and exchange experiences about sharing with inspirational speakers involved in the many aspects of giving together we will explore ideas and actions that can help us all give better. Because what each of us achieves is multiplied when we combine our resources, knowledge, and giving.',
     'agenda_content' => '<tr>
                             <th>8:30 – 9:00 <i class="fas fa-clock"></i></th>
                             <td>
