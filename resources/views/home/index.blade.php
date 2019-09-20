@@ -7,7 +7,7 @@
 
     @include('home.banner')
     @include('home.news')
-    @include('home.share')
+    {{--@include('home.share')--}}
     @include('home.give')
     @include('home.learn')
     @include('home.events')
