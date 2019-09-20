@@ -16,8 +16,5 @@
                 </li>
             </ul>
         </div>
-        <div class="cell small-10 medium-12 align-self-bottom">
-            <p class="footer-copyright">© <?php echo date( 'Y' ) ?> MQDC (MAGNOLIA QUALITY DEVELOPMENT CORPORATION LIMITED)</p>
-        </div>
     </div>
 </footer>
