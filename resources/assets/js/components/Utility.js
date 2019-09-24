@@ -195,18 +195,7 @@ const Utility = (function(){
 					let result = jqXHR.responseJSON;
 
 					if( result.success === true ){
-						if( result.hasOwnProperty( 'message' ) ){
-							ResultBoxSelector.on( 'closed.zf.reveal', function(){
-								$('form[name=register]').hide();
-								if( result.redirectedUrl ){
-									location.href = result.redirectedUrl;
-								} else {
-									form.trigger( 'reset' );
-								}
-							} );
-
-							displaySuccessMessageBox( result.message );
-						} else if( result.redirectedUrl ){
+						if( result.redirectedUrl ){
 							location.href = result.redirectedUrl;
 						}
 					} else {
