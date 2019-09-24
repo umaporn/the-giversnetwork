@@ -91,6 +91,26 @@ class EventsController extends Controller
     }
 
     /**
+     * Show events registration thank you page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Thank you view
+     */
+    public function thankyou()
+    {
+        return view( 'events.registration.thankyou' );
+    }
+
+    /**
+     * Show events registration thank you fail page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View Fail view
+     */
+    public function thankyouFail()
+    {
+        return view( 'events.registration.thankyou_fail' );
+    }
+
+    /**
      * Events registration creation.
      *
      * @param EventsRegistrationRequest $request Request Object
@@ -137,11 +157,13 @@ class EventsController extends Controller
             $data = [
                 'success' => false,
                 'error'   => __( 'event_registration.saved_error' ),
+                'redirectedUrl' => route('events.registration.thankyouFail'),
             ];
         } else {
             $data = [
                 'success'       => true,
                 'message'       => __( 'event_registration.saved_success' ),
+                'redirectedUrl' => route('events.registration.thankyou'),
             ];
         }
 

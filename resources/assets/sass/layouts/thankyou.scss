@@ -1,0 +1,86 @@
+.ty {
+    &-box {
+        margin-top: $space-box;
+        margin-bottom: $space-box;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.4);
+    }
+
+    &-head {
+        overflow: hidden;
+    }
+
+    &-message {
+        padding: $space-box/2*3;
+        background: $white;
+        text-align: center;
+
+        @include breakpoint(large) {
+            padding: $space-box*2;
+        }
+    }
+
+    &-text {
+        font-size: rem-calc(16);
+        margin: $space-box 0;
+
+        &:lang(th) {
+            font-size: rem-calc(20);
+            line-height: 1;
+        }
+
+        &-bold {
+            font-size: rem-calc(22);
+            margin: $space-box 0;
+            text-transform: uppercase;
+
+            &:lang(th) {
+                font-size: rem-calc(30);
+                line-height: 1;
+                font-weight: bold;
+            }
+        }
+
+        &-span {
+            color: $color-link;
+            font-size: rem-calc(16);
+            text-transform: uppercase;
+            margin: $space-box 0;
+
+            &:lang(th) {
+                font-size: rem-calc(22);
+                line-height: 1;
+            }
+        }
+    }
+
+    &-click {
+        &-social {
+            border: rem-calc(1) solid rgba($color-text, .2);
+            border-radius: $space-box/2;
+            padding: $space-box 0 $space-box/2;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            p{
+                margin: $space-box/4;
+            }
+        }
+    }
+
+    &-line {
+        display: block;
+        height: rem-calc(20);
+        margin: $space-box 0;
+    }
+    &-mqdc, &-risc{
+        text-align: center;
+        margin-top: $space-box*2;
+    }
+}
+
+.text {
+    &-uppercase {
+        text-transform: uppercase;
+    }
+}
