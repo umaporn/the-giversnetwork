@@ -629,42 +629,42 @@ p, ul, table, strong, th {
             }
 
             &:nth-child(4) {
-                background-color: $color-navy;
+                background-color: #5C9EAE;
 
                 &:after {
-                    border-color: transparent $color-navy;
+                    border-color: transparent #5C9EAE;
                 }
             }
 
             &:nth-child(5) {
-                background-color: $color-green;
+                background-color: #CC423F;
 
                 &:after {
-                    border-color: transparent $color-green;
+                    border-color: transparent #CC423F;
                 }
             }
 
             &:nth-child(7) {
-                background-color: $color-dark-gray;
+                background-color: #8663A3;
 
                 &:after {
-                    border-color: transparent $color-dark-gray;
+                    border-color: transparent #8663A3;
                 }
             }
 
             &:nth-child(10) {
-                background-color: $color-red;
+                background-color: #a1bebc;
 
                 &:after {
-                    border-color: transparent $color-red;
+                    border-color: transparent #a1bebc;
                 }
             }
 
             &:nth-child(12) {
-                background-color: $color-light-blue;
+                background-color: #A9B2B6;
 
                 &:after {
-                    border-color: transparent $color-light-blue;
+                    border-color: transparent #A9B2B6;
                 }
             }
 

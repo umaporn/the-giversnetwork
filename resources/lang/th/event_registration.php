@@ -140,8 +140,8 @@ return [
         ],
         'speaker_6' => [
             'name'              => 'ดร.การดี เลียวไพโรจน์',
-            'short_description' => 'Karndee',
-            'description'       => 'Karndee',
+            'short_description' => 'ผู้ดำเนินรายการ <br> Chief Advisor for Innovation and Future Foresight, FutureTales Lab, MQDC',
+            'description'       => 'Chief Advisor for Innovation and Future Foresight, FutureTales Lab, MQDC',
         ],
     ],
     'agenda_date' => 'เสาร์ที่ 5 ตุลาคม 2562',
