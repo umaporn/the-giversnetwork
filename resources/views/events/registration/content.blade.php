@@ -28,7 +28,7 @@
                 </div>
                 <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
                     <div class="cell small-12 show-for-medium">
-                        <img src="{{ asset('images/registration/hero-banner/banner-th-4.jpg') }}" />
+                        <img src="{{ asset('images/registration/hero-banner/banner-th-4.jpg') }}"/>
                     </div>
                     <div class="cell smalagendal-12 show-for-small-only">
                         <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-4.jpg') }}">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
                     <div class="cell small-12 show-for-medium">
-                        <img src="{{ asset('images/registration/hero-banner/banner-th-5.jpg') }}" />
+                        <img src="{{ asset('images/registration/hero-banner/banner-th-5.jpg') }}"/>
                     </div>
                     <div class="cell small-12 show-for-small-only">
                         <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-5.jpg') }}">
@@ -44,7 +44,7 @@
                 </div>
                 <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
                     <div class="cell small-12 show-for-medium">
-                        <img src="{{ asset('images/registration/hero-banner/banner-th-6.jpg') }}" />
+                        <img src="{{ asset('images/registration/hero-banner/banner-th-6.jpg') }}"/>
                     </div>
                     <div class="cell small-12 show-for-small-only">
                         <img src="{{ asset('images/registration/hero-banner/banner-th-mobile-6.jpg') }}">
@@ -64,7 +64,7 @@
     <section class="concept" id="concept" data-magellan-target="concept">
         <div class="grid-container concept-box">
             <article class="padding-content">
-                <h2 class="concept-head fade"><img src="{{ asset('images/logo-2x.png') }}" /></h2>
+                <h2 class="concept-head fade"><img src="{{ asset('images/logo-2x.png') }}"/></h2>
                 <p class="concept-detail fade">
                     @lang('event_registration.agenda_description')
                 </p>
@@ -77,12 +77,13 @@
             <div class="video-cover">
             </div>
             <div class="play"><i class="fas fa-play"></i></div>
-            <iframe style="display: none;" width="560" height="315" src="https://www.youtube.com/embed/2xs4dAXzw40?autoplay=1&amp;rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe></div>
+            <iframe style="display: none;" width="560" height="315" src="https://www.youtube.com/embed/2xs4dAXzw40?autoplay=1&amp;rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+        </div>
     </article>
     <section class="agenda" id="agenda" data-magellan-target="agenda">
         <div class="grid-container">
             <article class="padding-content text-center">
-                <img src="{{ asset('images/registration/icons/icon-agenda.svg') }}" class="icon-agenda animate-icon" />
+                <img src="{{ asset('images/registration/icons/icon-agenda.svg') }}" class="icon-agenda animate-icon"/>
                 <h2 class="head-topic fade">@lang('event_registration.agenda')</h2>
                 <div class="agenda-date fade">
                     <div class="line"></div>
@@ -98,36 +99,36 @@
             </article>
         </div>
     </section>
-<!--
+
     <section class="speakers" id="speakers" data-magellan-target="speakers">
         <div class="grid-container">
             <article class="padding-content text-center">
-                <img src="../images/registration/icons/icon-speaker.svg" class="icon-speaker animate-icon" />
+                <img src="{{ asset('images/registration/icons/icon-speaker.svg') }}" class="icon-speaker animate-icon"/>
                 <h2 class="head-topic fade">@lang('event_registration.speakers.title')</h2>
                 <article class="speakers-show fade">
                     <div class="grid-x">
                         <div class="grid-x cell small-12 medium-6 large-3">
-                            <img src="../images/registration/speakers/speaker-01.jpg" />
+                            <img src="{{ asset('images/registration/speakers/speaker-01.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
                             <div class="align-self-middle">
                                 <a data-fancybox data-src="#speaker-1" href="javascript:;">
                                     <h3>
                                         @lang('event_registration.speakers.speaker_1.name')
-        </h3>
-        <p>
-@lang('event_registration.speakers.speaker_1.short_description')
-        </p>
-        <p><i class="fas fa-comment"></i></p>
+                                    </h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_1.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
 
-    </a>
-    <div style="display: none; max-width:600px;" id="speaker-1">
-        <p>@lang('event_registration.speakers.speaker_1.description')</p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-1">
+                                    <p>@lang('event_registration.speakers.speaker_1.description')</p>
                                 </div>
                             </div>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3">
-                            <img src="../images/registration/speakers/speaker-02.jpg" />
+                            <img src="{{ asset('images/registration/speakers/speaker-02.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
                             <div class="align-self-middle">
@@ -135,11 +136,11 @@
                                     <h3> @lang('event_registration.speakers.speaker_2.name')</h3>
                                     <p>
                                         @lang('event_registration.speakers.speaker_2.short_description')
-        </p>
-        <p><i class="fas fa-comment"></i></p>
-    </a>
-    <div style="display: none; max-width:600px;" id="speaker-2">
-        <p>@lang('event_registration.speakers.speaker_2.description')</p>
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-2">
+                                    <p>@lang('event_registration.speakers.speaker_2.description')</p>
                                 </div>
                             </div>
                         </div>
@@ -149,16 +150,16 @@
                                     <h3> @lang('event_registration.speakers.speaker_3.name')</h3>
                                     <p>
                                         @lang('event_registration.speakers.speaker_3.short_description')
-        </p>
-        <p><i class="fas fa-comment"></i></p>
-    </a>
-    <div style="display: none; max-width:600px;" id="speaker-3">
-        <p>@lang('event_registration.speakers.speaker_3.description')</p>
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-3">
+                                    <p>@lang('event_registration.speakers.speaker_3.description')</p>
                                 </div>
                             </div>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
-                            <img src="../images/registration/speakers/speaker-03.jpg" />
+                            <img src="{{ asset('images/registration/speakers/speaker-03.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3">
                             <div class="align-self-middle">
@@ -166,38 +167,38 @@
                                     <h3> @lang('event_registration.speakers.speaker_4.name')</h3>
                                     <p>
                                         @lang('event_registration.speakers.speaker_4.short_description')
-        </p>
-        <p><i class="fas fa-comment"></i></p>
-    </a>
-    <div style="display: none; max-width:600px;" id="speaker-4">
-        <p>@lang('event_registration.speakers.speaker_4.description')</p>
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-4">
+                                    <p>@lang('event_registration.speakers.speaker_4.description')</p>
                                 </div>
                             </div>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3">
-                            <img src="../images/registration/speakers/speaker-04.jpg" />
+                            <img src="{{ asset('images/registration/speakers/speaker-04.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3">
-                            <img src="../images/registration/speakers/speaker-05.jpg" />
+                            <img src="{{ asset('images/registration/speakers/speaker-05.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
                             <div class="align-self-middle">
                                 <a data-fancybox data-src="#speaker-5" href="javascript:;">
                                     <h3>
                                         @lang('event_registration.speakers.speaker_5.name')
-        </h3>
-        <p>
-@lang('event_registration.speakers.speaker_5.short_description')
-        </p>
-        <p><i class="fas fa-comment"></i></p>
-    </a>
-    <div style="display: none; max-width:600px;" id="speaker-5">
-        <p>@lang('event_registration.speakers.speaker_5.description')</p>
+                                    </h3>
+                                    <p>
+                                        @lang('event_registration.speakers.speaker_5.short_description')
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-5">
+                                    <p>@lang('event_registration.speakers.speaker_5.description')</p>
                                 </div>
                             </div>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3">
-                            <img src="../images/registration/speakers/speaker-06.jpg" />
+                            <img src="{{ asset('images/registration/speakers/speaker-06.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
                             <div class="align-self-middle">
@@ -205,11 +206,11 @@
                                     <h3> @lang('event_registration.speakers.speaker_6.name')</h3>
                                     <p>
                                         @lang('event_registration.speakers.speaker_6.short_description')
-        </p>
-        <p><i class="fas fa-comment"></i></p>
-    </a>
-    <div style="display: none; max-width:600px;" id="speaker-6">
-        <p>@lang('event_registration.speakers.speaker_6.description')</p>
+                                    </p>
+                                    <p><i class="fas fa-comment"></i></p>
+                                </a>
+                                <div style="display: none; max-width:600px;" id="speaker-6">
+                                    <p>@lang('event_registration.speakers.speaker_6.description')</p>
                                 </div>
                             </div>
                         </div>
@@ -217,11 +218,11 @@
                 </article>
             </article>
         </div>
-    </section>-->
+    </section>
     <section class="gallery" id="gallery" data-magellan-target="gallery">
         <div class="grid-container">
             <article class="gallery-tabs padding-content text-center">
-                <img src="{{ asset('images/registration/icons/icon-gallery.svg') }}" class="icon-gallery animate-icon" />
+                <img src="{{ asset('images/registration/icons/icon-gallery.svg') }}" class="icon-gallery animate-icon"/>
                 <h2 class="head-topic fade">@lang('event_registration.previous_event')</h2>
                 <article class="gallery-show">
                     <div class="grid-x">
@@ -281,7 +282,7 @@
     <section class="map" id="map" data-magellan-target="map">
         <div class="grid-container">
             <article class="padding-content text-center">
-                <img src="{{ asset('images/registration/icons/icon-map.svg') }}" class="icon-map animate-icon" />
+                <img src="{{ asset('images/registration/icons/icon-map.svg') }}" class="icon-map animate-icon"/>
                 <h2 class="head-topic fade">@lang('event_registration.map')</h2>
                 <ul class="tabs tabs-info fade" data-tabs id="tabs-map">
                     <li class="tabs-title is-active"><a href="#map-google">@lang('event_registration.google_map')</a>

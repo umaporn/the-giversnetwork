@@ -140,8 +140,8 @@ return [
         ],
         'speaker_6' => [
             'name'              => 'Karndee Leopairote Ph.D.',
-            'short_description' => 'Karndee',
-            'description'       => 'Karndee',
+            'short_description' => 'ผู้ดำเนินรายการ <br>Chief Advisor for Innovation and Future Foresight, FutureTales Lab, MQDC',
+            'description'       => 'Chief Advisor for Innovation and Future Foresight, FutureTales Lab, MQDC',
         ],
     ],
     'agenda_date' => 'SAT 5<sup>th</sup> OCTOBER 2019',

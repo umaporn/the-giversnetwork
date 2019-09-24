@@ -56,6 +56,9 @@ function globalRoutes()
 
     Route::group( [ 'prefix' => 'event', ], function(){
         Route::get( 'registration', 'EventsController@registration' )->name( 'events.registration' );
+        Route::get( 'registration/thankyou', 'EventsController@thankyou' )->name( 'events.registration.thankyou' );
+        Route::get( 'registration/thankyou-fail', 'EventsController@thankyouFail' )->name( 'events.registration.thankyouFail' );
+        Route::get( 'registration', 'EventsController@registration' )->name( 'events.registration' );
         Route::post( 'registration', 'EventsController@createEventsRegistration' )->name( 'events.registration.store' );
     } );
 
