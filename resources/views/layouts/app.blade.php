@@ -17,7 +17,7 @@
 
     <title>@yield('page-title') - {{ config( 'app.name' ) }}</title>
 
-    @if( url()->current() === route('events.registration') )
+    @if( url()->current() === route('events.registration') || url()->current() === route('events.registration.thankyou') || url()->current() === route('events.registration.thankyouFail') )
         <link rel="stylesheet" href="{{ mix('/css/app_registration.css') }}">
     @else
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
@@ -39,7 +39,7 @@
 
 @include('google_tag_manager.noscript')
 
-@if( url()->current() === route('events.registration') )
+@if( url()->current() === route('events.registration') || url()->current() === route('events.registration.thankyou') || url()->current() === route('events.registration.thankyouFail') )
     @yield('header_events_registration')
     @yield('content_events_registration')
     @yield('footer_events_registration')
