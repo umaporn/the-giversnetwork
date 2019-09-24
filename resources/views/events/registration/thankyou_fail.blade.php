@@ -3,6 +3,10 @@
 @section('page-title', __('event_registration.page_title.index'))
 @section('page-description', __('event_registration.page_description.index'))
 
+@section('facebook_pixel')
+    @include('events.registration.facebook_pixel')
+@endsection
+
 <div class="grid-container">
     <div class="grid-x">
         <div class="cell small-12 large-8 large-offset-2 ty-box">

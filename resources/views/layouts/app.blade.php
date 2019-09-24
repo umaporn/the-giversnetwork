@@ -19,6 +19,7 @@
 
     @if( url()->current() === route('events.registration') || url()->current() === route('events.registration.thankyou') || url()->current() === route('events.registration.thankyouFail') )
         <link rel="stylesheet" href="{{ mix('/css/app_registration.css') }}">
+        @yield('facebook_pixel')
     @else
         <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     @endif
