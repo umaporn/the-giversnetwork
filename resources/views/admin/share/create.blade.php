@@ -85,6 +85,41 @@
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
                                             <div class="cell small-12 large-2">
+                                                <label for="interested" class="form-label">SDG</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <a class="btn-blue" data-open="addInterested">
+                                                    <i class="fas fa-plus"></i> / <i class="fas fa-minus"></i> SDG
+                                                </a>
+                                                <ul class="show-interested" id="interest-list">
+                                                </ul>
+                                                <p id="fk_interest_in_id-help-text" class="alert help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="reveal modal-style" id="addInterested" data-reveal>
+                                            <h2 class="modal-topic">SDG</h2>
+                                            <div class="modal-form">
+                                                <ul class="modal-content">
+                                                    @foreach( $interestList as $interestItem )
+                                                        <li>
+                                                            <div class="form-checkbox">
+                                                                <input id="{{ $interestItem->id }}"
+                                                                       data-value="{{ $interestItem->id }}"
+                                                                       data-title="{{ $interestItem->title }}"
+                                                                       type="checkbox" class="checkbox-inter">
+                                                                <label for="{{ $interestItem->id }}">{{ $interestItem->title }}</label>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                                <button class="btn-green btn-long" data-close aria-label="Close reveal">Save</button>
+                                            </div>
+                                            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-2">
                                                 <label for="des" class="form-label">@lang('share_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">

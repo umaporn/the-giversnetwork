@@ -5,6 +5,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\InterestIn;
 use App\Models\Share;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -19,12 +20,16 @@ class ShareController extends Controller
     /** @var Share Share model */
     protected $shareModel;
 
+    /** @var InterestIn InterestIn model */
+    protected $interestInModel;
+
     /**
      * ShareController constructor.
      */
-    public function __construct( Share $share )
+    public function __construct( Share $share, InterestIn $interestIn )
     {
-        $this->shareModel = $share;
+        $this->shareModel      = $share;
+        $this->interestInModel = $interestIn;
     }
 
     /**
@@ -48,7 +53,9 @@ class ShareController extends Controller
      */
     public function create()
     {
-        return view( 'admin.share.create' );
+        $interestList = $this->interestInModel->getInterestInList();
+
+        return view( 'admin.share.create', compact( 'interestList' ) );
     }
 
     /**
