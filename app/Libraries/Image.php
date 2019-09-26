@@ -20,7 +20,7 @@ class Image
     const THUMBNAILS      = [
                                 'filename' =>  'thumbnail',
                                 'folder'   =>  'thumbnails',
-                                'width'    =>  162,
+                                'width'    =>  300,
                             ];
 
     /** Image medium size information */
