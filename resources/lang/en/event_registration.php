@@ -111,7 +111,7 @@ return [
     'image_map'  => 'IMAGE MAP',
     'follow'     => 'FOLLOW US',
 
-    'speakers' => [
+    'speakers'            => [
         'title'     => 'SPEAKERS',
         'speaker_1' => [
             'name'              => 'Mr.Bill Somerville',
@@ -144,9 +144,9 @@ return [
             'description'       => 'Chief Advisor for Innovation and Future Foresight, FutureTales Lab, MQDC',
         ],
     ],
-    'agenda_date' => 'SAT 5<sup>th</sup> OCTOBER 2019',
-    'agenda_description' => 'The Givers Network’s 2nd annual conference is dedicated to our conviction that ‘Together we can give better’. Join us to learn and exchange experiences about sharing with inspirational speakers involved in the many aspects of giving together we will explore ideas and actions that can help us all give better. Because what each of us achieves is multiplied when we combine our resources, knowledge, and giving.',
-    'agenda_content' => '<tr>
+    'agenda_date'         => 'SAT 5<sup>th</sup> OCTOBER 2019',
+    'agenda_description'  => 'The Givers Network’s 2nd annual conference is dedicated to our conviction that ‘Together we can give better’. Join us to learn and exchange experiences about sharing with inspirational speakers involved in the many aspects of giving together we will explore ideas and actions that can help us all give better. Because what each of us achieves is multiplied when we combine our resources, knowledge, and giving.',
+    'agenda_content'      => '<tr>
                             <th>8:30 – 9:00 <i class="fas fa-clock"></i></th>
                             <td>
                                 <strong>Registration</strong>
@@ -189,5 +189,9 @@ return [
                             </td>
                             <td></td>
                         </tr>',
+    'form_closed_heading' => 'Sorry, The Givers Network Bangkok, 2019 event is fully booked now.',
+    'closed'              => 'You can still view the event on Facebook Live or Youtube Live channels on 5th October 2019, 9.00 – 11.30 am 
+    <br> Facebook live : https://www.facebook.com/thegiversnetwork/ Or <br> Youtube live at https://www.youtube.com/thegiversnetwork
+    <br>To stay up to date on future events, like our Facebook page and become a member at https://giversnetwork.org/signup',
 
 ];
