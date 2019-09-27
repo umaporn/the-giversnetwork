@@ -111,7 +111,7 @@ return [
     'image_map'  => 'แผนที่รูปภาพ',
     'follow'     => 'ติดตามเรา',
 
-    'speakers'       => [
+    'speakers'            => [
         'title'     => 'SPEAKERS',
         'speaker_1' => [
             'name'              => 'มร.บิลล์ โซเมอร์วิลล์',
@@ -144,9 +144,9 @@ return [
             'description'       => 'Chief Advisor for Innovation and Future Foresight, FutureTales Lab, MQDC',
         ],
     ],
-    'agenda_date' => 'เสาร์ที่ 5 ตุลาคม 2562',
-    'agenda_description' => 'งานสัมมนานี้เป็นงานสัมมนาประจำปีครั้งที่ 2 ของ The Givers Network เพื่อตอกย้ำแนวคิด “ให้ด้วยกันยิ่งให้ได้ไกล Together we can give better”ร่วมเรียนรู้และแลกเปลี่ยนประสบการณ์ในการสร้างผลลัพท์ทางสังคมกับวิทยากรที่เปี่ยมด้วยแรงบันดาลใจแห่งการให้ในหลากหลายมิติ เพื่อจุดประกายความคิดและร่วมแบ่งปันทรัพยากร ประสบการณ์ สู่การให้ร่วมกันที่เกิดผลมากยิ่งขึ้น',
-    'agenda_content' => '<tr>
+    'agenda_date'         => 'เสาร์ที่ 5 ตุลาคม 2562',
+    'agenda_description'  => 'งานสัมมนานี้เป็นงานสัมมนาประจำปีครั้งที่ 2 ของ The Givers Network เพื่อตอกย้ำแนวคิด “ให้ด้วยกันยิ่งให้ได้ไกล Together we can give better”ร่วมเรียนรู้และแลกเปลี่ยนประสบการณ์ในการสร้างผลลัพท์ทางสังคมกับวิทยากรที่เปี่ยมด้วยแรงบันดาลใจแห่งการให้ในหลากหลายมิติ เพื่อจุดประกายความคิดและร่วมแบ่งปันทรัพยากร ประสบการณ์ สู่การให้ร่วมกันที่เกิดผลมากยิ่งขึ้น',
+    'agenda_content'      => '<tr>
                             <th>8:30 – 9:00 <i class="fas fa-clock"></i></th>
                             <td>
                                 <strong>ลงทะเบียน</strong>
@@ -190,4 +190,9 @@ return [
                             </td>
                             <td></td>
                         </tr>',
+    'form_closed_heading' => 'ขออภัยค่ะ ขณะนี้มีผู้ลงทะเบียนร่วมงานเต็มแล้ว',
+    'closed'              => 'ท่านสามารถติดตามรับชมงานสัมมนา The Givers Network Bangkok, 2019 <br>  ในวันที่ 5 ตุลาคม 2562 ตั้งแต่เวลา 9.00 – 11.30 น.<br>  ได้ทาง  Facebook live ที่ Fanpage The Givers Network 
+https://www.facebook.com/thegiversnetwork/ และ <br> Youtube live ที่ Youtube Channel The Givers Network https://www.youtube.com/thegiversnetwork
+<br> คุณสามารถติดตามความเคลื่อนไหวต่างๆ ของ The Givers Network ได้ทางแฟนเพจ และร่วมเป็นเครือข่ายผู้ให้กับเราได้ที่ https://giversnetwork.org/signup',
+
 ];
