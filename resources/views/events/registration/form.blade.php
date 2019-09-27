@@ -1,4 +1,5 @@
-<form class="recaptcha-form form-reg" name="register" method="post" action="{{ route('events.registration.store') }}">
+
+{{--<form class="recaptcha-form form-reg" name="register" method="post" action="{{ route('events.registration.store') }}">
 
     {{ csrf_field() }}
 
@@ -51,4 +52,11 @@
 
     <button type="submit" class="button-reg" id="register-btn">@lang('event_registration.register_button')</button>
 
+</form>--}}
+<form class="recaptcha-form form-reg" name="register">
+    <a class="reg-min"><i class="fas fa-angle-down"></i></a>
+    <h4 class="form-head">@lang('event_registration.form_closed_heading')</h4>
+    <div class="form-group">
+    @lang('event_registration.closed')
+    </div>
 </form>

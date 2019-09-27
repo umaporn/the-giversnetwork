@@ -107,7 +107,7 @@
                 <h2 class="head-topic fade">@lang('event_registration.speakers.title')</h2>
                 <article class="speakers-show fade">
                     <div class="grid-x">
-                        <div class="grid-x cell small-12 medium-6 large-3">
+                        <div class="cell small-12 medium-6 large-3">
                             <img src="{{ asset('images/registration/speakers/speaker-01.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="grid-x cell small-12 medium-6 large-3">
+                        <div class="cell small-12 medium-6 large-3">
                             <img src="{{ asset('images/registration/speakers/speaker-02.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
@@ -158,7 +158,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="grid-x cell small-12 medium-6 large-3 align-center">
+                        <div class="cell small-12 medium-6 large-3 align-center">
                             <img src="{{ asset('images/registration/speakers/speaker-03.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3">
@@ -175,10 +175,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="grid-x cell small-12 medium-6 large-3">
+                        <div class="cell small-12 medium-6 large-3">
                             <img src="{{ asset('images/registration/speakers/speaker-04.jpg') }}"/>
                         </div>
-                        <div class="grid-x cell small-12 medium-6 large-3">
+                        <div class="cell small-12 medium-6 large-3">
                             <img src="{{ asset('images/registration/speakers/speaker-05.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
@@ -197,7 +197,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="grid-x cell small-12 medium-6 large-3">
+                        <div class="cell small-12 medium-6 large-3">
                             <img src="{{ asset('images/registration/speakers/speaker-06.jpg') }}"/>
                         </div>
                         <div class="grid-x cell small-12 medium-6 large-3 align-center">
