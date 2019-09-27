@@ -500,7 +500,7 @@ class Share extends Model
             foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
                 $this->shareInterestIn()->create( [
                                                       'fk_interest_in_id' => $interestID,
-                                                      'id'                => $successForShare->id,
+                                                      'fk_share_id'       => $successForShare->id,
                                                   ] );
             }
         }
