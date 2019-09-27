@@ -17,6 +17,16 @@ class InterestIn extends Model
     protected $table = 'interest_in';
 
     /**
+     * Get interest in model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany Interest in model relationship
+     */
+    public function ShareInterestIn()
+    {
+        return $this->hasMany( 'App\Models\ShareInterestIn', 'fk_interest_in_id' );
+    }
+
+    /**
      * Get interest in list.
      */
     public function getInterestInList()

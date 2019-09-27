@@ -1,6 +1,6 @@
 <div id="content-list-box">
     @foreach( $data['share'] as $share_item )
-        <article class="grid-x share-space">
+        <article class="cell grid-x small-12 share-space">
             <div class="cell small-12 medium-6">
                 <figure class="share-image">
                     <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
@@ -9,11 +9,11 @@
                     </a>
                 </figure>
             </div>
-            <div class="cell small-9 medium-6">
+            <div class="cell grid-x small-9 medium-6">
                 <a href="{{ route('share.detail', ['share' => $share_item['id']]) }}">
                     <h4 class="cell">{{ $share_item['title'] }}</h4>
                 </a>
-                {{ $share_item['description'] }}
+                <div>{{ $share_item['description'] }}</div>
                 <div class="cell grid-x share-grid">
                     <div class="profile">
                         <a href="{{ route('user.getUserProfile', ['id' => $share_item->users['id']]) }}" target="_blank">

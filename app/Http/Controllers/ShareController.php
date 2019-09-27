@@ -78,10 +78,10 @@ class ShareController extends Controller
      */
     public function index( Request $request )
     {
-        $data['challenge'] = $this->challengeModel->getChallengeList( $request );
-        $data['news']      = $this->newsModel->getNewsForSidebar( $request );
-        $data['share']     = $this->shareModel->getShareAllList( $request );
-        $data['events']    = $this->eventsModel->getEventsForSidebar( $request );
+        $data['challenge']           = $this->challengeModel->getChallengeList( $request );
+        $data['news']                = $this->newsModel->getNewsForSidebar( $request );
+        $data['share']               = $this->shareModel->getShareAllList( $request );
+        $data['events']              = $this->eventsModel->getEventsForSidebar( $request );
 
         if( $request->ajax() ){
             return response()->json( [
