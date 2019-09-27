@@ -119,6 +119,7 @@ class Share extends Model
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
+            $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
             foreach( $list->shareImage as $share_image ){
                 $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image, 'original' ) );
                 $share_image->setAttribute( 'thumbnail_path', $this->getShareImages( $share_image, 'thumbnail' ) );

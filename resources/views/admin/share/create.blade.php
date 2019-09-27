@@ -48,7 +48,7 @@
                                     >
                                         {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="topic" class="form-label">@lang('share_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -57,7 +57,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="topic" class="form-label">@lang('share_admin.title_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -66,7 +66,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="des" class="form-label">@lang('share_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -75,7 +75,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="des" class="form-label">@lang('share_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -84,7 +84,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="interested" class="form-label">SDG</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -119,7 +119,7 @@
                                             </button>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="des" class="form-label">@lang('share_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -128,7 +128,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="des" class="form-label">@lang('share_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -137,7 +137,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="imageProfile" class="form-label">@lang('share_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9 flex">
@@ -155,7 +155,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2 ">
+                                            <div class="cell small-12 large-3 ">
                                                 <label for="imageProfile" class="form-label">@lang('share_admin.file')</label>
                                             </div>
                                             <div class="cell small-12 large-9 flex">
@@ -171,7 +171,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <p class="form-label form-p">@lang('share_admin.publish')</p>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
