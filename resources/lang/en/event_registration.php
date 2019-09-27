@@ -191,7 +191,7 @@ return [
                         </tr>',
     'form_closed_heading' => 'Sorry, The Givers Network Bangkok, 2019 event is fully booked now.',
     'closed'              => 'You can still view the event on Facebook Live or Youtube Live channels on 5th October 2019, 9.00 – 11.30 am 
-    <br> Facebook live : https://www.facebook.com/thegiversnetwork/ Or <br> Youtube live at https://www.youtube.com/thegiversnetwork
+    <br> Facebook live: https://www.facebook.com/thegiversnetwork/ Or <br> Youtube live at https://www.youtube.com/thegiversnetwork
     <br>To stay up to date on future events, like our Facebook page and become a member at https://giversnetwork.org/signup',
 
 ];
