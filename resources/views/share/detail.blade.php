@@ -13,7 +13,7 @@
 @section('og-url', url()->current())
 @section('og-description', $data['title'])
 @section('og-image', $data['image_path'])
-<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US;</script>
 <script type="IN/Share" data-url="{{ url()->current() }}" data-counter="top"></script>
 @section('content')
     <section class="share detail">
@@ -104,6 +104,21 @@
                         @endif
                         <div class="cell small-12">
                             <p>{!! $data['content'] !!}</p>
+                        </div>
+
+                        <div class="cell small-12">
+                            <div class="grid-x cell auto">
+                                @foreach( $shareInterestInList as $shareInterestInItem )
+                                    <div class="small-1 padding-right-1">
+                                        <figure class="cards-image">
+                                            <img src="{{ Storage::url($shareInterestInItem->interestIn['image_path']) }}"
+                                                 alt=" {{$shareInterestInItem['interest_title']}}"
+                                                 class="img-cover"
+                                            >
+                                        </figure>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
 
                         <div class="cell small-12">
