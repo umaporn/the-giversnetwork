@@ -72,7 +72,7 @@
                             <label for="amount" class="form-label">@lang('give.create_item_form.amount')</label>
                         </div>
                         <div class="cell small-12 large-9">
-                            <input type="number" id="amount" name="amount" class="form-fill" value="">
+                            <input type="text" id="amount" name="amount" class="form-fill" value="">
                             <p id="amount-help-text" class="alert help-text help-text hide"></p>
                         </div>
                     </div>

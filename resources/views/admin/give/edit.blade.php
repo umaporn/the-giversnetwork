@@ -124,7 +124,7 @@
                                                 <label for="amount" class="form-label">@lang('give_admin.amount')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <input type="number" id="amount" class="form-fill" value="{{ $give->amount }}" name="amount">
+                                                <input type="text" id="amount" class="form-fill" value="{{ $give->amount }}" name="amount">
                                                 <p id="amount-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
