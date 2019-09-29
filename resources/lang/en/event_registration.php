@@ -194,4 +194,5 @@ return [
     <br> Facebook live: https://www.facebook.com/thegiversnetwork/ Or <br> Youtube live at https://www.youtube.com/thegiversnetwork
     <br>To stay up to date on future events, like our Facebook page and become a member at https://giversnetwork.org/signup',
 
+    'youtube' => '6mkFMiYcUls',
 ];
