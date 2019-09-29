@@ -13,7 +13,7 @@ return [
         'all'         => 'Give All',
         'add'         => 'Give Add',
         'edit'        => 'Give Edit',
-        'receive_all' => 'Receive All',
+        'receive_all' => 'Ask All',
     ],
 
     'page_title' => [
@@ -21,7 +21,7 @@ return [
         'all'         => 'Give All',
         'add'         => 'Give Add',
         'edit'        => 'Give Edit',
-        'receive_all' => 'Receive All',
+        'receive_all' => 'Ask All',
     ],
 
     'page_description' => [
@@ -29,10 +29,10 @@ return [
         'all'         => 'Give All page',
         'add'         => 'Give Add page',
         'edit'        => 'Give Edit page',
-        'receive_all' => 'Receive All',
+        'receive_all' => 'Ask All',
     ],
 
-    'add_give_or_receive' => 'Add Give or Receive',
+    'add_give_or_receive' => 'Add Give or Ask',
     'choose'              => 'Choose',
     'no'                  => 'No',
     'title'               => 'Title',
@@ -51,8 +51,8 @@ return [
     'add_give'            => 'Add give',
     'give_id'             => 'give ID',
     'category'            => 'Category',
-    'give_item'           => 'Give Item',
-    'receive_item'        => 'Receive / Needed Item',
+    'give_item'           => 'I have an item, service, or a volunteer to offer',
+    'receive_item'        => 'I need an item, service, or volunteer',
     'amount'              => 'Amount',
     'address'             => 'Address',
     'use_address'         => 'Use address in my profile',
