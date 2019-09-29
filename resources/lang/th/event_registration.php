@@ -195,4 +195,6 @@ return [
 https://www.facebook.com/thegiversnetwork/ และ <br> Youtube live ที่ Youtube Channel The Givers Network https://www.youtube.com/thegiversnetwork
 <br> คุณสามารถติดตามความเคลื่อนไหวต่างๆ ของ The Givers Network ได้ทางแฟนเพจ และร่วมเป็นเครือข่ายผู้ให้กับเราได้ที่ https://giversnetwork.org/signup',
 
+    'youtube' => 'k1L4BWAKRY4',
+
 ];
