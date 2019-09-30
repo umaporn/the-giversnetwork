@@ -37,6 +37,16 @@ class InterestIn extends Model
     }
 
     /**
+     * Get interest in model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\hasMany Interest in model relationship
+     */
+    public function LearnInterestIn()
+    {
+        return $this->hasMany( 'App\Models\LearnInterestIn', 'fk_interest_in_id' );
+    }
+
+    /**
      * Get interest in list.
      */
     public function getInterestInList()

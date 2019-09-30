@@ -19,8 +19,8 @@ class AddFieldsForGiveTable extends Migration
         Schema::table( self::Table, function( Blueprint $table ){
             $table->text( 'purpose' )->nullable();
             $table->text( 'beneficiary' )->nullable();
-            $table->string( 'owner',255 )->nullable();
-            $table->string('date_required', 255)->nullable();
+            $table->string( 'owner', 255 )->nullable();
+            $table->string( 'date_required', 255 )->nullable();
         } );
     }
 
@@ -31,6 +31,12 @@ class AddFieldsForGiveTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table( self::Table, function( Blueprint $table ){
+            $table->dropColumn( 'purpose' );
+            $table->dropColumn( 'beneficiary' );
+            $table->dropColumn( 'owner' );
+            $table->dropColumn( 'date_required' );
+
+        } );
     }
 }

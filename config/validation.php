@@ -38,7 +38,7 @@ return [
     ],
     'learn_admin'         => [
         'title_english'       => 'required|string|min:3|max:255',
-        'description_english' => 'required|string|min:3|max:255',
+        'description_english' => 'required|string',
         'content_english'     => 'required|string|min:3',
     ],
     'give_admin'          => [

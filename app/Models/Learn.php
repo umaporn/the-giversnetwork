@@ -6,18 +6,23 @@
 namespace App\Models;
 
 use App\Http\Requests\LearnRequest;
+use App\Libraries\FileUpload;
 use App\Libraries\Image;
 use App\Libraries\Search;
 use App\Libraries\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 class Learn extends Model
 {
     /** @var array A list of fields which are able to update in this model */
-    protected $fillable = [ 'title_thai', 'title_english', 'description_thai', 'description_english', 'content_thai', 'content_english', 'file_path', 'view',
-                            'status', 'highlight_status', 'type', 'public_date' ];
+    protected $fillable = [ 'title_thai', 'title_english', 'description_thai', 'description_english', 'content_thai',
+                            'content_english', 'file_path', 'view', 'status', 'highlight_status',
+                            'type', 'public_date', 'purpose_english', 'purpose_thai', 'key_learning_english', 'key_learning_thai',
+                            'owner_english', 'owner_thai', 'document_path',
+    ];
 
     /** @var string Table name */
     protected $table = 'learn';
@@ -30,6 +35,16 @@ class Learn extends Model
     public function learnCategory()
     {
         return $this->belongsTo( 'App\Models\LearnCategory', 'fk_category_id' );
+    }
+
+    /**
+     * Get share interest in model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Learn interest in model relationship
+     */
+    public function learnInterestIn()
+    {
+        return $this->belongsTo( 'App\Models\LearnInterestIn', 'fk_learn_id' );
     }
 
     /**
@@ -152,15 +167,30 @@ class Learn extends Model
      */
     public function updateLearnInformation( LearnRequest $request, Learn $learn )
     {
+        $document_path = '';
+
+        if( $request->file( 'file_path' ) ){
+
+            $fileInformation = $this->saveFile( $request );
+            $document_path   = $fileInformation['fileInformation']['file_path'];
+        }
+
         $data = [
-            'title_english'       => $request->input( 'title_english' ),
-            'title_thai'          => $request->input( 'title_thai' ),
-            'description_english' => $request->input( 'description_english' ),
-            'description_thai'    => $request->input( 'description_thai' ),
-            'content_english'     => $request->input( 'content_english' ),
-            'content_thai'        => $request->input( 'content_thai' ),
-            'status'              => $request->input( 'status' ) ? 'public' : 'draft',
-            'highlight_status'    => $request->input( 'highlight_status' ) ? 'pinned' : 'unpinned',
+            'title_english'        => $request->input( 'title_english' ),
+            'title_thai'           => $request->input( 'title_thai' ),
+            'description_english'  => $request->input( 'description_english' ),
+            'description_thai'     => $request->input( 'description_thai' ),
+            'content_english'      => $request->input( 'content_english' ),
+            'content_thai'         => $request->input( 'content_thai' ),
+            'purpose_thai'         => $request->input( 'purpose_thai' ),
+            'purpose_english'      => $request->input( 'purpose_english' ),
+            'key_learning_english' => $request->input( 'key_learning_english' ),
+            'key_learning_thai'    => $request->input( 'key_learning_thai' ),
+            'owner_english'        => $request->input( 'owner_english' ),
+            'owner_thai'           => $request->input( 'owner_thai' ),
+            'status'               => $request->input( 'status' ) ? 'public' : 'draft',
+            'highlight_status'     => $request->input( 'highlight_status' ) ? 'pinned' : 'unpinned',
+            'document_path'        => $document_path,
         ];
 
         if( $request->file( 'image_path' ) ){
@@ -174,6 +204,20 @@ class Learn extends Model
         }
 
         $result = $this->where( 'id', $learn->id )->update( $data );
+
+        if( $request->input( 'fk_interest_in_id' ) ){
+            DB::table( 'learn_interest_in' )->where( 'fk_learn_id', $learn->id )->delete();
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->learnInterestIn()->create( [
+                                                      'fk_interest_in_id' => $interestID,
+                                                      'fk_learn_id'       => $learn->id,
+                                                  ] );
+            }
+
+        } else {
+            DB::table( 'learn_interest_in' )->where( 'fk_learn_id', $learn->id )->delete();
+        }
 
         if( $result ){
             $response = [ 'success' => true, 'message' => __( 'learn_admin.saved_learn_success' ), ];
@@ -275,31 +319,80 @@ class Learn extends Model
     public function createLearn( LearnRequest $request )
     {
         $file_path        = '';
+        $document_path    = '';
         $imageInformation = $this->saveImage( $request );
 
         if( isset( $imageInformation['imageInformation']['original'] ) ){
             $file_path = $imageInformation['imageInformation']['original'];
         }
 
+        if( $request->file( 'file_path' ) ){
+
+            $fileInformation = $this->saveFile( $request );
+            $document_path   = $fileInformation['fileInformation']['file_path'];
+        }
+
         $newLearn = [
-            'title_english'       => $request->input( 'title_english' ),
-            'title_thai'          => $request->input( 'title_english' ),
-            'description_english' => $request->input( 'description_english' ),
-            'description_thai'    => $request->input( 'description_english' ),
-            'content_english'     => $request->input( 'content_english' ),
-            'content_thai'        => $request->input( 'content_english' ),
-            'file_path'           => $file_path,
-            'fk_user_id'          => $request->input( 'fk_user_id' ),
-            'status'              => 'public',
-            'view'                => '0',
-            'type'                => '',
-            'public_date'         => date( 'Y-m-d' ),
+            'title_english'        => $request->input( 'title_english' ),
+            'title_thai'           => $request->input( 'title_english' ),
+            'description_english'  => $request->input( 'description_english' ),
+            'description_thai'     => $request->input( 'description_english' ),
+            'content_english'      => $request->input( 'content_english' ),
+            'content_thai'         => $request->input( 'content_english' ),
+            'purpose_thai'         => $request->input( 'purpose_thai' ),
+            'purpose_english'      => $request->input( 'purpose_english' ),
+            'key_learning_english' => $request->input( 'key_learning_english' ),
+            'key_learning_thai'    => $request->input( 'key_learning_thai' ),
+            'owner_english'        => $request->input( 'owner_english' ),
+            'owner_thai'           => $request->input( 'owner_thai' ),
+            'file_path'            => $file_path,
+            'fk_user_id'           => $request->input( 'fk_user_id' ),
+            'status'               => 'public',
+            'view'                 => '0',
+            'type'                 => '',
+            'document_path'        => $document_path,
+            'public_date'          => date( 'Y-m-d' ),
         ];
 
         $successForLearn = $this->create( $newLearn );
 
+        if( $request->input( 'fk_interest_in_id' ) ){
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->learnInterestIn()->create( [
+                                                      'fk_interest_in_id' => $interestID,
+                                                      'fk_learn_id'       => $successForLearn->id,
+                                                  ] );
+            }
+        }
+
         return [ 'successForLearn' => $successForLearn ];
 
+    }
+
+    /**
+     * Handle image upload from file browser.
+     *
+     * @param Request $request Request object
+     *
+     * @return array Image saved result
+     */
+    private function saveFile( Request $request )
+    {
+        $imageInformation = [];
+        $file             = $request->file( 'file_path' );
+        $success          = true;
+        if( $file ){
+
+            $imageInformation = FileUpload::upload( $file[0], 'share' );
+            $success          = ( count( $imageInformation ) ) ? true : false;
+
+            if( $this->id ){
+                $this->deleteImage();
+            }
+
+        }
+
+        return [ 'success' => $success, 'fileInformation' => $imageInformation ];
     }
 
 }

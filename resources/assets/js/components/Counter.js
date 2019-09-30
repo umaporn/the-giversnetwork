@@ -58,7 +58,7 @@ const Counter = (function(){
 		}
 
 		if( CounterDescription.length ){
-			let text_content_max = 5000;
+			let text_content_max = 30000;
 			$( '#count_content_english' ).html( text_content_max + ' remaining' );
 
 			$( CounterDescription ).keyup( function(){
@@ -82,7 +82,7 @@ const Counter = (function(){
 		}
 
 		if( CounterDescriptionText.length ){
-			let text_description_text_max = 2000;
+			let text_description_text_max = 3000;
 			$( '#count_description_text' ).html( text_description_text_max + ' remaining' );
 
 			$( CounterDescriptionText ).keyup( function(){

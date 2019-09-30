@@ -49,7 +49,7 @@
                                         @method('PUT')
                                         {{ csrf_field() }}
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="learn_id" class="form-label">@lang('learn_admin.learn_id')</label>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
@@ -58,7 +58,7 @@
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="title_thai" class="form-label">@lang('learn_admin.title_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -73,7 +73,7 @@
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="topic" class="form-label">@lang('learn_admin.title_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -88,7 +88,7 @@
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="description_thai" class="form-label">@lang('learn_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -100,7 +100,7 @@
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="description_english" class="form-label">@lang('learn_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -108,9 +108,113 @@
                                                 <p id="description_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
+                                                <label for="purpose_thai" class="form-label">@lang('learn_admin.purpose_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="purpose_thai" class="form-fill" name="purpose_thai" rows="3">{{ $learn->purpose_thai }}</textarea>
+                                                <p id="purpose_thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
+                                                <label for="purpose_english" class="form-label">@lang('learn_admin.purpose_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="purpose_english" class="form-fill" name="purpose_english" rows="3">{{ $learn->purpose_english }}</textarea>
+                                                <p id="purpose_english-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
+                                                <label for="key_learning_thai" class="form-label">@lang('learn_admin.key_learning_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="key_learning_thai" class="form-fill" name="key_learning_thai" rows="3">{{ $learn->key_learning_thai }}</textarea>
+                                                <p id="key_learning_thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
+                                                <label for="key_learning_english" class="form-label">@lang('learn_admin.key_learning_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <textarea id="key_learning_english" class="form-fill" name="key_learning_english" rows="3">{{ $learn->key_learning_english }}</textarea>
+                                                <p id="key_learning_english-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
+                                                <label for="owner" class="form-label">@lang('learn_admin.owner_thai')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <input type="text" id="owner_thai" class="form-fill" value="{{ $learn->owner_thai }}" name="owner_thai">
+                                                <p id="owner_thai-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
+                                                <label for="owner_english" class="form-label">@lang('learn_admin.owner_english')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <input type="text" id="owner_english" class="form-fill" value="{{ $learn->owner_english }}" name="owner_english">
+                                                <p id="owner_english-help-text" class="alert help-text help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
+                                                <label for="interested" class="form-label">SDG</label>
+                                            </div>
+                                            <div class="cell small-12 large-9">
+                                                <a class="btn-blue" data-open="addInterested">
+                                                    <i class="fas fa-plus"></i> /
+                                                    <i class="fas fa-minus"></i> SDG
+                                                </a>
+                                                <ul class="show-interested" id="interest-list">
+                                                    @foreach( $learnInterestInList as $learnInterestInItem )
+                                                        <li class="item-{{$learnInterestInItem['fk_interest_in_id']}}">{{$learnInterestInItem['interest_title']}}</li>
+                                                        <input type="hidden" name="fk_interest_in_id[]" id="fk_interest_in_id" class="input-{{ $learnInterestInItem['fk_interest_in_id'] }}" value="{{ $learnInterestInItem['fk_interest_in_id'] }}">
+                                                    @endforeach
+                                                </ul>
+                                                <p id="fk_interest_in_id-help-text" class="alert help-text hide"></p>
+                                            </div>
+                                        </div>
+                                        <div class="reveal modal-style" id="addInterested" data-reveal>
+                                            <h2 class="modal-topic">SDG</h2>
+                                            <div class="modal-form">
+                                                <ul class="modal-content">
+                                                    @foreach( $interestList as $interestItem )
+                                                        <li>
+                                                            <div class="form-checkbox
+                                                            @foreach( $learnInterestInList as $learnInterestInItem )
+                                                            @if($interestItem->id === $learnInterestInItem['fk_interest_in_id'])
+                                                                    form-checkbox-ed
+                                                            @endif
+                                                            @endforeach
+                                                                    ">
+                                                                <input id="{{ $interestItem->id }}"
+                                                                       data-value="{{ $interestItem->id }}"
+                                                                       data-title="{{ $interestItem->title }}"
+                                                                       type="checkbox" class="checkbox-inter">
+                                                                <label for="{{ $interestItem->id }}">{{ $interestItem->title }}</label>
+                                                            </div>
+                                                        </li>
+                                                    @endforeach
+                                                </ul>
+                                                <button class="btn-green btn-long" data-close aria-label="Close reveal">
+                                                    Save
+                                                </button>
+                                            </div>
+                                            <button class="close-button" data-close aria-label="Close reveal" type="button">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
                                                 <label for="content_thai" class="form-label">@lang('learn_admin.content_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -121,7 +225,7 @@
                                         </div>
 
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <label for="content_english" class="form-label">@lang('learn_admin.content_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -130,9 +234,26 @@
                                                 <p id="content_english-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
-
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
+                                                <label for="imageProfile" class="form-label">@lang('learn_admin.file')</label>
+                                            </div>
+                                            <div class="cell small-12 large-9 flex">
+                                                <div class="form-file-image">
+                                                    <div class="form-file">
+                                                        <input type="file" class="form-fileupload" id="file_path" name="file_path[]"
+                                                               multiple data-maxfile="5,120"/>
+                                                        <p id="original-help-text" class="alert help-text hide"></p>
+                                                        <div class="form-file-style">
+                                                            <div class="form-flex btn-blue">@lang('learn_admin.browse')</div>
+                                                            <p class="form-flex show-text">@lang('learn_admin.file_condition')</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="grid-x grid-padding-x user-form-space">
+                                            <div class="cell small-12 large-3">
                                                 <label for="image" class="form-label">@lang('learn_admin.image')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
@@ -155,7 +276,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <p class="form-label form-p">@lang('learn_admin.publish')</p>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">
@@ -164,7 +285,7 @@
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
-                                            <div class="cell small-12 large-2">
+                                            <div class="cell small-12 large-3">
                                                 <p class="form-label form-p">@lang('learn_admin.highlight')</p>
                                             </div>
                                             <div class="cell small-12 large-9 form-text">

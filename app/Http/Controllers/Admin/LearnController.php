@@ -6,8 +6,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\InterestIn;
 use App\Models\Learn;
 use App\Http\Requests\LearnRequest;
+use App\Models\LearnInterestIn;
 use Illuminate\Http\Request;
 
 /**
@@ -19,13 +21,21 @@ class LearnController extends Controller
     /** @var Learn Learn model */
     protected $learnModel;
 
+    /** @var InterestIn InterestIn model */
+    protected $interestInModel;
+
+    /** @var LearnInterestIn LearnInterestIn model */
+    protected $learnInterestInModel;
+
     /**
      * LearnController constructor.
      *
      */
-    public function __construct( Learn $learn )
+    public function __construct( Learn $learn, InterestIn $interestIn, LearnInterestIn $learnInterestIn )
     {
-        $this->learnModel = $learn;
+        $this->learnModel           = $learn;
+        $this->interestInModel      = $interestIn;
+        $this->learnInterestInModel = $learnInterestIn;
     }
 
     /**
@@ -65,7 +75,10 @@ class LearnController extends Controller
      */
     public function edit( Learn $learn )
     {
-        return view( 'admin.learn.edit', compact( 'learn' ) );
+        $interestList        = $this->interestInModel->getInterestInList();
+        $learnInterestInList = $this->learnInterestInModel->getLearnInterestInList( $learn->id );
+
+        return view( 'admin.learn.edit', compact( 'learn', 'interestList', 'learnInterestInList' ) );
     }
 
     /**
@@ -75,7 +88,9 @@ class LearnController extends Controller
      */
     public function create()
     {
-        return view( 'admin.learn.create' );
+        $interestList = $this->interestInModel->getInterestInList();
+
+        return view( 'admin.learn.create', compact( 'interestList' ) );
     }
 
     /**
