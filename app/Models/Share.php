@@ -80,11 +80,11 @@ class Share extends Model
     /**
      * Get share interest in model relationship.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\hasMany Share interest in model relationship
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Share interest in model relationship
      */
     public function shareInterestIn()
     {
-        return $this->hasMany( 'App\Models\ShareInterestIn', 'fk_share_id' );
+        return $this->belongsTo( 'App\Models\ShareInterestIn', 'fk_share_id' );
     }
 
     /**

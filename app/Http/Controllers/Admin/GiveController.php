@@ -9,6 +9,8 @@ use App\Http\Requests\GiveRequest;
 use App\Models\Give;
 use App\Models\GiveCategory;
 use App\Models\GiveImage;
+use App\Models\GiveInterestIn;
+use App\Models\InterestIn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -27,14 +29,22 @@ class GiveController extends Controller
     /** @var GiveCategory Give Category model */
     protected $giveCategoryModel;
 
+    /** @var InterestIn InterestIn model */
+    protected $interestInModel;
+
+    /** @var GiveInterestIn GiveInterestIn model */
+    protected $giveInterestInModel;
+
     /**
      * GiveController constructor.
      */
-    public function __construct( Give $give, GiveImage $giveImage, GiveCategory $giveCategory )
+    public function __construct( Give $give, GiveImage $giveImage, GiveCategory $giveCategory, InterestIn $interestIn, GiveInterestIn $giveInterestIn )
     {
-        $this->giveModel         = $give;
-        $this->giveImageModel    = $giveImage;
-        $this->giveCategoryModel = $giveCategory;
+        $this->giveModel           = $give;
+        $this->giveImageModel      = $giveImage;
+        $this->giveCategoryModel   = $giveCategory;
+        $this->interestInModel     = $interestIn;
+        $this->giveInterestInModel = $giveInterestIn;
     }
 
     /**
@@ -73,8 +83,9 @@ class GiveController extends Controller
     public function create()
     {
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
+        $interestList         = $this->interestInModel->getInterestInList();
 
-        return view( 'admin.give.create', compact( 'data' ) );
+        return view( 'admin.give.create', compact( 'data', 'interestList' ) );
     }
 
     /**
@@ -147,8 +158,10 @@ class GiveController extends Controller
     {
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
         $give                 = $this->giveModel->getGiveDetail( $give );
+        $interestList         = $this->interestInModel->getInterestInList();
+        $giveInterestInList   = $this->giveInterestInModel->getGiveInterestInList( $give->id );
 
-        return view( 'admin.give.edit', compact( 'give', 'data' ) );
+        return view( 'admin.give.edit', compact( 'give', 'data', 'interestList', 'giveInterestInList' ) );
     }
 
     /**

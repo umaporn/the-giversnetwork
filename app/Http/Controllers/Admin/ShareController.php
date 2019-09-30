@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\InterestIn;
 use App\Models\Share;
+use App\Models\ShareInterestIn;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ShareRequest;
@@ -23,13 +24,17 @@ class ShareController extends Controller
     /** @var InterestIn InterestIn model */
     protected $interestInModel;
 
+    /** @var ShareInterestIn ShareInterestIn model */
+    protected $shareInterestInModel;
+
     /**
      * ShareController constructor.
      */
-    public function __construct( Share $share, InterestIn $interestIn )
+    public function __construct( Share $share, InterestIn $interestIn, ShareInterestIn $shareInterestIn )
     {
-        $this->shareModel      = $share;
-        $this->interestInModel = $interestIn;
+        $this->shareModel           = $share;
+        $this->interestInModel      = $interestIn;
+        $this->shareInterestInModel = $shareInterestIn;
     }
 
     /**
