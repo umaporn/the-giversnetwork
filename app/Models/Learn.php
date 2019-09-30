@@ -76,6 +76,9 @@ class Learn extends Model
         foreach( $homeLearnList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
             $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
+            $list->setAttribute( 'purpose', Utility::getLanguageFields( 'purpose', $list ) );
+            $list->setAttribute( 'key_learning', Utility::getLanguageFields( 'key_learning', $list ) );
+            $list->setAttribute( 'owner', Utility::getLanguageFields( 'owner', $list ) );
             $list->setAttribute( 'content', Utility::getLanguageFields( 'content', $list ) );
             $list->setAttribute( 'image_path', Utility::getImages( $list['file_path'] ) );
             $this->setPublicDateForFrontEnd( $list );

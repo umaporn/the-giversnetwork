@@ -44,6 +44,17 @@
                             <h2>{{ $data['title'] }}</h2>
                             <time datetime="2019-04-29"><i class="far fa-calendar-alt"></i>{{ $data['public_date'] }}
                             </time>
+                            <div class="grid-x cell auto">
+                                @foreach( $learnInterestInList as $learnInterestInItem )
+                                    <div class="padding-right-1">
+                                        <figure class="cards-image">
+                                            <img src="{{ Storage::url($learnInterestInItem->interestIn['image_path']) }}"
+                                                 alt=" {{$learnInterestInItem['interest_title']}}" width="40"
+                                            >
+                                        </figure>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                         <div class="cell small-12 text-center">
                             <figure>
@@ -51,7 +62,22 @@
                             </figure>
                         </div>
                         <div class="cell small-12">
+                            <p><strong>Proposed Solution</strong></p>
+                            {!! $data['purpose'] !!}
+
+                            <p><strong>giver</strong></p>
+                            {!! $data['owner'] !!}
+
+                            <p><strong>Key LEARNing</strong></p>
+
+                            {!! $data['key_learning'] !!}
+
                             {!! $data['content'] !!}
+                        </div>
+                        <div class="share-download">
+                            @if($data['document_path'])
+                                <a href="{{ Storage::url( $data['document_path'] ) }}" class="btn-blue" target="_blank">@lang('button.download')</a>
+                            @endif
                         </div>
                         <div class="social cell small-12 text-right">
                             <label>Share To</label>
