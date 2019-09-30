@@ -317,6 +317,20 @@ class Share extends Model
 
         $successForShare = $this->where( 'id', $share->id )->update( $data );
 
+        if( $request->input( 'fk_interest_in_id' ) ){
+            DB::table( 'share_interest_in' )->where( 'fk_share_id', $share->id )->delete();
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->shareInterestIn()->create( [
+                                                      'fk_interest_in_id' => $interestID,
+                                                      'fk_share_id'       => $share->id,
+                                                  ] );
+            }
+
+        } else {
+            DB::table( 'share_interest_in' )->where( 'fk_share_id', $share->id )->delete();
+        }
+
         if( $successForShare ){
 
             $successForShareImage = '';

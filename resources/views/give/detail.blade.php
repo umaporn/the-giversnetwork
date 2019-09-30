@@ -145,6 +145,26 @@
                                     <i class="fas fa-map-marker-alt"></i>
                                     {{ $data['address'] }}
                                 </div>
+                                <div class="cell small-12">
+                                    <div class="grid-x cell auto">
+                                        @foreach( $giveInterestInList as $giveInterestInItem )
+                                            <div class="padding-right-1">
+                                                <figure class="cards-image">
+                                                    <img src="{{ Storage::url($giveInterestInItem->interestIn['image_path']) }}"
+                                                         alt=" {{$giveInterestInItem['interest_title']}}" width="40"
+                                                    >
+                                                </figure>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                <div>
+                                    Date: {!! $data['date_required'] !!} <br>
+                                    Giver: {!! $data['owner'] !!} <br>
+                                    Purpose: {!! $data['purpose'] !!} <br>
+                                    Beneficiary: {!! $data['date_required'] !!} <br>
+                                    Give Item: {!! $data['date_required'] !!} <br>
+                                </div>
                                 <p>
                                     {!! $data['description'] !!}
                                 </p>

@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Give;
 use App\Models\GiveCategory;
+use App\Models\GiveInterestIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -18,16 +19,20 @@ class GiveController extends Controller
     /** @var GiveCategory give category model instance */
     private $giveCategoryModel;
 
+    /** @var GiveInterestIn GiveInterestIn model */
+    protected $giveInterestInModel;
+
     /**
      * Initialize HomeController class.
      *
      * @param Give         $give         Give model
      * @param GiveCategory $giveCategory GiveCategory model
      */
-    public function __construct( Give $give, GiveCategory $giveCategory )
+    public function __construct( Give $give, GiveCategory $giveCategory, GiveInterestIn $giveInterestIn )
     {
-        $this->giveModel         = $give;
-        $this->giveCategoryModel = $giveCategory;
+        $this->giveModel           = $give;
+        $this->giveCategoryModel   = $giveCategory;
+        $this->giveInterestInModel = $giveInterestIn;
     }
 
     /**
@@ -123,6 +128,7 @@ class GiveController extends Controller
         $data['otherUserItems'] = $this->giveModel->getGiveUserItemList( $data['fk_user_id'], $request );
         $data['allList']        = $this->giveModel->getGiveAllList( $request );
         $category_id            = $request->get( 'category_id' );
+        $giveInterestInList    = $this->giveInterestInModel->getGiveInterestInList( $give->id );
 
         if( $request->ajax() ){
             return response()->json( [
@@ -130,7 +136,7 @@ class GiveController extends Controller
                                      ] );
         }
 
-        return view( 'give.detail', compact( 'data', 'category_id' ) );
+        return view( 'give.detail', compact( 'data', 'category_id', 'giveInterestInList' ) );
     }
 
     /**

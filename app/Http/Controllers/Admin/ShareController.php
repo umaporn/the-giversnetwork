@@ -86,7 +86,10 @@ class ShareController extends Controller
      */
     public function edit( Share $share )
     {
-        return view( 'admin.share.edit', compact( 'share' ) );
+        $interestList         = $this->interestInModel->getInterestInList();
+        $shareInterestInList   = $this->shareInterestInModel->getShareInterestInList( $share->id );
+
+        return view( 'admin.share.edit', compact( 'share', 'interestList', 'shareInterestInList' ) );
     }
 
     /**
