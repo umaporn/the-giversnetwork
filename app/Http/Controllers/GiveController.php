@@ -10,6 +10,8 @@ use App\Models\GiveCategory;
 use App\Models\GiveInterestIn;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\InterestIn;
+use Illuminate\Validation\Rules\In;
 
 class GiveController extends Controller
 {
@@ -20,7 +22,10 @@ class GiveController extends Controller
     private $giveCategoryModel;
 
     /** @var GiveInterestIn GiveInterestIn model */
-    protected $giveInterestInModel;
+    private $giveInterestInModel;
+
+    /** @var InterestIn InterestIn model */
+    private $interestInModel;
 
     /**
      * Initialize HomeController class.
@@ -28,11 +33,12 @@ class GiveController extends Controller
      * @param Give         $give         Give model
      * @param GiveCategory $giveCategory GiveCategory model
      */
-    public function __construct( Give $give, GiveCategory $giveCategory, GiveInterestIn $giveInterestIn )
+    public function __construct( Give $give, GiveCategory $giveCategory, GiveInterestIn $giveInterestIn, InterestIn $interestIn )
     {
         $this->giveModel           = $give;
         $this->giveCategoryModel   = $giveCategory;
         $this->giveInterestInModel = $giveInterestIn;
+        $this->interestInModel     = $interestIn;
     }
 
     /**
@@ -128,7 +134,7 @@ class GiveController extends Controller
         $data['otherUserItems'] = $this->giveModel->getGiveUserItemList( $data['fk_user_id'], $request );
         $data['allList']        = $this->giveModel->getGiveAllList( $request );
         $category_id            = $request->get( 'category_id' );
-        $giveInterestInList    = $this->giveInterestInModel->getGiveInterestInList( $give->id );
+        $giveInterestInList     = $this->giveInterestInModel->getGiveInterestInList( $give->id );
 
         if( $request->ajax() ){
             return response()->json( [
@@ -147,8 +153,9 @@ class GiveController extends Controller
     public function showCreateItemForm()
     {
         $data['giveCategory'] = $this->giveCategoryModel->getGiveCategoryList();
+        $interestList         = $this->interestInModel->getInterestInList();
 
-        return view( 'give.create_item', compact( 'data' ) );
+        return view( 'give.create_item', compact( 'data', 'interestList' ) );
     }
 
     /**

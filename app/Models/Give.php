@@ -292,6 +292,10 @@ class Give extends Model
             'description_thai'    => $request->input( 'description_text' ),
             'description_english' => $request->input( 'description_text' ),
             'amount'              => $request->input( 'amount' ),
+            'purpose'             => $request->input( 'purpose' ),
+            'beneficiary'         => $request->input( 'beneficiary' ),
+            'owner'               => $request->input( 'owner' ),
+            'date_required'       => $request->input( 'date_required' ),
             'fk_user_id'          => $request->input( 'fk_user_id' ),
             'address'             => $request->input( 'address' ) ? $request->input( 'address' ) : $result[0]->address,
             'expired_date'        => $expiredDate,
@@ -299,6 +303,16 @@ class Give extends Model
         ];
 
         $successForGive = $this->create( $newGive );
+
+        if( $request->input( 'fk_interest_in_id' ) ){
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->giveInterestIn()->create( [
+                                                     'fk_give_id'        => $successForGive->id,
+                                                     'fk_interest_in_id' => $interestID,
+                                                 ] );
+            }
+        }
 
         if( $successForGive ){
 
