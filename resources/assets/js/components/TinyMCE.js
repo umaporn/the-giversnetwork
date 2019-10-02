@@ -5,7 +5,7 @@
 
 const TinyMCE = (function(){
 
-	const generalSelectors = '#content-tinymce-english, #content-tinymce-thai',
+	const generalSelectors = '#content-tinymce-english, #content-tinymce-thai, #description-tinymce-english, #description-tinymce-thai',
 	      newsSelectors    = '#tinymce-news-content-english, #tinymce-news-content-thai, #tinymce-news-content-chinese',
 	      generalToolbar   = 'undo redo | styleselect | bold italic forecolor | alignleft aligncenter alignright alignjustify | bullist numlist | link image table | code preview save',
 	      newsToolbar      = generalToolbar.replace( 'save', '' ),
