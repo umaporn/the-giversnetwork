@@ -88,8 +88,8 @@ return [
         'fulltextSearch' => false,
     ],
     'organization'  => [
-        'limit'          => 6,
-        'limits'         => [ 6, 24 ],
+        'limit'          => 36,
+        'limits'         => [ 36, 72, 108 ],
         'sortby'         => 'id',
         'searchFields'   => [ 'name_thai', 'name_english' ],
         'fulltextSearch' => false,
