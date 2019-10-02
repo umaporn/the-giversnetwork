@@ -7,8 +7,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Events;
 use App\Models\Learn;
+use App\Models\LearnInterestIn;
 use App\Models\News;
 use Illuminate\Http\Request;
+use App\Models\InterestIn;
 
 /**
  * Learn Page Controller
@@ -25,6 +27,12 @@ class LearnController extends Controller
     /** @var News news model instance */
     private $newsModel;
 
+    /** @var LearnInterestIn LearnInterestIn model */
+    private $learnInterestInModel;
+
+    /** @var InterestIn InterestIn model */
+    private $interestInModel;
+
     /**
      * LearnController constructor.
      *
@@ -32,11 +40,13 @@ class LearnController extends Controller
      * @param Events $events Events model
      * @param News   $news   News model
      */
-    public function __construct( Learn $learn, Events $events, News $news )
+    public function __construct( Learn $learn, Events $events, News $news, LearnInterestIn $learnInterestIn, InterestIn $interestIn )
     {
-        $this->learnModel  = $learn;
-        $this->eventsModel = $events;
-        $this->newsModel   = $news;
+        $this->learnModel           = $learn;
+        $this->eventsModel          = $events;
+        $this->newsModel            = $news;
+        $this->learnInterestInModel = $learnInterestIn;
+        $this->interestInModel      = $interestIn;
     }
 
     /**
@@ -86,9 +96,10 @@ class LearnController extends Controller
      */
     public function detail( Learn $learn, Request $request )
     {
-        $data  = $this->learnModel->getLearnDetail( $learn );
-        $other = $this->learnModel->getHomeLearnList( $request, '3' );
+        $data                = $this->learnModel->getLearnDetail( $learn );
+        $other               = $this->learnModel->getHomeLearnList( $request, '3' );
+        $learnInterestInList = $this->learnInterestInModel->getLearnInterestInList( $learn->id );
 
-        return view( 'learn.detail', compact( 'data', 'other' ) );
+        return view( 'learn.detail', compact( 'data', 'other', 'learnInterestInList' ) );
     }
 }

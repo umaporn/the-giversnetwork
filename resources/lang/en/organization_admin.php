@@ -4,43 +4,43 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Organization Admin Page Language Lines
+    | Network Admin Page Language Lines
     |--------------------------------------------------------------------------
     */
 
     'page_link' => [
-        'index' => 'Organization',
-        'all'   => 'Organization All',
-        'add'   => 'Organization Add',
-        'edit'  => 'Organization Edit',
+        'index' => 'Network',
+        'all'   => 'Network All',
+        'add'   => 'Network Add',
+        'edit'  => 'Network Edit',
     ],
 
     'page_title' => [
-        'index' => 'Organization',
-        'all'   => 'Organization All',
-        'add'   => 'Organization Add',
-        'edit'  => 'Organization Edit',
+        'index' => 'Network',
+        'all'   => 'Network All',
+        'add'   => 'Network Add',
+        'edit'  => 'Network Edit',
     ],
 
     'page_description' => [
-        'index' => 'Organization page',
-        'all'   => 'Organization All page',
-        'add'   => 'Organization Add page',
-        'edit'  => 'Organization Edit page',
+        'index' => 'Network page',
+        'all'   => 'Network All page',
+        'add'   => 'Network Add page',
+        'edit'  => 'Network Edit page',
     ],
 
     'no'                   => 'No',
     'title'                => 'Title',
     'views'                => 'Views',
     'category'             => 'Category',
-    'type_of_organization' => 'Type of Organization',
+    'type_of_organization' => 'Type of Network',
     'publish'              => 'Publish',
     'url'                  => 'URL',
     'edit'                 => 'Edit',
     'delete'               => 'Delete',
-    'edit_organization'    => 'Edit Organization',
-    'add_organization'     => 'Add Organization',
-    'organization_id'      => 'Organization ID',
+    'edit_organization'    => 'Edit Network',
+    'add_organization'     => 'Add Network',
+    'organization_id'      => 'Network ID',
     'name_thai'            => 'Name Thai',
     'name_english'         => 'Name English',
     'description_thai'     => 'Description Thai',
@@ -65,8 +65,8 @@ return [
     'highlight'            => 'Highlight',
     'pin_to_highlight'     => 'Pinned to highlight',
 
-    'saved_organization_success' => 'Organization information saved successfully.',
-    'saved_organization_error'   => 'Organization information was not saved successfully.',
+    'saved_organization_success' => 'Network information saved successfully.',
+    'saved_organization_error'   => 'Network information was not saved successfully.',
 
     'organization_management' => [
         'add_button'                  => 'Add a new organization.',

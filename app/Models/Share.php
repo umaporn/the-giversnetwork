@@ -78,6 +78,16 @@ class Share extends Model
     }
 
     /**
+     * Get share interest in model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Share interest in model relationship
+     */
+    public function shareInterestIn()
+    {
+        return $this->belongsTo( 'App\Models\ShareInterestIn', 'fk_share_id' );
+    }
+
+    /**
      * Get a list of share for displaying.
      *
      * @param Request $request Share request object
@@ -109,9 +119,10 @@ class Share extends Model
     {
         foreach( $homeShareList as $list ){
             $list->setAttribute( 'title', Utility::getLanguageFields( 'title', $list ) );
+            $list->setAttribute( 'description', Utility::getLanguageFields( 'description', $list ) );
             foreach( $list->shareImage as $share_image ){
                 $share_image->setAttribute( 'image_path', $this->getShareImages( $share_image, 'original' ) );
-                $share_image->setAttribute( 'thumbnail_path', $this->getShareImages( $share_image,'thumbnail' ) );
+                $share_image->setAttribute( 'thumbnail_path', $this->getShareImages( $share_image, 'thumbnail' ) );
                 $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
             }
             $this->setPublicDateForFrontEnd( $list );
@@ -179,6 +190,7 @@ class Share extends Model
                         ->with( [ 'shareComment' ] )
                         ->with( [ 'shareLike' ] )
                         ->with( [ 'users' ] )
+                        ->with( [ 'shareInterestIn' ] )
                         ->orderBy( 'id', 'desc' )
                         ->where( 'status', 'public' );
 
@@ -305,6 +317,20 @@ class Share extends Model
 
         $successForShare = $this->where( 'id', $share->id )->update( $data );
 
+        if( $request->input( 'fk_interest_in_id' ) ){
+            DB::table( 'share_interest_in' )->where( 'fk_share_id', $share->id )->delete();
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->shareInterestIn()->create( [
+                                                      'fk_interest_in_id' => $interestID,
+                                                      'fk_share_id'       => $share->id,
+                                                  ] );
+            }
+
+        } else {
+            DB::table( 'share_interest_in' )->where( 'fk_share_id', $share->id )->delete();
+        }
+
         if( $successForShare ){
 
             $successForShareImage = '';
@@ -430,7 +456,7 @@ class Share extends Model
         if( preg_match( '/^(http|https):\\/\\/[a-z0-9_]+([\\-\\.]{1}[a-z_0-9]+)*\\.[_a-z]{2,5}' . '((:[0-9]{1,5})?\\/.*)?$/i', $attributes['original'] ) ){
             $imageStore = $attributes['original'];
         } else {
-            $imageStore = Storage::url( $attributes[$imageSize] );
+            $imageStore = Storage::url( $attributes[ $imageSize ] );
         }
 
         return $imageStore;
@@ -485,6 +511,15 @@ class Share extends Model
         ];
 
         $successForShare = $this->create( $newShare );
+
+        if( $request->input( 'fk_interest_in_id' ) ){
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->shareInterestIn()->create( [
+                                                      'fk_interest_in_id' => $interestID,
+                                                      'fk_share_id'       => $successForShare->id,
+                                                  ] );
+            }
+        }
 
         if( $successForShare ){
             $successForShareImage = '';

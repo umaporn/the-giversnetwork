@@ -13,6 +13,7 @@ use App\Models\ShareComment;
 use App\Models\Challenge;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\ShareInterestIn;
 
 class ShareController extends Controller
 {
@@ -34,6 +35,10 @@ class ShareController extends Controller
     /** @var Events Events model instance */
     private $eventsModel;
 
+    /** @var ShareInterestIn ShareInterestIn model */
+    protected $shareInterestInModel;
+
+
     /**
      * ShareController constructor.
      *
@@ -44,14 +49,15 @@ class ShareController extends Controller
      * @param ShareLike    $shareLike    ShareLike Model
      * @param ShareComment $shareComment ShareComment Model
      */
-    public function __construct( Share $share, Challenge $challenge, Events $events, News $news, ShareLike $shareLike, ShareComment $shareComment )
+    public function __construct( Share $share, Challenge $challenge, Events $events, News $news, ShareLike $shareLike, ShareComment $shareComment, ShareInterestIn $shareInterestIn )
     {
-        $this->shareModel        = $share;
-        $this->challengeModel    = $challenge;
-        $this->newsModel         = $news;
-        $this->shareLikeModel    = $shareLike;
-        $this->shareCommentModel = $shareComment;
-        $this->eventsModel       = $events;
+        $this->shareModel           = $share;
+        $this->challengeModel       = $challenge;
+        $this->newsModel            = $news;
+        $this->shareLikeModel       = $shareLike;
+        $this->shareCommentModel    = $shareComment;
+        $this->eventsModel          = $events;
+        $this->shareInterestInModel = $shareInterestIn;
     }
 
     /**
@@ -103,10 +109,11 @@ class ShareController extends Controller
      */
     public function detail( Share $share, Request $request )
     {
-        $data    = $this->shareModel->getShareDetail( $share );
-        $other   = $this->shareModel->getShareAllList( $request, 7 )->except( [ 'id' => $share->id ] );
-        $isLike  = $this->shareLikeModel->getIsShareLike( $share );
-        $comment = $this->shareCommentModel->getShareComment( $request, $share );
+        $data               = $this->shareModel->getShareDetail( $share );
+        $other              = $this->shareModel->getShareAllList( $request, 7 )->except( [ 'id' => $share->id ] );
+        $isLike             = $this->shareLikeModel->getIsShareLike( $share );
+        $comment            = $this->shareCommentModel->getShareComment( $request, $share );
+        $shareInterestInList = $this->shareInterestInModel->getShareInterestInList( $share->id );
 
         if( $request->ajax() ){
             return response()->json( [
@@ -114,7 +121,7 @@ class ShareController extends Controller
                                      ] );
         }
 
-        return view( 'share.detail', compact( 'data', 'other', 'isLike', 'comment' ) );
+        return view( 'share.detail', compact( 'data', 'other', 'isLike', 'comment', 'shareInterestInList' ) );
     }
 
     /**
