@@ -33,6 +33,15 @@
                         <span>{{ count( $share_item->shareComment ) }} comments</span>
                     </div>
                 </div>
+                <div class="grid-x padding-top-1">
+                    @foreach( $share_item['share_interest'] as $shareInterestInItem )
+                        <div class="padding-right-1">
+                        <img src="{{ Storage::url($shareInterestInItem->image_path) }}"
+                             alt=" {{$shareInterestInItem->title_english}}" width="40" height="40"
+                        >
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </article>
     @endforeach
