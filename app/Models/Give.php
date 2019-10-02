@@ -605,6 +605,8 @@ class Give extends Model
         $success = false;
         $images  = $this->getImages( $this );
 
+        DB::table( 'give_interest_in' )->where( 'fk_give_id', $this->id )->delete();
+
         if( $images ){
 
             $this->deleteImage( $images );

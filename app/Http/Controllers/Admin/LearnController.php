@@ -11,6 +11,7 @@ use App\Models\Learn;
 use App\Http\Requests\LearnRequest;
 use App\Models\LearnInterestIn;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Admin Learn Page Controller
@@ -185,8 +186,10 @@ class LearnController extends Controller
      */
     public function destroy( Request $request, Learn $learn )
     {
-        $success = $learn->delete();
 
+        DB::table( 'learn_interest_in' )->where( 'fk_learn_id', $learn->id )->delete();
+
+        $success = $learn->delete();
         if( $request->ajax() ){
             return response()->json( [
                                          'success'       => $success,
