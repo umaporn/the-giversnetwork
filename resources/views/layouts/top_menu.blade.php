@@ -14,7 +14,7 @@
                     @each( 'layouts.main_menu', $mainMenu, 'menuItem' )
                 </ul>
             </div>
-            <div class="cell large-shrink align-self-middle grid-middle">
+            <div class="cell large-3 align-self-middle grid-middle">
                 @if( Auth::guest() )
                     <ul class="user-profile float-left no-bullet">
                         <li><a href="{{ route('register') }}">@lang('register.page_link.index')</a></li>
@@ -84,15 +84,6 @@
                         </div>
                     </section>
                 @endif
-                <ul class="language float-right no-bullet">
-                    @foreach( config('app.language_codes') as $languageCode )
-                        <li class="{{$languageCode}}">
-                            <a href="{{ route( 'language.change', [ 'languageCode' => $languageCode ] ) }}">
-                                @lang( 'languages.' . $languageCode )
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
             </div>
         </nav>
     </div>

@@ -38,7 +38,7 @@ return [
     ],
     'learn_admin'         => [
         'title_english'       => 'required|string|min:3|max:255',
-        'description_english' => 'required|string|min:3|max:255',
+        'description_english' => 'required|string',
         'content_english'     => 'required|string|min:3',
     ],
     'give_admin'          => [
@@ -46,7 +46,7 @@ return [
         'fk_category_id'      => 'required|numeric',
         'title_english'       => 'required|string|min:3|max:255',
         'description_english' => 'required|string|min:3',
-        'amount'              => 'required|numeric',
+        'amount'              => 'required|string',
         'address'             => 'sometimes|string',
     ],
     'share_admin'         => [

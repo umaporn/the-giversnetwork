@@ -9,18 +9,18 @@ return [
     */
 
     'page_link' => [
-        'index'  => 'Members',
-        'detail' => 'Members: :organization_title',
+        'index'  => 'Network',
+        'detail' => 'Network: :organization_title',
     ],
 
     'page_title' => [
-        'index'  => 'Members',
-        'detail' => 'Members: :organization_title',
+        'index'  => 'Network',
+        'detail' => 'Network: :organization_title',
     ],
 
     'page_description'     => [
-        'index'  => 'Members page',
-        'detail' => 'Members: :organization_title',
+        'index'  => 'Network page',
+        'detail' => 'Network: :organization_title',
     ],
     'category'             => 'Category',
     'organization_name'    => 'Organization Name',

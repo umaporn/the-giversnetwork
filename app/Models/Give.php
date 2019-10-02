@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +22,7 @@ class Give extends Model
     /** @var array A list of fields which are able to update in this model */
     protected $fillable = [ 'fk_user_id', 'fk_category_id', 'type', 'title_thai', 'title_english',
                             'description_thai', 'description_english', 'amount', 'address', 'view',
-                            'expired_date', 'status', ];
+                            'purpose', 'beneficiary', 'owner', 'date_required', 'expired_date', 'status', ];
 
     /** @var string Table name */
     protected $table = 'give';
@@ -57,6 +58,16 @@ class Give extends Model
     }
 
     /**
+     * Get give interest in model relationship.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\belongsTo Give interest in model relationship
+     */
+    public function giveInterestIn()
+    {
+        return $this->belongsTo( 'App\Models\GiveInterestIn', 'fk_give_id' );
+    }
+
+    /**
      * Get a list of give for displaying.
      *
      * @param Request $request Request object
@@ -68,8 +79,8 @@ class Give extends Model
         $builder = $this->with( [ 'giveImage' ] )
                         ->where( [ 'status' => 'public', 'type' => 'give' ] );
 
-        if( $request->get('id') ){
-            $builder->where( [ 'fk_category_id' => $request->get('id') ] );
+        if( $request->get( 'id' ) ){
+            $builder->where( [ 'fk_category_id' => $request->get( 'id' ) ] );
         }
 
         $data = Search::search( $builder, 'give', $request, [], '9' );
@@ -281,6 +292,10 @@ class Give extends Model
             'description_thai'    => $request->input( 'description_text' ),
             'description_english' => $request->input( 'description_text' ),
             'amount'              => $request->input( 'amount' ),
+            'purpose'             => $request->input( 'purpose' ),
+            'beneficiary'         => $request->input( 'beneficiary' ),
+            'owner'               => $request->input( 'owner' ),
+            'date_required'       => $request->input( 'date_required' ),
             'fk_user_id'          => $request->input( 'fk_user_id' ),
             'address'             => $request->input( 'address' ) ? $request->input( 'address' ) : $result[0]->address,
             'expired_date'        => $expiredDate,
@@ -288,6 +303,16 @@ class Give extends Model
         ];
 
         $successForGive = $this->create( $newGive );
+
+        if( $request->input( 'fk_interest_in_id' ) ){
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->giveInterestIn()->create( [
+                                                     'fk_give_id'        => $successForGive->id,
+                                                     'fk_interest_in_id' => $interestID,
+                                                 ] );
+            }
+        }
 
         if( $successForGive ){
 
@@ -423,12 +448,26 @@ class Give extends Model
             'description_english' => $request->input( 'description_english' ),
             'amount'              => $request->input( 'amount' ),
             'fk_user_id'          => $request->input( 'fk_user_id' ),
+            'purpose'             => $request->input( 'purpose' ),
+            'beneficiary'         => $request->input( 'beneficiary' ),
+            'owner'               => $request->input( 'owner' ),
+            'date_required'       => $request->input( 'date_required' ),
             'address'             => $request->input( 'address' ),
             'expired_date'        => $expiredDate,
             'status'              => $request->input( 'status' ) ? 'public' : 'draft',
         ];
 
         $successForGive = $this->create( $newGive );
+
+        if( $request->input( 'fk_interest_in_id' ) ){
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->giveInterestIn()->create( [
+                                                     'fk_give_id'        => $successForGive->id,
+                                                     'fk_interest_in_id' => $interestID,
+                                                 ] );
+            }
+        }
 
         if( $successForGive ){
 
@@ -490,12 +529,30 @@ class Give extends Model
             'description_thai'    => $request->input( 'description_thai' ),
             'description_english' => $request->input( 'description_english' ),
             'amount'              => $request->input( 'amount' ),
+            'purpose'             => $request->input( 'purpose' ),
+            'beneficiary'         => $request->input( 'beneficiary' ),
+            'owner'               => $request->input( 'owner' ),
+            'date_required'       => $request->input( 'date_required' ),
             'address'             => $request->input( 'address' ) ? $request->input( 'address' ) : $result[0]->address,
             'expired_date'        => $expiredDate,
             'status'              => $request->input( 'status' ) ? 'public' : 'draft',
         ];
 
         $successForGive = $this->where( 'id', $give->id )->update( $data );
+
+        if( $request->input( 'fk_interest_in_id' ) ){
+            DB::table( 'give_interest_in' )->where( 'fk_give_id', $give->id )->delete();
+
+            foreach( $request->input( 'fk_interest_in_id' ) as $interestID ){
+                $this->giveInterestIn()->create( [
+                                                     'fk_interest_in_id' => $interestID,
+                                                     'fk_give_id'        => $give->id,
+                                                 ] );
+            }
+
+        } else {
+            DB::table( 'give_interest_in' )->where( 'fk_give_id', $give->id )->delete();
+        }
 
         if( $successForGive ){
 
