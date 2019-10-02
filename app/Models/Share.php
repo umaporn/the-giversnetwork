@@ -559,6 +559,7 @@ class Share extends Model
     public function deleteShare()
     {
         $success = false;
+        DB::table( 'share_interest_in' )->where( 'fk_share_id', $this->id )->delete();
         $images  = $this->getImages( $this );
         $this->shareComment()->delete();
         $this->shareLike()->delete();
