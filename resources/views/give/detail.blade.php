@@ -140,7 +140,9 @@
                                 <h2>{{ $data['title'] }}</h2>
                                 <p class="amount">{{ $data['amount'] }} items</p>
                                 <time datetime="2019-04-29">
-                                    <i class="far fa-calendar-alt"></i>Posted on {{ date("m F Y", strtotime($data['created_at'])) }}</time>
+                                    <i class="far fa-calendar-alt"></i>Posted
+                                                                       on {{ date("m F Y", strtotime($data['created_at'])) }}
+                                </time>
                                 <div class="location">
                                     <i class="fas fa-map-marker-alt"></i>
                                     {{ $data['address'] }}
@@ -159,17 +161,17 @@
                                     </div>
                                 </div>
                                 <div>
-                                    Date: {!! $data['date_required'] !!} <br>
-                                    Giver: {!! $data['owner'] !!} <br>
-                                    Purpose: {!! $data['purpose'] !!} <br>
-                                    Beneficiary: {!! $data['date_required'] !!} <br>
-                                    Give Item: {!! $data['date_required'] !!} <br>
+                                    @if($data['date_required']) Date: {!! $data['date_required'] !!} <br> @endif
+                                    @if($data['date_required']) Giver: {!! $data['owner'] !!} <br> @endif
+                                    @if($data['date_required']) Purpose: {!! $data['purpose'] !!} <br> @endif
+                                    @if($data['date_required']) Beneficiary: {!! $data['date_required'] !!} <br> @endif
                                 </div>
                                 <p>
                                     {!! $data['description'] !!}
                                 </p>
                                 <time datetime="2019-04-29">
-                                    <i class="far fa-calendar-alt"></i>This listing expires on {{ date("m F Y", strtotime($data['expired_date'])) }}
+                                    <i class="far fa-calendar-alt"></i>This listing expires
+                                                                       on {{ date("m F Y", strtotime($data['expired_date'])) }}
                                 </time>
                             </div>
 
