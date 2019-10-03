@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 use App\Http\Requests\ShareRequest;
+use App\Models\ShareInterestIn;
 
 class Share extends Model
 {
@@ -26,6 +27,9 @@ class Share extends Model
 
     /** @var string Table name */
     protected $table = 'share';
+
+    /** @var ShareInterestIn ShareInterestIn model */
+    protected $shareInterestInModel;
 
     /**
      * Get share category model relationship.
@@ -125,6 +129,12 @@ class Share extends Model
                 $share_image->setAttribute( 'thumbnail_path', $this->getShareImages( $share_image, 'thumbnail' ) );
                 $share_image->setAttribute( 'alt', Utility::getLanguageFields( 'alt', $share_image ) );
             }
+
+            $interest = DB::table( 'share_interest_in' )
+                          ->join( 'interest_in', 'interest_in.id', '=', 'share_interest_in.fk_interest_in_id' )
+                          ->where( 'fk_share_id', $list->id )->get();
+
+            $list->setAttribute('share_interest', $interest);
             $this->setPublicDateForFrontEnd( $list );
 
         }
@@ -560,7 +570,7 @@ class Share extends Model
     {
         $success = false;
         DB::table( 'share_interest_in' )->where( 'fk_share_id', $this->id )->delete();
-        $images  = $this->getImages( $this );
+        $images = $this->getImages( $this );
         $this->shareComment()->delete();
         $this->shareLike()->delete();
         if( $images ){

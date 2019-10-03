@@ -4,10 +4,10 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
                     <div class="cell small-12 show-for-medium">
-                        <img src="{{ asset('images/registration/hero-banner/banner-en-1.jpg') }}"/>
+                        <img src="{{ asset('images/registration/hero-banner/banner-en-1-new.jpg') }}"/>
                     </div>
                     <div class="cell small-12 show-for-small-only">
-                        <img src="{{ asset('images/registration/hero-banner/banner-en-mobile-1.jpg') }}">
+                        <img src="{{ asset('images/registration/hero-banner/banner-en-mobile-1-new.jpg') }}">
                     </div>
                 </div>
                 <div class="swiper-slide grid-x align-right grid-padding-x swiper-slide-active">
