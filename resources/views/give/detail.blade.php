@@ -162,9 +162,9 @@
                                 </div>
                                 <div>
                                     @if($data['date_required']) Date: {!! $data['date_required'] !!} <br> @endif
-                                    @if($data['date_required']) Giver: {!! $data['owner'] !!} <br> @endif
-                                    @if($data['date_required']) Purpose: {!! $data['purpose'] !!} <br> @endif
-                                    @if($data['date_required']) Beneficiary: {!! $data['date_required'] !!} <br> @endif
+                                    @if($data['owner']) Giver: {!! $data['owner'] !!} <br> @endif
+                                    @if($data['purpose']) Purpose: {!! $data['purpose'] !!} <br> @endif
+                                    @if($data['beneficiary']) Beneficiary: {!! $data['beneficiary'] !!} <br> @endif
                                 </div>
                                 <p>
                                     {!! $data['description'] !!}

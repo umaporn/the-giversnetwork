@@ -21,10 +21,10 @@ return [
                 'url'  => route( 'about.index' ),
                 'text' => 'About us',
             ],
-            // [
-            //     'url'  => '#',
-            //     'text' => 'Contact us',
-            // ],
+            [
+                'url'  => route( 'organization.index', [ 'category_id' => '2' ] ),
+                'text' => 'Sponsor',
+            ],
         ],
     ],
 

@@ -34,6 +34,60 @@
                     </button>
                 </form>
             </div>
+            <div class="cell small-12 text-center padding-1">
+                <h4><a data-open="addInterested"> This section is for you to GIVE or ASK for an item, service, or
+                                                  volunteer time. This is the best place to ASK for what your program or
+                                                  organization needs, or find a way to GIVE to support a cause or
+                                                  project. Please also look at other organizations items as you may have
+                                                  something they need. </a></h4>
+                <div class="reveal modal-style" id="addInterested" data-reveal>
+                    <h2 class="modal-topic">instructions</h2>
+                    <div class="modal-form">
+                        <div class="modal-content">
+                            <div>GIVE tips:</div>
+                            <ol>
+                                <li>
+                                    1. Be specific about what you are giving and if there are restrictions. Eg: “10
+                                    packs of toddler diapers available in Pattaya to a registered orphanage.”
+                                </li>
+                                <li>
+                                    2. GIVE your expertise, it can be far more valuable than your labour. Eg: Accountant
+                                    offering 8 hours per month bookeeping in Rayong area”.
+                                </li>
+                            </ol>
+                            <div>ASK tips:</div>
+                            <ol>
+                                <li>
+                                    1. If you have a large list of items it is good to break it up ito smaller items so
+                                    it is easier for people to browse the summary.
+                                </li>
+                                <li>
+                                    2. Be specific, the more specific you are the easier it is for other GIVERS to
+                                    determine if they can help you.
+                                    <br>
+                                    For example: “ 30 Childrens basic reading books 5-7 year olds in Thai” is a much
+                                    clearer ASK then “Children’s books needed.” This will save you time, as GIVERS are
+                                    clear on what you need, and donation resources are not wasted by sending the wrong
+                                    items.
+                                </li>
+                                <li>
+                                    3. Remember to include the location needed and any delivery requirements as well.
+                                    Transportation can be an ASK item as well. “ I need 4 100 x 100 cm boxes weighing
+                                    10kg each delivered from Bangkok to Chiang Mai” . The item and the delivery may be
+                                    seperate ASKs.
+                                </li>
+                                <li>
+                                    4. Please include your SDG categories this will help members find your listings as
+                                    the section grows
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
             <div class="cell small-12">
                 <div class="grid-x">
                     <div class="cell-block small-12 xlarge-3">

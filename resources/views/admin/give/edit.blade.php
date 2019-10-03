@@ -226,10 +226,10 @@
                                                 <label for="description_thai" class="form-label">@lang('give_admin.description_thai')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-tinymce-thai" class="form-fill" name="description_thai" rows="3" maxlength="2000">
+                                                <textarea id="description" class="form-fill" name="description_thai" rows="3" >
                                                     {{ $give->description_thai }}
                                                 </textarea>
-                                                <p id="content-tinymce-thai-help-text" class="alert help-text help-text hide"></p>
+                                                <p id="descriptio-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
 
@@ -238,10 +238,10 @@
                                                 <label for="description_english" class="form-label">@lang('give_admin.description_english')</label>
                                             </div>
                                             <div class="cell small-12 large-9">
-                                                <textarea id="content-tinymce-english" class="form-fill" name="description_english" rows="3">
+                                                <textarea id="description" class="form-fill" name="description_english" rows="3">
                                                     {{ $give->description_english }}
                                                 </textarea>
-                                                <p id="content-tinymce-english-help-text" class="alert help-text help-text hide"></p>
+                                                <p id="description-help-text" class="alert help-text help-text hide"></p>
                                             </div>
                                         </div>
                                         <div class="grid-x grid-padding-x user-form-space">
