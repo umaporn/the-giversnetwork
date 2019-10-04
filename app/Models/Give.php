@@ -158,7 +158,7 @@ class Give extends Model
      */
     public function getGiveAllList( Request $request )
     {
-        $type           = $request->get( 'type' ) ? $request->get( 'type' ) : '';
+        $type           = $request->get( 'type' ) ? $request->get( 'type' ) : 'give';
         $fk_category_id = $request->get( 'category_id' ) ? $request->get( 'category_id' ) : '';
 
         $builder = $this->with( [ 'giveCategory' ] )
