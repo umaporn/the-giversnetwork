@@ -17,7 +17,7 @@ return [
         'mobile'          => 'Phone:',
         'email'           => 'Email:',
         'actionText'      => 'Go to The Giver Network',
-        'actionDetail'    => 'Please login with the same email and password on The Giver Network website.',
+        'actionDetail'    => '',
     ],
 
     'events_registration' => [
