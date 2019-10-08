@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class DropColumnNewsTable extends Migration
+class DropColumnsTitleNewsTable extends Migration
 {
     const Table = 'news';
 
