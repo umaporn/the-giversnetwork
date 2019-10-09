@@ -24,3 +24,11 @@ $( document ).foundation();
 window.JSTranslate = require( 'js-translate' );
 window.Swiper    = require( 'swiper/dist/js/swiper' );
 window.Multifile = require( 'jquery-multifile' );
+
+/**
+ * Open popup modal on page load
+ * @type {Object}
+ */
+if( $( '#popup' ).length ){
+	$( '#popup' ).foundation( 'open' );
+}
