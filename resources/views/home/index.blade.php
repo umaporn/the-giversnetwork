@@ -4,7 +4,7 @@
 @section('page-description', __('home.page_description.index'))
 
 @section('content')
-
+    @include('home.event_popup')
     @include('home.banner')
     @include('home.news')
     @include('home.share')
