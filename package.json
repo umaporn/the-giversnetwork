@@ -22,7 +22,7 @@
     "@fortawesome/fontawesome-free": "^5.9.0",
     "cross-env": "^5.2.0",
     "jquery-multifile": "^2.2.2",
-    "npm": "^6.9.0",
+    "npm": "^6.13.4",
     "swiper": "^4.5.0",
     "tinymce": "^5.0.11"
   }
