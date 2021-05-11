@@ -15,7 +15,7 @@
     "js-translate": "^1.0.0",
     "jsdoc": "^3.6.2",
     "laravel-mix": "^2.1.14",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.21",
     "@fancyapps/fancybox": "^3.5.7"
   },
   "dependencies": {
